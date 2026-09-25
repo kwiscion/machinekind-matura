@@ -1,0 +1,37 @@
+[
+  {
+    "key": "lead",
+    "url": "https://github.com/kwiscion/machinekind-matura/issues/3",
+    "number": 3,
+    "owner": "kwiscion",
+    "assigned": true
+  },
+  {
+    "key": "data",
+    "url": "https://github.com/kwiscion/machinekind-matura/issues/4",
+    "number": 4,
+    "owner": "przemeknowak781",
+    "assigned": false
+  },
+  {
+    "key": "spark",
+    "url": "https://github.com/kwiscion/machinekind-matura/issues/5",
+    "number": 5,
+    "owner": "ljaniec",
+    "assigned": true
+  },
+  {
+    "key": "retrieval",
+    "url": "https://github.com/kwiscion/machinekind-matura/issues/6",
+    "number": 6,
+    "owner": "Bukareszt",
+    "assigned": false
+  },
+  {
+    "key": "eval",
+    "url": "https://github.com/kwiscion/machinekind-matura/issues/7",
+    "number": 7,
+    "owner": "Pewciu6",
+    "assigned": true
+  }
+]
