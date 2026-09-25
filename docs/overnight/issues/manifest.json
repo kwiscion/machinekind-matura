@@ -1,0 +1,7 @@
+[
+  {"key":"lead","title":"Overnight lead: integration, split control, and Sunday freeze","owner":"kwiscion","file":"docs/overnight/issues/lead.md"},
+  {"key":"data","title":"Grounded Polish-history training examples and independent audit","owner":"przemeknowak781","file":"docs/overnight/issues/data.md"},
+  {"key":"spark","title":"DGX Spark compact-model baseline and bounded specialist pilot","owner":"ljaniec","file":"docs/overnight/issues/spark.md"},
+  {"key":"retrieval","title":"Licensed offline historical retrieval and evidence checks","owner":"Bukareszt","file":"docs/overnight/issues/retrieval.md"},
+  {"key":"eval","title":"CPU evaluation harness and May 2024 validation audit","owner":"Pewciu6","file":"docs/overnight/issues/eval.md"}
+]

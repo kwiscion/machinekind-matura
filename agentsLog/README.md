@@ -1,0 +1,3 @@
+# Owner handoffs
+
+Each worker writes to `agentsLog/<owner>/` and never edits another owner's log. Start with a short `README.md` stating issue, branch, UTC/Warsaw time, artifact inventory, commands, source/model revisions and hashes, split used, measurements, failures, limits, and next action. Keep raw/private dumps under ignored `raw/` or `private/`; PR only small reviewable records. If a report mentions validation answers, keep the answer key in a separate restricted artifact and publish aggregate/failure categories only until the lead releases it. Candidate bundles for possible Hugging Face publication use `candidates/<handle>/<run>/` with a manifest; a PR/local artifact meets the overnight handoff.

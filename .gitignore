@@ -1,0 +1,26 @@
+# Local credentials and machine state
+.env
+.env.*
+!.env.example
+*secret*.json
+*token*.json
+.venv/
+__pycache__/
+.pytest_cache/
+*.py[cod]
+
+# Downloaded source material, model weights, and generated runs
+downloads/
+cache/
+models/
+checkpoints/
+outputs/
+*.safetensors
+*.gguf
+*.bin
+*.pt
+*.pth
+
+# Keep small reviewed manifests/reports in agentsLog; raw dumps remain local
+agentsLog/**/raw/
+agentsLog/**/private/
