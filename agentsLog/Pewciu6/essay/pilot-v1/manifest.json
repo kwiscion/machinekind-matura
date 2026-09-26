@@ -1,0 +1,88 @@
+{
+  "prompt_revision": "essay-route-v1",
+  "prompt_template_sha256": "a133eb51972d0a1becf1ba71a14eac4498ea03a7556e12c3cbc0a271bc84fd9c",
+  "input": "agentsLog/Pewciu6/essay/dev_fixtures.jsonl",
+  "input_sha256": "fa546faf595b00dd13d70ea700ed8f70ade12227261313b3f24bb09866bbbf71",
+  "mode": "both",
+  "topic_selection": false,
+  "fixed_topic": 1,
+  "caps": {
+    "plan": 512,
+    "final": 1536
+  },
+  "stages": {
+    "single": {
+      "file": "single.input.jsonl",
+      "calls": 2,
+      "max_output_tokens": 1536,
+      "sha256": "d0702b275f767bd8b8ee7ced2e5d58722797bd9af5649cad3f0f268c1ec9c13c"
+    },
+    "plan": {
+      "file": "plan.input.jsonl",
+      "calls": 2,
+      "max_output_tokens": 512,
+      "sha256": "d0c8f44bef39fabf95d2ecf425ed4e90ba39f7ce5f14e9a8464ef1ce90b1231c"
+    },
+    "write": {
+      "file": "write.input.jsonl",
+      "calls": 2,
+      "max_output_tokens": 1536,
+      "built_by": "essay_route.py write-from-plan after the plan stage"
+    }
+  },
+  "envelope": {
+    "calls": 6,
+    "requested_output_tokens": 7168,
+    "max_calls": 6,
+    "max_requested_output_tokens": 7168,
+    "retries": 0,
+    "max_wall_minutes": 30,
+    "within_envelope": true
+  },
+  "items": [
+    {
+      "id": "dev-essay-001",
+      "features": {
+        "essay_word": true,
+        "length_requirement": true,
+        "named_topics": 2,
+        "enumerated_topics": 2
+      },
+      "topics": [
+        1,
+        2
+      ],
+      "topic": 1,
+      "header_stripped_sha256": null,
+      "body_sha256": "b401de8fe91778fb639f3772600bedc307d8b7143d8ad0ab9cf445a938835cdc"
+    },
+    {
+      "id": "dev-essay-002",
+      "features": {
+        "essay_word": true,
+        "length_requirement": true,
+        "named_topics": 0,
+        "enumerated_topics": 2
+      },
+      "topics": [
+        1,
+        2
+      ],
+      "topic": 1,
+      "header_stripped_sha256": null,
+      "body_sha256": "f23a1a0c3adc673a6220592404e5627ce81c5f11a48ac8096038117a08321953"
+    }
+  ],
+  "non_essay_passthrough": 0,
+  "commands": [
+    "python infer.py --config agentsLog/Pewciu6/essay/pilot-v1/config.final.json --input agentsLog/Pewciu6/essay/pilot-v1/single.input.jsonl --output agentsLog/Pewciu6/essay/pilot-v1/single.output.jsonl --max-calls 2",
+    "python infer.py --config agentsLog/Pewciu6/essay/pilot-v1/config.plan.json --input agentsLog/Pewciu6/essay/pilot-v1/plan.input.jsonl --output agentsLog/Pewciu6/essay/pilot-v1/plan.output.jsonl --max-calls 2",
+    "python scripts/Pewciu6/essay_route.py write-from-plan --manifest agentsLog/Pewciu6/essay/pilot-v1/manifest.json --source agentsLog/Pewciu6/essay/dev_fixtures.jsonl --plan-output agentsLog/Pewciu6/essay/pilot-v1/plan.output.jsonl",
+    "python infer.py --config agentsLog/Pewciu6/essay/pilot-v1/config.final.json --input agentsLog/Pewciu6/essay/pilot-v1/write.input.jsonl --output agentsLog/Pewciu6/essay/pilot-v1/write.output.jsonl --max-calls 2"
+  ],
+  "notes": "No model calls were made by this script. Inference requires the lead's host assignment and launch record.",
+  "configs": {
+    "config.final.json": "afe8330a32c503f7b4fae8e63c28f06e62c15e599f374e2bdcfe31675460d7b4",
+    "config.plan.json": "290d12fa12eb8b3205adb88edeece50c6fb309a51405ad8c3c056d6e9cef0282"
+  }
+}
