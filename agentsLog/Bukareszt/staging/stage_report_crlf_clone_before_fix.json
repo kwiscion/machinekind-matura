@@ -1,0 +1,44 @@
+{
+  "issue": 44,
+  "started_at": "2026-09-26T15:58:31+0200",
+  "host": "Mac",
+  "platform": "macOS-15.6-arm64-arm-64bit-Mach-O",
+  "python": "3.14.4",
+  "repo": "<scratch>/before",
+  "root": "<scratch>/before/agentsLog/Bukareszt",
+  "status": "FAIL",
+  "pinned": {
+    "index_sha256": "350800b1924b8f0094171fc5d68652da0f9260d03273a51ad6421c1a03e70429",
+    "sources_sha256": "8b77a63afd25317d783a3e511e3f1f99f09b6cec3c740bdf101a0d069aadfeed",
+    "n_sources": 107,
+    "n_chunks": 3481,
+    "mode": "chrono",
+    "k": 5,
+    "title_weight": 1.0
+  },
+  "phases": {},
+  "path_used": null,
+  "blocker": "retrieval_script_sha256 differs from the manifest: expected 5ce9918fcc0151c8e15391781ace98deaf4b786977a69e6e773ccc9d7b0a51a3 actual 7c30237b403b200f6c7f8c96738f53a28a1b817760623d77537965e5580fbcab (the clone's retriever/manifest is not the pinned one; never run `retrieval.py fetch` here)",
+  "argv": [
+    "stage",
+    "--bundle",
+    "/Users/bukareszt/orca/workspaces/machinekind-matura/issue-44-Bukareszt-stage-index/agentsLog/Bukareszt/private/chrono_index_bundle_350800b1.tar.gz",
+    "--report",
+    "<scratch>/before-report.json"
+  ],
+  "retrieval_script_sha256": {
+    "expected": "5ce9918fcc0151c8e15391781ace98deaf4b786977a69e6e773ccc9d7b0a51a3",
+    "actual": "7c30237b403b200f6c7f8c96738f53a28a1b817760623d77537965e5580fbcab"
+  },
+  "sources_sha256": {
+    "expected": "8b77a63afd25317d783a3e511e3f1f99f09b6cec3c740bdf101a0d069aadfeed",
+    "actual": "701ad15ba4746cae2e3dce8f8503ff8afb7fd0c5c5e38fe4d969fb316ead9fc7"
+  },
+  "disk_bytes": {
+    "raw": 0,
+    "index": 0
+  },
+  "total_seconds": 0.013,
+  "finished_at": "2026-09-26T15:58:31+0200",
+  "integration_command": "python scripts/prepare_rag.py --input <exam-input.jsonl> --output outputs/rag-input.jsonl --trace outputs/rag-trace.jsonl --corpus outputs/rag-corpus.jsonl   # defaults: --mode chrono --k 5, --index agentsLog/Bukareszt/index/bm25_index.json --graph agentsLog/Bukareszt/index/graph.json"
+}
