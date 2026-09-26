@@ -1,0 +1,94 @@
+{
+  "verdict": "CPU_READY_FOR_ONE_DECLARED_FULL_REHEARSAL",
+  "material_blockers": [],
+  "runtime_qualification": "UNVERIFIED until the declared full rehearsal; no additional standalone wave required",
+  "prepared_manifest_sha256": "f06047afa208c814a79dd4958c14d45351339f582587590991f9ac965f3e27e6",
+  "files": {
+    "agentsLog/kwiscion/final-package-prep/run_recovery_package.py": "4ee1ef11269ca47d3bacd8be56d36ee2ffedecb3987db42f4a7c432afd3018fd",
+    "agentsLog/kwiscion/final-package-prep/recovery_harness.py": "17b153638574ba08c8239d8b5373fbf0039fe9034dea26848138e7204cc15506",
+    "agentsLog/kwiscion/final-package-prep/prepare_recovery_package.py": "0ba54f2301ff5afde296df154f5f963900b6d956e825e247af6348f3362005af",
+    "agentsLog/kwiscion/final-package-prep/test_recovery_binding.py": "de91c19a5ec7a2d52a8189e3fb96dbae29bde16aada74d47fe1c5925869a6b70",
+    "agentsLog/kwiscion/final-package-prep/test_recovery_harness.py": "99dd6112f15c728d28272c02efaa9f96148a7d5afada975601f278d5ec456cc3",
+    "agentsLog/kwiscion/final-package-prep/run_native_package.py": "73e193882159e0477f7e82af34a6ac34d50d426911c29a688ecaabad7fcf0a10",
+    "agentsLog/kwiscion/final-package-prep/stage_recovery_cache.py": "4ce10d6b5736e29acf336da78b4a1f94140f1b9d4cb0e8788acb4c32b2deca07",
+    "agentsLog/kwiscion/final-package-prep/RECOVERY_RUNTIME.md": "eef13138224044c7e92ae1f6032b720c0947180deff4254fd3fb65350c6aa0a0",
+    "agentsLog/kwiscion/final-package-prep/RECOVERY_HARNESS.md": "2b651175219093bff2b884c9fe71f875911b82a08e8badadd003f9388a2a3f14"
+  },
+  "tests": {
+    "recovery_engine": {
+      "passed": 16,
+      "failed": 0
+    },
+    "binding": {
+      "passed": 8,
+      "failed": 0
+    },
+    "shared_routes_separate_not_enabled": {
+      "passed": 4,
+      "failed": 0
+    },
+    "actual_full40_preflight": "PASS",
+    "real_local_usernamespace_parent_identity": "PASS: permission denial reproduced; matching live identity accepted; changed ticks rejected",
+    "real_local_abrupt_namespace_controller": "PASS: separately sessioned child survived controller death, actual recover_owned killed owned group, all PIDs absent, broad fallback not called",
+    "saved_site_validator": "PASS:100000 emoji codepoints and exact1048576-byte actual files; no blanks; size clipped answers explicitly incomplete"
+  },
+  "source_preservation": {
+    "checks": {
+      "input.original.jsonl": {
+        "same": true,
+        "new_sha256": "2aef98fbcdb306a2cbcbb993d62541f148828ce4c22f99dc42bf75f33c5e3768",
+        "old_sha256": "2aef98fbcdb306a2cbcbb993d62541f148828ce4c22f99dc42bf75f33c5e3768"
+      },
+      "input.jsonl": {
+        "same": false,
+        "new_sha256": "ef56f16dfcaa923e94f5ea87769aa3ea31bae4de014d6c13841f2c05518a7837",
+        "old_sha256": "20e840a58cdd5766ed3bdbcdb7695754ff5753f8b525716df9501ba2244b0462"
+      },
+      "exam/exam.json": {
+        "same": true,
+        "new_sha256": "907976be94f848fc3415ca0e4b1ba473e9dd08caa66984245a63e73d0fa27471",
+        "old_sha256": "907976be94f848fc3415ca0e4b1ba473e9dd08caa66984245a63e73d0fa27471"
+      },
+      "exam/answers-template.json": {
+        "same": true,
+        "new_sha256": "aa4451a853063e3f67d1b9d281ac063ee48c112e01c3cb8712ded433253b865f",
+        "old_sha256": "aa4451a853063e3f67d1b9d281ac063ee48c112e01c3cb8712ded433253b865f"
+      }
+    },
+    "all_image_bytes_match": 21
+  },
+  "route_preservation": {
+    "decoded_prompts_images_match_prior_full_thinking": true,
+    "essay_suffix_sha256": "8f89644f044db40c0c7633675928f6862870a18eca0ea11612a5ff1caa38aacd",
+    "differing_fields": [],
+    "row_count": 40
+  },
+  "envelope": {
+    "items": 40,
+    "max_calls": 160,
+    "max_requested_tokens": 5898240,
+    "seconds": 3600,
+    "initial_recovery_reserve_seconds": 600,
+    "finalization_reserve_seconds": 30,
+    "cold_request_allowance_seconds": 240,
+    "context": 65536,
+    "initial_cap": 32768,
+    "escalated_cap": 49152,
+    "faults": {
+      "25": "3-second timeout injection; timed-out usage unknown",
+      "13": "num_predict1 stress; actual length outcome not guaranteed"
+    },
+    "essay_ids": [
+      "26"
+    ]
+  },
+  "review_model_calls": 0,
+  "review_remote_operations": 0,
+  "final_access_or_submission_calls": 0,
+  "limitations": [
+    "Actual65536 loaded context, cold/warm throughput and quality remain unmeasured in this code path.",
+    "Structured multistage planning hooks remain separate and are not enabled.",
+    "Recovered answers, usable partials, placeholders and unfulfilled deadline exceptions must be reported separately.",
+    "Fresh pinned Gemma stage/runtime and root declaration remain operational inputs; no model weights backed up by this review."
+  ]
+}
