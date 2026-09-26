@@ -18,7 +18,7 @@ Further Spark probes stopped immediately. No manual retry, second download, runt
 
 The installed runtime is **Ollama 0.32.14**, verified through CLI and local `/api/version`. The downloaded `/api/show` reports architecture/tokenizer `gemma4`, Q4_K_M, and completion/vision/audio/tools/thinking capabilities. Its template field is the placeholder **`{{ .Prompt }}`**; this is **not proof of the resolved backend chat renderer**. Tokenizer metadata reports BOS insertion enabled, BOS ID 2 and EOS ID 1.
 
-Runtime fingerprints: `/usr/local/bin/ollama` SHA-256 `26f44ca89143f2326a3aad98b2cb5e8b5af9397aef7001cd8d022e90d6e0b55e`; `/usr/local/lib/ollama/llama-server` SHA-256 `f6e05586c5e7dd2110b2d8efadf23ff3b081dcdd53be67cfd32884af7b476163`.
+The worker’s final read-only inspection recorded these runtime fingerprints; its retained transcript is reconstructed from observed tool output and has no exact inspection timestamp: `/usr/local/bin/ollama` SHA-256 `26f44ca89143f2326a3aad98b2cb5e8b5af9397aef7001cd8d022e90d6e0b55e`; `/usr/local/lib/ollama/llama-server` SHA-256 `f6e05586c5e7dd2110b2d8efadf23ff3b081dcdd53be67cfd32884af7b476163`.
 
 Selected tag: **`gemma4:12b-it-q4_K_M`**, native Q4_K_M model with a BF16 projector. Immutable native manifest SHA-256: **`4eb23ef187e2c5462566d6a1d3bbbc2f1346d0b4327cbb66d58fffbcc9b2b05c`**. [Ollama's library listing](https://ollama.com/library/gemma4:12b) identifies the model, projector, and Apache-2.0 license. [Google's publisher model card](https://huggingface.co/google/gemma-4-12B-it) also identifies Apache-2.0. The native [registry manifest](https://registry.ollama.ai/v2/library/gemma4/manifests/12b-it-q4_K_M) and actual saved files agree:
 
@@ -34,7 +34,7 @@ Every downloaded layer, including config/license/parameters, matched its manifes
 
 Initial readings: 130,594,136,064 B total RAM, approximately 21,414,739,968 B available RAM, and 2,284,574,896,128 B free disk space. The device is an NVIDIA GB10 with driver 580.173.02 and CUDA 13.0. `nvidia-smi` reports global memory as **Not Supported**. This is unknown, not zero. An existing VLLM worker was listed at 93,990 MiB; that shared worker was left untouched.
 
-Before the failed probe, shared `MemAvailable` was **21,424,705,536 B**; the minimum of five samples was **21,317,132,288 B**; after failure it was **21,405,171,712 B**. Maximum sampled combined Ollama daemon/runner RSS was **265,400,320 B**. This brief failed startup is not a measured successful or isolated model peak. Before and after `/api/ps` showed no loaded Ollama model. Final device readings remained N/A, and the existing VLLM worker retained PID 70522 with 93,990 MiB reported. CUDA allocation failed despite available shared RAM; the cause was not isolated.
+Before the failed probe, shared `MemAvailable` was **21,424,705,536 B**; the minimum of five samples was **21,317,132,288 B**; after failure it was **21,405,171,712 B**. Maximum sampled combined Ollama daemon/runner RSS was **265,400,320 B**. This brief failed startup is not a measured successful or isolated model peak. Before and after `/api/ps` showed no loaded Ollama model. Final device readings remained N/A, and the worker’s final inspection listed VLLM PID 70522 with 93,990 MiB reported; this point observation has no exact inspection timestamp. CUDA allocation failed despite available shared RAM; the cause was not isolated.
 
 The executed request passed the 14,000,000,000 B pre-POST headroom check. It did not trigger the 8,000,000,000 B client memory abort or wall abort. Those guards would close the client socket only; they do not prove server cancellation. The shared service was not changed.
 
@@ -42,7 +42,7 @@ The executed request passed the 14,000,000,000 B pre-POST headroom check. It did
 
 Remote task directory: `/home/ljaniec/matura-tasks/gemma-load-20260926-1106`.
 Local private directory: `agentsLog/ljaniec/private/gemma-spark-load-20260926/`.
-Prepared scripts, original image, raw requests/responses, and memory samples stay private. The public [aggregate and artifact hashes](2026-09-26-gemma-spark-load-summary.json) retain actual inventory, manifest binding, failure timing, limitations, and SHA-256 identifiers for 15 private evidence files. No exam content or keys were accessed.
+Prepared scripts, original image, raw requests/responses, and memory samples stay private. The public [aggregate and artifact hashes](2026-09-26-gemma-spark-load-summary.json) retain actual inventory, manifest binding, failure timing, limitations, and SHA-256 identifiers for 15 retained private evidence files plus the labeled reconstructed final-inspection transcript. No exam content or keys were accessed.
 
 ```bash
 ssh -o BatchMode=yes -o ConnectTimeout=8 -o StrictHostKeyChecking=yes ljaniec@dell-gb10 \
