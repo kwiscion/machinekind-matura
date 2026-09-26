@@ -12,15 +12,19 @@ Status: **handoff 2026-09-26 ~21:50**. The authoritative numbers are in `ledger.
 - **Accepted: 22 essays (4 of them second-topic essays on the same cluster) and 44 deterministic repair pairs.**
 
 **Frozen pilot, `export_pilot_v1/`** (as posted on #117):
-- 81 rows in 29 groups: root seed 4+4, root Sol 8+8, Greg 19+38.
+- 81 rows in 29 source groups, which merge into **27 connected components** after the Augsburg–Vienna and League–Marshall unions: root seed 4+4, root Sol 8+8, Greg 19+38.
 - Frozen before the last 3 batch-3 repairs were re-reviewed, so those 3 are excluded.
 - `train_sft.jsonl` sha256 `046a866c…`.
 
 **Current, `export_v1/`:**
-- 90 rows in 30 groups: 34 essays and 56 repair pairs (Greg 22+44, root 12+12).
+- 90 rows in 30 source groups, which merge into **28 connected components** after the two unions: 34 essays and 56 repair pairs (Greg 22+44, root 12+12).
 - `train_sft.jsonl` sha256 `83153814…`.
 - Eval `eval16_input.jsonl` sha256 `5979ee0b…`.
-- 0 shared components.
+- 0 shared components; the 16 eval components are disjoint from training.
+
+**Count correction (follow-up):** earlier comments said "29/30 groups" where the leakage unit is the connected component. `export_counts_correction.json`, written by `essay_corpus.py counts`, is the read-only proof. The frozen exports, including their manifests and target hashes, are unchanged, and new exports record `train_source_groups` and `train_connected_components`.
+
+**Portability:** `agentsLog/Bukareszt/.gitattributes` sets `essay_corpus/** -text`, so a Windows `core.autocrlf=true` checkout keeps the exact bytes. This covers the exports and the inputs their manifests pin. `CrlfCheckoutTest` verifies that on-disk SHA-256 = Git blob = manifest hash in an autocrlf checkout. Its negative control is that the test fails when the attribute is removed (hash `a733c991…` instead of `046a866c…`).
 
 This is short of the issue's 40+80 target, which counts root's 12+12: 34 essays and 56 pairs are accepted so far. The remaining clusters with pinned raw text in Greg's corpus are nearly used up; C-vasa-wars and C-borders-uprisings need #4 source text to be staged. Times are Europe/Warsaw, 2026-09-26. The work was CPU only: no training, GPU, HF upload, purchases or credential search.
 
@@ -41,3 +45,17 @@ This is short of the issue's 40+80 target, which counts root's 12+12: 34 essays 
 - Wikipedia is a tertiary source. The reviewer used the pinned text plus general knowledge to flag source errors, and no second source was fetched.
 - Repair-pair diversity is limited to three template families with four wrapper variants.
 - Root Sol's 8+8 records and their `additional_source_group_dependencies` field are not yet on `main`. When they land, `groups` will report any unmapped `source_group_id` until it is added to `external_group_map`.
+
+## Follow-up (root 19:49Z): source-error audit, eval-card fixes, portability
+- **`source_error_audit.json`** substantiates the four pinned-Wikipedia errors against authoritative independent references. Fetched page bytes are hashed, not redistributed.
+  - **Verden:** the Royal Frankish Annals entry for 782 ("ad occidendum IIIID"). The pinned source said 799/800.
+  - **Yalta:** the Yalta protocol (Avalon/Yale) has only "substantial accessions… in the north and west", with final delimitation left to the peace conference. The Oder–Western Neisse administration line comes from the Potsdam protocol (Avalon/Yale).
+  - **Lithuania:** the Seimas register (e-seimas) lists Act I-12 as adopted 1990-03-11, not during the August 1991 putsch.
+  - **2010 reparations:** the Peace Palace Library note says 3 Oct 2010 was the final reparations-*related* payment, on 1924–1930 bonds, not a settlement of the reparations themselves.
+  - For each error the audit lists the cards that carry it and the draft/exported records that rely on it. **No exported text contains any of the four errors.** Only `b1-versailles-f08` still backs exported text, and only for the 2010 date under corrected wording. `SourceErrorAuditTest` enforces both points.
+- **Root Astra reference-only URLs** (mit-aristotle, uj-archive, agad-lublin): fetched, with **0 six-gram and 0 eight-gram overlap** against every message of both exports. No source passages are exported.
+- **Eval cards:** ev-01-f03 (propaganda caveat restored), ev-04-f04 and ev-05-f09 (fact limited to its quote) are fixed. Three cards are added, all quoted from pinned sources:
+  - ev-05-f11: Płowce.
+  - ev-04-f11 and ev-04-f12: wages, prices and labour shortage after the Black Death.
+
+  This gives 163 cards. The diff, with before/after hashes, is in `eval16_factcards_changelog.json`. An independent re-check is in `reviews/followup_verification.json`.

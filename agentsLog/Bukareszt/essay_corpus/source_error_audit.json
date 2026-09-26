@@ -1,0 +1,128 @@
+{
+  "scope": "root #117 19:49Z follow-up: substantiate the four pinned-Wikipedia errors caught by the independent reviewer; list affected accepted records/cards; confirm exported text",
+  "retrieved_at": "2026-09-26 ~21:55 Europe/Warsaw (curl, public pages; fetched bytes kept locally, not committed; sha256 of fetched bytes recorded)",
+  "exports_checked": {
+    "export_pilot_v1/train_sft.jsonl": "046a866c189c82dc479b91f175ac7f342a174d97c5257a53ac1a341d318cdaad",
+    "export_v1/train_sft.jsonl": "83153814da8251210f2b9d225dc713ad245c273bdc5d46dd1216b0e4b97178f5"
+  },
+  "errors": [
+    {
+      "id": "verden-date",
+      "pinned_source": "plwiki-karol-wielki (revision in sources.jsonl)",
+      "pinned_claim": "4500 Saxon prisoners beheaded 'w 799/800 roku'",
+      "correct": "The execution of 4,500 Saxons at Verden is recorded under the year 782.",
+      "reference": {
+        "title": "Annales regni Francorum, entry [782] DCCLXXXII (Latin, primary source)",
+        "url": "https://www.thelatinlibrary.com/annalesregnifrancorum.html",
+        "sha256": "d3cb557e112a4ea6dd942e305cfe870e8d06da6d6f70c1c4dc8157f578400135",
+        "excerpt": "[782] DCCLXXXII. ... reddiderunt omnes malefactores illos, qui ipsud rebellium maxime terminaverunt, ad occidendun IIIID; quod ita et factum est ... [783] DCCLXXXIII"
+      },
+      "cards": {
+        "b1-charlemagne-f06": "quote contains the wrong date; NOT used by the exported essay version",
+        "b1r-charlemagne-f04": "replacement card quoting the massacre without a date; used"
+      },
+      "records": {
+        "bk117-b1-charlemagne round 0 (not exported)": "contained '799/800'",
+        "bk117-b1-charlemagne round 1 (exported essay + 2 repair pairs)": "states the 4500 execution without a date — supported by the reference"
+      },
+      "exported_occurrences_of_error": 0
+    },
+    {
+      "id": "yalta-lands",
+      "pinned_source": "plwiki-konferencja-jaltanska",
+      "pinned_claim": "Yalta fixed Poland's compensation as ziemia lubuska, Pomorze Zachodnie, Dolny Śląsk, Śląsk Opolski, part of East Prussia, Gdańsk",
+      "correct": "Yalta only stated that Poland 'must receive substantial accessions of territory in the north and west', deferring extent and final delimitation; Potsdam placed the territories east of the Oder–Western Neisse line (incl. Danzig) under Polish administration pending the final peace settlement.",
+      "reference": [
+        {
+          "title": "Yalta (Crimea) Conference protocol, Avalon Project, Yale Law School",
+          "url": "https://avalon.law.yale.edu/wwii/yalta.asp",
+          "sha256": "aebb933c8424d9782712fed7fb8b9401a44a99736d41a3abd92686493fa48558",
+          "excerpt": "...substantial accessions in territory in the north and west. They feel that the opinion of the new Polish Provisional Government of National Unity should be sought in due course of the extent of these accessions and that the final delimitation of the western frontier of Poland should thereafter await the peace conference."
+        },
+        {
+          "title": "Potsdam Conference protocol, Avalon Project, Yale Law School, section on Poland",
+          "url": "https://avalon.law.yale.edu/20th_century/decade17.asp",
+          "sha256": "893d6cfc5a7ad0a9a7d24fe7f29333af2b299ddb1316bb86e0259f90c7bf1063",
+          "excerpt": "The three Heads of Government agree that, pending the final determination of Poland's western frontier, the former German territories cast [sic, OCR for east] of a line running from the Baltic Sea immediately west of Swinamunde, and thence along the Oder River to the confluence of the western Neisse River ... shall be under the administration of the Polish State"
+        }
+      ],
+      "cards": {
+        "b2-conferences-f05": "wrong Yalta land list; NOT used by the exported essay version",
+        "b2-conferences-f04, b2-conferences-f14": "deferral to Potsdam / provisional line; used, consistent with references"
+      },
+      "records": {
+        "bk117-b2-conferences round 0 (not exported)": "credited Yalta with the specific lands",
+        "bk117-b2-conferences round 1 (exported essay + 2 repair pairs)": "Yalta = compensation in principle; Oder–Neisse provisional at Potsdam — supported"
+      },
+      "exported_occurrences_of_error": 0
+    },
+    {
+      "id": "lithuania-independence",
+      "pinned_source": "plwiki-rozpad-zsrr",
+      "pinned_claim": "'Podczas puczu Litwa, Łotwa, Estonia i Ukraina ogłosiły niepodległość' (August 1991)",
+      "correct": "Lithuania adopted the Act on the Re-establishment of the Independent State of Lithuania on 11 March 1990, not during the August 1991 putsch.",
+      "reference": {
+        "title": "Seimas of the Republic of Lithuania, official legal register e-seimas: Act No. I-12 'Dėl Lietuvos nepriklausomos valstybės atstatymo'",
+        "url": "https://e-seimas.lrs.lt/portal/legalAct/lt/TAD/TAIS.24",
+        "sha256": "99f1677fbf68fe36ed80b8b93fc6f935f05bd5e24039a53e57578c0c41352154",
+        "excerpt": [
+          "I-12 Dėl Lietuvos nepriklausomos valstybės atstatymo",
+          "Priėmimo data: 1990-03-11",
+          "Dokumento Nr.: I-12"
+        ]
+      },
+      "cards": {
+        "b2-ussr-f14": "wrong; used ONLY by the ussr off_topic_paragraph",
+        "b2-ussr-f10": "11 March 1990 declaration; used by the essay — supported"
+      },
+      "records": {
+        "bk117-b2-ussr (exported essay + wrapper/underlength pairs)": "essay dates Lithuania's declaration 11 March 1990 — supported; the flagged off_topic_paragraph is never exported (extra_topic defect suppressed by reviewer flag)"
+      },
+      "exported_occurrences_of_error": 0
+    },
+    {
+      "id": "reparations-2010",
+      "pinned_source": "plwiki-traktat-wersalski",
+      "pinned_claim": "reparations 'ostatecznie spłacone zostały dopiero w 2010 roku' (implies the 132 bn gold marks were paid in full)",
+      "correct": "The 2010 payment (3 October 2010) was the final reparations-RELATED payment: the last instalment under the 1953 London Debt Agreement on bonds issued 1924–1930 (Dawes/Young loans), not settlement of the original reparations bill.",
+      "reference": {
+        "title": "Peace Palace Library (The Hague), 'German War Reparations (WW I) Financially Ended', R. Steenhard, 3 Jan 2011",
+        "url": "https://peacepalacelibrary.nl/blog/2011/german-war-reparations-ww-i-financially-ended",
+        "sha256": "76648925659d2284a9f81dc219162743e62260645d5e0b334b4a7f00b6a1d6a8",
+        "excerpt": "Germany made its final reparations-related payment for the Great War on October 3 ... Not being a direct reparations settlement but rather the final sum owed on bonds that were issued between 1924 and 1930"
+      },
+      "cards": {
+        "b1-versailles-f08": "quote overstates ('spłacone zostały'); used by the exported essay only for the 2010 date, with corrected wording",
+        "b1r-versailles-f01": "Dawes/Young reductions; used"
+      },
+      "records": {
+        "bk117-b1-versailles round 0 (not exported)": "'Ostatecznie reparacje spłacono dopiero w 2010 roku'",
+        "bk117-b1-versailles round 1 (exported essay + 2 repair pairs)": "'Ostatnie płatności związane z reparacjami uregulowano dopiero w 2010 roku' after the Dawes/Young reductions — supported by the reference"
+      },
+      "exported_occurrences_of_error": 0
+    }
+  ],
+  "astra_reference_only_urls": {
+    "method": "fetched each page; 6- and 8-gram token overlap (NFKC, lowercase, \\w+) against every message of both exports",
+    "results": {
+      "astra_agad.gov.pl_Unia_20Lubelska_uni_lub.html": {
+        "sha256": "bec8772f63047b0edbd1a97276d3b70e5d18b604112bd28daba463d2bf8164f8",
+        "6gram_overlap_with_exports": 0,
+        "8gram_overlap_with_exports": 0
+      },
+      "astra_archiwum.uj.edu.pl_historia-auj": {
+        "sha256": "ac6e63f9f589c281123244f38f02e28ed280bea45be013e7f0088d1b7d61d487",
+        "6gram_overlap_with_exports": 0,
+        "8gram_overlap_with_exports": 0
+      },
+      "astra_classics.mit.edu_Aristotle_athenian_const.1.1.html": {
+        "sha256": "c3c627e4f6191544c9c2f6cb5558b0a8178624b6b9487c9be0368f05fd61087d",
+        "6gram_overlap_with_exports": 0,
+        "8gram_overlap_with_exports": 0
+      }
+    },
+    "conclusion": "no copied source passages exported"
+  },
+  "limitations": "Four errors audited are those the reviewer caught; other pinned-source errors may remain undetected. References are fetched web pages (bytes hashed, not redistributed). The Peace Palace Library item is a library blog summarizing Die Welt/official budget reporting; no German Finance Ministry primary document was fetched.",
+  "independent_verification": "reviews/followup_verification.json (all four ok; excerpt spelling fixed to match fetched bytes)"
+}
