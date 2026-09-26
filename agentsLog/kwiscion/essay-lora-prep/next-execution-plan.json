@@ -1,0 +1,75 @@
+{
+  "schema": "essay_lora_next_execution_plan_v1",
+  "status": "PREPARATION_ONLY_REQUIRES_ROOT_DECLARATION_AND_OPERATOR_REVIEW",
+  "owner": "Bukareszt",
+  "issue": 117,
+  "readiness_merge": "e5a730ebe423751bfd4f632378878141c159d8a4",
+  "deployment": "single_merged_model",
+  "max_wall_seconds": 3600,
+  "external_timeout_seconds": 3590,
+  "external_kill_after_seconds": 10,
+  "hourly_rate_usd_planning_proxy": 3.28,
+  "rate_verified": false,
+  "estimated_cost_ceiling_usd": 3.28,
+  "actual_billing": "unverified",
+  "max_synthetic_optimizer_steps": 1,
+  "history_optimizer_steps": 36,
+  "hard_optimizer_ceiling": 120,
+  "history_rows": 90,
+  "epochs": 3,
+  "micro_batch": 1,
+  "accumulation": 8,
+  "max_serving_calls": 4,
+  "serving_calls": [
+    {
+      "artifact": "unmodified_export_control",
+      "fixture": "frozen_original_synthetic_text",
+      "max_output_tokens": 512
+    },
+    {
+      "artifact": "unmodified_export_control",
+      "fixture": "frozen_original_synthetic_image",
+      "max_output_tokens": 512
+    },
+    {
+      "artifact": "candidate_same_export_pipeline",
+      "fixture": "frozen_original_synthetic_text",
+      "max_output_tokens": 512
+    },
+    {
+      "artifact": "candidate_same_export_pipeline",
+      "fixture": "frozen_original_synthetic_image",
+      "max_output_tokens": 512
+    }
+  ],
+  "max_requested_serving_output_tokens": 2048,
+  "history_evaluation_calls": 0,
+  "retries": 0,
+  "warmups": 0,
+  "new_downloads": false,
+  "base_weight_sha256": "5a84cb313260ac447237b890387116dfa8682e49a6b44bc585ae8353abbff18d",
+  "tokenizer_sha256": "cc8d3a0ce36466ccc1278bf987df5f71db1719b9ca6b4118264f45cb627bfe0f",
+  "train_sha256": "83153814da8251210f2b9d225dc713ad245c273bdc5d46dd1216b0e4b97178f5",
+  "eval_input_sha256": "5979ee0b8e0e4f084cf6070f42d31892ee53c1f5485409b4fc5dac1266055a28",
+  "clearance_sha256": "9a31742306e1c37aa096ff9e16e128083b8fff8e83257658e21457f2b35921fd",
+  "aggregate_weight_limit_bytes": 8800000000,
+  "files": {
+    "agentsLog/kwiscion/essay-lora-prep/NEXT_EXECUTION.md": "773222a7e43052bd3aed79f9f93d0e60f5f162bf9481586a568a2633009125ef",
+    "agentsLog/kwiscion/essay-lora-prep/candidate.json": "fc3b61de8cd061617ed5351cac441b8610cca19fff6a0b8827feb767cd617707",
+    "agentsLog/kwiscion/essay-lora-prep/evidence-manifest.json": "2ffac97f62bc12db94277e6cc2d3d30e876f4eb5ebb2731ada1ebee91c2db5cd",
+    "agentsLog/kwiscion/essay-lora-prep/prepare.py": "0d3a0452ef9caf514c713766e81b3fc1f21ecfcb85db8d2b89072a9a75cf115e",
+    "agentsLog/kwiscion/essay-lora-prep/run_real_pilot.py": "3d466395cad9a2d596a356f15904024e2102b655c79fdc6319942d17bd1443dd",
+    "agentsLog/kwiscion/essay-lora-prep/test_real_pilot.py": "54e724d14c42c5d79b7853ade36dbef51ce493252d059e34fc73ead5ceb3b2c3"
+  },
+  "required_operator_freeze": [
+    "single whole-wave lock",
+    "absolute UTC start/deadline",
+    "reviewed foreground-only process-group script",
+    "exact two synthetic fixture hashes",
+    "exact serving commands/template/runtime/quantizer pins",
+    "stage manifests with all absolute-path SHA pins",
+    "owned-server cleanup identity proof"
+  ],
+  "promotion": "none; later separately declared eval16 and all-route full40 required",
+  "intermediate_qualification": "Independent owner agent verifies and freezes the two-call control report within predeclared criteria; no repeated lead approval inside the wave"
+}

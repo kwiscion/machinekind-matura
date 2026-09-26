@@ -1,0 +1,613 @@
+{
+  "review_status": "provisional_independent_subset_review",
+  "pr": 137,
+  "head": "1b6f36f4cf6f29b55463d9e9ae3d10b9042a3ac7",
+  "merge_commit": "9c85215c93478feb4aa1a5fd4e434a1443b438c5",
+  "scope": "Deterministic first six packet codes E01-E06. Audit covers18slots; historical grading covers6slots only. Original DEV, not exam score.",
+  "first_pass_frozen_at": "2026-09-26T21:00:45.637034+00:00",
+  "independence": "Owner arm aggregate46/57.5/57.5 was disclosed by root; no per-item owner grades, aggregate file or grading key read before this freeze. Packet codes hid arm during scoring; topics visible. Manifest/ledger metadata read but no key.",
+  "arithmetic_correction": "After first-pass freeze, direct CKE p24 verification corrected error-count-as-deduction mistake. Historical/aspect judgments unchanged; original freeze retained. Official bands0/1/2/3 for0/1-2/3-5/>5errors. Original53 corrected57.",
+  "items": [
+    {
+      "code": "E01",
+      "answer_sha256": "b0e188b3f565ad4e5239a9aedc0bff72f9ccc783bdd7f2917102d45e74cc4964",
+      "body_words": 435,
+      "aspect_levels": [
+        3,
+        3,
+        3
+      ],
+      "aspect_reasons": [
+        "Political: emancipation and intensified repression are linked to shifts in power and solidarity; satisfactory causal development, not rich coverage.",
+        "Social: land ownership/status is connected to widening national participation; overstates a single turning point but explains a process.",
+        "Cultural: martyr memory and the move toward organic work are linked to preservation of identity; no specific literary example, but a mechanism is developed."
+      ],
+      "coherence": 3,
+      "coherence_reason": "Clear thesis, aspect paragraphs and connected conclusion; factual mistakes are handled separately. No unjustified format or wordcount penalty.",
+      "factual_error_deduction": 0,
+      "established_errors": [],
+      "uncertainties": [
+        "Sweeping claims that modern national community began only then are overcompressed and not treated as a separately established falsehood."
+      ],
+      "points": 12,
+      "low": 10,
+      "high": 12,
+      "max_points": 15,
+      "first_pass_points_before_arithmetic_correction": 12,
+      "established_error_count": 0,
+      "item": "dev-essay-004",
+      "family": "T-draft"
+    },
+    {
+      "code": "E02",
+      "answer_sha256": "7d6e8bf4b79cb066e33b59c1e689c63d2234ae5a391bfefe3702a58c14023277",
+      "body_words": 421,
+      "aspect_levels": [
+        3,
+        3,
+        3
+      ],
+      "aspect_reasons": [
+        "Political: treaty and legal/administrative consolidation support a stabilization argument.",
+        "Economic: monetary, urban and infrastructure changes are linked to trade and revenue.",
+        "Cultural: university foundation and building patronage are linked to administrative capacity and prestige."
+      ],
+      "coherence": 3,
+      "coherence_reason": "Clear thesis, aspect paragraphs and connected conclusion; factual mistakes are handled separately. No unjustified format or wordcount penalty.",
+      "factual_error_deduction": 1,
+      "established_errors": [
+        "Accession is dated1335 despite the true1333 accession and the essay own introductory dates."
+      ],
+      "uncertainties": [
+        "Monetary uniformity and attributing reunification entirely to this king are overstated; treated as uncertainty, not two extra certain errors."
+      ],
+      "points": 11,
+      "low": 9,
+      "high": 12,
+      "max_points": 15,
+      "first_pass_points_before_arithmetic_correction": 11,
+      "established_error_count": 1,
+      "item": "dev-essay-001",
+      "family": "T-patched"
+    },
+    {
+      "code": "E03",
+      "answer_sha256": "f7033f91164f3e8e172e79c038126ac27b50f2f8b3dcdcfe0201f08f8827f26a",
+      "body_words": 430,
+      "aspect_levels": [
+        3,
+        1,
+        3
+      ],
+      "aspect_reasons": [
+        "Military: sabotage, intelligence and Burza have functional explanation; not rich evaluation of effectiveness or costs.",
+        "Political: courts/administration are named generically, but the claim of safeguarding post1945 sovereignty substitutes an incorrect outcome for a developed evaluation.",
+        "Social: clandestine education and publishing are connected to cultural survival and morale."
+      ],
+      "coherence": 3,
+      "coherence_reason": "Clear thesis, aspect paragraphs and connected conclusion; factual mistakes are handled separately. No unjustified format or wordcount penalty.",
+      "factual_error_deduction": 1,
+      "established_errors": [
+        "Claims AK remained an organized army ready until the end of the war; formal dissolution was19January1945.",
+        "Claims PPP institutions protected Polish sovereignty after1945; the political structures were repressed/dissolved and independence was not restored."
+      ],
+      "uncertainties": [
+        "Harem as a women organization and Zawisz as a youth organization need correction/verification; no extra central deduction solely from failed corroboration.",
+        "Policja Panstwowa terminology may mean underground PKB; do not count as a separate certain error.",
+        "Literal backslash-n residue is not an automatic coherence penalty."
+      ],
+      "points": 9,
+      "low": 7,
+      "high": 11,
+      "max_points": 15,
+      "first_pass_points_before_arithmetic_correction": 8,
+      "established_error_count": 2,
+      "item": "dev-essay-005",
+      "family": "T-draft"
+    },
+    {
+      "code": "E04",
+      "answer_sha256": "13dbbb1d9847ecbd668213376f79a82a0d321c0d001f9df263ce6f3acfbd2755",
+      "body_words": 387,
+      "aspect_levels": [
+        3,
+        3,
+        1
+      ],
+      "aspect_reasons": [
+        "Constitutional: hereditary rule and overcoming veto-type paralysis are linked to stronger decisions, despite one invented event.",
+        "Educational: KEN and Knight School are related to curricula and civic/administrative cadres.",
+        "International: pressure and weak military/alliances explain failure only generally, without a concrete diplomatic episode or decision."
+      ],
+      "coherence": 3,
+      "coherence_reason": "Clear thesis, aspect paragraphs and connected conclusion; factual mistakes are handled separately. No unjustified format or wordcount penalty.",
+      "factual_error_deduction": 1,
+      "established_errors": [
+        "Invented Constitution of Lublin intervention in this eighteenth-century reform sequence."
+      ],
+      "uncertainties": [
+        "Broad wording about ending noble freedom is interpreted as ending abusive mechanisms, not necessarily abolishing all legal privileges."
+      ],
+      "points": 9,
+      "low": 8,
+      "high": 11,
+      "max_points": 15,
+      "first_pass_points_before_arithmetic_correction": 9,
+      "established_error_count": 1,
+      "item": "dev-essay-003",
+      "family": "N-draft"
+    },
+    {
+      "code": "E05",
+      "answer_sha256": "907db33cb091050786e0116b27616746cc4de3bc888e0f23fc0987238203ca32",
+      "body_words": 398,
+      "aspect_levels": [
+        3,
+        1,
+        3
+      ],
+      "aspect_reasons": [
+        "Military: sabotage/intelligence/Burza explain resistance and attempted restoration of control, although membership examples are unreliable.",
+        "Political: discussion rests on false political-group membership and an unsupported continuity outcome; superficial valid legalism core remains.",
+        "Social: education/publishing/welfare have a real causal connection to morale and solidarity despite an unverified operation name."
+      ],
+      "coherence": 3,
+      "coherence_reason": "Clear thesis, aspect paragraphs and connected conclusion; factual mistakes are handled separately. No unjustified format or wordcount penalty.",
+      "factual_error_deduction": 2,
+      "established_errors": [
+        "SDKPi is an anachronistic component of the wartime underground political structure.",
+        "NZW is misrepresented as a political grouping constituting that structure; it was a later military formation, not a constituent party of the wartime representative body.",
+        "Central Powers structures are incorrectly listed as underground Polish political groupings.",
+        "Claims the underground apparatus provided ready state/local administration after the war, ignoring suppression and replacement of its political institutions."
+      ],
+      "uncertainties": [
+        "Frontii Narodowych and Har-Har are unsupported labels, not independently established additional errors in this bounded pass.",
+        "NSZ was only partly integrated with AK; an unqualified example is imprecise, but not automatically an additional error."
+      ],
+      "points": 8,
+      "low": 6,
+      "high": 10,
+      "max_points": 15,
+      "first_pass_points_before_arithmetic_correction": 6,
+      "established_error_count": 4,
+      "item": "dev-essay-005",
+      "family": "N-draft"
+    },
+    {
+      "code": "E06",
+      "answer_sha256": "317e5959e7499d8c66cda0b39797e6cbad7e2ce6ef8bcddf2c63c2b1f6e66bb3",
+      "body_words": 410,
+      "aspect_levels": [
+        3,
+        3,
+        1
+      ],
+      "aspect_reasons": [
+        "Constitutional: changes are connected to decision-making and executive strength, though their scope is overstated.",
+        "Educational: curricula and cadre formation are linked to modernization; some terminology and institutional attribution are wrong.",
+        "International: geopolitical pressure and lack of effective support form a plausible but generic account without a concrete foreign-policy episode."
+      ],
+      "coherence": 3,
+      "coherence_reason": "Clear thesis, aspect paragraphs and connected conclusion; factual mistakes are handled separately. No unjustified format or wordcount penalty.",
+      "factual_error_deduction": 2,
+      "established_errors": [
+        "Says the constitution eliminated noble privileges; its text explicitly protected many noble rights.",
+        "Attributes creation of a standing army to the constitution; an existing army was being reformed, not first created by this act.",
+        "Attributes abolition of Jesuit privileges to KEN; papal suppression preceded the commission taking over educational responsibilities."
+      ],
+      "uncertainties": [
+        "Rokacji and ojczyznoparkowa are malformed terminology, not automatically separate historical events/errors."
+      ],
+      "points": 8,
+      "low": 7,
+      "high": 10,
+      "max_points": 15,
+      "first_pass_points_before_arithmetic_correction": 7,
+      "established_error_count": 3,
+      "item": "dev-essay-003",
+      "family": "T-draft"
+    }
+  ],
+  "subset_total": 57,
+  "subset_low": 47,
+  "subset_high": 66,
+  "subset_max": 90,
+  "paired_subset": {
+    "items": [
+      "dev-essay-003",
+      "dev-essay-005"
+    ],
+    "N": 17,
+    "T": 17,
+    "max_per_arm": 30,
+    "delta": 0,
+    "delta_low": -7,
+    "delta_high": 7,
+    "interpretation": "No secure gain in these two pairs; not a balanced full-wave estimate."
+  },
+  "artifact_audit": {
+    "bindings": [
+      {
+        "code": "E01",
+        "item": "dev-essay-004",
+        "family": "T-draft",
+        "answer_sha256": "b0e188b3f565ad4e5239a9aedc0bff72f9ccc783bdd7f2917102d45e74cc4964"
+      },
+      {
+        "code": "E02",
+        "item": "dev-essay-001",
+        "family": "T-patched",
+        "answer_sha256": "7d6e8bf4b79cb066e33b59c1e689c63d2234ae5a391bfefe3702a58c14023277"
+      },
+      {
+        "code": "E03",
+        "item": "dev-essay-005",
+        "family": "T-draft",
+        "answer_sha256": "f7033f91164f3e8e172e79c038126ac27b50f2f8b3dcdcfe0201f08f8827f26a"
+      },
+      {
+        "code": "E04",
+        "item": "dev-essay-003",
+        "family": "N-draft",
+        "answer_sha256": "13dbbb1d9847ecbd668213376f79a82a0d321c0d001f9df263ce6f3acfbd2755"
+      },
+      {
+        "code": "E05",
+        "item": "dev-essay-005",
+        "family": "N-draft",
+        "answer_sha256": "907db33cb091050786e0116b27616746cc4de3bc888e0f23fc0987238203ca32"
+      },
+      {
+        "code": "E06",
+        "item": "dev-essay-003",
+        "family": "T-draft",
+        "answer_sha256": "317e5959e7499d8c66cda0b39797e6cbad7e2ce6ef8bcddf2c63c2b1f6e66bb3"
+      },
+      {
+        "code": "E07",
+        "item": "dev-essay-001",
+        "family": "T-draft",
+        "answer_sha256": "be4dd61d94eb768468fcb9b22d04fb1c5092e6ffa56f98e8efe15ebd4520d419"
+      },
+      {
+        "code": "E08",
+        "item": "dev-essay-005",
+        "family": "T-patched",
+        "answer_sha256": "f7033f91164f3e8e172e79c038126ac27b50f2f8b3dcdcfe0201f08f8827f26a"
+      },
+      {
+        "code": "E09",
+        "item": "dev-essay-010",
+        "family": "T-draft",
+        "answer_sha256": "2e6ae29754ae7b35c1d532b05532469406c2a0da220e269e8c52145888ee16ec"
+      },
+      {
+        "code": "E10",
+        "item": "dev-essay-001",
+        "family": "N-draft",
+        "answer_sha256": "4d9f1384048db57922a5cfa907d4785ff50085db6a695296478f8147f5228819"
+      },
+      {
+        "code": "E11",
+        "item": "dev-essay-010",
+        "family": "N-draft",
+        "answer_sha256": "c3aa601e8cab6c07e3d1d326032fbc3d7a12cbab91b09e787b168eb7b17d968b"
+      },
+      {
+        "code": "E12",
+        "item": "dev-essay-004",
+        "family": "N-draft",
+        "answer_sha256": "3df32127fac355d3f62664b8aeaa04b95d9f586991415e75da723f0860e16c38"
+      },
+      {
+        "code": "E13",
+        "item": "dev-essay-010",
+        "family": "T-patched",
+        "answer_sha256": "2e6ae29754ae7b35c1d532b05532469406c2a0da220e269e8c52145888ee16ec"
+      },
+      {
+        "code": "E14",
+        "item": "dev-essay-009",
+        "family": "T-patched",
+        "answer_sha256": "08ac8e784be2d2685c9933ad37b4b3fe9e4d9b946610e9c4a2ac7e38d837dcee"
+      },
+      {
+        "code": "E15",
+        "item": "dev-essay-003",
+        "family": "T-patched",
+        "answer_sha256": "317e5959e7499d8c66cda0b39797e6cbad7e2ce6ef8bcddf2c63c2b1f6e66bb3"
+      },
+      {
+        "code": "E16",
+        "item": "dev-essay-009",
+        "family": "T-draft",
+        "answer_sha256": "08ac8e784be2d2685c9933ad37b4b3fe9e4d9b946610e9c4a2ac7e38d837dcee"
+      },
+      {
+        "code": "E17",
+        "item": "dev-essay-009",
+        "family": "N-draft",
+        "answer_sha256": "597e8a796f54eb40f5e0e5f36e58c68cd9e18f1b5592b06c28614a5b08b48e4f"
+      },
+      {
+        "code": "E18",
+        "item": "dev-essay-004",
+        "family": "T-patched",
+        "answer_sha256": "b0e188b3f565ad4e5239a9aedc0bff72f9ccc783bdd7f2917102d45e74cc4964"
+      }
+    ],
+    "hashes": {
+      "answers.jsonl": {
+        "git_sha256": "d23f2c95ad828171a47f51706377b30d2a6b28324a233c1415b51c2c4eae66b0",
+        "disk_sha256": "c4a893205f41340bc23f99912ca335fefd03e4feb54f9ac49cff45bc9858493a",
+        "newline_only_difference": true
+      },
+      "packet.jsonl": {
+        "git_sha256": "5c913846ca312968ec28c6ac022d037472207a0d953dc8b021957ea70e3cdb9a",
+        "disk_sha256": "92f4dbaa4db0bdfa6de8cc3b7e2b5844adf286f317839670d0270553fa401f2b",
+        "newline_only_difference": true
+      },
+      "bundle.json": {
+        "git_sha256": "841697abd5632f7556bffa7920ac5c9eeaa35373cb9067a6065174c0e672417b",
+        "disk_sha256": "fa3138bf4a386978ac1478c5610c46804a3d43ca32a969a43d2707482aa079a2",
+        "newline_only_difference": true
+      },
+      "manifest.json": {
+        "git_sha256": "846ad91968184744f9f8b32ec7a92cb0d95747bc18e29786f1017b1ad0991c82",
+        "disk_sha256": "08cc25aa3a3aa2aa7084e95de23f17e9800cee548f78e09e16288f093acc0f67",
+        "newline_only_difference": true
+      },
+      "ledger.json": {
+        "git_sha256": "071e878790cec3239f647663e6ab90cfe5c929aea6515a996ea98731ffb146c3",
+        "disk_sha256": "19584b5523133049c39f4fd473a3454659294eecc569ef96a9043bb1e65494f7",
+        "newline_only_difference": true
+      },
+      "grades_graderA.json": {
+        "git_sha256": "e354affaa1550fec3b0e338aa5ad477f8d02dc31ee85c3bdc21dbc76360bb91f",
+        "disk_sha256": "775d7838141e0ff6e622323a3ee73aa0874943fca5c1d66fece3399e284ea961",
+        "newline_only_difference": true
+      },
+      "grades_graderB.json": {
+        "git_sha256": "4acd5eb4d7a0e9a82a6a89f6386d6ffbf1ab21a671c6f99868101063bf4065b8",
+        "disk_sha256": "a677d4bb2a9fa0041d9d9b093e3473e04381ff0392d0394ed826579a1c9fc510",
+        "newline_only_difference": true
+      },
+      "aggregate.json": {
+        "git_sha256": "38934bf2029491d7c86cd957d47ebfec7a4c4ba7a20803e572b346ada26be4ea",
+        "disk_sha256": "ed28da0013346556d69bfe6ecca250c48296462f0c3371a2c2f53a64f18b16f5",
+        "newline_only_difference": true
+      },
+      "grading_key.json": {
+        "git_sha256": "76c6961ba94c2af047a74b259b0b946067248ccbb2977d28fd4a0918c240a25d",
+        "disk_sha256": "af0b26beadb02d639a1a33c06dd995110e344fe145f860c30adfe3c4bccc5dc4",
+        "newline_only_difference": true
+      }
+    },
+    "aggregate_reproduced": true,
+    "subset_comparison": [
+      {
+        "code": "E01",
+        "own": 12,
+        "owner": 12,
+        "raters": {
+          "graderA": {
+            "total": 12,
+            "aspect_levels": [
+              3,
+              3,
+              3
+            ],
+            "coherence": 3,
+            "error_deduction": 0,
+            "factual_errors": 1
+          },
+          "graderB": {
+            "total": 12,
+            "aspect_levels": [
+              3,
+              3,
+              3
+            ],
+            "coherence": 3,
+            "error_deduction": 0,
+            "factual_errors": 1
+          }
+        }
+      },
+      {
+        "code": "E02",
+        "own": 11,
+        "owner": 11,
+        "raters": {
+          "graderA": {
+            "total": 11,
+            "aspect_levels": [
+              3,
+              3,
+              3
+            ],
+            "coherence": 3,
+            "error_deduction": 1,
+            "factual_errors": 3
+          },
+          "graderB": {
+            "total": 11,
+            "aspect_levels": [
+              3,
+              3,
+              3
+            ],
+            "coherence": 3,
+            "error_deduction": 1,
+            "factual_errors": 4
+          }
+        }
+      },
+      {
+        "code": "E03",
+        "own": 8,
+        "owner": 11,
+        "raters": {
+          "graderA": {
+            "total": 11,
+            "aspect_levels": [
+              3,
+              3,
+              3
+            ],
+            "coherence": 3,
+            "error_deduction": 1,
+            "factual_errors": 4
+          },
+          "graderB": {
+            "total": 11,
+            "aspect_levels": [
+              3,
+              3,
+              3
+            ],
+            "coherence": 3,
+            "error_deduction": 1,
+            "factual_errors": 4
+          }
+        }
+      },
+      {
+        "code": "E04",
+        "own": 9,
+        "owner": 9,
+        "raters": {
+          "graderA": {
+            "total": 9,
+            "aspect_levels": [
+              3,
+              3,
+              1
+            ],
+            "coherence": 3,
+            "error_deduction": 1,
+            "factual_errors": 3
+          },
+          "graderB": {
+            "total": 9,
+            "aspect_levels": [
+              3,
+              3,
+              1
+            ],
+            "coherence": 3,
+            "error_deduction": 1,
+            "factual_errors": 4
+          }
+        }
+      },
+      {
+        "code": "E05",
+        "own": 6,
+        "owner": 8,
+        "raters": {
+          "graderA": {
+            "total": 8,
+            "aspect_levels": [
+              3,
+              1,
+              3
+            ],
+            "coherence": 3,
+            "error_deduction": 2,
+            "factual_errors": 4
+          },
+          "graderB": {
+            "total": 8,
+            "aspect_levels": [
+              3,
+              1,
+              3
+            ],
+            "coherence": 3,
+            "error_deduction": 2,
+            "factual_errors": 4
+          }
+        }
+      },
+      {
+        "code": "E06",
+        "own": 7,
+        "owner": 9.5,
+        "raters": {
+          "graderA": {
+            "total": 10,
+            "aspect_levels": [
+              3,
+              3,
+              1
+            ],
+            "coherence": 3,
+            "error_deduction": 0,
+            "factual_errors": 4
+          },
+          "graderB": {
+            "total": 9,
+            "aspect_levels": [
+              3,
+              3,
+              1
+            ],
+            "coherence": 3,
+            "error_deduction": 1,
+            "factual_errors": 4
+          }
+        }
+      }
+    ],
+    "ledger_counts": {
+      "ok": 17,
+      "error": 1
+    },
+    "reserved_output_tokens": 270336,
+    "actual_eval_count": 106332,
+    "actual_prompt_eval_count": 24054,
+    "unique_answer_texts": 13,
+    "floor_probe_actual": 1,
+    "floor_probe_expected": 3,
+    "actual_floor_affected": 0
+  },
+  "tests": {
+    "command": "python -X utf8 -m unittest test_essay_edit_run test_essay_edit_export test_essay_think_export -q",
+    "passed": 56
+  },
+  "conclusions": [
+    "Terminal18calls,17ok and1verifierlengtherror; all18essay slots nonempty via declared fallback.",
+    "Only1of6patched finals changed,4zero-edit identities,1length fallback;13unique texts.",
+    "Owner aggregate reproducible, two grader file coveragecomplete; session independence claimed but not independently established by exported provenance.",
+    "Narrative-floor bug reproducible but affects0of36actual ratings.",
+    "Correct causal chronology and link evidence to argument; do not promote patcher from current no-gain evidence."
+  ],
+  "limitations": [
+    "No raw thinking read, no model calls, no Git mutations.",
+    "Head identifier confirmed through GitHub; artifact Git bytes inspected at exact merge revision.",
+    "No independent full18grade; aggregate shown only for audit, not endorsed."
+  ],
+  "code_pin_checks": {
+    "essay_edit_run.py": {
+      "matches_launch_pin": true,
+      "current_tests_same_code_modulo_newlines": true
+    },
+    "essay_contract.py": {
+      "matches_launch_pin": true,
+      "current_tests_same_code_modulo_newlines": true
+    },
+    "essay_wave_run.py": {
+      "matches_launch_pin": true,
+      "current_tests_same_code_modulo_newlines": true
+    },
+    "essay_route.py": {
+      "matches_launch_pin": true,
+      "current_tests_same_code_modulo_newlines": true
+    },
+    "essay_think_run.py": {
+      "matches_launch_pin": true,
+      "current_tests_same_code_modulo_newlines": true
+    }
+  }
+}

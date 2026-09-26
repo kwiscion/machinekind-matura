@@ -1,19 +1,25 @@
 #!/bin/bash
-set -u
-R=/ephemeral/mm-lora; L=$R/src/llama.cpp; B="$R/base/gemma-4-12B-it@707f0a3b"; C=$R/control; V=$R/venv-convert-pinned
-export UV_CACHE_DIR=$R/uv-cache UV_PYTHON_INSTALL_DIR=$R/uv-python
-echo "$(date -u +%FT%TZ) venv-convert-pinned"
-echo "transformers @ file://$R/src/transformers-96331a9f.zip" > $R/convert-override.txt
-( cd $L/requirements && $R/bin/uv venv --clear --python 3.12 $V && $R/bin/uv pip install --python $V/bin/python -r requirements-convert_hf_to_gguf.txt --override $R/convert-override.txt --index-strategy unsafe-best-match ) || { echo FAIL_VENV; exit 1; }
-$R/bin/uv pip freeze --python $V/bin/python > $R/logs/convert_pinned_freeze.txt
+# Unmodified-base export control (pinned llama.cpp fcb3074f). FAIL-CLOSED since the
+# #117 review (2026-09-26 23:10 CEST): the historical run used `set -u` only and
+# echoed return codes while continuing. Its artifacts were verified separately by
+# hash (host_logs/control_sha256.txt). Any future export must use this version with a
+# FRESH output directory, and must then check the expected hashes and the complete
+# aggregate inventory with prepare.py size.
+# usage: export_control2.sh BASE_DIR FRESH_OUT_DIR
+set -euo pipefail
+R=/ephemeral/mm-lora; L=$R/src/llama.cpp; V=$R/venv-convert-pinned
+B=${1:?base dir}; C=${2:?fresh output dir}
+test ! -e "$C" || { echo "refusing existing output dir $C" >&2; exit 2; }
+test -x "$V/bin/python" -a -x "$L/build/bin/llama-quantize" || { echo "missing pinned converter env" >&2; exit 2; }
+mkdir -p "$C"
 P=$V/bin/python
 echo "$(date -u +%FT%TZ) convert text bf16"
-$P $L/convert_hf_to_gguf.py "$B" --outtype bf16 --outfile $C/base-bf16.gguf > $R/logs/convert_text2.log 2>&1; echo "text rc=$?"
-echo "$(date -u +%FT%TZ) convert mmproj bf16 (pinned venv)"
-$P $L/convert_hf_to_gguf.py "$B" --mmproj --outtype bf16 --outfile $C/projector-pinnedvenv.gguf > $R/logs/convert_mmproj2.log 2>&1; echo "mmproj rc=$?"
+"$P" "$L/convert_hf_to_gguf.py" "$B" --outtype bf16 --outfile "$C/base-bf16.gguf" > "$C/convert_text.log" 2>&1
+echo "$(date -u +%FT%TZ) convert mmproj bf16"
+"$P" "$L/convert_hf_to_gguf.py" "$B" --mmproj --outtype bf16 --outfile "$C/projector.gguf" > "$C/convert_mmproj.log" 2>&1
+test -s "$C/base-bf16.gguf" -a -s "$C/projector.gguf"
 echo "$(date -u +%FT%TZ) quantize Q4_K_M"
-$L/build/bin/llama-quantize $C/base-bf16.gguf $C/base-q4_k_m.gguf Q4_K_M > $R/logs/quantize2.log 2>&1; echo "quant rc=$?"
-ls -la $C
-echo "$(date -u +%FT%TZ) hashing"
-sha256sum $C/*.gguf > $R/logs/control_sha256.txt
+"$L/build/bin/llama-quantize" "$C/base-bf16.gguf" "$C/base-q4_k_m.gguf" Q4_K_M > "$C/quantize.log" 2>&1
+test -s "$C/base-q4_k_m.gguf"
+sha256sum "$C"/*.gguf > "$C/sha256.txt"
 echo "$(date -u +%FT%TZ) EXPORT_DONE"
