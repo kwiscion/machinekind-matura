@@ -1,0 +1,79 @@
+{
+  "status": "SETUP_DEADLINE_REACHED_SYNTHETIC_PROBE_NOT_RUN",
+  "install": {
+    "started_at": "2026-09-26T20:00:39.761723+00:00",
+    "authorization_clock_start": "2026-09-26T19:59:34Z",
+    "deadline_utc": "2026-09-26T20:07:34Z",
+    "old_attempt": "Expired and untouched",
+    "scope": "Missing pinned Transformers/PEFT and dependencies only; existingTorch2.8.0+cpu constrained",
+    "status": "BLOCKED",
+    "error": "Command '['C:\\\\Users\\\\kwisc\\\\Documents\\\\my-projects\\\\matura\\\\agentsLog\\\\kwiscion\\\\essay-lora-prep\\\\evidence-private\\\\cpu-venv\\\\Scripts\\\\python.exe', '-m', 'pip', 'install', '--disable-pip-version-check', '--constraint', 'C:\\\\Users\\\\kwisc\\\\Documents\\\\my-projects\\\\matura\\\\agentsLog\\\\kwiscion\\\\essay-lora-prep\\\\evidence-private\\\\constraints.txt', 'https://codeload.github.com/huggingface/transformers/zip/96331a9f93b72697f160a958d2883d4b49a56739', 'https://codeload.github.com/huggingface/peft/zip/b8674c86183a5dee38d0c3ede392e189593025e5']' timed out after 414.23827624320984 seconds",
+    "finished_at": "2026-09-26T20:07:34.010952+00:00"
+  },
+  "archives": [
+    {
+      "package": "peft",
+      "revision": "b8674c86183a5dee38d0c3ede392e189593025e5",
+      "sha256": "05a70e1ef6ac1633da4d2ca3b90db5df7cb5f24d9b9b123ce0763e9e83b42dd2",
+      "bytes": 12396774,
+      "archive_root_verified": true
+    },
+    {
+      "package": "transformers",
+      "revision": "96331a9f93b72697f160a958d2883d4b49a56739",
+      "sha256": "c97fdf3bfb260db12b4fecf1a7647f51ca0e2b52cc75a947ca1a3d6cc4f4ed8c",
+      "bytes": 28559616,
+      "archive_root_verified": true
+    }
+  ],
+  "identity": {
+    "packages": {
+      "torch": "2.8.0+cpu",
+      "transformers": null,
+      "peft": null
+    },
+    "torch_cuda": null,
+    "installed_source_hashes": {
+      "transformers/models/gemma4_unified/modeling_gemma4_unified.py": {
+        "expected": "4046fbea37e83b3c145cb6821763d3b5a7852a7e6bea1519bb0393d900dd064f",
+        "actual": null,
+        "matches": false
+      },
+      "transformers/models/gemma4_unified/configuration_gemma4_unified.py": {
+        "expected": "f484527a992041a950b86d433430739fdc0f6000c03af9d87ed8b122b4715119",
+        "actual": null,
+        "matches": false
+      },
+      "peft/tuners/lora/layer.py": {
+        "expected": "5f19b8c29ab2fb7d6d24e7d6da80af204ae14fafa9af91d63092d8aceb367f94",
+        "actual": null,
+        "matches": false
+      },
+      "peft/tuners/lora/model.py": {
+        "expected": "be26f4f9e22096aa3bf9e2b1dec198bbc84ca9fa421a05c3d2bbded122f2622c",
+        "actual": null,
+        "matches": false
+      }
+    },
+    "recorded_at": "2026-09-26T20:09:52.575129+00:00",
+    "pip_check": "No broken requirements found; does not establish absent packages are installed"
+  },
+  "retained_wheels": [
+    {
+      "path": "evidence-private\\cpu-venv\\retry-tmp\\pip-ephem-wheel-cache-fk5zrsqo\\wheels\\2b\\29\\4d\\8cf23ee587ac9eab6ce4d2342a614c7dc4ad80e1e84fc366e5\\peft-0.21.1.dev0-py3-none-any.whl",
+      "sha256": "9eaa3520548d49ac6e54f124ef3266fdcc07986053b246e115702b21d47c4031",
+      "bytes": 837341
+    },
+    {
+      "path": "evidence-private\\cpu-venv\\retry-tmp\\pip-ephem-wheel-cache-fk5zrsqo\\wheels\\4f\\c9\\91\\eb8e64cee9318b68f57d68b7e0a61eea6c60d8d3e463e222bc\\transformers-5.18.0.dev0-py3-none-any.whl",
+      "sha256": "9ef01abdd585a98936dc95fb719ca8f12c1bc12cc1953db3a16cf8a3b6a9a35b",
+      "bytes": 13723096
+    }
+  ],
+  "orphan_process_check": "20:08UTC elevated qualified-path Win32_Process query returned no matching Python installer processes",
+  "probe_bound_seconds": 120,
+  "probe_executed": false,
+  "compatibility_conclusion": "No conclusion: installation prerequisite incomplete, not an architecture/PEFT failure.",
+  "next_minimal_action": "Under a separately declared bound, resume only missing installs using retained exact-commit source archives/build wheels; keep Torch2.8CPU. Then verify direct-url archive provenance, installed four source hashes and complete freeze before running unchanged120s tiny probe.",
+  "submission_constraint": "Parent new rule aggregate submitted weights <=8,800,000,000 bytes; existing Gemma+projector7,556,497,632 leaves1,243,502,368. Two full base+merged copies ineligible; one merged all-routes model or verified small-adapter reuse required. CPU probe cannot establish submission eligibility."
+}

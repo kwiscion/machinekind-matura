@@ -42,7 +42,6 @@
   "hard_wall_seconds": 3600,
   "seed": 42,
   "export_quantization": "Q4_K_M",
-  "saved_model_plus_projector_limit_bytes": 8000000000,
   "mandatory_runtime_gates": [
     "exact pinned base and template metadata; locally complete base snapshot",
     "installed package/git revisions and torch CUDA BF16 verified",
@@ -50,7 +49,31 @@
     "text-only LoRA attachment, nonzero finite backward gradient, finite one-step loss and measured memory",
     "unmodified base conversion plus matching projector and quantization succeeds",
     "merge preserves state keys/shapes and non-text weights",
-    "exported GGUF and matching projector jointly fit limit and load offline",
-    "independent evaluation of deployed quantized artifact and unchanged-route controls"
-  ]
+    "entire submitted weight inventory fits aggregate 8,800,000,000-byte limit and loads offline",
+    "independent evaluation of deployed quantized artifact and unchanged-route controls",
+    "choose one deployment option and prove its route-specific runtime/regression requirements; no dual full copies"
+  ],
+  "aggregate_submission_weight_limit_bytes": 8800000000,
+  "weight_limit_scope": "All submitted models, adapters, shards and projectors together; no separate per-route allowance",
+  "known_registry_base_plus_projector_bytes": 7556497632,
+  "remaining_bytes_with_known_registry_pair": 1243502368,
+  "deployment_options": {
+    "shared_base_adapter": {
+      "status": "NOT_RUNTIME_PROVEN",
+      "requirements": [
+        "one base plus matching projector plus all adapter weights fit aggregate limit",
+        "exact architecture adapter conversion/loading and reversible route switching proven offline",
+        "adapter-disabled routes retain the baseline behavior under matched regression checks"
+      ]
+    },
+    "single_merged_model": {
+      "status": "EXPORT_AND_REGRESSION_NOT_PROVEN",
+      "requirements": [
+        "one merged quantized model plus matching projector serves all routes",
+        "no second full base model in submission",
+        "full nonessay and image-route regression check plus full end-to-end exam promotion"
+      ]
+    }
+  },
+  "dual_full_model_routing": "INELIGIBLE: do not ship unchanged base and a second full merged essay model"
 }

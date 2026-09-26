@@ -78,6 +78,26 @@ class Tests(unittest.TestCase):
         files=[self.root/'a.gguf',self.root/'p.gguf']
         for x in files:x.write_bytes(b'FAIL')
         with self.assertRaisesRegex(ValueError,'Not a GGUF'):p.check_artifacts(files)
+    def test_aggregate_all_routes_and_adapter(self):
+        files=[self.root/'base.gguf',self.root/'projector.gguf',self.root/'adapter.safetensors']
+        for x in files:x.write_bytes(b'GGUF0000')
+        self.assertEqual(p.check_artifacts(files,24)['remaining_bytes'],0)
+        with self.assertRaisesRegex(ValueError,'Aggregate'):p.check_artifacts(files,23)
+        self.assertEqual(p.check_artifacts(files)['limit_bytes'],8_800_000_000)
+    def test_inventory_empty_missing_directory_or_duplicate(self):
+        with self.assertRaisesRegex(ValueError,'Nonempty'):p.check_artifacts([])
+        with self.assertRaises(FileNotFoundError):p.check_artifacts([self.root/'missing'])
+        with self.assertRaisesRegex(ValueError,'regular'):p.check_artifacts([self.root])
+        empty=self.root/'empty.bin';empty.write_bytes(b'')
+        with self.assertRaisesRegex(ValueError,'Nonempty'):p.check_artifacts([empty])
+        weight=self.root/'weight.bin';weight.write_bytes(b'weights')
+        with self.assertRaisesRegex(ValueError,'Duplicate'):p.check_artifacts([weight,weight])
+    def test_hardlink_cannot_duplicate_inventory(self):
+        weight=self.root/'weight.bin';weight.write_bytes(b'weights')
+        alias=self.root/'alias.bin';alias.hardlink_to(weight)
+        with self.assertRaisesRegex(ValueError,'Duplicate'):p.check_artifacts([weight,alias])
+    def test_limit_cannot_be_relaxed(self):
+        with self.assertRaisesRegex(ValueError,'Invalid aggregate'):p.check_artifacts([],8_800_000_001)
     def eval_bundle(self):
         c,f=self.bundle();c['accepted_records'].pop('holdout');c['files'].pop('holdout');f.pop('holdout')
         inputs=[{'id':'eval-only','prompt':'SYNTHETIC EVALUATION INPUT','source_group_id':'holdout'}]

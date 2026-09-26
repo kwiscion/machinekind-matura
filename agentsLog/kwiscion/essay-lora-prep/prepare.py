@@ -101,17 +101,36 @@ def verify_metadata(base,cfg):
         entry=next(x for x in evidence['files'] if x['file']==evidence_name)
         require(sha((base/local).read_bytes())==entry['sha256'],'Pinned metadata mismatch: '+local)
 
-def check_artifacts(paths,limit=8_000_000_000):
-    require(len(paths)>=2,'List model GGUF and matching projector; include every served shard')
-    resolved=[p.resolve() for p in paths]; require(len(set(resolved))==len(resolved),'Duplicate artifact')
+SUBMISSION_WEIGHT_LIMIT=8_800_000_000
+
+def check_artifacts(paths,limit=SUBMISSION_WEIGHT_LIMIT):
+    """Count the entire declared submission inventory, not one route's model.
+
+    The caller must list every submitted weight, including adapters/projectors.
+    This byte gate does not establish inventory completeness or runtime support.
+    """
+    require(type(limit) is int and 0<limit<=SUBMISSION_WEIGHT_LIMIT,'Invalid aggregate limit')
+    require(bool(paths),'Nonempty complete submitted weight list required')
+    resolved=[Path(p).resolve(strict=True) for p in paths]
+    require(len(set(resolved))==len(resolved),'Duplicate artifact')
+    for i,path in enumerate(resolved):
+        require(path.is_file() and path.stat().st_size>0,'Nonempty regular weight file required: '+str(path))
+        require(not any(path.samefile(prior) for prior in resolved[:i]),'Duplicate artifact through file alias')
+    total=sum(path.stat().st_size for path in resolved)
+    require(total<=limit,'Aggregate submitted weights exceed byte limit')
     sizes=[]
     for path in resolved:
         with path.open('rb') as f:
-            require(f.read(4)==b'GGUF','Not a GGUF: '+str(path));f.seek(0);h=hashlib.sha256()
+            if path.suffix.lower()=='.gguf':require(f.read(4)==b'GGUF','Not a GGUF: '+str(path))
+            f.seek(0);h=hashlib.sha256()
             for chunk in iter(lambda:f.read(8*1024*1024),b''):h.update(chunk)
         sizes.append({'path':str(path),'bytes':path.stat().st_size,'sha256':h.hexdigest()})
-    total=sum(x['bytes'] for x in sizes);require(total<=limit,'Saved artifacts exceed 8GB')
-    return {'files':sizes,'total_bytes':total,'byte_limit_pass':True,'runtime_load_and_matching_projector':'NOT_CHECKED'}
+    final_total=sum(x['bytes'] for x in sizes)
+    require(final_total==total and final_total<=limit,'Weight files changed during size check')
+    return {'files':sizes,'total_bytes':total,'limit_bytes':limit,'remaining_bytes':limit-total,
+            'scope':'ALL_SUBMITTED_MODEL_WEIGHTS_INCLUDING_ADAPTERS_AND_PROJECTORS',
+            'byte_limit_pass':True,'inventory_completeness':'CALLER_MUST_VERIFY_AGAINST_FINAL_SUBMISSION',
+            'runtime_load_adapter_support_and_matching_projector':'NOT_CHECKED'}
 
 def main():
     ap=argparse.ArgumentParser(description=__doc__);sub=ap.add_subparsers(dest='command',required=True)
