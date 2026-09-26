@@ -254,8 +254,8 @@ def cmd_audit_sample(args) -> None:
         swap = rng.random() < 0.5
         a, b = (cand, base) if swap else (base, cand)
         def _p(ctx):
-            return [{"rank": h["rank"], "chunk_id": h["chunk_id"], "title": h["title"], "locator": h["locator"],
-                     "text": h["text"]} for h in ctx["chunks"]]
+            return [{"rank": h["rank"], "chunk_id": h["chunk_id"], "source_id": h["source_id"], "title": h["title"],
+                     "locator": h["locator"], "text": h["text"]} for h in ctx["chunks"]]
         rows.append({"id": q["id"], "prompt": q["prompt"], "claim": q["answer"],
                      "context_A": _p(a), "context_B": _p(b), "auditor_instructions": AUDITOR_INSTRUCTIONS})
         key.append({"id": q["id"], "A": a["variant"], "B": b["variant"],

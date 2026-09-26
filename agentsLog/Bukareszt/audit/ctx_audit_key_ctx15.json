@@ -3,7 +3,7 @@
   "baseline": "baseline3",
   "candidate": "candidate",
   "queries_sha256": "b2e359bf2501469a216f178ad76511d45604e61ad42d4257fca34d15f82f024d",
-  "sample_sha256": "468595d9a7359ddf4c1683ac53cdf91da8619a5fffe9d49c2ba2ccd83eae3507",
+  "sample_sha256": "a992e3e6f08ccbb9f96cd8cbf0b5eca761f74d0dd2ac7ad5640d11c69ec4a958",
   "pairs": [
     {
       "id": "ret-train-q01",
