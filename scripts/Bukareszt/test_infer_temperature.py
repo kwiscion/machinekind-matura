@@ -79,12 +79,12 @@ class TemperatureTests(unittest.TestCase):
 
     def test_invalid_values_are_rejected(self):
         base = json.loads(BASELINE.read_text(encoding="utf-8"))
-        for value in (True, False, None, "0.2", [0.2], {"value": 0.2}, -0.01, 2.01, 100):
+        for value in (True, False, None, "0.2", [0.2], {"value": 0.2}, -0.01, 2.01, 100, 10**400, -(10**400)):
             with self.subTest(value=value):
                 with self.assertRaisesRegex(ValueError, "temperature"):
                     load({**base, "temperature": value})
         text = json.dumps(base)[:-1]
-        for token in ("NaN", "Infinity", "-Infinity", "1e999"):
+        for token in ("NaN", "Infinity", "-Infinity", "1e999", "1" + "0" * 400):
             with self.subTest(token=token):
                 with self.assertRaisesRegex(ValueError, "temperature"):
                     load(text + ', "temperature": ' + token + "}")

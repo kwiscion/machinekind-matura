@@ -89,7 +89,7 @@ def load_config(path: Path, allow_remote: bool) -> dict:
     if "temperature" in config:
         temperature = config["temperature"]
         low, high = TEMPERATURE_RANGE
-        if type(temperature) not in (int, float) or not math.isfinite(temperature) or not low <= temperature <= high:
+        if type(temperature) not in (int, float) or not low <= temperature <= high or not math.isfinite(temperature):
             raise ValueError(f"temperature must be a finite number from {low:g} to {high:g} when provided")
     if "model_revision" in config and not isinstance(config["model_revision"], str):
         raise ValueError("model_revision must be a string when provided")
