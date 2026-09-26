@@ -1,0 +1,143 @@
+{
+  "status": "prepared_not_launched",
+  "issue": 57,
+  "model_calls": 0,
+  "network": "stage_index socket guard (self-tested)",
+  "fetch_or_rebuild": false,
+  "settings": {
+    "mode": "chrono",
+    "title_weight": 1.0,
+    "top_k": 3,
+    "budget_chars": 1600,
+    "min_excerpt_chars": 80,
+    "budget_unit": "Python str characters (Unicode code points), whole evidence block incl. headers/separators; NOT a token-fit guarantee",
+    "query": "original case prompt only; policy/answers/grades/keys never enter the query",
+    "layout": "[policy + blank line] + [evidence block] + original prompt (verbatim suffix)"
+  },
+  "summary": {
+    "cases": 6,
+    "cases_with_evidence": 6,
+    "evidence_chars_min": 1543,
+    "evidence_chars_mean": 1588.2,
+    "evidence_chars_max": 1599,
+    "excerpts_retrieved": 18,
+    "excerpts_included": 10,
+    "excerpts_truncated": 5,
+    "excerpts_skipped": 8,
+    "images": 1
+  },
+  "input_sha256": "122e3ac738c7152a318fb72367e7a05ee2180d2fce6195e0cf70b7a627258313",
+  "output_sha256": "b17711aa0e1f0562028ab322dd0056f16fa26b973fabb89737127851e82479b7",
+  "policy_file_sha256": "158f4ed892dba0619147de9d946e715d6517aa9dd36d8cc74cb76bb29440a1aa",
+  "policy_text_sha256": "3f56a8d6bc88ef83bff1b9d692799ecf3c6ba5bade7379ffb5797d0aedb9e468",
+  "index": {
+    "manifest_sha256": "ec1bec0cbc4bc5abbef876ad7d4ebf1be9eec4dba5f77a6d42a49b7e6f3ffa4f",
+    "pinned": true,
+    "index_sha256": "350800b1924b8f0094171fc5d68652da0f9260d03273a51ad6421c1a03e70429",
+    "index_bytes": 8514642,
+    "n_sources": 107,
+    "n_chunks": 3481,
+    "graph_content_sha256": "9ed53bb99bf0599fa67535ec1a0b14d0869e6c62c210d81193fa9fd0093a004b",
+    "sources_sha256": "8b77a63afd25317d783a3e511e3f1f99f09b6cec3c740bdf101a0d069aadfeed",
+    "retrieval_script_sha256": "5ce9918fcc0151c8e15391781ace98deaf4b786977a69e6e773ccc9d7b0a51a3",
+    "hash_note": "sources/retriever: SHA-256 of CRLF->LF normalized text; index: raw bytes; graph: content without built_at"
+  },
+  "builder_sha256": "80184d8564f53837cf77e260f5f0ebd925cf2ef0956279c27df82f73703f6c70",
+  "cases": [
+    {
+      "id": "syn-01",
+      "included_chunk_ids": [
+        "plwiki-unia-lubelska#1050",
+        "plwiki-unia-lubelska#1045"
+      ],
+      "truncated_chunk_ids": [
+        "plwiki-unia-lubelska#1045"
+      ],
+      "skipped_chunk_ids": [
+        "plwiki-unia-lubelska#1051"
+      ],
+      "evidence_chars": 1598,
+      "prompt_chars_original": 163,
+      "prompt_chars_output": 1824
+    },
+    {
+      "id": "syn-02",
+      "included_chunk_ids": [
+        "plwiki-bitwa-pod-grunwaldem#0659",
+        "plwiki-bitwa-pod-grunwaldem#0644"
+      ],
+      "truncated_chunk_ids": [
+        "plwiki-bitwa-pod-grunwaldem#0644"
+      ],
+      "skipped_chunk_ids": [
+        "plwiki-bitwa-pod-grunwaldem#0660"
+      ],
+      "evidence_chars": 1599,
+      "prompt_chars_original": 115,
+      "prompt_chars_output": 1777
+    },
+    {
+      "id": "syn-03",
+      "included_chunk_ids": [
+        "plwiki-boleslaw-chrobry#0338",
+        "plwiki-boleslaw-chrobry#0344"
+      ],
+      "truncated_chunk_ids": [
+        "plwiki-boleslaw-chrobry#0344"
+      ],
+      "skipped_chunk_ids": [
+        "plwiki-zjazd-gnieznienski#0361"
+      ],
+      "evidence_chars": 1594,
+      "prompt_chars_original": 105,
+      "prompt_chars_output": 1762
+    },
+    {
+      "id": "syn-04",
+      "included_chunk_ids": [
+        "plwiki-sejm-wielki#1176",
+        "plwiki-konstytucja-3-maja#1204"
+      ],
+      "truncated_chunk_ids": [
+        "plwiki-konstytucja-3-maja#1204"
+      ],
+      "skipped_chunk_ids": [
+        "plwiki-sejm-wielki#1172"
+      ],
+      "evidence_chars": 1598,
+      "prompt_chars_original": 82,
+      "prompt_chars_output": 1743
+    },
+    {
+      "id": "syn-05",
+      "included_chunk_ids": [
+        "plwiki-powstanie-styczniowe#1471"
+      ],
+      "truncated_chunk_ids": [],
+      "skipped_chunk_ids": [
+        "plwiki-powstanie-styczniowe#1444",
+        "plwiki-powstanie-styczniowe#1431"
+      ],
+      "evidence_chars": 1543,
+      "prompt_chars_original": 74,
+      "prompt_chars_output": 1680
+    },
+    {
+      "id": "syn-06",
+      "included_chunk_ids": [
+        "plwiki-traktat-wersalski#1844"
+      ],
+      "truncated_chunk_ids": [
+        "plwiki-traktat-wersalski#1844"
+      ],
+      "skipped_chunk_ids": [
+        "plwiki-traktat-wersalski#1843",
+        "plwiki-traktat-wersalski#1842"
+      ],
+      "evidence_chars": 1597,
+      "prompt_chars_original": 83,
+      "prompt_chars_output": 1743
+    }
+  ],
+  "note": "Synthetic invented fixture (agentsLog/Bukareszt/issue57/fixtures) on the real pinned index; no exam data; zero model calls."
+}
