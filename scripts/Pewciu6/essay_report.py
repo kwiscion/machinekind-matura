@@ -8,6 +8,7 @@ Reads infer.py output JSONL (provider raw_response) or evaluator-format JSONL
   - thesis, three labelled aspects, conclusion, distinct years, named-fact proxy
   - preamble: the first line is assistant chatter ("Oto…", "Jasne…", "Poniżej…")
   - solver_format_leak: short-item labels ("Rozstrzygnięcie:"/"Uzasadnienie:") inside the essay
+Rows with an error are never "completed", even when they carry partial text; see report().
 These are structural heuristics for comparing arms, not grades.
 
   python scripts/Pewciu6/essay_report.py --input run.output.jsonl [--output report.json] [--markdown]
@@ -25,7 +26,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from normalize_outputs import final_text  # noqa: E402
 
 MIN_WORDS = 300
-REPORT_REVISION = "essay-report-v1"
+REPORT_REVISION = "essay-report-v2"
 
 WORD = re.compile(r"[0-9A-Za-zÀ-ÿĄąĆćĘęŁłŃńÓóŚśŹźŻż]")
 MARKDOWN_HEADING = re.compile(r"^\s*#{1,6}\s")
@@ -126,22 +127,35 @@ def row_text(row: dict) -> tuple[str, object]:
 
 
 def report(rows: list[dict]) -> dict:
+    """Only completed answers (text and no error) enter structural and length statistics.
+
+    An errored row that still carries text (e.g. a truncated 301-word response) is a
+    partial: it counts in empty_or_error and partial_with_error, its diagnostics are kept
+    under partial_diagnostics, and it never enters min/max words or structural counts.
+    """
     items = []
     for row in rows:
         text, error = row_text(row)
         item = {"id": row["id"], "error": error if error else None}
-        item.update(analyse(text) if text.strip() else {"words": 0, "underlength": True, "empty": True})
+        if text.strip() and not error:
+            item.update(analyse(text), completed=True)
+        elif text.strip():
+            item.update(words=0, underlength=True, completed=False, partial=True, partial_diagnostics=analyse(text))
+        else:
+            item.update(words=0, underlength=True, completed=False, empty=True)
         items.append(item)
-    ok = [item for item in items if not item.get("empty")]
+    ok = [item for item in items if item["completed"]]
     summary = {
         "items": len(items),
+        "completed": len(ok),
         "empty_or_error": len(items) - len(ok),
+        "partial_with_error": sum(item.get("partial", False) for item in items),
         "underlength": sum(item["underlength"] for item in items),
-        "preamble": sum(item.get("preamble", False) for item in items),
-        "solver_format_leak": sum(item.get("solver_format_leak", False) for item in items),
-        "three_aspects": sum(item.get("three_aspects", False) for item in items),
-        "thesis_present": sum(item.get("thesis_present", False) for item in items),
-        "conclusion_present": sum(item.get("conclusion_present", False) for item in items),
+        "preamble": sum(item.get("preamble", False) for item in ok),
+        "solver_format_leak": sum(item.get("solver_format_leak", False) for item in ok),
+        "three_aspects": sum(item.get("three_aspects", False) for item in ok),
+        "thesis_present": sum(item.get("thesis_present", False) for item in ok),
+        "conclusion_present": sum(item.get("conclusion_present", False) for item in ok),
         "min_words": min((item["words"] for item in ok), default=0),
         "max_words": max((item["words"] for item in ok), default=0),
     }
@@ -149,7 +163,7 @@ def report(rows: list[dict]) -> dict:
 
 
 def markdown(result: dict) -> str:
-    cols = ["id", "words", "underlength", "thesis_present", "aspects_labelled", "conclusion_present",
+    cols = ["id", "completed", "words", "underlength", "thesis_present", "aspects_labelled", "conclusion_present",
             "distinct_years", "named_terms", "preamble", "solver_format_leak"]
     lines = ["| " + " | ".join(cols) + " |", "|" + "---|" * len(cols)]
     for item in result["items"]:

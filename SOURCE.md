@@ -4,6 +4,9 @@ The working subject is Polish history. Record the exact exam title, year, formul
 
 Made during the Warsaw Model Trainers hackathon, Kolektyw3, 25–27.09.2026
 
+## Owner sharing decision — 26 September, 19:10
+
+Our code, original prompts and fixtures, model answers, item-level grades, error analyses and negative findings may be shared publicly without a separate approval or competitive-secrecy gate. The owner explicitly prioritizes rapid collaboration. Preserve exact answers and provenance. This does not grant redistribution rights to third-party exam/source packs or official keys, and credentials remain private. The fixed evaluation/training boundaries below are unchanged. Prefer useful compact artifacts; incidental private/copyrighted material inside raw envelopes can be omitted without withholding our findings.
 ## Fixed evaluation split
 
 | Split | Exam | Overnight access | Allowed use |
