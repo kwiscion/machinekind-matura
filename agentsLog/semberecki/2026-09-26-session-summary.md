@@ -185,3 +185,48 @@ lead's next declared GPU arm.
 Key finding: the lead's "sole laptop worker" (frozen bare-source-v2 RAG arm,
 cutoff 17:40) is NOT on this machine — no project inference process runs here,
 so readiness prep cannot duplicate it.
+
+---
+
+## Multiscale/crops diagnostic (claim #95) — 20:55 CEST update
+
+- **#95 start claim posted** (5848628513, 20:11:50 CEST) after the lead's
+  17:18:02Z reassignment (different visual mechanism; #110's per-source
+  observation arm went to the lead's H100: bare 3/6 vs heterogeneous final
+  5/6, +2). Selected mechanism: **source-preserving task-focused multiscale
+  input** — originals at 110 DPI unchanged + 220 DPI full-page renderings of
+  each item's own referenced sources as additional images; routing from the
+  input's `images` field (question/source structure, never keys).
+- **#88 repairs delivered**: corrected public wrapper (`find_repo_root` walk-up,
+  first-declared-failure stop incl. HTTP 4xx/5xx + incomplete, /api/ps ASSERTED
+  fail-closed on missing/bool context + unambiguous model match, real
+  pre-request timestamps, provenance kinds, `--check` preflight) + CPU-only
+  mocked guard tests — **PR #118 merged** (4888c32) then lead's one remaining
+  defect fixed (fail-closed context_length, matches == 1) — **PR #120 merged**
+  (e6137a4). #88 comment 5848706479.
+- **Frozen launch record before dispatch**
+  (`2026-09-26-rtx-multiscale-diagnostic-launch.md`): six known-validation
+  diagnostic items (failed z5.1/z14.1/z25 + controls z2/z4/z13), per item
+  control/observation/final = max 18 sequential calls, 18,432 requested
+  tokens, 45-min deadline, $0, no retries, explicit temperature 0.2; PDF
+  `ad66a7c4…63d21` re-verified pre-render; input v2 `6615fea2…015a4` enforced;
+  config `d5bebaa1…21eba`; per-page orig110/hires220 hashes frozen.
+- **Diagnostic run COMPLETE**: 18/18 passes, 0 errors, 0 unsent,
+  `all_passes_dispatched`, wall 1 m 43.2 s (18:43:16Z→18:44:59Z); latency sum
+  102.734 s / mean 5.71 / median 5.31 / max 10.68; prompt max 3,850 (no
+  truncation); completion max 659 (0 length-stops); single response model;
+  served digest + context asserted by the corrected wrapper; guards 0 trips.
+- Copied-source check: max 7-word overlap answer-vs-own prompt/instruction;
+  **0 answers with ≥10-word runs** (cleaner than the transfer run).
+- **Answer-only handoff**
+  (`model-answers/gemma4-12b-val6panel-multiscale-diag.jsonl`, 18 rows, sha256
+  `b3072b4e466904a26b8c95c1cba83d69a708c8e70a9441acdc1323ae885f4512`);
+  **PR #122 merged** (3aa57fc: launch + run records, handoff, public runner
+  copy grep-clean of exam material); results posted #95 (5848889242) + #11
+  tagging @Pewciu6 (5848891589).
+
+**Session status at 20:55 CEST**: multiscale diagnostic delivered and posted;
+independent grading assigned to root/@Pewciu6 flow; RTX transfer control
+(34/60, 146.6 s) untouched; watcher cron continues (minutes 7,22,37,52);
+smoke envelope 3/4, smoke 4 reserved; next RTX claim awaits the lead's
+declaration; no full-40 arm until diagnostic review. $0 spent, no purchases.
