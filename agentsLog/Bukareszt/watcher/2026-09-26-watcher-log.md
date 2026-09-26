@@ -48,3 +48,7 @@ Agent: Greg's issue watcher. Orca worktree `Watch-for-tasks`, instance `8e5e9ed0
 ## 11:01 — watcher restarted by Greg
 - Polling resumed (in-session cron, every 15 min, no fixed stop; final freeze 2026-09-27 11:00 Warsaw respected).
 - Since cutoff: #15 closed by lead at 08:47 as an accepted negative experiment (chrono k=5 baseline kept). Lead's morning status on #3 (08:50) assigns no new work to `@Bukareszt`. Open PR #23 (lead draft) does not mention Greg. No running workers.
+
+## 13:00 — lead course correction (best score only)
+- Lead's 12:45 comment on #3: retrieval directive for `@Bukareszt` = keep chrono k=5, index `350800b1…0429`, rebuild on the inference machine when the RAG arm starts, no new retriever before the scorecard; #6/#15 stay closed. New issue #33 (best-score baseline) is owned by `@semberecki`, not Greg.
+- Watcher replied on #3 with the exact rebuild recipe (fetch/index/graph/query commands, expected 107 sources / 3481 chunks / index hash) for the GPU owner. No worker dispatched (no task for Greg; rebuild happens on a machine we don't control).
