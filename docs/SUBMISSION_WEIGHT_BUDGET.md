@@ -17,10 +17,10 @@ Text SHA256:`1278394b693672ac2799eadc9a83fd98259a6a88a40acfb1dcaa6c6fc895a606`. 
 
 ## Consequences
 
-- **Current full40 thinking run continues:** it calls only pinned Gemma. Its reused runtime guard also checks cached Qwen integrity; that does not make Qwen part of the candidate or authorize its inclusion in the package.
+- **The completed full40 thinking run used only pinned Gemma.** Its historical runtime guard also checked cached Qwen integrity; that does not make Qwen part of the candidate. The new staged cache contains Gemma only:7,556,509,301bytes including11,669bytes of metadata, independently verified on actual files. [Stage evidence](../agentsLog/kwiscion/2026-09-26-final-package-stage.md).
 - **Gemma+Qwen observer, Gemma+Bielik experts and separately merged essay/base copies are ineligible together.** Their development evidence remains useful. The observer mechanism was already parked after failed replication.
 - **Same-model draft/review/voting and route-specific prompts remain viable:** repeated calls reuse one weight set. Any extra learned OCR/router/embedding model must fit within the aggregate remainder; deterministic routing and lexical retrieval add no model weights.
 - **Essay LoRA has two possible paths:** prove a small adapter with one shared base, including actual runtime switching, or submit one merged model for every route and check nonessay regressions. The proposed r8 adapter is roughly10.4MB of BF16 tensors before metadata, but no deployable adapter artifact or dynamic runtime support is yet verified. Loading two full models sequentially does not solve the cap.
 - **One final inventory:** list every submitted weight artifact with relative path, purpose, actual bytes and SHA256; sum all files. Reject unlisted weights and accidental base/cache/checkpoint duplicates. Do not assume hardlinks/deduplication reduce counted size. Keep development caches outside the package.
 
-Root owns eligibility and promotion. Łukasz is assigned the final package inventory/check; each lab includes an aggregate footprint estimate in its handoff. Historical reports remain unchanged and may use the obsolete per-model interpretation.
+Root owns package integration, eligibility and promotion; each lab includes an aggregate footprint estimate in its handoff. Historical reports remain unchanged and may use the obsolete per-model interpretation.

@@ -1,0 +1,55 @@
+{
+  "status": "PASS",
+  "scope": "actual isolated Gemma-only staged cache contents; no serving or network isolation proof",
+  "file_count": 6,
+  "counted_bytes": 7556509301,
+  "weight_pair_bytes": 7556497632,
+  "metadata_bytes": 11669,
+  "limit_bytes": 8800000000,
+  "remaining_bytes": 1243490699,
+  "guard_sha256": "8ec6a7cf2f75615c2713c9db9e1cae408087be251b9b0e11437fe31e4c230473",
+  "inventory_sha256": "cd00de981f52adeef9f2b09265fcfa382edc5e81352e652ebcb4432e37c8ec2c",
+  "backup_sha256": "90e45ebcecb80cf5516393768200594b20dd47dc51a359e841426e6389e05a57",
+  "completed_utc": "2026-09-26T21:25:28.114093+00:00",
+  "model_calls": 0,
+  "training_steps": 0,
+  "stage_seconds": 23.447183568998298,
+  "file_entries": [
+    {
+      "path": "manifests/registry.ollama.ai/library/gemma4/12b-it-q4_K_M",
+      "purpose": "metadata",
+      "bytes": 905,
+      "sha256": "4eb23ef187e2c5462566d6a1d3bbbc2f1346d0b4327cbb66d58fffbcc9b2b05c"
+    },
+    {
+      "path": "blobs/sha256-c805f5b265d8e695c44f4065dfc368206cd8026447604925fef8db57ee32ee23",
+      "purpose": "metadata",
+      "bytes": 548,
+      "sha256": "c805f5b265d8e695c44f4065dfc368206cd8026447604925fef8db57ee32ee23"
+    },
+    {
+      "path": "blobs/sha256-1278394b693672ac2799eadc9a83fd98259a6a88a40acfb1dcaa6c6fc895a606",
+      "purpose": "model",
+      "bytes": 7381382048,
+      "sha256": "1278394b693672ac2799eadc9a83fd98259a6a88a40acfb1dcaa6c6fc895a606"
+    },
+    {
+      "path": "blobs/sha256-675ad6e68101ca9413ec806855c452362f0213f2dfc5800996b086fdb8119842",
+      "purpose": "projector",
+      "bytes": 175115584,
+      "sha256": "675ad6e68101ca9413ec806855c452362f0213f2dfc5800996b086fdb8119842"
+    },
+    {
+      "path": "blobs/sha256-0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+      "purpose": "metadata",
+      "bytes": 10174,
+      "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594"
+    },
+    {
+      "path": "blobs/sha256-56380ca2ab89f1f68c283f4d50863c0bcab52ae3f1b9a88e4ab5617b176f71a3",
+      "purpose": "metadata",
+      "bytes": 42,
+      "sha256": "56380ca2ab89f1f68c283f4d50863c0bcab52ae3f1b9a88e4ab5617b176f71a3"
+    }
+  ]
+}
