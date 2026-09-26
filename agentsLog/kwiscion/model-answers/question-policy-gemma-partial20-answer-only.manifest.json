@@ -1,0 +1,43 @@
+{
+  "artifact": "question-policy-gemma-partial20-answer-only.jsonl",
+  "artifact_sha256": "8a91b87b85bb6f2aed4ed4bdcdb76a6450e6238ec4bca911bde3bf5cf40bd62d",
+  "record_count": 20,
+  "expected_total_records": 40,
+  "unique_ids": 20,
+  "id_order_sha256": "61279027aedb7550c8f7c6d89308ea7b5670e28a81c251cfd7b378f827f08180",
+  "status": "PARTIAL: first 20 of 40 frozen rows only. At most 21 of 60 points are represented. Not a full score; no grading performed.",
+  "source": "First 20 fully flushed rows from the live Gemma question-policy run; copied exactly from the raw stream snapshot. The active raw file was not modified.",
+  "run_settings": {
+    "model": "gemma4:12b-it-q4_K_M",
+    "model_digest": "4eb23ef187e2c5462566d6a1d3bbbc2f1346d0b4327cbb66d58fffbcc9b2b05c",
+    "input_sha256": "3257dd89909ec1aeea1f85180244e962cc647e4f2b9d37cb24b1907cabfabb92",
+    "config_sha256": "3d9c501891d5307a863096274abdfeec716ee8fa163b5c259569f3592ed8effa",
+    "script_sha256": "fc03440e24f5e8155dfbb9020e07e71c5843cfd0ad8f50640c8f5f9af5cf1241",
+    "infer_sha256": "b702857347fd0fa99b9aba9a844afca1a4a8634b22eaa826199d27986dca1f0a",
+    "git_revision": "from current run metadata not recorded"
+  },
+  "response_status": {
+    "errors": 0,
+    "finish_reason_counts": {
+      "stop": 20
+    }
+  },
+  "snapshot": {
+    "private_path": "agentsLog/kwiscion/private/question-policy-20260926/raw-first20-snapshot-20260926T1619.jsonl",
+    "sha256": "9b7d0682d4dfb81835a22571f37469acb07b697d7c4c7656b9a055c42f281785",
+    "bytes": 22502,
+    "source_raw_sha256_at_snapshot": "34e379375ab679faea75fa36e551d8c804f1c37f945ff20f60447d90d013f83a",
+    "run_metadata_sha256": "255547d8ae96aea33366904160e4e4691b7148609e3ae87166133aeae85268e6"
+  },
+  "source_text_overlap_audit": {
+    "method": "Compared each answer to its corresponding frozen policy input prompt; reported longest exact contiguous word sequence. Prompts/source material stayed private.",
+    "longest_exact_contiguous_words": 10,
+    "over_25_word_passages": [],
+    "result": "No copied passage over 25 words found."
+  },
+  "limitations": [
+    "Partial handoff only; rows 21-40 absent from this snapshot.",
+    "Partial set represents at most 21 available points; no score or grading performed.",
+    "Original sampling defaults were not fixed; see the private run metadata for complete run context."
+  ]
+}
