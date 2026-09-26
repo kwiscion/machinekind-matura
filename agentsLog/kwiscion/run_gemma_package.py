@@ -70,7 +70,7 @@ def preflight(a):
     return out, package, config, {'package_files': pins, 'ids': [c['id'] for c in cases],
         'config_sha256': CONFIG_SHA, 'model_digest': r.DIGEST, 'weight_bytes': sum(r.ASSETS.values()),
         'max_calls': a.max_calls, 'max_output_tokens_total': a.max_output_tokens_total,
-        'wall_seconds': a.wall_seconds, 'runtime_profile': profile, 'runtime_profile_sha256': profile_digest,
+        'wall_seconds': a.wall_seconds, 'continue_case_errors': getattr(a, 'continue_case_errors', False), 'runtime_profile': profile, 'runtime_profile_sha256': profile_digest,
         'runtime_profile_file': None if getattr(a, 'runtime_profile', None) is None else str(Path(a.runtime_profile).resolve()),
         'runtime_profile_file_sha256': profile_file_digest, 'cost_usd': 0, 'retries': 0, 'context_fit': 'UNPROVEN',
         'script_sha256': r.sha(SELF), 'helper_sha256': r.sha(Path(r.__file__)),
@@ -82,9 +82,39 @@ def verify_pins(pins):
         r.require(r.sha(Path(name)) == digest, 'Frozen file changed: ' + name)
 
 
-def request_loop(cases, config, out, max_calls, deadline, guard, verify, inf):
-    """One reservation per attempted request; any failure stops and leaves remaining IDs unsent."""
-    rows, stop = [], 'complete'
+def case_local_generation_error(result, inf):
+    """Conservative successful-transport shape; usage/runtime checks remain mandatory."""
+    raw = result.get('raw_response')
+    if not isinstance(raw, dict) or raw.get('error') is not None:
+        return False
+    error = result.get('error')
+    if error is not None and (not isinstance(error, dict) or error.get('type') != 'incomplete'
+                              or error != inf.response_error(raw)):
+        return False  # HTTP, parse, provider and uncertain failures always stop.
+    choices = raw.get('choices')
+    if not isinstance(choices, list) or len(choices) != 1 or not isinstance(choices[0], dict):
+        return False
+    choice = choices[0]
+    message = choice.get('message')
+    if not isinstance(message, dict) or 'content' not in message:
+        return False
+    if message.get('refusal') or message.get('tool_calls') or message.get('function_call'):
+        return False
+    content = message['content']
+    if isinstance(content, list):
+        if any(not isinstance(x, dict) or x.get('type', 'text') not in ('text', 'output_text')
+               or not isinstance(x.get('text'), str) for x in content):
+            return False
+        content = ''.join(x['text'] for x in content)
+    if content is not None and not isinstance(content, str):
+        return False
+    return choice.get('finish_reason') == 'length' or (
+        choice.get('finish_reason') == 'stop' and not (content or '').strip())
+
+
+def request_loop(cases, config, out, max_calls, deadline, guard, verify, inf, continue_case_errors=False):
+    """No retries. Opt-in skips only verified case-local generation errors, retaining blanks."""
+    rows, stop, case_errors = [], 'complete', []
     _, adapter = r.modules()
     with (out/'raw.jsonl').open('x', encoding='utf-8') as raw, (out/'calls.jsonl').open('x', encoding='utf-8') as calls:
         for case in cases:
@@ -98,12 +128,19 @@ def request_loop(cases, config, out, max_calls, deadline, guard, verify, inf):
                 result = inf.run_case(case, config)
                 try:
                     _, failure = adapter.extract_answer(result)
-                    r.require(failure is None, 'Incomplete/failed response: '+str(failure))
+                    case_error = bool(failure is not None and continue_case_errors and case_local_generation_error(result, inf))
+                    r.require(failure is None or case_error, 'Incomplete/failed response: '+str(failure))
                     usage = result.get('usage') or {}
+                    r.require(isinstance(usage, dict), 'Malformed usage')
                     r.require(type(usage.get('prompt_tokens')) is int and 0 <= usage['prompt_tokens'] <= 2816, 'Missing/excess prompt usage')
                     r.require(type(usage.get('completion_tokens')) is int and 0 <= usage['completion_tokens'] <= 1024, 'Missing/excess completion usage')
                     r.require(not (result.get('raw_response') or {}).get('truncated', False), 'Context truncation reported')
                     verify()
+                    if case_error:
+                        # Preserve the raw envelope and the runner's error; never rescue partial text.
+                        if result.get('error') is None:
+                            result['error'] = {'type':'case_generation','message':str(failure)}
+                        case_errors.append(case['id'])
                 except (RuntimeError, OSError, ValueError) as exc:
                     stop = str(exc)
                     if result.get('error') is None:
@@ -115,7 +152,8 @@ def request_loop(cases, config, out, max_calls, deadline, guard, verify, inf):
                 stop = str(exc)
                 break
     return {'completed_records': len(rows), 'unsent_ids': [c['id'] for c in cases[len(rows):]], 'stop_reason': stop,
-            'actual_cost_usd': 0, 'usage': [x.get('usage') for x in rows]}
+            'actual_cost_usd': 0, 'usage': [x.get('usage') for x in rows],
+            'continue_case_errors': continue_case_errors, 'case_error_ids': case_errors}
 
 
 def cleanup_owned(out):
@@ -182,8 +220,12 @@ def inside(a):
                                           'models':models})+'\n')
             r.require(len(models) == 1 and models[0].get('digest') == r.DIGEST and
                       models[0].get('context_length') == context, 'Loaded model digest/context mismatch')
+        def before_request():
+            verify_pins(record['frozen_files'])
+            worker_guard(server.pid, record['parent_pid'], profile)
         result = request_loop(cases, config, out, record['max_calls'], deadline,
-                              lambda: worker_guard(server.pid,record['parent_pid'],profile), loaded_runtime, inf)
+                              before_request, loaded_runtime, inf,
+                              **({'continue_case_errors': True} if record.get('continue_case_errors', False) else {}))
         r.write(out/'execution.json', result)
         return 0 if result['stop_reason'] == 'complete' else 1
     finally:
@@ -274,6 +316,8 @@ def execute(a):
 def main(argv=None):
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--execute',action='store_true')
+    p.add_argument('--continue-case-errors',action='store_true',
+                   help='Continue after verified length/empty-final errors; no retries; all infrastructure failures stop')
     p.add_argument('--inside',action='store_true',help=argparse.SUPPRESS)
     p.add_argument('--host-net',default='',help=argparse.SUPPRESS)
     p.add_argument('--exam-dir',type=Path)
