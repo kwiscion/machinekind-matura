@@ -159,6 +159,29 @@ this one job. Executed 17:46–17:56 CEST:
 - This is a runtime/context transfer comparison point, **not a score**; all
   previous attempts preserved; scoring owned by @Pewciu6 on #11.
 
+## Independent adjudication + audit — 18:09–18:17 CEST
+
+- **@Pewciu6 adjudication (PR #89, merged)**: RTX transfer **34/60 (25–39) vs
+  bare Gemma 35 (28–40), Δ −1 — verdict EQUIVALENT**; differences look like
+  sampling noise, not a systematic runtime/context effect. Answer SHA
+  `179ccf38…bef600b` verified; keyscan 0 hits; $0.
+- **@ljaniec full runtime audit (PR #90, merged)**: verified answer-file SHA,
+  40 unique matching IDs, request sum 146.276 s, mean 3.6569 / median 3.508 /
+  p95 7.278 / max 11.835, config hash matches; wrapper findings tracked on
+  new issue #88; no repeat run required.
+- **Watcher log repaired (PR #91)**: PR #87's stash-conflict resolution had
+  dropped the 15:45:30Z/15:52:02Z/16:03:00Z tick content; cleared poller
+  comment records and re-polled — tick 16:13:11Z re-logged the full window
+  (49 findings). GitHub issues remain the scheduling authority.
+- Stage-time estimate posted on #38 (5847735746): full 40-item arm fits in
+  ~3 min warm / ~4 min cold on RTX-class hosts; no 560 image-token cap
+  applied anywhere per the lead's 16:02:05Z warning.
+
+**Session status at 18:17 CEST**: frozen RTX job complete + adjudicated
+(equivalent); all handoffs delivered; logs repaired; watcher cron continues
+(minutes 7,22,37,52); smoke envelope 3/4, smoke 4 reserved; awaiting the
+lead's next declared GPU arm.
+
 Key finding: the lead's "sole laptop worker" (frozen bare-source-v2 RAG arm,
 cutoff 17:40) is NOT on this machine — no project inference process runs here,
 so readiness prep cannot duplicate it.
