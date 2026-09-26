@@ -81,6 +81,23 @@ Strict chunk-level support is much lower than source-level coverage: the retriev
 
 Lead decides whether to wire `retrieval.py` (mode `chrono`, k=5) into the answerer as a context provider; the retrieval contract (chunk schema `chunk_id`, `source_id`, `locator`, `text`) is additive and can be adapted. Cheap next steps are listed at the end of REPORT.md.
 
+## #15 context selection (complete answer support)
+
+Optional follow-up to #6 (issue https://github.com/kwiscion/machinekind-matura/issues/15, branch `issue-15-Bukareszt-context`, started 2026-09-26 03:10 Europe/Warsaw). Baseline frozen: same corpus, index (SHA-256 `350800b1…0429`, 0 revision drift on rebuild), graph and 40 TRAIN queries (`b2e359bf…024d`). Full results: [`reports/REPORT_15.md`](reports/REPORT_15.md).
+
+- `scripts/context_select.py` (new, additive; imports `retrieval.py` unchanged): `select` / `eval` / `audit-sample` / `audit-score`. Candidate = chrono top-1 anchor + article prior across articles + residual/coverage section re-rank within an article + greedy 3000-char multi-chunk assembly; `candidate_c` adds evidence-retaining sentence compression; `candidate_t` (unaudited) drops filler chunks from distant articles.
+- `reports/ctx_eval_ctx15.json`, `reports/ctx_eval_per_query_ctx15.jsonl`: automatic proxies for `baseline3`, `baseline5`, `candidate`, `candidate_c`, `candidate_t`.
+- `audit/ctx_audit_sample_ctx15.jsonl` (blind A/B pairs, side randomised with seed 15), `audit/ctx_audit_key_ctx15.json` (hidden key), `audit/ctx_audit_verdicts_ctx15*.jsonl` (two fresh-context auditors), `reports/ctx_audit_score_ctx15.json`.
+
+```bash
+python3 agentsLog/Bukareszt/scripts/context_select.py select "Kiedy zawarto unię lubelską?" --variant candidate   # or baseline3 / candidate_c
+python3 agentsLog/Bukareszt/scripts/context_select.py eval --tag ctx15
+python3 agentsLog/Bukareszt/scripts/context_select.py audit-sample --tag ctx15 --baseline baseline3 --candidate candidate
+python3 agentsLog/Bukareszt/scripts/context_select.py audit-score --tag ctx15 --verdicts agentsLog/Bukareszt/audit/ctx_audit_verdicts_ctx15.jsonl
+```
+
+Headline (40 TRAIN queries, provisional): automatic evidence-in-context 0.975 (candidate) vs 0.925 (chrono top-3) at ~2.9 kB either way; blind audit of complete answer support: **no measurable gain** — complete support 13/40 (candidate) vs 14/40 (chrono top-3), partial 26 vs 24, none 1 vs 2, auditor preference 8 / 6 / 26 ties, 1 win (q02), 1 regression (q39, 1948-vs-1947 contradiction). Recommendation: keep `--mode chrono --k 5`; reuse the blind A/B audit protocol.
+
 ## Watcher (separate PR #9, merged to main)
 
 Owner log entry for the issue watcher that dispatches Greg's issues to Orca worktrees; unrelated to the retrieval code above.

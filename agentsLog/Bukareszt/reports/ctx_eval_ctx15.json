@@ -1,0 +1,133 @@
+{
+  "evaluated_at": "2026-09-26T01:16:14+00:00",
+  "queries_file": "queries/train_queries.jsonl",
+  "queries_sha256": "b2e359bf2501469a216f178ad76511d45604e61ad42d4257fca34d15f82f024d",
+  "index_sha256": "350800b1924b8f0094171fc5d68652da0f9260d03273a51ad6421c1a03e70429",
+  "n_chunks": 3481,
+  "n_sources": 107,
+  "variants": {
+    "baseline3": {
+      "config": {
+        "kind": "baseline",
+        "k": 3
+      },
+      "n_queries": 40,
+      "evidence_in_context": 0.925,
+      "must_contain_all": 0.85,
+      "expected_source_in_context": 1.0,
+      "mrr_evidence": 0.829,
+      "mean_chars": 2918.825,
+      "max_chars": 4343,
+      "mean_chunks": 3.0,
+      "mean_articles": 1.425,
+      "mean_ms": 0.508,
+      "evidence_miss_ids": [
+        "ret-train-q02",
+        "ret-train-q08",
+        "ret-train-q31"
+      ]
+    },
+    "baseline5": {
+      "config": {
+        "kind": "baseline",
+        "k": 5
+      },
+      "n_queries": 40,
+      "evidence_in_context": 0.95,
+      "must_contain_all": 0.925,
+      "expected_source_in_context": 1.0,
+      "mrr_evidence": 0.835,
+      "mean_chars": 4991.5,
+      "max_chars": 7044,
+      "mean_chunks": 5.0,
+      "mean_articles": 1.775,
+      "mean_ms": 0.517,
+      "evidence_miss_ids": [
+        "ret-train-q02",
+        "ret-train-q31"
+      ]
+    },
+    "candidate": {
+      "config": {
+        "kind": "candidate",
+        "pool": 40,
+        "wa": 0.6,
+        "wr": 0.5,
+        "wc": 0.3,
+        "anchor": true,
+        "budget": 3000,
+        "per_article": 3,
+        "max_chunks": 6,
+        "compress": false
+      },
+      "n_queries": 40,
+      "evidence_in_context": 0.975,
+      "must_contain_all": 0.85,
+      "expected_source_in_context": 1.0,
+      "mrr_evidence": 0.852,
+      "mean_chars": 2860.825,
+      "max_chars": 2999,
+      "mean_chunks": 3.625,
+      "mean_articles": 1.9,
+      "mean_ms": 4.49,
+      "evidence_miss_ids": [
+        "ret-train-q31"
+      ]
+    },
+    "candidate_c": {
+      "config": {
+        "kind": "candidate",
+        "pool": 40,
+        "wa": 0.6,
+        "wr": 0.5,
+        "wc": 0.3,
+        "anchor": true,
+        "budget": 3000,
+        "per_article": 3,
+        "max_chunks": 8,
+        "compress": true
+      },
+      "n_queries": 40,
+      "evidence_in_context": 0.975,
+      "must_contain_all": 0.875,
+      "expected_source_in_context": 1.0,
+      "mrr_evidence": 0.852,
+      "mean_chars": 2896.55,
+      "max_chars": 2996,
+      "mean_chunks": 4.6,
+      "mean_articles": 2.375,
+      "mean_ms": 5.942,
+      "evidence_miss_ids": [
+        "ret-train-q31"
+      ]
+    },
+    "candidate_t": {
+      "config": {
+        "kind": "candidate",
+        "pool": 40,
+        "wa": 0.6,
+        "wr": 0.5,
+        "wc": 0.3,
+        "anchor": true,
+        "budget": 3000,
+        "per_article": 3,
+        "max_chunks": 6,
+        "compress": false,
+        "min_article": 0.5
+      },
+      "n_queries": 40,
+      "evidence_in_context": 0.975,
+      "must_contain_all": 0.85,
+      "expected_source_in_context": 1.0,
+      "mrr_evidence": 0.852,
+      "mean_chars": 2739.0,
+      "max_chars": 2999,
+      "mean_chunks": 3.225,
+      "mean_articles": 1.475,
+      "mean_ms": 4.5,
+      "evidence_miss_ids": [
+        "ret-train-q31"
+      ]
+    }
+  }
+}

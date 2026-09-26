@@ -39,6 +39,7 @@
   },
   "exclusions": {
     "inference_error": "output record has non-null error; excluded from lenient denominator, zero in strict",
+    "incomplete_output": "error marks an empty or length-cut answer (infer.py type incomplete / 'No final answer text'); excluded from lenient, zero in strict; report separately",
     "missing_output": "key has no output record; excluded from lenient denominator, zero in strict",
     "duplicate_output": "second record for the same id; first kept, not counted as an exclusion from the denominator"
   },

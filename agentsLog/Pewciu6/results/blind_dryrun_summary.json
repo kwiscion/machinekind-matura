@@ -1,0 +1,26 @@
+{
+  "provisional": true,
+  "reviewed_items": 12,
+  "multi_rater_items": 12,
+  "exact_agreement": 0.6667,
+  "within_1_agreement": 0.9167,
+  "mean_abs_range": 0.417,
+  "cohen_kappa": 0.6,
+  "cohen_kappa_linear": 0.9183,
+  "cohen_kappa_quadratic": 0.9858,
+  "third_rater_range": 3.0,
+  "needs_third_rater": [],
+  "disagreement_policy": "all ratings kept; merged score = mean of raters; range >= third_rater_range -> third blind rater, then median of three",
+  "per_model": {
+    "synthetic-essay-template@none": {
+      "items": 6,
+      "points": 21.0,
+      "max_points": 90.0
+    },
+    "qwen3.6-35b-a3b-abliterated-heretic-mlx@local-lmstudio (weights hash not recorded; non-candidate)": {
+      "items": 6,
+      "points": 41.5,
+      "max_points": 90.0
+    }
+  }
+}
