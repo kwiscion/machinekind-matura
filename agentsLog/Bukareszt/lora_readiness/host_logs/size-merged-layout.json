@@ -1,0 +1,21 @@
+{
+  "files": [
+    {
+      "path": "/ephemeral/mm-lora/control/base-q4_k_m.gguf",
+      "bytes": 7381383392,
+      "sha256": "a192fac4a5989aa7db9452d91405cd401a7fb03e0af3b36343abeeb146d3282a"
+    },
+    {
+      "path": "/ephemeral/mm-lora/control/projector.gguf",
+      "bytes": 175115712,
+      "sha256": "9ff3ded7bf4360353a3c184aeef9fb1a15e54f08abcb1a45a46b3467333fb12e"
+    }
+  ],
+  "total_bytes": 7556499104,
+  "limit_bytes": 8800000000,
+  "remaining_bytes": 1243500896,
+  "scope": "ALL_SUBMITTED_MODEL_WEIGHTS_INCLUDING_ADAPTERS_AND_PROJECTORS",
+  "byte_limit_pass": true,
+  "inventory_completeness": "CALLER_MUST_VERIFY_AGAINST_FINAL_SUBMISSION",
+  "runtime_load_adapter_support_and_matching_projector": "NOT_CHECKED"
+}

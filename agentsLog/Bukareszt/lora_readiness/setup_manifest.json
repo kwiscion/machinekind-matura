@@ -1,0 +1,66 @@
+{
+  "schema": "bukareszt_lora_readiness_setup_manifest_v1",
+  "status": "FROZEN",
+  "issue": "https://github.com/kwiscion/machinekind-matura/issues/117",
+  "owner": "@Bukareszt",
+  "worker": "Claude Code session in Orca worktree issue-117-Bukareszt-lora-readiness (Greg's watcher instance 8e5e9ed0-1189-4cc2-94b1-68da72b41e32); sole Greg worker",
+  "frozen_at": "2026-09-26T22:28:00+02:00",
+  "window": {"start": "2026-09-26T22:28:00+02:00", "hard_deadline": "2026-09-26T23:28:00+02:00", "seconds": 3600, "on_deadline": "kill any running setup step, record partial state, hand off; never extend silently"},
+  "host": {
+    "name": "matura-greg", "brev_id": "sx8ihq0wx", "org": "kwiscion-ff7442-omfi", "access": "ssh alias matura-greg (user shadeform)",
+    "gpu": "1x NVIDIA H100 PCIe 81559 MiB, driver 570.195.03, 0 MiB used, no compute processes at 20:21Z",
+    "cpu_ram": "28 vCPU, 177 GiB RAM", "python": "/usr/bin/python3 3.10.12",
+    "disk": {"/": "97G total, 63G free", "/ephemeral": "738G total, 700G free, world-writable"},
+    "pre_existing_services": "jupyter-lab (brev default, left untouched); Greg's #96 Ollama 0.34.4 in ~/mm/runtime is STOPPED and is not started, modified or deleted"
+  },
+  "cost": {"rate_unverified": true, "planning_proxy_usd_per_hour": 3.28, "proxy_source": "central Brev H100 rate quoted in AGENTS.md; label as estimate only", "max_proxy_usd_this_window": 3.28, "note": "instance was already running idle; no stop/start/resize/new instance"},
+  "isolated_paths": {
+    "root": "/ephemeral/mm-lora",
+    "cpu_venv": "/ephemeral/mm-lora/venv-cpu",
+    "gpu_venv": "/ephemeral/mm-lora/venv-gpu",
+    "src": "/ephemeral/mm-lora/src (transformers, peft, llama.cpp at pinned commits)",
+    "base": "/ephemeral/mm-lora/base/gemma-4-12B-it@707f0a3b",
+    "control": "/ephemeral/mm-lora/control",
+    "logs": "/ephemeral/mm-lora/logs",
+    "hf_home": "/ephemeral/mm-lora/hf-home (no token)"
+  },
+  "pins": {
+    "base_repository": "google/gemma-4-12B-it",
+    "base_revision": "707f0a3b8a3c7ad586ed01e27eafbad8a27dd0f7",
+    "base_gated": false,
+    "base_files_expected": {
+      "model.safetensors": {"bytes": 23919549408, "sha256": "5a84cb313260ac447237b890387116dfa8682e49a6b44bc585ae8353abbff18d"},
+      "tokenizer.json": {"bytes": 32169626, "sha256": "cc8d3a0ce36466ccc1278bf987df5f71db1719b9ca6b4118264f45cb627bfe0f"},
+      "config.json": {"bytes": 4423, "sha256": "478c46e8d2c52d5c2d85bf67e3b3e8c90e7c9d91086cee27e3c267907e936bd9"},
+      "tokenizer_config.json": {"bytes": 3089, "sha256": "a62f4e85a47c0c136edaaa3a4f591fd6783717299a9def47e5ad03a49f6a5eb9"},
+      "chat_template.jinja": {"bytes": 18683, "sha256": "ae53464bf3be25802b3a5b37def7fd89667067d7577049b3b2d74c4d8de4c6d4"},
+      "processor_config.json": {"bytes": 1382, "sha256": "6b938e76555b3e9946890770e1abcd442a4718f34041a58e8139dc8ad34545c9"},
+      "generation_config.json": {"bytes": 260, "sha256": "recorded on acquisition"}
+    },
+    "transformers_git_revision": "96331a9f93b72697f160a958d2883d4b49a56739",
+    "peft_git_revision": "b8674c86183a5dee38d0c3ede392e189593025e5",
+    "llama_cpp_git_revision": "fcb3074f2bc06943a564d7f293f9e66d4bece02a",
+    "cpu_probe_torch": "2.8.0+cpu (as required by root's run_cpu_probe.py identity check)",
+    "gpu_torch": "2.8.0 (CUDA 12.8 wheel) in separate venv; same torch release as CPU probe",
+    "source_hash_evidence": "agentsLog/kwiscion/essay-lora-prep/evidence-manifest.json (modeling/configuration gemma4_unified, peft lora layer/model)",
+    "candidate": "agentsLog/kwiscion/essay-lora-prep/candidate.json sha256 fc3b61de8cd061617ed5351cac441b8610cca19fff6a0b8827feb767cd617707 (unchanged)"
+  },
+  "data": {
+    "train": "agentsLog/Bukareszt/essay_corpus/export_v1/train_sft.jsonl",
+    "canonical_git_blob_sha256_required": "83153814da8251210f2b9d225dc713ad245c273bdc5d46dd1216b0e4b97178f5",
+    "attribution_requirements": "allowed_use reference-only and source_text_exported=false preserved",
+    "use_in_this_window": "hash/attribution check only; tokenization of real rows only with local tokenizer (no model forward)"
+  },
+  "steps": [
+    "1 sole-worker/GPU/disk checks (read-only)",
+    "2 CPU venv: torch 2.8.0+cpu + transformers/peft at pinned commits; verify installed source hashes vs evidence-manifest",
+    "3 tiny CPU probe: root's unchanged runtime_probe.py --execute-synthetic under 180 s timeout, CUDA hidden, offline",
+    "4 acquire base snapshot at pinned revision (public, no token), sha256 every file vs HF LFS hashes",
+    "5 GPU venv (torch 2.8.0 cu128 + same pinned commits) with torch CUDA/BF16 check only (no model forward)",
+    "6 tokenizer control: local_files_only tokenizer load, template prefix render on synthetic records; canonical export hash + attribution checks",
+    "7 unmodified-base export control if time permits: pinned llama.cpp convert BF16 text + mmproj, Q4_K_M quantize, hashes, prepare.py size gate (conversion/quantization only; no llama.cpp inference/load call)",
+    "8 adapter size projection for r8 q/v vs 1,243,502,368-byte headroom"
+  ],
+  "forbidden": ["history training", "any inference/generation call (Ollama, llama.cpp, transformers generate/forward on real weights)", "HF upload/publication", "purchases, new instances, stop/restart/resize", "relaxing pins", "starting/deleting the existing Ollama service or ~/mm contents", "committing weights"],
+  "limits": {"model_calls": 0, "tokens": 0, "gpu_training_steps": 0}
+}

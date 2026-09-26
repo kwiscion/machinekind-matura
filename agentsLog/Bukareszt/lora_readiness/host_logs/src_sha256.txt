@@ -1,0 +1,3 @@
+c97fdf3bfb260db12b4fecf1a7647f51ca0e2b52cc75a947ca1a3d6cc4f4ed8c  transformers-96331a9f.zip
+05a70e1ef6ac1633da4d2ca3b90db5df7cb5f24d9b9b123ce0763e9e83b42dd2  peft-b8674c86.zip
+f0a23ffacff1c89c628c49c67d2aa41aa49dbe62faa6615bb0a7165799cc4604  llama.cpp-fcb3074f.tar.gz
