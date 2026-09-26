@@ -32,7 +32,7 @@
     "sources.jsonl": "a838591be0dfdba24da5004a3dcd4746c4806a05cc27b3427442b46593fc924a",
     "checklist.md": "27eb5cbe2b324039cfe61dded4563e84d0ec6f17c10325dc7d4bb015b14e8447",
     "README.md": "a1d5933487e091a780f0dab957232a4c798e6bf994ac26925ae9dbf69ea6578b",
-    "verify.py": "c7d2c6781121b7d215425612e87e39066b2cdc7aa051a9f23f88e70ba75677cc"
+    "verify.py": "0fc826dcc98f58a23dfe85893515c744be0bae1e353d7d7a58e5c73247a7c25e"
   },
   "candidate_answers_inspected": false,
   "existing_eval16_fact_cards_inspected": false,
