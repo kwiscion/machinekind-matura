@@ -1,0 +1,717 @@
+{
+ "run_id": "issue96-h100-wave1-2701ba0",
+ "provisional": true,
+ "grader": "Pewciu6 agent (Claude Opus 5.5), single rater, blind to arm labels",
+ "split": "VALIDATION",
+ "exam": "CKE matura historia PR 2024-05",
+ "inputs": {
+  "commit": "2701ba0",
+  "answers": "agentsLog/Bukareszt/issue96/wave/answers.jsonl",
+  "answers_sha256": "c8bff4d601cf8f5c9c1835a0c22ee30e0dffc5d9f31516c44254710c39497eb4",
+  "rows": 50
+ },
+ "blinding": {
+  "method": "per-item shuffle, seed 9601, codes item#letter; grades frozen before unmasking",
+  "grades_sha256": "b82ec4cdab3b6a16504a7418a7cafcf7512861723fdddc88d51776fe943f154e",
+  "mask_sha256": "e8c868248c6818713f58634d8acc3713bad8211637e0af45070ca60692343f76"
+ },
+ "basis": "official CKE zasady 2024 + page renders, #53/#58 conventions (conflicting decisions=0; decision+both-source justification required)",
+ "totals": {
+  "W1-bare": {
+   "points": 2,
+   "low": 0,
+   "high": 3,
+   "max": 5,
+   "n": 5
+  },
+  "W1-selective": {
+   "points": 2,
+   "low": 1,
+   "high": 3,
+   "max": 5,
+   "n": 5
+  },
+  "W2-bare": {
+   "points": 6,
+   "low": 3,
+   "high": 7,
+   "max": 13,
+   "n": 10
+  },
+  "W2-factcard": {
+   "points": 5,
+   "low": 3,
+   "high": 7,
+   "max": 13,
+   "n": 10
+  },
+  "W2-relquery": {
+   "points": 6,
+   "low": 4,
+   "high": 7,
+   "max": 13,
+   "n": 10
+  },
+  "W2-verify": {
+   "points": 6,
+   "low": 3,
+   "high": 9,
+   "max": 13,
+   "n": 10
+  }
+ },
+ "paired_deltas": {
+  "W1-selective - W1-bare": {
+   "delta": 0,
+   "range_sum_bound": [
+    -2,
+    3
+   ],
+   "changed_items": []
+  },
+  "W2-verify - W2-bare": {
+   "delta": 0,
+   "range_sum_bound": [
+    -4,
+    6
+   ],
+   "changed_items": []
+  },
+  "W2-relquery - W2-bare": {
+   "delta": 0,
+   "range_sum_bound": [
+    -3,
+    4
+   ],
+   "changed_items": []
+  },
+  "W2-factcard - W2-bare": {
+   "delta": -1,
+   "range_sum_bound": [
+    -4,
+    4
+   ],
+   "changed_items": [
+    {
+     "item": "z20.2",
+     "arm_points": 1,
+     "bare_points": 2
+    }
+   ]
+  }
+ },
+ "consistency_vs_bare": {
+  "rows": [
+   {
+    "arm": "W1-bare",
+    "item": "z18",
+    "points": 1,
+    "pr53": 1,
+    "rtx_pr89": 1
+   },
+   {
+    "arm": "W1-bare",
+    "item": "z2",
+    "points": 1,
+    "pr53": 1,
+    "rtx_pr89": 1
+   },
+   {
+    "arm": "W1-bare",
+    "item": "z24",
+    "points": 0,
+    "pr53": 0,
+    "rtx_pr89": 0
+   },
+   {
+    "arm": "W1-bare",
+    "item": "z5.1",
+    "points": 0,
+    "pr53": 0,
+    "rtx_pr89": 0
+   },
+   {
+    "arm": "W1-bare",
+    "item": "z7",
+    "points": 0,
+    "pr53": 0,
+    "rtx_pr89": 0
+   },
+   {
+    "arm": "W2-bare",
+    "item": "z12.3",
+    "points": 1,
+    "pr53": 1,
+    "rtx_pr89": 1
+   },
+   {
+    "arm": "W2-bare",
+    "item": "z14.1",
+    "points": 0,
+    "pr53": 0,
+    "rtx_pr89": 0
+   },
+   {
+    "arm": "W2-bare",
+    "item": "z17.1",
+    "points": 1,
+    "pr53": 1,
+    "rtx_pr89": 1
+   },
+   {
+    "arm": "W2-bare",
+    "item": "z18",
+    "points": 1,
+    "pr53": 1,
+    "rtx_pr89": 1
+   },
+   {
+    "arm": "W2-bare",
+    "item": "z19.2",
+    "points": 0,
+    "pr53": 0,
+    "rtx_pr89": 0
+   },
+   {
+    "arm": "W2-bare",
+    "item": "z20.2",
+    "points": 2,
+    "pr53": 2,
+    "rtx_pr89": 1
+   },
+   {
+    "arm": "W2-bare",
+    "item": "z23.2",
+    "points": 0,
+    "pr53": 0,
+    "rtx_pr89": 0
+   },
+   {
+    "arm": "W2-bare",
+    "item": "z25",
+    "points": 0,
+    "pr53": 0,
+    "rtx_pr89": 0
+   },
+   {
+    "arm": "W2-bare",
+    "item": "z7",
+    "points": 0,
+    "pr53": 0,
+    "rtx_pr89": 0
+   },
+   {
+    "arm": "W2-bare",
+    "item": "z8.2",
+    "points": 1,
+    "pr53": 1,
+    "rtx_pr89": 1
+   }
+  ],
+  "agree_pr53": 15,
+  "agree_rtx": 14,
+  "n": 15
+ },
+ "items": [
+  {
+   "id": "val2024-hist-z18",
+   "arm": "W1-bare",
+   "points": 1,
+   "low": 0,
+   "high": 1,
+   "max": 1,
+   "cause": null,
+   "note": "correct side; monster plus soldiers, headgear detail inaccurate"
+  },
+  {
+   "id": "val2024-hist-z2",
+   "arm": "W1-bare",
+   "points": 1,
+   "low": 0,
+   "high": 1,
+   "max": 1,
+   "cause": null,
+   "note": "decision and two-source justification; the conquests misdated by a century"
+  },
+  {
+   "id": "val2024-hist-z24",
+   "arm": "W1-bare",
+   "points": 0,
+   "low": 0,
+   "high": 0,
+   "max": 1,
+   "cause": "source_image",
+   "note": "wrong decision; map misread as a different crisis"
+  },
+  {
+   "id": "val2024-hist-z5.1",
+   "arm": "W1-bare",
+   "points": 0,
+   "low": 0,
+   "high": 1,
+   "max": 1,
+   "cause": "source_image",
+   "note": "decision correct; map identified as the wrong expeditions"
+  },
+  {
+   "id": "val2024-hist-z7",
+   "arm": "W1-bare",
+   "points": 0,
+   "low": 0,
+   "high": 0,
+   "max": 1,
+   "cause": "factual",
+   "note": "wrong fragment"
+  },
+  {
+   "id": "val2024-hist-z18",
+   "arm": "W1-selective",
+   "points": 1,
+   "low": 0,
+   "high": 1,
+   "max": 1,
+   "cause": null,
+   "note": "correct side; soldiers' uniforms/helmets plus monster"
+  },
+  {
+   "id": "val2024-hist-z2",
+   "arm": "W1-selective",
+   "points": 1,
+   "low": 1,
+   "high": 1,
+   "max": 1,
+   "cause": null,
+   "note": "decision and two-source justification"
+  },
+  {
+   "id": "val2024-hist-z24",
+   "arm": "W1-selective",
+   "points": 0,
+   "low": 0,
+   "high": 0,
+   "max": 1,
+   "cause": "source_image",
+   "note": "wrong decision; map misread as a different crisis"
+  },
+  {
+   "id": "val2024-hist-z5.1",
+   "arm": "W1-selective",
+   "points": 0,
+   "low": 0,
+   "high": 1,
+   "max": 1,
+   "cause": "source_image",
+   "note": "decision correct; map identified as the wrong migrations"
+  },
+  {
+   "id": "val2024-hist-z7",
+   "arm": "W1-selective",
+   "points": 0,
+   "low": 0,
+   "high": 0,
+   "max": 1,
+   "cause": "factual",
+   "note": "wrong fragment"
+  },
+  {
+   "id": "val2024-hist-z12.3",
+   "arm": "W2-bare",
+   "points": 1,
+   "low": 1,
+   "high": 1,
+   "max": 1,
+   "cause": null,
+   "note": "correct style with visible features"
+  },
+  {
+   "id": "val2024-hist-z14.1",
+   "arm": "W2-bare",
+   "points": 0,
+   "low": 0,
+   "high": 0,
+   "max": 1,
+   "cause": "source_image",
+   "note": "wrong decision; map assigned to the wrong campaign"
+  },
+  {
+   "id": "val2024-hist-z17.1",
+   "arm": "W2-bare",
+   "points": 1,
+   "low": 1,
+   "high": 1,
+   "max": 1,
+   "cause": null,
+   "note": "correct causal chain with both sources and correct dates"
+  },
+  {
+   "id": "val2024-hist-z18",
+   "arm": "W2-bare",
+   "points": 1,
+   "low": 0,
+   "high": 1,
+   "max": 1,
+   "cause": null,
+   "note": "correct side; monster plus soldiers' uniforms"
+  },
+  {
+   "id": "val2024-hist-z19.2",
+   "arm": "W2-bare",
+   "points": 0,
+   "low": 0,
+   "high": 0,
+   "max": 1,
+   "cause": "factual",
+   "note": "wrong person"
+  },
+  {
+   "id": "val2024-hist-z20.2",
+   "arm": "W2-bare",
+   "points": 2,
+   "low": 1,
+   "high": 2,
+   "max": 2,
+   "cause": null,
+   "note": "three of three judgments correct; items numbered 0-2 (off by one)"
+  },
+  {
+   "id": "val2024-hist-z23.2",
+   "arm": "W2-bare",
+   "points": 0,
+   "low": 0,
+   "high": 1,
+   "max": 1,
+   "cause": "format",
+   "note": "two conflicting decisions (wrong, then a corrected re-try)"
+  },
+  {
+   "id": "val2024-hist-z25",
+   "arm": "W2-bare",
+   "points": 0,
+   "low": 0,
+   "high": 0,
+   "max": 3,
+   "cause": "source_image",
+   "note": "cartoon misread (economic shortages); message and context wrong"
+  },
+  {
+   "id": "val2024-hist-z7",
+   "arm": "W2-bare",
+   "points": 0,
+   "low": 0,
+   "high": 0,
+   "max": 1,
+   "cause": "factual",
+   "note": "wrong fragment"
+  },
+  {
+   "id": "val2024-hist-z8.2",
+   "arm": "W2-bare",
+   "points": 1,
+   "low": 0,
+   "high": 1,
+   "max": 1,
+   "cause": null,
+   "note": "decision and three-estate justification; document misattributed"
+  },
+  {
+   "id": "val2024-hist-z12.3",
+   "arm": "W2-factcard",
+   "points": 1,
+   "low": 1,
+   "high": 1,
+   "max": 1,
+   "cause": null,
+   "note": "correct style with visible features"
+  },
+  {
+   "id": "val2024-hist-z14.1",
+   "arm": "W2-factcard",
+   "points": 0,
+   "low": 0,
+   "high": 0,
+   "max": 1,
+   "cause": "source_image",
+   "note": "decision correct, but both sources misdated (text dated to the earlier war, map to the wrong war)"
+  },
+  {
+   "id": "val2024-hist-z17.1",
+   "arm": "W2-factcard",
+   "points": 1,
+   "low": 0,
+   "high": 1,
+   "max": 1,
+   "cause": "factual",
+   "note": "correct causal chain with both sources; proclamation placed in the wrong city"
+  },
+  {
+   "id": "val2024-hist-z18",
+   "arm": "W2-factcard",
+   "points": 1,
+   "low": 0,
+   "high": 1,
+   "max": 1,
+   "cause": null,
+   "note": "correct side; soldiers' helmets plus monster"
+  },
+  {
+   "id": "val2024-hist-z19.2",
+   "arm": "W2-factcard",
+   "points": 0,
+   "low": 0,
+   "high": 0,
+   "max": 1,
+   "cause": "factual",
+   "note": "wrong person"
+  },
+  {
+   "id": "val2024-hist-z20.2",
+   "arm": "W2-factcard",
+   "points": 1,
+   "low": 1,
+   "high": 1,
+   "max": 2,
+   "cause": "factual",
+   "note": "two of three judgments correct"
+  },
+  {
+   "id": "val2024-hist-z23.2",
+   "arm": "W2-factcard",
+   "points": 0,
+   "low": 0,
+   "high": 1,
+   "max": 1,
+   "cause": "format",
+   "note": "two conflicting decisions (wrong, then a corrected re-try)"
+  },
+  {
+   "id": "val2024-hist-z25",
+   "arm": "W2-factcard",
+   "points": 0,
+   "low": 0,
+   "high": 1,
+   "max": 3,
+   "cause": "source_image",
+   "note": "sweeping figure seen, but the label and era are wrong; generic censorship message"
+  },
+  {
+   "id": "val2024-hist-z7",
+   "arm": "W2-factcard",
+   "points": 0,
+   "low": 0,
+   "high": 0,
+   "max": 1,
+   "cause": "factual",
+   "note": "wrong fragment"
+  },
+  {
+   "id": "val2024-hist-z8.2",
+   "arm": "W2-factcard",
+   "points": 1,
+   "low": 1,
+   "high": 1,
+   "max": 1,
+   "cause": null,
+   "note": "decision and three-estate justification"
+  },
+  {
+   "id": "val2024-hist-z12.3",
+   "arm": "W2-relquery",
+   "points": 1,
+   "low": 1,
+   "high": 1,
+   "max": 1,
+   "cause": null,
+   "note": "correct style with visible features"
+  },
+  {
+   "id": "val2024-hist-z14.1",
+   "arm": "W2-relquery",
+   "points": 0,
+   "low": 0,
+   "high": 1,
+   "max": 1,
+   "cause": "source_image",
+   "note": "decision correct; map placed in the wrong war, so the source-2 reference is wrong"
+  },
+  {
+   "id": "val2024-hist-z17.1",
+   "arm": "W2-relquery",
+   "points": 1,
+   "low": 1,
+   "high": 1,
+   "max": 1,
+   "cause": null,
+   "note": "correct causal chain with both sources"
+  },
+  {
+   "id": "val2024-hist-z18",
+   "arm": "W2-relquery",
+   "points": 1,
+   "low": 0,
+   "high": 1,
+   "max": 1,
+   "cause": null,
+   "note": "correct side; monster plus soldiers, headgear detail inaccurate"
+  },
+  {
+   "id": "val2024-hist-z19.2",
+   "arm": "W2-relquery",
+   "points": 0,
+   "low": 0,
+   "high": 0,
+   "max": 1,
+   "cause": "factual",
+   "note": "wrong person"
+  },
+  {
+   "id": "val2024-hist-z20.2",
+   "arm": "W2-relquery",
+   "points": 2,
+   "low": 1,
+   "high": 2,
+   "max": 2,
+   "cause": null,
+   "note": "three of three correct (numbered 0-2); rationale misdates source 2"
+  },
+  {
+   "id": "val2024-hist-z23.2",
+   "arm": "W2-relquery",
+   "points": 0,
+   "low": 0,
+   "high": 0,
+   "max": 1,
+   "cause": "source_image",
+   "note": "wrong decision; poster mapped to the wrong question"
+  },
+  {
+   "id": "val2024-hist-z25",
+   "arm": "W2-relquery",
+   "points": 0,
+   "low": 0,
+   "high": 0,
+   "max": 3,
+   "cause": "source_image",
+   "note": "cartoon misread (industrial revolution); all wrong"
+  },
+  {
+   "id": "val2024-hist-z7",
+   "arm": "W2-relquery",
+   "points": 0,
+   "low": 0,
+   "high": 0,
+   "max": 1,
+   "cause": "factual",
+   "note": "wrong fragment"
+  },
+  {
+   "id": "val2024-hist-z8.2",
+   "arm": "W2-relquery",
+   "points": 1,
+   "low": 1,
+   "high": 1,
+   "max": 1,
+   "cause": null,
+   "note": "decision and three-estate justification"
+  },
+  {
+   "id": "val2024-hist-z12.3",
+   "arm": "W2-verify",
+   "points": 1,
+   "low": 1,
+   "high": 1,
+   "max": 1,
+   "cause": null,
+   "note": "correct style with visible features"
+  },
+  {
+   "id": "val2024-hist-z14.1",
+   "arm": "W2-verify",
+   "points": 0,
+   "low": 0,
+   "high": 1,
+   "max": 1,
+   "cause": "source_image",
+   "note": "decision correct; text roughly right, map placed in the wrong war"
+  },
+  {
+   "id": "val2024-hist-z17.1",
+   "arm": "W2-verify",
+   "points": 1,
+   "low": 0,
+   "high": 1,
+   "max": 1,
+   "cause": "factual",
+   "note": "causal chain correct, but a wrong battle date and an invented new French dynasty"
+  },
+  {
+   "id": "val2024-hist-z18",
+   "arm": "W2-verify",
+   "points": 1,
+   "low": 0,
+   "high": 1,
+   "max": 1,
+   "cause": null,
+   "note": "correct side; monster plus soldiers, headgear detail inaccurate"
+  },
+  {
+   "id": "val2024-hist-z19.2",
+   "arm": "W2-verify",
+   "points": 0,
+   "low": 0,
+   "high": 0,
+   "max": 1,
+   "cause": "factual",
+   "note": "wrong person"
+  },
+  {
+   "id": "val2024-hist-z20.2",
+   "arm": "W2-verify",
+   "points": 2,
+   "low": 1,
+   "high": 2,
+   "max": 2,
+   "cause": null,
+   "note": "three of three judgments correct; items numbered 0-2 (off by one)"
+  },
+  {
+   "id": "val2024-hist-z23.2",
+   "arm": "W2-verify",
+   "points": 0,
+   "low": 0,
+   "high": 1,
+   "max": 1,
+   "cause": "format",
+   "note": "conflicting decisions with hedged interpretations"
+  },
+  {
+   "id": "val2024-hist-z25",
+   "arm": "W2-verify",
+   "points": 0,
+   "low": 0,
+   "high": 1,
+   "max": 3,
+   "cause": "source_image",
+   "note": "sweeping figure seen, but the label, country and era are wrong; generic cover-up message"
+  },
+  {
+   "id": "val2024-hist-z7",
+   "arm": "W2-verify",
+   "points": 0,
+   "low": 0,
+   "high": 0,
+   "max": 1,
+   "cause": "factual",
+   "note": "wrong fragment"
+  },
+  {
+   "id": "val2024-hist-z8.2",
+   "arm": "W2-verify",
+   "points": 1,
+   "low": 1,
+   "high": 1,
+   "max": 1,
+   "cause": null,
+   "note": "decision and three-estate justification (document name garbled)"
+  }
+ ]
+}

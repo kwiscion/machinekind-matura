@@ -1,0 +1,71 @@
+{
+  "archive_sha256": "a6ebf71f1bd912a76eb1316c118df974643efbfec2aa1f9b4da2597744c8e464",
+  "raw_sha256": "860f13014c742df3cd423c99683c06c269d0a5f0a4d0a080e33db392c8a084e2",
+  "calls": 18,
+  "requested_tokens": 16896,
+  "status": "complete",
+  "stage_outputs": {
+    "bare": {
+      "rows": 6,
+      "complete": 6,
+      "sha256": "ca1c8a96a0c37f36766f3044336171eb77aef4b2ad13cd38f0b7ed3e2caaeff2",
+      "exact_complete_final_strings": true
+    },
+    "observation": {
+      "rows": 6,
+      "complete": 3,
+      "sha256": "04f911090e7085489ce71d273e0f57cb2db594c45edb3725a37cf8666615ec38",
+      "exact_complete_final_strings": true
+    },
+    "final": {
+      "rows": 6,
+      "complete": 6,
+      "sha256": "552967ed5d164ff3cfbb0efb786e580483514b2a4048e2928141fc2f2dc5c6f5",
+      "exact_complete_final_strings": true
+    }
+  },
+  "overlap_flags": [
+    {
+      "id": "val2024-hist-z4",
+      "stage": "observation",
+      "longest_word_overlap": 22
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 22246,
+    "completion_tokens": 5992,
+    "total_tokens": 28238
+  },
+  "per_stage_usage": {
+    "bare": {
+      "prompt_tokens": 6386,
+      "completion_tokens": 941
+    },
+    "observation": {
+      "prompt_tokens": 7282,
+      "completion_tokens": 4164
+    },
+    "final": {
+      "prompt_tokens": 8578,
+      "completion_tokens": 887
+    }
+  },
+  "elapsed_seconds": 76.53001737399973,
+  "fallback_ids": [
+    "val2024-hist-z5.1",
+    "val2024-hist-z14.1",
+    "val2024-hist-z15.2"
+  ],
+  "overlap_review": "Observation z4 longest22word overlap is an echoed task instruction, not a historical source passage. Bare/final have no15word match flags. No source packs or provider envelopes included.",
+  "parent_input_sha256": "6615fea2e6fd1d6f9db5b781fa84a883899d1c2fb83a28b914638089e6b015a4",
+  "panel_input_sha256": "deb318346aca16fbc993601c0b84f2fdc58c63c1585483f534d2d080a577ae7e",
+  "ids": [
+    "val2024-hist-z1",
+    "val2024-hist-z2",
+    "val2024-hist-z4",
+    "val2024-hist-z5.1",
+    "val2024-hist-z14.1",
+    "val2024-hist-z15.2"
+  ],
+  "selected_known_validation": true
+}
