@@ -20,3 +20,5 @@ hetero-replication-run.py -text whitespace=cr-at-eol
 2026-09-26-hetero-replication-*.json -text whitespace=cr-at-eol
 essay-lora-prep/** -text whitespace=cr-at-eol
 full-thinking-prep/** -text whitespace=cr-at-eol
+model-answers/full-thinking-* -text whitespace=cr-at-eol
+2026-09-26-full-thinking-*.json -text whitespace=cr-at-eol

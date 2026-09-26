@@ -1,6 +1,6 @@
 # Winning plan
 
-**Goal:** the highest Sunday history-matura score. Target 48/60; best reviewed fallback 35/60. Final freeze: **27 September, 11:00 Europe/Warsaw**. Updated 26 September, 22:10. Read this before dispatch or promotion; GitHub issues own tasks and claims.
+**Goal:** the highest Sunday history-matura score. Target 48/60. Leading experiment:38/60, pending second review and final packaging; preserved fallback:35/60. Final freeze: **27 September, 11:00 Europe/Warsaw**. Updated 26 September, 22:35. Read this before dispatch or promotion; GitHub issues own tasks and claims.
 
 ## One model, better answers
 
@@ -10,9 +10,9 @@ Keep one multimodal Gemma as the leading architecture. Vary prompts, thinking bu
 
 ## Three priorities
 
-1. **Measure the full system.** Root's 40-item native-thinking run is active: 10,240 total tokens per short task, 20,480 for the essay; 40 calls / 419,840 tokens / 90 minutes, no retries. Obtain independent grades including every failure. Never add subset gains into a claimed full score.
+1. **Recover missing answers, then integrate.** The full40 thinking run scored38/60 provisionally, with three token-limit failures costing up to six points. Test a generic same-model failure fallback; retain every failed answer. Obtain a second review and a fresh complete organizer-path result before promotion.
 2. **Make essays reliable.** One topic, 400–500 body words, clean prose, conservative factual edits with unchanged-draft fallback. Independent thinking review improved 52/90→62/90 across six original topics. Paweł replicates on six different topics; whole rewrites remain unreliable.
-3. **Test training without blocking the base route.**90 rows/34essays56repairs and16separate evaluation inputs now pass independent data review. Runtime/export are unqualified. Deploy either ONE merged model with nonessay regression checks or a proven small adapter on ONE shared base; two full copies are ineligible.
+3. **Test training without blocking the base route.** 90 rows (34 essays and 56 repairs) and 16 separate evaluation inputs now pass independent data review. Runtime/export are unqualified. Deploy either ONE merged model with nonessay regression checks or a proven small adapter on ONE shared base; two full copies are ineligible.
 
 ## Owners
 

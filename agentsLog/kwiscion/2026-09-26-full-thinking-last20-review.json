@@ -1,0 +1,424 @@
+{
+  "reviewer": "independent Sol /root/essay_corpus_sol",
+  "reviewed_at_utc": "2026-09-26T20:29:32.787065+00:00",
+  "status": "INDEPENDENT_FIRST_PASS_NOT_ADJUDICATED",
+  "scope": "LAST20 only, organizer14.2 through26,39 available points",
+  "input_artifact": "agentsLog/kwiscion/private/full-thinking-20260926/root-last20-grading.jsonl",
+  "input_sha256": "880ea14b275920443d1412ff14f3971705bca1447dca849df0cbd87d3262ad8c",
+  "full_answer_only_sha256": "fdbf288a3deb276d9600a353403ac8c1aa10fc37df11ec6f0524c0d76a12bde9",
+  "original_template_answers_sha256": "11057839c6cb04a9b83d8149750202b6b975390fff9433bc8c4425c66219ae49",
+  "all_last20_strings_match_original_template": true,
+  "answer_hash_convention": "SHA256 of exact UTF8 submitted final answer string, no added newline or normalization",
+  "rubric_pdf_sha256": "95c275b9546611c1f8cd45b7973c436625fd0ee5643b778dcc8bb566db56cd4c",
+  "rubric_source": "https://cke.gov.pl/images/_EGZAMIN_MATURALNY_OD_2023/Arkusze_egzaminacyjne/2024/Historia/MHIP-R0-100-2405-zasady.pdf",
+  "blinding": "No first-grader or previous-arm score files opened. Assignment discloses thinking arm. Mandated WINNING_PLAN/calibration document and prior coordination contain aggregate/anchor information, so this is not model-blind. No current first20 answers semantically inspected; original-template file was used only for programmatic last20 exact-string equality.",
+  "images": [
+    {
+      "page": 16,
+      "sha256": "9bda8c79c19a1433b11fda0cb32d615258954c3b1632255ac58178f240a4d23e",
+      "visually_inspected": true
+    },
+    {
+      "page": 17,
+      "sha256": "2c4ead95a94bf197707d5c93d57ec9959dfe7f2e217a53eb169512a8bad71b0d",
+      "visually_inspected": true
+    },
+    {
+      "page": 19,
+      "sha256": "1bd640bf6e230b21a5307b0022d0b4d3411881df08fedc869c5242522f5bc385",
+      "visually_inspected": true
+    },
+    {
+      "page": 20,
+      "sha256": "a577e889152dca7a2d4969a0b87508c1288da762b3d15390edadab0259b1433e",
+      "visually_inspected": true
+    },
+    {
+      "page": 21,
+      "sha256": "54b631cd65db862e9a4456407f7e9ca4808f7bb1b527dea576a0b5bbce09de70",
+      "visually_inspected": true
+    },
+    {
+      "page": 22,
+      "sha256": "ce28404c0507cae44688e5b5da22c1c2366b119ecf02eee8d08b66f9dc2b6fdb",
+      "visually_inspected": true
+    },
+    {
+      "page": 24,
+      "sha256": "98ced4dafd22f4e73eafb515c38673c85cd3f03782d653033144a04fa492ad4b",
+      "visually_inspected": true
+    },
+    {
+      "page": 26,
+      "sha256": "c8dd13c2e1ea0976ab50639a073664bd3557635c889dca052540ca0d5d8ee5ce",
+      "visually_inspected": true
+    },
+    {
+      "page": 27,
+      "sha256": "9900c6ca5c919283c8eb96fca43059c935ff071db790a9809a815fd20930c39a",
+      "visually_inspected": true
+    },
+    {
+      "page": 28,
+      "sha256": "3ddacc9941ab9dda555b473004e9a59d6ceaf3c8542c025f0c72ff91579b3da2",
+      "visually_inspected": true
+    }
+  ],
+  "items": [
+    {
+      "id": "val2024-hist-z14.2",
+      "organizer_id": "14.2",
+      "max_points": 1,
+      "central": 1,
+      "low": 1,
+      "high": 1,
+      "answer_sha256": "0200946aa0d009b6b1e1fb830338cbd4d0a18607cda052562e66dfa8c3af52e6",
+      "submitted_error": null,
+      "finish_reason": "stop",
+      "word_count_whitespace": 3,
+      "assessment": "Correct identification; selected option and name agree."
+    },
+    {
+      "id": "val2024-hist-z15.1",
+      "organizer_id": "15.1",
+      "max_points": 1,
+      "central": 1,
+      "low": 1,
+      "high": 1,
+      "answer_sha256": "a45033385ae077d92aef81254a2ea0587dbd814366886db262f4423e937c1245",
+      "submitted_error": null,
+      "finish_reason": "stop",
+      "word_count_whitespace": 2,
+      "assessment": "Correct uprising name."
+    },
+    {
+      "id": "val2024-hist-z15.2",
+      "organizer_id": "15.2",
+      "max_points": 1,
+      "central": 1,
+      "low": 1,
+      "high": 1,
+      "answer_sha256": "287b0d1121a937748356d576e975a79b5fd4e788b2a3650307b6689ceba04a9d",
+      "submitted_error": null,
+      "finish_reason": "stop",
+      "word_count_whitespace": 70,
+      "assessment": "Selects A and connects the negative assessment in both sources: narrow soldierly ability versus lack of broader leadership/commitment. This is a valid source-based comparison despite using a different emphasis from the sample."
+    },
+    {
+      "id": "val2024-hist-z16.1",
+      "organizer_id": "16.1",
+      "max_points": 1,
+      "central": 1,
+      "low": 1,
+      "high": 1,
+      "answer_sha256": "799faa398574649ff8c62d1169ce7af07ea497b1b2edd026c21a20bec14f00f7",
+      "submitted_error": null,
+      "finish_reason": "stop",
+      "word_count_whitespace": 101,
+      "assessment": "Correct yes, with the text opposition to European interference and the visible exclusion sign/slogan. Both sources are used."
+    },
+    {
+      "id": "val2024-hist-z16.2",
+      "organizer_id": "16.2",
+      "max_points": 1,
+      "central": 1,
+      "low": 1,
+      "high": 1,
+      "answer_sha256": "ec433a5e9e7be1b45e2226820cf04fe93860b449a6bdc918dd4cea9c735fe094",
+      "submitted_error": null,
+      "finish_reason": "stop",
+      "word_count_whitespace": 3,
+      "assessment": "Correct president and option."
+    },
+    {
+      "id": "val2024-hist-z17.1",
+      "organizer_id": "17.1",
+      "max_points": 1,
+      "central": 1,
+      "low": 1,
+      "high": 1,
+      "answer_sha256": "5c80674240b2102af27c15a3580c2c1983e5f32c08d74619f10000b2bb785418",
+      "submitted_error": null,
+      "finish_reason": "stop",
+      "word_count_whitespace": 52,
+      "assessment": "Correct causal chain from Sedan/French imperial defeat to German unification and the ceremony in the text. Coronation follows the source framing; no terminology penalty."
+    },
+    {
+      "id": "val2024-hist-z17.2",
+      "organizer_id": "17.2",
+      "max_points": 1,
+      "central": 1,
+      "low": 1,
+      "high": 1,
+      "answer_sha256": "20889d813d31928350fe6a157d6483da3e9b0a88fe498c40ad6f63cc3729171b",
+      "submitted_error": null,
+      "finish_reason": "stop",
+      "word_count_whitespace": 2,
+      "assessment": "Correct dynasty."
+    },
+    {
+      "id": "val2024-hist-z18",
+      "organizer_id": "18",
+      "max_points": 1,
+      "central": 0,
+      "low": 0,
+      "high": 1,
+      "answer_sha256": "eba0966b0d8ad455f19c44b150b230e960e18f093de00963ab42ef6187d89709",
+      "submitted_error": null,
+      "finish_reason": "stop",
+      "word_count_whitespace": 54,
+      "assessment": "Correct side, but the claimed crown is not the depicted identifying headgear. The required two graphic interpretations are not securely established: the army is only described generically. High bound allows a liberal reading of the demonized enemy and opposing soldiers as two sufficient elements; central requires reliable source identification."
+    },
+    {
+      "id": "val2024-hist-z19.1",
+      "organizer_id": "19.1",
+      "max_points": 2,
+      "central": 0,
+      "low": 0,
+      "high": 0,
+      "answer_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "submitted_error": {
+        "type": "length",
+        "message": "Native combined thinking/final cap reached"
+      },
+      "finish_reason": "length",
+      "word_count_whitespace": 0,
+      "assessment": "Submitted final is empty after length failure. No reasoning or partial draft substituted."
+    },
+    {
+      "id": "val2024-hist-z19.2",
+      "organizer_id": "19.2",
+      "max_points": 1,
+      "central": 0,
+      "low": 0,
+      "high": 0,
+      "answer_sha256": "0ed4cc6b39e85b8ddd6207312f8708c311ac17c36c2fccb5ae2bce7af0ac9dc2",
+      "submitted_error": null,
+      "finish_reason": "stop",
+      "word_count_whitespace": 1,
+      "assessment": "Submitted surname is incorrect for the general associated with Central Lithuania."
+    },
+    {
+      "id": "val2024-hist-z20.1",
+      "organizer_id": "20.1",
+      "max_points": 1,
+      "central": 1,
+      "low": 1,
+      "high": 1,
+      "answer_sha256": "b04955a508ef2bbd9b14f54d5fb3141e32dda851a6c04bed39c5c2f3d8de31fc",
+      "submitted_error": null,
+      "finish_reason": "stop",
+      "word_count_whitespace": 53,
+      "assessment": "Correct source and specific permitted private-market/service activity; explanation links evidence to NEP."
+    },
+    {
+      "id": "val2024-hist-z20.2",
+      "organizer_id": "20.2",
+      "max_points": 2,
+      "central": 2,
+      "low": 2,
+      "high": 2,
+      "answer_sha256": "965900c5f74bb87fae65cc88f8d30d90bd1e90b14f4cd1bd9ef666adb006a063",
+      "submitted_error": null,
+      "finish_reason": "stop",
+      "word_count_whitespace": 6,
+      "assessment": "All three judgments correct."
+    },
+    {
+      "id": "val2024-hist-z21",
+      "organizer_id": "21",
+      "max_points": 1,
+      "central": 1,
+      "low": 1,
+      "high": 1,
+      "answer_sha256": "fff1d56d8b019909f4df21b95879874106e0a26a74d5a632580e27ef9bb8e642",
+      "submitted_error": null,
+      "finish_reason": "stop",
+      "word_count_whitespace": 16,
+      "assessment": "Specific visible swastikas and scale of gathering connected to glorification/unity; satisfies the requested one argument."
+    },
+    {
+      "id": "val2024-hist-z22.1",
+      "organizer_id": "22.1",
+      "max_points": 1,
+      "central": 1,
+      "low": 1,
+      "high": 1,
+      "answer_sha256": "cdee0b8d35b3bac1932af148b387a59753a6e2fdbf7a5f452921c4e292e0f42a",
+      "submitted_error": null,
+      "finish_reason": "stop",
+      "word_count_whitespace": 3,
+      "assessment": "Correct day, month and year."
+    },
+    {
+      "id": "val2024-hist-z22.2",
+      "organizer_id": "22.2",
+      "max_points": 2,
+      "central": 2,
+      "low": 2,
+      "high": 2,
+      "answer_sha256": "2256597a8b1ad1fc888cea23a400cfed5fd02212f263275686ead71132ddee21",
+      "submitted_error": null,
+      "finish_reason": "stop",
+      "word_count_whitespace": 55,
+      "assessment": "Two correct comparisons: beginnings of the Cold War and later restraint/inspiration in Polish domestic politics. Both texts support each comparison."
+    },
+    {
+      "id": "val2024-hist-z23.1",
+      "organizer_id": "23.1",
+      "max_points": 1,
+      "central": 1,
+      "low": 1,
+      "high": 1,
+      "answer_sha256": "658c3a23b04f887b9dbca904932b97e6a60a61c95de1de82809db27c9d46ce5c",
+      "submitted_error": null,
+      "finish_reason": "stop",
+      "word_count_whitespace": 9,
+      "assessment": "Both requested methods identified; terminology is understandable."
+    },
+    {
+      "id": "val2024-hist-z23.2",
+      "organizer_id": "23.2",
+      "max_points": 1,
+      "central": 0,
+      "low": 0,
+      "high": 0,
+      "answer_sha256": "87959580e133f8587469ceb78af8489971be981fb23aee0aa0a54c70769e433a",
+      "submitted_error": null,
+      "finish_reason": "stop",
+      "word_count_whitespace": 34,
+      "assessment": "No is correct, but the explanation explicitly assigns the Senate issue to question2 and42%; the source relation needed to justify that conclusion is wrong. This is a central source-mapping error, not a penalty for irrelevant additional detail."
+    },
+    {
+      "id": "val2024-hist-z24",
+      "organizer_id": "24",
+      "max_points": 1,
+      "central": 1,
+      "low": 1,
+      "high": 1,
+      "answer_sha256": "75bd696adad4f5e0c1ea525e235b5f3e8018e2c7a149e7f8afccb6c49c98818f",
+      "submitted_error": null,
+      "finish_reason": "stop",
+      "word_count_whitespace": 64,
+      "assessment": "Correctly distinguishes Czechoslovakia1968 from Hungary1956 and supports the text identification with Nagy/withdrawal from the Warsaw Pact. The loose opening reference to troops on Hungary too is imprecise, but does not reverse the correct identification of either crisis; no blanket extra-detail cancellation."
+    },
+    {
+      "id": "val2024-hist-z25",
+      "organizer_id": "25",
+      "max_points": 3,
+      "central": 0,
+      "low": 0,
+      "high": 0,
+      "answer_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "submitted_error": {
+        "type": "length",
+        "message": "Native combined thinking/final cap reached"
+      },
+      "finish_reason": "length",
+      "word_count_whitespace": 0,
+      "assessment": "Submitted final is empty after length failure. No reasoning or partial draft substituted."
+    },
+    {
+      "id": "val2024-hist-z26",
+      "organizer_id": "26",
+      "max_points": 15,
+      "central": 8,
+      "low": 7,
+      "high": 8,
+      "answer_sha256": "3f7561add3016ff2dbe830f24bdbb92d5bcfb74148d9bbdf5eb6e8261a678688",
+      "submitted_error": null,
+      "finish_reason": "stop",
+      "word_count_whitespace": 384,
+      "assessment": "One-topic essay: military3 + diplomatic1 + political-system1 = narrative5; central factual deduction0; coherence3. Low7 permits one factual deduction for contested over-attribution, not an automatic deduction for omissions."
+    }
+  ],
+  "essay": {
+    "selected_topic": 3,
+    "body_words": 384,
+    "word_count_method": "str.split and regex nonwhitespace independently agree; all5 paragraphs are essay body; no title, topic label, wrapper or courtesy to remove.",
+    "paragraphs": 5,
+    "official_minimum300_met": true,
+    "requested400_to500_met": false,
+    "one_topic": true,
+    "thesis": "Endorses the primacy of Pilsudski while admitting external factors.",
+    "aspects": [
+      {
+        "aspect": "military",
+        "points": 3,
+        "level": "satisfactory",
+        "evidence_excerpt": "Kluczowym momentem w tym kontekście była wojna polsko-bolszewicka w 1920 roku.",
+        "claims": [
+          "Legion-based military cadres",
+          "leadership and mobilization in1920",
+          "Warsaw victory as protection of sovereignty"
+        ],
+        "argument": "Links military organization to durable independence through an explicit counterfactual. It contains concrete events and causal reasoning, but does not analyze operations or the contribution relative to other actors sufficiently for rich4.1920 defense of independence is relevant, not an off-topic second essay."
+      },
+      {
+        "aspect": "diplomatic",
+        "points": 1,
+        "level": "superficial",
+        "evidence_excerpt": "to właśnie determinacja Piłsudskiego i jego współpracowników pozwoliła na skutecznego lobbingu",
+        "claims": [
+          "international recognition",
+          "balancing Western support and independence",
+          "Versailles Polish demands"
+        ],
+        "argument": "Names Versailles but gives no concrete diplomatic act, appointment, negotiation or mechanism demonstrating the asserted Pilsudski causal role. Broad assertions support only superficial1; no mandatory-event checklist is imposed."
+      },
+      {
+        "aspect": "political_system",
+        "points": 1,
+        "level": "superficial",
+        "evidence_excerpt": "Stworzył on fundamenty państwa, które mimo wewnętrznych sporów, posiadało jasno zdefiniowane ramy organizacyjne i aparat władzy.",
+        "claims": [
+          "authority unified political groups",
+          "transition to administration",
+          "state institutions established"
+        ],
+        "argument": "General state-building claim without a specified institution, constitutional measure or political decision and its operation. This is a substantive attempt but not satisfactory3."
+      }
+    ],
+    "narrative_before_deduction": 5,
+    "established_distinct_factual_errors_central": 0,
+    "factual_deduction_central": 0,
+    "factual_deduction_low": 1,
+    "disputed_claims": [
+      {
+        "span": "Tworząc Legiony Polskie",
+        "classification": "imprecise collective attribution; not unambiguously a sole-founder claim",
+        "source": "https://muzeumpilsudski.pl/jozef-pilsudski-1867-1935/",
+        "correction_context": "Museum distinguishes Galician political initiative/NKN patronage from Pilsudski formation and command of1st Regiment/I Brigade. The submitted participle can describe participation in building the force; central grade does not infer exclusive legal foundation. Literal institutional-founder reading would be one error."
+      },
+      {
+        "span": "determinacja Piłsudskiego i jego współpracowników ... uwzględnienie polskich postulatów w traktacie wersalskim",
+        "classification": "unsupported causal over-attribution; interpretive uncertainty, not an established false dated event",
+        "source": "https://ipn.gov.pl/pl/historia-z-ipn/220497,Jolanta-Mysiakowska-Muszynska-Wojciech-Jerzy-Muszynski-Konferencja-pokojowa-w-Pa.html",
+        "correction_context": "IPN identifies Dmowski and Paderewski as plenipotentiaries and discusses Pilsudski representatives joining negotiations. Omitting the named delegates weakens argument but does not establish that Pilsudski had no indirect role. Low bound allows one deduction if this is read as false assignment of the chief diplomatic achievement."
+      }
+    ],
+    "omissions_not_counted_as_errors": [
+      "No named diplomatic delegate or particular initiative",
+      "No named constitutional act, assembly, election or cabinet",
+      "No comparative weighing of other independence leaders beyond generic acknowledgment"
+    ],
+    "coherence": {
+      "points": 3,
+      "reason": "Introduction announces the three dimensions, each receives a distinct paragraph, and conclusion returns to the same thesis. No contradictory claim, irrelevant branch or substantive logical break identified. Thin factual support lowers aspect scores; it is not automatically a second coherence penalty."
+    },
+    "score": {
+      "central": 8,
+      "low": 7,
+      "high": 8
+    },
+    "adjudication_priority": "Check disputed attribution before changing factual deduction; any1-versus3 aspect disagreement requires independent adjudication per calibration protocol."
+  },
+  "totals": {
+    "central": 24,
+    "low": 23,
+    "high": 25,
+    "max": 39
+  },
+  "source_text_or_official_key_redistributed": false,
+  "no_model_calls_or_git_mutations": true
+}
