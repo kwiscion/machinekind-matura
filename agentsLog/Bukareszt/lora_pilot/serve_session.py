@@ -1,7 +1,8 @@
 """One owned llama-server session with exactly two synthetic calls (text + image) against one GGUF pair.
 
-Foreground only: the server is a child in THIS process group (no setsid), so the outer
-`timeout` TERM/KILL reaches it too. The durable ledger allows at most 4 reservations for
+Foreground only: the server is a Popen child in the operator's process group (no setsid; the operator's
+inner timeouts use --foreground), so the outer `timeout` TERM/KILL reaches it too. SIGTERM to this
+process raises SystemExit so the finally block still cleans up the owned server. The durable ledger allows at most 4 reservations for
 the whole wave, and each call is reserved (fsync) BEFORE it is dispatched. No retries and
 no warmups. Cleanup kills only the server this session started, after checking its PID,
 /proc start ticks and executable. Writes a serving report and, for the control artifact,
@@ -69,6 +70,9 @@ def main():
     a = ap.parse_args()
     if a.report.exists():
         raise SystemExit('refusing overwrite')
+    def _term(*_):
+        raise SystemExit('SIGTERM')  # run finally: identity-checked server cleanup + report
+    signal.signal(signal.SIGTERM, _term)
     ledger = a.run / 'call-ledger.jsonl'
     s = socket.socket()
     try:
@@ -137,7 +141,7 @@ def main():
         crit = {
             'two_calls_http_200': all(c.get('http_status') == 200 for c in report['calls']),
             'nonempty_text': all(isinstance(c.get('text'), str) and c['text'].strip() for c in report['calls']),
-            'finish_reason_stop_or_length': all(c.get('finish_reason') in ('stop', 'length') for c in report['calls']),
+            'finish_reason_stop': all(c.get('finish_reason') == 'stop' for c in report['calls']),
             'completion_tokens_le_512': all((c.get('usage') or {}).get('completion_tokens', 10**9) <= 512 for c in report['calls']),
             'image_tokens_consumed': ((ic.get('usage') or {}).get('prompt_tokens', 0) - (tc.get('usage') or {}).get('prompt_tokens', 0)) >= 64,
             'served_template_is_pinned_hf': report['served_template_is_pinned_hf'],
