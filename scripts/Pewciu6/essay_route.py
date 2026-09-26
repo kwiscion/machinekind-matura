@@ -8,8 +8,14 @@ plus a launch manifest, and `infer.py` executes each stage under the lead's laun
 
 Essays are detected from question structure (essay keyword plus enumerated topics or a
 word-count requirement), never from item ids. Non-essay items are skipped, or copied
-unchanged with --passthrough. The original item text is kept verbatim; only a leading
-generic solver header that asks for concision is removed, and its hash is recorded.
+unchanged with --passthrough. The original item text is kept verbatim; only an explicitly
+recognized leading solver header (an imperative "Rozwiąż … zadanie" addressed to the solver
+that also says "Odpowiadaj … zwięźle/krótko") is removed, and its hash is recorded. Any
+other leading paragraph, including a source that happens to say "krótko", is preserved.
+
+Plan-bearing files (write.input.jsonl) and raw provider output may only be written under a
+git-ignored `private/` run directory; `build` refuses any other --out-dir unless --dry-run.
+The bounded launcher is scripts/Pewciu6/essay_pilot_run.py.
 """
 
 from __future__ import annotations
@@ -19,6 +25,7 @@ import hashlib
 import json
 import os
 import re
+import subprocess
 import sys
 from pathlib import Path
 
@@ -40,6 +47,11 @@ LENGTH_REQ = re.compile(r"(minimum|co najmniej|nie mniej niż)\s+\d{3}\s+(słów
 TOPIC_LINE = re.compile(r"(?m)^\s*(?:Temat\s+(?:nr\s+)?)?(\d{1,2})\.\s+\S")
 NAMED_TOPIC = re.compile(r"(?m)^\s*Temat\s+(?:nr\s+)?\d{1,2}\.")
 CONCISION = re.compile(r"zwięźle|krótko|zwięzł", re.I)
+# A solver header is recognized only when it opens with an imperative to solve the task and
+# instructs the answerer how to answer; a source paragraph never has this shape.
+SOLVER_OPENING = re.compile(r"^\s*Rozwiąż\b[^.\n]*\bzadani", re.I)
+SOLVER_INSTRUCTION = re.compile(r"\bOdpowiadaj\b", re.I)
+PRIVATE_PART = "private"
 
 COMMON_RULES = """\
 To zadanie wymaga rozbudowanego wypracowania, a nie krótkiej odpowiedzi. Spełnij wszystkie wymagania z polecenia poniżej, w tym zakres chronologiczny i wszystkie wskazane w temacie aspekty.
@@ -83,10 +95,15 @@ def template_sha256() -> str:
     return sha256_text("\x00".join(parts))
 
 
+def is_solver_header(paragraph: str) -> bool:
+    return bool(SOLVER_OPENING.search(paragraph) and SOLVER_INSTRUCTION.search(paragraph)
+                and CONCISION.search(paragraph) and not ESSAY_WORD.search(paragraph))
+
+
 def split_header(prompt: str) -> tuple[str, str]:
-    """Split off a leading generic solver paragraph that asks for concision."""
+    """Split off an explicitly recognized leading solver header; keep everything else."""
     head, sep, body = prompt.partition("\n\n")
-    if sep and CONCISION.search(head) and not ESSAY_WORD.search(head) and body.strip():
+    if sep and body.strip() and is_solver_header(head):
         return head, body
     return "", prompt
 
@@ -177,6 +194,44 @@ def rebase_images(images: list, source: Path, target_dir: Path) -> list[str]:
     return out
 
 
+def require_private_dir(path: Path) -> None:
+    """Refuse to write plan-bearing or raw-output files outside a git-ignored private/ dir.
+
+    Inside a git checkout the dir must have a private/ component below the repo root and be
+    git-ignored. Outside one (e.g. a temp dir in tests) a private/ component is required;
+    the macOS system prefix /private (/var -> /private/var) does not count.
+    """
+    absolute = Path(os.path.abspath(path))
+    probe = absolute
+    while not probe.exists():
+        probe = probe.parent
+    try:
+        top = subprocess.run(["git", "-C", str(probe), "rev-parse", "--show-toplevel"],
+                             capture_output=True, text=True, check=False)
+        in_git = top.returncode == 0
+    except OSError:
+        in_git = False
+    if in_git:
+        root = Path(top.stdout.strip()).resolve()
+        resolved = probe.resolve() / absolute.relative_to(probe)
+        try:
+            parts = resolved.relative_to(root).parts
+        except ValueError:
+            parts = ()
+        if PRIVATE_PART not in parts:
+            raise ValueError(f"{path}: plan-bearing/raw outputs must live under a '{PRIVATE_PART}/' dir in the repo")
+        ignored = subprocess.run(["git", "-C", str(root), "check-ignore", "-q", str(resolved / "probe.jsonl")],
+                                 capture_output=True, check=False)
+        if ignored.returncode != 0:
+            raise ValueError(f"{path}: directory is not git-ignored; refusing to write private outputs there")
+        return
+    parts = absolute.parts
+    if parts[:2] == ("/", PRIVATE_PART):
+        parts = parts[2:]
+    if PRIVATE_PART not in parts:
+        raise ValueError(f"{path}: plan-bearing/raw outputs must live under a '{PRIVATE_PART}/' directory")
+
+
 def envelope(stages: dict[str, dict]) -> dict:
     calls = sum(stage["calls"] for stage in stages.values())
     tokens = sum(stage["calls"] * stage["max_output_tokens"] for stage in stages.values())
@@ -258,7 +313,8 @@ def build(args: argparse.Namespace) -> int:
     if args.dry_run:
         print(json.dumps(manifest, ensure_ascii=False, indent=2))
         return 0
-    out_dir.mkdir(parents=True, exist_ok=True)
+    require_private_dir(out_dir)
+    out_dir.mkdir(parents=True, exist_ok=False)
     for mode, stage_rows in records.items():
         stages[mode]["sha256"] = write_jsonl(out_dir / stages[mode]["file"], stage_rows)
     if passthrough:
@@ -292,59 +348,91 @@ def write_configs(base_config: Path, out_dir: Path, stages: dict) -> dict:
 
 
 def launch_commands(out_dir: Path, stages: dict, source: Path) -> list[str]:
-    here = "scripts/Pewciu6/essay_route.py"
+    """The only sanctioned launch path: the bounded orchestrator (one global deadline, no retries)."""
     d = out_dir.as_posix()
-    commands = []
-    if "single" in stages:
-        commands.append(f"python infer.py --config {d}/config.final.json --input {d}/single.input.jsonl "
-                        f"--output {d}/single.output.jsonl --max-calls {stages['single']['calls']}")
-    if "plan" in stages:
-        commands.append(f"python infer.py --config {d}/config.plan.json --input {d}/plan.input.jsonl "
-                        f"--output {d}/plan.output.jsonl --max-calls {stages['plan']['calls']}")
-        commands.append(f"python {here} write-from-plan --manifest {d}/manifest.json --source {source.as_posix()} "
-                        f"--plan-output {d}/plan.output.jsonl")
-        commands.append(f"python infer.py --config {d}/config.final.json --input {d}/write.input.jsonl "
-                        f"--output {d}/write.output.jsonl --max-calls {stages['write']['calls']}")
-    return commands
+    return [f"python scripts/Pewciu6/essay_pilot_run.py --manifest {d}/manifest.json --source {source.as_posix()}"]
 
 
-def write_from_plan(args: argparse.Namespace) -> int:
-    manifest = json.loads(args.manifest.read_text(encoding="utf-8"))
+def validate_plan_rows(rows: list, expected: set[str]) -> dict[str, dict]:
+    """Strictly validate plan-stage infer.py rows; ambiguity is an error, never a silent choice."""
+    plans = {}
+    for number, row in enumerate(rows, 1):
+        if not isinstance(row, dict) or not isinstance(row.get("id"), str):
+            raise ValueError(f"plan output row {number}: not an object with a string id")
+        if row["id"] in plans:
+            raise ValueError(f"plan output row {number}: duplicate plan id {row['id']}")
+        if row["id"] not in expected:
+            raise ValueError(f"plan output row {number}: unexpected plan id {row['id']}")
+        if "raw_response" not in row or "error" not in row:
+            raise ValueError(f"plan output row {number}: completion record lacks raw_response/error")
+        error = row["error"]
+        if error is not None and not (isinstance(error, dict) and error):
+            raise ValueError(f"plan output row {number}: error must be null or a nonempty object")
+        if error is None:
+            if not isinstance(row["raw_response"], dict):
+                raise ValueError(f"plan output row {number}: completed record has no provider response object")
+            if not final_text(row["raw_response"]).strip():
+                raise ValueError(f"plan output row {number}: completed record (error=null) has empty text")
+        plans[row["id"]] = row
+    return plans
+
+
+def build_write_rows(manifest: dict, source: Path, plan_rows: list, out_dir: Path) -> tuple[list[dict], dict]:
+    """Return write-stage rows and {item id: fallback reason} for plans that failed or are missing."""
     if manifest.get("prompt_revision") != PROMPT_REVISION or manifest.get("prompt_template_sha256") != template_sha256():
         raise ValueError("Manifest was built by a different prompt revision")
     if "write" not in manifest["stages"]:
         raise ValueError("Manifest has no plan/write stage")
-    if hashlib.sha256(args.source.read_bytes()).hexdigest() != manifest["input_sha256"]:
+    if hashlib.sha256(source.read_bytes()).hexdigest() != manifest["input_sha256"]:
         raise ValueError("Source input does not match manifest input_sha256")
-    out_dir = args.manifest.parent
-    sources = {row["id"]: row for row in read_jsonl(args.source)}
-    plans = {row["id"]: row for row in read_jsonl_any(args.plan_output)}
-    rows, fallbacks = [], []
+    sources = {row["id"]: row for row in read_jsonl(source)}
+    plans = validate_plan_rows(plan_rows, {item["id"] + PLAN_SUFFIX for item in manifest["items"]})
+    rows, fallbacks = [], {}
     for item in manifest["items"]:
         row = sources[item["id"]]
         info = detect_essay(row["prompt"])
         if sha256_text(info["body"]) != item["body_sha256"]:
             raise ValueError(f"{item['id']}: item text changed since build")
         plan_row = plans.get(item["id"] + PLAN_SUFFIX)
-        plan = final_text(plan_row.get("raw_response")) if plan_row and not plan_row.get("error") else ""
-        if plan.strip():
-            prompt = write_prompt(info, item["topic"], plan)
+        if plan_row is None:
+            reason = "missing_plan"
+        elif plan_row["error"] is not None:
+            reason = "failed_plan:" + str(plan_row["error"].get("type", "unknown"))
         else:
-            # No retry: a failed/truncated plan falls back to the single-pass prompt in the same call slot.
+            reason = None
+        if reason is None:
+            prompt = write_prompt(info, item["topic"], final_text(plan_row["raw_response"]))
+        else:
+            # No retry: a failed or missing plan falls back to the single-pass prompt in the same call slot.
             prompt = single_prompt(info, item["topic"])
-            fallbacks.append(item["id"])
-        rows.append({"id": item["id"], "prompt": prompt, "images": rebase_images(row.get("images"), args.source, out_dir)})
+            fallbacks[item["id"]] = reason
+        rows.append({"id": item["id"], "prompt": prompt, "images": rebase_images(row.get("images"), source, out_dir)})
+    return rows, fallbacks
+
+
+def write_from_plan(args: argparse.Namespace) -> int:
+    manifest = json.loads(args.manifest.read_text(encoding="utf-8"))
+    out_dir = args.manifest.parent
+    require_private_dir(out_dir)
+    rows, fallbacks = build_write_rows(manifest, args.source, read_jsonl_any(args.plan_output), out_dir)
     digest = write_jsonl(out_dir / manifest["stages"]["write"]["file"], rows)
     record = {"write_sha256": digest, "plan_output_sha256": hashlib.sha256(args.plan_output.read_bytes()).hexdigest(),
-              "plan_fallback_to_single": fallbacks}
+              "plan_fallback_to_single": list(fallbacks), "plan_fallback_reasons": fallbacks}
     with (out_dir / "write.record.json").open("x", encoding="utf-8") as handle:
         handle.write(json.dumps(record, ensure_ascii=False, indent=2) + "\n")
     print(f"Wrote {len(rows)} write-stage record(s); {len(fallbacks)} plan fallback(s)")
     return 0
 
 
-def read_jsonl_any(path: Path) -> list[dict]:
-    return [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
+def read_jsonl_any(path: Path) -> list:
+    rows = []
+    for number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
+        if line.strip():
+            try:
+                rows.append(json.loads(line))
+            except json.JSONDecodeError as exc:
+                raise ValueError(f"{path}:{number}: malformed JSON ({exc.msg})") from exc
+    return rows
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -352,7 +440,8 @@ def main(argv: list[str] | None = None) -> int:
     sub = parser.add_subparsers(dest="command", required=True)
     b = sub.add_parser("build", help="build stage inputs and a launch manifest")
     b.add_argument("--input", required=True, type=Path, help="model-input JSONL {id, prompt, images}")
-    b.add_argument("--out-dir", required=True, type=Path, help="new directory for inputs and manifest")
+    b.add_argument("--out-dir", required=True, type=Path,
+                   help="new git-ignored run dir, e.g. agentsLog/Pewciu6/essay/private/<run_id>")
     b.add_argument("--mode", choices=["single", "plan", "both"], default="both")
     b.add_argument("--topic", type=int, default=1, help="fixed topic number used by every arm (default 1)")
     b.add_argument("--select-topic", action="store_true", help="ablation: let the model choose the topic (OFF by default)")
