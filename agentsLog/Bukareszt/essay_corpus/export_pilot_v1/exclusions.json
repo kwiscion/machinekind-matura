@@ -1,0 +1,30 @@
+{
+  "bukareszt_not_accepted": {
+    "bk117-b1-industrial": "withdrawn: cluster C-industrial claimed by root Sol (British Industrial Revolution); kept as draft/ledger only, never exported",
+    "bk117-b1-vienna": "withdrawn: cluster C-vienna claimed by root Sol (Congress of Vienna); kept as draft/ledger only, never exported",
+    "bk117-b3-communist-t2": "pending_review",
+    "bk117-b3-magna": "pending_review",
+    "bk117-b3-thirty-t2": "pending_review"
+  },
+  "root_rows_rejected": [],
+  "pn781_legacy_and_strict_records": "not included in this essay-only export (24 strict short/chronology + 231 legacy drafts); cluster overlap is reported in leakage_report.json",
+  "pn781_clusters_in_train_groups": [
+    "C-1968",
+    "C-1970",
+    "C-allied-conferences",
+    "C-casimir3",
+    "C-communist-takeover",
+    "C-holocaust",
+    "C-january",
+    "C-katyn",
+    "C-lublin",
+    "C-piast-origins",
+    "C-vienna"
+  ],
+  "eval16_and_eval_factcards": "never training; separate eval16_input.jsonl; cards in eval16_factcards.jsonl",
+  "train_groups_overlapping_pewciu6_dev": [
+    "C-casimir3",
+    "C-january",
+    "C-lublin"
+  ]
+}

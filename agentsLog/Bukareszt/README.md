@@ -158,3 +158,7 @@ Issue https://github.com/kwiscion/machinekind-matura/issues/83, branch `issue-83
 ## #96 selective RAG: query decontamination, evidence router, relevance gate (held for root)
 
 Issue https://github.com/kwiscion/machinekind-matura/issues/96, branch `issue-96-Bukareszt-selective-rag`, started 2026-09-26 18:41 Europe/Warsaw. CPU only, zero model calls. Opt-in `scripts/Bukareszt/selective_rag.py` (`ablate`, `prepare --pairs`); production retrieval default unchanged. Header removal is the main rank win; bibliography-number masking is low-risk; whole-bibliography deletion and disabling chrono boosts lose hits; strict BCE matching is a negative result. Report, ranking tables, fixtures and GPU proposal (≤12 pairs / 24 calls): [issue96/README.md](issue96/README.md).
+
+## #117 grounded essay corpus: canonical groups, eval16, independently reviewed essays + repair pairs
+
+Owned paths: `scripts/Bukareszt/essay_corpus.py` (+ `_build.sh`, `test_essay_corpus.py`) and `agentsLog/Bukareszt/essay_corpus/`. Canonical topic clusters (`clusters.json`) are the split unit, and declared cross-cluster dependencies are merged into components. The eval16 set is original and cluster-disjoint from Greg/root/#4-strict training and from Paweł's #80 DEV. Drafts are written by a generator subagent and verdicts by a separate reviewer subagent. There is one repair round, and `ledger.jsonl` records every status. Rebuild with `bash scripts/Bukareszt/essay_corpus_build.sh`. Details, counts and limits are in [essay_corpus/REPORT.md](essay_corpus/REPORT.md).

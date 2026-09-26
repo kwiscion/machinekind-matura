@@ -1,0 +1,84 @@
+{
+  "essays": "agentsLog/Bukareszt/essay_corpus/drafts/b1_essays.jsonl",
+  "essays_sha256": "6c82e09a5ad02ab42c522f0c47984b6bd74144b3b3e08a04221e50c336189e43",
+  "factcards": [
+    "agentsLog/Bukareszt/essay_corpus/drafts/b1_factcards.jsonl"
+  ],
+  "factcards_sha256": [
+    "419ddc7ee1c4ea0e93290a12ac138158033753406148a31a67a5fea11940ff52"
+  ],
+  "factcards_total": 128,
+  "factcards_failing": {},
+  "results": [
+    {
+      "id": "bk117-b1-piast",
+      "cluster_id": "C-piast-origins",
+      "words": 421,
+      "essay_sha256": "82eec21acf22f1ffd0d28c944b0a2e25ad2219d62cbbcb4b55c49acd6c57527f",
+      "pass": true,
+      "errors": []
+    },
+    {
+      "id": "bk117-b1-charlemagne",
+      "cluster_id": "C-charlemagne",
+      "words": 434,
+      "essay_sha256": "715026d306ca9a9fff350833c8b3884e871d8b5c2891bc14720240c3142293d9",
+      "pass": true,
+      "errors": []
+    },
+    {
+      "id": "bk117-b1-industrial",
+      "cluster_id": "C-industrial",
+      "words": 436,
+      "essay_sha256": "108b6f9903f44f4d87eb5e19d3985cec8431a7ad841f198d63602ee30bf0166d",
+      "pass": false,
+      "errors": [
+        "cluster C-industrial is not a Bukareszt training cluster (reserved_root_sol_train)"
+      ]
+    },
+    {
+      "id": "bk117-b1-thirty",
+      "cluster_id": "C-thirty-years",
+      "words": 428,
+      "essay_sha256": "f31d123499d8925efec3241c77e8279ee420ec3c69e5e4646e35dcd4d74c909b",
+      "pass": true,
+      "errors": []
+    },
+    {
+      "id": "bk117-b1-vienna",
+      "cluster_id": "C-vienna",
+      "words": 418,
+      "essay_sha256": "8526906955d977c6f08a82d25c6fa2c82d3ed8f13ceaea08b5a8079413540b16",
+      "pass": false,
+      "errors": [
+        "cluster C-vienna is not a Bukareszt training cluster (reserved_root_sol_train)"
+      ]
+    },
+    {
+      "id": "bk117-b1-versailles",
+      "cluster_id": "C-versailles",
+      "words": 429,
+      "essay_sha256": "bf3184c0d36923fe682176cbc5b0aaba7adb85df7e842e62237727c05242c0b6",
+      "pass": true,
+      "errors": []
+    },
+    {
+      "id": "bk117-b1-communist",
+      "cluster_id": "C-communist-takeover",
+      "words": 440,
+      "essay_sha256": "a48ca58a51895ef7b6113718bcfee292dba758169ce4e5ace5cade8ea43c3e9b",
+      "pass": true,
+      "errors": []
+    },
+    {
+      "id": "bk117-b1-1970",
+      "cluster_id": "C-1970",
+      "words": 426,
+      "essay_sha256": "d2716a72fc04fc37edaefc0b64ff51252d65ac4c2e1addddb6cdf2733c6a8296",
+      "pass": true,
+      "errors": []
+    }
+  ],
+  "passed": 6,
+  "total": 8
+}

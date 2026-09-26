@@ -1,0 +1,80 @@
+{
+  "essays": "agentsLog/Bukareszt/essay_corpus/drafts/b2_essays.jsonl",
+  "essays_sha256": "8189ce22d8115c37000cce68f1e77eabb355120c1dcff5d4f25eafe58cabc1f8",
+  "factcards": [
+    "agentsLog/Bukareszt/essay_corpus/drafts/b2_factcards.jsonl"
+  ],
+  "factcards_sha256": [
+    "4200fb5a701f0a2024875c1cde77c67c2ef5beaf65a2ee61049de33b03efb1e8"
+  ],
+  "factcards_total": 128,
+  "factcards_failing": {},
+  "results": [
+    {
+      "id": "bk117-b2-hundred",
+      "cluster_id": "C-hundred-years",
+      "words": 445,
+      "essay_sha256": "dfa1e3d02452c9effc263b06ebb8866c4784b50c7e7d666dd8f8f4696a127737",
+      "pass": true,
+      "errors": []
+    },
+    {
+      "id": "bk117-b2-discoveries",
+      "cluster_id": "C-discoveries",
+      "words": 434,
+      "essay_sha256": "912d11a568182e5d96aa7bde7fbcac56159ea5a35e2195dae9678b4330d1b333",
+      "pass": true,
+      "errors": []
+    },
+    {
+      "id": "bk117-b2-cop",
+      "cluster_id": "C-cop",
+      "words": 445,
+      "essay_sha256": "f21e114d543db17662306ed42fbec1daebeb9f9083cd73047c18ef4c0e02d29c",
+      "pass": true,
+      "errors": []
+    },
+    {
+      "id": "bk117-b2-katyn",
+      "cluster_id": "C-katyn",
+      "words": 431,
+      "essay_sha256": "7bdcd12b1fd3d73ce7773279b096fc5b5ff0f15b2bdb632693189ceeba8a9c8b",
+      "pass": true,
+      "errors": []
+    },
+    {
+      "id": "bk117-b2-conferences",
+      "cluster_id": "C-allied-conferences",
+      "words": 428,
+      "essay_sha256": "039c28083acfeb0ff43514bef4db97f14c1115e22816617dbb9d1a9d4c08418f",
+      "pass": true,
+      "errors": []
+    },
+    {
+      "id": "bk117-b2-1968",
+      "cluster_id": "C-1968",
+      "words": 432,
+      "essay_sha256": "e283b484501b31329aa1629f5ac579e0986c156ce60dd288aa4611f4e4ff10dc",
+      "pass": true,
+      "errors": []
+    },
+    {
+      "id": "bk117-b2-ussr",
+      "cluster_id": "C-ussr-collapse",
+      "words": 440,
+      "essay_sha256": "3148541ab8c430a00f3f26e51533777ba53ab61ced6016f829a1abead92becc3",
+      "pass": true,
+      "errors": []
+    },
+    {
+      "id": "bk117-b2-holocaust",
+      "cluster_id": "C-holocaust",
+      "words": 428,
+      "essay_sha256": "e74eac6e365d6e2f3179f03f12cf4f02eba9d6a6cec1602ff00cae0767f986ae",
+      "pass": true,
+      "errors": []
+    }
+  ],
+  "passed": 8,
+  "total": 8
+}
