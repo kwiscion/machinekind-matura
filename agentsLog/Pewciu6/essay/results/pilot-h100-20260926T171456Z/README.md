@@ -12,7 +12,7 @@ Two modes were compared. Deterministic essay_report shows (no grading):
 | dev-essay-002 | plan→write | 336 | yes | yes | 3 | yes | 3 | 8 |
 
 **Observations (n=2, not evidence of a score gain):**
-- Both routes remove the baseline failure modes we measured on VALIDATION: bare Gemma's essay was under 300 words (criterion B = 0), with weak aspects and a preamble. Here all four essays are ≥300 words, with a thesis, three labelled aspects, a conclusion and no preamble.
+- **Correction (2026-09-26, per the lead's [#80 comment 5848302160](https://github.com/kwiscion/machinekind-matura/issues/80#issuecomment-5848302160)):** an earlier version said bare essays are under 300 words. That blanket claim was wrong: the reviewed H100 bare essay had 338 body words and still scored only 4/15 provisionally, because of weak argument and factual errors. All four pilot essays are ≥300 words with a thesis, three labelled aspects, a conclusion and no preamble, but **length and structure do not fix the content failure**. The lead's independent review ([#80 comment 5848377158](https://github.com/kwiscion/machinekind-matura/issues/80#issuecomment-5848377158)) found a major factual error in each pilot essay's political centerpiece and no plan→write gain (17/40 vs 17/40 on a diagnostic /20 rubric).
 - Single-pass gave slightly more dates and named facts than plan→write at the same caps.
 - Both still start with a literal "Temat nr 1" line, which is harmless but could be stripped.
 - Caveat: the usage fields in the write-stage output mirror the single-stage values. That looks like an accounting quirk to check, and it doesn't affect answers or ledger bounds.

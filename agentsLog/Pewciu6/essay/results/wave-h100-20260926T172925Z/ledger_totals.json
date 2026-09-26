@@ -1,0 +1,134 @@
+{
+ "wave_start": "2026-09-26T17:35:20Z",
+ "deadline": "2026-09-26T19:05:20Z",
+ "wave_calls": 107,
+ "prior_calls": 9,
+ "total_calls": 116,
+ "max_calls": 120,
+ "wave_requested_tokens": 158592,
+ "prior_tokens": 7168,
+ "total_requested_tokens": 165760,
+ "max_tokens": 240000,
+ "actual_output_tokens": 77481,
+ "failed": 0,
+ "retries": 0,
+ "mechanism_families": [
+  "A",
+  "B",
+  "C",
+  "D"
+ ],
+ "max_families": 4,
+ "unsent": 0,
+ "batches": {
+  "b1": {
+   "status": "complete",
+   "stop_reason": null,
+   "attempted": 56,
+   "failed": [],
+   "unsent": [],
+   "families": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "items": [
+    "dev-essay-001",
+    "dev-essay-002",
+    "dev-essay-003",
+    "dev-essay-004",
+    "dev-essay-005",
+    "dev-essay-006",
+    "dev-essay-007",
+    "dev-essay-008"
+   ],
+   "topic": 1,
+   "source_sha256": "e441074e7d6918184b21244ed5dd92b9babfb5d8c6be3418587adcd022c96a6d",
+   "template_sha256": "be745ac44b750789e7ae77adce58c328f921dd27b7de6c19fcff327f71f24903",
+   "template_sha256_grounded": null,
+   "answers_sha256": "ea904dab2c44623edf85e816d1adb870c87195e2e38daf85f8dd78bf607b7a02",
+   "source": "dev_fixtures.jsonl"
+  },
+  "b2-grounded": {
+   "status": "complete",
+   "stop_reason": null,
+   "attempted": 32,
+   "failed": [],
+   "unsent": [],
+   "families": [
+    "B3",
+    "C3"
+   ],
+   "items": [
+    "dev-essay-001",
+    "dev-essay-002",
+    "dev-essay-003",
+    "dev-essay-004",
+    "dev-essay-005",
+    "dev-essay-006",
+    "dev-essay-007",
+    "dev-essay-008"
+   ],
+   "topic": 1,
+   "source_sha256": "617ca111cf54b824343aaa82baf913cac26fafbeb2e3d8280713aa11fff04657",
+   "template_sha256": "be745ac44b750789e7ae77adce58c328f921dd27b7de6c19fcff327f71f24903",
+   "template_sha256_grounded": "29fbabda86051c949e58d0daec96d73cdd38a6b65d9aa558c0bd674b78a956d9",
+   "answers_sha256": "82210f9e14c37d993bdd35b3fd224f05182551992f0a89b48242b072e3388bd4",
+   "source": "dev_fixtures.jsonl"
+  },
+  "b3-replication": {
+   "status": "complete",
+   "stop_reason": null,
+   "attempted": 12,
+   "failed": [],
+   "unsent": [],
+   "families": [
+    "A",
+    "C3"
+   ],
+   "items": [
+    "dev-essay-009",
+    "dev-essay-010",
+    "dev-essay-011",
+    "dev-essay-012"
+   ],
+   "topic": 1,
+   "source_sha256": "617ca111cf54b824343aaa82baf913cac26fafbeb2e3d8280713aa11fff04657",
+   "template_sha256": "be745ac44b750789e7ae77adce58c328f921dd27b7de6c19fcff327f71f24903",
+   "template_sha256_grounded": "29fbabda86051c949e58d0daec96d73cdd38a6b65d9aa558c0bd674b78a956d9",
+   "answers_sha256": "c62937a955829f22ca61822109cdf32851e02a2167508e52c5cc87372a76d339",
+   "source": "dev_fixtures.jsonl"
+  },
+  "v1-valcheck": {
+   "status": "complete",
+   "stop_reason": null,
+   "attempted": 7,
+   "failed": [],
+   "unsent": [],
+   "families": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "items": [
+    "val2024-hist-z26"
+   ],
+   "topic": 1,
+   "source_sha256": "f4df6bcb9c1152d42e3650e820dfee1b4d182a5ad065eea41c9c0be85a0003c7",
+   "template_sha256": "be745ac44b750789e7ae77adce58c328f921dd27b7de6c19fcff327f71f24903",
+   "template_sha256_grounded": null,
+   "answers_sha256": "054ac5e3cfbf38611080ab616f6835bfd0a1d1cd9be4e2220c5f3a36175e6f0c",
+   "source": "private validation runner input"
+  }
+ },
+ "published_sha256": {
+  "answers.dev.jsonl": "e0c5f892e5c84231d194ab6ccf2f5ad33f7ae48d515a750a5a02a2a4da5b6088",
+  "answers.valcheck.jsonl": "054ac5e3cfbf38611080ab616f6835bfd0a1d1cd9be4e2220c5f3a36175e6f0c",
+  "retrieval_provenance.jsonl": "2fb731e06604af8f85ef5951fa0205e2dab14cf74bed67a7409052224a9ffad0",
+  "stage_provenance.jsonl": "c51fa3064e83d38b70e002f8822d47ccbdf776b4f9f4ee97073b91676806dd99",
+  "grades.dev.jsonl": "f41510b408ab8c135c4f35c97592356eea0bb0ed37989b12e2e7d410e1c9630c",
+  "grades.valcheck.jsonl": "5b67ec7ceb86ceab4ba8204355e76aa6aeef2f146af49047023fc380a8eedc0d"
+ }
+}

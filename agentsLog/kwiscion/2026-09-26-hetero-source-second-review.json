@@ -1,0 +1,182 @@
+{
+  "review_status": "provisional_independent_sol_second_review",
+  "scope": "heterogeneous source pilot: 2 arms x 6 selected May 2024 items",
+  "known_validation": true,
+  "blinded": false,
+  "method": "Fresh official-rubric scoring of exact final answers and original source images; previous item scores, root preliminary review and observer outputs not used. A/B are working aliases only, not blinding.",
+  "max_points_per_arm": 6,
+  "global_exam_max_points": 60,
+  "global_exam_score": null,
+  "alias_mapping": {
+    "A": "bare",
+    "B": "heterogeneous_final"
+  },
+  "arms": {
+    "A": {
+      "label": "bare",
+      "input_path": "agentsLog/kwiscion/model-answers/hetero-source-bare-six.jsonl",
+      "input_sha256": "91696a8e646c376563615af23b6a5285577f4b2f582348b70f16268ab5341729",
+      "items": [
+        {
+          "id": "val2024-hist-z1",
+          "max_points": 1,
+          "points": 0,
+          "low": 0,
+          "high": 0,
+          "reason": "Wrong relief choice and invented graphic interpretation.",
+          "error_category": "visual_identification",
+          "answer_sha256": "59ca37176c0d6e978e1cf308a48313abbf14cf37c66f1c2beb7426a77bfdb795"
+        },
+        {
+          "id": "val2024-hist-z2",
+          "max_points": 1,
+          "points": 1,
+          "low": 0,
+          "high": 1,
+          "reason": "The required temporal comparison is correct, but the response invents source provenance and a territory and adds an unreliable date range.",
+          "error_category": "unsupported_extra_facts",
+          "answer_sha256": "7c80f5108aca09d948a358d570cf8412b55aa9162c1b4499e7e7ec00a55a8620"
+        },
+        {
+          "id": "val2024-hist-z4",
+          "max_points": 1,
+          "points": 1,
+          "low": 1,
+          "high": 1,
+          "reason": "Both required architectural influences are correctly linked to visible features; a garbled extra adjective is nonessential.",
+          "error_category": "nonfatal_wording",
+          "answer_sha256": "e78e80cd3f9043239eccf72dda3bc32fc59300ba048bffcf7c3e6b09e7d91015"
+        },
+        {
+          "id": "val2024-hist-z5.1",
+          "max_points": 1,
+          "points": 0,
+          "low": 0,
+          "high": 0,
+          "reason": "Correct decision but the mapped movement is misidentified, so the required two-source explanation fails.",
+          "error_category": "map_identification",
+          "answer_sha256": "18a17308bf6346d09d6fe36dea47051222c6b2261f649520f92c2e54be13cdb5"
+        },
+        {
+          "id": "val2024-hist-z14.1",
+          "max_points": 1,
+          "points": 0,
+          "low": 0,
+          "high": 0,
+          "reason": "Correct decision but the map is attributed to the wrong conflict with invented place names.",
+          "error_category": "map_identification",
+          "answer_sha256": "11cf588915a953658acd13f7a9ac8c60cc7c649e7de5244049c58cc3db4c5d22"
+        },
+        {
+          "id": "val2024-hist-z15.2",
+          "max_points": 1,
+          "points": 1,
+          "low": 0,
+          "high": 1,
+          "reason": "Correct selected version and shared critical assessment; quoted wording is transferred between sources and an added consequence overstates the evidence.",
+          "error_category": "source_attribution_error",
+          "answer_sha256": "a6d81dd0dcc2d26a1a653894cd35835664de3db13d50598ccf9b07a32721977a"
+        }
+      ],
+      "max_points": 6,
+      "total": 3,
+      "low": 1,
+      "high": 3,
+      "complete": 6,
+      "errors": 0,
+      "missing": 0
+    },
+    "B": {
+      "label": "heterogeneous_final",
+      "input_path": "agentsLog/kwiscion/model-answers/hetero-source-final-six.jsonl",
+      "input_sha256": "9bd2bc0fa6678524d6efe46fe5ee455f82270e1efefcd4591ec1e00b5c3a791f",
+      "items": [
+        {
+          "id": "val2024-hist-z1",
+          "max_points": 1,
+          "points": 1,
+          "low": 0,
+          "high": 1,
+          "reason": "Correct selected relief and required symbolic explanation, followed by an unsupported identification of the alternative relief.",
+          "error_category": "unsupported_alternative_image_claim",
+          "answer_sha256": "cc7d2ce37800f9b525411d69eb067992811ad29b65bd8d37b84b32cc71d49ceb"
+        },
+        {
+          "id": "val2024-hist-z2",
+          "max_points": 1,
+          "points": 1,
+          "low": 1,
+          "high": 1,
+          "reason": "Correct temporal comparison supported by both sources; the earlier invented provenance and territory are absent.",
+          "error_category": "none",
+          "answer_sha256": "544126a44a23e13f623fef39df3ade3e1ccf6b8e5909602407c84659fa148de5"
+        },
+        {
+          "id": "val2024-hist-z4",
+          "max_points": 1,
+          "points": 1,
+          "low": 1,
+          "high": 1,
+          "reason": "Both required architectural influences are correctly supported by visible features.",
+          "error_category": "none",
+          "answer_sha256": "a7928c0462689a7a932a5025649c36468518ea2800c104c59b8243c0a1616b0c"
+        },
+        {
+          "id": "val2024-hist-z5.1",
+          "max_points": 1,
+          "points": 1,
+          "low": 1,
+          "high": 1,
+          "reason": "Correct decision with a supported distinction between the two historical movements and references to both sources.",
+          "error_category": "none",
+          "answer_sha256": "b22b3729f579710bcc2da1f7cc9f22b516a87367de1d968c3efa9e9fc24627a5"
+        },
+        {
+          "id": "val2024-hist-z14.1",
+          "max_points": 1,
+          "points": 0,
+          "low": 0,
+          "high": 0,
+          "reason": "Wrong decision and invented coalition/source relationship; geographic overlap does not establish the same conflict.",
+          "error_category": "source_relation_chronology",
+          "answer_sha256": "e2337bb9a75f3b14f060c8dfcafab9dcd0c155af34a83d7dda7b6c641e8635f9"
+        },
+        {
+          "id": "val2024-hist-z15.2",
+          "max_points": 1,
+          "points": 1,
+          "low": 0,
+          "high": 1,
+          "reason": "Correct version and critical comparison, but part of the first-source characterization and quotation attribution is unsupported.",
+          "error_category": "source_attribution_error",
+          "answer_sha256": "2b8c6e682be3876aada93ba8ad6ca8c45046b7c2983b4e6b6aaf184e9d5e5543"
+        }
+      ],
+      "max_points": 6,
+      "total": 5,
+      "low": 3,
+      "high": 5,
+      "complete": 6,
+      "errors": 0,
+      "missing": 0
+    }
+  },
+  "uncertainty": "Low/high are examiner judgment bounds, not confidence intervals. Extra false claims are explicitly retained as quality errors even when the required core earns the central point.",
+  "paired_assessment": {
+    "central_gain": 2,
+    "secure_supported_item_gains": [
+      "val2024-hist-z5.1"
+    ],
+    "disputed_item_gains": [
+      "val2024-hist-z1"
+    ],
+    "central_regressions": [],
+    "quality_regression_without_point_change": [
+      "val2024-hist-z14.1"
+    ],
+    "improved_support_without_central_point_change": [
+      "val2024-hist-z2"
+    ],
+    "interpretation": "One selected one-off comparison; no repeatability, causal isolation or full-exam gain established."
+  }
+}

@@ -1,0 +1,4 @@
+{"round": "v1", "grader_file": "grades_part1.json", "item": "val2024-hist-z26", "family": "A", "batch": "v1-valcheck", "topic": 1, "words": 350, "A": 0, "B": 2, "total": 2, "n_factual_errors": 6}
+{"round": "v1", "grader_file": "grades_part1.json", "item": "val2024-hist-z26", "family": "C", "batch": "v1-valcheck", "topic": 1, "words": 416, "A": 1, "B": 2, "total": 3, "n_factual_errors": 4}
+{"round": "v1", "grader_file": "grades_part1.json", "item": "val2024-hist-z26", "family": "B", "batch": "v1-valcheck", "topic": 1, "words": 413, "A": 0, "B": 2, "total": 2, "n_factual_errors": 7}
+{"round": "v1", "grader_file": "grades_part1.json", "item": "val2024-hist-z26", "family": "D", "batch": "v1-valcheck", "topic": 3, "words": 345, "A": 1, "B": 2, "total": 3, "n_factual_errors": 4}

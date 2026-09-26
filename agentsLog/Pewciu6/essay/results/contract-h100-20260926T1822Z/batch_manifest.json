@@ -1,0 +1,52 @@
+{
+ "batch": "k1",
+ "declared": {
+  "family": "K",
+  "family_name": "contract-first",
+  "per_item": {
+   "stages": [
+    "select",
+    "draft",
+    "critic",
+    "rewrite",
+    "repair1",
+    "repair2"
+   ],
+   "caps": {
+    "select": 128,
+    "draft": 2048,
+    "critic": 1024,
+    "rewrite": 2048,
+    "repair1": 2048,
+    "repair2": 2048
+   },
+   "max_calls": 6,
+   "max_tokens": 9344,
+   "min_calls": 2
+  },
+  "items": 1,
+  "worst_case_calls": 6,
+  "worst_case_tokens": 9344,
+  "ledger_calls_left": 4,
+  "ledger_tokens_left": 74240,
+  "seconds_left": 2679.5,
+  "note": "worst case may exceed the ledger: the ledger stops the run (exhausted budget is recorded)",
+  "min_fits": true
+ },
+ "select": "model",
+ "critic": true,
+ "source": "agentsLog/Pewciu6/essay/dev_fixtures.jsonl",
+ "source_sha256": "617ca111cf54b824343aaa82baf913cac26fafbeb2e3d8280713aa11fff04657",
+ "template_sha256": "7f822cef9507dfd682cf117656ee3be9538e7ab910edc8c1248bb1cff1982adb",
+ "caps": {
+  "select": 128,
+  "draft": 2048,
+  "critic": 1024,
+  "rewrite": 2048,
+  "repair": 2048
+ },
+ "status": "complete",
+ "started": 1790446840.550084,
+ "stop_reason": null,
+ "finished": 1790446864.4413671
+}

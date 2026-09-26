@@ -123,6 +123,54 @@ class FinalOffline(unittest.TestCase):
         return {'id':item_id,'error':self.inf.response_error(raw),
                 'usage':{'prompt_tokens':20,'completion_tokens':2},'raw_response':raw}
 
+    def test_prompt_usage_boundaries_follow_verified_context(self):
+        for context, limit in ((4096, 2816), (32768, 31488)):
+            for tokens in (limit, limit+1):
+                with self.subTest(context=context, tokens=tokens):
+                    self.args.output=self.root/f'context-{context}-{tokens}'
+                    out,package,config,cases=self.prepared()
+                    row=self.response('alpha')
+                    row['usage']['prompt_tokens']=tokens
+                    kwargs={} if context==4096 else {'context_length':context}
+                    with patch.object(self.inf,'run_case',side_effect=[row,self.response('B/2'),self.response('last')]) as call:
+                        result=f.request_loop(cases,config,out,3,time.monotonic()+1800,
+                                              lambda:None,lambda:None,self.inf,**kwargs)
+                    accepted=tokens==limit
+                    self.assertEqual(call.call_count,3 if accepted else 1)
+                    self.assertEqual(result['stop_reason']=='complete',accepted)
+                    self.assertEqual(result['unsent_ids'],[] if accepted else ['B/2','last'])
+                    self.assertEqual(f.finalize(out,package)['empty'],0 if accepted else 3)
+
+    def test_invalid_verified_context_sends_nothing(self):
+        out,_,config,cases=self.prepared()
+        for context in (None,True,4095,32768.0,'32768'):
+            with self.subTest(context=context), patch.object(self.inf,'run_case') as call:
+                with self.assertRaisesRegex(RuntimeError,'context_length'):
+                    f.request_loop(cases,config,out,3,time.monotonic()+1800,
+                                   lambda:None,lambda:None,self.inf,context_length=context)
+                call.assert_not_called()
+                self.assertFalse((out/'calls.jsonl').exists())
+
+    def test_large_context_does_not_relax_usage_truncation_or_runtime_checks(self):
+        for kind in ('bool_usage','negative_usage','truncated','context_truncated','runtime'):
+            with self.subTest(kind=kind):
+                self.args.output=self.root/('large-'+kind)
+                out,package,config,cases=self.prepared()
+                row=self.response('alpha')
+                row['usage']['prompt_tokens']=30000
+                if kind=='bool_usage': row['usage']['prompt_tokens']=True
+                if kind=='negative_usage': row['usage']['prompt_tokens']=-1
+                if kind in ('truncated','context_truncated'): row['raw_response'][kind]=True
+                def verify():
+                    if kind=='runtime': raise RuntimeError('Loaded model digest/context mismatch')
+                with patch.object(self.inf,'run_case',return_value=row) as call:
+                    result=f.request_loop(cases,config,out,3,time.monotonic()+1800,
+                                          lambda:None,verify,self.inf,True,context_length=32768)
+                self.assertEqual(call.call_count,1)
+                self.assertNotEqual(result['stop_reason'],'complete')
+                self.assertEqual(result['case_error_ids'],[])
+                self.assertEqual(f.finalize(out,package)['empty'],3)
+
     def test_opt_in_local_failures_keep_later_ids_and_exact_raw(self):
         import copy
         for finish,content in [('length','Unfinished text'),('stop',''),('stop',None),('stop',[{'type':'text','text':' '}])]:

@@ -1,0 +1,60 @@
+{
+  "archive_sha256": "828f4ece818d0fcc6c120f26c9783e7cb97628ced66689671ea23a236b99b3b5",
+  "raw_sha256": "c04241a8238893c1cce9f32732a6a3f4afdd0666b5d53ac7ec79abed94872d2e",
+  "launch_sha256": "550bcdad4c96df1722f049c8d7f9ec9a533c0b3f148742008e6e92c7a14c3575",
+  "status": "complete",
+  "calls": 18,
+  "requested_tokens": 18432,
+  "elapsed_seconds": 140.45184069199968,
+  "utc_end": "2026-09-26T17:59:43.887198+00:00",
+  "stage_outputs": {
+    "bare": {
+      "sha256": "91696a8e646c376563615af23b6a5285577f4b2f582348b70f16268ab5341729",
+      "ids": 6,
+      "complete": 6,
+      "errors": 0,
+      "public_path": "agentsLog\\kwiscion\\model-answers\\hetero-source-bare-six.jsonl"
+    },
+    "observation": {
+      "sha256": "676cd25037860a7993ad92564530de9636f342c5042333f58bb25cc97590d4d1",
+      "ids": 6,
+      "complete": 6,
+      "errors": 0
+    },
+    "final": {
+      "sha256": "9bd2bc0fa6678524d6efe46fe5ee455f82270e1efefcd4591ec1e00b5c3a791f",
+      "ids": 6,
+      "complete": 6,
+      "errors": 0,
+      "public_path": "agentsLog\\kwiscion\\model-answers\\hetero-source-final-six.jsonl"
+    }
+  },
+  "per_stage_usage": {
+    "bare": {
+      "prompt_tokens": 6386,
+      "completion_tokens": 969
+    },
+    "observation": {
+      "prompt_tokens": 11443,
+      "completion_tokens": 2243
+    },
+    "final": {
+      "prompt_tokens": 9292,
+      "completion_tokens": 1082
+    }
+  },
+  "overlap_flags": [],
+  "fallback_ids": [],
+  "ids": [
+    "val2024-hist-z1",
+    "val2024-hist-z2",
+    "val2024-hist-z4",
+    "val2024-hist-z5.1",
+    "val2024-hist-z14.1",
+    "val2024-hist-z15.2"
+  ],
+  "selected_known_validation": true,
+  "panel_input_sha256": "deb318346aca16fbc993601c0b84f2fdc58c63c1585483f534d2d080a577ae7e",
+  "parent_input_sha256": "6615fea2e6fd1d6f9db5b781fa84a883899d1c2fb83a28b914638089e6b015a4",
+  "observer_publication": "Exact private handoff retained pending copied-source review"
+}
