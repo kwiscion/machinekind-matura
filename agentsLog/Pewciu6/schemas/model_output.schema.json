@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "agentsLog/Pewciu6/schemas/model_output.schema.json",
+  "title": "Raw model output record (one JSONL line, append-only)",
+  "type": "object",
+  "required": ["id"],
+  "anyOf": [{"required": ["raw_response"]}, {"required": ["response"]}, {"required": ["error"]}],
+  "properties": {
+    "id": {"type": "string"},
+    "backend": {"type": "string", "description": "e.g. llama.cpp, mlx, vllm, transformers"},
+    "model": {"type": "string", "description": "Repository id or local name"},
+    "model_revision": {"type": "string", "description": "Exact revision/commit or weight file SHA-256"},
+    "raw_response": {"type": ["string", "object"]},
+    "citations": {"type": "array", "items": {"type": "object", "required": ["source_id"], "properties": {"source_id": {"type": "string"}, "locator": {"type": "string"}, "claim": {"type": "string"}}}},
+    "usage": {"type": "object", "additionalProperties": {"type": "number"}},
+    "latency_s": {"type": "number"},
+    "error": {"type": ["string", "null"], "description": "Non-null excludes the item (reason inference_error)."}
+  },
+  "notes": "Inline citations in raw_response use [[source_id#locator]]; the claim is the enclosing sentence."
+}
