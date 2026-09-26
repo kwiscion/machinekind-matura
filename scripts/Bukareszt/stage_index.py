@@ -198,6 +198,33 @@ def owned_dest(root: Path, rel: str) -> Path:
     return p
 
 
+def owned_file(root: Path, path: Path) -> Path:
+    """Check a file this script writes (report, bundle, manifest) before any write. A path inside the root must
+    reach its file through real directories only (no link/junction, nothing resolving outside the root) and the
+    file itself must not be a link or a directory. A path outside the root was chosen explicitly by the caller
+    (`--report`/`--out`/`--manifest`) and is used as given. Nothing is created or modified here."""
+    target = Path(os.path.abspath(path))
+    root_r = root.resolve()
+    rel_parent = None
+    # find the root among the target's ancestors, however it is spelled (links *above* the root are harmless)
+    for anc in (target.parent, *target.parent.parents):
+        if anc.resolve() == root_r:
+            rel_parent = target.parent.relative_to(anc)
+            break
+    if rel_parent is None:
+        if target.parent.resolve().is_relative_to(root_r):
+            raise StageError(f"refusing to write {target}: it reaches {root_r} through a link")
+        return target
+    root = root.resolve()
+    if rel_parent.parts:
+        owned_dest(root, "/".join(rel_parent.parts))
+    if target.is_symlink() or (hasattr(target, "is_junction") and target.is_junction()):
+        raise StageError(f"refusing to write {target}: it is a link (-> {os.readlink(target)})")
+    if target.exists() and not target.is_file():
+        raise StageError(f"refusing to write {target}: it exists and is not a regular file")
+    return target
+
+
 def validate_destinations(root: Path) -> dict:
     """Check every destination `stage` may delete or replace, before any of them is touched."""
     return {rel: str(owned_dest(root, rel)) for rel in OWNED_DESTINATIONS}
@@ -643,11 +670,12 @@ def cmd_bundle(args) -> int:
     proof = run_offline_query(root, q["text"], **RETRIEVAL_CONFIG, retrieval_sha256=retrieval_sha)
     manifest["query_proof"] = {"query_id": q["id"], "query": q["text"], **RETRIEVAL_CONFIG,
                                "results": proof["results"], "recorded_on": platform.node(), "python": proof["python"]}
-    out = Path(args.out) if args.out else root / "private" / BUNDLE_NAME
+    out = owned_file(root, Path(args.out) if args.out else root / "private" / BUNDLE_NAME)
+    manifest_path = owned_file(root, Path(args.manifest) if args.manifest else root / "staging" / "manifest.json")
+    owned_file(root, manifest_path.parent / "ATTRIBUTION.md")
     info = write_bundle(root, manifest, out)
     manifest["bundle"] = {"name": out.name, "sha256": info["sha256"], "bytes": info["bytes"], "default_path": f"agentsLog/Bukareszt/private/{BUNDLE_NAME}"}
-    (root / "staging").mkdir(parents=True, exist_ok=True)
-    manifest_path = Path(args.manifest) if args.manifest else root / "staging" / "manifest.json"
+    manifest_path.parent.mkdir(parents=True, exist_ok=True)
     manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     rows = read_jsonl(root / "sources" / "sources.jsonl")
     (manifest_path.parent / "ATTRIBUTION.md").write_text(attribution_markdown(rows, manifest), encoding="utf-8")
@@ -673,7 +701,11 @@ def cmd_stage(args) -> int:
                     "pinned": {"index_sha256": manifest["index_sha256"], "sources_sha256": manifest["sources_sha256"],
                                "n_sources": manifest["n_sources"], "n_chunks": manifest["n_chunks"], **RETRIEVAL_CONFIG},
                     "phases": {}, "path_used": None, "blocker": None, "argv": sys.argv[1:]}
-    report_path = Path(args.report) if args.report else root / "private" / "stage_report.json"
+    report_path, report_refusal = None, None
+    try:  # validated before anything runs; a rejected path is never written, not even from `finally`
+        report_path = owned_file(root, Path(args.report) if args.report else root / "private" / "stage_report.json")
+    except StageError as exc:
+        report_refusal = str(exc)
     retrieval = None
 
     def phase(name, fn):
@@ -687,6 +719,8 @@ def cmd_stage(args) -> int:
             raise
 
     try:
+        if report_refusal:
+            raise StageError(f"report destination refused: {report_refusal}")
         # hard preconditions, before the retriever is imported and before any bundle/rebuild path runs
         report.update(phase("pinned_inputs", lambda: check_pinned_inputs(root, manifest)))
         report["destinations"] = phase("destinations", lambda: validate_destinations(root))
@@ -738,8 +772,12 @@ def cmd_stage(args) -> int:
         report["total_seconds"] = round(time.perf_counter() - t_start, 3)
         report["finished_at"] = now_iso()
         report["integration_command"] = INTEGRATION_COMMAND
-        report_path.parent.mkdir(parents=True, exist_ok=True)
-        report_path.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        if report_path is not None:
+            report_path.parent.mkdir(parents=True, exist_ok=True)
+            report_path.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        else:
+            report_path = "not written (destination refused); report follows on stdout"
+            print(json.dumps(report, ensure_ascii=False, indent=2))
     print()
     print(f"stage_index: {report['status']}  path={report['path_used']}  index_sha256={manifest['index_sha256']}")
     print(f"  raw {report['disk_bytes']['raw']} B, index {report['disk_bytes']['index']} B, {report['total_seconds']} s; report: {report_path}")

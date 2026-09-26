@@ -450,5 +450,52 @@ class StageIndexTests(unittest.TestCase):
         self.assertIn("eol: unspecified", other, "the entry is scoped to the two hashed files only")
 
 
+    # ---- #54 review of ec19dc2: the default report must not be written through a rejected path ----
+
+    def test_default_report_not_written_through_symlinked_private(self):
+        clone = self.c.fresh_clone()
+        (clone / "raw").mkdir()
+        (clone / "raw" / "keep.txt").write_text("keep", encoding="utf-8")
+        outside = self.c.tmp / f"outside-report-{clone.name}"
+        outside.mkdir()
+        (clone / "private").symlink_to(outside, target_is_directory=True)
+        for extra in ([], ["--bundle", str(self.c.bundle)], ["--rebuild"]):
+            with mock.patch.object(si, "fetch_pinned", side_effect=AssertionError("network")):
+                rc = si.main(["stage", "--allow-unpinned", "--root", str(clone), *extra])  # default --report
+            self.assertEqual(rc, 1, extra)
+            self.assertEqual(list(outside.iterdir()), [], f"something was written outside the root: {extra}")
+        self.assertEqual((clone / "raw" / "keep.txt").read_text(encoding="utf-8"), "keep")
+        self.assertFalse((clone / "index").exists())
+
+    def test_default_report_file_symlink_is_refused(self):
+        clone = self.c.fresh_clone()
+        outside = self.c.tmp / f"outside-report-file-{clone.name}.json"
+        outside.write_text("original", encoding="utf-8")
+        (clone / "private").mkdir()
+        (clone / "private" / "stage_report.json").symlink_to(outside)
+        rc = si.main(["stage", "--allow-unpinned", "--root", str(clone), "--bundle", str(self.c.bundle)])
+        self.assertEqual(rc, 1)
+        self.assertEqual(outside.read_text(encoding="utf-8"), "original")
+        self.assertFalse((clone / "index").exists(), "no staging after a refused report destination")
+
+    def test_default_report_written_inside_root_when_safe(self):
+        clone = self.c.fresh_clone()
+        rc = si.main(["stage", "--allow-unpinned", "--root", str(clone), "--bundle", str(self.c.bundle)])
+        self.assertEqual(rc, 0)
+        self.assertEqual(json.loads((clone / "private" / "stage_report.json").read_text(encoding="utf-8"))["status"], "PASS")
+
+    def test_bundle_default_outputs_refuse_symlinked_private(self):
+        clone = self.c.fresh_clone()
+        si.unpack_bundle(self.c.bundle, clone, self.c.manifest)
+        outside = self.c.tmp / f"outside-bundle-{clone.name}"
+        outside.mkdir()
+        (clone / "private").symlink_to(outside, target_is_directory=True)
+        with self.assertRaisesRegex(si.StageError, "is a link"):
+            si.owned_file(clone, clone / "private" / si.BUNDLE_NAME)
+        self.assertEqual(list(outside.iterdir()), [])
+        # an explicit path outside the root is the caller's choice and is returned unchanged
+        self.assertEqual(si.owned_file(clone, self.c.tmp / "x.json"), (self.c.tmp / "x.json").absolute())
+
+
 if __name__ == "__main__":
     unittest.main()
