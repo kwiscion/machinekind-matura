@@ -1,19 +1,46 @@
 {
-  "train_rows": 30,
-  "essays": 10,
-  "repair_pairs": 20,
-  "component_of_group": {},
+  "train_rows": 54,
+  "essays": 22,
+  "bukareszt_accepted_essays": 10,
+  "repair_pairs": 32,
+  "by_origin": {
+    "bukareszt": 30,
+    "root_seed": 8,
+    "root_sol": 16
+  },
+  "root_rows_rejected": [],
+  "component_of_group": {
+    "C-league": "C-cold-war",
+    "C-vienna": "C-reformation"
+  },
+  "train_groups_overlapping_pewciu6_dev": [
+    "C-casimir3",
+    "C-january",
+    "C-lublin"
+  ],
   "train_groups": [
     "C-1968",
     "C-1970",
+    "C-athens",
+    "C-casimir3",
     "C-charlemagne",
+    "C-church-conflicts",
+    "C-cold-war",
     "C-communist-takeover",
     "C-cop",
     "C-holocaust",
+    "C-industrial",
+    "C-january",
+    "C-league",
+    "C-lublin",
+    "C-meiji",
     "C-piast-origins",
+    "C-reformation",
+    "C-rome-empire",
     "C-thirty-years",
     "C-ussr-collapse",
-    "C-versailles"
+    "C-versailles",
+    "C-vienna"
   ],
   "eval_groups": [
     "C-1939",
@@ -34,7 +61,7 @@
     "C-ww1-independence"
   ],
   "shared_groups": [],
-  "train_sha256": "a90d2d6a027a609d2c9f9d9048249b6563f9e4f9d4a57de48b9872537868cefa",
+  "train_sha256": "70d7f809d42b34a3b675bc33bd2f3dd133eb8e71c5e727d10eb77648584009d0",
   "eval_sha256": "5979ee0b8e0e4f084cf6070f42d31892ee53c1f5485409b4fc5dac1266055a28",
   "format": "chat messages (user/assistant), no system prompt; eval rows are runner input {id,prompt}"
 }

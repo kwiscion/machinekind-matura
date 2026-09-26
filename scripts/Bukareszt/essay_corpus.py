@@ -95,7 +95,7 @@ def components(cfg):
             parent[c] = parent[parent[c]]
             c = parent[c]
         return c
-    for dep in cfg.get("dependencies", []):
+    for dep in cfg.get("dependencies", []) + root_dependency_edges(cfg):
         cs = dep["clusters"]
         for c in cs:
             if c not in parent:
@@ -105,6 +105,58 @@ def components(cfg):
             if a != b:
                 parent[max(a, b)] = min(a, b)
     return {c: find(c) for c in parent}
+
+
+def root_dependency_edges(cfg):
+    """Edges declared by root datasets (additional_source_group_dependencies), mapped to clusters."""
+    ext = cfg.get("external_group_map", {})
+    edges = []
+    for part, d in ROOT_DIRS.items():
+        f = d / "repairs.jsonl"
+        if not f.exists():
+            continue
+        for rec in load_jsonl(f):
+            deps = rec.get("additional_source_group_dependencies") or []
+            if not deps:
+                continue
+            groups = [rec["source_group_id"]] + list(deps)
+            missing = [g for g in groups if g not in ext]
+            if missing:
+                raise SystemExit(f"{f}:{rec['id']} dependency groups not in external_group_map: {missing}")
+            edges.append({"clusters": [ext[g] for g in groups], "reason": f"{part}:{rec['id']}"})
+    return edges
+
+
+def root_accepted_rows(cfg):
+    """Root seed/Sol records whose prompt+response hashes match an independent 'accept' verdict."""
+    ext = cfg.get("external_group_map", {})
+    rows, rejected = [], []
+    for part, d in ROOT_DIRS.items():
+        rv = d / "independent-review.json"
+        if not rv.exists():
+            continue
+        dec = {x["id"]: x for x in json.loads(rv.read_text(encoding="utf-8"))["records"]}
+        for fname in ("essays.jsonl", "repairs.jsonl"):
+            for rec in load_jsonl(d / fname):
+                v = dec.get(rec["id"], {})
+                ok = (v.get("decision") == "accept"
+                      and v.get("response_sha256") == hashlib.sha256(rec["response"].encode()).hexdigest()
+                      and v.get("prompt_sha256") == hashlib.sha256(rec["prompt"].encode()).hexdigest()
+                      and not contract_errors(rec["response"]))
+                if not ok:
+                    rejected.append(rec["id"])
+                    continue
+                rows.append({"id": rec["id"], "task_type": rec["task_type"], "origin": part,
+                             "source_group_id": ext[rec["source_group_id"]],
+                             "root_source_group_id": rec["source_group_id"],
+                             "messages": [{"role": "user", "content": rec["prompt"]},
+                                          {"role": "assistant", "content": rec["response"]}]})
+    return rows, rejected
+
+
+def dev_pewciu6_clusters():
+    rep = CORPUS / "leakage_report.json"
+    return set(json.loads(rep.read_text(encoding="utf-8")).get("dev_pewciu6_clusters", [])) if rep.exists() else set()
 
 
 def partition_family(part):
@@ -301,6 +353,7 @@ def cmd_groups(args):
         "root_folders_present": {k: v.is_dir() for k, v in ROOT_DIRS.items()},
         "root_clusters_found": {k: sorted(v) for k, v in root_found.items()},
         "exam_source_title_hits": exam_hits,
+        "root_dependency_edges": root_dependency_edges(cfg),
         "unmapped": sorted(set(unmapped)), "fails": fails, "warnings": sorted(set(warns)),
         "group_map_sha256": sha256_file(CORPUS / "group_map.jsonl"),
         "clusters_sha256": sha256_file(CORPUS / "clusters.json"),
@@ -596,13 +649,17 @@ def cmd_export(args):
         train.append({"id": p["id"], "task_type": "essay_repair", "source_group_id": p["cluster_id"],
                       "messages": [{"role": "user", "content": p["prompt"]},
                                    {"role": "assistant", "content": p["answer"]}]})
+    for r in train:
+        r["origin"] = "bukareszt"
+    root_rows, root_rejected = root_accepted_rows(cfg)
+    train += root_rows
     ev = load_jsonl(CORPUS / "eval16_topics.jsonl")
     evrows = [{"id": e["id"], "prompt": exam_prompt(e), "source_group_id": e["cluster_id"]} for e in ev]
     comp = components(cfg)
     tg = {r["source_group_id"] for r in train}
     eg = {r["source_group_id"] for r in evrows}
     leak = sorted({comp[g] for g in tg} & {comp[g] for g in eg})
-    bad_part = sorted(g for g in tg if not c2p.get(g, "").startswith("train_bukareszt"))
+    bad_part = sorted(g for g in tg if partition_family(c2p.get(g, "")) != "train")
     if leak or bad_part:
         raise SystemExit(f"leakage: shared={leak} non-train-partition={bad_part}")
     for r in train:
@@ -612,9 +669,13 @@ def cmd_export(args):
     out.mkdir(parents=True, exist_ok=True)
     write_jsonl(out / "train_sft.jsonl", train)
     write_jsonl(out / "eval16_input.jsonl", evrows)
-    man = {"train_rows": len(train), "essays": len(accepted),
+    man = {"train_rows": len(train), "essays": sum(r["task_type"] == "essay" for r in train),
+           "bukareszt_accepted_essays": len(accepted),
            "repair_pairs": sum(r["task_type"] == "essay_repair" for r in train),
+           "by_origin": {o: sum(r["origin"] == o for r in train) for o in sorted({r["origin"] for r in train})},
+           "root_rows_rejected": root_rejected,
            "component_of_group": {g: comp[g] for g in sorted(tg | eg) if comp[g] != g},
+           "train_groups_overlapping_pewciu6_dev": sorted(g for g in tg if g in dev_pewciu6_clusters()),
            "train_groups": sorted(tg), "eval_groups": sorted(eg), "shared_groups": leak,
            "train_sha256": sha256_file(out / "train_sft.jsonl"), "eval_sha256": sha256_file(out / "eval16_input.jsonl"),
            "format": "chat messages (user/assistant), no system prompt; eval rows are runner input {id,prompt}"}

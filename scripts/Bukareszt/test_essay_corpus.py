@@ -59,6 +59,18 @@ class DependencyTest(unittest.TestCase):
         for a, b in (("C-reformation", "C-vienna"), ("C-league", "C-cold-war")):
             self.assertEqual(ec.partition_family(c2p[a]), ec.partition_family(c2p[b]))
 
+    def test_root_declared_dependencies_ingested_and_rows_hash_checked(self):
+        cfg, _, c2p = ec.load_clusters()
+        edges = ec.root_dependency_edges(cfg)
+        if not (ec.ROOT_DIRS["root_sol"] / "repairs.jsonl").exists():
+            self.skipTest("root Sol corpus not present")
+        pairs = {tuple(sorted(e["clusters"])) for e in edges}
+        self.assertIn(("C-reformation", "C-vienna"), pairs)
+        self.assertIn(("C-cold-war", "C-league"), pairs)
+        rows, rejected = ec.root_accepted_rows(cfg)
+        self.assertEqual(rejected, [])
+        self.assertTrue(all(ec.partition_family(c2p[r["source_group_id"]]) == "train" for r in rows))
+
     def test_dependency_across_eval_and_train_fails(self):
         cfg, _, _ = ec.load_clusters()
         orig = ec.load_clusters

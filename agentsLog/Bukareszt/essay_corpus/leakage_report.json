@@ -95,7 +95,7 @@
   },
   "root_folders_present": {
     "root_seed": true,
-    "root_sol": false
+    "root_sol": true
   },
   "root_clusters_found": {
     "root_seed": [
@@ -103,9 +103,35 @@
       "C-casimir3",
       "C-january",
       "C-lublin"
+    ],
+    "root_sol": [
+      "C-church-conflicts",
+      "C-cold-war",
+      "C-industrial",
+      "C-league",
+      "C-meiji",
+      "C-reformation",
+      "C-rome-empire",
+      "C-vienna"
     ]
   },
   "exam_source_title_hits": 0,
+  "root_dependency_edges": [
+    {
+      "clusters": [
+        "C-reformation",
+        "C-vienna"
+      ],
+      "reason": "root_sol:sol-corpus-repair-augsburg"
+    },
+    {
+      "clusters": [
+        "C-league",
+        "C-cold-war"
+      ],
+      "reason": "root_sol:sol-corpus-repair-league"
+    }
+  ],
   "unmapped": [],
   "fails": [],
   "warnings": [
@@ -131,6 +157,6 @@
     "C-teutonic: #4 strict training records overlap Paweł #80 DEV fixtures",
     "C-ww1-independence: eval_bukareszt_16 shares a cluster with #4 legacy DRAFT records (not export-eligible; keep excluded)"
   ],
-  "group_map_sha256": "9d01d23e04a7204f1258c00b97dda1eb525a03ae7aad161e71e3afcd6619d9d4",
-  "clusters_sha256": "a25b888b998f1c15488bd62ab594f8ad746cbdc8fb4aa10f961d619daa95a8ca"
+  "group_map_sha256": "59923aa0733d7b754a21cf10ade6c005f4f9875cf7396d270908a02ebe102142",
+  "clusters_sha256": "17bf0da54812194aa0b84ac02846092eb1cd1b7897ffda550b646d196723e62c"
 }

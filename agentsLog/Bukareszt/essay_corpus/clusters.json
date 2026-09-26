@@ -605,6 +605,14 @@
     "history-solon-reforms": "C-athens",
     "history-casimir-iii-statebuilding": "C-casimir3",
     "history-lublin-union-1569": "C-lublin",
-    "history-january-uprising-peasant-policy": "C-january"
+    "history-january-uprising-peasant-policy": "C-january",
+    "history-augustan-principate": "C-rome-empire",
+    "history-investiture-controversy": "C-church-conflicts",
+    "history-augsburg-confessional-settlement": "C-reformation",
+    "history-vienna-settlement": "C-vienna",
+    "history-industrial-revolution-britain": "C-industrial",
+    "history-meiji-restoration": "C-meiji",
+    "history-league-collective-security": "C-league",
+    "history-marshall-plan": "C-cold-war"
   }
 }
