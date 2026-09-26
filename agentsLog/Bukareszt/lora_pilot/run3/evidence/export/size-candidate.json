@@ -1,0 +1,21 @@
+{
+  "files": [
+    {
+      "path": "/ephemeral/mm-lora/pilot-run3/export/candidate-q4_k_m.gguf",
+      "bytes": 7381382848,
+      "sha256": "d2c7b67ad58e4cfa1ade48adb5a1ab1777cda582f1ff193e8dc9824daf0abaaa"
+    },
+    {
+      "path": "/ephemeral/mm-lora/pilot-run3/export/candidate-projector.gguf",
+      "bytes": 175115200,
+      "sha256": "24322307ec695ddc5d3678872367519eece8efd47aecef1b66608cf70b0a7937"
+    }
+  ],
+  "total_bytes": 7556498048,
+  "limit_bytes": 8800000000,
+  "remaining_bytes": 1243501952,
+  "scope": "ALL_SUBMITTED_MODEL_WEIGHTS_INCLUDING_ADAPTERS_AND_PROJECTORS",
+  "byte_limit_pass": true,
+  "inventory_completeness": "CALLER_MUST_VERIFY_AGAINST_FINAL_SUBMISSION",
+  "runtime_load_adapter_support_and_matching_projector": "NOT_CHECKED"
+}

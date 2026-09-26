@@ -1,0 +1,25 @@
+INFO:hf-to-gguf:Loading model: merged-bf16
+INFO:hf-to-gguf:Model architecture: Gemma4UnifiedForConditionalGeneration
+INFO:hf-to-gguf:gguf: indexing model part 'model.safetensors'
+INFO:gguf.gguf_writer:gguf: This GGUF file is for Little Endian only
+INFO:hf-to-gguf:Exporting model...
+INFO:hf-to-gguf:mm.a.input_projection.weight,          torch.bfloat16 --> BF16, shape = {640, 3840}
+INFO:hf-to-gguf:mm.input_projection.weight,            torch.bfloat16 --> BF16, shape = {3840, 3840}
+INFO:hf-to-gguf:v.patch_embd.bias,                     torch.bfloat16 --> F32, shape = {3840}
+INFO:hf-to-gguf:v.patch_embd.weight,                   torch.bfloat16 --> F32, shape = {6912, 3840}
+INFO:hf-to-gguf:v.patch_norm.1.bias,                   torch.bfloat16 --> F32, shape = {6912}
+INFO:hf-to-gguf:v.patch_norm.1.weight,                 torch.bfloat16 --> F32, shape = {6912}
+INFO:hf-to-gguf:v.patch_norm.2.bias,                   torch.bfloat16 --> F32, shape = {3840}
+INFO:hf-to-gguf:v.patch_norm.2.weight,                 torch.bfloat16 --> F32, shape = {3840}
+INFO:hf-to-gguf:v.position_embd.weight,                torch.bfloat16 --> F32, shape = {3840, 1120, 2}
+INFO:hf-to-gguf:v.patch_norm.3.bias,                   torch.bfloat16 --> F32, shape = {3840}
+INFO:hf-to-gguf:v.patch_norm.3.weight,                 torch.bfloat16 --> F32, shape = {3840}
+INFO:hf-to-gguf:Set meta model
+INFO:hf-to-gguf:Set model parameters
+WARNING:gguf.gguf_writer:Duplicated key name 'clip.vision.projector_type', overwriting it with new value 'gemma4uv' of type STRING
+WARNING:gguf.gguf_writer:Duplicated key name 'clip.audio.projector_type', overwriting it with new value 'gemma4ua' of type STRING
+INFO:hf-to-gguf:Set model quantization version
+INFO:gguf.gguf_writer:Writing the following files:
+INFO:gguf.gguf_writer:/ephemeral/mm-lora/pilot-run3/export/candidate-projector.gguf: n_tensors = 11, total_size = 175.1M
+Writing:   0%|          | 0.00/175M [00:00<?, ?byte/s]Writing:  20%|█▉        | 34.4M/175M [00:00<00:00, 336Mbyte/s]Writing:  80%|████████  | 141M/175M [00:00<00:00, 757Mbyte/s] Writing: 100%|██████████| 175M/175M [00:00<00:00, 535Mbyte/s]
+INFO:hf-to-gguf:Model successfully exported to /ephemeral/mm-lora/pilot-run3/export/candidate-projector.gguf

@@ -1,0 +1,98 @@
+{
+  "artifact": "candidate",
+  "status": "PASS",
+  "model": "/ephemeral/mm-lora/pilot-run3/export/candidate-q4_k_m.gguf",
+  "model_sha256": "d2c7b67ad58e4cfa1ade48adb5a1ab1777cda582f1ff193e8dc9824daf0abaaa",
+  "mmproj": "/ephemeral/mm-lora/pilot-run3/export/candidate-projector.gguf",
+  "mmproj_sha256": "24322307ec695ddc5d3678872367519eece8efd47aecef1b66608cf70b0a7937",
+  "server_binary_sha256": "6910aada1ae6e0db9b79690f29b55c3f4890250931357ea54fcba3b0bcc79bf2",
+  "fixtures_sha256": {
+    "synthetic_text.json": "e470096dfe8473008b7ff90979af02e96886c744830bc4d3245cf424e7abf3ad",
+    "synthetic_image.json": "8de2d462bdeab89548bd9905e6e67f051f5490daf1aeec882d86dabfc1abb493",
+    "synthetic_image.png": "47894703a7931a87a119c7077b141d9d4bacc42481b9fa775f9fe6a530a2216a"
+  },
+  "calls": [
+    {
+      "call_number": 3,
+      "artifact": "candidate",
+      "fixture": "synthetic_text.json",
+      "request_sha256": "db094066fac9ad11f5932e679817f97fc20300ddf7df7a8dfb8ad6643539f296",
+      "http_status": 200,
+      "response_sha256": "d02f6aa9a9b679aa66225c9da9d67994223c5a6dd6d425250f31167bc3a39f18",
+      "seconds": 0.73,
+      "finish_reason": "stop",
+      "text": "Oto trzy krótkie zdania o działaniu zegara słonecznego:\n\nZegar słoneczny wykorzystuje ruch słońca na niebie do odmierzania czasu. Promienie słoneczne padają na specjalnie przygotowaną płytę, tworząc cień. Długość i położenie tego cienia wskazują aktualną godzinę.",
+      "reasoning_present": false,
+      "usage": {
+        "completion_tokens": 74,
+        "prompt_tokens": 32,
+        "total_tokens": 106,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "model_field": "/ephemeral/mm-lora/pilot-run3/export/candidate-q4_k_m.gguf"
+    },
+    {
+      "call_number": 4,
+      "artifact": "candidate",
+      "fixture": "synthetic_image.json",
+      "request_sha256": "f2e502db6d59c174a596b67e44350ddfe73ca076f496ec76dac0ecd546d8b993",
+      "http_status": 200,
+      "response_sha256": "71ee3a61cbea8ff7831402b7c7f1794b8b8f5b030a5940bd5896bb30bd207458",
+      "seconds": 0.42,
+      "finish_reason": "stop",
+      "text": "Na obrazku widać czerwony kwadrat i niebieskie koło.",
+      "reasoning_present": false,
+      "usage": {
+        "completion_tokens": 17,
+        "prompt_tokens": 107,
+        "total_tokens": 124,
+        "prompt_tokens_details": {
+          "cached_tokens": 1
+        }
+      },
+      "model_field": "/ephemeral/mm-lora/pilot-run3/export/candidate-q4_k_m.gguf"
+    }
+  ],
+  "server_cmd": [
+    "/ephemeral/mm-lora/src/llama.cpp/build-cuda/bin/llama-server",
+    "-m",
+    "/ephemeral/mm-lora/pilot-run3/export/candidate-q4_k_m.gguf",
+    "--mmproj",
+    "/ephemeral/mm-lora/pilot-run3/export/candidate-projector.gguf",
+    "--host",
+    "127.0.0.1",
+    "--port",
+    "18117",
+    "-ngl",
+    "999",
+    "-c",
+    "8192",
+    "-np",
+    "1",
+    "--jinja",
+    "--no-webui",
+    "--reasoning",
+    "off",
+    "--no-warmup"
+  ],
+  "server_identity": {
+    "pid": 97942,
+    "start_ticks": "2271406",
+    "exe": "/ephemeral/mm-lora/src/llama.cpp/build-cuda/bin/llama-server"
+  },
+  "load_seconds": 3.1,
+  "served_chat_template_sha256": "6a1015c47ccfcfa67c3b772385bccee357a4d37c3cda37bd202e9047f391ab82",
+  "served_template_is_pinned_hf": false,
+  "served_template_is_pinned_hf_lexer_normalized": true,
+  "criteria": {
+    "two_calls_http_200": true,
+    "nonempty_text": true,
+    "finish_reason_stop": true,
+    "completion_tokens_le_512": true,
+    "image_tokens_consumed": true,
+    "served_template_is_pinned_hf_lexer_normalized": true
+  },
+  "server_exit_code": 0
+}

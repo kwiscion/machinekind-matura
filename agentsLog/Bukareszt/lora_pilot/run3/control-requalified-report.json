@@ -1,0 +1,128 @@
+{
+  "status": "PASS",
+  "scope": "matched_unmodified_export_text_image",
+  "artifact": "control",
+  "record_type": "REQUALIFICATION_OF_RUN2_CONTROL_SERVING (separate record; run2 original remains terminal FAIL)",
+  "model": "/ephemeral/mm-lora/control/base-q4_k_m.gguf",
+  "model_sha256": "a192fac4a5989aa7db9452d91405cd401a7fb03e0af3b36343abeeb146d3282a",
+  "mmproj": "/ephemeral/mm-lora/control/projector.gguf",
+  "mmproj_sha256": "9ff3ded7bf4360353a3c184aeef9fb1a15e54f08abcb1a45a46b3467333fb12e",
+  "server_binary_sha256": "6910aada1ae6e0db9b79690f29b55c3f4890250931357ea54fcba3b0bcc79bf2",
+  "server_cmd": [
+    "/ephemeral/mm-lora/src/llama.cpp/build-cuda/bin/llama-server",
+    "-m",
+    "/ephemeral/mm-lora/control/base-q4_k_m.gguf",
+    "--mmproj",
+    "/ephemeral/mm-lora/control/projector.gguf",
+    "--host",
+    "127.0.0.1",
+    "--port",
+    "18117",
+    "-ngl",
+    "999",
+    "-c",
+    "8192",
+    "-np",
+    "1",
+    "--jinja",
+    "--no-webui",
+    "--reasoning",
+    "off",
+    "--no-warmup"
+  ],
+  "fixtures_sha256": {
+    "synthetic_text.json": "e470096dfe8473008b7ff90979af02e96886c744830bc4d3245cf424e7abf3ad",
+    "synthetic_image.json": "8de2d462bdeab89548bd9905e6e67f051f5490daf1aeec882d86dabfc1abb493",
+    "synthetic_image.png": "47894703a7931a87a119c7077b141d9d4bacc42481b9fa775f9fe6a530a2216a"
+  },
+  "served_chat_template_sha256": "6a1015c47ccfcfa67c3b772385bccee357a4d37c3cda37bd202e9047f391ab82",
+  "pinned_template_raw_sha256": "ae53464bf3be25802b3a5b37def7fd89667067d7577049b3b2d74c4d8de4c6d4",
+  "pinned_template_lexer_normalized_sha256": "6a1015c47ccfcfa67c3b772385bccee357a4d37c3cda37bd202e9047f391ab82",
+  "criteria": {
+    "two_calls_http_200": true,
+    "nonempty_text": true,
+    "finish_reason_stop": true,
+    "completion_tokens_le_512": true,
+    "image_tokens_consumed": true,
+    "served_template_is_pinned_hf_lexer_normalized": true
+  },
+  "changed_interpretation": "Only the template criterion changed. Original: served /props chat_template sha == raw HF chat_template.jinja sha (ae53464b...). Corrected: served sha == lexer-normalized pinned template sha (6a1015c4...). llama.cpp fcb3074f returns common_chat_template::src = jinja lexer_res.source (CRLF/CR->LF, exactly one trailing newline removed). All other criteria, calls, texts and settings are the original run2 values, unchanged.",
+  "calls": [
+    {
+      "call_number": 1,
+      "artifact": "control",
+      "fixture": "synthetic_text.json",
+      "request_sha256": "db094066fac9ad11f5932e679817f97fc20300ddf7df7a8dfb8ad6643539f296",
+      "http_status": 200,
+      "response_sha256": "64a85ce9d7fd54f21ecb326ddc2a81c1521ab942bc87cc5efc209a3140e0e0c6",
+      "seconds": 0.79,
+      "finish_reason": "stop",
+      "text": "Oto trzy krótkie zdania o działaniu zegara słonecznego:\n\nZegar słoneczny wykorzystuje ruch słońca po niebie do odmierzania czasu. Promienie słoneczne padają na specjalnie ukształtowaną płytę, tworząc cień. Długość i położenie tego cienia na skali wskazują aktualną godzinę.",
+      "reasoning_present": false,
+      "usage": {
+        "completion_tokens": 80,
+        "prompt_tokens": 32,
+        "total_tokens": 112,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "model_field": "/ephemeral/mm-lora/control/base-q4_k_m.gguf"
+    },
+    {
+      "call_number": 2,
+      "artifact": "control",
+      "fixture": "synthetic_image.json",
+      "request_sha256": "f2e502db6d59c174a596b67e44350ddfe73ca076f496ec76dac0ecd546d8b993",
+      "http_status": 200,
+      "response_sha256": "1bcfea390f800bb0527c823649c55a88bfaf8020932ef341695e0444623753a9",
+      "seconds": 0.45,
+      "finish_reason": "stop",
+      "text": "Na obrazku widać czerwony kwadrat i niebieskie koło.",
+      "reasoning_present": false,
+      "usage": {
+        "completion_tokens": 17,
+        "prompt_tokens": 107,
+        "total_tokens": 124,
+        "prompt_tokens_details": {
+          "cached_tokens": 1
+        }
+      },
+      "model_field": "/ephemeral/mm-lora/control/base-q4_k_m.gguf"
+    }
+  ],
+  "load_seconds": 3.1,
+  "server_identity": {
+    "pid": 73940,
+    "start_ticks": "1941225",
+    "exe": "/ephemeral/mm-lora/src/llama.cpp/build-cuda/bin/llama-server"
+  },
+  "server_exit_code": 0,
+  "linked_original": {
+    "control_serving_report_sha256": "031df7aa8bb9e31e252fc5b5440bc51c680038e821eed74583a354ced01f0188",
+    "call_ledger_sha256": "e22a99327786a1842c73866df61fbdc1bf1b2643e43517743d4b9b0e8cdd6c5a",
+    "server_log_sha256": "84edba6ed6e89d5dfb3efba106dc632be0bacef7810b78ca53009409a5633e00",
+    "probe_report_sha256": "52a43b2839a166cb4469d68503b8ced038dd0232cc03b4128076cf4ededb3e4a",
+    "run2_dir": "/ephemeral/mm-lora/pilot-run2",
+    "original_status": "FAIL",
+    "original_criteria": {
+      "two_calls_http_200": true,
+      "nonempty_text": true,
+      "finish_reason_stop": true,
+      "completion_tokens_le_512": true,
+      "image_tokens_consumed": true,
+      "served_template_is_pinned_hf": false
+    }
+  },
+  "independent_verification": {
+    "path": "/ephemeral/mm-lora/pilot-run3/requal-evidence/verification.json",
+    "sha256": "eab150c4f897526d24955aef3400720431ad9c68eaa4beda7bbcbd685b1c7854",
+    "overall_as_briefed": null,
+    "root_criteria_verdict": {
+      "verdict": "PASS",
+      "justification": "Judged against root's actual requirement, not the brief's added rival-hash sub-check. (a) The pinned C++ lexer (libllama-common.so sha 655f182f) turns the raw template into 6a1015c4..., and on 5 discriminator inputs it behaves as CRLF/lone CR -> LF plus removal of exactly one final LF when the original ends in LF. It is not rstrip/strip. (b) rstrip/strip give the same hash on this template only because the input cannot tell them apart (0 CR, 1 trailing LF, no leading whitespace); the evidence does not contradict the claim. (c) No other discrepancy: sources match the tarball, the GGUF template equals the raw template, no hacks apply, no override, backups verify, calls/semantics/ledger/exit 0/thinking off all check, and the host probe report equals the backup."
+    },
+    "note": "overall_as_briefed FAILed only a worker-added sub-check (rival rewrites must differ on THIS template); root criterion judged separately"
+  },
+  "model_calls_in_requalification": 0
+}
