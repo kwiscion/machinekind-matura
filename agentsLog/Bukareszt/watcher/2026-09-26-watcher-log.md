@@ -102,3 +102,7 @@ Agent: Greg's issue watcher. Orca worktree `Watch-for-tasks`, instance `8e5e9ed0
 ## 16:55 — #57 delivered
 - Worker finished ~16:47 (about 8 min after dispatch): `scripts/Bukareszt/prepare_bounded_rag.py` + tests, report, synthetic fixture, real-index aggregate; PR #60 merged (CI green, scoped); handoff posted on #57; the PR's "Closes" keyword auto-closed #57, worker reopened it with `needs-review` for root's acceptance and settings decision. Zero model calls.
 - Workers today: #6, #15, #37, #45, #44, #54, #57 all done; none running.
+
+## 17:12 — #57 accepted; #62 claimed and dispatched
+- Root accepted #57 at 17:00 after independent review of PR #60 (18 tests + wrong-pin sentinel + 1,301 budget checks); root's laptop worker now runs the frozen 40-case bare source-v2 RAG attempt (k3/1600, no policy). #57 closed.
+- New #62 "opt-in bounded retrieval for organizer-package runner" (assigned Greg; precondition #57 accepted). Claimed; Orca worktree `issue-62-Bukareszt-optin-rag-runner` dispatched (terminal in private state). Targets: slice ~17:25, PR + handoff ~17:35; PR held for lead integration review (changes accepted submission flow). Zero model calls.
