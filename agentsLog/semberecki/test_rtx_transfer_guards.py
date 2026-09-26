@@ -119,7 +119,9 @@ class MainLoopGuardTests(unittest.TestCase):
     """Run main() with patched boundaries; assert first-declared-failure stops."""
 
     def setUp(self):
-        self.tmp = Path(tempfile.mkdtemp(prefix="rtx-guard-test-", dir=w.REPO / "agentsLog/semberecki/private"))
+        base = w.REPO / "agentsLog/semberecki/private"  # git-ignored; create for clean checkouts
+        base.mkdir(parents=True, exist_ok=True)
+        self.tmp = Path(tempfile.mkdtemp(prefix="rtx-guard-test-", dir=base))
         self.input = self.tmp / "input.jsonl"
         self.output = self.tmp / "out.jsonl"
         self.manifest = self.tmp / "manifest.json"
