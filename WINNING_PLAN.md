@@ -17,7 +17,7 @@
 | Root + Sol | Recovery/context/deadline harness and champion rehearsal [#3](https://github.com/kwiscion/machinekind-matura/issues/3) |
 | Root Sol; Paweł grading standby | Structured prompt/essay experiments [#80](https://github.com/kwiscion/machinekind-matura/issues/80) |
 | Greg | LoRA pilot [#117](https://github.com/kwiscion/machinekind-matura/issues/117) |
-| Łukasz | Source-grounded evaluation notes [#143](https://github.com/kwiscion/machinekind-matura/issues/143) |
+| Łukasz | Structured-reasoning comparison [#151](https://github.com/kwiscion/machinekind-matura/issues/151); evaluation notes complete |
 | Piotrek / Przemek | Standby; Qwen preparation parked while harness takes priority |
 
 ## Final constraints
