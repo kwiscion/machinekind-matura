@@ -1,0 +1,41 @@
+{
+  "issue": 44,
+  "started_at": "2026-09-26T15:58:46+0200",
+  "host": "Mac",
+  "platform": "macOS-15.6-arm64-arm-64bit-Mach-O",
+  "python": "3.14.4",
+  "repo": "<scratch>/after",
+  "root": "<scratch>/after/agentsLog/Bukareszt",
+  "status": "FAIL",
+  "pinned": {
+    "index_sha256": "350800b1924b8f0094171fc5d68652da0f9260d03273a51ad6421c1a03e70429",
+    "sources_sha256": "8b77a63afd25317d783a3e511e3f1f99f09b6cec3c740bdf101a0d069aadfeed",
+    "n_sources": 107,
+    "n_chunks": 3481,
+    "mode": "chrono",
+    "k": 5,
+    "title_weight": 1.0
+  },
+  "phases": {
+    "pinned_inputs": {
+      "ok": false,
+      "seconds": 0.001,
+      "error": "pinned input identity differs from the manifest; nothing was imported, fetched or rebuilt:\n  retrieval_script_sha256: <scratch>/after/agentsLog/Bukareszt/scripts/retrieval.py expected 5ce9918fcc0151c8e15391781ace98deaf4b786977a69e6e773ccc9d7b0a51a3 actual 8fdc52d8907f44343f7295fb9aafd7e45386192d18e65ffdc09d2449390db252 (CRLF->LF normalized; raw bytes d5e72eb168ceaa85eb0ab185dbf5bf6244232de469073b73b20cb18ee191c182)\n  (the clone's retriever/source manifest is not the pinned one; never run `retrieval.py fetch` here)"
+    }
+  },
+  "path_used": null,
+  "blocker": "pinned input identity differs from the manifest; nothing was imported, fetched or rebuilt:\n  retrieval_script_sha256: <scratch>/after/agentsLog/Bukareszt/scripts/retrieval.py expected 5ce9918fcc0151c8e15391781ace98deaf4b786977a69e6e773ccc9d7b0a51a3 actual 8fdc52d8907f44343f7295fb9aafd7e45386192d18e65ffdc09d2449390db252 (CRLF->LF normalized; raw bytes d5e72eb168ceaa85eb0ab185dbf5bf6244232de469073b73b20cb18ee191c182)\n  (the clone's retriever/source manifest is not the pinned one; never run `retrieval.py fetch` here)",
+  "argv": [
+    "stage",
+    "--rebuild",
+    "--report",
+    "<scratch>/tamper-report.json"
+  ],
+  "disk_bytes": {
+    "raw": 0,
+    "index": 0
+  },
+  "total_seconds": 0.007,
+  "finished_at": "2026-09-26T15:58:46+0200",
+  "integration_command": "python scripts/prepare_rag.py --input <exam-input.jsonl> --output outputs/rag-input.jsonl --trace outputs/rag-trace.jsonl --corpus outputs/rag-corpus.jsonl   # defaults: --mode chrono --k 5, --index agentsLog/Bukareszt/index/bm25_index.json --graph agentsLog/Bukareszt/index/graph.json"
+}

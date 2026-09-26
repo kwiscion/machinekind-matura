@@ -12,6 +12,9 @@ Order of attempts (the report records which one ran):
   3. rebuild from pinned revisions (`--rebuild`, or automatic when no bundle exists): each source is fetched
      from the Wikimedia API, its revision ID and normalized-text SHA-256 must equal `sources/sources.jsonl`;
      any difference is listed per source and the command exits nonzero. Revisions are never refreshed.
+Before any path runs (and before the retriever is imported), the Git-tracked `scripts/retrieval.py` and
+`sources/sources.jsonl` must hash to the manifest; these text inputs are hashed after CRLF -> LF normalization so a
+Windows `core.autocrlf` checkout and a Linux checkout give the same pinned identity. Any mismatch exits 1.
 Then the index SHA-256 must equal the pinned value, the graph content hash must match, and one existing TRAIN
 query is executed with `--mode chrono --k 5 --title-weight 1.0` in a child process whose socket layer is
 disabled (plus `unshare -rn` on Linux when available); its ranking must equal the committed proof.
@@ -82,6 +85,22 @@ def sha256_bytes(b: bytes) -> str:
     return hashlib.sha256(b).hexdigest()
 
 
+def lf_bytes(path: Path) -> bytes:
+    """Bytes of a Git-tracked text file with CRLF -> LF, so Windows (`core.autocrlf=true`) and Linux checkouts agree.
+
+    Policy: only the two-byte sequence CR LF becomes LF. Nothing else changes: a trailing newline is kept or
+    left absent exactly as committed, a lone CR and a UTF-8 BOM are kept (and therefore fail the pin).
+    For an LF file this is the identity, so every pinned hash recorded before this change is unchanged.
+    """
+    return path.read_bytes().replace(b"\r\n", b"\n")
+
+
+def sha256_text_file(path: Path) -> str:
+    """Pinned identity of a Git-tracked text input (sources.jsonl, retrieval.py): SHA-256 of `lf_bytes`.
+    Untracked binary assets (raw/, index/, bundle) keep exact byte hashes via `sha256_file`."""
+    return sha256_bytes(lf_bytes(path))
+
+
 def load_json(path: Path):
     with open(path, encoding="utf-8") as f:
         return json.load(f)
@@ -102,12 +121,29 @@ def graph_content_sha256(graph: dict) -> str:
     return sha256_bytes(json.dumps(payload, ensure_ascii=False, sort_keys=True).encode("utf-8"))
 
 
-def load_retrieval(root: Path):
-    """Import the pinned retrieval module unchanged and point its paths at `root`."""
-    scripts_dir = str(root / "scripts")
-    if scripts_dir not in sys.path:
-        sys.path.insert(0, scripts_dir)
-    import retrieval  # noqa: PLC0415
+def load_retrieval(root: Path, expected_sha256: str):
+    """Import the pinned retrieval module unchanged and point its paths at `root`.
+
+    The file's bytes are read once and their LF-normalized SHA-256 is checked against `expected_sha256` before
+    anything is executed; the module is then compiled from exactly those verified bytes (no second read, no
+    `sys.path` import that could pick up another file or a cached module)."""
+    path = root / "scripts" / "retrieval.py"
+    data = path.read_bytes()
+    got = sha256_bytes(data.replace(b"\r\n", b"\n"))
+    if got != expected_sha256:
+        raise StageError(f"retrieval_script_sha256: {path} expected {expected_sha256} actual {got} "
+                         f"(CRLF->LF normalized; raw bytes {sha256_bytes(data)}); refusing to import it")
+    import importlib.util  # noqa: PLC0415
+
+    spec = importlib.util.spec_from_loader("retrieval", loader=None, origin=str(path))
+    retrieval = importlib.util.module_from_spec(spec)
+    retrieval.__file__ = str(path)
+    sys.modules["retrieval"] = retrieval  # dataclasses and pickling resolve the module by name
+    try:
+        exec(compile(data, str(path), "exec"), retrieval.__dict__)  # noqa: S102 -- verified bytes only
+    except BaseException:
+        sys.modules.pop("retrieval", None)
+        raise
 
     retrieval.ROOT = str(root)
     retrieval.SOURCES_JSONL = str(root / "sources" / "sources.jsonl")
@@ -120,6 +156,78 @@ def load_retrieval(root: Path):
 
 def now_iso() -> str:
     return time.strftime("%Y-%m-%dT%H:%M:%S%z")
+
+
+# --------------------------------------------------------------------------------------
+# owned destinations (checked before any recursive delete/move)
+# --------------------------------------------------------------------------------------
+
+ROOT_MARKERS = ("staging/manifest.json", "sources/sources.jsonl")  # retrieval.py is checked (and reported) by pinned_inputs
+OWNED_DESTINATIONS = ("raw", "index", "private/rebuild-tmp", "private/rebuild-drift")
+
+
+def validate_root(root: Path, require_default: bool = True) -> Path:
+    """The artifact root must be an existing directory that resolves to the workspace's `agentsLog/Bukareszt`
+    (tests may pass another root that carries the same marker files). Nothing is modified."""
+    resolved = root.resolve()
+    if not resolved.is_dir():
+        raise StageError(f"artifact root {root} is not a directory")
+    if require_default and resolved != DEFAULT_ROOT.resolve():
+        raise StageError(f"artifact root {root} resolves to {resolved}, not the workspace artifact root {DEFAULT_ROOT.resolve()}; "
+                         "refusing to replace raw/ or index/ outside it")
+    missing = [m for m in ROOT_MARKERS if not (resolved / m).is_file()]
+    if missing:
+        raise StageError(f"artifact root {resolved} lacks {missing}; refusing to treat it as the retrieval root")
+    return resolved
+
+
+def owned_dest(root: Path, rel: str) -> Path:
+    """Path of an owned destination under the (resolved) root. Every component must be a real directory inside
+    the root: a symlink/junction, a non-directory, or a resolved path outside the root is refused unmodified."""
+    root = root.resolve()
+    p = root
+    for part in rel.split("/"):
+        p = p / part
+        if p.is_symlink() or (hasattr(p, "is_junction") and p.is_junction()):
+            raise StageError(f"refusing to replace {p}: it is a link (-> {os.readlink(p)}), not a directory owned by {root}")
+        if p.exists() and not p.is_dir():
+            raise StageError(f"refusing to replace {p}: it exists and is not a directory")
+    resolved = p.resolve()
+    if resolved.parent != (root / rel).parent.resolve() or not resolved.is_relative_to(root):
+        raise StageError(f"refusing to replace {p}: resolves to {resolved}, outside {root}")
+    return p
+
+
+def owned_file(root: Path, path: Path) -> Path:
+    """Check a file this script writes (report, bundle, manifest) before any write. A path inside the root must
+    reach its file through real directories only (no link/junction, nothing resolving outside the root) and the
+    file itself must not be a link or a directory. A path outside the root was chosen explicitly by the caller
+    (`--report`/`--out`/`--manifest`) and is used as given. Nothing is created or modified here."""
+    target = Path(os.path.abspath(path))
+    root_r = root.resolve()
+    rel_parent = None
+    # find the root among the target's ancestors, however it is spelled (links *above* the root are harmless)
+    for anc in (target.parent, *target.parent.parents):
+        if anc.resolve() == root_r:
+            rel_parent = target.parent.relative_to(anc)
+            break
+    if rel_parent is None:
+        if target.parent.resolve().is_relative_to(root_r):
+            raise StageError(f"refusing to write {target}: it reaches {root_r} through a link")
+        return target
+    root = root.resolve()
+    if rel_parent.parts:
+        owned_dest(root, "/".join(rel_parent.parts))
+    if target.is_symlink() or (hasattr(target, "is_junction") and target.is_junction()):
+        raise StageError(f"refusing to write {target}: it is a link (-> {os.readlink(target)})")
+    if target.exists() and not target.is_file():
+        raise StageError(f"refusing to write {target}: it exists and is not a regular file")
+    return target
+
+
+def validate_destinations(root: Path) -> dict:
+    """Check every destination `stage` may delete or replace, before any of them is touched."""
+    return {rel: str(owned_dest(root, rel)) for rel in OWNED_DESTINATIONS}
 
 
 # --------------------------------------------------------------------------------------
@@ -144,10 +252,11 @@ def verify_staged(root: Path, manifest: dict) -> dict:
     """Hash-check sources.jsonl, raw/, index/ and graph. Raises StageError with the first difference list."""
     sources_path = root / "sources" / "sources.jsonl"
     checks: dict = {}
-    got = sha256_file(sources_path)
-    checks["sources_sha256"] = {"expected": manifest["sources_sha256"], "actual": got}
+    got = sha256_text_file(sources_path)
+    checks["sources_sha256"] = {"expected": manifest["sources_sha256"], "actual": got, "hash": "sha256 of CRLF->LF normalized text"}
     if got != manifest["sources_sha256"]:
-        raise StageError(f"sources.jsonl differs: expected {manifest['sources_sha256']} actual {got}")
+        raise StageError(f"{sources_path}: sources.jsonl differs: expected {manifest['sources_sha256']} actual {got} "
+                         "(SHA-256 of CRLF->LF normalized text)")
     rows = read_jsonl(sources_path)
     if len(rows) != manifest["n_sources"]:
         raise StageError(f"sources.jsonl has {len(rows)} rows, expected {manifest['n_sources']}")
@@ -212,6 +321,13 @@ def attribution_markdown(rows: list[dict], manifest: dict) -> str:
     return "\n".join(lines) + "\n"
 
 
+TEXT_MEMBERS = {"sources.jsonl"}  # Git-tracked text: bundled and hashed as LF-normalized bytes
+
+
+def member_bytes(name: str, path: Path) -> bytes:
+    return lf_bytes(path) if name in TEXT_MEMBERS else path.read_bytes()
+
+
 def bundle_members(root: Path, rows: list[dict]) -> list[tuple[str, Path]]:
     members = [("sources.jsonl", root / "sources" / "sources.jsonl")]
     members += [(r["local_path"], root / r["local_path"]) for r in rows]
@@ -227,7 +343,7 @@ def build_manifest(root: Path, query_proof: dict | None, retrieval_script_sha: s
     return {
         "issue": 44,
         "built_at": now_iso(),
-        "sources_sha256": sha256_file(root / "sources" / "sources.jsonl"),
+        "sources_sha256": sha256_text_file(root / "sources" / "sources.jsonl"),
         "n_sources": len(rows),
         "n_chunks": payload["meta"]["n_chunks"],
         "index_sha256": sha256_file(index_path),
@@ -237,7 +353,8 @@ def build_manifest(root: Path, query_proof: dict | None, retrieval_script_sha: s
         "retrieval_script_sha256": retrieval_script_sha,
         "licenses": sorted({r["license"] for r in rows}),
         "sites": sorted({r["site"] for r in rows}),
-        "files": {name: {"sha256": sha256_file(p), "bytes": p.stat().st_size} for name, p in bundle_members(root, rows)},
+        "files": {name: {"sha256": sha256_bytes(b), "bytes": len(b)}
+                  for name, p in bundle_members(root, rows) for b in (member_bytes(name, p),)},
         "query_proof": query_proof,
     }
 
@@ -263,6 +380,11 @@ def write_bundle(root: Path, manifest: dict, out: Path) -> dict:
                 tar.addfile(ti, io.BytesIO(data))
             for name, p in bundle_members(root, rows):
                 ti = tarfile.TarInfo(f"{BUNDLE_PREFIX}/{name}")
+                if name in TEXT_MEMBERS:
+                    data = member_bytes(name, p)
+                    ti.size, ti.mtime, ti.mode = len(data), 0, 0o644
+                    tar.addfile(ti, io.BytesIO(data))
+                    continue
                 ti.size, ti.mtime, ti.mode = p.stat().st_size, 0, 0o644
                 with open(p, "rb") as f:
                     tar.addfile(ti, f)
@@ -272,6 +394,7 @@ def write_bundle(root: Path, manifest: dict, out: Path) -> dict:
 
 def unpack_bundle(bundle: Path, root: Path, manifest: dict) -> dict:
     """Verify the archive hash, extract to a temp dir, hash every member, then move raw/ and index/ into place."""
+    dests = {sub: owned_dest(root, sub) for sub in ("raw", "index")}  # both checked before anything is removed
     expected = manifest.get("bundle", {}).get("sha256")
     if not expected:
         raise StageError("manifest carries no bundle SHA-256; refusing to unpack an unpinned archive")
@@ -297,11 +420,12 @@ def unpack_bundle(bundle: Path, root: Path, manifest: dict) -> dict:
                 problems.append(f"{name}: expected {info['sha256']} actual {h}")
         if problems:
             raise StageError("bundle members differ from manifest:\n  " + "\n  ".join(problems))
-        got_sources = sha256_file(base / "sources.jsonl")
-        if got_sources != sha256_file(root / "sources" / "sources.jsonl"):
-            raise StageError(f"bundle sources.jsonl {got_sources} differs from the clone's sources.jsonl")
-        for sub in ("raw", "index"):
-            dest = root / sub
+        got_sources = sha256_text_file(base / "sources.jsonl")
+        clone_sources = sha256_text_file(root / "sources" / "sources.jsonl")
+        if got_sources != clone_sources:
+            raise StageError(f"bundle sources.jsonl {got_sources} differs from the clone's {root / 'sources' / 'sources.jsonl'} "
+                             f"{clone_sources} (SHA-256 of CRLF->LF normalized text)")
+        for sub, dest in dests.items():
             if dest.exists():
                 shutil.rmtree(dest)
             shutil.move(str(base / sub), str(dest))
@@ -347,7 +471,7 @@ def fetch_pinned(retrieval, row: dict) -> dict:
 def rebuild_raw(root: Path, rows: list[dict], fetcher, sleep: float = 0.3, log=print) -> list[dict]:
     """Fetch every pinned source. raw/ is replaced only when all sources match; otherwise the fetched text
     is left under private/rebuild-drift/ and the per-source differences are returned."""
-    work = root / "private" / "rebuild-tmp"
+    work, drift_dir, raw_dir = (owned_dest(root, rel) for rel in ("private/rebuild-tmp", "private/rebuild-drift", "raw"))
     if work.exists():
         shutil.rmtree(work)
     (work / "raw").mkdir(parents=True)
@@ -373,14 +497,12 @@ def rebuild_raw(root: Path, rows: list[dict], fetcher, sleep: float = 0.3, log=p
         if sleep:
             time.sleep(sleep)
     if diffs:
-        drift_dir = root / "private" / "rebuild-drift"
         if drift_dir.exists():
             shutil.rmtree(drift_dir)
         shutil.move(str(work / "raw"), str(drift_dir))
         shutil.rmtree(work, ignore_errors=True)
         log(f"fetched text kept for inspection under {drift_dir}; raw/ left untouched")
         return diffs
-    raw_dir = root / "raw"
     if raw_dir.exists():
         shutil.rmtree(raw_dir)
     shutil.move(str(work / "raw"), str(raw_dir))
@@ -434,7 +556,7 @@ def cmd_offline_query(args) -> int:
         except RuntimeError:
             pass
     root = Path(args.root)
-    retrieval = load_retrieval(root)
+    retrieval = load_retrieval(root, args.retrieval_sha256)
     t0 = time.perf_counter()
     idx = retrieval.load_index()
     graph = retrieval.load_graph() if args.mode == "chrono" else None
@@ -452,13 +574,13 @@ def cmd_offline_query(args) -> int:
     return 0
 
 
-def run_offline_query(root: Path, query: str, mode: str, k: int, title_weight: float) -> dict:
+def run_offline_query(root: Path, query: str, mode: str, k: int, title_weight: float, retrieval_sha256: str) -> dict:
     """Run `_offline-query` in a child with proxies stripped and (on Linux) an unshared network namespace."""
     env = {k_: v for k_, v in os.environ.items() if not k_.lower().endswith("_proxy")}
     env["PYTHONDONTWRITEBYTECODE"] = "1"
     env["NO_PROXY"] = "*"
     cmd = [sys.executable, "-I", str(Path(__file__).resolve()), "_offline-query", "--root", str(root), "--query", query,
-           "--mode", mode, "--k", str(k), "--title-weight", str(title_weight)]
+           "--mode", mode, "--k", str(k), "--title-weight", str(title_weight), "--retrieval-sha256", retrieval_sha256]
     guards = ["socket-guard", "proxy-env-stripped"]
     unshare = shutil.which("unshare")
     if unshare and platform.system() == "Linux":
@@ -499,6 +621,30 @@ def pick_train_query(root: Path, query_id: str | None) -> dict:
 # commands
 # --------------------------------------------------------------------------------------
 
+def check_pinned_inputs(root: Path, manifest: dict) -> dict:
+    """Fail closed before anything imports the retriever or touches the network: the clone's Git-tracked
+    retriever and source manifest must equal the pinned identity (LF-normalized text SHA-256). Any mismatch
+    raises StageError naming each file with expected/actual normalized and raw byte hashes."""
+    inputs = {"retrieval_script_sha256": root / "scripts" / "retrieval.py", "sources_sha256": root / "sources" / "sources.jsonl"}
+    out, problems = {}, []
+    for key, path in inputs.items():
+        expected = manifest.get(key)
+        if not path.is_file():
+            out[key] = {"file": str(path), "expected": expected, "actual": None}
+            problems.append(f"  {key}: {path} is missing (expected {expected})")
+            continue
+        actual = sha256_text_file(path)
+        out[key] = {"file": str(path), "expected": expected, "actual": actual, "raw_bytes_sha256": sha256_file(path),
+                    "hash": "sha256 of CRLF->LF normalized text"}
+        if not expected or actual != expected:
+            problems.append(f"  {key}: {path} expected {expected} actual {actual} (CRLF->LF normalized; raw bytes {out[key]['raw_bytes_sha256']})")
+    if problems:
+        raise StageError("pinned input identity differs from the manifest; nothing was imported, fetched or rebuilt:\n"
+                         + "\n".join(problems)
+                         + "\n  (the clone's retriever/source manifest is not the pinned one; never run `retrieval.py fetch` here)")
+    return out
+
+
 def load_manifest(path: Path, allow_unpinned: bool = False) -> dict:
     if not path.exists():
         raise StageError(f"manifest missing: {path} (run `stage_index.py bundle` on the machine that has the verified assets)")
@@ -513,7 +659,7 @@ def load_manifest(path: Path, allow_unpinned: bool = False) -> dict:
 
 def cmd_bundle(args) -> int:
     root = Path(args.root).resolve()
-    retrieval_sha = sha256_file(root / "scripts" / "retrieval.py")
+    retrieval_sha = sha256_text_file(root / "scripts" / "retrieval.py")
     manifest = build_manifest(root, None, retrieval_sha)
     pinned = {"index_sha256": PINNED_INDEX_SHA256, "sources_sha256": PINNED_SOURCES_SHA256, "n_sources": PINNED_N_SOURCES, "n_chunks": PINNED_N_CHUNKS}
     wrong = {k: manifest[k] for k, v in pinned.items() if manifest[k] != v}
@@ -521,14 +667,15 @@ def cmd_bundle(args) -> int:
         raise StageError(f"local assets are not the pinned #44 index: {wrong} != {pinned}")
     verify_staged(root, manifest)
     q = pick_train_query(root, args.query_id)
-    proof = run_offline_query(root, q["text"], **RETRIEVAL_CONFIG)
+    proof = run_offline_query(root, q["text"], **RETRIEVAL_CONFIG, retrieval_sha256=retrieval_sha)
     manifest["query_proof"] = {"query_id": q["id"], "query": q["text"], **RETRIEVAL_CONFIG,
                                "results": proof["results"], "recorded_on": platform.node(), "python": proof["python"]}
-    out = Path(args.out) if args.out else root / "private" / BUNDLE_NAME
+    out = owned_file(root, Path(args.out) if args.out else root / "private" / BUNDLE_NAME)
+    manifest_path = owned_file(root, Path(args.manifest) if args.manifest else root / "staging" / "manifest.json")
+    owned_file(root, manifest_path.parent / "ATTRIBUTION.md")
     info = write_bundle(root, manifest, out)
     manifest["bundle"] = {"name": out.name, "sha256": info["sha256"], "bytes": info["bytes"], "default_path": f"agentsLog/Bukareszt/private/{BUNDLE_NAME}"}
-    (root / "staging").mkdir(parents=True, exist_ok=True)
-    manifest_path = Path(args.manifest) if args.manifest else root / "staging" / "manifest.json"
+    manifest_path.parent.mkdir(parents=True, exist_ok=True)
     manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     rows = read_jsonl(root / "sources" / "sources.jsonl")
     (manifest_path.parent / "ATTRIBUTION.md").write_text(attribution_markdown(rows, manifest), encoding="utf-8")
@@ -540,24 +687,26 @@ def cmd_bundle(args) -> int:
 def cmd_verify(args) -> int:
     root = Path(args.root).resolve()
     manifest = load_manifest(Path(args.manifest) if args.manifest else root / "staging" / "manifest.json")
-    checks = verify_staged(root, manifest)
+    checks = {"pinned_inputs": check_pinned_inputs(root, manifest), **verify_staged(root, manifest)}
     print(json.dumps({"status": "PASS", "checks": checks}, indent=2))
     return 0
 
 
 def cmd_stage(args) -> int:
     t_start = time.perf_counter()
-    root = Path(args.root).resolve()
+    root = validate_root(Path(args.root), require_default=not args.allow_unpinned)
     manifest = load_manifest(Path(args.manifest) if args.manifest else root / "staging" / "manifest.json", args.allow_unpinned)
     report: dict = {"issue": 44, "started_at": now_iso(), "host": platform.node(), "platform": platform.platform(),
                     "python": platform.python_version(), "repo": str(REPO), "root": str(root), "status": "FAIL",
                     "pinned": {"index_sha256": manifest["index_sha256"], "sources_sha256": manifest["sources_sha256"],
                                "n_sources": manifest["n_sources"], "n_chunks": manifest["n_chunks"], **RETRIEVAL_CONFIG},
                     "phases": {}, "path_used": None, "blocker": None, "argv": sys.argv[1:]}
-    report_path = Path(args.report) if args.report else root / "private" / "stage_report.json"
-    retrieval = load_retrieval(root)
-    report["retrieval_script_sha256"] = {"expected": manifest["retrieval_script_sha256"], "actual": sha256_file(root / "scripts" / "retrieval.py")}
-    report["sources_sha256"] = {"expected": manifest["sources_sha256"], "actual": sha256_file(root / "sources" / "sources.jsonl")}
+    report_path, report_refusal = None, None
+    try:  # validated before anything runs; a rejected path is never written, not even from `finally`
+        report_path = owned_file(root, Path(args.report) if args.report else root / "private" / "stage_report.json")
+    except StageError as exc:
+        report_refusal = str(exc)
+    retrieval = None
 
     def phase(name, fn):
         t0 = time.perf_counter()
@@ -570,11 +719,12 @@ def cmd_stage(args) -> int:
             raise
 
     try:
-        # hard preconditions: the clone's pinned inputs must be the pinned ones before any path runs
-        for key in ("retrieval_script_sha256", "sources_sha256"):
-            if report[key]["expected"] != report[key]["actual"]:
-                raise StageError(f"{key} differs from the manifest: expected {report[key]['expected']} actual {report[key]['actual']}"
-                                 " (the clone's retriever/manifest is not the pinned one; never run `retrieval.py fetch` here)")
+        if report_refusal:
+            raise StageError(f"report destination refused: {report_refusal}")
+        # hard preconditions, before the retriever is imported and before any bundle/rebuild path runs
+        report.update(phase("pinned_inputs", lambda: check_pinned_inputs(root, manifest)))
+        report["destinations"] = phase("destinations", lambda: validate_destinations(root))
+        retrieval = load_retrieval(root, manifest["retrieval_script_sha256"])
         staged = False
         if not args.rebuild and not args.force:
             try:
@@ -609,7 +759,8 @@ def cmd_stage(args) -> int:
             report["path_used"] = "rebuild-from-pinned-revisions"
         if not args.no_query:
             proof_spec = manifest["query_proof"]
-            actual = phase("offline_query", lambda: run_offline_query(root, proof_spec["query"], proof_spec["mode"], proof_spec["k"], proof_spec["title_weight"]))
+            actual = phase("offline_query", lambda: run_offline_query(root, proof_spec["query"], proof_spec["mode"], proof_spec["k"],
+                                                                      proof_spec["title_weight"], manifest["retrieval_script_sha256"]))
             phase("compare_query_proof", lambda: compare_query_proof(actual, proof_spec))
         report["status"] = "PASS"
     except StageError as exc:
@@ -621,8 +772,12 @@ def cmd_stage(args) -> int:
         report["total_seconds"] = round(time.perf_counter() - t_start, 3)
         report["finished_at"] = now_iso()
         report["integration_command"] = INTEGRATION_COMMAND
-        report_path.parent.mkdir(parents=True, exist_ok=True)
-        report_path.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        if report_path is not None:
+            report_path.parent.mkdir(parents=True, exist_ok=True)
+            report_path.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        else:
+            report_path = "not written (destination refused); report follows on stdout"
+            print(json.dumps(report, ensure_ascii=False, indent=2))
     print()
     print(f"stage_index: {report['status']}  path={report['path_used']}  index_sha256={manifest['index_sha256']}")
     print(f"  raw {report['disk_bytes']['raw']} B, index {report['disk_bytes']['index']} B, {report['total_seconds']} s; report: {report_path}")
@@ -651,13 +806,15 @@ def main(argv=None) -> int:
             p.add_argument("--no-query", action="store_true", help="skip the offline TRAIN query proof")
             p.add_argument("--sleep", type=float, default=0.3, help="seconds between API requests in rebuild mode")
             p.add_argument("--report", default=None, help="report path (default <root>/private/stage_report.json)")
-            p.add_argument("--allow-unpinned", action="store_true", help="tests only: accept a manifest that is not the #44 index")
+            p.add_argument("--allow-unpinned", action="store_true",
+                           help="tests only: accept a manifest that is not the #44 index and a --root other than agentsLog/Bukareszt")
         if name == "bundle":
             p.add_argument("--out", default=None, help=f"bundle path (default <root>/private/{BUNDLE_NAME})")
             p.add_argument("--query-id", default=None, help="TRAIN query id for the proof (default: first TRAIN row)")
     p = sub.add_parser("_offline-query")
     p.add_argument("--root", required=True); p.add_argument("--query", required=True); p.add_argument("--mode", default="chrono")
-    p.add_argument("--k", type=int, default=5); p.add_argument("--title-weight", type=float, default=1.0); p.set_defaults(fn=cmd_offline_query)
+    p.add_argument("--k", type=int, default=5); p.add_argument("--title-weight", type=float, default=1.0)
+    p.add_argument("--retrieval-sha256", required=True); p.set_defaults(fn=cmd_offline_query)
     args = ap.parse_args(argv)
     try:
         return args.fn(args)

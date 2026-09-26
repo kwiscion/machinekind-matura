@@ -2,6 +2,8 @@
 
 **This is the final handoff index.** Everything below is a rollup of the individual timestamped notes in this directory; read a note for full detail. Short summary: `2026-09-26T0745-final-handoff.md`.
 
+> **Gemma format-arm review (2026-09-26 16:23 Warsaw, issue #11):** the exploratory format-prefix arm (PR #56, `c8a1bacc…`) reviews to **35/60** (28–39), the same as bare Gemma 35 (28–40); automatic 10.0 vs 11.0. Five gains (hedging and recall fixed) and five losses (source/image misreads) cancel out, so the prefix is neutral. The v2 z13 correction scores 1, the same as v1; the composite stays 35. See `2026-09-26T1623-score-gemma-format.md` and `results/review_gemma4-12b-val40-format.json`.
+>
 > **Afternoon update (2026-09-26, issue #11): real model outputs scored and reconciled with the lead's Sol first pass (PR #52).** Consolidated provisional VALIDATION scores: **Gemma 4 12B 35/60** (28–40), **Qwen 3.5 9B 25/60** (16–29); automatic floors 11.0 / 5.0. See `2026-09-26T1551-score-consolidated.md` (supersedes the Qwen-only note `2026-09-26T1540-score-qwen.md`) and `results/review_*.json`. All grades are provisional agent review.
 
 - **Owner:** @Pewciu6 (eval worker, `overnight:eval`).
