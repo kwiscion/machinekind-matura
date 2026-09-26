@@ -1,0 +1,52 @@
+{
+  "report_revision": "essay-report-v2",
+  "min_words": 300,
+  "summary": {
+    "items": 2,
+    "completed": 2,
+    "empty_or_error": 0,
+    "partial_with_error": 0,
+    "underlength": 0,
+    "preamble": 0,
+    "solver_format_leak": 0,
+    "three_aspects": 2,
+    "thesis_present": 2,
+    "conclusion_present": 2,
+    "min_words": 336,
+    "max_words": 360
+  },
+  "items": [
+    {
+      "id": "dev-essay-001",
+      "error": null,
+      "words": 360,
+      "underlength": false,
+      "thesis_present": true,
+      "aspects_labelled": 3,
+      "three_aspects": true,
+      "conclusion_present": true,
+      "distinct_years": 2,
+      "named_terms": 13,
+      "preamble": false,
+      "topic_line": true,
+      "solver_format_leak": false,
+      "completed": true
+    },
+    {
+      "id": "dev-essay-002",
+      "error": null,
+      "words": 336,
+      "underlength": false,
+      "thesis_present": true,
+      "aspects_labelled": 3,
+      "three_aspects": true,
+      "conclusion_present": true,
+      "distinct_years": 3,
+      "named_terms": 8,
+      "preamble": false,
+      "topic_line": true,
+      "solver_format_leak": false,
+      "completed": true
+    }
+  ]
+}
