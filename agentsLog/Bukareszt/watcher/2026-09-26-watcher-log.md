@@ -116,3 +116,7 @@ Agent: Greg's issue watcher. Orca worktree `Watch-for-tasks`, instance `8e5e9ed0
 
 ## 17:43 — #72 claimed and dispatched
 - New #72 "optional explicit temperature for a measured single-pass candidate" (assigned Greg; lead-authorized scope exception for one optional `temperature` field in shared `infer.py`; DO NOT MERGE, root reviews after the active run). Claimed; Orca worktree `issue-72-Bukareszt-explicit-temperature` dispatched (terminal in private state). Root's 17:40 target missed by construction (issue filed 17:27, #62 accepted 17:24); ETA stated on #72: slice ~18:00, PR ~18:15.
+
+## 17:55 — #72 delivered and merged by root
+- Worker opened PR #77 at 17:43 (optional `temperature` in `infer.py`: finite 0–2, forwarded only when supplied, omitted payload byte-identical; pinned Ollama 0.30.7 conversion cited from primary source; experimental non-promoted Gemma temp-0.2 candidate config under owned paths; tests), handoff on #72, `needs-review`, held per instruction. Root's review asked for one narrow fix (bounds check before `isfinite` for huge ints) -> `568ed70`; root merged #77 at 17:52 (`1f25930`). #72 stays open `needs-review` for root's closure.
+- Workers today: #6, #15, #37, #45, #44, #54, #57, #62, #72 all delivered; none running.
