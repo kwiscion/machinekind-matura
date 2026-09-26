@@ -1,0 +1,519 @@
+{
+  "issue": 13,
+  "split": "VALIDATION (May 2024, aggregate only)",
+  "inputs": {
+    "prompts_sha256": "f4df6bcb9c1152d42e3650e820dfee1b4d182a5ad065eea41c9c0be85a0003c7",
+    "index_sha256": "350800b1924b8f0094171fc5d68652da0f9260d03273a51ad6421c1a03e70429",
+    "n_chunks": 3481,
+    "n_sources": 107,
+    "n_items": 40
+  },
+  "params": {
+    "normalization": "NFKC, lowercase, drop answer placeholders, punctuation->space, collapse ws",
+    "min_excerpt_chars": 100,
+    "ngrams": [
+      8,
+      13
+    ],
+    "bm25_k": 5,
+    "bm25_title_weight": 1.0,
+    "flag_c13": 0.2,
+    "flag_lcs_chars": 80,
+    "review_c13": 0.08
+  },
+  "units": {
+    "prompt": 40,
+    "excerpt": 59
+  },
+  "exact_hash_hits": 0,
+  "substring_hits": 0,
+  "flagged_units": {
+    "prompt": 0,
+    "excerpt": 0
+  },
+  "review_units": {
+    "prompt": 0,
+    "excerpt": 6
+  },
+  "distributions": {
+    "prompt.c13_max": {
+      "min": 0.0047,
+      "p50": 0.0105,
+      "p90": 0.0151,
+      "p99": 0.0181,
+      "max": 0.0181,
+      "mean": 0.011
+    },
+    "prompt.c8_max": {
+      "min": 0.014,
+      "p50": 0.0293,
+      "p90": 0.0451,
+      "p99": 0.0519,
+      "max": 0.0519,
+      "mean": 0.0304
+    },
+    "prompt.j13_max": {
+      "min": 0.0033,
+      "p50": 0.0059,
+      "p90": 0.0082,
+      "p99": 0.0105,
+      "max": 0.0105,
+      "mean": 0.0061
+    },
+    "prompt.j8_max": {
+      "min": 0.0092,
+      "p50": 0.0152,
+      "p90": 0.0197,
+      "p99": 0.026,
+      "max": 0.026,
+      "mean": 0.0157
+    },
+    "prompt.c13_corpus": {
+      "min": 0.0661,
+      "p50": 0.115,
+      "p90": 0.1578,
+      "p99": 0.2069,
+      "max": 0.2069,
+      "mean": 0.1199
+    },
+    "prompt.bm25_top_c13_max": {
+      "min": 0.0,
+      "p50": 0.0042,
+      "p90": 0.0105,
+      "p99": 0.0181,
+      "max": 0.0181,
+      "mean": 0.0053
+    },
+    "prompt.lcs_chars": {
+      "min": 20,
+      "p50": 23,
+      "p90": 27,
+      "p99": 29,
+      "max": 29,
+      "mean": 23.575
+    },
+    "excerpt.c13_max": {
+      "min": 0.0,
+      "p50": 0.03,
+      "p90": 0.0686,
+      "p99": 0.1048,
+      "max": 0.1402,
+      "mean": 0.037
+    },
+    "excerpt.c8_max": {
+      "min": 0.0227,
+      "p50": 0.0788,
+      "p90": 0.1364,
+      "p99": 0.2056,
+      "max": 0.2232,
+      "mean": 0.0844
+    },
+    "excerpt.j13_max": {
+      "min": 0.0,
+      "p50": 0.007,
+      "p90": 0.0162,
+      "p99": 0.0182,
+      "max": 0.0319,
+      "mean": 0.0084
+    },
+    "excerpt.j8_max": {
+      "min": 0.0077,
+      "p50": 0.0202,
+      "p90": 0.0312,
+      "p99": 0.042,
+      "max": 0.0458,
+      "mean": 0.0215
+    },
+    "excerpt.c13_corpus": {
+      "min": 0.0,
+      "p50": 0.1333,
+      "p90": 0.2516,
+      "p99": 0.2941,
+      "max": 0.3143,
+      "mean": 0.1453
+    },
+    "excerpt.bm25_top_c13_max": {
+      "min": 0.0,
+      "p50": 0.01,
+      "p90": 0.0308,
+      "p99": 0.0769,
+      "max": 0.0973,
+      "mean": 0.0147
+    },
+    "excerpt.lcs_chars": {
+      "min": 0,
+      "p50": 19,
+      "p90": 25,
+      "p99": 29,
+      "max": 29,
+      "mean": 19.7627
+    }
+  },
+  "histograms": {
+    "prompt.c13_max": [
+      {
+        "bin": "[0.00,0.01)",
+        "count": 18
+      },
+      {
+        "bin": "[0.01,0.02)",
+        "count": 22
+      },
+      {
+        "bin": "[0.02,0.05)",
+        "count": 0
+      },
+      {
+        "bin": "[0.05,0.08)",
+        "count": 0
+      },
+      {
+        "bin": "[0.08,0.10)",
+        "count": 0
+      },
+      {
+        "bin": "[0.10,0.20)",
+        "count": 0
+      },
+      {
+        "bin": "[0.20,0.50)",
+        "count": 0
+      },
+      {
+        "bin": "[0.50,1.00]",
+        "count": 0
+      }
+    ],
+    "prompt.c8_max": [
+      {
+        "bin": "[0.00,0.01)",
+        "count": 0
+      },
+      {
+        "bin": "[0.01,0.02)",
+        "count": 4
+      },
+      {
+        "bin": "[0.02,0.05)",
+        "count": 35
+      },
+      {
+        "bin": "[0.05,0.08)",
+        "count": 1
+      },
+      {
+        "bin": "[0.08,0.10)",
+        "count": 0
+      },
+      {
+        "bin": "[0.10,0.20)",
+        "count": 0
+      },
+      {
+        "bin": "[0.20,0.50)",
+        "count": 0
+      },
+      {
+        "bin": "[0.50,1.00]",
+        "count": 0
+      }
+    ],
+    "prompt.c13_corpus": [
+      {
+        "bin": "[0.00,0.01)",
+        "count": 0
+      },
+      {
+        "bin": "[0.01,0.02)",
+        "count": 0
+      },
+      {
+        "bin": "[0.02,0.05)",
+        "count": 0
+      },
+      {
+        "bin": "[0.05,0.08)",
+        "count": 4
+      },
+      {
+        "bin": "[0.08,0.10)",
+        "count": 4
+      },
+      {
+        "bin": "[0.10,0.20)",
+        "count": 30
+      },
+      {
+        "bin": "[0.20,0.50)",
+        "count": 2
+      },
+      {
+        "bin": "[0.50,1.00]",
+        "count": 0
+      }
+    ],
+    "prompt.bm25_top_c13_max": [
+      {
+        "bin": "[0.00,0.01)",
+        "count": 34
+      },
+      {
+        "bin": "[0.01,0.02)",
+        "count": 6
+      },
+      {
+        "bin": "[0.02,0.05)",
+        "count": 0
+      },
+      {
+        "bin": "[0.05,0.08)",
+        "count": 0
+      },
+      {
+        "bin": "[0.08,0.10)",
+        "count": 0
+      },
+      {
+        "bin": "[0.10,0.20)",
+        "count": 0
+      },
+      {
+        "bin": "[0.20,0.50)",
+        "count": 0
+      },
+      {
+        "bin": "[0.50,1.00]",
+        "count": 0
+      }
+    ],
+    "excerpt.c13_max": [
+      {
+        "bin": "[0.00,0.01)",
+        "count": 3
+      },
+      {
+        "bin": "[0.01,0.02)",
+        "count": 12
+      },
+      {
+        "bin": "[0.02,0.05)",
+        "count": 32
+      },
+      {
+        "bin": "[0.05,0.08)",
+        "count": 6
+      },
+      {
+        "bin": "[0.08,0.10)",
+        "count": 4
+      },
+      {
+        "bin": "[0.10,0.20)",
+        "count": 2
+      },
+      {
+        "bin": "[0.20,0.50)",
+        "count": 0
+      },
+      {
+        "bin": "[0.50,1.00]",
+        "count": 0
+      }
+    ],
+    "excerpt.c8_max": [
+      {
+        "bin": "[0.00,0.01)",
+        "count": 0
+      },
+      {
+        "bin": "[0.01,0.02)",
+        "count": 0
+      },
+      {
+        "bin": "[0.02,0.05)",
+        "count": 17
+      },
+      {
+        "bin": "[0.05,0.08)",
+        "count": 13
+      },
+      {
+        "bin": "[0.08,0.10)",
+        "count": 14
+      },
+      {
+        "bin": "[0.10,0.20)",
+        "count": 13
+      },
+      {
+        "bin": "[0.20,0.50)",
+        "count": 2
+      },
+      {
+        "bin": "[0.50,1.00]",
+        "count": 0
+      }
+    ],
+    "excerpt.c13_corpus": [
+      {
+        "bin": "[0.00,0.01)",
+        "count": 1
+      },
+      {
+        "bin": "[0.01,0.02)",
+        "count": 0
+      },
+      {
+        "bin": "[0.02,0.05)",
+        "count": 4
+      },
+      {
+        "bin": "[0.05,0.08)",
+        "count": 8
+      },
+      {
+        "bin": "[0.08,0.10)",
+        "count": 3
+      },
+      {
+        "bin": "[0.10,0.20)",
+        "count": 28
+      },
+      {
+        "bin": "[0.20,0.50)",
+        "count": 15
+      },
+      {
+        "bin": "[0.50,1.00]",
+        "count": 0
+      }
+    ],
+    "excerpt.bm25_top_c13_max": [
+      {
+        "bin": "[0.00,0.01)",
+        "count": 29
+      },
+      {
+        "bin": "[0.01,0.02)",
+        "count": 15
+      },
+      {
+        "bin": "[0.02,0.05)",
+        "count": 12
+      },
+      {
+        "bin": "[0.05,0.08)",
+        "count": 2
+      },
+      {
+        "bin": "[0.08,0.10)",
+        "count": 1
+      },
+      {
+        "bin": "[0.10,0.20)",
+        "count": 0
+      },
+      {
+        "bin": "[0.20,0.50)",
+        "count": 0
+      },
+      {
+        "bin": "[0.50,1.00]",
+        "count": 0
+      }
+    ]
+  },
+  "flagged_chunks": [
+    {
+      "chunk_id": "plwiki-pkwn#2795",
+      "source_id": "plwiki-pkwn",
+      "section": "Geneza PKWN",
+      "units": 1,
+      "prompt_units": 0,
+      "excerpt_units": 1,
+      "max_c13": 0.1402,
+      "max_j13": 0.0,
+      "max_c8": 0.2232,
+      "max_lcs_chars": 26,
+      "exact_or_substring": false,
+      "in_bm25_top5": false,
+      "band": "review"
+    },
+    {
+      "chunk_id": "plwiki-kazimierz-wielki#0610",
+      "source_id": "plwiki-kazimierz-wielki",
+      "section": "Bilans panowania",
+      "units": 1,
+      "prompt_units": 0,
+      "excerpt_units": 1,
+      "max_c13": 0.1048,
+      "max_j13": 0.0107,
+      "max_c8": 0.1455,
+      "max_lcs_chars": 23,
+      "exact_or_substring": false,
+      "in_bm25_top5": false,
+      "band": "review"
+    },
+    {
+      "chunk_id": "plwiki-mieszko-i#0326",
+      "source_id": "plwiki-mieszko-i",
+      "section": "Organizacja państwa polskiego za Mieszka I",
+      "units": 1,
+      "prompt_units": 0,
+      "excerpt_units": 1,
+      "max_c13": 0.0973,
+      "max_j13": 0.0068,
+      "max_c8": 0.1356,
+      "max_lcs_chars": 23,
+      "exact_or_substring": false,
+      "in_bm25_top5": true,
+      "band": "review"
+    },
+    {
+      "chunk_id": "plwiki-konfederacja-targowicka#1249",
+      "source_id": "plwiki-konfederacja-targowicka",
+      "section": "Wojna polsko-rosyjska 1792 roku",
+      "units": 1,
+      "prompt_units": 0,
+      "excerpt_units": 1,
+      "max_c13": 0.095,
+      "max_j13": 0.0162,
+      "max_c8": 0.1593,
+      "max_lcs_chars": 20,
+      "exact_or_substring": false,
+      "in_bm25_top5": false,
+      "band": "review"
+    },
+    {
+      "chunk_id": "plwiki-unia-lubelska#1045",
+      "source_id": "plwiki-unia-lubelska",
+      "section": "Wstęp",
+      "units": 1,
+      "prompt_units": 0,
+      "excerpt_units": 1,
+      "max_c13": 0.0857,
+      "max_j13": 0.0,
+      "max_c8": 0.1364,
+      "max_lcs_chars": 21,
+      "exact_or_substring": false,
+      "in_bm25_top5": false,
+      "band": "review"
+    },
+    {
+      "chunk_id": "plwiki-boleslaw-krzywousty#0437",
+      "source_id": "plwiki-boleslaw-krzywousty",
+      "section": "Mennictwo w czasach Krzywoustego",
+      "units": 1,
+      "prompt_units": 0,
+      "excerpt_units": 1,
+      "max_c13": 0.0846,
+      "max_j13": 0.0,
+      "max_c8": 0.0,
+      "max_lcs_chars": 29,
+      "exact_or_substring": false,
+      "in_bm25_top5": false,
+      "band": "review"
+    }
+  ],
+  "runtime_s": 2.5
+}
