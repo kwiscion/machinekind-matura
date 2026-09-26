@@ -1,0 +1,143 @@
+{
+  "run_id": "smoke-qwen-essays-20260926",
+  "provisional": true,
+  "grader": "matura-harness-heuristic-v1",
+  "split": "DEV",
+  "model_revisions": [
+    {
+      "backend": "lmstudio-openai-compat",
+      "model": "qwen3.6-35b-a3b-abliterated-heretic-mlx",
+      "model_revision": "local-lmstudio (weights hash not recorded; non-candidate)"
+    }
+  ],
+  "model_manifest": null,
+  "command": "python3 agentsLog/Pewciu6/harness/matura_harness.py score --outputs agentsLog/Pewciu6/smoke/smoke_outputs_qwen_essays.jsonl --keys agentsLog/Pewciu6/fixtures/blind_essay_keys.jsonl --split DEV --run-id smoke-qwen-essays-20260926 --scorecard agentsLog/Pewciu6/results/smoke_qwen_essays_scorecard.json --items-out agentsLog/Pewciu6/results/smoke_qwen_essays_items.jsonl --quiet",
+  "timestamp_utc": "2026-09-26T01:10:20Z",
+  "machine": {
+    "system": "Darwin",
+    "release": "25.6.0",
+    "machine": "arm64",
+    "python": "3.9.6",
+    "hostname_sha256_12": "5e582903bbe9",
+    "cpu_only": true
+  },
+  "inputs": {
+    "outputs_sha256": "593f409d99546b3e01b006631d50690bd12029b36c70b949bb93bbce0d833c80",
+    "keys_sha256": "5720f456bae93f5de9262009a62f0462a36dafa4f432d8fa413d45064738df28",
+    "corpus_sha256": [],
+    "n_keys": 6,
+    "n_output_records": 6
+  },
+  "denominator": {
+    "scored_items": 6,
+    "excluded_items": 0,
+    "orphan_outputs_ignored": 0,
+    "records_without_id": 0,
+    "exclusion_counts": {},
+    "duplicate_records": 0,
+    "policy": "lenient = scored items only; strict = exclusions count as 0 points"
+  },
+  "overall": {
+    "n": 6,
+    "correct": 0,
+    "partial": 0,
+    "incorrect": 2,
+    "needs_review": 4,
+    "points": 0.0,
+    "points_upper_bound": 48.0,
+    "max_points": 90.0,
+    "accuracy": 0.0,
+    "points_rate": 0.0,
+    "points_rate_upper_bound": 0.5333
+  },
+  "strict_points_rate": 0.0,
+  "by_task_type": {
+    "essay": {
+      "n": 6,
+      "correct": 0,
+      "partial": 0,
+      "incorrect": 2,
+      "needs_review": 4,
+      "points": 0.0,
+      "points_upper_bound": 48.0,
+      "max_points": 90.0,
+      "accuracy": 0.0,
+      "points_rate": 0.0,
+      "points_rate_upper_bound": 0.5333
+    }
+  },
+  "by_era": {
+    "synthetic": {
+      "n": 6,
+      "correct": 0,
+      "partial": 0,
+      "incorrect": 2,
+      "needs_review": 4,
+      "points": 0.0,
+      "points_upper_bound": 48.0,
+      "max_points": 90.0,
+      "accuracy": 0.0,
+      "points_rate": 0.0,
+      "points_rate_upper_bound": 0.5333
+    }
+  },
+  "by_topic": {
+    "synthetic": {
+      "n": 6,
+      "correct": 0,
+      "partial": 0,
+      "incorrect": 2,
+      "needs_review": 4,
+      "points": 0.0,
+      "points_upper_bound": 48.0,
+      "max_points": 90.0,
+      "accuracy": 0.0,
+      "points_rate": 0.0,
+      "points_rate_upper_bound": 0.5333
+    }
+  },
+  "by_modality": {
+    "text": {
+      "n": 6,
+      "correct": 0,
+      "partial": 0,
+      "incorrect": 2,
+      "needs_review": 4,
+      "points": 0.0,
+      "points_upper_bound": 48.0,
+      "max_points": 90.0,
+      "accuracy": 0.0,
+      "points_rate": 0.0,
+      "points_rate_upper_bound": 0.5333
+    }
+  },
+  "review_flag_counts": {
+    "blind_essay_review": 6,
+    "truncated_output": 3
+  },
+  "error_category_counts": {
+    "chronology": 0,
+    "entity_confusion": 0,
+    "essay_structure": 4,
+    "abstention": 0,
+    "citation_unsupported": 0,
+    "image_ocr": 0,
+    "content_incorrect": 0
+  },
+  "abstentions": 0,
+  "truncated_outputs": 3,
+  "citation_audit_counts": {},
+  "latency_s": {
+    "n": 6,
+    "mean": 77.538,
+    "median": 89.141,
+    "max": 94.594
+  },
+  "usage_totals": {
+    "prompt_tokens": 1166,
+    "completion_tokens": 39545,
+    "total_tokens": 40711
+  },
+  "exclusions": [],
+  "orphan_output_ids": []
+}

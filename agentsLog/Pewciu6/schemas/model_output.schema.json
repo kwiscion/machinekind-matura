@@ -3,18 +3,109 @@
   "$id": "agentsLog/Pewciu6/schemas/model_output.schema.json",
   "title": "Raw model output record (one JSONL line, append-only)",
   "type": "object",
-  "required": ["id"],
-  "anyOf": [{"required": ["raw_response"]}, {"required": ["response"]}, {"required": ["error"]}],
+  "required": [
+    "id"
+  ],
+  "anyOf": [
+    {
+      "required": [
+        "raw_response"
+      ]
+    },
+    {
+      "required": [
+        "response"
+      ]
+    },
+    {
+      "required": [
+        "error"
+      ]
+    }
+  ],
   "properties": {
-    "id": {"type": "string"},
-    "backend": {"type": "string", "description": "e.g. llama.cpp, mlx, vllm, transformers"},
-    "model": {"type": "string", "description": "Repository id or local name"},
-    "model_revision": {"type": "string", "description": "Exact revision/commit or weight file SHA-256"},
-    "raw_response": {"type": ["string", "object"]},
-    "citations": {"type": "array", "items": {"type": "object", "required": ["source_id"], "properties": {"source_id": {"type": "string"}, "locator": {"type": "string"}, "claim": {"type": "string"}}}},
-    "usage": {"type": "object", "additionalProperties": {"type": "number"}},
-    "latency_s": {"type": "number"},
-    "error": {"type": ["string", "null"], "description": "Non-null excludes the item (reason inference_error)."}
+    "id": {
+      "type": "string"
+    },
+    "backend": {
+      "type": [
+        "string",
+        "object"
+      ],
+      "description": "String (normalized) or raw infer.py object {name, base_url, model, model_revision, response_model, ...}."
+    },
+    "model": {
+      "type": "string",
+      "description": "Repository id or local name"
+    },
+    "model_revision": {
+      "type": "string",
+      "description": "Exact revision/commit or weight file SHA-256"
+    },
+    "raw_response": {
+      "type": [
+        "string",
+        "object"
+      ]
+    },
+    "citations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "source_id"
+        ],
+        "properties": {
+          "source_id": {
+            "type": "string"
+          },
+          "locator": {
+            "type": "string"
+          },
+          "claim": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "usage": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number"
+      }
+    },
+    "latency_s": {
+      "type": "number",
+      "description": "Seconds. Aliases accepted by the harness: latency_seconds (raw infer.py), latency, latency_ms."
+    },
+    "error": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Non-null excludes the item: reason incomplete_output when it marks an empty or length-cut answer (infer.py type incomplete, 'No final answer text'), otherwise inference_error. normalize_outputs.py serialises error objects to JSON strings."
+    },
+    "finish_reason": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Optional; 'length' flags truncated_output. Also read from raw_response.choices[0]."
+    },
+    "provider_raw_response": {
+      "description": "normalize_outputs.py: full provider JSON; ignored by grading."
+    },
+    "retrieval_evidence": {
+      "type": "array",
+      "description": "normalize_outputs.py: retrieved chunk ids from prepare_rag.py; NOT credited as model citations."
+    },
+    "retrieval_index_sha256": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "normalize_outputs.py: retrieval index hash from the trace."
+    }
   },
   "notes": "Inline citations in raw_response use [[source_id#locator]]; the claim is the enclosing sentence."
 }
