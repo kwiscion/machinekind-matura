@@ -66,6 +66,33 @@ class Accounting(unittest.TestCase):
     def test_thinking_when_off_is_flagged(self):
         self.assertEqual(tr.interpret(ollama("x", thinking="y"), False)["error"], "unexpected_thinking_when_off")
 
+    def test_review_fixes(self):
+        """Independent pre-launch review findings 4, 5, 7, 8."""
+        self.assertEqual(tr.interpret(ollama("x", done=None), True)["error"], "done_reason:None")
+        self.assertTrue(tr.interpret(ollama(cs.as_json(cs.essay(3))), True)["thinking_absent_when_on"])
+        self.assertFalse(tr.interpret(ollama(cs.as_json(cs.essay(3))), False)["thinking_absent_when_on"])
+        task = ec.parse_task(item()["full_task"])
+        self.assertNotIn(tr.TRUNCATED_NOTE, tr.review_prompt(task, 1, "x", ["call_error:unexpected_thinking_when_off"], []))
+        self.assertIn(tr.TRUNCATED_NOTE, tr.review_prompt(task, 1, "x", ["call_error:truncated"], []))
+        rec = {}
+
+        def send(stage, prompt):
+            if stage == "review":
+                raise wr.StopWave("deadline")
+            return tr.interpret(ollama(cs.as_json(cs.essay(3)), "t"), True)
+        with self.assertRaises(wr.StopWave):
+            tr.run_arm(send, "T", item(), rec)
+        self.assertIsNotNone(rec["draft_answer"])  # the completed draft survives a mid-item stop
+
+    def test_unsent_review_is_recorded(self):
+        def send(stage, prompt):
+            if stage == "review":
+                return {"error": "context_guard_unsent:x", "unsent": True, "text": ""}
+            return tr.interpret(ollama(cs.as_json(cs.essay(3)), "t"), True)
+        rec = tr.run_arm(send, "T", item())
+        self.assertEqual(rec["final_status"], "failed")
+        self.assertEqual(rec["unsent"][0]["stage"], "review")
+
     def test_context_guard(self):
         self.assertTrue(tr.prompt_fits("a" * 20000, 20480)[0])
         self.assertFalse(tr.prompt_fits("a" * 30000, 20480)[0])

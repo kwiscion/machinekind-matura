@@ -81,6 +81,8 @@ PIERWSZA WERSJA:
 
 """
 MECHANICAL_NOTE = "Pierwsza wersja miała też usterki formalne, które musisz naprawić:\n{items}\n"
+DRAFT_CUT_CHARS = 8000  # ~1,100 Polish words: every 400-500-word draft fits whole; keeps the review prompt small
+MIN_START_S_BY_ARM = {"T": 240, "N": 60}  # never start a call the deadline would cut off (an overrun stops the wave)
 TRUNCATED_NOTE = "- Pierwsza wersja była niekompletna albo niepoprawnie zakończona; zwróć pełną, zakończoną wersję."
 REVIEW_EXTRA_KEYS = ("uwagi",)
 
@@ -128,11 +130,11 @@ def select_items(rows: list[dict]) -> list[dict]:
 def review_prompt(task: dict, topic: int, draft_text: str, triggers: list[str], excerpts: list[dict]) -> str:
     mech_triggers = [t for t in triggers if not t.startswith("call_error:")]
     items = ec.repair_instructions(mech_triggers, topic, None, [])
-    if any(t.startswith("call_error:") for t in triggers):  # truncated/empty draft: say so, never guess
+    if any(t.startswith(("call_error:truncated", "call_error:empty", "call_error:done_reason")) for t in triggers):
         items = (items + "\n" if items else "") + TRUNCATED_NOTE
     mech = MECHANICAL_NOTE.format(items=items) if items else ""
     extra = REVIEW_RULES.format(topic=topic, tmin=ec.TARGET_MIN, tmax=ec.TARGET_MAX, mechanical=mech,
-                                draft=(draft_text or "").strip()[:12000])
+                                draft=(draft_text or "").strip()[:DRAFT_CUT_CHARS])
     extra += wr.excerpts_block(excerpts) + wr.NO_CITATIONS
     return ec.writer_prompt(task, topic, extra)
 
@@ -202,10 +204,13 @@ def interpret(data: dict, think: bool) -> dict:
            "eval_duration_ns": data.get("eval_duration"), "total_duration_ns": data.get("total_duration")}
     if data.get("done_reason") == "length":
         out["error"] = "truncated"  # the final may be partial or absent: a failure, never repaired from thinking
+    elif data.get("done_reason") != "stop":
+        out["error"] = f"done_reason:{data.get('done_reason')}"
     elif not text.strip():
         out["error"] = "empty_final_after_thinking" if thinking.strip() else "empty"
     elif not think and thinking.strip():
         out["error"] = "unexpected_thinking_when_off"
+    out["thinking_absent_when_on"] = bool(think and not thinking.strip())
     return out
 
 
@@ -275,14 +280,19 @@ def stage_check(result: dict, task: dict, topic: int, allow=()) -> dict | None:
     return chk
 
 
-def run_arm(send, arm: str, item: dict) -> dict:
-    """Exactly draft -> review. The review runs on every draft that returned any content."""
+def run_arm(send, arm: str, item: dict, rec: dict | None = None) -> dict:
+    """Exactly draft -> review. The review runs on every draft that returned any content.
+
+    `rec` is filled in place, so a StopWave mid-item still leaves the completed draft on record.
+    """
     task = ec.parse_task(item["full_task"])
     topic = item["topic"]
-    rec = {"item": item["item"], "arm": arm, "arm_name": ARMS[arm]["name"], "topic_id": topic, "unsent": []}
+    rec = rec if rec is not None else {}
+    rec.update({"item": item["item"], "arm": arm, "arm_name": ARMS[arm]["name"], "topic_id": topic, "unsent": []})
     d = send("draft", item["draft_prompt"])
     dchk = stage_check(d, task, topic)
     rec["draft"] = version("draft", d, dchk)
+    rec["draft_answer"] = ec.render_answer(topic, dchk["clean"]) if dchk and dchk["ok"] else None
     if not (d.get("text") or "").strip():
         rec["unsent"].append({"stage": "review", "reason": f"no_draft_text:{d.get('error')}"})
         rec["review"] = None
@@ -297,9 +307,10 @@ def run_arm(send, arm: str, item: dict) -> dict:
         rec["review_input"] = {"draft_passed_contract": bool(dchk and dchk["ok"]), "triggers_given": triggers,
                                "prompt_sha256": sha256_text(prompt)}
         r = send("review", prompt)
+        if r.get("unsent"):
+            rec["unsent"].append({"stage": "review", "reason": r["error"]})
         rchk = stage_check(r, task, topic, REVIEW_EXTRA_KEYS)
         rec["review"] = version("review", r, rchk, REVIEW_EXTRA_KEYS)
-    rec["draft_answer"] = ec.render_answer(topic, dchk["clean"]) if dchk and dchk["ok"] else None
     rchk = (rec["review"] or {}).get("check")
     rec["final_answer"] = ec.render_answer(topic, rchk["clean"]) if rchk and rchk["ok"] else None
     rec["draft_status"] = "ok" if rec["draft_answer"] else "failed"
@@ -376,12 +387,12 @@ def cmd_run(args) -> int:
         return 2
     if args.check:
         return 0
+    batch_dir = run_dir / "batches" / args.batch
+    batch_dir.mkdir(parents=True, exist_ok=False)
     lock = run_dir / "run.lock"
     fd = os.open(lock, os.O_CREAT | os.O_EXCL | os.O_WRONLY)
     os.write(fd, f"{os.getpid()} {args.batch}\n".encode())
     os.close(fd)
-    batch_dir = run_dir / "batches" / args.batch
-    batch_dir.mkdir(parents=True, exist_ok=False)
     manifest = {"batch": args.batch, "bundle_sha256": ledger["bundle_sha256"], "guard": host, "status": "running",
                 "started": time.time(), "order": report["plan"]}
     wr.write_json_atomic(batch_dir / "batch_manifest.json", manifest)
@@ -395,40 +406,49 @@ def cmd_run(args) -> int:
 
             def send(stage, prompt, _id=item["item"], _arm=arm, _cap=cap, _backend=backend):
                 fits, bound = prompt_fits(prompt, _cap)
-                if not fits:
-                    raise wr.StopWave(f"context_guard:{bound}+{_cap}>{NUM_CTX}")
-                if wave.seconds_left(wave.load()) < MIN_CALL_START_S:
+                if not fits:  # this stage only: recorded unsent, never reserved, the wave continues
+                    return {"error": f"context_guard_unsent:{bound}+{_cap}>{NUM_CTX}", "unsent": True, "text": ""}
+                if wave.seconds_left(wave.load()) < MIN_START_S_BY_ARM[_arm]:
                     raise wr.StopWave("deadline")
                 entry, timeout = wave.reserve(args.batch, _arm, _id, stage, _cap, prompt)
                 started = time.time()
                 result, overran = wr.call_with_timeout(_backend, prompt, _cap, timeout)
                 elapsed = round(time.time() - started, 2)
-                ctx = None if overran or result.get("error") in wr.TRANSPORT_ERRORS else check_loaded_context(args.base_url)
+                ctx = None
+                if not overran and result.get("error") not in wr.TRANSPORT_ERRORS:
+                    try:
+                        ctx = check_loaded_context(args.base_url)
+                    except Exception as exc:  # noqa: BLE001 - settle + raw first, then stop via ctx != NUM_CTX
+                        ctx = f"ps_error:{type(exc).__name__}"
                 wave.settle(entry["seq"], "error" if result.get("error") else "ok", elapsed_s=elapsed,
                             error=result.get("error"), eval_count=result.get("eval_count"),
                             prompt_eval_count=result.get("prompt_eval_count"), done_reason=result.get("done_reason"),
                             thinking_chars=result.get("thinking_chars"), content_chars=result.get("content_chars"),
-                            think=ARMS[_arm]["think"], loaded_context=ctx, prompt_bound_tokens=bound)
+                            think=ARMS[_arm]["think"], loaded_context=ctx, prompt_bound_tokens=bound,
+                            thinking_absent_when_on=result.get("thinking_absent_when_on"))
                 wr.append_jsonl(batch_dir / "raw.jsonl", {"item": _id, "arm": _arm, "stage": stage, "cap": _cap,
                                                           "prompt": prompt, **result, "elapsed_s": elapsed,
                                                           "loaded_context": ctx})
                 if overran:
                     raise wr.StopWave("call_overran")
-                if result.get("error") in wr.TRANSPORT_ERRORS:
-                    raise wr.StopWave(f"transport_error:{result['error']}")
+                if result.get("error") in wr.TRANSPORT_ERRORS or str(result.get("error")).startswith(("http_", "exception:")):
+                    raise wr.StopWave(f"transport_error:{result['error']}")  # systematic: never burn one per item
+                if result.get("thinking_absent_when_on"):
+                    raise wr.StopWave("thinking_absent_when_on")  # the T arm would silently be a no-think arm
                 if ctx != NUM_CTX:
                     raise wr.StopWave(f"loaded_context:{ctx}")
                 pe = result.get("prompt_eval_count")
                 if isinstance(pe, int) and pe + _cap > NUM_CTX:
-                    raise wr.StopWave(f"context_overflow:{pe}+{_cap}")
+                    result = {**result, "context_overflow": f"{pe}+{_cap}>{NUM_CTX}"}  # recorded; guard makes it unreachable
                 return result
 
+            rec = {}
             try:
-                rec = run_arm(send, arm, item)
+                run_arm(send, arm, item, rec)
             except wr.StopWave as exc:
                 stop_reason = str(exc)
-                rec = {"item": item["item"], "arm": arm, "status": "stopped", "stop_reason": stop_reason,
-                       "draft_answer": None, "final_answer": None}
+                rec.update(status="stopped", stop_reason=stop_reason, final_answer=None)
+                rec.setdefault("draft_answer", None)
             wr.append_jsonl(batch_dir / "records.jsonl", rec)
             for stage in ("draft", "final"):
                 ans = rec.get(f"{stage}_answer")
