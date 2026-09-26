@@ -153,8 +153,9 @@ def main():
     done = [json.loads(l) for l in a.out.read_text().splitlines()]
     calls = [r for r in done if 'call_number' in r]
     ok = sum(1 for r in calls if r.get('http_status') == 200 and r.get('text'))
-    print(json.dumps({'arm': a.arm, 'calls': len(calls), 'ok': ok, 'length_truncated': sum(1 for r in calls if r.get('finish_reason') == 'length')}))
-    sys.exit(0 if len(calls) == 16 else 1)
+    status = 'PASS' if len(calls) == 16 and ok == 16 else 'FAIL'
+    print(json.dumps({'arm': a.arm, 'status': status, 'calls': len(calls), 'ok': ok, 'length_truncated': sum(1 for r in calls if r.get('finish_reason') == 'length')}))
+    sys.exit(0 if status == 'PASS' else 1)  # any errored/empty call stops the wave (no retries)
 
 
 if __name__ == '__main__':

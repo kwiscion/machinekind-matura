@@ -4,7 +4,7 @@ Reads RUN/answers-<ARM>.jsonl. Writes:
 - RUN/blind/pack.jsonl: per input, the prompt plus the essays under random labels X/Y(/Z), with deterministic checks.
   It holds no arm, model or file names.
 - RUN/blind/SEALED-key.json: label -> arm per input. Graders must NOT see it; only its sha256 is published before grading.
-- RUN/blind/deterministic-summary.json: per-arm aggregate checks (unblinded, mechanical only).
+- RUN/deterministic-summary.json (OUTSIDE blind/, never given to graders): per-arm aggregate mechanical checks.
 Deterministic checks: body word count and the 400-500 band, preamble/meta opening, both-topics heuristic,
 markdown/list formatting, and truncation (finish_reason length) or error.
 """
@@ -64,7 +64,7 @@ def main():
     (out / 'SEALED-key.json').write_bytes(kb)
     for s in summary.values():
         w = s.pop('words'); s['word_count_min_median_max'] = [min(w), sorted(w)[len(w) // 2], max(w)] if w else None
-    (out / 'deterministic-summary.json').write_text(json.dumps(summary, indent=1) + '\n')
+    (a.run / 'deterministic-summary.json').write_text(json.dumps(summary, indent=1) + '\n')
     print(json.dumps({'pack_sha256': hashlib.sha256(pb).hexdigest(), 'sealed_key_sha256': hashlib.sha256(kb).hexdigest(), 'summary': summary}))
 
 

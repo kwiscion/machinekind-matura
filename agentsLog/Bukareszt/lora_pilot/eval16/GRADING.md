@@ -1,6 +1,6 @@
 # eval16 blinded grading: one fast pass
 
-**Input:** `blind/pack.jsonl` (sha256 posted before grading). It holds 16 prompts, each with essays under random labels X/Y. Do not open `SEALED-key.json`, `answers-*.jsonl` or the server logs until your grades are committed.
+**Input:** `blind/pack.jsonl` (sha256 posted before grading). It holds 16 prompts, each with essays under random labels X/Y. Graders receive ONLY `blind/pack.jsonl` and this file. Do not open `SEALED-key.json`, `deterministic-summary.json`, `answers-*.jsonl`, the ledger or the server logs until your grades are committed.
 
 **Rubric:** @ljaniec's frozen checklist `agentsLog/ljaniec/eval16/checklist.md` (sha256 `27eb5cbe2b324039cfe61dded4563e84d0ec6f17c10325dc7d4bb015b14e8447`), grading procedure in its `README.md`. The checklist anchors are evidence aids, not gold essays.
 

@@ -3,10 +3,10 @@
 # Arms from settings.json run_arms (default A=unchanged export, B=run3 merged candidate; identical nonthinking requests).
 # 16 calls per arm, wave cap settings.max_wave_calls, no retries/warmups/history eval; then CPU-only blinded grading pack.
 # Launch exactly once, detached from the SSH session and outside the wave:
-#   launch.sh: flock -n "$RUN.parent-lock" timeout --signal=TERM --kill-after=10s "${T}s" (T = WAVE_DEADLINE_EPOCH - now, >= 3580) bash operator-stages.sh
+#   launch.sh: flock -n "$RUN.parent-lock" timeout --signal=TERM --kill-after=10s "${T}s" (T = WAVE_DEADLINE_EPOCH - now, >= 3580) bash eval-stages.sh
 # Everything inside is foreground in this one process group (inner timeouts use --foreground, clamped to deadline-90 s). It fails closed: set -euo pipefail,
 # every stage has its own timeout, and a common absolute deadline comes from the frozen wave.env.
-# No retries, no warmups, no history eval. At most 1 synthetic step + 36 history steps + 4 synthetic calls.
+# No retries, no warmups. At most settings.max_wave_calls (32) generation calls; 0 training steps.
 set -euo pipefail
 RUN=$(cd "$(dirname "$0")" && pwd)
 source "$RUN/wave.env"          # WAVE_START_UTC WAVE_START_EPOCH WAVE_DEADLINE_UTC WAVE_DEADLINE_EPOCH (frozen, hash-posted)
