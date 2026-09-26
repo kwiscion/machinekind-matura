@@ -81,6 +81,16 @@ Strict chunk-level support is much lower than source-level coverage: the retriev
 
 Lead decides whether to wire `retrieval.py` (mode `chrono`, k=5) into the answerer as a context provider; the retrieval contract (chunk schema `chunk_id`, `source_id`, `locator`, `text`) is additive and can be adapted. Cheap next steps are listed at the end of REPORT.md.
 
+## Watcher (separate PR #9, merged to main)
+
+Owner log entry for the issue watcher that dispatches Greg's issues to Orca worktrees; unrelated to the retrieval code above.
+
+- Path: `agentsLog/Bukareszt/watcher/` — `AGENT_BRIEF.md` (brief passed to every worker), `poll-issues.sh` (poll script), `2026-09-26-watcher-log.md` (timestamped log incl. dry-run evidence).
+- Time: started 2026-09-26 01:30 Europe/Warsaw (23:30 UTC 25 Sep); polling stops 08:30 Warsaw.
+- Mutable state lives in `agentsLog/Bukareszt/private/watcher-state.json` (gitignored, never committed).
+- Command: `agentsLog/Bukareszt/watcher/poll-issues.sh` (prints candidate issues as JSON).
+- Split/model/sources: none touched by the watcher. Failures/limits: see the watcher log.
+
 ## Notes (Europe/Warsaw, 2026-09-26)
 
 - 02:10 claimed issue; read AGENTS/SOURCE/CONTRACTS/issue brief/agentsLog.

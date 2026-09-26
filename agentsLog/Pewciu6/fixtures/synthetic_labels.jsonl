@@ -1,0 +1,15 @@
+{"id":"syn-001","expected_status":"correct","expected_points":1,"expected_error_categories":[],"why":"correct year"}
+{"id":"syn-002","expected_status":"incorrect","expected_points":0,"expected_error_categories":["chronology"],"why":"wrong event order"}
+{"id":"syn-003","expected_status":"incorrect","expected_points":0,"expected_error_categories":["entity_confusion"],"why":"names a listed distractor ruler instead of the founder"}
+{"id":"syn-004","expected_status":"incorrect","expected_points":0,"expected_error_categories":["abstention"],"why":"abstained on an answerable item"}
+{"id":"syn-005","expected_status":"partial","expected_points":1,"expected_error_categories":["citation_unsupported"],"why":"content right but cited passage does not support the claim; credit capped by rubric"}
+{"id":"syn-006","expected_status":"correct","expected_points":2,"expected_error_categories":[],"why":"content right and citation supported by passage text"}
+{"id":"syn-007","expected_status":"partial","expected_points":3,"expected_error_categories":["essay_structure"],"why":"essay plan lacks a conclusion"}
+{"id":"syn-008","expected_status":"incorrect","expected_points":0,"expected_error_categories":["chronology","image_ocr"],"why":"misread year on image"}
+{"id":"syn-009","expected_status":"correct","expected_points":1,"expected_error_categories":[],"why":"correct choice"}
+{"id":"syn-012","expected_status":"needs_review","expected_points":0,"expected_upper":1,"expected_error_categories":[],"expected_review_flags":["possible_image_ocr"],"why":"decision right; justification needs human/independent review"}
+{"id":"syn-013","expected_status":"incorrect","expected_points":0,"expected_upper":0,"expected_error_categories":["content_incorrect"],"why":"wrong decision gates the item to 0 regardless of justification"}
+{"id":"syn-014","expected_status":"partial","expected_points":1,"expected_upper":1,"expected_error_categories":["content_incorrect"],"why":"2 of 3 true/false statements right -> 1 of 2 points"}
+{"id":"syn-015","expected_status":"needs_review","expected_points":0,"expected_upper":12,"expected_error_categories":["essay_structure"],"expected_review_flags":["blind_essay_review"],"why":"under 300 words zeroes coherence (B); narrative (A) needs blind review"}
+{"id":"syn-010","expected_exclusion":"inference_error","why":"runner timeout, excluded from lenient denominator"}
+{"id":"syn-011","expected_exclusion":"missing_output","why":"no output record"}

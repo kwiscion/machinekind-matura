@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "agentsLog/Pewciu6/schemas/eval_key_rubric.schema.json",
+  "title": "Restricted eval key record with item-level rubric (one JSONL line of eval_keys.jsonl)",
+  "description": "RESTRICTED: real DEV/VALIDATION records carry answer keys and must stay in isolated evaluation artifacts (agentsLog/Pewciu6/private/), never in model-facing input, training, retrieval, or a public PR. Only synthetic fixtures are committed.",
+  "type": "object",
+  "required": ["id", "split", "task_type", "rubric"],
+  "properties": {
+    "id": {"type": "string", "description": "Stable id, joins to runner input and model output by equality."},
+    "split": {"enum": ["TRAIN", "DEV", "VALIDATION", "SEALED_TEST"]},
+    "task_type": {"enum": ["short_answer", "multiple_choice", "chronology", "source_analysis", "essay_plan", "essay", "vision_ocr"]},
+    "era": {"type": "string", "description": "e.g. ancient, medieval, early_modern, 19th_century, interwar, ww2, prl, post_1989, multi"},
+    "topic": {"type": "string"},
+    "source_ids": {"type": "array", "items": {"type": "string"}},
+    "source_group_id": {"type": "string"},
+    "images": {"type": "array", "items": {"type": "string"}, "description": "Relative paths; never embedded."},
+    "modality": {"enum": ["text", "image"], "default": "text", "description": "image = item relies on visual material (vision/OCR slice)."},
+    "official_rules": {"type": "string", "description": "RESTRICTED: official scoring-rule text for the item (reviewer use only)."},
+    "scoring_mode": {"enum": ["auto", "gate+manual", "manual"]},
+    "requires_citation": {"type": "boolean", "default": false},
+    "expect_abstention": {"type": "boolean", "default": false, "description": "True when the correct behaviour is to abstain (unanswerable item)."},
+    "expected_years": {"type": "array", "items": {"type": ["integer", "string"]}, "description": "Years that a correct answer may state; any other stated year flags chronology."},
+    "distractors": {"type": "array", "items": {"type": "string"}, "description": "Plausible wrong entities; naming one on a failed entity criterion flags entity_confusion."},
+    "reference_answer": {"type": ["string", "array"], "description": "Optional human-readable model answer (restricted)."},
+    "official_points_ref": {"type": "string", "description": "Locator in the official scoring rules document, e.g. 'zasady p.5 zad.3'. No quoted text."},
+    "rubric": {
+      "type": "object",
+      "required": ["max_points"],
+      "properties": {
+        "rubric_id": {"type": "string"},
+        "max_points": {"type": "number", "minimum": 0},
+        "mode": {"enum": ["criteria", "choice", "order"], "default": "criteria"},
+        "expected_choice": {"type": "array", "items": {"type": "string", "pattern": "^[A-F]$"}},
+        "expected_order": {"type": "array", "items": {"type": "string"}, "description": "Labels in correct chronological order."},
+        "citation_fail_max_points": {"type": "number", "description": "Cap on points when a required citation is missing/unsupported."},
+        "points_by_met_count": {"type": "object", "additionalProperties": {"type": "number"}, "description": "e.g. {'3':2,'2':1}: points from the number of met criteria (CKE graded true/false items)."},
+        "all_or_nothing": {"type": "boolean", "description": "Full points only if every criterion is met."},
+        "error_on_fail": {"enum": ["chronology", "entity_confusion", "essay_structure", "content_incorrect", "image_ocr"]},
+        "criteria": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["criterion_id", "points"],
+            "properties": {
+              "criterion_id": {"type": "string"},
+              "kind": {"enum": ["content", "entity", "date", "structure", "decision"], "default": "content"},
+              "gate": {"type": "boolean", "description": "If this criterion fails, the item scores 0 (e.g. wrong 'Rozstrzygnięcie')."},
+              "options": {"type": "array", "items": {"type": "string"}, "description": "decision: all possible decisions; naming two or more = hedged = fail; naming another = fail; none found = review."},
+              "pair": {"type": "array", "items": {"type": "string"}, "minItems": 2, "maxItems": 2, "description": "e.g. ['1','F'] for true/false statements; accepts prawda/falsz; hedged '1 P F' fails."},
+              "min_words": {"type": "integer", "description": "Met if the response has at least this many words."},
+              "zeroes": {"type": "array", "items": {"type": "string"}, "description": "criterion_ids forced to 0 when this criterion fails."},
+              "review_on_fail": {"type": "boolean", "description": "A lexical miss routes to review (needs_review) instead of a hard fail."},
+              "points": {"type": "number"},
+              "any_of": {"type": "array", "items": {"type": "string"}, "description": "Met if any phrase appears (diacritic/case-folded, whole-word)."},
+              "all_of": {"type": "array", "items": {"type": "string"}, "description": "Met only if all phrases appear."},
+              "description": {"type": "string"},
+              "manual_only": {"type": "boolean", "description": "Heuristic cannot judge; route to human/independent review."}
+            }
+          }
+        }
+      }
+    }
+  }
+}
