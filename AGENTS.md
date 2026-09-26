@@ -1,5 +1,11 @@
 # Agent instructions
 
+## Active extension — 26 September, 08:47 Europe/Warsaw
+
+After a Windows restart interrupted coordination, the owner explicitly resumed work for two hours, through **10:47 today**. This supersedes the earlier 08:00/08:30/09:00 operational cutoffs below. Stop new model calls by 10:30, collect handoffs by 10:40, then report and pause the lead heartbeat at 10:47. Keep work bounded and delegate implementation/review to Sol/Luna to conserve the remaining subscription. Priorities are the PR #18 export/split repair, evaluator adjudication fix, and first real VALIDATION diagnostic. The 2025 test remains sealed until a candidate decision is frozen; the Sunday final freeze is unchanged.
+
+HF authentication is now project-scoped: use `scripts/hf.ps1` on Windows or explicitly set `HF_HOME` to this repository's `.hf-home` in WSL. Confirm `kwiscion` via the normal CLI before publication. Do not use the unrelated identity in the default WSL HF cache or inspect token values. `.hf-home` and virtual environments are ignored by Git.
+
 Use English for code, commands, filenames, commit messages, and technical documentation. Work from [docs/overnight/CONTRACTS.md](docs/overnight/CONTRACTS.md), [SOURCE.md](SOURCE.md), and your assigned issue. History is the working subject assumption; do not silently change shared contracts if the final subject differs.
 
 GitHub issues are the scheduling authority for this overnight hackathon. Claim your issue in one comment with an ETA, change `ready` to `in-progress`, keep one active task per owner/issue, and use `issue-<number>-<owner>-<slug>` for the branch when numbers exist. Make a useful vertical-slice commit within 60 minutes, then pursue stretch work. Write reports and artifacts only under `agentsLog/<owner>/`; add separate scripts or data paths as needed. Do not overwrite another owner's files, the shared schema, benchmark manifests, core runner/configuration, or promoted models. Open a PR with commands, evidence, source licenses, revisions, hashes, results, runtime, and limitations. An owner may self-merge a scoped additive PR confined to owned paths after useful checks and provenance review; the lead owns shared integration. Do not use admin merge or force push.

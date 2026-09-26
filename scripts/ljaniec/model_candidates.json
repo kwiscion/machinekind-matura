@@ -1,0 +1,33 @@
+{
+  "evidence_type": "publisher_or_repository_metadata_only; local files and runtime unverified",
+  "limit_saved_served_weight_bytes": 8000000000,
+  "candidates": [
+    {
+      "name": "gemma-4-12B-it-qat-q4_0-gguf",
+      "repository": "google/gemma-4-12B-it-qat-q4_0-gguf",
+      "revision": "29d097773436b69ff9feafd636ab4cf873786537",
+      "license_reported": "Apache-2.0",
+      "quantization": "Q4_0 QAT",
+      "files": [
+        {"name": "gemma-4-12b-it-qat-q4_0.gguf", "bytes": 6975879296, "sha256_reported": "93567e57a8fe10b23569b9d9ec38cd005deedf71e29477c421a4b83f418a538b"},
+        {"name": "mmproj-gemma-4-12b-it-qat-q4_0.gguf", "bytes": 175115616, "sha256_reported": "cb018338a7538a9814d994bfe54644c71eb7ed54e31eae2f721e45fd3c260da7"}
+      ],
+      "saved_served_weight_bytes_reported": 7150994912,
+      "source": "https://huggingface.co/google/gemma-4-12B-it-qat-q4_0-gguf/tree/main"
+    },
+    {
+      "name": "Qwen3.5-9B-Q4_K_M-GGUF",
+      "repository": "unsloth/Qwen3.5-9B-GGUF",
+      "revision": "3885219b6810b007914f3a7950a8d1b469d598a5",
+      "license_reported": "Apache-2.0",
+      "quantization": "Q4_K_M",
+      "files": [
+        {"name": "Qwen3.5-9B-Q4_K_M.gguf", "bytes": 5680522464, "sha256_reported": "03b74727a860a56338e042c4420bb3f04b2fec5734175f4cb9fa853daf52b7e8"},
+        {"name": "mmproj-BF16.gguf", "bytes": 921705024, "sha256_reported": "853698ce7aa6c7ba732478bad280240969ddf7b0fcbf93900046f63903a83383"}
+      ],
+      "saved_served_weight_bytes_reported": 6602227488,
+      "source": "https://huggingface.co/unsloth/Qwen3.5-9B-GGUF/tree/main",
+      "base_model_license_source": "https://huggingface.co/Qwen/Qwen3.5-9B"
+    }
+  ]
+}

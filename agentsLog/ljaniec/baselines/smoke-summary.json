@@ -1,0 +1,14 @@
+[
+  {
+    "model": "qwen3-8b-q4_k_m",
+    "items": 20,
+    "errors": 0,
+    "total_s": 1594.5,
+    "latency_mean_s": 79.723,
+    "latency_median_s": 73.994,
+    "peak_mem_mib": 8666.3,
+    "raw_output": "/home/ljaniec/Repositories/machinekind-matura/agentsLog/ljaniec/raw/qwen3-8b-q4_k_m-smoke.jsonl",
+    "output_sha256": "8b6d71eb4d581f4adc0b31ec25b536e546c9df8ef727bfd689f587f9abc26cac",
+    "load_s": 7.2
+  }
+]
