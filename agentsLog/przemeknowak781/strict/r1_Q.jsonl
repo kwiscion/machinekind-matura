@@ -1,0 +1,231 @@
+{"id": "pn781-hk-01-001", "pass": false, "notes": "prompt_not_standalone (no person/event named: whose marriage/baptism?), prompt_garbled (options asymmetric, B truncated)"}
+{"id": "pn781-hk-01-002", "pass": false, "notes": "prompt_not_standalone: 'Co ujawnia?' is a vague, telegraphic question, and the passage names neither Dobrawa nor Mieszko; answer_incomplete: the one-line answer does no real analysis of the passage"}
+{"id": "pn781-hk-01-003", "pass": true, "notes": ""}
+{"id": "pn781-hk-01-004", "pass": true, "notes": ""}
+{"id": "pn781-hk-01-006", "pass": false, "notes": "prompt_not_standalone (does not name the university; answer depends on 1894, which the prompt never gives); prompt_garbled ('Co pokazuje?' is telegraphic); language_error (answer is telegraphic: '33 lata między możliwością studiów a nauczania.')"}
+{"id": "pn781-hk-01-007", "pass": false, "notes": "language_error: the prompt capitalises 'Bitwa' mid-sentence; the answer is a bare telegraphic '1605.' with no full sentence and no day or month"}
+{"id": "pn781-hk-01-009", "pass": false, "notes": "prompt_not_standalone: 'Ile armat miała armia polska?' does not name the battle (Kircholm)"}
+{"id": "pn781-hk-01-010", "pass": false, "notes": "answer_incomplete (no year given: '2 czerwca, w roku konwersji przed elekcją'); language_error (telegraphic, circular fragment); prompt does not specify conversion to what"}
+{"id": "pn781-hk-01-011", "pass": false, "notes": "prompt_not_standalone; prompt_garbled: 'Jakie podejście?' is telegraphic and does not say whose approach or which event; answer is a telegraphic fragment ('Pragmatyzm – ...')"}
+{"id": "pn781-hk-01-012", "pass": false, "notes": "prompt_garbled: 'pełnił urząd króla pierwszej kadencji' is wrong usage (kings have no 'kadencja'), and the prompt never says which kingdom"}
+{"id": "pn781-hk-01-013", "pass": false, "notes": "prompt_not_standalone: 'Kiedy Dąbrowski podpisał umowę?' does not say which agreement (Legiony, Lombardia); answer is also telegraphic ('9 stycznia 1797.')"}
+{"id": "pn781-hk-01-026", "pass": false, "notes": "prompt_not_standalone (no context: which prices, which event); prompt_garbled ('Asymetria: ... Dlaczego ważna?'); language_error: telegraphic answer 'Produkty bogatsze rosły bardziej. Dla pracowników – drastyczne pogorszenie.'"}
+{"id": "pn781-hk-02-001", "pass": true, "notes": ""}
+{"id": "pn781-hk-02-002", "pass": false, "notes": "prompt_garbled: 'Jakie osiągnięcia terytorialne i polityczne wynika' (should be 'wynikają'); other: the answer adds 'przynajmniej podwojonym terytorium', which cannot be read from the quoted characterization"}
+{"id": "pn781-hk-02-003", "pass": true, "notes": ""}
+{"id": "pn781-hk-02-004", "pass": false, "notes": "prompt_garbled: 'Jakie znaczenie miało chrztu Jagiełły' (wrong case, should be 'chrzest'); answer_incomplete: says nothing about Litwa's later fate or its relations with Poland, only restates the chrzest as a condition of the union"}
+{"id": "pn781-hk-02-006", "pass": true, "notes": ""}
+{"id": "pn781-hk-02-007", "pass": false, "notes": "wrong_task_type: the essay_plan has no thesis, only a list of achievements; other: point 2 is telegraphic ('usystematyzowanie przepisów dotyczących żup solnych i kopalni')"}
+{"id": "pn781-hk-02-008", "pass": false, "notes": "prompt_garbled: comparative 'jest wcześniejsza' used for three options (should be 'najwcześniejsza'), and 'objęcie stanowiska wielkiego księcia litewskiego' is awkward phrasing; also the prompt asks only for the earliest item but the answer gives a full ordering"}
+{"id": "pn781-hk-02-009", "pass": false, "notes": "trivial_echo (answer restates the quoted passage instead of explaining significance for the state); language_error ('Dzięki legalizmowi i zwołaniu corocznych sejmów', 'Postawa ... wykazała')"}
+{"id": "pn781-hk-02-010", "pass": false, "notes": "language_error: 'Pierwsza był moment'; prompt_garbled: it asks 'Jakie były podstawowe daty' and then 'Który etap ... był wcześniejszy' across three options. The answer gives a full ordering, and placing 'latem 1610' before '6 czerwca' is confusing as a chronology."}
+{"id": "pn781-hk-02-011", "pass": false, "notes": "prompt_not_standalone: the battle (Kłuszyn) is never named and the Wikipedia text is presented as 'Dokument historyczny'; language_error: 'Pomimo znacznej przewagi liczbowej siły wroga' should be 'sił wroga'"}
+{"id": "pn781-hk-02-012", "pass": true, "notes": ""}
+{"id": "pn781-hk-02-013", "pass": true, "notes": ""}
+{"id": "pn781-hk-02-014", "pass": false, "notes": "wrong_task_type (source_analysis with no quoted passage; refers to 'Tekst historyczny' not given), answer_incomplete (does not explain how the sejm was conducted / why 'niemy'), language_error ('traktatu warszawskiego zawarty' - should be 'zawartego')"}
+{"id": "pn781-hk-02-017", "pass": false, "notes": "language_error: Cyrillic 'война' in both prompt and answer ('(C) война z Austrią', 'a война z Austrią')"}
+{"id": "pn781-hk-02-018", "pass": false, "notes": "trivial_echo: the answer restates the quoted passage ('formalnie niepodległe, z własną konstytucją... Faktycznie jednak było zależne od Cesarstwa Francuskiego') and adds only a list of institutions, with no explanation of how the Duchy functioned"}
+{"id": "pn781-hk-02-023", "pass": false, "notes": "language_error: telegraphic fragment with no verb, 'Ostatecznie konstytucja marcowa opublikowana w czerwcu 1921 roku'; prompt_garbled: asks 'chronologia prac nad konstytucją marcową' but then lists the constitution itself as option (C), and 'miało miejsce pierwsze' is awkward"}
+{"id": "pn781-hk-02-024", "pass": false, "notes": "answer_incomplete (explains why a provisional act was adopted, not why a system without separation of powers with a supreme Sejm was chosen); other:passage mislabeled as 'Dokument historyczny' although it is encyclopedic text; other:topic 'Konstytucja marcowa' but the item is about the Mała Konstytucja"}
+{"id": "pn781-hk-02-025", "pass": false, "notes": "prompt_garbled: 'kolejność powstawania Armii Krajowej' does not fit the options, and 'Które miało miejsce najpierw' is awkward; trivial_echo: the prompt already gives the years (1939/1939/1942), so most of the order is given away"}
+{"id": "pn781-hk-02-027", "pass": false, "notes": "prompt_garbled: 'Nie pomyl:' is an odd opener, and options (B) and (C) are both compatible with the answer, so the item is ambiguous; answer_incomplete: the answer never picks a letter A/B/C"}
+{"id": "pn781-hk-02-028", "pass": false, "notes": "wrong_task_type (no thesis; point 'Przyczyny' lists strikes, not causes); language_error (telegraphic: 'utworzony Międzyzakładowy Komitet Strajkowy', 'zawarte cztery porozumienia sierpniowe'); prompt is only a bare topic label"}
+{"id": "pn781-hk-02-029", "pass": false, "notes": "prompt_garbled: '(B) 15 sierpnia Gdańska Stocznia' is not an event, and the answer names the Gdynia shipyard instead; trivial_echo: the dates in the options already answer 'Które było pierwsze'"}
+{"id": "pn781-hk-02-030", "pass": false, "notes": "prompt_garbled: 'Po poddaniu się niektórych stoczni' is a garbled paraphrase; prompt_not_standalone: no date or event (August 1980) given; other: the answer is generic ('pozostałe zakłady pracy były zdecydowane kontynuować walkę') and does not interpret the source concretely"}
+{"id": "pn781-hk-03-001", "pass": false, "notes": "language_error: 'Który z tych wydarzeń' should be 'Które z tych wydarzeń'"}
+{"id": "pn781-hk-03-002", "pass": false, "notes": "trivial_echo: answer repeats the quoted passage and gives no analysis of Bolesław's policy"}
+{"id": "pn781-hk-03-003", "pass": true, "notes": ""}
+{"id": "pn781-hk-03-004", "pass": true, "notes": ""}
+{"id": "pn781-hk-03-007", "pass": false, "notes": "prompt_not_standalone: never names whose birth, marriage and coronation are meant (Zygmunt August missing); prompt_garbled: awkward 'urodzenie się'"}
+{"id": "pn781-hk-03-010", "pass": false, "notes": "prompt_not_standalone: '(1) Ordynacja, (2) osadnicy, (3) powstanie' does not name which ordinance, which settlers or which uprising, and 'osadnicy' is not an event; language_error: telegraphic answer 'osadnicy w XVII wieku, Ordynacja 1638, powstanie 1648-1657'"}
+{"id": "pn781-hk-03-013", "pass": false, "notes": "prompt_garbled ('Nie pomyl dat' with no alternative dates offered; stilted 'abdykował w której dacie?'); other:redundant filler 'co było datą końca jego panowania'"}
+{"id": "pn781-hk-03-015", "pass": false, "notes": "wrong_task_type: the essay_plan has no thesis and its three points are thin, one fact each, not argued"}
+{"id": "pn781-hk-03-017", "pass": false, "notes": "prompt_garbled / prompt_not_standalone: 'Przeanalizuj: przywrócono granice z 1792 oraz przyznano tereny na Renie. Dlaczego łaska?' is telegraphic, never says who got the borders (France) or what 'łaska' refers to; answer_incomplete: it never explains why this was leniency"}
+{"id": "pn781-hk-03-019", "pass": true, "notes": ""}
+{"id": "pn781-hk-03-020", "pass": false, "notes": "trivial_echo: the answer repeats the prompt's own sentence; prompt_not_standalone: it names neither Galicia nor its autonomy ('Kto sprawował władzę?')"}
+{"id": "pn781-hk-03-025", "pass": true, "notes": ""}
+{"id": "pn781-hk-03-026", "pass": false, "notes": "prompt_not_standalone: the quoted fragment does not name the ghetto, and it does not say who the 100 thousand were; prompt_garbled: 'niemcy' in lowercase; language_error: 'brak sanacji' should be 'sanitacji'/'warunków sanitarnych'"}
+{"id": "pn781-hk-03-028", "pass": false, "notes": "prompt_not_standalone: 'zawieszenie, zniesienie, wprowadzenie' of what is never named (stan wojenny absent from prompt); prompt_garbled ('Który fakt najpierw')"}
+{"id": "pn781-hk-03-029", "pass": false, "notes": "prompt_garbled (telegraphic 'Wprowadzono niejednomyślnie, Sejm zatwierdził post factum. Czy konstytucyjne?'; subject not named), prompt_not_standalone, language_error (answer 'było niezgodne' lacks subject), wrong_task_type (no real source passage)"}
+{"id": "pn781-hk-03-030", "pass": false, "notes": "wrong_task_type: no thesis and no fact in each point, just telegraphic headings ('(2) Przygotowania władz.', '(5) Represje.'); language_error: 'Radziecka grożba' (should be 'groźba'); answer_incomplete: the plan does not argue the thesis 'ostatnia próba ratowania komunizmu'"}
+{"id": "pn781-hk-04-001", "pass": true, "notes": ""}
+{"id": "pn781-hk-04-006", "pass": false, "notes": "trivial_echo: the answer mostly repeats the quoted figures (2 miliony, 900 tys. km²) and draws no real conclusion to answer 'Co wynika z tych informacji'"}
+{"id": "pn781-hk-04-008", "pass": false, "notes": "other:incoherent prompt framing (King Zygmunt I Stary presented as a 'reformator' parallel to Łaski; 'Nie pomyl nazwisk!' does not fit a question choosing between two different people); answer 'Jego ustawodawstwo' has an ambiguous referent"}
+{"id": "pn781-hk-04-010", "pass": false, "notes": "answer_incomplete: the 'Czym różnił się' part is answered only by naming the invader; other: the sentence about Warsaw's population ('ludność Warszawy zmniejszyła się o 90%') is irrelevant to the question"}
+{"id": "pn781-hk-04-011", "pass": true, "notes": ""}
+{"id": "pn781-hk-04-012", "pass": false, "notes": "answer_incomplete (orders only A; B, C, D never placed); prompt_garbled (mixes ordering task with unrelated question 'Które państwo zaatakowało pierwsze?')"}
+{"id": "pn781-hk-04-013", "pass": false, "notes": "language_error: 'Zakończyło się klęską konfederatów i był czynnikiem' (the subject and gender do not agree); the prompt opener 'Nie pomyl dat!' does not fit exam style"}
+{"id": "pn781-hk-04-014", "pass": false, "notes": "prompt_not_standalone: 'Dlaczego stały się przyczyną konfederacji?' does not say which confederation (barska); prompt_garbled: 'Czytaj zdanie:' and the passage cut off at 'systemem demokracji'"}
+{"id": "pn781-hk-04-016", "pass": true, "notes": ""}
+{"id": "pn781-hk-04-017", "pass": true, "notes": ""}
+{"id": "pn781-hk-04-025", "pass": false, "notes": "answer_incomplete (no explicit true/false verdict to the statement), other:answer says 63 days is 'prawie dokładnie dwa miesiące', evading/contradicting the 'dłużej niż dwa miesiące' part; language_error ('co jest prawie dokładnie dwa miesiące'); wrong_task_type (true/false item labelled chronology)"}
+{"id": "pn781-hk-04-026", "pass": true, "notes": ""}
+{"id": "pn781-hk-04-027", "pass": false, "notes": "wrong_task_type/other: essay_plan has no stated thesis; points 1 ('silna pozycja Niemiec, słabe uzbrojenie powstańców') and 5 ('choć militarna klęska, jedno z najważniejszych wydarzeń') give no concrete fact; language_error: point 5 is a telegraphic fragment"}
+{"id": "pn781-hk-04-028", "pass": false, "notes": "language_error: 'władami PRL' (should be 'władzami'); prompt_garbled: the stray 'Nie pomyl dat!' and the false alternative 'z opozycją czy z rządem?'"}
+{"id": "pn781-hk-04-029", "pass": false, "notes": "prompt_not_standalone ('ich' has no referent; the Round Table and 1988/89 are never named, so 'negocjacji' is unanchored); prompt_garbled ('Czytaj:'); trivial_echo (answer mostly restates the quoted passage)"}
+{"id": "pn781-hk-04-030", "pass": false, "notes": "wrong_task_type: the essay_plan has no thesis; language_error: telegraphic fragments ('ostatecznie Okrągły Stół 6 lutego 1989 roku', 'Struktura – trzy główne zespoły, około 717 uczestników, 97 posiedzeń')"}
+{"id": "pn781-hk-04-032", "pass": true, "notes": ""}
+{"id": "pn781-hk-04-033", "pass": false, "notes": "prompt_garbled ('druga dzień bitwy pod Warszawą'); wrong_task_type (source_analysis with no passage); language_error ('z Szwecją', 'jedną z największych starć')"}
+{"id": "pn781-hk-04-036", "pass": false, "notes": "prompt_not_standalone: 'W tym samym miesiącu' does not say which month; prompt_garbled: 'Jaką przesłanie'; trivial_echo: the answer restates the passage and does not explain the message ('przesłanie') it asks for"}
+{"id": "pn781-hk-04-037", "pass": false, "notes": "prompt_garbled: 'Ile czasu wybrało jego wyzwolenia Warszawy?'; language_error: 'Wybrało trzy miesiące wyzwolenia Warszawy' is garbled, and 1 Aug to 2 Oct is not three months"}
+{"id": "pn781-hk-04-038", "pass": true, "notes": ""}
+{"id": "pn781-hk-04-040", "pass": false, "notes": "prompt_garbled / language_error: 'fragment o diaremie' (typo for 'diademie')"}
+{"id": "pn781-hk-04-041", "pass": false, "notes": "answer_incomplete (prompt asks for a percentage share, answer gives none), other:prompt asks for a figure the answer cannot supply"}
+{"id": "pn781-hk-04-043", "pass": false, "notes": "answer_incomplete: the answer is 'Źródło nie podaje konkretnych doradców', a non-answer; other: the prompt asks about something the material cannot answer, so the item has no usable exam value"}
+{"id": "pn781-hk-04-045", "pass": true, "notes": ""}
+{"id": "pn781-hk-05-001", "pass": false, "notes": "prompt_garbled: telegraphic items '(b) Zbigniew ślepiony; (c) wygnają Sieciecha; (d) pokuta'; prompt_not_standalone: does not name Bolesław Krzywousty or the period; language_error: answer is telegraphic '(b)-po 1109, (d)-po ślepieniu'"}
+{"id": "pn781-hk-05-002", "pass": false, "notes": "prompt_garbled (elliptical 'Nie pomyl: Bolesław III z Piastów czy Arpadów?'); language_error (telegraphic answer 'Z Piastów. Syn Władysława I Hermana...')"}
+{"id": "pn781-hk-05-003", "pass": false, "notes": "prompt_garbled: a declarative sentence with a question mark; prompt_not_standalone: 'Bolesław' is not identified; wrong_task_type: source_analysis with no quoted passage; trivial_echo: the answer restates the prompt"}
+{"id": "pn781-hk-05-005", "pass": false, "notes": "prompt_garbled: 'w Traktatach 1657' has wrong capitalization, a missing preposition and no treaty name; language_error: the answer 'Wpływ na politykę Prus. Oddała ziemię lęborsko-bytowską.' is telegraphic, and the first sentence is a verbless fragment"}
+{"id": "pn781-hk-05-006", "pass": false, "notes": "prompt_not_standalone / prompt_garbled ('Znaczenie: zerwanie zależności lennych?' - no parties, treaty or date named); language_error (telegraphic: 'Prusy niezależnym.'); wrong_task_type (no passage analysed)"}
+{"id": "pn781-hk-05-007", "pass": false, "notes": "prompt_garbled: 'Przyczyna Wielkiej Emigracji?' is telegraphic and not a complete question; language_error: the answer is a telegraphic fragment"}
+{"id": "pn781-hk-05-008", "pass": false, "notes": "prompt_not_standalone: 'Wcześniej: powstańcy czy amnestia?' names no event or year; language_error: the answer is telegraphic ('Powstańcy lipiec-październik 1831. Amnestia 1 listopada.')"}
+{"id": "pn781-hk-06-001", "pass": true, "notes": ""}
+{"id": "pn781-hk-06-002", "pass": false, "notes": "language_error: 'Kontrola nad militarią' (wrong word); other: 'atrybuty władzy absolutnej, demonstrujące pełną niezależność od Kościoła' is a distorted exam-level interpretation (princeps' right to appoint bishops presented as absolutism)"}
+{"id": "pn781-hk-06-003", "pass": false, "notes": "answer_incomplete (prompt requires a five-point plan, answer has only 3 points)"}
+{"id": "pn781-hk-06-004", "pass": false, "notes": "trivial_echo: the answer restates the quoted sentence ('miał wielkie znaczenie dla pozycji ... Jagiełły'); answer_incomplete: no long-term effects of the peace are explained, although the prompt asks for them"}
+{"id": "pn781-hk-06-005", "pass": false, "notes": "prompt_garbled: asks to 'Popraw' a statement that the answer then confirms as correct (Kępa Bazarowa), and switches from place to 'daty'; the premise of the task is incoherent"}
+{"id": "pn781-hk-06-006", "pass": false, "notes": "prompt_not_standalone: 'uzasadnij konkretnym fragmentem tekstu' refers to a text the student does not have; wrong_task_type: no thesis, and point 4 'Pokój umacnił pozycję Jagiełły' contains no fact; language_error: 'umacnił' (should be 'umocnił'), 'reprezentowani' (should be 'reprezentowane')"}
+{"id": "pn781-hk-06-007", "pass": false, "notes": "language_error ('zborem praw niezmiennych zawierającymi' has a typo and a case-agreement error; 'wyrażane przez elekcję szlachty' is garbled)"}
+{"id": "pn781-hk-06-008", "pass": false, "notes": "trivial_echo: the second sentence only restates the quoted passage; the analysis of szlachta rights is one generic sentence"}
+{"id": "pn781-hk-06-009", "pass": true, "notes": ""}
+{"id": "pn781-hk-06-010", "pass": true, "notes": ""}
+{"id": "pn781-hk-06-011", "pass": false, "notes": "answer_incomplete: the prompt asks about consequences 'dla obu stron', but the answer covers only the Commonwealth and not Sweden"}
+{"id": "pn781-hk-06-012", "pass": false, "notes": "prompt_garbled: 'prawidłowy rok zawartych negocjacji i podpisania dokumentu'"}
+{"id": "pn781-hk-06-013", "pass": false, "notes": "answer_incomplete: the prompt asks for each point to be backed by a concrete quote, but the answer has no quotes, no thesis and no treatment of 'główne problemy'; point 4 has no heading; prompt_not_standalone: 'cytatem ze źródła' refers to a source that is not given; language_error: 'protektoratem Rosyjskim', 'Patriotyczne' (wrong capitalisation)"}
+{"id": "pn781-hk-06-016", "pass": false, "notes": "language_error: 'Powstanie krakowskie ... był próbą', 'Głównym celem była wzniecenie', 'polski chłopstwo'; answer circular ('próbą ogólnonarodowego powstania' then 'celem ... wzniecenie ogólnonarodowego powstania')"}
+{"id": "pn781-hk-06-017", "pass": false, "notes": "answer_incomplete (second part - how his activity illustrates the movement's general aims - not addressed), trivial_echo (first sentence repeats the quoted passage)"}
+{"id": "pn781-hk-06-019", "pass": false, "notes": "language_error: 'Genezy i zwołanie' (garbled heading), 'W półowie grudnia' (misspelled 'połowie'); answer_incomplete: the prompt requires a source quotation for each point, but none are given; wrong_task_type: there is no thesis, only a list of facts"}
+{"id": "pn781-hk-06-020", "pass": true, "notes": ""}
+{"id": "pn781-hk-06-021", "pass": false, "notes": "prompt_garbled: 'Jakie to mówi o skuteczności' (should be 'Co to mówi'); language_error: illogical 'Legion Wschodni, mimo zamiaru utworzenia dwóch równorzędnych formacji, został rozwiązany' and lowercase 'legion Zachodni'"}
+{"id": "pn781-hk-06-022", "pass": false, "notes": "language_error ('po wybuchu powstania stycznia 1863'; 'starszymi siostrami były Helena, Zofia i brat Bronisław' is garbled)"}
+{"id": "pn781-hk-06-023", "pass": false, "notes": "answer_incomplete: it does not explain the significance for the young Piłsudski, only retells events; trivial_echo: it restates the quoted passage; language_error: 'W I Gimnazjum wileńskim'"}
+{"id": "pn781-hk-06-024", "pass": true, "notes": ""}
+{"id": "pn781-hk-06-025", "pass": false, "notes": "answer_incomplete (five points requested, only three given; no consequences for postwar Europe beyond partial); language_error (Devanagari characters in 'stanowiली')"}
+{"id": "pn781-hk-06-026", "pass": false, "notes": "wrong_task_type: source_analysis with no quoted passage; language_error: 'mówi się o poszerzeniu ... i obietnicę' (wrong case) and 'faktycznie oznaczało' (missing subject)"}
+{"id": "pn781-hk-06-027", "pass": true, "notes": ""}
+{"id": "pn781-hk-07-001", "pass": false, "notes": "trivial_echo: the prompt already gives all three dates, so the answer is the prompt's own text; prompt_not_standalone: 'złożenie hołdu w 1157' does not say who paid homage to whom"}
+{"id": "pn781-hk-07-002", "pass": false, "notes": "wrong_task_type: source_analysis with no passage; prompt_not_standalone: dangling 'w tym okresie'"}
+{"id": "pn781-hk-07-005", "pass": true, "notes": ""}
+{"id": "pn781-hk-07-006", "pass": false, "notes": "wrong_task_type: labelled source_analysis, but there is no source passage to analyse; it is a plain short-answer question"}
+{"id": "pn781-hk-07-007", "pass": true, "notes": ""}
+{"id": "pn781-hk-07-008", "pass": false, "notes": "prompt_garbled: 'podpisanie pactów' (the Latin term 'pacta conventa' is inflected wrongly)"}
+{"id": "pn781-hk-07-011", "pass": false, "notes": "prompt_garbled ('wygrał bitwę ... Częstochowę czy Mątwami' has mismatched cases and no 'pod')"}
+{"id": "pn781-hk-07-012", "pass": false, "notes": "prompt_garbled: 'tańca gonionu' is not a valid Polish form, and 'Co to była strategia' is colloquial; answer_incomplete: the strategy itself is never described, only why he avoided open battle; wrong_task_type: source_analysis with no passage"}
+{"id": "pn781-hk-07-013", "pass": true, "notes": ""}
+{"id": "pn781-hk-07-014", "pass": false, "notes": "answer_incomplete (asks for dates, answer gives no years: 'roku poprzedzającego', 'w maju', 'w lipcu'); prompt_not_standalone (does not name which confederation or which king)"}
+{"id": "pn781-hk-07-015", "pass": false, "notes": "wrong_task_type: source_analysis with no passage to analyse"}
+{"id": "pn781-hk-07-016", "pass": false, "notes": "answer_incomplete: no year (1846) is given for 'Kiedy'; language_error: 'w drugiej połowie lutego i marcu' and 'o charakterze antyszlachecki'"}
+{"id": "pn781-hk-07-017", "pass": false, "notes": "prompt_not_standalone: does not name the event (rabacja galicyjska) or the year; language_error: 'Pierwsze napady na dwory doszło do osiemnastego' is ungrammatical; filler 'W obu wypadkach było to w drugiej połowie miesiąca'"}
+{"id": "pn781-hk-07-018", "pass": false, "notes": "wrong_task_type: source_analysis with no passage (simple factual question)"}
+{"id": "pn781-hk-07-019", "pass": false, "notes": "answer_incomplete (date given only as 'w listopadzie 1916' instead of 5 listopada 1916; signatories not named - Beseler and Kuk)"}
+{"id": "pn781-hk-07-020", "pass": true, "notes": ""}
+{"id": "pn781-hk-07-021", "pass": false, "notes": "wrong_task_type: labelled source_analysis but no source passage is quoted or analysed; it is a plain short-answer question"}
+{"id": "pn781-hk-07-022", "pass": false, "notes": "other:prompt_answer_mismatch: the prompt asks for the key goal of Dmowski's foreign policy, but the answer gives a first stage of his road to independence (autonomy within the Russian Empire) and presents that stage as the main goal"}
+{"id": "pn781-hk-07-023", "pass": false, "notes": "answer_incomplete (asked for three dates but none is given, and the founding of Liga Narodowa is not dated)"}
+{"id": "pn781-hk-07-024", "pass": false, "notes": "wrong_task_type: source_analysis with no passage to analyse; it is a plain recall question with a one-sentence answer"}
+{"id": "pn781-hk-07-025", "pass": true, "notes": ""}
+{"id": "pn781-hk-07-026", "pass": false, "notes": "prompt_not_standalone ('zerwanie stosunków dyplomatycznych' - between whom not stated; 'Związku Patriotów' incomplete name); answer gives no dates for a chronology item"}
+{"id": "pn781-hk-07-027", "pass": false, "notes": "wrong_task_type: source_analysis with no passage; other: the sentence 'Ta struktura została w istocie zachowana' dangles and is unclear (preserved when, by whom?)"}
+{"id": "pn781-hk-08-001", "pass": true, "notes": ""}
+{"id": "pn781-hk-08-002", "pass": false, "notes": "wrong_task_type: labelled source_analysis but has no passage to analyse; language_error: 'Polityczna konsekwencja bitwy była rozpadnięciem się' should be 'Polityczną konsekwencją bitwy było rozpadnięcie się'"}
+{"id": "pn781-hk-08-003", "pass": true, "notes": ""}
+{"id": "pn781-hk-08-004", "pass": false, "notes": "prompt_not_standalone (no treaty/period named - access to the sea after what?), wrong_task_type (source_analysis without any passage)"}
+{"id": "pn781-hk-08-005", "pass": true, "notes": ""}
+{"id": "pn781-hk-08-006", "pass": false, "notes": "prompt_not_standalone: 'po pokoju toruńskim' is ambiguous (first vs second peace of Toruń, no year given); wrong_task_type: essay_plan has no thesis, and point 3 ('Znaczenie ekonomiczne: przywrócenie dostępu do morza') is telegraphic"}
+{"id": "pn781-hk-08-007", "pass": false, "notes": "wrong_task_type: a causal question 'Co spowodowało wprowadzenie systemu wolnej elekcji?' is labelled chronology; answer_incomplete: the answer is vague and does not name Zygmunt II August or the date"}
+{"id": "pn781-hk-08-008", "pass": false, "notes": "wrong_task_type (source_analysis with no passage); answer_incomplete (asked for several features, answer gives one)"}
+{"id": "pn781-hk-08-009", "pass": true, "notes": ""}
+{"id": "pn781-hk-08-010", "pass": false, "notes": "wrong_task_type: marked source_analysis but no passage is quoted or analysed; it is a plain short-answer question"}
+{"id": "pn781-hk-08-011", "pass": false, "notes": "answer_incomplete (answer reports a belief it itself calls 'niesłusznie' and never states when the first effective breaking actually occurred)"}
+{"id": "pn781-hk-08-012", "pass": false, "notes": "prompt_garbled: 'zrywający sejm z powodu liberum veto' has the wrong relation (they broke the sejm by using liberum veto, not because of it); other: the question does not give the period (XVII–XVIII w.)"}
+{"id": "pn781-hk-08-013", "pass": false, "notes": "language_error: Cyrillic 'Война'; answer_incomplete: the year asked for (1792) is never given"}
+{"id": "pn781-hk-08-015", "pass": false, "notes": "prompt_not_standalone: does not name the war or year (1792); other:circular answer — both sentences repeat that the support did not arrive, and the only reason given ('zdrady sojusznika') is not explained"}
+{"id": "pn781-hk-08-016", "pass": true, "notes": ""}
+{"id": "pn781-hk-08-017", "pass": false, "notes": "wrong_task_type (source_analysis without any passage), other:answer covers only France without saying so while prompt asks about Wiosna Ludów generally"}
+{"id": "pn781-hk-08-018", "pass": true, "notes": ""}
+{"id": "pn781-hk-08-019", "pass": false, "notes": "answer_incomplete: the prompt asks when the uprising broke out but no date is given; language_error: garbled 'wybuchło w Poznaniu polskich mieszkańców Prowincji Poznańskiej przeciwko Republice Weimarskiej'"}
+{"id": "pn781-hk-08-020", "pass": false, "notes": "wrong_task_type: labelled source_analysis but the prompt has no quoted passage; prompt_not_standalone: does not say which Poles (the Prussian partition) or when"}
+{"id": "pn781-hk-08-021", "pass": false, "notes": "answer_incomplete (question asks for the cause; answer gives only date, place and circumstance without naming a cause)"}
+{"id": "pn781-hk-08-022", "pass": false, "notes": "answer_incomplete: no start date and no year (1 września – 6 października 1939 missing); language_error: 'Zbrojna agresja Niemiec rozpoczęła się i regularne walki trwały do października' is garbled; the prompt capitalises 'Kampania Wrześniowa'"}
+{"id": "pn781-hk-08-025", "pass": false, "notes": "wrong_task_type: source_analysis with no passage; prompt_not_standalone: 'Co ujawniają ofiary Czerwca 56?' is too vague to answer; language_error: 'Ujawnia to' does not agree with the plural question, and 'chaos' is repeated ('tragiczny chaos')"}
+{"id": "pn781-hk-08-027", "pass": false, "notes": "prompt_garbled (ungrammatical 'Jakie siły użyto' - should be 'Jakich sił użyto')"}
+{"id": "pn781-hk-09-002", "pass": false, "notes": "prompt_garbled: 'Teoria przydomku Łokietek' is not a question or instruction; wrong_task_type: source_analysis with no passage; language_error: the answer is a telegraphic fragment"}
+{"id": "pn781-hk-09-004", "pass": false, "notes": "prompt_not_standalone: 'Który rządził Litwą najpierw?' names neither person nor period"}
+{"id": "pn781-hk-09-006", "pass": false, "notes": "prompt_garbled: 'Odzyskanie Pomorza Gdańskiego' is not a question or instruction; wrong_task_type: source_analysis with no passage; language_error: telegraphic answer 'Wielki sukces.'"}
+{"id": "pn781-hk-09-008", "pass": false, "notes": "prompt_garbled: 'Porządź karierę Batorego'; language_error: telegraphic answer with typo 'Zmiana sympanii.'; answer_incomplete: no dates/content for first item, events not explained"}
+{"id": "pn781-hk-09-009", "pass": false, "notes": "prompt_garbled ('Motywacja Batorego' is not a question or instruction; no context of which decision), prompt_not_standalone, language_error (telegraphic answer 'Pragmatyka: chronienie majątku przez związek z mocnym rodem'), wrong_task_type (no passage)"}
+{"id": "pn781-hk-09-010", "pass": false, "notes": "prompt_garbled: 'Sobieski czy Żółkiewski: hetmanem czy królem?' is not a complete, grammatical question; language_error: telegraphic answer 'Żółkiewski hetmanem. Sobieski królem od 1674.'"}
+{"id": "pn781-hk-09-012", "pass": false, "notes": "prompt_garbled: 'Zwycięstwo pod Wiedniem 1683' is not a question or instruction; language_error: the answer is telegraphic ('Największy triumf. Wzmocniło pozycję polityczną.'); wrong_task_type: source_analysis with no passage"}
+{"id": "pn781-hk-09-013", "pass": false, "notes": "prompt_garbled / prompt_not_standalone: 'Kościuszko czy Wawrzecki: od początku?' is telegraphic, does not name the insurrection and does not say what is being asked"}
+{"id": "pn781-hk-09-014", "pass": false, "notes": "prompt_garbled ('Porządź droge do insurekcji' is not a valid instruction and is missing diacritics); language_error (telegraphic answer '1792 klęska. Likwidacja Konstytucji.')"}
+{"id": "pn781-hk-09-018", "pass": false, "notes": "prompt_not_standalone: 'Babka i patriotyzm' is not a question and does not name Traugutt; prompt_garbled; wrong_task_type: source_analysis with no passage; language_error: the answer is telegraphic"}
+{"id": "pn781-hk-09-021", "pass": false, "notes": "prompt_garbled: 'Plebiscyt i III powstanie' is not a question or instruction; wrong_task_type: no passage; language_error: the answer '59.6% za Niemcami. Polska podjęła powstanie dla lepszego podziału.' is telegraphic, uses a decimal point instead of a comma, and says 'Polska' where the insurgents are meant"}
+{"id": "pn781-hk-10-001", "pass": false, "notes": "prompt_garbled (ungrammatical 'W którego roku'); language_error ('uzyskał zrzeczenie pretensji')"}
+{"id": "pn781-hk-10-002", "pass": false, "notes": "other: the prompt uses the anachronism 'dla Rzeczypospolitej' for the Kingdom of Poland in the 14th century; the prompt calls the passage a 'wypowiedź'"}
+{"id": "pn781-hk-10-003", "pass": false, "notes": "prompt_garbled: 'na temat Osiągnięcia wewnętrzne' is uninflected and unquoted; language_error: 'Królewicz doprowadził' (he was king) and 'Brak bezpiecznika sukcesji'; other: point 5 is not an internal achievement, the plan has no thesis, and 'pierwszą uczelnię na terenie Rzeczypospolitej' is an anachronism"}
+{"id": "pn781-hk-10-004", "pass": false, "notes": "other:terminology error 'przesunięcie władzy ustawodawczej z króla na sejmik szlachty' — the definition speaks of Senat and izba poselska (sejm walny), not a sejmik"}
+{"id": "pn781-hk-10-005", "pass": false, "notes": "prompt_garbled: 'Której dekady XVI wieku datuje się'; answer_incomplete: does not answer whether Nihil novi came before or after the statuty nieszawskie, nor names a decade ('na przełomie XV i XVI wieku' for 1505 is also inaccurate as a decade answer)"}
+{"id": "pn781-hk-10-006", "pass": false, "notes": "language_error in prompt ('z przywilejem mielnickimi'), trivial_echo (answer merely restates one fact with padding)"}
+{"id": "pn781-hk-10-007", "pass": false, "notes": "language_error: 'króla głęboko religijnego i pracownika' (should be 'pracowitego'); anglicism 'pozycjonowały go jako władcę'; prompt_garbled: comma splice run-on '...dwóch mszy świętych, wyjaśnij, jakie wartości...'"}
+{"id": "pn781-hk-10-008", "pass": true, "notes": ""}
+{"id": "pn781-hk-10-009", "pass": false, "notes": "answer_incomplete: the prompt asks about art and science, but the answer covers only painting; language_error: 'zainteresował się' is awkward (should be 'interesował się')"}
+{"id": "pn781-hk-10-010", "pass": true, "notes": ""}
+{"id": "pn781-hk-10-011", "pass": false, "notes": "trivial_echo (answer mostly paraphrases the quoted passage); language_error ('znaczyła przełom' should be 'oznaczała przełom')"}
+{"id": "pn781-hk-10-012", "pass": false, "notes": "prompt_not_standalone: 'Kto był dowódcą sił polsko-cesarskich?' does not name the battle (Wiedeń 1683)"}
+{"id": "pn781-hk-10-013", "pass": false, "notes": "language_error: 'Kościuszko wyróżniał się jako student i pozycję instruktora' is ungrammatical and garbled"}
+{"id": "pn781-hk-10-014", "pass": false, "notes": "prompt_not_standalone (ambiguous: Kościuszko returned to Poland more than once; prompt does not specify from where/which return)"}
+{"id": "pn781-hk-10-015", "pass": false, "notes": "prompt_garbled: 'plan esej' (should be 'plan eseju'); language_error: 'wyróżniał się ze spośród innych' and 'zagranicą' (should be 'za granicą'); wrong_task_type: the essay_plan has no thesis, only a biographical list"}
+{"id": "pn781-hk-10-016", "pass": true, "notes": ""}
+{"id": "pn781-hk-10-017", "pass": false, "notes": "prompt_garbled: 'Po którego powstania rozwijał się...'; answer_incomplete: 'po klęsce powstania' never names which uprising (the question asks exactly that)"}
+{"id": "pn781-hk-10-018", "pass": false, "notes": "prompt_garbled: 'planu esej'; wrong_task_type: the essay_plan has no thesis; language_error: 'priorytetyzując', and 'rozpoczęli redakcję własnych poglądów' is garbled"}
+{"id": "pn781-hk-10-020", "pass": true, "notes": ""}
+{"id": "pn781-hk-10-021", "pass": false, "notes": "prompt_not_standalone: 'Kto dowodził wojskami polskimi?' names no war or battle (the exact example the rubric rejects)"}
+{"id": "pn781-hk-10-022", "pass": true, "notes": ""}
+{"id": "pn781-hk-10-023", "pass": true, "notes": ""}
+{"id": "pn781-hk-10-024", "pass": true, "notes": ""}
+{"id": "pn781-hk-10-025", "pass": true, "notes": ""}
+{"id": "pn781-hk-10-026", "pass": false, "notes": "prompt_not_standalone ('Kiedy kryzys w Polsce osiągnął apogeum?' - which crisis not named)"}
+{"id": "pn781-hk-10-027", "pass": false, "notes": "prompt_not_standalone: it does not say whose disappointment (Marzec 1968 context missing); other: the answer turns what people were disappointed with ('rozczarowania systematycznym kurczeniem się obszaru swobód') into its effect, so it does not answer 'skutek'"}
+{"id": "pn781-hk-r201-005", "pass": false, "notes": "prompt_garbled: 'Co to świadczy?' should be 'O czym to świadczy?'; prompt_not_standalone: no date or context (1788, Sejm Czteroletni); answer_incomplete: two thin sentences that barely analyse the source"}
+{"id": "pn781-hk-r201-006", "pass": false, "notes": "prompt_not_standalone: 'Kiedy Sejm zmienił skład?' does not name the Sejm (Czteroletni) and does not say what change is meant"}
+{"id": "pn781-hk-r201-008", "pass": false, "notes": "wrong_task_type: source_analysis with no passage (simple factual question)"}
+{"id": "pn781-hk-r201-009", "pass": false, "notes": "prompt_not_standalone (does not name Traugutt; 'Węgry czy Krym' telegraphic), answer_incomplete (no dates/justification)"}
+{"id": "pn781-hk-r201-010", "pass": false, "notes": "prompt_garbled: 'Plan: Metody rusyfikacji.' is not a complete instruction; language_error: 'Introdudzowano' (nonword); wrong_task_type: an essay_plan without a thesis"}
+{"id": "pn781-hk-r201-014", "pass": false, "notes": "language_error: 'Cel II powstania był pragmatyczne polepszenie sytuacji' is ungrammatical; prompt_not_standalone: 'II powstania' never says it is the Silesian uprising, and Zgrzebniok is not introduced; wrong_task_type: no real source passage, only a paraphrased stub"}
+{"id": "pn781-hk-r201-018", "pass": false, "notes": "prompt_not_standalone: 'Co najpierw: walki uliczne czy przejęcie Warszawy?' does not name the Przewrót majowy or the year; language_error: telegraphic answer 'Najpierw otwarcie ognia przy moście' that does not answer the question in its own terms (walki uliczne)"}
+{"id": "pn781-hk-r201-023", "pass": false, "notes": "wrong_task_type (source_analysis with no passage); prompt_not_standalone (no period or context given); answer_incomplete (omits the purpose: striking when Germany collapses); language_error ('rozstrzeliwali Polaków' has no subject)"}
+{"id": "pn781-hk-r201-024", "pass": false, "notes": "prompt_garbled: 'Porządek: SZP, ZWZ, AK?' is telegraphic with unexplained abbreviations; prompt_not_standalone; trivial_echo: the answer repeats the order already given in the prompt"}
+{"id": "pn781-hk-r202-002", "pass": true, "notes": ""}
+{"id": "pn781-hk-r202-003", "pass": false, "notes": "trivial_echo (first sentence repeats the quoted passage; second only restates it as 'wada'); language_error ('marginalizowała zakresy wiedzy')"}
+{"id": "pn781-hk-r202-004", "pass": false, "notes": "wrong_task_type: the essay_plan has no thesis; language_error: 'Początkowcy reformy' is garbled, and 'a tworzono polską terminologię nauk ścisłych' does not connect to point III; other: point IV's heading does not match its content"}
+{"id": "pn781-hk-r202-005", "pass": false, "notes": "prompt_garbled: 'Która następność chronologiczna' is not correct Polish (should be 'kolejność'); language_error: 'z inauguracyjnym baletem maskowym' (the event was a masked ball, 'bal maskowy')"}
+{"id": "pn781-hk-r202-006", "pass": false, "notes": "trivial_echo: the answer's first sentence restates the quoted fragment almost word for word; language_error: 'Jaką decyzję podejmowano' should be 'podjęto'"}
+{"id": "pn781-hk-r202-010", "pass": false, "notes": "wrong_task_type: essay_plan lacks a thesis; answer_incomplete: prompt asks for 'skutki' but plan only lists laws (no section on consequences)"}
+{"id": "pn781-hk-r202-014", "pass": true, "notes": ""}
+{"id": "pn781-hk-r202-015", "pass": true, "notes": ""}
+{"id": "pn781-hk-r202-020", "pass": false, "notes": "trivial_echo: the prompt gives the date of every event, so the right order can be read straight from the prompt's own text"}
+{"id": "pn781-hk-r202-021", "pass": false, "notes": "language_error: garbled 'zawsze dochodziło to w odpowiedzi na wznowienie inicjatyw sowieckiej strony' and 'inicjatywę do negocjacji podjęła'"}
+{"id": "pn781-hk-r202-022", "pass": false, "notes": "language_error ('zwolenninika'; 'na wznowienie inicjatywy strony sowieckiej przez Gieorgija Astachowa' is garbled); answer_incomplete (no thesis, and no point on the pact's significance/consequences although the topic asks for 'znaczenie')"}
+{"id": "pn781-hk-r202-026", "pass": false, "notes": "language_error: 'wieczorem radia poinformowało społeczeństwo' is ungrammatical; 'o podwyżkach cen żywności głównych artykułów' is garbled"}
+{"id": "pn781-hk-r202-027", "pass": false, "notes": "trivial_echo: the answer restates the three demands almost word for word from the quoted passage (the question is pure retrieval from the passage), with only a one-sentence generic summary added"}
+{"id": "pn781-train-0001", "pass": true, "notes": ""}
+{"id": "pn781-train-0002", "pass": true, "notes": ""}
+{"id": "pn781-train-0003", "pass": true, "notes": ""}
+{"id": "pn781-train-0004", "pass": true, "notes": ""}
+{"id": "pn781-train-0005", "pass": true, "notes": ""}
+{"id": "pn781-train-0006", "pass": false, "notes": "other:point 5 ('Wniosek: unia lubelska zamknęła przejście od unii personalnej do wspólnego państwa') has no concrete fact although the prompt says every point needs one"}
+{"id": "pn781-train-0007", "pass": true, "notes": ""}
+{"id": "pn781-train-0008", "pass": true, "notes": ""}
+{"id": "pn781-train-0009", "pass": true, "notes": ""}
+{"id": "pn781-train-0010", "pass": true, "notes": ""}
+{"id": "pn781-train-0011", "pass": false, "notes": "prompt_not_standalone (refers to 'danych o łącznych zdobyczach terytorialnych zaborców' but no data or passage is given, and it never names the partitions); wrong_task_type (source_analysis with no source passage)"}
+{"id": "pn781-train-0012", "pass": true, "notes": ""}
+{"id": "pn781-train-0013", "pass": true, "notes": ""}
+{"id": "pn781-train-0014", "pass": true, "notes": ""}
+{"id": "pn781-train-0015", "pass": true, "notes": ""}
+{"id": "pn781-train-0016", "pass": true, "notes": ""}
+{"id": "pn781-train-0017", "pass": true, "notes": ""}
+{"id": "pn781-train-0018", "pass": true, "notes": ""}
+{"id": "pn781-train-0019", "pass": true, "notes": ""}
+{"id": "pn781-train-0020", "pass": true, "notes": ""}
