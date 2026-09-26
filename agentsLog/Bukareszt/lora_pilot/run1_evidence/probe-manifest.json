@@ -1,0 +1,18 @@
+{
+  "status": "DECLARED",
+  "deadline_utc": "2026-09-26T22:50:45Z",
+  "base": "/ephemeral/mm-lora/base/gemma-4-12B-it@707f0a3b",
+  "base_weight_sha256": "5a84cb313260ac447237b890387116dfa8682e49a6b44bc585ae8353abbff18d",
+  "inference_calls": 0,
+  "mode": "synthetic_probe",
+  "output": "/ephemeral/mm-lora/pilot-run1/probe",
+  "lock_file": "/ephemeral/mm-lora/pilot-run1/stage-probe.lock",
+  "max_optimizer_steps": 1,
+  "max_seconds": 600,
+  "files": {
+    "/ephemeral/mm-lora/pilot-src/agentsLog/kwiscion/essay-lora-prep/run_real_pilot.py": "3d466395cad9a2d596a356f15904024e2102b655c79fdc6319942d17bd1443dd",
+    "/ephemeral/mm-lora/pilot-src/agentsLog/kwiscion/essay-lora-prep/prepare.py": "0d3a0452ef9caf514c713766e81b3fc1f21ecfcb85db8d2b89072a9a75cf115e",
+    "/ephemeral/mm-lora/pilot-src/agentsLog/kwiscion/essay-lora-prep/candidate.json": "fc3b61de8cd061617ed5351cac441b8610cca19fff6a0b8827feb767cd617707",
+    "/ephemeral/mm-lora/pilot-src/agentsLog/kwiscion/essay-lora-prep/evidence-manifest.json": "2ffac97f62bc12db94277e6cc2d3d30e876f4eb5ebb2731ada1ebee91c2db5cd"
+  }
+}
