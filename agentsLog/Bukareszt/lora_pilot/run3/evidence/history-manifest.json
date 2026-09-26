@@ -1,0 +1,29 @@
+{
+  "status": "DECLARED",
+  "deadline_utc": "2026-09-26T23:56:28Z",
+  "base": "/ephemeral/mm-lora/base/gemma-4-12B-it@707f0a3b",
+  "base_weight_sha256": "5a84cb313260ac447237b890387116dfa8682e49a6b44bc585ae8353abbff18d",
+  "inference_calls": 0,
+  "mode": "history",
+  "output": "/ephemeral/mm-lora/pilot-run3/history",
+  "lock_file": "/ephemeral/mm-lora/pilot-run3/stage-history.lock",
+  "max_optimizer_steps": 36,
+  "max_seconds": 1500,
+  "train_records": 90,
+  "train": "/ephemeral/mm-lora/real-prep-in/train_sft.jsonl",
+  "eval_inputs": "/ephemeral/mm-lora/real-prep-in/eval16_input.jsonl",
+  "clearance": "/ephemeral/mm-lora/real-prep-in/essay_lora_clearance_v1.json",
+  "synthetic_probe_report": "/ephemeral/mm-lora/pilot-run2/probe/report.json",
+  "control_serving_report": "/ephemeral/mm-lora/pilot-run3/control-requalified-report.json",
+  "files": {
+    "/ephemeral/mm-lora/pilot-src2/agentsLog/kwiscion/essay-lora-prep/run_real_pilot.py": "586acd0b48f0c7aa51b5cba6da5be9ccb5913c03a9d908a8500f800b9d1e0229",
+    "/ephemeral/mm-lora/pilot-src2/agentsLog/kwiscion/essay-lora-prep/prepare.py": "0d3a0452ef9caf514c713766e81b3fc1f21ecfcb85db8d2b89072a9a75cf115e",
+    "/ephemeral/mm-lora/pilot-src2/agentsLog/kwiscion/essay-lora-prep/candidate.json": "fc3b61de8cd061617ed5351cac441b8610cca19fff6a0b8827feb767cd617707",
+    "/ephemeral/mm-lora/pilot-src2/agentsLog/kwiscion/essay-lora-prep/evidence-manifest.json": "2ffac97f62bc12db94277e6cc2d3d30e876f4eb5ebb2731ada1ebee91c2db5cd",
+    "/ephemeral/mm-lora/real-prep-in/train_sft.jsonl": "83153814da8251210f2b9d225dc713ad245c273bdc5d46dd1216b0e4b97178f5",
+    "/ephemeral/mm-lora/real-prep-in/eval16_input.jsonl": "5979ee0b8e0e4f084cf6070f42d31892ee53c1f5485409b4fc5dac1266055a28",
+    "/ephemeral/mm-lora/real-prep-in/essay_lora_clearance_v1.json": "9a31742306e1c37aa096ff9e16e128083b8fff8e83257658e21457f2b35921fd",
+    "/ephemeral/mm-lora/pilot-run2/probe/report.json": "52a43b2839a166cb4469d68503b8ced038dd0232cc03b4128076cf4ededb3e4a",
+    "/ephemeral/mm-lora/pilot-run3/control-requalified-report.json": "7e2687983f196927d77eaf8c38eda45935bf2a76eab9e24b96365f62130fc7aa"
+  }
+}

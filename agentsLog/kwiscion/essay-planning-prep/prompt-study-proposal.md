@@ -1,0 +1,45 @@
+# Two-arm generic route study Ă˘â‚¬â€ť proposal, no execution authority
+
+Use one shared runtime, model and failure ladder. Compare **strong single answer** with **structured routes**. No third wording variant: the useful distinction is whether explicit intermediate work creates better candidates and whether selection retains that benefit. Preserve the separate original six-essay declaration; this broader study requires its own frozen budget and root declaration.
+
+`prompt-study-panel.json` freezes a **four-item first tranche**, one per route: z7 closed, z2 source-based open, z1 visual, and original DEV essay001 on topic1. The other four previously identified items remain parked for an extension only after promising results and a separate declaration. The May2024 items were already repeatedly evaluated; this is known validation, not an unseen test or an unbiased quality estimate. The manifest contains IDs, routes and exact prompt/image hashes, without source passages or keys. No new corpus or held-out material is introduced. Preserve every original full page at every relevant stage.
+
+## Fixed mechanisms
+
+| Route | Strong single | Structured route |
+|---|---|---|
+| Closed | One reasoned decision and required justification | Three independent candidates, each seeing the complete original question/source/images but no other candidate. Fixed approaches: direct positive evidence; test competing options against contradictions; chronological/spatial consistency. A source-grounded disagreement judge sees all three in a deterministic rotated order and selects an exact candidate answer, or returns a separately labelled new answer. No majority vote is treated as evidence. |
+| Open | One complete answer covering all requested parts | Required-claim/evidence matrix Ă˘â€ â€™ answer Ă˘â€ â€™ coverage check. Matrix separates explicit source observations from historical inference and marks unsupported claims. The check may remove unsupported additions or fill genuinely omitted required parts; it must return one final answer and cannot use a rubric/key. |
+| Images | One answer from the complete original images and task | Observation inventory Ă˘â€ â€™ interpretation/answer Ă˘â€ â€™ targeted revisit only when the recorded ambiguity changes the decision. Observations use page/region landmarks and visible marks, independently of the preferred hypothesis. Revisit receives the same complete original images and a bounded question about the disputed feature; unreadable evidence stays unknown. No invented labels or silent source crop. |
+| Essay | Champion strong thinking one-shot, qualified target32768 cap/context65536 | Thinking planner32768 Ă˘â€ â€™ writer 4096, full task and fallible notes, typed stages from `structured_routes.py`; failed planning never inherits the control essay. |
+
+The initial generic suffixes are frozen in `route-study-prompts.json`; no historical examples or known-answer hints appear. Closed candidate answers, open draft/final pairs, image observation/revisit records, and essay plans/finals are all retained. Intermediate plans are not external evidence. The shared engine owns source preservation, native accounting, deadline, recovery and cleanup.
+
+## Current-policy finite budget proposal
+
+Use the **same runtime-qualified champion settings** for every strong single control: target context65536 and initial thinking output ceiling32768. Do not shorten reasoning because the final answer is closed or brief. Thought-enabled candidates, planners, selectors and reviewers receive the same substantial32768 initial ceiling; evidence-backed escalation may use49152 only when the complete source plus requested generation demonstrably fits context. If those settings have not qualified in the shared runtime, the study stays blocked rather than silently using a weaker baseline. Direct nonthinking prose writers may use4096.
+
+This four-item study has the following primary stages, all generic and frozen before dispatch:
+
+| Arm/route | Primary stages and initial caps | Maximum primary calls | Requested tokens |
+|---|---|---:|---:|
+| Strong single, all four items | 4Ă—thinking32768 | 4 | 131072 |
+| Structured closed | 3 independent thinking candidates32768 + thinking source-contradiction judge32768 | 4 | 131072 |
+| Structured open | Thinking claims/evidence map32768 + direct writer4096 + thinking coverage review32768 | 3 | 69632 |
+| Structured image | Thinking observation32768 + thinking interpretation32768 + conditional thinking targeted revisit32768 | 3 | 98304 |
+| Structured essay, selected topic1 | Thinking plan32768 + direct prose writer4096 | 2 | 36864 |
+| **Total primary ceiling** | **14 thinking stages and2 direct writers** | **16** | **466944** |
+
+This is a new shared-runtime study; it does not change the existing six-topic1 experiment's smaller frozen stage budgets or no-retry declaration. The broader topic-selection route is separately described in `essay-topic-selection-next.md` and is not inserted into this first tranche.
+
+Match wall budgets by item and arm: **240 seconds for each nonessay item and600 seconds for the essay**, including all stages, cold load if applicable, and recovery. Each arm therefore has a maximum1320seconds of item work. Propose a **60-minute whole-operation ceiling**:2640seconds of matched item work,600seconds reserved for recovery/quiescence scheduling and360seconds for preflight, finalization, schema validation and cleanup. Recovery dispatch must still respect the same per-item ceiling for both arms; the global reserve does not grant an extra unpaired item budget. Reserve recovery time dynamically inside the item/arm allowance before first dispatch; Unused time may be reassigned only inside that arm and without exceeding an item's matched ceiling. The shared scheduler must freeze feasible stage allocations before launch, rather than divide into arbitrarily tiny equal slices. A control item may consume its entire matched item window; do not shorten its wall allowance merely because it has one semantic stage. These large caps are ceilings, not a claim that all tokens will be generated before a timeout. The proposed8192 nonthinking recovery cap requires explicit shared-runtime configuration review before execution.
+
+Every failed logical stage may receive **up to three recovery attempts**, after owned compute is proven quiescent. Use the shared ladder: initial thinking32768; increased thinking ceiling up to49152 when source/context evidence supports it; thinking-off complete final with8192 ceiling; then bounded fallible-note completion with8192 ceiling. Preserve full original source/images throughout. Nonthinking prose stages remain nonthinking with4096 per attempt. For an explicit conservative finite envelope, this gives **64 maximum calls** and **1409024 requested tokens**:14Ă—(32768+49152+8192+8192) +2Ă—(4Ă—4096). It is a worst-case ceiling, not a plan to consume all tokens; wall deadlines and successful completion stop unnecessary attempts. Escalation that cannot fit retains a supported cap without truncating source, reducing actual reservations. There is no arbitrary shared token bucket that silently deprives one failed stage of its eligible attempts.
+
+The mandatory failure ladder does not promise four completed calls when the absolute deadline makes them impossible. Record eligible-but-unfulfilled recoveries, time exhaustion and every requested/actual token count explicitly. Failed intermediates use the remaining predefined final stage with original input and explicitly fallible notes, or a recorded source-only fallback; no control answer is substituted. Fatal runtime failures stop the study. Preserve first-attempt and recovered-final scores separately. A missing candidate remains missing in the oracle analysis. **These are proposed higher bounds, not runtime authorization**; root must declare the exact final manifest after shared integration and independent checks.
+
+## One fast grading pass and diagnosis
+
+Freeze prompts/configuration before any new outputs or grading. One grader reviews shuffled answer-only finals and all three closed candidates in one pass against the existing evaluator/source evidence. Use existing point maxima; flag uncertain judgments rather than spawning two complete grading sessions. Do not grade reasoning traces as answers. Root may adjudicate only material ambiguous cells.
+
+For closed items, report candidate oracle (best candidate score, diagnostic upper bound only) versus selected candidate/final score. Distinguish: no correct candidate existed; a correct candidate existed but selection discarded it; judge introduced a new error; judge created a correct new answer. Also report draftĂ˘â€ â€™coverage and interpretationĂ˘â€ â€™revisit changes and wall-budget failures. The candidate oracle includes only independent c1/c2/c3, excluding selector_NEW; new answers are reported separately. Oracle points never become achieved selected points. Results guide the next mechanism; no panel gain alone promotes a final model or changes the sealed test.

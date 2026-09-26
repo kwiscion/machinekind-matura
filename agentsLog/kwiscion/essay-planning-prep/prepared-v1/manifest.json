@@ -1,0 +1,56 @@
+{
+ "schema": "argument_planning_v1",
+ "status": "PREPARED",
+ "declared_utc": null,
+ "deadline_utc": null,
+ "authorization": null,
+ "assignment": "https://github.com/kwiscion/machinekind-matura/issues/80#issuecomment-5849836497",
+ "reassignment": "https://github.com/kwiscion/machinekind-matura/issues/80#issuecomment-5850512012",
+ "max_calls": 18,
+ "max_requested_tokens": 196608,
+ "max_seconds": 2700,
+ "request_timeout": 420,
+ "retries": 0,
+ "smokes": 0,
+ "ids": [
+  "dev-essay-001",
+  "dev-essay-003",
+  "dev-essay-004",
+  "dev-essay-005",
+  "dev-essay-009",
+  "dev-essay-010"
+ ],
+ "topic": 1,
+ "stages": {
+  "control": [
+   true,
+   20480
+  ],
+  "plan": [
+   true,
+   8192
+  ],
+  "write": [
+   false,
+   4096
+  ]
+ },
+ "model": "gemma4:12b-it-q4_K_M",
+ "model_digest": "4eb23ef187e2c5462566d6a1d3bbbc2f1346d0b4327cbb66d58fffbcc9b2b05c",
+ "runtime_version": "0.34.4",
+ "context": 32768,
+ "temperature": "omitted",
+ "source_bundle_sha256": "fa3138bf4a386978ac1478c5610c46804a3d43ca32a969a43d2707482aa079a2",
+ "files": {
+  "inputs.json": "1923faa5a158979bd427ab6181f73c30cbd30b15f83bed96af1158d20b936bad",
+  "planning_wave.py": "86ba00baca2311c4dab12484690a5dfc821860e2c536510c025182acab38e383",
+  "prompts.json": "87de7e4a1f8cc5b0de7c69001d496203defae42afc4c63977c5f105063b3361a",
+  "deps/normalize_outputs.py": "40e3ed5e66a2a75d8d8c57515db9174c8cab9945e94ce9941641598c4f8268c6",
+  "deps/Pewciu6/essay_contract.py": "2eab5f49b218af177cb88496c2f66a7918de281e320ec077ef562008e02a0a24",
+  "deps/Pewciu6/essay_route.py": "590d025edc88a7f6b4d33297505c1fdff4607cc759e600980e982290715c1702",
+  "deps/Pewciu6/essay_think_run.py": "8fc905db2b1165efa3bea95872d5ae6d13feabe85a8e55b1f858a634d8ed7cbb",
+  "deps/Pewciu6/essay_wave_run.py": "d9a8aa881f2a269b596dbcf5324e222d125ac735020a81d597c9d37b8ff9c2fd"
+ },
+ "execution_ready": false,
+ "launch_blocker": "Independent CPU review and owned-server absolute guardian/cleanup integration required"
+}

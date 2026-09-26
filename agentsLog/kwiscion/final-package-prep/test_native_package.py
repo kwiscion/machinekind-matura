@@ -222,7 +222,7 @@ class Tests(unittest.TestCase):
         for bad in (False, True):
             receiver, sender = os.pipe(); os.write(sender, b'2' * 32 if bad else token); os.close(sender)
             with patch.object(r.os, 'getppid', return_value=123), \
-                 patch.object(r, 'process_identity', side_effect=lambda pid, _: identity if pid == 123 else guardian), \
+                 patch.object(r, 'inherited_parent_identity', side_effect=lambda pid, _: identity if pid == 123 else guardian), \
                  patch.object(r.Path, 'read_text', proc_read), patch.object(r.os, 'set_blocking'):
                 if bad:
                     with self.assertRaises(r.GlobalStop): r.check_supervisor(self.base, {}, 123, receiver, 'net:host', None)

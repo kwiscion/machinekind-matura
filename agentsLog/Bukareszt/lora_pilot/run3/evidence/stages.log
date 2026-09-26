@@ -1,0 +1,8 @@
+2026-09-26T22:59:08Z [preflight] wave start=2026-09-26T22:59:08Z deadline=2026-09-26T23:58:58Z left=3590s
+/ephemeral/mm-lora/pilot-run3/history-manifest.json 07af1929752e98917ee6a0c0ee38647e7752d5ae2e3d6ca4be16d725c85d560b
+2026-09-26T23:04:54Z [history] history PASS
+2026-09-26T23:06:05Z [export] candidate projector DIFFERS from control (recorded)
+2026-09-26T23:07:07Z [export] export PASS "total_bytes": 7556498048
+2026-09-26T23:07:17Z [candidate_serving] candidate serving rc=0
+2026-09-26T23:10:37Z [inventory] ALL STAGES PASS
+2026-09-26T23:10:37Z [inventory] TERMINAL rc=0 left=2901s

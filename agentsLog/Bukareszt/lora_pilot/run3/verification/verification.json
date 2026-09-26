@@ -1,0 +1,103 @@
+{
+ "role": "independent verifier, #117 pilot run2 control-serving requalification",
+ "utc": "2026-09-26T22:55Z",
+ "model_calls": 0,
+ "host_writes": "/ephemeral/mm-lora/verify-run2-template/ only (t.cpp, t, cpp_normalized_raw.bin, template_normalization_regression.py, regression-output.json; temporary tarball extracts removed)",
+ "overall_verdict": "FAIL (strict)",
+ "overall_verdict_reason": "The substantive claim is verified: the served /props chat_template equals the pinned HF template after the pinned llama.cpp lexer normalization, which the actual pinned C++ lexer reproduces byte for byte. However, item 3's required specificity check cannot pass as specified. On this template (0 CR, exactly one trailing LF, no leading whitespace), rstrip(), strip() and rstrip('\\n') produce the SAME hash 6a1015c4... as the lexer rule. Only 'no strip' differs. Under the brief's any-discrepancy rule this is reported as FAIL. Root decides whether the C++ discriminator evidence is a sufficient substitute.",
+ "substantive_template_claim_verified": true,
+ "items": {
+  "1_pinned_source": {
+   "verdict": "PASS",
+   "tarball_sha256": "f0a23ffacff1c89c628c49c67d2aa41aa49dbe62faa6615bb0a7165799cc4604",
+   "tarball_git_commit_id": "fcb3074f2bc06943a564d7f293f9e66d4bece02a (git get-tar-commit-id; top dir llama.cpp-fcb3074f2bc06943a564d7f293f9e66d4bece02a)",
+   "tree_provenance": "/ephemeral/mm-lora/src/llama.cpp is not a git checkout. A full tarball extract diffed with diff -rq shows only build/, build-cuda/ and __pycache__ dirs as extra; the five cited files are cmp-identical",
+   "locators": {
+    "props_tmpl_default": "tools/server/server-context.cpp:4609 tmpl_default = common_chat_templates_source(meta.chat_params.tmpls.get(), \"\")",
+    "props_chat_template_field": "tools/server/server-context.cpp:4629 { \"chat_template\", tmpl_default }",
+    "server_init": "tools/server/server-context.cpp:1455 common_chat_templates_init(model_tgt, params_base.chat_template); thinking computed at 1463-1464 from --reasoning (enable_reasoning) and template support",
+    "templates_source": "common/chat.cpp:744-755, default variant returns tmpls->template_default->source() (line 754)",
+    "templates_init_gguf": "common/chat.cpp:757-779: empty override -> llama_model_chat_template(model, nullptr) at 767 (and tool_use at 772)",
+    "string_replace_all_hacks": "common/chat.cpp:790-797 (<|channel|> + 'in message.content or') and 801-808 ([TOOL_CALLS] + \"if (message['content'] is none or\"). The template contains neither '<|channel|>' nor '[TOOL_CALLS]', so neither applies. Not empty/'chatml' (780-786), so no CHATML fallback",
+    "template_ctor": "common/chat.cpp:840 make_unique<common_chat_template>(default_template_src,...); common/chat.h:58-63 lexer.tokenize(src) then this->src = lexer_res.source; chat.h:71 source() returns src",
+    "lexer": "common/jinja/lexer.cpp:32 tokenize(); 37 src = source; 39-41 empty passthrough; 44-47 erase CR of each CRLF; 48-51 lone CR -> LF; 56-58 if ORIGINAL source.back()=='\\n' pop_back once; 338 return {tokens, src}. No other mutation of src in 59-337 (grep of erase/replace/insert/pop/append/assign/= found only comparisons). lexer.h:81-84 lexer_result{tokens, source}. parse_from_tokens takes const lexer_result& (parser.h:14, parser.cpp:615)",
+    "override_absent": "run2 server_cmd has no --chat-template/--chat-template-file; serve_session.py:94 strips all LLAMA_ARG_* env vars (incl. LLAMA_ARG_CHAT_TEMPLATE[_FILE], arg.cpp set_env). params_base.chat_template is therefore empty"
+   }
+  },
+  "2_gguf_template": {
+   "verdict": "PASS",
+   "control_gguf_sha256": "a192fac4a5989aa7db9452d91405cd401a7fb03e0af3b36343abeeb146d3282a",
+   "gguf_template_keys": [
+    "tokenizer.chat_template"
+   ],
+   "tool_use_template_present": false,
+   "gguf_template_sha256": "ae53464bf3be25802b3a5b37def7fd89667067d7577049b3b2d74c4d8de4c6d4",
+   "byte_identical_to_raw": true,
+   "raw_sha256": "ae53464bf3be25802b3a5b37def7fd89667067d7577049b3b2d74c4d8de4c6d4",
+   "len": 18683,
+   "cr_count": 0,
+   "crlf_count": 0,
+   "trailing_newline_count": 1,
+   "last_bytes": "-%}\\n"
+  },
+  "3_normalization": {
+   "verdict": "FAIL as specified (core normalization PASS)",
+   "python_port_sha256": "6a1015c47ccfcfa67c3b772385bccee357a4d37c3cda37bd202e9047f391ab82",
+   "actual_cpp_lexer_sha256": "6a1015c47ccfcfa67c3b772385bccee357a4d37c3cda37bd202e9047f391ab82",
+   "cpp_harness": "cpp_lexer_regression.cpp linked against pinned build-cuda/bin/libllama-common.so.0.5.0 (sha 655f182f..., matches pins)",
+   "normalized_len": 18682,
+   "equals_raw_minus_one_trailing_lf": true,
+   "alternatives": {
+    "no_strip": "ae53464b... DIFFERS",
+    "rstrip()": "6a1015c4... SAME",
+    "rstrip('\\n')": "6a1015c4... SAME",
+    "strip()": "6a1015c4... SAME",
+    "crlf_only_no_pop": "ae53464b... DIFFERS",
+    "pop_two_newlines": "ae53464b... DIFFERS (only one LF present)"
+   },
+   "specificity_note": "For this input, the hash cannot distinguish the lexer rule from rstrip()/strip(). The C++ discriminators show the rule is exactly 'pop one LF if the original ends in LF': x{{ a }}\\n\\n keeps one LF; a trailing space before LF is kept; a CRLF end is popped; a lone-CR end becomes LF and is NOT popped; leading whitespace is kept. The Python port matches C++ on all five cases, and rstrip()/strip() differ on them",
+   "script": "template_normalization_regression.py",
+   "output": "regression-output.json"
+  },
+  "4_other_control_criteria": {
+   "verdict": "PASS",
+   "backup_hashes": "shasum -c BACKUP_SHA256SUMS: all 13 OK",
+   "calls": "2 x HTTP 200, finish_reason stop, completion 80 and 17 (<=512), non-empty text",
+   "image_prompt_delta": "107-32=75 >= 64. The delta includes a small difference between the two text prompts, so it is not purely image tokens; the predeclared criterion (serve_session.py:147) still holds",
+   "model_field": "/ephemeral/mm-lora/control/base-q4_k_m.gguf (both calls)",
+   "model_sha_host": "a192fac4... matches",
+   "mmproj_sha_host": "9ff3ded7bf4360353a3c184aeef9fb1a15e54f08abcb1a45a46b3467333fb12e matches",
+   "server_binary_sha_host": "6910aada... matches the report",
+   "server_exit_code": 0,
+   "server_log_last_line": "cleaning up before exit...",
+   "ledger": "exactly 2 reserved + 2 result events, call_numbers 1,2",
+   "semantics": "text: three Polish sentences about the sundial (zegar sloneczny). image: 'czerwony kwadrat i niebieskie kolo'. make_fixtures.py draws a red square (x40-199, y60-219) and a blue circle (centre 400,140, r80) on white; fixture sha 47894703... matches the report and the host pins",
+   "thinking": "--reasoning off in server_cmd; the request sends chat_template_kwargs enable_thinking=false; reasoning_present=false for both calls",
+   "server_log_template_lines": "none. The template example/thinking lines are SRV_TRC (trace) and are not emitted at verbosity 3. The log has no template parse error, override or chatml fallback; only benign tokenizer control-token warnings",
+   "serve_session_sha": "1f649819... local == host pilot-ops2 == pins"
+  },
+  "5_probe_report": {
+   "verdict": "PASS",
+   "status": "PASS",
+   "synthetic_optimizer_steps": 1,
+   "history_optimizer_steps": 0,
+   "inference_calls": 0,
+   "driver_sha256": "586acd0b48f0c7aa51b5cba6da5be9ccb5913c03a9d908a8500f800b9d1e0229",
+   "host_report_sha256": "52a43b2839a166cb4469d68503b8ced038dd0232cc03b4128076cf4ededb3e4a",
+   "backup_report_sha256": "52a43b2839a166cb4469d68503b8ced038dd0232cc03b4128076cf4ededb3e4a",
+   "equal": true
+  }
+ },
+ "key_hashes": {
+  "raw_template": "ae53464bf3be25802b3a5b37def7fd89667067d7577049b3b2d74c4d8de4c6d4",
+  "normalized_served_template": "6a1015c47ccfcfa67c3b772385bccee357a4d37c3cda37bd202e9047f391ab82",
+  "control_gguf": "a192fac4a5989aa7db9452d91405cd401a7fb03e0af3b36343abeeb146d3282a",
+  "control_serving_report": "031df7aa8bb9e31e252fc5b5440bc51c680038e821eed74583a354ced01f0188",
+  "call_ledger": "e22a99327786a1842c73866df61fbdc1bf1b2643e43517743d4b9b0e8cdd6c5a",
+  "probe_report": "52a43b2839a166cb4469d68503b8ced038dd0232cc03b4128076cf4ededb3e4a"
+ },
+ "root_criteria_verdict": {
+  "verdict": "PASS",
+  "justification": "Judged against root's actual requirement, not the brief's added rival-hash sub-check. (a) The pinned C++ lexer (libllama-common.so sha 655f182f) turns the raw template into 6a1015c4..., and on 5 discriminator inputs it behaves as CRLF/lone CR -> LF plus removal of exactly one final LF when the original ends in LF. It is not rstrip/strip. (b) rstrip/strip give the same hash on this template only because the input cannot tell them apart (0 CR, 1 trailing LF, no leading whitespace); the evidence does not contradict the claim. (c) No other discrepancy: sources match the tarball, the GGUF template equals the raw template, no hacks apply, no override, backups verify, calls/semantics/ledger/exit 0/thinking off all check, and the host probe report equals the backup."
+ }
+}

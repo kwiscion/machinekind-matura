@@ -1,0 +1,20 @@
+ab004b0f83a31632eca0ec1c4c1ea83203aeb5d89c5d1af343505c099ee58f2f  /ephemeral/mm-lora/pilot-run3/export/candidate-bf16.gguf
+24322307ec695ddc5d3678872367519eece8efd47aecef1b66608cf70b0a7937  /ephemeral/mm-lora/pilot-run3/export/candidate-projector.gguf
+d2c7b67ad58e4cfa1ade48adb5a1ab1777cda582f1ff193e8dc9824daf0abaaa  /ephemeral/mm-lora/pilot-run3/export/candidate-q4_k_m.gguf
+a192fac4a5989aa7db9452d91405cd401a7fb03e0af3b36343abeeb146d3282a  /ephemeral/mm-lora/control/base-q4_k_m.gguf
+9ff3ded7bf4360353a3c184aeef9fb1a15e54f08abcb1a45a46b3467333fb12e  /ephemeral/mm-lora/control/projector.gguf
+f2e58c7ab4f05552476df05913290e2adb3fc537b7162f376319163860009bb5  /ephemeral/mm-lora/pilot-run3/history/adapter/adapter_config.json
+6f6a5c3a2ea8738c6b625f67a42b4a762a09b037af26b8dc5a945416e91b6bac  /ephemeral/mm-lora/pilot-run3/history/adapter/adapter_model.safetensors
+23d9a34e1c9dd354ba885ce0c3f06a72209d52b5f5e8accc51509be9a0b18f0a  /ephemeral/mm-lora/pilot-run3/history/adapter/README.md
+6b938e76555b3e9946890770e1abcd442a4718f34041a58e8139dc8ad34545c9  /ephemeral/mm-lora/pilot-run3/history/merged-bf16/processor_config.json
+9669970d5b0bcfcb47a09256f9e66837c313926ff15e9ba4c60e8bbe3c6bdf84  /ephemeral/mm-lora/pilot-run3/history/merged-bf16/tokenizer_config.json
+d34f697dfc7c5f266a0e21dbc2ad7b780fbaee1606a02b20e79a74de62dd23fe  /ephemeral/mm-lora/pilot-run3/history/merged-bf16/model.safetensors
+0008d600d2a3bbe64df681f7f1080c6c3e42a0bef4c0d920232596a233bad5e7  /ephemeral/mm-lora/pilot-run3/history/merged-bf16/config.json
+ae53464bf3be25802b3a5b37def7fd89667067d7577049b3b2d74c4d8de4c6d4  /ephemeral/mm-lora/pilot-run3/history/merged-bf16/chat_template.jinja
+a8349d9bd64cc5841297fcb5002f0fdc4749c473c8f1b10ea337f9ce4ee7014e  /ephemeral/mm-lora/pilot-run3/history/merged-bf16/generation_config.json
+cc8d3a0ce36466ccc1278bf987df5f71db1719b9ca6b4118264f45cb627bfe0f  /ephemeral/mm-lora/pilot-run3/history/merged-bf16/tokenizer.json
+-rw-r--r-- 1 shadeform shadeform  7381383392 Sep 26 20:31 /ephemeral/mm-lora/control/base-q4_k_m.gguf
+-rw-r--r-- 1 shadeform shadeform   175115712 Sep 26 20:27 /ephemeral/mm-lora/control/projector.gguf
+-rw-r--r-- 1 shadeform shadeform 23832065728 Sep 26 23:06 /ephemeral/mm-lora/pilot-run3/export/candidate-bf16.gguf
+-rw-r--r-- 1 shadeform shadeform   175115200 Sep 26 23:06 /ephemeral/mm-lora/pilot-run3/export/candidate-projector.gguf
+-rw-r--r-- 1 shadeform shadeform  7381382848 Sep 26 23:07 /ephemeral/mm-lora/pilot-run3/export/candidate-q4_k_m.gguf

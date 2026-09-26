@@ -1,0 +1,67 @@
+{
+ "label": "proj",
+ "kv_counts": [
+  39,
+  30
+ ],
+ "tensor_counts": [
+  11,
+  11
+ ],
+ "kv_diffs": {
+  "general.base_model.0.name": [
+   "Gemma 4 12B",
+   "<absent>"
+  ],
+  "general.base_model.0.organization": [
+   "Google",
+   "<absent>"
+  ],
+  "general.base_model.0.repo_url": [
+   "https://huggingface.co/google/gemma-4-12B",
+   "<absent>"
+  ],
+  "general.base_model.count": [
+   1,
+   "<absent>"
+  ],
+  "general.basename": [
+   "gemma-4",
+   "<absent>"
+  ],
+  "general.finetune": [
+   "12b-it@707f0a3b",
+   "<absent>"
+  ],
+  "general.license": [
+   "apache-2.0",
+   "<absent>"
+  ],
+  "general.license.link": [
+   "https://ai.google.dev/gemma/docs/gemma_4_license",
+   "<absent>"
+  ],
+  "general.name": [
+   "Gemma 4 12B It@707F0A3B",
+   "Merged Bf16"
+  ],
+  "general.tags": [
+   [
+    "any-to-any"
+   ],
+   "<absent>"
+  ]
+ },
+ "tensor_meta_diff_count": 0,
+ "tensor_meta_diff_first10": {},
+ "tensor_types": [
+  [
+   "BF16",
+   "F32"
+  ],
+  [
+   "BF16",
+   "F32"
+  ]
+ ]
+}

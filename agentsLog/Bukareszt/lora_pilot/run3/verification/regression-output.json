@@ -1,0 +1,91 @@
+{
+ "raw_path": "/ephemeral/mm-lora/base/gemma-4-12B-it@707f0a3b/chat_template.jinja",
+ "raw_sha256": "ae53464bf3be25802b3a5b37def7fd89667067d7577049b3b2d74c4d8de4c6d4",
+ "raw_len": 18683,
+ "raw_cr_count": 0,
+ "raw_crlf_count": 0,
+ "raw_trailing_newline_count": 1,
+ "raw_last_bytes_hex": "646966202d257d0a",
+ "gguf_path": "/ephemeral/mm-lora/control/base-q4_k_m.gguf",
+ "gguf_template_keys": [
+  "tokenizer.chat_template"
+ ],
+ "gguf_template_sha256": "ae53464bf3be25802b3a5b37def7fd89667067d7577049b3b2d74c4d8de4c6d4",
+ "gguf_template_len": 18683,
+ "gguf_template_equals_raw": true,
+ "gguf_tool_use_template_present": false,
+ "cpp_init_hacks": {
+  "channel_hack_applies": false,
+  "tool_calls_hack_applies": false,
+  "contains_<|channel|>": false,
+  "contains_[TOOL_CALLS]": false,
+  "is_empty_or_chatml": false
+ },
+ "lexer_normalized_sha256": "6a1015c47ccfcfa67c3b772385bccee357a4d37c3cda37bd202e9047f391ab82",
+ "lexer_normalized_len": 18682,
+ "lexer_normalized_equals_raw_minus_one_trailing_nl": true,
+ "alternative_hashes": {
+  "no_strip": "ae53464bf3be25802b3a5b37def7fd89667067d7577049b3b2d74c4d8de4c6d4",
+  "strip_all_trailing_whitespace(rstrip)": "6a1015c47ccfcfa67c3b772385bccee357a4d37c3cda37bd202e9047f391ab82",
+  "strip_all_trailing_newlines": "6a1015c47ccfcfa67c3b772385bccee357a4d37c3cda37bd202e9047f391ab82",
+  "python_strip()": "6a1015c47ccfcfa67c3b772385bccee357a4d37c3cda37bd202e9047f391ab82",
+  "crlf_only_no_pop": "ae53464bf3be25802b3a5b37def7fd89667067d7577049b3b2d74c4d8de4c6d4",
+  "pop_two_newlines": "ae53464bf3be25802b3a5b37def7fd89667067d7577049b3b2d74c4d8de4c6d4"
+ },
+ "alternatives_matching_served": [
+  "strip_all_trailing_whitespace(rstrip)",
+  "strip_all_trailing_newlines",
+  "python_strip()"
+ ],
+ "checks": {
+  "raw_sha_is_pinned": true,
+  "gguf_equals_raw": true,
+  "normalized_is_served": true,
+  "no_cpp_hack_applies": true,
+  "no_strip_differs_from_served": true,
+  "python_port_matches_cpp_on_discriminators": true
+ },
+ "alternatives_distinguishable_on_this_template": [
+  "crlf_only_no_pop",
+  "no_strip",
+  "pop_two_newlines"
+ ],
+ "alternatives_indistinguishable_on_this_template": [
+  "strip_all_trailing_whitespace(rstrip)",
+  "strip_all_trailing_newlines",
+  "python_strip()"
+ ],
+ "discriminators": {
+  "two_nl": {
+   "python_port_hex": "787b7b2061207d7d0a",
+   "cpp_hex": "787b7b2061207d7d0a",
+   "rstrip_hex": "787b7b2061207d7d",
+   "strip_hex": "787b7b2061207d7d"
+  },
+  "trail_space_nl": {
+   "python_port_hex": "787b7b2061207d7d20",
+   "cpp_hex": "787b7b2061207d7d20",
+   "rstrip_hex": "787b7b2061207d7d",
+   "strip_hex": "787b7b2061207d7d"
+  },
+  "crlf_end": {
+   "python_port_hex": "780a7b7b2061207d7d",
+   "cpp_hex": "780a7b7b2061207d7d",
+   "rstrip_hex": "780d0a7b7b2061207d7d",
+   "strip_hex": "780d0a7b7b2061207d7d"
+  },
+  "lone_cr_end": {
+   "python_port_hex": "780a7b7b2061207d7d0a",
+   "cpp_hex": "780a7b7b2061207d7d0a",
+   "rstrip_hex": "780d7b7b2061207d7d",
+   "strip_hex": "780d7b7b2061207d7d"
+  },
+  "lead_ws": {
+   "python_port_hex": "200a7b7b2061207d7d",
+   "cpp_hex": "200a7b7b2061207d7d",
+   "rstrip_hex": "200a7b7b2061207d7d",
+   "strip_hex": "7b7b2061207d7d"
+  }
+ },
+ "pass": true
+}
