@@ -1,0 +1,67 @@
+{
+  "issue": 143,
+  "input_path": "agentsLog/Bukareszt/essay_corpus/export_v1/eval16_input.jsonl",
+  "input_sha256": "5979ee0b8e0e4f084cf6070f42d31892ee53c1f5485409b4fc5dac1266055a28",
+  "checklist_frozen_utc": "2026-09-26T22:44:50.739075+00:00",
+  "input_ids": [
+    "bk117-eval-01",
+    "bk117-eval-02",
+    "bk117-eval-03",
+    "bk117-eval-04",
+    "bk117-eval-05",
+    "bk117-eval-06",
+    "bk117-eval-07",
+    "bk117-eval-08",
+    "bk117-eval-09",
+    "bk117-eval-10",
+    "bk117-eval-11",
+    "bk117-eval-12",
+    "bk117-eval-13",
+    "bk117-eval-14",
+    "bk117-eval-15",
+    "bk117-eval-16"
+  ],
+  "completed_inputs": 16,
+  "alternative_topics": 32,
+  "source_records": 64,
+  "files_sha256": {
+    "topics-01-04.json": "06599371b2033cc2f7792858dfe29cb78a741713054023c48b629b7970dabc14",
+    "topics-05-08.json": "6170982ed25e3fe6c4aac7d31a6594175f6b416437559b06a9cd44f8b3c2903a",
+    "topics-09-12.json": "e9f4030dc2bd192d3e53137cd36873618a6d6c96b29f9e283cf5acc42538de0c",
+    "topics-13-16.json": "bb9119cd9612ee80243e03a37089743ee73015f8a8531b2c39c261f7d99b18df",
+    "sources.jsonl": "a838591be0dfdba24da5004a3dcd4746c4806a05cc27b3427442b46593fc924a",
+    "checklist.md": "5bec2cc75e6c957eba4acaf4f776075952b4bb1b56ac0a82b2df99326487586a",
+    "README.md": "a1d5933487e091a780f0dab957232a4c798e6bf994ac26925ae9dbf69ea6578b",
+    "verify.py": "c7d2c6781121b7d215425612e87e39066b2cdc7aa051a9f23f88e70ba75677cc"
+  },
+  "candidate_answers_inspected": false,
+  "existing_eval16_fact_cards_inspected": false,
+  "model_api_calls": 0,
+  "gpu_calls": 0,
+  "purchases": 0,
+  "allowed_use": [
+    "independent_evaluation_only"
+  ],
+  "prohibited_use": [
+    "training",
+    "retrieval",
+    "model_facing_input"
+  ],
+  "checks": [
+    "exact input bytes and prompt hashes",
+    "all16 IDs exactly once",
+    "both alternative topics per input",
+    "nonempty facts and causal link for every listed aspect",
+    "resolved source IDs and retrieval metadata",
+    "source manifest contract fields; reference-only rights",
+    "original concise notes; explicit limitations; no gold essays or candidate outputs"
+  ],
+  "limitations": [
+    "Non-exhaustive research aids; new factual claims need verification before deductions.",
+    "Synthetic two-aspect prompts are not silently assigned a15point official rubric.",
+    "Historical interpretation and source-access caveats remain in each record."
+  ],
+  "evidence_dimensions": 88,
+  "research_start_utc": "2026-09-26T22:25:00Z",
+  "hard_handoff_target_utc": "2026-09-26T23:10:00Z"
+}

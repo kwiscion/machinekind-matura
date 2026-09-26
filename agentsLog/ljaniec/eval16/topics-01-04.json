@@ -1,0 +1,772 @@
+[
+  {
+    "id": "bk117-eval-01",
+    "source_group_id": "C-persian-wars",
+    "prompt_sha256": "0be6b8f2353507f208ee63048626486a06f9ae327d7f66c4d6d503972fb55a01",
+    "status": "complete_independent_research",
+    "topics": [
+      {
+        "number": 1,
+        "requirements": [
+          "Choose one alternative; state and justify a position with historical evidence; requested length 400–500 words.",
+          "Facts below are illustrative anchors, not an exhaustive required inventory or a model essay. Accept other independently verified relevant evidence.",
+          "Explain causes and assess consequences for the Greek world. Political and military aspects are expressly required."
+        ],
+        "aspects": [
+          {
+            "name": "Political",
+            "facts": [
+              {
+                "claim": "Herodotus attributes Xerxes’ invasion to imperial expansion and retaliation for Athenian intervention at Sardis and the earlier defeat.",
+                "source_id": "h7",
+                "locator": "Histories 7.8"
+              },
+              {
+                "claim": "Thucydides describes the victorious coalition subsequently dividing into Athenian and Spartan alliance systems.",
+                "source_id": "thuc1",
+                "locator": "1.18–19"
+              }
+            ],
+            "causal_explanation": "Evaluator inference: Connect Persian domination and intervention to conflict; explain how successful collective defence could preserve autonomy yet redistribute power and generate rivalry."
+          },
+          {
+            "name": "Military",
+            "facts": [
+              {
+                "claim": "Athens supplied 180 ships at Salamis; the allied fleet was formally commanded by the Spartan Eurybiades.",
+                "source_id": "h8",
+                "locator": "8.2–3; 8.44"
+              },
+              {
+                "claim": "Pausanias led the Spartan expedition against the remaining Persian forces in the Plataea campaign.",
+                "source_id": "h9",
+                "locator": "9.10–11; Plataea narrative"
+              }
+            ],
+            "causal_explanation": "Evaluator inference: Explain complementary naval and land operations rather than listing victories; victory depended on coalition resources and did not abolish later warfare."
+          }
+        ],
+        "traps": [
+          {
+            "claim_or_issue": "All Greek states fought as a single united nation.",
+            "classification": "false_fact",
+            "correction_or_caveat": "Coalition membership and later alignments varied; Greek unity was partial and temporary.",
+            "source_ids": [
+              "thuc1"
+            ]
+          },
+          {
+            "claim_or_issue": "A purely moral freedom-versus-tyranny explanation establishes Persian motives.",
+            "classification": "contested_interpretation",
+            "correction_or_caveat": "This may frame a Greek perspective, but expansion and retaliation need concrete treatment; Herodotus’ speeches are literary representations.",
+            "source_ids": [
+              "h7"
+            ]
+          }
+        ],
+        "interpretive_flexibility": "Accept different balances of autonomy, Athenian ascendancy, coalition achievement and ensuing rivalry if both required aspects and a causal assessment are supported."
+      },
+      {
+        "number": 2,
+        "requirements": [
+          "Choose one alternative; state and justify a position with historical evidence; requested length 400–500 words.",
+          "Facts below are illustrative anchors, not an exhaustive required inventory or a model essay. Accept other independently verified relevant evidence.",
+          "Compare Athens and Sparta in the defence of Hellas. The dimensions below organize research; the prompt names no separate compulsory scoring aspects."
+        ],
+        "aspects": [
+          {
+            "name": "Research dimension: Athenian contribution",
+            "facts": [
+              {
+                "claim": "Thucydides connects Themistocles’ fleet-building policy to the ships used at Salamis.",
+                "source_id": "thuc1",
+                "locator": "1.14"
+              },
+              {
+                "claim": "The Athenian contingent of 180 ships was the largest at Salamis.",
+                "source_id": "h8",
+                "locator": "8.44"
+              }
+            ],
+            "causal_explanation": "Evaluator inference: Relate investment and naval capacity to resisting invasion; strategic influence can be assessed without equating it with formal supreme command."
+          },
+          {
+            "name": "Research dimension: Spartan leadership and coalition",
+            "facts": [
+              {
+                "claim": "Eurybiades held allied naval command after Athens conceded leadership to maintain cooperation.",
+                "source_id": "h8",
+                "locator": "8.2–3"
+              },
+              {
+                "claim": "Spartan regent Pausanias commanded the expedition in the Plataea campaign.",
+                "source_id": "h9",
+                "locator": "9.10–11"
+              }
+            ],
+            "causal_explanation": "Evaluator inference: Different military strengths and accepted leadership helped coordination; other allied contingents also mattered."
+          }
+        ],
+        "traps": [
+          {
+            "claim_or_issue": "Themistocles was the formal commander of every Greek naval force.",
+            "classification": "false_fact",
+            "correction_or_caveat": "Distinguish Athenian strategic leadership from Eurybiades’ formal command.",
+            "source_ids": [
+              "h8"
+            ]
+          },
+          {
+            "claim_or_issue": "Athens alone defeated Persia, or Sparta contributed only at Thermopylae.",
+            "classification": "vague_argument",
+            "correction_or_caveat": "Assess both cities and coalition contributions rather than excluding one through a single-battle account.",
+            "source_ids": [
+              "h8",
+              "h9",
+              "thuc1"
+            ]
+          }
+        ],
+        "interpretive_flexibility": "A reasoned ranking or a complementary-contribution argument is acceptable; no exact ranking or mandatory battle inventory is imposed."
+      }
+    ],
+    "sources": [
+      {
+        "source_id": "h7",
+        "url": "https://sourcebooks.web.fordham.edu/ancient/herodotus-xerxes.asp",
+        "title": "Herodotus: Xerxes Invades Greece",
+        "publisher": "Fordham University, Internet Ancient History Sourcebook",
+        "retrieved_at": "2026-09-26",
+        "locator": "Histories 7.8, Xerxes speech; expedition narrative",
+        "verification_status": "Verified: relevant text opened and read independently; no candidate answers inspected.",
+        "rights_note": "Primary historical text in an institutional digital edition; original concise paraphrases only, no reproduced passages. Evaluation only; not for training or RAG."
+      },
+      {
+        "source_id": "h8",
+        "url": "https://classics.mit.edu/Herodotus/history.8.viii.html",
+        "title": "The History of Herodotus, Book VIII",
+        "publisher": "Massachusetts Institute of Technology, Internet Classics Archive; translation George Rawlinson",
+        "retrieved_at": "2026-09-26",
+        "locator": "8.2–3 (command); 8.44 (Athenian ships); 8.56–97 (Salamis)",
+        "verification_status": "Verified: relevant text opened and read independently; no candidate answers inspected.",
+        "rights_note": "Primary historical text in an institutional digital edition; original concise paraphrases only, no reproduced passages. Evaluation only; not for training or RAG."
+      },
+      {
+        "source_id": "h9",
+        "url": "https://classics.mit.edu/Herodotus/history.9.ix.html",
+        "title": "The History of Herodotus, Book IX",
+        "publisher": "Massachusetts Institute of Technology, Internet Classics Archive; translation George Rawlinson",
+        "retrieved_at": "2026-09-26",
+        "locator": "9.10–11 (Pausanias and Spartan expedition); Plataea narrative",
+        "verification_status": "Verified: relevant text opened and read independently; no candidate answers inspected.",
+        "rights_note": "Primary historical text in an institutional digital edition; original concise paraphrases only, no reproduced passages. Evaluation only; not for training or RAG."
+      },
+      {
+        "source_id": "thuc1",
+        "url": "https://classics.mit.edu/Thucydides/pelopwar.1.first.html",
+        "title": "The History of the Peloponnesian War, First Book",
+        "publisher": "Massachusetts Institute of Technology, Internet Classics Archive; translation Richard Crawley",
+        "retrieved_at": "2026-09-26",
+        "locator": "1.14; 1.18–19 (fleet, coalition and subsequent division)",
+        "verification_status": "Verified: relevant text opened and read independently; no candidate answers inspected.",
+        "rights_note": "Primary historical text in an institutional digital edition; original concise paraphrases only, no reproduced passages. Evaluation only; not for training or RAG."
+      }
+    ],
+    "limits": [
+      "Independent prompt-first checklist; candidate answers and existing evalcards not inspected.",
+      "Frozen input SHA256 5979ee0b8e0e4f084cf6070f42d31892ee53c1f5485409b4fc5dac1266055a28.",
+      "Evaluation-only research; no training, RAG, generator prompts, or exact-thesis requirement.",
+      "Topic 2 subdivisions are research dimensions, not additional mandatory scoring aspects. Use root calibration; do not invent a 15-point maximum for a two-aspect synthetic prompt.",
+      "Ancient and medieval narratives have literary, political, and religious perspectives. Distinguish reported belief from demonstrated cause; source numbers and speeches are not automatically literal."
+    ]
+  },
+  {
+    "id": "bk117-eval-02",
+    "source_group_id": "C-rome-republic",
+    "prompt_sha256": "f46361915ddbdf89c980776c9df47f3664e8705cde63525ea9bf678979808878",
+    "status": "complete_independent_research",
+    "topics": [
+      {
+        "number": 1,
+        "requirements": [
+          "Choose one alternative; state and justify a position with historical evidence; requested length 400–500 words.",
+          "Facts below are illustrative anchors, not an exhaustive required inventory or a model essay. Accept other independently verified relevant evidence.",
+          "Characterize the Republican constitution and assess its effectiveness. Constitutional and social aspects are expressly required."
+        ],
+        "aspects": [
+          {
+            "name": "Constitutional",
+            "facts": [
+              {
+                "claim": "Polybius distinguishes consuls, Senate and people; the Senate controls finance while popular bodies elect officials and decide laws and war or peace.",
+                "source_id": "poly6",
+                "locator": "6.11–14"
+              },
+              {
+                "claim": "Tribunician intervention could block Senate action; consuls depended on funds and public approval.",
+                "source_id": "poly6",
+                "locator": "6.15–18"
+              }
+            ],
+            "causal_explanation": "Evaluator inference: Assess whether divided authority and dependencies restrained power and enabled government, while considering their vulnerability to obstruction."
+          },
+          {
+            "name": "Social",
+            "facts": [
+              {
+                "claim": "Appian links concentration of public land and slave cultivation to pressure on free farmers; Tiberius Gracchus proposed redistribution.",
+                "source_id": "appian1",
+                "locator": "1.7–12"
+              },
+              {
+                "claim": "Octavius vetoed the agrarian measure; his removal and Tiberius’ killing illustrate institutional conflict escalating into violence.",
+                "source_id": "appian1",
+                "locator": "1.12–17"
+              }
+            ],
+            "causal_explanation": "Evaluator inference: Connect representation and veto to conflicting social interests; assess practical responsiveness rather than treating institutional design as equal participation for all."
+          }
+        ],
+        "traps": [
+          {
+            "claim_or_issue": "The Senate was a modern elected parliament or the Republic a universal democracy.",
+            "classification": "false_fact",
+            "correction_or_caveat": "Characterize actual Roman bodies and powers rather than importing modern institutions.",
+            "source_ids": [
+              "poly6"
+            ]
+          },
+          {
+            "claim_or_issue": "Institutional effectiveness was uniformly high or uniformly absent throughout the Republic.",
+            "classification": "contested_interpretation",
+            "correction_or_caveat": "Time, task and social perspective matter; a qualified assessment can weigh stable cooperation against crisis.",
+            "source_ids": [
+              "poly6",
+              "appian1"
+            ]
+          }
+        ],
+        "interpretive_flexibility": "Accept an argument emphasizing successful expansion, institutional balance, elite dominance, or eventual dysfunction if grounded and responsive to both aspects."
+      },
+      {
+        "number": 2,
+        "requirements": [
+          "Choose one alternative; state and justify a position with historical evidence; requested length 400–500 words.",
+          "Facts below are illustrative anchors, not an exhaustive required inventory or a model essay. Accept other independently verified relevant evidence.",
+          "Explain causes of both crisis and fall, not merely narrate emperors. The following are research dimensions, not extra compulsory scoring aspects."
+        ],
+        "aspects": [
+          {
+            "name": "Research dimension: social conflict",
+            "facts": [
+              {
+                "claim": "Appian describes agrarian conflict, the veto/removal of Octavius, and the violent death of Tiberius Gracchus.",
+                "source_id": "appian1",
+                "locator": "1.7–17"
+              }
+            ],
+            "causal_explanation": "Evaluator inference: Link distributional pressures, reform conflict and erosion of peaceful norms; do not assume one reform alone caused the entire collapse."
+          },
+          {
+            "name": "Research dimension: competition and military power",
+            "facts": [
+              {
+                "claim": "Plutarch describes Gallic resources supporting Caesar’s political influence and his crossing of the Rubicon into Italy.",
+                "source_id": "caesar",
+                "locator": "Gallic-resources passage; chapter 32, Rubicon"
+              }
+            ],
+            "causal_explanation": "Evaluator inference: Explain how personal military resources and disputes about command could overcome institutional compromise and lead to civil war."
+          },
+          {
+            "name": "Research dimension: settlement and institutional continuity",
+            "facts": [
+              {
+                "claim": "In Res Gestae 34, Augustus claims restoration to Senate and people while acknowledging pre-eminent authority.",
+                "source_id": "rg34",
+                "locator": "34"
+              }
+            ],
+            "causal_explanation": "Evaluator inference: Distinguish formal Republican language from concentrated leadership; explain a transition rather than assuming every institution vanished overnight."
+          }
+        ],
+        "traps": [
+          {
+            "claim_or_issue": "Augustus’ restoration claim proves that competitive Republican government fully returned.",
+            "classification": "false_fact",
+            "correction_or_caveat": "Treat the inscription as political self-presentation and distinguish formal powers from authority.",
+            "source_ids": [
+              "rg34"
+            ]
+          },
+          {
+            "claim_or_issue": "A single date, person or economic factor is the only possible explanation.",
+            "classification": "vague_argument",
+            "correction_or_caveat": "Allow a defensible periodization but require mechanisms connecting several relevant developments.",
+            "source_ids": [
+              "appian1",
+              "caesar",
+              "rg34"
+            ]
+          }
+        ],
+        "interpretive_flexibility": "No mandatory terminal year or single master cause: accept coherent multi-causal arguments and qualified alternatives supported by the chronology."
+      }
+    ],
+    "sources": [
+      {
+        "source_id": "poly6",
+        "url": "https://sourcebooks.web.fordham.edu/ancient/polybius6.asp",
+        "title": "Polybius: An Analysis of the Roman Government",
+        "publisher": "Fordham University, Internet Ancient History Sourcebook",
+        "retrieved_at": "2026-09-26",
+        "locator": "Histories 6.11–18",
+        "verification_status": "Verified: relevant text opened and read independently; no candidate answers inspected.",
+        "rights_note": "Primary historical text in an institutional digital edition; original concise paraphrases only, no reproduced passages. Evaluation only; not for training or RAG."
+      },
+      {
+        "source_id": "appian1",
+        "url": "https://sourcebooks.web.fordham.edu/ancient/appian-civwars1.asp",
+        "title": "Appian: The Civil Wars, On the Gracchi",
+        "publisher": "Fordham University, Internet Ancient History Sourcebook",
+        "retrieved_at": "2026-09-26",
+        "locator": "Civil Wars 1.7–17; paragraphs on land, Octavius and Tiberius Gracchus",
+        "verification_status": "Verified: relevant text opened and read independently; no candidate answers inspected.",
+        "rights_note": "Primary historical text in an institutional digital edition; original concise paraphrases only, no reproduced passages. Evaluation only; not for training or RAG."
+      },
+      {
+        "source_id": "caesar",
+        "url": "https://classics.mit.edu/Plutarch/caesar.html",
+        "title": "Plutarch: Caesar",
+        "publisher": "Massachusetts Institute of Technology, Internet Classics Archive; translation John Dryden",
+        "retrieved_at": "2026-09-26",
+        "locator": "Life of Caesar, paragraphs on Gallic resources and the Rubicon; chapter 32",
+        "verification_status": "Verified: relevant text opened and read independently; no candidate answers inspected.",
+        "rights_note": "Primary historical text in an institutional digital edition; original concise paraphrases only, no reproduced passages. Evaluation only; not for training or RAG."
+      },
+      {
+        "source_id": "rg34",
+        "url": "https://www.livius.org/sources/content/augustus-res-gestae/",
+        "title": "Augustus, Res Gestae",
+        "publisher": "Livius.org; ancient inscription in numbered translation",
+        "retrieved_at": "2026-09-26",
+        "locator": "Section 34",
+        "verification_status": "Verified: relevant text opened and read independently; no candidate answers inspected.",
+        "rights_note": "Primary historical text in an institutional digital edition; original concise paraphrases only, no reproduced passages. Evaluation only; not for training or RAG."
+      }
+    ],
+    "limits": [
+      "Independent prompt-first checklist; candidate answers and existing evalcards not inspected.",
+      "Frozen input SHA256 5979ee0b8e0e4f084cf6070f42d31892ee53c1f5485409b4fc5dac1266055a28.",
+      "Evaluation-only research; no training, RAG, generator prompts, or exact-thesis requirement.",
+      "Topic 2 subdivisions are research dimensions, not additional mandatory scoring aspects. Use root calibration; do not invent a 15-point maximum for a two-aspect synthetic prompt.",
+      "Ancient and medieval narratives have literary, political, and religious perspectives. Distinguish reported belief from demonstrated cause; source numbers and speeches are not automatically literal."
+    ]
+  },
+  {
+    "id": "bk117-eval-03",
+    "source_group_id": "C-crusades",
+    "prompt_sha256": "f455bcd83b73c602dbc9f32ed61c23e2390197258b3d3afa8f44516d27e0165b",
+    "status": "complete_independent_research",
+    "topics": [
+      {
+        "number": 1,
+        "requirements": [
+          "Choose one alternative; state and justify a position with historical evidence; requested length 400–500 words.",
+          "Facts below are illustrative anchors, not an exhaustive required inventory or a model essay. Accept other independently verified relevant evidence.",
+          "Present the genesis and assess consequences for Europe. Religious, political and economic aspects are expressly required."
+        ],
+        "aspects": [
+          {
+            "name": "Religious",
+            "facts": [
+              {
+                "claim": "Urban II’s Clermont appeal linked aid to Eastern Christians with spiritual remission; his December 1095 letter documents mobilization.",
+                "source_id": "urban",
+                "locator": "Fulcher account; December 1095 letter"
+              },
+              {
+                "claim": "The Fourth Crusade’s sack of Constantinople in 1204 intensified estrangement between Byzantine and Western Christians.",
+                "source_id": "metcrus",
+                "locator": "The Fourth Crusade"
+              }
+            ],
+            "causal_explanation": "Evaluator inference: religious authority and spiritual reward motivated participation; later conflict within Christianity damaged solidarity. Do not claim the Christian schism began in 1204 or all participants had identical motives."
+          },
+          {
+            "name": "Political",
+            "facts": [
+              {
+                "claim": "The Fourth Crusade diverted to Constantinople, sacked in 1204; a Latin Empire was established.",
+                "source_id": "metcrus",
+                "locator": "The Fourth Crusade"
+              }
+            ],
+            "causal_explanation": "Evaluator inference: Relate armed intervention to changed authority and damaged relations between Western and Byzantine Christians; avoid treating every expedition as the same conflict."
+          },
+          {
+            "name": "Economic",
+            "facts": [
+              {
+                "claim": "The Met cites Ibn Jubayr’s 1183–1185 observation of trade through Frankish and Muslim territories despite hostilities.",
+                "source_id": "metcrus",
+                "locator": "Ibn Jubayr trade paragraph"
+              }
+            ],
+            "causal_explanation": "Evaluator inference: Discuss commercial contact and wartime exchange as a qualified economic consequence; trade coexisted with war and was not created from nothing by crusading."
+          }
+        ],
+        "traps": [
+          {
+            "claim_or_issue": "Every crusade targeted Muslims in Jerusalem, or all crusaders sought only land.",
+            "classification": "false_fact",
+            "correction_or_caveat": "Targets and motives varied; Constantinople and spiritual mobilization contradict these universal claims.",
+            "source_ids": [
+              "urban",
+              "metcrus"
+            ]
+          },
+          {
+            "claim_or_issue": "Crusades alone created European commerce or necessarily enriched all Europeans.",
+            "classification": "vague_argument",
+            "correction_or_caveat": "Specify a mechanism and beneficiaries; evidence of exchange does not prove a single cause or universal prosperity.",
+            "source_ids": [
+              "metcrus"
+            ]
+          },
+          {
+            "claim_or_issue": "Reported Clermont speeches are exact contemporary transcripts.",
+            "classification": "false_fact",
+            "correction_or_caveat": "Compare later narrative versions with the papal letter; accept the broad mobilization evidence without requiring verbatim words.",
+            "source_ids": [
+              "urban"
+            ]
+          }
+        ],
+        "interpretive_flexibility": "Accept mixed or primarily negative/positive assessments with specified European consequences; causal links must not substitute an unsupported universal verdict for evidence."
+      },
+      {
+        "number": 2,
+        "requirements": [
+          "Choose one alternative; state and justify a position with historical evidence; requested length 400–500 words.",
+          "Facts below are illustrative anchors, not an exhaustive required inventory or a model essay. Accept other independently verified relevant evidence.",
+          "Characterize the course of the First Crusade. The dimensions organize chronology and mechanisms; no extra compulsory scoring aspects are named."
+        ],
+        "aspects": [
+          {
+            "name": "Research dimension: mobilization",
+            "facts": [
+              {
+                "claim": "Urban II promoted the expedition at Clermont in 1095 and followed with a December letter of instruction.",
+                "source_id": "urban",
+                "locator": "Clermont accounts; December 1095 letter"
+              }
+            ],
+            "causal_explanation": "Evaluator inference: Connect religious summons and organization to the formation of an expedition rather than starting without its mobilization."
+          },
+          {
+            "name": "Research dimension: campaign and siege",
+            "facts": [
+              {
+                "claim": "Anselm’s February 1098 letter reports Nicaea’s capture before the ongoing Antioch siege; his July letter reports Antioch’s capture.",
+                "source_id": "letters",
+                "locator": "Anselm letters 1 and 4"
+              },
+              {
+                "claim": "Stephen’s March 1098 letter describes winter, supply shortages and fighting at Antioch.",
+                "source_id": "letters",
+                "locator": "Stephen letter 2"
+              }
+            ],
+            "causal_explanation": "Evaluator inference: Use ordered stages and concrete logistical or military difficulties to explain progress; the sources’ triumphal numbers are not reliable exact counts."
+          },
+          {
+            "name": "Research dimension: Jerusalem and outcome",
+            "facts": [
+              {
+                "claim": "Jerusalem fell on 15 July 1099 after a siege; eyewitness accounts describe mass killing.",
+                "source_id": "metcrus",
+                "locator": "The First Crusade"
+              },
+              {
+                "claim": "The collected accounts describe siege preparations and Frankish violence after capture.",
+                "source_id": "jerusalem",
+                "locator": "Siege and Frankish victory sections"
+              }
+            ],
+            "causal_explanation": "Evaluator inference: Explain how capture completed the principal goal while acknowledging violence and the creation of new territorial obligations."
+          }
+        ],
+        "traps": [
+          {
+            "claim_or_issue": "Constantinople’s sack in 1204 was an event of the First Crusade.",
+            "classification": "false_fact",
+            "correction_or_caveat": "Separate 1095–1099 from the Fourth Crusade.",
+            "source_ids": [
+              "metcrus"
+            ]
+          },
+          {
+            "claim_or_issue": "Chronicle enemy numbers or blood-depth imagery are precise measurements.",
+            "classification": "contested_interpretation",
+            "correction_or_caveat": "These are rhetorically charged participant narratives, not modern statistical records.",
+            "source_ids": [
+              "letters",
+              "jerusalem"
+            ]
+          }
+        ],
+        "interpretive_flexibility": "Accept selective but coherent major-stage narration and other verified campaign anchors; do not demand every battle or an exact thesis about success."
+      }
+    ],
+    "sources": [
+      {
+        "source_id": "urban",
+        "url": "https://sourcebooks.web.fordham.edu/source/urban2-5vers.asp",
+        "title": "Urban II: Speech at the Council of Clermont, 1095, Five Versions and letter",
+        "publisher": "Fordham University, Internet Medieval Sourcebook",
+        "retrieved_at": "2026-09-26",
+        "locator": "Fulcher account; Urban II letter of instruction, December 1095",
+        "verification_status": "Verified: relevant text opened and read independently; no candidate answers inspected.",
+        "rights_note": "Primary historical text in an institutional digital edition; original concise paraphrases only, no reproduced passages. Evaluation only; not for training or RAG."
+      },
+      {
+        "source_id": "metcrus",
+        "url": "https://www.metmuseum.org/essays/the-crusades-1095-1291",
+        "title": "The Crusades (1095–1291)",
+        "publisher": "Metropolitan Museum of Art, Department of Medieval Art and The Cloisters",
+        "retrieved_at": "2026-09-26",
+        "locator": "First Crusade; Fourth Crusade; Ibn Jubayr trade paragraph (1183–1185)",
+        "verification_status": "Verified: relevant text opened and read independently; no candidate answers inspected.",
+        "rights_note": "Authoritative museum historical synthesis; original concise paraphrases only, no reproduced passages. Evaluation only; not for training or RAG."
+      },
+      {
+        "source_id": "letters",
+        "url": "https://sourcebooks.web.fordham.edu/source/cde-letters.asp",
+        "title": "Crusader Letters",
+        "publisher": "Fordham University, Internet Medieval Sourcebook; translations Dana C. Munro and August C. Krey",
+        "retrieved_at": "2026-09-26",
+        "locator": "Anselm of Ribemont, February and July 1098; Stephen of Blois, March 29, 1098",
+        "verification_status": "Verified: relevant text opened and read independently; no candidate answers inspected.",
+        "rights_note": "Primary historical text in an institutional digital edition; original concise paraphrases only, no reproduced passages. Evaluation only; not for training or RAG."
+      },
+      {
+        "source_id": "jerusalem",
+        "url": "https://sourcebooks.web.fordham.edu/source/cde-jlem.asp",
+        "title": "The Siege and Capture of Jerusalem: Collected Accounts",
+        "publisher": "Fordham University, Internet Medieval Sourcebook",
+        "retrieved_at": "2026-09-26",
+        "locator": "June–July 1099; accounts of siege and Frankish victory",
+        "verification_status": "Verified: relevant text opened and read independently; no candidate answers inspected.",
+        "rights_note": "Primary historical text in an institutional digital edition; original concise paraphrases only, no reproduced passages. Evaluation only; not for training or RAG."
+      }
+    ],
+    "limits": [
+      "Independent prompt-first checklist; candidate answers and existing evalcards not inspected.",
+      "Frozen input SHA256 5979ee0b8e0e4f084cf6070f42d31892ee53c1f5485409b4fc5dac1266055a28.",
+      "Evaluation-only research; no training, RAG, generator prompts, or exact-thesis requirement.",
+      "Topic 2 subdivisions are research dimensions, not additional mandatory scoring aspects. Use root calibration; do not invent a 15-point maximum for a two-aspect synthetic prompt.",
+      "Ancient and medieval narratives have literary, political, and religious perspectives. Distinguish reported belief from demonstrated cause; source numbers and speeches are not automatically literal."
+    ]
+  },
+  {
+    "id": "bk117-eval-04",
+    "source_group_id": "C-black-death",
+    "prompt_sha256": "e30da0804346c59b834e807a72b0b97b2f29d05354cceea81f1e1bb0a7fc80f5",
+    "status": "complete_independent_research",
+    "topics": [
+      {
+        "number": 1,
+        "requirements": [
+          "Choose one alternative; state and justify a position with historical evidence; requested length 400–500 words.",
+          "Facts below are illustrative anchors, not an exhaustive required inventory or a model essay. Accept other independently verified relevant evidence.",
+          "Present causes and course in fourteenth-century Europe and assess consequences. Demographic, social and economic aspects are expressly required. Separate modern causation from contemporary beliefs."
+        ],
+        "aspects": [
+          {
+            "name": "Demographic",
+            "facts": [
+              {
+                "claim": "The Nature study dates the Black Death to 1347–1351, providing the epidemic’s bounded course beyond the local 1348 cases.",
+                "source_id": "boss",
+                "locator": "Abstract"
+              },
+              {
+                "claim": "Ancient DNA identifies Yersinia pestis in London Black Death victims of 1348–1350.",
+                "source_id": "boss",
+                "locator": "Abstract"
+              },
+              {
+                "claim": "The archival overview places the plague in Britain in 1348.",
+                "source_id": "tna",
+                "locator": "Black Death overview"
+              },
+              {
+                "claim": "Modern plague biology identifies infected fleas and animals as transmission routes.",
+                "source_id": "cdc",
+                "locator": "Key points; causes"
+              }
+            ],
+            "causal_explanation": "Evaluator inference: Relate infection and movement/contact to mortality and spread; distinguish a demonstrated pathogen from an unsupported unique route or uniform mortality percentage."
+          },
+          {
+            "name": "Social",
+            "facts": [
+              {
+                "claim": "Boccaccio describes disrupted households and hurried funeral practices in Florence in 1348.",
+                "source_id": "bocc",
+                "locator": "Household abandonment and funerals passages"
+              }
+            ],
+            "causal_explanation": "Evaluator inference: Explain how mass illness and death strained care and customary social obligations; a city account is evidence of disruption, not proof of identical behaviour everywhere."
+          },
+          {
+            "name": "Economic",
+            "facts": [
+              {
+                "claim": "The English Statute of Labourers of 1351 sought to constrain wages after labour shortages; it followed the 1349 ordinance.",
+                "source_id": "tna",
+                "locator": "Statute of Labourers 1351, C 74/1"
+              }
+            ],
+            "causal_explanation": "Evaluator inference: Connect mortality to labour scarcity, bargaining and attempted elite/state control. Specify location and avoid an instantaneous Europe-wide end of serfdom."
+          }
+        ],
+        "traps": [
+          {
+            "claim_or_issue": "Celestial influence or divine anger is the demonstrated biological cause.",
+            "classification": "false_fact",
+            "correction_or_caveat": "These were contemporary explanations, distinct from modern pathogen evidence.",
+            "source_ids": [
+              "bocc",
+              "boss"
+            ]
+          },
+          {
+            "claim_or_issue": "Exactly the same fraction died everywhere or serfdom immediately ended throughout Europe.",
+            "classification": "vague_argument",
+            "correction_or_caveat": "Regional and class variation matter; the English wage-control response supports a narrower mechanism.",
+            "source_ids": [
+              "boss",
+              "tna"
+            ]
+          }
+        ],
+        "interpretive_flexibility": "Accept different supported assessments of class, regional and long-term effects. Exact aggregate mortality estimates are not mandatory; causes and course still require explicit treatment."
+      },
+      {
+        "number": 2,
+        "requirements": [
+          "Choose one alternative; state and justify a position with historical evidence; requested length 400–500 words.",
+          "Facts below are illustrative anchors, not an exhaustive required inventory or a model essay. Accept other independently verified relevant evidence.",
+          "Explain contemporary interpretations and reactions. The following dimensions are research aids, not added compulsory scoring aspects."
+        ],
+        "aspects": [
+          {
+            "name": "Research dimension: beliefs",
+            "facts": [
+              {
+                "claim": "Boccaccio reports celestial influence/divine anger explanations and fragrant substances used against feared bad air.",
+                "source_id": "bocc",
+                "locator": "Opening explanation and fragrant-substances passage"
+              }
+            ],
+            "causal_explanation": "Evaluator inference: Show how explanatory frameworks informed action without requiring medieval people to know germ theory."
+          },
+          {
+            "name": "Research dimension: individual and collective responses",
+            "facts": [
+              {
+                "claim": "Florentine responses included isolation, flight, drinking, cleaning measures, exclusion of the sick and religious processions.",
+                "source_id": "bocc",
+                "locator": "Public measures and different modes of living"
+              }
+            ],
+            "causal_explanation": "Evaluator inference: Compare different attempts to manage risk or distress, rather than asserting a single universal response."
+          },
+          {
+            "name": "Research dimension: regulation",
+            "facts": [
+              {
+                "claim": "English authorities adopted wage regulation in the Statute of Labourers in 1351.",
+                "source_id": "tna",
+                "locator": "C 74/1, statute overview"
+              }
+            ],
+            "causal_explanation": "Evaluator inference: A response could address social/economic consequences as well as disease itself; connect regulation to perceived disorder and labour scarcity."
+          }
+        ],
+        "traps": [
+          {
+            "claim_or_issue": "All responses were identical, or every action was merely irrational.",
+            "classification": "contested_interpretation",
+            "correction_or_caveat": "Distinguish observed precautions, social regulation and religious meaning; evidence of belief is not proof of effectiveness.",
+            "source_ids": [
+              "bocc",
+              "tna"
+            ]
+          },
+          {
+            "claim_or_issue": "Modern pathogen knowledge is attributed to fourteenth-century observers.",
+            "classification": "false_fact",
+            "correction_or_caveat": "Present scientific causation as retrospective knowledge and contemporary explanations as beliefs.",
+            "source_ids": [
+              "boss",
+              "bocc"
+            ]
+          }
+        ],
+        "interpretive_flexibility": "Accept other verified beliefs, persecutory actions, charitable responses or local ordinances. Do not require examples absent from this non-exhaustive shortlist."
+      }
+    ],
+    "sources": [
+      {
+        "source_id": "boss",
+        "url": "https://www.nature.com/articles/nature10549",
+        "title": "A draft genome of Yersinia pestis from victims of the Black Death",
+        "publisher": "Nature; Kirsten I. Bos and colleagues, 2011, DOI 10.1038/nature10549",
+        "retrieved_at": "2026-09-26",
+        "locator": "Abstract; London victims 1348–1350",
+        "verification_status": "Verified: relevant text opened and read independently; no candidate answers inspected.",
+        "rights_note": "Primary peer-reviewed ancient-DNA study; original concise paraphrases only, no reproduced passages. Evaluation only; not for training or RAG."
+      },
+      {
+        "source_id": "cdc",
+        "url": "https://www.cdc.gov/plague/about/index.html",
+        "title": "About Plague",
+        "publisher": "US Centers for Disease Control and Prevention",
+        "retrieved_at": "2026-09-26",
+        "locator": "Key points and causes/transmission overview",
+        "verification_status": "Verified: relevant text opened and read independently; no candidate answers inspected.",
+        "rights_note": "Official public-health scientific explanation; modern biology, not a medieval historical route reconstruction; original concise paraphrases only, no reproduced passages. Evaluation only; not for training or RAG."
+      },
+      {
+        "source_id": "bocc",
+        "url": "https://sourcebooks.web.fordham.edu/source/boccacio2.asp",
+        "title": "Boccaccio: The Decameron, Introduction",
+        "publisher": "Fordham University, Internet Medieval Sourcebook",
+        "retrieved_at": "2026-09-26",
+        "locator": "Florence 1348; opening causes, public measures, differing behaviours and funerals",
+        "verification_status": "Verified: relevant text opened and read independently; no candidate answers inspected.",
+        "rights_note": "Primary historical text in an institutional digital edition; original concise paraphrases only, no reproduced passages. Evaluation only; not for training or RAG."
+      },
+      {
+        "source_id": "tna",
+        "url": "https://www.nationalarchives.gov.uk/explore-the-collection/explore-by-time-period/early-modern/plague/",
+        "title": "Plague",
+        "publisher": "The National Archives, United Kingdom",
+        "retrieved_at": "2026-09-26",
+        "locator": "Black Death 1348; Statute of Labourers 1351, catalogue C 74/1",
+        "verification_status": "Verified: relevant text opened and read independently; no candidate answers inspected.",
+        "rights_note": "Authoritative archival curation with identified historical statute; original concise paraphrases only, no reproduced passages. Evaluation only; not for training or RAG."
+      }
+    ],
+    "limits": [
+      "Independent prompt-first checklist; candidate answers and existing evalcards not inspected.",
+      "Frozen input SHA256 5979ee0b8e0e4f084cf6070f42d31892ee53c1f5485409b4fc5dac1266055a28.",
+      "Evaluation-only research; no training, RAG, generator prompts, or exact-thesis requirement.",
+      "Topic 2 subdivisions are research dimensions, not additional mandatory scoring aspects. Use root calibration; do not invent a 15-point maximum for a two-aspect synthetic prompt.",
+      "Ancient and medieval narratives have literary, political, and religious perspectives. Distinguish reported belief from demonstrated cause; source numbers and speeches are not automatically literal."
+    ]
+  }
+]
