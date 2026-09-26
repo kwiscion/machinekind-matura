@@ -29,6 +29,9 @@
 | `results/fixture_scorecard.json`, `results/fixture_items.jsonl` | Fixture run. |
 | `results/validation_2024_build_stats.json` | VALIDATION item counts by type, modality, era, and scoring mode, plus hashes of the restricted files. |
 | `results/validation_2024_sanity.json` | Rubric sanity aggregates. |
+| `harness/contamination_check.py` | #13: VALIDATION prompts/excerpts vs the #6 BM25 corpus (exact hash, char 8/13-gram Jaccard/containment, LCS, BM25 top-5). Aggregates to `results/contamination_13.json`, per-unit detail to `private/`. |
+| `results/contamination_13.json` | #13 aggregate distributions, histograms, and review/flag chunk IDs (no exam text). |
+| `2026-09-26T0250-contamination-13.md` | #13 report: 0 flagged chunks, 6 review-band chunks (stock phrasing), positive control 6/6. |
 | `2026-09-26T0225-audit-procedures.md` | Procedures for the citation-support audit, the 15–20 item independent audit, blind essay review, and the vision/OCR slice. |
 | `private/` (git-ignored) | PDFs, `eval_keys.jsonl`, `runner_input.jsonl`, `pages/`, sanity outputs, dry-run audit sheet. **Never commit.** |
 
@@ -128,6 +131,10 @@ Anyone who rebuilds from the same PDFs should get the same hashes.
 - **Citation audit.** Lexical plus year check only; it can miss negation and paraphrase.
 - **No independent model run.** No independent Sol/other-model audit ran, because nothing existed to audit. The local LM Studio model was not used.
 - **Environment workaround.** The sandbox guard rejects shell commands containing the token `eval` as a path, hence the `harness/` name. An empty, untracked leftover directory may exist locally.
+
+## Contamination check (#13)
+
+`python3 agentsLog/Pewciu6/harness/contamination_check.py` (needs the rebuilt `private/` prompts and `agentsLog/Bukareszt/index/bm25_index.json`). Against index `350800b1…`, 0 of 99 units (40 prompts, 59 excerpts) were flagged and 0 exact hits were found. Nothing needs to be excluded. See `2026-09-26T0250-contamination-13.md`.
 
 ## Next action
 
