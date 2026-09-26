@@ -1,0 +1,9 @@
+[project]
+name = "matura"
+version = "0.1.0"
+description = "Offline Polish history matura inference, retrieval and evaluation tools"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "huggingface-hub>=2.0.0",
+]

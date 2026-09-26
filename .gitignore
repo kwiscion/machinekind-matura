@@ -5,6 +5,8 @@
 *secret*.json
 *token*.json
 .venv/
+.venv-wsl/
+.hf-home/
 __pycache__/
 .pytest_cache/
 *.py[cod]
