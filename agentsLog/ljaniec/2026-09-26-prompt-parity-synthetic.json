@@ -1,0 +1,63 @@
+{
+  "scope": "Original synthetic parser/renderer fixtures; no accuracy evidence",
+  "model_calls": 0,
+  "network_calls": 0,
+  "captured_stub_requests": 8,
+  "shared_source_repeated": true,
+  "neighbor_text_excluded": true,
+  "source_and_subtask_pages_ascending": true,
+  "single_user_message": true,
+  "thinking": "none",
+  "output_cap": 1024,
+  "temperature_omitted": true,
+  "fixtures": [
+    {
+      "fixture_id": "1.1",
+      "bare_text_sha256": "3db5cd9a1f1c27a201b90dd691010e241561840c785b2dc292e28b9bd9ae98c8",
+      "organizer_text_sha256": "6a611a5b618ab5fd02ecee76f16f2babdb7414bc913bda4634aa565233abb62b",
+      "prompt_equal": false,
+      "source_text_preserved": true,
+      "image_bytes_and_order_equal": true,
+      "image_count": 1,
+      "settings_equal": true
+    },
+    {
+      "fixture_id": "1.2",
+      "bare_text_sha256": "954409e56c9ca50b0b693b759dd657b6cd1b73aa3d7139c841130d027eed4198",
+      "organizer_text_sha256": "69d7c0740f746d0525cf4c1d75fa37d1ae7b7b67c89b1b280305fcb28412db0f",
+      "prompt_equal": false,
+      "source_text_preserved": true,
+      "image_bytes_and_order_equal": true,
+      "image_count": 2,
+      "settings_equal": true
+    },
+    {
+      "fixture_id": "2",
+      "bare_text_sha256": "0a340e7d50047a43e05d12d7d4173005ab9d2bfba98b6de68003e65b03171f55",
+      "organizer_text_sha256": "2a4a84945d295d2e405ae61595bde4b11bd14c5d97d979af1a5a1a311bff2fac",
+      "prompt_equal": false,
+      "source_text_preserved": true,
+      "image_bytes_and_order_equal": true,
+      "image_count": 0,
+      "settings_equal": true
+    },
+    {
+      "fixture_id": "3",
+      "bare_text_sha256": "d7605eaed4ad9c2431edc20731f484d018148fb9d8f30051dfb8c8a518cf7d49",
+      "organizer_text_sha256": "a56e894ff52a57feaa22b057a4c25643f4448c9773140764515f88a0ce715e30",
+      "prompt_equal": false,
+      "source_text_preserved": true,
+      "image_bytes_and_order_equal": true,
+      "image_count": 0,
+      "settings_equal": true
+    }
+  ],
+  "config_sha256_lf": "bc3c91d9da1a6b5ad0d083506e090a2d840833b24a92af0765cd19f2bd8294e3",
+  "config_sha256_crlf": "3d9c501891d5307a863096274abdfeec716ee8fa163b5c259569f3592ed8effa",
+  "code_sha256": {
+    "infer.py": "d647172438b14fbcf56554ed418dafa264187a03b6a67574fc5e5e3843515edb",
+    "scripts/Bukareszt/matura_package.py": "4c483047e1c728f510b18e8c66a6ed71cf4d1860737a26cca9b4fa59ed14c6f8",
+    "agentsLog/Pewciu6/harness/build_validation_2024.py": "7dd1f3368cd406a4bf34d1065b3957595b53b40f043cf07abf9d9e2bd3739531",
+    "agentsLog/kwiscion/run_gemma_package.py": "7155ae4d3e59ebbc8e4197d0286c3f3afa5445cb0645faa62b546bf32fdc2f3a"
+  }
+}
