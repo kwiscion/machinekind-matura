@@ -1,0 +1,28 @@
+{
+  "result": "pass",
+  "verification_type": "local_structural_and_provenance_only",
+  "essays": 4,
+  "repair_pairs": 4,
+  "unique_target_essays": 4,
+  "source_groups": 4,
+  "licensed_reference_sources": 5,
+  "institutional_primary_crosschecks": 5,
+  "evidence_cards": 29,
+  "verified_training_examples": 0,
+  "word_counts": {
+    "astra-seed-essay-solon": 412,
+    "astra-seed-essay-casimir": 409,
+    "astra-seed-essay-lublin": 421,
+    "astra-seed-essay-january": 422
+  },
+  "negative_input_word_counts_including_wrappers": {
+    "astra-seed-repair-solon": 425,
+    "astra-seed-repair-casimir": 120,
+    "astra-seed-repair-lublin": 506,
+    "astra-seed-repair-january": 146
+  },
+  "source_hashes_verified": 9,
+  "benchmark_contamination_check": "not performed by this benchmark-blind generator; isolated custodian review required",
+  "independent_factual_review": "accepted_with_limitations; canonical export and exclusion review pending",
+  "semantic_single_topic_check": "generator inspection only; no claim of automated semantic validation"
+}

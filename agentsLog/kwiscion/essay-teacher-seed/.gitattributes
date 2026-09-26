@@ -1,0 +1,2 @@
+# Preserve reviewed data, evidence and manifest bytes across platforms.
+* -text whitespace=cr-at-eol
