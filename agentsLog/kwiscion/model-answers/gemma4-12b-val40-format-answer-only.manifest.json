@@ -1,0 +1,61 @@
+{
+  "artifact": "gemma4-12b-val40-format-answer-only.jsonl",
+  "artifact_sha256": "c8a1baccb82c36a1636a1d4844a5d38b2ae8fa0a8b7d0b8cd0c4a829e5b6d555",
+  "record_count": 40,
+  "unique_ids": 40,
+  "id_order_sha256": "d019ea87f3a6b9bdee0a1bc5ec6ee6eb4d838f1a5c3b489932cd3db67aa080a6",
+  "source": "Interrupted/resumed exploratory blanket-format Gemma arm. Initial worker was stopped after 11 rows at 15:36 Warsaw; continuation appeared at 15:38 under a competing Cursor controller. Worker ownership was subsequently resolved; this provenance is historical. This is not a declared accepted intervention or baseline.",
+  "reconstruction": "40/40 original frozen v1 IDs, exact order. The 11-row initial output plus 29-row continuation exactly match the combined raw artifact row-for-row. Exported answers exactly match combined raw final answer strings.",
+  "limitations": [
+    "Exploratory arm was interrupted and resumed by a competing controller; root subsequently reclaimed the queue after no worker remained.",
+    "Potential overlap with the concurrent Gemma source-correction call is a runtime limitation; the model/backend was shared.",
+    "No grading or score was performed for this handoff."
+  ],
+  "redactions": {
+    "ids": [],
+    "count": 0
+  },
+  "run_settings": {
+    "model": "gemma4:12b-it-q4_K_M",
+    "model_digest": "4eb23ef187e2c5462566d6a1d3bbbc2f1346d0b4327cbb66d58fffbcc9b2b05c",
+    "reasoning_effort": "none",
+    "max_output_tokens": 1024,
+    "config_sha256": "3d9c501891d5307a863096274abdfeec716ee8fa163b5c259569f3592ed8effa"
+  },
+  "provenance_sha256": {
+    "frozen_v1_input": "f4df6bcb9c1152d42e3650e820dfee1b4d182a5ad065eea41c9c0be85a0003c7",
+    "format_input": "e87c8083dd493e1464f51dc88de22f23b815654f3d0a71b36d7f1e5c2681a25f",
+    "continuation_input": "75fddbc3d8239e6061b3b4113dc567a6b28f4b3d8aea5fdd6c1a2c5b6f43c844",
+    "initial_raw_11": "a18d1e36a7e527b30c632e462b470c985612358c93222be8292f46de4c781dc0",
+    "continuation_raw_29": "c7ddc0ba1f673f2b4b1ccea8ee9934cb7ae64e3605c9531ef9a1c79dd7ba1add",
+    "combined_raw_40": "7193cc7e959962b842ee793a0a68386bc84bf3846a9115ff34c7e5c7f3eea289",
+    "run_gemma_format.sh": "0eb6065bee9c20a9f9c364d2503c7f759e7e4fb8c8b68f713ec96ca53af22a07",
+    "run_gemma_format_rest.sh": "eb8cda25462e51eb61b46a1f300e31adbbe3374d803c1e306cc944aa41bc0ded",
+    "make_format_input.py": "b538b4969dbb987523bd18a48a40416fda7efdeac3ea38fcdef90828d948d5e5"
+  },
+  "response_status": {
+    "errors": 0,
+    "finish_reason_counts": {
+      "stop": 40
+    }
+  },
+  "source_text_overlap_audit": {
+    "method": "Longest exact contiguous word-sequence comparison between each final answer and its frozen input prompt.",
+    "longest_exact_run_words": 7,
+    "items_with_run_at_least_6_words": [
+      [
+        "val2024-hist-z1",
+        6
+      ],
+      [
+        "val2024-hist-z15.2",
+        7
+      ],
+      [
+        "val2024-hist-z26",
+        6
+      ]
+    ],
+    "note": "No passage longer than the cited incidental short quote was found; no answer was altered."
+  }
+}
