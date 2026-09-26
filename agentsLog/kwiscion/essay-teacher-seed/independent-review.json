@@ -1,0 +1,446 @@
+{
+  "review_status": "accepted_with_limitations",
+  "reviewer": "independent Sol agent",
+  "date": "2026-09-26",
+  "scope": "4 independently authored essay targets,4 repair pairs,29 evidence cards,9 source snapshots; factual and functional seed review only",
+  "content_counts": {
+    "essays_accepted": 4,
+    "repair_pairs_accepted": 4,
+    "unique_targets": 4,
+    "cards_accepted": 29,
+    "sources_verified": 9
+  },
+  "not_claimed": [
+    "Canonical exporter readiness",
+    "Full cross-corpus deduplication",
+    "Certified absence of benchmark overlap",
+    "Dataset/model licensing clearance",
+    "Training efficacy or LoRA/runtime feasibility",
+    "Verified exact teacher checkpoint"
+  ],
+  "records": [
+    {
+      "id": "astra-seed-essay-solon",
+      "decision": "accept",
+      "response_sha256": "b0ef44a7f5bcbee0c3f4d8bcdbb53a8631e3aaa12b68fb40d2e6a597f4655241",
+      "prompt_sha256": "7af2fecad0fde2f22226aacbf2c209c7ff7f445f48b80d6f96d15a55b14b99bf",
+      "body_word_count": 412,
+      "findings": "All required aspects function in the argument: personal freedom, wealth-limited participation and the limits of compromise. Traditional chronology and late-source uncertainty are explicit. No assertion that Solon created mature democracy, abolished all slavery, or created the property classes from nothing.",
+      "required_target_repairs": [],
+      "source_support": "Aristotle parts2,5-9,12-14; wiki-solon Archonship, Classes, Seisachtheia, lead uncertainty."
+    },
+    {
+      "id": "astra-seed-essay-casimir",
+      "decision": "accept",
+      "response_sha256": "e264319081e527f89f87beb9f7b9111a0d218fabf1342b7e9f45ee1ccb99e556",
+      "prompt_sha256": "753ea129e0086b4ed2700ba8ee4c4a84438022d2318a24c8143bfe14189f73b9",
+      "body_word_count": 409,
+      "findings": "Diplomacy is related to defenses, regional legal consolidation and educational capacity. Accession, adversaries/alliance, fortifications, statutory regions,1364 foundation and Ruthenian/Black Sea direction are supported. No unsupported precise statute date or claim of immediate full university operation. Argument is valid but diplomatic examples remain broad.",
+      "required_target_repairs": [],
+      "source_support": "wiki-casimir Reign/Reforms/Politics_and_expansion; UJ Historia Uniwersytetu, Czasy dawne."
+    },
+    {
+      "id": "astra-seed-essay-lublin",
+      "decision": "accept",
+      "response_sha256": "190790b00af990e72abd010e73dbf3c782cdab228808ac67e0fab868f474e2b9",
+      "prompt_sha256": "0491310b9321b583a0c4500a23456def5ba3927aefb572b92fbdf43bac97154d",
+      "body_word_count": 421,
+      "findings": "Dynastic and military pressures, magnate opposition, incorporation pressure, common institutions and retained autonomy support a coherent qualified judgment.1July agreement is not confused with4July royal signature. No single date is imposed on all incorporations. Noble participation is not universal suffrage.",
+      "required_target_repairs": [],
+      "source_support": "wiki-lublin Background, Sejm_of_1569, Political, Military; AGAD opening description of1July1569 act."
+    },
+    {
+      "id": "astra-seed-essay-january",
+      "decision": "accept",
+      "response_sha256": "e9096583bd7e09afe1f80bf026b1a756e20b05897699a5ec0a0b3a33a91a2bc8",
+      "prompt_sha256": "8209497b47fae848e829a28367e9d6413b6c0acc0146d3c403f214aaec1d113a",
+      "body_word_count": 422,
+      "findings": "Reform program, state compensation, uneven enforcement, non-universal but real village support, Traugutt organization and2March1864 response are supported. No categorical claim of peasant passivity or zero implementation. Institutional sources differ in emphasis, and the cautious synthesis survives that difference. No claim that the last resistance ended exactly in1864.",
+      "required_target_repairs": [],
+      "source_support": "wiki-january Background, Call_to_arms_in_the_Kingdom_of_Poland, Romuald_Traugutt; MHP Wolni i rowni/Najwyzsza cena; Radom manifesto, local participation and ukaz paragraphs."
+    },
+    {
+      "id": "astra-seed-repair-solon",
+      "decision": "accept",
+      "response_sha256": "b0ef44a7f5bcbee0c3f4d8bcdbb53a8631e3aaa12b68fb40d2e6a597f4655241",
+      "prompt_sha256": "595a073f5c3a29874fbaae23fd825af745a476f71fe2f8dd32ed9fd7a81359ed",
+      "corrupted_response_sha256": "562348a2d5e2b5394435fa0b21965c0de9d407ff9eca7a712c6169377df454f8",
+      "parent_essay_id": "astra-seed-essay-solon",
+      "findings": "Exact removal of synthetic preamble and closing; no substantive content loss.",
+      "required_target_repairs": []
+    },
+    {
+      "id": "astra-seed-repair-casimir",
+      "decision": "accept",
+      "response_sha256": "e264319081e527f89f87beb9f7b9111a0d218fabf1342b7e9f45ee1ccb99e556",
+      "prompt_sha256": "b95ec296ececb8ae0e77ee4ec7f966aae55492ea4cd7b65b54d6c1254d9df623",
+      "corrupted_response_sha256": "c79783c4c36fc9bc6a9c3db1c324cb418fd15ef2bcddfb32cd81481702fe13bf",
+      "parent_essay_id": "astra-seed-essay-casimir",
+      "findings": "Restores four omitted paragraphs, required aspects and length; added material is independently checked target content.",
+      "required_target_repairs": []
+    },
+    {
+      "id": "astra-seed-repair-lublin",
+      "decision": "accept",
+      "response_sha256": "190790b00af990e72abd010e73dbf3c782cdab228808ac67e0fab868f474e2b9",
+      "prompt_sha256": "bd7930d57c559b7ab302d06bec4ad34a64ce0bf44f3f2a8bae9e38ec33c29644",
+      "corrupted_response_sha256": "fd9c0767d419b1bc39fc4dd2db7502289013912dc6d00f1ec76172fce373b667",
+      "parent_essay_id": "astra-seed-essay-lublin",
+      "findings": "Removes explicit extra heading and repeated institutional subanswer while preserving selected essay. Narrow same-era duplicate-answer fixture, not robust cross-era topic selection.",
+      "required_target_repairs": []
+    },
+    {
+      "id": "astra-seed-repair-january",
+      "decision": "accept",
+      "response_sha256": "e9096583bd7e09afe1f80bf026b1a756e20b05897699a5ec0a0b3a33a91a2bc8",
+      "prompt_sha256": "444f7df3f2993c38e17f9ba66c7f4cabd6dd6523581a6f51c463c920ad578eb2",
+      "corrupted_response_sha256": "2247757b86a6a80257e10fcc49c323ed064a56b83fca21c54f5dbdd1dc3cc767",
+      "parent_essay_id": "astra-seed-essay-january",
+      "findings": "Removes synthetic wrappers and restores omitted argumentation and length with grounded target content.",
+      "required_target_repairs": []
+    }
+  ],
+  "cards": [
+    {
+      "claim_id": "solon-claim-01",
+      "decision": "accept",
+      "content_sha256": "828751e2c754e14bcb1978fede7285035eedb73895cf442973f1145b9e3a0972",
+      "finding": "Traditional594 archonship in pinned biography; Aristotle corroborates mediator/archon and conflict, not precise modern date."
+    },
+    {
+      "claim_id": "solon-claim-02",
+      "decision": "accept",
+      "content_sha256": "6f3164917237d827d1b5c77f1f1fadaaf1b1cb675c1221712ec6ff31432a8ef3",
+      "finding": "Aristotle2 explicitly links debt security and slavery, including family vulnerability."
+    },
+    {
+      "claim_id": "solon-claim-03",
+      "decision": "accept",
+      "content_sha256": "e110432189db9dd3e7f78b7276f634ed5777fb871bf30a1394ffb5bdb076ae72",
+      "finding": "Aristotle6/12 supports release/cancellation and future prohibition; essay preserves disputed-scope qualification."
+    },
+    {
+      "claim_id": "solon-claim-04",
+      "decision": "accept",
+      "content_sha256": "863069f1735a85ca8eae7b92fe7d8d3153e8fd3b69063605bdfdf9ac78debb07",
+      "finding": "Aristotle7 supports four wealth classes and exclusion of thetes from office; no claim classes were wholly new."
+    },
+    {
+      "claim_id": "solon-claim-05",
+      "decision": "accept",
+      "content_sha256": "4424e761553d573aa6fd8c4b612f7a337268df5edda619ea5ebed81ca16ec059",
+      "finding": "Aristotle7/9 supports assembly/juries and accountability inference; later institutional attribution qualified."
+    },
+    {
+      "claim_id": "solon-claim-06",
+      "decision": "accept",
+      "content_sha256": "7e443d91964126a6d415a9915a19374d49f395dcf817fa4148f6d1e05038c778",
+      "finding": "Pinned lead and reform discussion explicitly describe late, fragmented and potentially retrojected testimony."
+    },
+    {
+      "claim_id": "solon-claim-07",
+      "decision": "accept",
+      "content_sha256": "998579ad0669a0ad6379b198d53ca56a97d7d3cebfa471fc915a9080ce00d819",
+      "finding": "Aristotle13-14 supports renewed division and tyranny; long-term evaluation is author synthesis."
+    },
+    {
+      "claim_id": "casimir-claim-01",
+      "decision": "accept",
+      "content_sha256": "c6c54edb57d96b5bf53f7cdb931c716fc703f939ced9073b9440dc2fd5fc90f8",
+      "finding": "Pinned Reign supports1333 and difficult accession; priority-setting is interpretation."
+    },
+    {
+      "claim_id": "casimir-claim-02",
+      "decision": "accept",
+      "content_sha256": "c834d0ac654abe55c133c577bd5061fdaed6f56ee8e6b9e3dbd8e83f4f59664d",
+      "finding": "Pinned diplomatic paragraphs support Bohemian claim, Order dispute, Hungarian alliance and negotiations."
+    },
+    {
+      "claim_id": "casimir-claim-03",
+      "decision": "accept",
+      "content_sha256": "781fbbca456c66c6b3a80035472d446d5c34e1ef48cb822aab778908df649d08",
+      "finding": "Pinned fortifications paragraph supports city walls/castles; defensive/institutional function is reasonable inference."
+    },
+    {
+      "claim_id": "casimir-claim-04",
+      "decision": "accept",
+      "content_sha256": "b0964526fb88322101af89aa1ec643e37a491fa458f8719975b2b908e0787afa",
+      "finding": "Pinned Reforms supports regional codes; avoids problematic exact1347 date; predictability is interpretation."
+    },
+    {
+      "claim_id": "casimir-claim-05",
+      "decision": "accept",
+      "content_sha256": "0338a67079cef836e21e86d3c9a195cb3f0185a20772342011ae7b15505559fd",
+      "finding": "UJ directly confirms1364 foundation and limited early operation; target carefully avoids overclaim."
+    },
+    {
+      "claim_id": "casimir-claim-06",
+      "decision": "accept",
+      "content_sha256": "5340bb50960492e70e840f6e612f5bb49d9b6dc0d9797691b45ea627ca0b7aa7",
+      "finding": "Pinned Politics_and_expansion directly supports Ruthenia and Black Sea trade access."
+    },
+    {
+      "claim_id": "casimir-claim-07",
+      "decision": "accept",
+      "content_sha256": "d7f1690e156a182b6530d6999fcd5b36b8f08ffcd732a2e42128149ca761c61d",
+      "finding": "Synthesis is causally plausible from preceding evidence; not falsely attributed as a quotation."
+    },
+    {
+      "claim_id": "lublin-claim-01",
+      "decision": "accept",
+      "content_sha256": "8df899459eedfac9b080754607cd73c894233fd6f3a72e3315c1176e11015e88",
+      "finding": "Pinned lead/Background supports childlessness and institutional continuity motive."
+    },
+    {
+      "claim_id": "lublin-claim-02",
+      "decision": "accept",
+      "content_sha256": "6c219367aa1ae38927a3503a04fe47571d86eb8613a589703378c35efd027c2f",
+      "finding": "Pinned Background supports Muscovite threat and war burden."
+    },
+    {
+      "claim_id": "lublin-claim-03",
+      "decision": "accept",
+      "content_sha256": "42bdc071976a14d15482b8adbcbf4aa72394ec63fa5a2ebc65a4b294b65e7432",
+      "finding": "Pinned Sejm_of_1569 supports withdrawal followed by four incorporations; no false single incorporation date."
+    },
+    {
+      "claim_id": "lublin-claim-04",
+      "decision": "accept",
+      "content_sha256": "833ca47b346bf552ae674ca98327a76b9ffd81e5207534168f701773cc7af4a6",
+      "finding": "AGAD dated archival description corroborates1July and common ruler/sejm/foreign policy."
+    },
+    {
+      "claim_id": "lublin-claim-05",
+      "decision": "accept",
+      "content_sha256": "1eb587b99aaf28779571e76169e499322c54241c35a73a3649cc7f324f1451eb",
+      "finding": "Pinned Political/Military supports separate law, offices, treasury and army."
+    },
+    {
+      "claim_id": "lublin-claim-06",
+      "decision": "accept",
+      "content_sha256": "1880315abb31260bba90ed973e3e7bc3b8d5dffefea01651122a018f037fc871",
+      "finding": "Pinned Political/Cultural support noble political rights; limiting universal equality is warranted."
+    },
+    {
+      "claim_id": "lublin-claim-07",
+      "decision": "accept",
+      "content_sha256": "cd588af0be811736cbd6224a2a666c6877815816ee04daa8f8d43a4b735ae69e",
+      "finding": "Balanced integration/coercion/autonomy evaluation follows evidence and is explicitly synthesis."
+    },
+    {
+      "claim_id": "january-claim-01",
+      "decision": "accept",
+      "content_sha256": "5f71d6dab39d484c831b0d06795f259409c454c67b3c087f8397e4fd0d92b695",
+      "finding": "Pinned Background and MHP/Radom support reform disagreements and compensation concerns."
+    },
+    {
+      "claim_id": "january-claim-02",
+      "decision": "accept",
+      "content_sha256": "4f61903282b10440c1b192f486e88655c1038bbe99d11775f723ac2333fadcd9",
+      "finding": "MHP reproduces1863 manifesto and states treasury compensation; target does not confuse1863 program with1864 implementation."
+    },
+    {
+      "claim_id": "january-claim-03",
+      "decision": "accept",
+      "content_sha256": "7dbca6d0c2b1ae6707c8e0cc699c68452a3696905fb74a0ab235f5bc9b4c7c1e",
+      "finding": "Pinned lead supports guerrilla/weapon disadvantage; uneven enforcement independently supported by Radom."
+    },
+    {
+      "claim_id": "january-claim-04",
+      "decision": "accept",
+      "content_sha256": "703a5d689b824a3efed315669d0eba824fb32519af710c96a769b9c15c5256ff",
+      "finding": "MHP emphasizes substantial participation and Radom local support; neither contradicts non-universal mobilization."
+    },
+    {
+      "claim_id": "january-claim-05",
+      "decision": "accept",
+      "content_sha256": "5a2af908cc5f5c9a550e8144acd33cf5ee31a2e9965a54d836b70ca66ab1f803",
+      "finding": "Pinned Traugutt section supports autumn1863 leadership, reorganization and enforcement efforts; no unsupported precise decree date in target."
+    },
+    {
+      "claim_id": "january-claim-06",
+      "decision": "accept",
+      "content_sha256": "c7b22f2f45caa17f9f547226edc7615939c120dae166cceba474428f54687db5",
+      "finding": "Pinned Evolution_of_events/lead support absence of hoped-for foreign military intervention."
+    },
+    {
+      "claim_id": "january-claim-07",
+      "decision": "accept",
+      "content_sha256": "6c976b1e208bc79a92f513fe0d938ee8e95532f134d69e8f3ea3cd21e326b13d",
+      "finding": "Pinned Traugutt and Radom independently give2March1864; undermining insurgent mobilization is supported interpretation."
+    },
+    {
+      "claim_id": "january-claim-08",
+      "decision": "accept",
+      "content_sha256": "1b6fbb67460cf9d6462347fd458cb0939a51d56a5debb271d6159894f8be4273",
+      "finding": "Military defeat and enduring property change supported; exact end-of-resistance year should not be inferred from card date1864. Lead alone supports outcome; Aftermath is not an actual pinned heading."
+    }
+  ],
+  "sources": [
+    {
+      "source_id": "wiki-solon",
+      "decision": "accept_for_declared_use",
+      "url": "https://en.wikipedia.org/wiki/Solon",
+      "snapshot_sha256": "459d43ea221db010d77a99125a55c76051692c40eec24e5a0b40ceb3dd978a7a",
+      "revision_id": "1376155195",
+      "license": "CC-BY-SA-4.0 for article text, except separately credited material",
+      "allowed_use": [
+        "reference",
+        "train_subject_to_independent_review_and_license_compliance",
+        "redistribute_text_with_attribution_and_sharealike"
+      ]
+    },
+    {
+      "source_id": "wiki-casimir",
+      "decision": "accept_for_declared_use",
+      "url": "https://en.wikipedia.org/wiki/Casimir_III_the_Great",
+      "snapshot_sha256": "e3a2e985255736de9637d85bb9b91fad4256d8de4a4e6dbf92bde3b49e0a4bb1",
+      "revision_id": "1371499448",
+      "license": "CC-BY-SA-4.0 for article text, except separately credited material",
+      "allowed_use": [
+        "reference",
+        "train_subject_to_independent_review_and_license_compliance",
+        "redistribute_text_with_attribution_and_sharealike"
+      ]
+    },
+    {
+      "source_id": "wiki-lublin",
+      "decision": "accept_for_declared_use",
+      "url": "https://en.wikipedia.org/wiki/Union_of_Lublin",
+      "snapshot_sha256": "90ae2d39a70c372086b25b97ef9e3eb88bde92e5dfe448794dd62b5210165de9",
+      "revision_id": "1372306130",
+      "license": "CC-BY-SA-4.0 for article text, except separately credited material",
+      "allowed_use": [
+        "reference",
+        "train_subject_to_independent_review_and_license_compliance",
+        "redistribute_text_with_attribution_and_sharealike"
+      ]
+    },
+    {
+      "source_id": "wiki-january",
+      "decision": "accept_for_declared_use",
+      "url": "https://en.wikipedia.org/wiki/January_Uprising",
+      "snapshot_sha256": "7f46d4362bf5054789c4d2a671ddb306ca01040bb0bd0578318c774a87a0d0c1",
+      "revision_id": "1376037793",
+      "license": "CC-BY-SA-4.0 for article text, except separately credited material",
+      "allowed_use": [
+        "reference",
+        "train_subject_to_independent_review_and_license_compliance",
+        "redistribute_text_with_attribution_and_sharealike"
+      ]
+    },
+    {
+      "source_id": "mit-aristotle",
+      "decision": "accept_for_declared_use",
+      "url": "https://classics.mit.edu/Aristotle/athenian_const.1.1.html",
+      "snapshot_sha256": "c3c627e4f6191544c9c2f6cb5558b0a8178624b6b9487c9be0368f05fd61087d",
+      "revision_id": null,
+      "license": "unknown for website presentation; not licensed for corpus redistribution by this seed",
+      "allowed_use": [
+        "reference_fact_check_only"
+      ]
+    },
+    {
+      "source_id": "uj-archive",
+      "decision": "accept_for_declared_use",
+      "url": "https://archiwum.uj.edu.pl/historia-auj",
+      "snapshot_sha256": "b993a44e3bef48c224a178f2cd003843462dbce29465a765fb552db46eb3c988",
+      "revision_id": null,
+      "license": "unknown for website presentation; not licensed for corpus redistribution by this seed",
+      "allowed_use": [
+        "reference_fact_check_only"
+      ]
+    },
+    {
+      "source_id": "agad-lublin",
+      "decision": "accept_for_declared_use",
+      "url": "https://agad.gov.pl/Unia%20Lubelska/uni_lub.html",
+      "snapshot_sha256": "bec8772f63047b0edbd1a97276d3b70e5d18b604112bd28daba463d2bf8164f8",
+      "revision_id": null,
+      "license": "unknown for website presentation; not licensed for corpus redistribution by this seed",
+      "allowed_use": [
+        "reference_fact_check_only"
+      ]
+    },
+    {
+      "source_id": "mhp-peasants",
+      "decision": "accept_for_declared_use",
+      "url": "https://powstanie1863-64.pl/artykul/uwlaszczenie-chlopow-w-optyce-tymczasowego-rzadu-narodowego/index.htm",
+      "snapshot_sha256": "55e6b321473659bdf4ed037686fd63bb6fa74cdcea4c3d74ad3a264b245466e6",
+      "revision_id": null,
+      "license": "CC-BY-4.0 for article text; separately credited illustrations excluded",
+      "allowed_use": [
+        "reference",
+        "train_subject_to_independent_review",
+        "redistribute_article_text_with_attribution"
+      ]
+    },
+    {
+      "source_id": "radom-peasants",
+      "decision": "accept_for_declared_use",
+      "url": "https://muzeum-radom.pl/wydarzenia/uwlaszczenie-chlopow-w-krolestwie-polskim-w-dobie-powstania-styczniowego/3139",
+      "snapshot_sha256": "951981213c8cf65fdad5a991407c85be52e6d3a975d76586faccac23baa13c04",
+      "revision_id": null,
+      "license": "unknown for website presentation; not licensed for corpus redistribution by this seed",
+      "allowed_use": [
+        "reference_fact_check_only"
+      ]
+    }
+  ],
+  "metadata_followups": [
+    {
+      "priority": "minor",
+      "target": "January source group, essay/repair source_ids and evidence-card crosscheck links",
+      "action": "Link mhp-peasants and radom-peasants explicitly when integrating; supplementary-review-notes already documents claim mapping. No target prose change needed."
+    },
+    {
+      "priority": "minor",
+      "target": "january-claim-08.evidence_locator",
+      "action": "Replace nonexistent Aftermath heading with actual pinned Decades_of_reprisals or lead; military outcome already supported by lead."
+    },
+    {
+      "priority": "minor",
+      "target": "README.md / validate_seed.py summary constants",
+      "action": "Refresh stale3crosschecks/7source-hashes statements to5crosschecks/9snapshots, and distinguish5licensed article references from4Wikipedia references. No need rerun acquisition."
+    }
+  ],
+  "split_review": {
+    "local": "Four canonical groups consistently pair each essay, corrupted variant and duplicate target. All split fields null. Multilingual aliases are present.",
+    "global_limit": "Match by actual source URLs/articles and topic family across Greg corpus, not local group spelling alone. MIT full-page reuse and university-foundation variants must stay grouped. January museum aliases should join the same family. Global matching not executed."
+  },
+  "contamination_provenance": {
+    "result": "No benchmark-derived source or content pipeline found in reviewed artifact provenance; not certified uncontaminated.",
+    "evidence": "README declares independent general-reference topic selection; acquisition URLs are historical references; build_seed reads owned essay targets and authored metadata only, with no exam/question/key paths.",
+    "limits": "Generator declaration cannot establish all prior model exposure; exact/near-duplicate global custodian screening not run. Reviewer opened no new exam, and added no benchmark-derived claims."
+  },
+  "method": "Read all four complete targets and repair inputs, checked29cards and underlying pinned evidence, with institutional corroboration for all four topic families. Independently verified counts,target identity,prompt hashes,cards duplication,source hashes and HTML revision identifiers. Did not run mutating build/validator scripts.",
+  "teacher_file_hashes": {
+    ".gitignore": "0c58839edfc5491e3917f80e5a4da205d43466aa8e1619fabe2451decd7be238",
+    "acquire_crosschecks.py": "e810c055ff0777c511ea64a7504559a2ecc70099832800ba6e87ab05f878aa8f",
+    "acquire_sources.py": "bc177f2161a69e721f790166e509da0cdf583bb69c263b89cb68424e3c3571d0",
+    "build_seed.py": "4301c96797b8fea8e2c756e2de032c564ebc40c0432622c9b02e223ba640dcb9",
+    "crosscheck-sources.jsonl": "92b167fee9282953907467f675ca410d509cce16e8017a7ccaa9a759aca49511",
+    "essay-casimir.txt": "c1798a8e630b921d48bc5e10f4bf925577f80c10677c806a91627ce1b2e5d986",
+    "essay-january.txt": "0a0bc47aaa9aa411169096237d25b44d4da44dd752b7402ac632a909a3a2ac79",
+    "essay-lublin.txt": "c1468312f1ff6dd981e5522a9f88beba74a66e4b0ccc67a5fec827a0722ececb",
+    "essay-solon.txt": "e09a412ace381342a1b092e8527d90e8e82751df89923bbe25d28f6c021787f5",
+    "essays.jsonl": "bee7c42b239af56241fb913c2eaec98882ad9a6643aaaf50df1c4f2b6960ec57",
+    "evidence-cards.jsonl": "62652489ca4f6b36d6da0c94ffe04098a0f1fb8973fdeccc26608dd2e63ebe9b",
+    "README.md": "3d59e887356ad52cc5ebdf3059b7c81d41fa004062208e7b3f376229a22b77e1",
+    "repairs.jsonl": "76abe96eb28996ab3a4aa1089e1110194bd5a0f49433e500fa90e91ac025b606",
+    "SHA256SUMS.txt": "0d6aa511c19359b66f9ebb4c7d5da9eb9036ea982e458589c2ce50b0373114e3",
+    "source-groups.jsonl": "9cf9d27b84ab25d49a89c746bfb8801622aaf1f2c3139345d826a2c0274f31fc",
+    "sources.jsonl": "6a97786f4fad7347bcdad105320e4b68e032b8341627428680eff61d6b6f015f",
+    "supplementary-review-notes.md": "f1e4fa940f43fe89ca95180ef3e02fe030d95dc76473b7d6f8a24669db9b9fb8",
+    "validate_seed.py": "8d3b2ba363a5f50cf6fdb64733dd678dd39534a0c650573b84feaf3893e066a9",
+    "validation.json": "e8b26d1b9c85caa771220a39e48e9aa08b0140b5f5f413bd4b053b32ec6793f6"
+  },
+  "limitations": [
+    "Four original targets, not eight independent essays; repair targets are deliberately duplicated.",
+    "Repair inputs are synthetic known corruptions; no evidence of robustness to novel errors or factual correction.",
+    "Essays are coherent modest exemplars, not exhaustive or official full-mark answers.",
+    "Wikipedia remains secondary and imperfect. Institutional corroboration narrows but does not eliminate historical uncertainty.",
+    "Source article rights and third-party embedded media differ; do not blanket-license website snapshots.",
+    "Review targets response hashes plus prompt/input hashes. Source/metadata additions alone do not invalidate unchanged content acceptance."
+  ]
+}

@@ -1,0 +1,222 @@
+{
+  "review_status": "provisional_independent_sol",
+  "known_validation": true,
+  "blinding": "Model labels visible; reviewer did not generate these answers.",
+  "scope": "Nine zero-image non-essay items; paired fresh model outputs, not full exam.",
+  "max_points": 11,
+  "items_per_arm": 9,
+  "panel_sha256": "213197cc40570123d52d90e3c5609675f4d2f36f050704a042475bba418614d0",
+  "official_rubric_pdf_sha256": "95c275b9546611c1f8cd45b7973c436625fd0ee5643b778dcc8bb566db56cd4c",
+  "method": "Fresh manual semantic review against official item rules and original sources; no earlier model grades used. Ranges are descriptive judgment bounds, not confidence intervals.",
+  "failure_policy": "Errored or truncated outputs remain zero. Private partials were inspected only after first-pass scores were frozen, for diagnosis; no points rescued.",
+  "numbering_policy": "For the three-statement item, labels0-2 are matched by explicitly repeated statement content and order; no automatic literal-label penalty.",
+  "arms": {
+    "Bielik": {
+      "input_sha256": "aae8a0c0fe0549bde136dd77a688f220fa3d74e6d55fca64c8467350160a5587",
+      "items": [
+        {
+          "id": "val2024-hist-z3.1",
+          "max_points": 1,
+          "points": 1,
+          "low": 1,
+          "high": 1,
+          "reason": "Correct requested identity; unnecessary commentary does not change that identification.",
+          "error_category": "none"
+        },
+        {
+          "id": "val2024-hist-z3.2",
+          "max_points": 1,
+          "points": 0,
+          "low": 0,
+          "high": 0,
+          "reason": "Length failure exported blank; partial completion is not graded.",
+          "error_category": "truncation"
+        },
+        {
+          "id": "val2024-hist-z7",
+          "max_points": 1,
+          "points": 0,
+          "low": 0,
+          "high": 1,
+          "reason": "Correct selection and references to both excerpts, but ordering is asserted rather than historically demonstrated; generous rubric reading could accept.",
+          "error_category": "insufficient_chronological_justification"
+        },
+        {
+          "id": "val2024-hist-z15.1",
+          "max_points": 1,
+          "points": 0,
+          "low": 0,
+          "high": 0,
+          "reason": "Length failure exported blank; partial completion is not graded.",
+          "error_category": "truncation"
+        },
+        {
+          "id": "val2024-hist-z15.2",
+          "max_points": 1,
+          "points": 1,
+          "low": 1,
+          "high": 1,
+          "reason": "Correct selection supported by the shared evaluative stance and evidence from both sources.",
+          "error_category": "none"
+        },
+        {
+          "id": "val2024-hist-z20.1",
+          "max_points": 1,
+          "points": 1,
+          "low": 1,
+          "high": 1,
+          "reason": "Correct source selection with relevant concrete economic evidence.",
+          "error_category": "none"
+        },
+        {
+          "id": "val2024-hist-z20.2",
+          "max_points": 2,
+          "points": 1,
+          "low": 1,
+          "high": 1,
+          "reason": "Two of three statement judgments are correct; the third remains wrong despite its explanation acknowledging the contrary fact.",
+          "error_category": "contradictory_factual_commitment"
+        },
+        {
+          "id": "val2024-hist-z22.1",
+          "max_points": 1,
+          "points": 1,
+          "low": 1,
+          "high": 1,
+          "reason": "Correct required day and month.",
+          "error_category": "none"
+        },
+        {
+          "id": "val2024-hist-z22.2",
+          "max_points": 2,
+          "points": 2,
+          "low": 1,
+          "high": 2,
+          "reason": "Both requested comparison dimensions have a valid shared core; extra claims are misattributed to both texts, creating a stricter one-point interpretation.",
+          "error_category": "unsupported_shared_attribution"
+        }
+      ],
+      "total": 7,
+      "low": 6,
+      "high": 8,
+      "complete_answers": 7
+    },
+    "Gemma": {
+      "input_sha256": "95e332d8383e96f6f60a82c76273fccce699155e313d910322a837025a350a71",
+      "items": [
+        {
+          "id": "val2024-hist-z3.1",
+          "max_points": 1,
+          "points": 1,
+          "low": 1,
+          "high": 1,
+          "reason": "Correct requested identity.",
+          "error_category": "none"
+        },
+        {
+          "id": "val2024-hist-z3.2",
+          "max_points": 1,
+          "points": 0,
+          "low": 0,
+          "high": 0,
+          "reason": "An incorrect primary office plus incompatible alternatives fails the requirement for two correct office names.",
+          "error_category": "conflicting_alternatives"
+        },
+        {
+          "id": "val2024-hist-z7",
+          "max_points": 1,
+          "points": 0,
+          "low": 0,
+          "high": 0,
+          "reason": "A later correction of the selected letter cannot repair invented rulers, dates and events in the justification.",
+          "error_category": "historical_hallucination"
+        },
+        {
+          "id": "val2024-hist-z15.1",
+          "max_points": 1,
+          "points": 1,
+          "low": 1,
+          "high": 1,
+          "reason": "Correct requested event identification.",
+          "error_category": "none"
+        },
+        {
+          "id": "val2024-hist-z15.2",
+          "max_points": 1,
+          "points": 0,
+          "low": 0,
+          "high": 0,
+          "reason": "Wrong selection and reversed interpretation of the source evaluation.",
+          "error_category": "source_misreading"
+        },
+        {
+          "id": "val2024-hist-z20.1",
+          "max_points": 1,
+          "points": 1,
+          "low": 1,
+          "high": 1,
+          "reason": "Correct source selection with relevant concrete economic evidence.",
+          "error_category": "none"
+        },
+        {
+          "id": "val2024-hist-z20.2",
+          "max_points": 2,
+          "points": 2,
+          "low": 2,
+          "high": 2,
+          "reason": "All three judgments are correct and map unambiguously to the ordered statements.",
+          "error_category": "none"
+        },
+        {
+          "id": "val2024-hist-z22.1",
+          "max_points": 1,
+          "points": 1,
+          "low": 1,
+          "high": 1,
+          "reason": "Correct required day and month.",
+          "error_category": "none"
+        },
+        {
+          "id": "val2024-hist-z22.2",
+          "max_points": 2,
+          "points": 2,
+          "low": 2,
+          "high": 2,
+          "reason": "Supplies a supported similarity in each requested comparison dimension.",
+          "error_category": "none"
+        }
+      ],
+      "total": 8,
+      "low": 8,
+      "high": 8,
+      "complete_answers": 9
+    }
+  },
+  "paired_difference_bielik_minus_gemma": {
+    "central": -1,
+    "low": -2,
+    "high": 0
+  },
+  "post_scoring_failed_partial_diagnostic": {
+    "inspected_after_first_pass": true,
+    "no_points_rescued": true,
+    "raw_sha256": "2bdf49086ea14b707ae7c6c55e3b7999b7b874c6c7f2729956150a6d31b84760",
+    "items": [
+      {
+        "id": "val2024-hist-z3.2",
+        "completion_tokens": 1024,
+        "finish_reason": "length",
+        "classification": "semantic_repetition_and_indecision",
+        "finding": "Repeatedly revises incompatible factual candidates without converging. Not simply a productive answer cut short."
+      },
+      {
+        "id": "val2024-hist-z15.1",
+        "completion_tokens": 1024,
+        "finish_reason": "length",
+        "classification": "task_boundary_failure",
+        "finding": "Answers the active task early, then invents additional numbered tasks and answers them until the cap. Early content does not recover points."
+      }
+    ],
+    "recommendation": "Park cap-only extension. A separately declared generic answer-boundary repair has a concrete hypothesis; first test it on original DEV examples. No demonstrated template or EOS defect."
+  }
+}

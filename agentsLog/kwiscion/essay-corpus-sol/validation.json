@@ -1,0 +1,11 @@
+{
+  "structural_pass": true,
+  "essays": 8,
+  "repairs": 8,
+  "sources": 8,
+  "errors": [],
+  "historical_accuracy": "content accepted with limitations; canonical export pending",
+  "cross_corpus_source_group_dedup": "pending",
+  "rights_and_export_check": "pending",
+  "accepted_training_records": 0
+}

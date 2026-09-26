@@ -1,0 +1,520 @@
+{
+  "review_status": "accepted_content_with_limitations",
+  "reviewer": "independent Sol reviewer",
+  "date": "2026-09-26",
+  "scope": "Content review of root Sol batch only; canonical grouping/leakage/evaluation allocation/export remain Greg issue117 responsibility",
+  "accepted_essays": 8,
+  "accepted_repair_pairs": 8,
+  "unique_target_essays": 8,
+  "accepted_evidence_cards": 32,
+  "accepted_training_records": null,
+  "records": [
+    {
+      "id": "sol-corpus-essay-augustus",
+      "decision": "accept",
+      "response_sha256": "f191eead21de9a16e1821ebe554b012c4c8fe18691b2ae9bfdbd0dfdf72cf4c3",
+      "prompt_sha256": "423d4a052c0f6f5fe0e6fc99bcf74c387f3a87403b5e4c5a04d2583c6cf7c064",
+      "body_word_count": 442,
+      "finding": "Accept. Military asymmetry, accumulated republican powers and elite accommodation form three functional arguments. Actium, Egypt,27BCE settlement/title and later powers are supported. The target avoids equating preserved republican forms with restored institutional balance; it does not falsely claim he held every office or an official kingship.",
+      "required_target_repairs": []
+    },
+    {
+      "id": "sol-corpus-essay-investiture",
+      "decision": "accept",
+      "response_sha256": "4d4506f5b14c51fb38a70e86afa9200177d06a7be5cd9b377fcd8fa184c81e7a",
+      "prompt_sha256": "fea60afa413734334912471a3cd99cccad07ef5ebd5a63cb47f52e5f066edee0",
+      "body_word_count": 441,
+      "finding": "Accept. Bishops’ temporal roles explain the conflict;1076/1077 distinguish sanction from final resolution;1122 compromise correctly separates spiritual investiture from retained secular/election influence. Canossa is not treated as permanent papal victory or modern church-state separation.",
+      "required_target_repairs": []
+    },
+    {
+      "id": "sol-corpus-essay-augsburg",
+      "decision": "accept",
+      "response_sha256": "a1e4177cd8d4000efa8cb0d3bb98c35ba5e29710eea37213328d0b7d7471ef4a",
+      "prompt_sha256": "52d072e88568d296f9f359bd7db2b4f5ab15ca5ce20e147ae5616aea65f24607",
+      "body_word_count": 444,
+      "finding": "Accept. Legal recognition, territorial rather than individual choice, emigration burdens and ecclesiastical reservation support a qualified judgment. Calvinism is denied separate equal status rather than simplistically erasing all practical exceptions. Primary1555text confirms reservation and emigration conditions. No inevitable-war claim.",
+      "required_target_repairs": []
+    },
+    {
+      "id": "sol-corpus-essay-vienna",
+      "decision": "accept",
+      "response_sha256": "516f00a0b1a5a64331b3cd6e33378f14517fba2696c188747aa62f5dec9ac630",
+      "prompt_sha256": "c75304ecf39c60b4d7669357954b60f8369706e727d16f009b047cafdb0a14eb",
+      "body_word_count": 440,
+      "finding": "Accept. France’s diplomatic reintegration, Polish-Saxon compromise and territorial arrangements demonstrate a negotiated balance rather than literal restoration. Polish Kingdom/Posen/Cracow,39-state federation, Netherlands and Austrian Italian position are correctly presented. National aspirations and dynastic legitimacy are not conflated.",
+      "required_target_repairs": []
+    },
+    {
+      "id": "sol-corpus-essay-industrial",
+      "decision": "accept",
+      "response_sha256": "93389046ac6d42908d60a15899b52254b99cf79cad7150ccc572bddffa79669a",
+      "prompt_sha256": "892536ab3618437107d0f8cb5e0e015d06097aa315fe7c28668e92b6c8d29165",
+      "body_word_count": 446,
+      "finding": "Accept. Textile mechanisms, coal/coke and improved steam, and factory/social change are developed together. Domestic jenny use and continued water power prevent false instant-transition claims.1833law is described as an attempt to limit abuses, not a complete solution. Productivity gains are distinguished from immediate universal welfare.",
+      "required_target_repairs": []
+    },
+    {
+      "id": "sol-corpus-essay-meiji",
+      "decision": "accept",
+      "response_sha256": "420d45a8cd0e525742a8aa3ec2df7e9a2e420c95599313c4482b50d45194079c",
+      "prompt_sha256": "85f05d8304e27b141b5fc5320767408d91db38be9a46ca8f2394410dd3f59a6c",
+      "body_word_count": 454,
+      "finding": "Accept.1868restoration,1871domain abolition,1873conscription, stipend conversion and industrial/rail/export policies support the centralization argument. Old elites and agricultural costs remain visible; no automatic equal-rights claim. Target avoids erroneous exact service-age/duration detail in pinned secondary article.",
+      "required_target_repairs": []
+    },
+    {
+      "id": "sol-corpus-essay-league",
+      "decision": "accept",
+      "response_sha256": "17830eee0a473b7bb916ac482a9f70e375d8d6ee9798fdd70dd3b2ebea15ee0e",
+      "prompt_sha256": "6a68e5788051d716ca97e7791bfc1ed9b286e0f73e1b2201b5fa8a15e51553d2",
+      "body_word_count": 450,
+      "finding": "Accept. Sovereignty/unanimity with exceptions, absent US membership, and dependence on member resources connect to Manchuria and Ethiopia. Investigation/condemnation are distinguished from enforcement. Oil and Suez omissions are supported; no claim that Japan withdrew instantly or that unanimity had no exceptions.",
+      "required_target_repairs": []
+    },
+    {
+      "id": "sol-corpus-essay-marshall",
+      "decision": "accept",
+      "response_sha256": "1cc47dfe1bdff2e83729f2029ea853a457fa0c1149ecbbe7527a457daef31588",
+      "prompt_sha256": "d3af731b93ae0fc2427672e17e8609da5f243f52d913d93d9b998a4fe5148c4b",
+      "body_word_count": 447,
+      "finding": "Accept.1947announcement versus1948implementation, recovery assistance, OEEC coordination and Cold War objectives are distinct. Preexisting recovery and disputed marginal impact are acknowledged. No claim of an immediate common market, sole cause of growth, or sole origin of European division.",
+      "required_target_repairs": []
+    },
+    {
+      "id": "sol-corpus-repair-augustus",
+      "decision": "accept",
+      "response_sha256": "f191eead21de9a16e1821ebe554b012c4c8fe18691b2ae9bfdbd0dfdf72cf4c3",
+      "prompt_sha256": "5b679e519c8854357d75c20ec4af474eef3cce77319eecaa06e2e05be74aa0c5",
+      "corrupted_response_sha256": "30502416c9054d45a09ef58bd4d71197cb30b9260494b22004f17da9c90b95c7",
+      "parent_essay_id": "sol-corpus-essay-augustus",
+      "finding": "Faithful removal of synthetic preamble/closing; intact target body preserved.",
+      "required_target_repairs": [],
+      "additional_source_group_dependencies": []
+    },
+    {
+      "id": "sol-corpus-repair-investiture",
+      "decision": "accept",
+      "response_sha256": "4d4506f5b14c51fb38a70e86afa9200177d06a7be5cd9b377fcd8fa184c81e7a",
+      "prompt_sha256": "639823ee29a1ae36b70c29fec67dc295f99ee687681af9fdddc2957391172128",
+      "corrupted_response_sha256": "3160ca07ad73afbb92073b9b96df9c3e07dd2b397dfe547b13293a8e132ca840",
+      "parent_essay_id": "sol-corpus-essay-investiture",
+      "finding": "Faithfully restores omitted three paragraphs and length; all additions checked as parent-target content.",
+      "required_target_repairs": [],
+      "additional_source_group_dependencies": []
+    },
+    {
+      "id": "sol-corpus-repair-augsburg",
+      "decision": "accept",
+      "response_sha256": "a1e4177cd8d4000efa8cb0d3bb98c35ba5e29710eea37213328d0b7d7471ef4a",
+      "prompt_sha256": "33e231c8481729407e9a93003fdbe393aefe608b186300ed60fed5faafb839c4",
+      "corrupted_response_sha256": "44fe62162eda192e3981bc658887fc30601aff64ab57efa6c904ce7be9e7b0ff",
+      "parent_essay_id": "sol-corpus-essay-augsburg",
+      "finding": "Faithful removal of explicitly unselected other-topic introduction and labels; full chosen target preserved. Cross-topic source dependency correctly declared. This is a short intrusive fragment, not two competing full essays.",
+      "required_target_repairs": [],
+      "additional_source_group_dependencies": [
+        "history-vienna-settlement"
+      ]
+    },
+    {
+      "id": "sol-corpus-repair-vienna",
+      "decision": "accept",
+      "response_sha256": "516f00a0b1a5a64331b3cd6e33378f14517fba2696c188747aa62f5dec9ac630",
+      "prompt_sha256": "c3d446ab044ccd4fc86a3cc0fbb1e68fcce8ce1cd82bc9f239ced572d8a0a3a7",
+      "corrupted_response_sha256": "8a8a07c2cc2f6330830e2cb278a087bec33d7f29cf62f0cef4bd7f9c4f47f5d6",
+      "parent_essay_id": "sol-corpus-essay-vienna",
+      "finding": "Faithfully removes plan/closing and restores thesis, missing argument and conclusion with checked parent content.",
+      "required_target_repairs": [],
+      "additional_source_group_dependencies": []
+    },
+    {
+      "id": "sol-corpus-repair-industrial",
+      "decision": "accept",
+      "response_sha256": "93389046ac6d42908d60a15899b52254b99cf79cad7150ccc572bddffa79669a",
+      "prompt_sha256": "499fed29e00816be085295746c640612c36d9192f3cc9d29a8081dd60d9edd4c",
+      "corrupted_response_sha256": "9b2b2a55d746580a4427aa7b1cc8a8801af447dfeb4e5cf5d763030241789a2a",
+      "parent_essay_id": "sol-corpus-essay-industrial",
+      "finding": "Faithful removal of synthetic preamble/closing; intact target body preserved.",
+      "required_target_repairs": [],
+      "additional_source_group_dependencies": []
+    },
+    {
+      "id": "sol-corpus-repair-meiji",
+      "decision": "accept",
+      "response_sha256": "420d45a8cd0e525742a8aa3ec2df7e9a2e420c95599313c4482b50d45194079c",
+      "prompt_sha256": "71dc268630c7085cfd719043c644791f35057543a28725939e1237d1239cd1e4",
+      "corrupted_response_sha256": "e467337e667c8ba5105265aa8ef9d042d162512559352e5f144727aa51a18f0f",
+      "parent_essay_id": "sol-corpus-essay-meiji",
+      "finding": "Faithfully restores omitted three paragraphs and length; all additions checked as parent-target content.",
+      "required_target_repairs": [],
+      "additional_source_group_dependencies": []
+    },
+    {
+      "id": "sol-corpus-repair-league",
+      "decision": "accept",
+      "response_sha256": "17830eee0a473b7bb916ac482a9f70e375d8d6ee9798fdd70dd3b2ebea15ee0e",
+      "prompt_sha256": "f875fd4a25797d11ba8e5f2c61c2857bc8bd75ca5e9be2f26db8b1452539e599",
+      "corrupted_response_sha256": "24bf4e2fec0449b1422e78d6523a25aa42253c2a7ec17f75191e5f96ecbe0f24",
+      "parent_essay_id": "sol-corpus-essay-league",
+      "finding": "Faithful removal of explicitly unselected other-topic introduction and labels; full chosen target preserved. Cross-topic source dependency correctly declared. This is a short intrusive fragment, not two competing full essays.",
+      "required_target_repairs": [],
+      "additional_source_group_dependencies": [
+        "history-marshall-plan"
+      ]
+    },
+    {
+      "id": "sol-corpus-repair-marshall",
+      "decision": "accept",
+      "response_sha256": "1cc47dfe1bdff2e83729f2029ea853a457fa0c1149ecbbe7527a457daef31588",
+      "prompt_sha256": "c58200d77255ec727d70b51c8ff9345eb86c3b3dbad1d0006f719895619d275c",
+      "corrupted_response_sha256": "0642817471e1bbb2da9de97882c0afb9e45d57a30855c5a1d083961e952c09cc",
+      "parent_essay_id": "sol-corpus-essay-marshall",
+      "finding": "Faithfully removes plan/closing and restores thesis, missing argument and conclusion with checked parent content.",
+      "required_target_repairs": [],
+      "additional_source_group_dependencies": []
+    }
+  ],
+  "evidence_cards": [
+    {
+      "claim_id": "augustus-claim-01",
+      "decision": "accept",
+      "content_sha256": "e9202cd48e35e97fa246f38451f2a14582575d679ace4e9a294471c2371ff78f",
+      "finding": "Actium31BCE and Egypt30BCE in war narrative; eliminating rival is justified inference."
+    },
+    {
+      "claim_id": "augustus-claim-02",
+      "decision": "accept",
+      "content_sha256": "d511f2992ba77ead6733f204321ad367415e55e2078521f4b3202ccf1059d91f",
+      "finding": "Control of provinces explicitly states majority of legions and unequal senatorial forces."
+    },
+    {
+      "claim_id": "augustus-claim-03",
+      "decision": "accept",
+      "content_sha256": "b71601e0b4cbcd94e9738e297c2e796a9cb62feaadd181190a32b9208c1eaf7c",
+      "finding": "Title27BCE, consulship resignation23BCE and powers supported by corresponding sections; target does not fix contested later Rome-wide authority date."
+    },
+    {
+      "claim_id": "augustus-claim-04",
+      "decision": "accept",
+      "content_sha256": "8cf989e9f3b3eab6d516930fe03cff064a1f401c3c304aa759e2256cc5ac99ab",
+      "finding": "Resignation opens consular opportunities and patronage; elite-integration conclusion is warranted synthesis."
+    },
+    {
+      "claim_id": "investiture-claim-01",
+      "decision": "accept",
+      "content_sha256": "877bb37a9953142a8b342f177c0aa89413aa6cfc4f9f5747dafa27b6a12e2cbb",
+      "finding": "Background gives landed bishops and royal political reliance."
+    },
+    {
+      "claim_id": "investiture-claim-02",
+      "decision": "accept",
+      "content_sha256": "aa8954a2fd3992bcd4b14c39816b306c0870015f66ae63208d837b2bacff6bc4",
+      "finding": "HenryIV/GregoryVII section supports1076excommunication and release of fidelity oaths."
+    },
+    {
+      "claim_id": "investiture-claim-03",
+      "decision": "accept",
+      "content_sha256": "69fb52d9cccdbe260ab4ec50792983fcd54afa546d3169051c4e8fa43156a500",
+      "finding": "Canossa1077 and renewed opposition/Rudolf support nonfinal settlement."
+    },
+    {
+      "claim_id": "investiture-claim-04",
+      "decision": "accept",
+      "content_sha256": "f299b78dccb9fdff05121d5428f846774916fb1efc76584b4fa924d9df15b4ca",
+      "finding": "Concordat1122 directly corroborated by primary reciprocal grants; ring/staff renunciation and German election presence remain distinct."
+    },
+    {
+      "claim_id": "augsburg-claim-01",
+      "decision": "accept",
+      "content_sha256": "b0f1799338b145e70db55ef599c47b39b29bbf81dbada460cccd48d8d528a6c6",
+      "finding": "1555settlement and Ferdinand acting for Charles supported by source and primary preamble."
+    },
+    {
+      "claim_id": "augsburg-claim-02",
+      "decision": "accept",
+      "content_sha256": "85cd1080143a1cd569c49b8842cfef129293612f0f63df67abaa702e2f929f2d",
+      "finding": "Primary§24 permits departure with compensation/tax conditions; target cautiously states uneven access, not categorical exclusion of every serf."
+    },
+    {
+      "claim_id": "augsburg-claim-03",
+      "decision": "accept",
+      "content_sha256": "3281a7797670ff8e8c5ffdf598141dbf7340b6898bb626c92ea872e497c485d9",
+      "finding": "Primary§17 and editorial context support no separate equal Calvinist recognition; target accommodates practical complexity."
+    },
+    {
+      "claim_id": "augsburg-claim-04",
+      "decision": "accept",
+      "content_sha256": "b6a9cc6fe2c5634d34066f42a4b4ec13450eedaf38a0bba29f5e74e1796361d6",
+      "finding": "Primary§18 requires converted prelate to relinquish benefice; Cologne example in pinned Aftermath supports later conflict."
+    },
+    {
+      "claim_id": "vienna-claim-01",
+      "decision": "accept",
+      "content_sha256": "e735e358ec769063dacaa28dd4de2323567df2f5287b27abd3f3431872ac04e0",
+      "finding": "Pinned diplomatic discussion supports Talleyrand’s reintegration and legitimacy strategy."
+    },
+    {
+      "claim_id": "vienna-claim-02",
+      "decision": "accept",
+      "content_sha256": "4b7cce200b3596d4cc3a6a79769c07252a1fe7da23e61c8c7b4c6d4c23cc2f0b",
+      "finding": "Polish-Saxon compromise and territorial allocations supported; no false preservation of all Saxony."
+    },
+    {
+      "claim_id": "vienna-claim-03",
+      "decision": "accept",
+      "content_sha256": "846cb5c6e0a121a5a6a2cc0afe71a1afb1be31c37762221473b9aed3600c8a5f",
+      "finding": "Final agreement supports united Netherlands and Prussian Rhine gains; containment link is reasonable synthesis."
+    },
+    {
+      "claim_id": "vienna-claim-04",
+      "decision": "accept",
+      "content_sha256": "90334a0533fc79e9a33a9376da66e284046f2fa7cb8d041400a1f3907337291d",
+      "finding": "Final agreement supports39-state federation and Austrian Lombardy/Venetia, showing selective restoration."
+    },
+    {
+      "claim_id": "industrial-claim-01",
+      "decision": "accept",
+      "content_sha256": "e961f13c526c5861b355dbe3c390fdcdc8eaec23690174c57047d9ebc8b72e55",
+      "finding": "Pinned textile section supports home jenny and Arkwright water-powered Cromford."
+    },
+    {
+      "claim_id": "industrial-claim-02",
+      "decision": "accept",
+      "content_sha256": "48b137975bc0ce22918e60ae55471c8e6317442646f4e0b8a1f4d3d6b22d5093",
+      "finding": "Pinned steam/iron sections support coal/coke, Watt improvement and continued water use; complementary demand is synthesis."
+    },
+    {
+      "claim_id": "industrial-claim-03",
+      "decision": "accept",
+      "content_sha256": "fa62c59be87f6c3b116bdae79f6a94951bcd309d0b3be2e46a3a6acd00982f8a",
+      "finding": "Factories/urban growth/living conditions support workplace concentration and Manchester growth; does not claim all labor instantly industrialized."
+    },
+    {
+      "claim_id": "industrial-claim-04",
+      "decision": "accept",
+      "content_sha256": "a41f89f0a1c7d66c60a47293c661e5e9a2c46dc00bde0af093f586f7a449063a",
+      "finding": "Pinned child-labor discussion and UK Parliament corroborate1833regulation; target avoids inaccurate detailed limits present in some secondary summaries."
+    },
+    {
+      "claim_id": "meiji-claim-01",
+      "decision": "accept",
+      "content_sha256": "48470eebc4fa2ae5168694375ff0019c7cab7938d837bf2c772c572293c4ea6e",
+      "finding": "Pinned restoration narrative supports1868and political transformation."
+    },
+    {
+      "claim_id": "meiji-claim-02",
+      "decision": "accept",
+      "content_sha256": "7d94e6ffa8ddc56069230b03ac9dd895387f088f7aa6ce9d88007fbedf83c844",
+      "finding": "Pinned domain abolition supports1871decision and1872reorganization, continued elite incorporation."
+    },
+    {
+      "claim_id": "meiji-claim-03",
+      "decision": "accept",
+      "content_sha256": "51f35bb3763339ba3fa236ac403b7d4f80fffdc91edbb1ff30e1c75a78c33b5a",
+      "finding": "Pinned class section supports stipends/bonds and samurai opposition; Japan National Archives independently confirms1873conscription."
+    },
+    {
+      "claim_id": "meiji-claim-04",
+      "decision": "accept",
+      "content_sha256": "fde6dd5149c55c16dc947d76944c8ceee31b68277f8d0dc454c6cc4df3fded9f",
+      "finding": "Pinned industrial growth explicitly supports silk export financing, peasant tax burden, state enterprises/private transfer and rail development."
+    },
+    {
+      "claim_id": "league-claim-01",
+      "decision": "accept",
+      "content_sha256": "29fe1ad5739b81f367d61ec532000d3a475fd2bed33895e2eee1c242f45bbbd9",
+      "finding": "Covenant articles5,15,16 corroborate qualified unanimity and reliance on members; pinned overview supports absentUS/ownarmy."
+    },
+    {
+      "claim_id": "league-claim-02",
+      "decision": "accept",
+      "content_sha256": "7d28af26d7d66172ead1c2afe7d1955e380aa601cbd16cfad863e6f64c4389d3",
+      "finding": "Pinned Mukden section and UN institutional history support1931crisis, Lytton and withdrawal decision without restoredChinesecontrol."
+    },
+    {
+      "claim_id": "league-claim-03",
+      "decision": "accept",
+      "content_sha256": "7074877347e9ee146ee5d267859a9a463457f909d1a382712bd84bb6adef7d75",
+      "finding": "Pinned Ethiopia section and UN institutional history support incomplete1935sanctions and failed prevention of conquest."
+    },
+    {
+      "claim_id": "league-claim-04",
+      "decision": "accept",
+      "content_sha256": "476444c0ec2d157f0173560776e177894687441ff6d0552383e7cc40bce801af",
+      "finding": "Political-will/interest conclusion is explicitly synthesis supported by preceding cases, not universal monocausal law."
+    },
+    {
+      "claim_id": "marshall-claim-01",
+      "decision": "accept",
+      "content_sha256": "2892c2147a9c796642fe42a1085549f33911f552b1604cb6d1bcda013decc548",
+      "finding": "National Archives confirms1947proposal and1948law; target separates them."
+    },
+    {
+      "claim_id": "marshall-claim-02",
+      "decision": "accept",
+      "content_sha256": "3fe7ecc383a87fafcb5761a66623915fca813fe843de118516642485c171ff45",
+      "finding": "Pinned destruction/effects/criticism and technical-assistance sections support recovery and uncertainty; no fabricated effect size."
+    },
+    {
+      "claim_id": "marshall-claim-03",
+      "decision": "accept",
+      "content_sha256": "2c2e70338a170e4c1e7670002dab88b51371338ed0f2da9bf23d5d9f6da153db",
+      "finding": "Pinned Expenditures supports OEECcoordination; target avoids instant integration claim."
+    },
+    {
+      "claim_id": "marshall-claim-04",
+      "decision": "accept",
+      "content_sha256": "1113fc83bb33790cb4ca4ceb12d6e44de878bd7ed8c6774a5085683cfa4825b7",
+      "finding": "Pinned Soviet negotiations/lead and US institutional history support Soviet refusal/blocking and strategic purposes."
+    }
+  ],
+  "source_checks": [
+    {
+      "source_id": "wiki-augustus",
+      "decision": "accept_for_reference_review",
+      "url": "https://en.wikipedia.org/wiki/Augustus",
+      "revision_id": "1376715022",
+      "html_sha256": "b3909e9b7059cba91b215c763cbe3389d8769d8c50677bd0e75e88d3dbb89f83",
+      "text_sha256_LF": "ea8c76fb73beeae0f0ff20bfa7d6b63a9f95f734c6e5f75c2450d58d03fd3b42",
+      "text_raw_file_sha256": "08b26d5624bdc3fd9924a83b0284e65d0ef95d7d593d2f37615bc3e8d33c85cc",
+      "license_link_verified": true
+    },
+    {
+      "source_id": "wiki-investiture",
+      "decision": "accept_for_reference_review",
+      "url": "https://en.wikipedia.org/wiki/Investiture_Controversy",
+      "revision_id": "1376366123",
+      "html_sha256": "10eed85ef874bf600088f6bdfa1564b6131965f504c9640c0a015cf2baeb0e7a",
+      "text_sha256_LF": "949281dd17505bcd1911dcff56196e60dfdfa2dcaf4a9f4ebacb506080e2d3e0",
+      "text_raw_file_sha256": "22760a454329d213ad87b4118c9038eb73677737bfe67d39b0c52cc756defd57",
+      "license_link_verified": true
+    },
+    {
+      "source_id": "wiki-augsburg",
+      "decision": "accept_for_reference_review",
+      "url": "https://en.wikipedia.org/wiki/Peace_of_Augsburg",
+      "revision_id": "1365933171",
+      "html_sha256": "4fecb6854f00a3a2fe0288fd1a0c5cd84d3182878862a6023b2dfee41b78e2df",
+      "text_sha256_LF": "5a230fbc467d0913c328966245d4119ca183a6f8d6d7aec029dcc91d3316848e",
+      "text_raw_file_sha256": "33fb9b720deab224712453c72458a6f7853b649bb6b4ddb919357fd8dbdfc308",
+      "license_link_verified": true
+    },
+    {
+      "source_id": "wiki-vienna",
+      "decision": "accept_for_reference_review",
+      "url": "https://en.wikipedia.org/wiki/Congress_of_Vienna",
+      "revision_id": "1376767099",
+      "html_sha256": "8dbb62e191f29ac8f1d1d68b8ca90befd7c403c6e462520b79aeddaf4ab69833",
+      "text_sha256_LF": "324e8eba3c08e5676df873d7df60cfd954ba51b1af1880cf1f20ac50563d163c",
+      "text_raw_file_sha256": "f418a3011f6e82b1c05fcdf7b645fd72d7290c71ce78e10096e9625c01e7fb43",
+      "license_link_verified": true
+    },
+    {
+      "source_id": "wiki-industrial",
+      "decision": "accept_for_reference_review",
+      "url": "https://en.wikipedia.org/wiki/Industrial_Revolution",
+      "revision_id": "1376088886",
+      "html_sha256": "4bc5d42f82a4b1b5f031befd580ff85502c5f46cb543359faecfcd4de426bcb5",
+      "text_sha256_LF": "6c0809d711abaa6de124d29c22bb940ad313151f81a43d03043a667c4fb92cea",
+      "text_raw_file_sha256": "f406667f0b807bb886c113d6432de3f2154c28f979154c7dfbc5dd2fc6f287fc",
+      "license_link_verified": true
+    },
+    {
+      "source_id": "wiki-meiji",
+      "decision": "accept_for_reference_review",
+      "url": "https://en.wikipedia.org/wiki/Meiji_Restoration",
+      "revision_id": "1376032556",
+      "html_sha256": "f0443b4fde3cf7a5534b69910306bf460034ce1b59962d1d986a44ffb1300bf8",
+      "text_sha256_LF": "0a45e9e235ac74d035e8d544958ca4767c8c53ad6fc38c2b124919765eb87d7f",
+      "text_raw_file_sha256": "28ee0607a89b79e40117d2a07e659c1053d784701562bb765899461dffff32b1",
+      "license_link_verified": true
+    },
+    {
+      "source_id": "wiki-league",
+      "decision": "accept_for_reference_review",
+      "url": "https://en.wikipedia.org/wiki/League_of_Nations",
+      "revision_id": "1375676214",
+      "html_sha256": "0f93c7f3b4da824d988863c056c6487bf21b0b1ec875ba579f21b1abf9560d25",
+      "text_sha256_LF": "d5d894aacae15a9e1623f9c0315a6c3c9def45f514d48172a352e80d2b704cc7",
+      "text_raw_file_sha256": "c14d72634cc4a62b3a8d293b9d1a624de81db46abdcfaf10f6c3bad29917b9ef",
+      "license_link_verified": true
+    },
+    {
+      "source_id": "wiki-marshall",
+      "decision": "accept_for_reference_review",
+      "url": "https://en.wikipedia.org/wiki/Marshall_Plan",
+      "revision_id": "1375735642",
+      "html_sha256": "28f04871cba34fb8a5576a95c1bd847047364a06ed69d3e209925d7bf752c953",
+      "text_sha256_LF": "5991e89f3721b04fa3e1074d07d973ef22011df9ce75ab62526f03bb76aeedc8",
+      "text_raw_file_sha256": "bab4a61931721d1d4bdb4bba4863b96a39ac13729489cd49cc1cc138307618da",
+      "license_link_verified": true
+    }
+  ],
+  "primary_crosschecks": [
+    {
+      "label": "Worms reciprocal grants1122",
+      "url": "https://sourcebooks.web.fordham.edu/source/worms1.asp"
+    },
+    {
+      "label": "Augsburg1555 §§15-18,24",
+      "url": "https://germanhistorydocs.org/en/from-the-reformations-to-the-thirty-years-war-1500-1648/ghdi:document-4386"
+    },
+    {
+      "label": "Vienna institutional history",
+      "url": "https://www.bundeskanzleramt.gv.at/en/federal-chancellery/visit-us/history/the-congress-of-vienna.html"
+    },
+    {
+      "label": "Factory Act1833",
+      "url": "https://www.parliament.uk/about/living-heritage/transformingsociety/livinglearning/19thcentury/overview/factoryact/"
+    },
+    {
+      "label": "Japanese conscription1873",
+      "url": "https://www.archives.go.jp/ayumi/kobetsu/m06_1873_01.html"
+    },
+    {
+      "label": "League Covenant5/15/16",
+      "url": "https://www.ungeneva.org/en/about/league-of-nations/covenant"
+    },
+    {
+      "label": "League crises",
+      "url": "https://www.ungeneva.org/en/about/league-of-nations/at-work"
+    },
+    {
+      "label": "Marshall1948law",
+      "url": "https://www.archives.gov/milestone-documents/marshall-plan"
+    }
+  ],
+  "connected_group_edges": [
+    [
+      "history-augsburg-confessional-settlement",
+      "history-vienna-settlement"
+    ],
+    [
+      "history-league-collective-security",
+      "history-marshall-plan"
+    ]
+  ],
+  "local_dependency_result": "Augsburg/Vienna and League/Marshall repairs explicitly declare cross-topic dependencies. Thus8topic groups form6local connected components before any further corpus mergers; no split assignment made.",
+  "minor_metadata_notes": [
+    "Hash-convention issue fixed by generator before final freeze: text_sha256 explicitly LF-normalized; text_file_sha256 now raw Windows bytes. Both independently verified.",
+    "Generator clarified evidence locators before final freeze; manual source support remains accepted."
+  ],
+  "provenance_review": "Generator declares independent curriculum topic selection. Acquisition script lists8general historical references; builder reads owned targets and metadata with deterministic corruptions. No benchmark/question/key ingestion path found. This is consistent provenance, not certification of semantic nonoverlap or all prior exposure. No new exam was opened and no benchmark-derived fact was added by reviewer.",
+  "limitations": [
+    "All canonical records remain DRAFT/export pending; decisions here do not mutate their status.",
+    "8unique essays, not16: each repair intentionally duplicates its parent target.",
+    "Synthetic corruptions have known selected topics; multitopic cases add one other introduction, not two full essays. No claim of robustness to arbitrary factual errors or ambiguous topic choice.",
+    "Single licensed secondary reference per topic remains a source-diversity limit; institutional/primary crosschecks targeted important disputed details.",
+    "Causal judgments are qualified synthesis, not experimentally proved historical laws.",
+    "Wikipedia article text licensing does not license embedded media or independently quoted material; no blanket dataset/model licensing clearance.",
+    "Exact teacher serving checkpoint remains unverified. No training efficacy,LoRA or offline8GBfeasibility conclusion."
+  ],
+  "input_file_sha256": {
+    "essays.jsonl": "b77a24b5c72496e647ff728626c8b7688247df18b474f0f1f78d715ec6116b80",
+    "repairs.jsonl": "7e366d29f2b6b40e442bc3e9af43f06dee5de5d548d12ed2aab265fe7c789190",
+    "evidence-cards.jsonl": "bcdee754839640e323de57eacb5f065d7ef67efa46bef1a63a3a8091855c094d",
+    "sources.jsonl": "093646e7940e16de53f56fc95c5c7546594beb8a4c40fde82ee50e62afc65558",
+    "source-groups.jsonl": "58d3cde089e5492d336d9adef5f8738ed17f30a0ca5f7f549f6f1076da47466c"
+  },
+  "generator_stability_confirmation": "Generator confirmed final8frozen and existing4response/prompt hashes unchanged; final essay/repair file hashes independently match confirmation."
+}
