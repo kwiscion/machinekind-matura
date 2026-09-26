@@ -86,6 +86,35 @@ def load_clusters():
     return cfg, k2c, c2p
 
 
+def components(cfg):
+    """Cluster -> connected-component id after merging declared cross-cluster dependencies."""
+    parent = {c: c for c in cfg["clusters"]}
+
+    def find(c):
+        while parent[c] != c:
+            parent[c] = parent[parent[c]]
+            c = parent[c]
+        return c
+    for dep in cfg.get("dependencies", []):
+        cs = dep["clusters"]
+        for c in cs:
+            if c not in parent:
+                raise SystemExit(f"dependency names unknown cluster {c}")
+        for c in cs[1:]:
+            a, b = find(cs[0]), find(c)
+            if a != b:
+                parent[max(a, b)] = min(a, b)
+    return {c: find(c) for c in parent}
+
+
+def partition_family(part):
+    if part in ("eval_bukareszt_16", "dev_pewciu6"):
+        return "eval"
+    if part.startswith(("train_", "reserved_root", "root_", "pn781_strict")):
+        return "train"
+    return "other"
+
+
 def canon(cfg, title):
     k = key(title)
     return cfg["aliases"].get(k, k)
@@ -229,6 +258,19 @@ def cmd_groups(args):
             warns.append(f"{cid}: root training material overlaps Paweł #80 DEV fixtures")
         if "pn781_strict" in parts and "dev_pewciu6" in parts:
             warns.append(f"{cid}: #4 strict training records overlap Paweł #80 DEV fixtures")
+    # Source-connected components: dependent clusters must share one partition family.
+    comp = components(cfg)
+    comp_parts = defaultdict(set)
+    for cid, parts in usage.items():
+        comp_parts[comp[cid]] |= {(cid, p) for p in parts}
+    for root, cps in sorted(comp_parts.items()):
+        fams = {partition_family(p) for _, p in cps} - {"other"}
+        if len({c for c, _ in cps}) > 1 and len(fams) > 1:
+            fails.append(f"component {root} spans eval and train via declared dependency: {sorted(cps)}")
+        if len({c for c, _ in cps}) > 1:
+            declared = {c2p.get(c) for c, _ in cps if c2p.get(c)}
+            if len(declared) > 1 and len({partition_family(x) for x in declared}) > 1:
+                fails.append(f"component {root} declared across partitions {sorted(declared)}")
     if exam_hits:
         fails.append(f"{exam_hits} validation-2024 source titles map to Bukareszt eval/train clusters")
     # Eval file must match partition.
@@ -473,6 +515,8 @@ def cmd_export(args):
     out = Path(args.out_dir)
     if out.exists() and any(out.iterdir()):
         raise SystemExit(f"{out} is not empty")
+    withdrawn = cfg.get("withdrawn_essays", {})
+    accepted = {k: v for k, v in accepted.items() if k not in withdrawn}
     train = []
     for eid in sorted(accepted):
         r = essays[eid]
@@ -480,6 +524,8 @@ def cmd_export(args):
                       "messages": [{"role": "user", "content": exam_prompt(r)},
                                    {"role": "assistant", "content": r["essay"]}]})
     for p in pairs:
+        if p["transformation"]["from_essay_id"] in withdrawn:
+            continue
         if p["transformation"]["from_essay_id"] not in accepted:
             raise SystemExit(f"repair {p['id']} built from non-accepted essay")
         train.append({"id": p["id"], "task_type": "essay_repair", "source_group_id": p["cluster_id"],
@@ -487,9 +533,10 @@ def cmd_export(args):
                                    {"role": "assistant", "content": p["answer"]}]})
     ev = load_jsonl(CORPUS / "eval16_topics.jsonl")
     evrows = [{"id": e["id"], "prompt": exam_prompt(e), "source_group_id": e["cluster_id"]} for e in ev]
+    comp = components(cfg)
     tg = {r["source_group_id"] for r in train}
     eg = {r["source_group_id"] for r in evrows}
-    leak = sorted(tg & eg)
+    leak = sorted({comp[g] for g in tg} & {comp[g] for g in eg})
     bad_part = sorted(g for g in tg if not c2p.get(g, "").startswith("train_bukareszt"))
     if leak or bad_part:
         raise SystemExit(f"leakage: shared={leak} non-train-partition={bad_part}")
@@ -500,7 +547,9 @@ def cmd_export(args):
     out.mkdir(parents=True, exist_ok=True)
     write_jsonl(out / "train_sft.jsonl", train)
     write_jsonl(out / "eval16_input.jsonl", evrows)
-    man = {"train_rows": len(train), "essays": len(accepted), "repair_pairs": len(pairs),
+    man = {"train_rows": len(train), "essays": len(accepted),
+           "repair_pairs": sum(r["task_type"] == "essay_repair" for r in train),
+           "component_of_group": {g: comp[g] for g in sorted(tg | eg) if comp[g] != g},
            "train_groups": sorted(tg), "eval_groups": sorted(eg), "shared_groups": leak,
            "train_sha256": sha256_file(out / "train_sft.jsonl"), "eval_sha256": sha256_file(out / "eval16_input.jsonl"),
            "format": "chat messages (user/assistant), no system prompt; eval rows are runner input {id,prompt}"}

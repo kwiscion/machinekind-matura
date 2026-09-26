@@ -1,5 +1,5 @@
 {
-  "version": "essay-clusters-v1",
+  "version": "essay-clusters-v2",
   "description": "Canonical topic clusters for issue #117. A source is canonicalized to a normalized plwiki/wikisource title key (aliases below), then mapped to exactly one cluster. The cluster is the split/leakage unit: every essay, repair pair, fact card and eval topic drawing on any member belongs to that cluster, and a cluster may appear in at most one partition.",
   "aliases": {
     "grunwald": "bitwa-pod-grunwaldem",
@@ -502,6 +502,18 @@
         "nato",
         "polska-w-unii-europejskiej"
       ]
+    },
+    "C-meiji": {
+      "era": "19th_century",
+      "members": [
+        "restauracja-meiji"
+      ]
+    },
+    "C-league": {
+      "era": "20th_century",
+      "members": [
+        "liga-narodow"
+      ]
     }
   },
   "partitions": {
@@ -509,9 +521,7 @@
       "C-persian-wars",
       "C-rome-republic",
       "C-crusades",
-      "C-church-conflicts",
       "C-lokietek",
-      "C-reformation",
       "C-batory",
       "C-us-independence",
       "C-french-rev",
@@ -520,8 +530,10 @@
       "C-great-depression",
       "C-ww1-independence",
       "C-1939",
-      "C-cold-war",
-      "C-1956"
+      "C-1956",
+      "C-alexander",
+      "C-black-death",
+      "C-absolutism"
     ],
     "reserved_root_seed_train": [
       "C-athens",
@@ -532,34 +544,58 @@
     "train_bukareszt_batch1": [
       "C-piast-origins",
       "C-charlemagne",
-      "C-industrial",
       "C-thirty-years",
-      "C-vienna",
       "C-versailles",
       "C-communist-takeover",
       "C-1970"
     ],
     "train_bukareszt_planned": [
-      "C-alexander",
       "C-magna-carta",
-      "C-black-death",
       "C-odnowiciel",
-      "C-absolutism",
       "C-vasa-wars",
       "C-borders-uprisings",
-      "C-holocaust",
       "C-euro-atlantic"
     ],
     "train_bukareszt_batch2": [
-      "C-rome-empire",
       "C-hundred-years",
       "C-discoveries",
       "C-cop",
       "C-katyn",
       "C-allied-conferences",
       "C-1968",
-      "C-ussr-collapse"
+      "C-ussr-collapse",
+      "C-holocaust"
+    ],
+    "reserved_root_sol_train": [
+      "C-rome-empire",
+      "C-church-conflicts",
+      "C-reformation",
+      "C-vienna",
+      "C-industrial",
+      "C-meiji",
+      "C-league",
+      "C-cold-war"
     ]
   },
-  "notes": "Paweł's #80 DEV essay fixtures are loaded from agentsLog/Pewciu6/essay/dev_fixtures.jsonl at check time and mapped to clusters (partition dev_pewciu6). Root's Astra seed and Sol batch are loaded from agentsLog/kwiscion/essay-teacher-seed/ and agentsLog/kwiscion/essay-corpus-sol/ when present."
+  "notes": "Paweł's #80 DEV essay fixtures are loaded from agentsLog/Pewciu6/essay/dev_fixtures.jsonl at check time and mapped to clusters (partition dev_pewciu6). Root's Astra seed and Sol batch are loaded from agentsLog/kwiscion/essay-teacher-seed/ and agentsLog/kwiscion/essay-corpus-sol/ when present. v2 (21:05 CEST): root Sol's eight fixed topics reserved; eval items 04/06/15 moved off Sol clusters; declared cross-cluster dependencies are merged into connected components before any partition check.",
+  "dependencies": [
+    {
+      "clusters": [
+        "C-reformation",
+        "C-vienna"
+      ],
+      "reason": "Root Sol Augsburg multi-topic negative input contains original Vienna prose (root #117 comment 18:56Z)"
+    },
+    {
+      "clusters": [
+        "C-league",
+        "C-cold-war"
+      ],
+      "reason": "Root Sol League of Nations repair input contains original Marshall Plan prose (root #117 comment 18:56Z)"
+    }
+  ],
+  "withdrawn_essays": {
+    "bk117-b1-vienna": "cluster C-vienna claimed by root Sol (Congress of Vienna); kept as draft/ledger only, never exported",
+    "bk117-b1-industrial": "cluster C-industrial claimed by root Sol (British Industrial Revolution); kept as draft/ledger only, never exported"
+  }
 }

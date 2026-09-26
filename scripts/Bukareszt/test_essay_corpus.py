@@ -50,5 +50,29 @@ class LeakageTest(unittest.TestCase):
         self.assertEqual(rep["unmapped"], [])
 
 
+class DependencyTest(unittest.TestCase):
+    def test_declared_sol_dependencies_are_merged(self):
+        cfg, _, c2p = ec.load_clusters()
+        comp = ec.components(cfg)
+        self.assertEqual(comp["C-reformation"], comp["C-vienna"])
+        self.assertEqual(comp["C-league"], comp["C-cold-war"])
+        for a, b in (("C-reformation", "C-vienna"), ("C-league", "C-cold-war")):
+            self.assertEqual(ec.partition_family(c2p[a]), ec.partition_family(c2p[b]))
+
+    def test_dependency_across_eval_and_train_fails(self):
+        cfg, _, _ = ec.load_clusters()
+        orig = ec.load_clusters
+        bad = json.loads(json.dumps(cfg))
+        bad["dependencies"].append({"clusters": ["C-thirty-years", "C-persian-wars"], "reason": "test"})
+        k2c = {m: c for c, v in bad["clusters"].items() for m in v["members"]}
+        c2p = {c: p for p, cs in bad["partitions"].items() for c in cs}
+        ec.load_clusters = lambda: (bad, k2c, c2p)
+        try:
+            self.assertEqual(ec.cmd_groups(None), 1)
+        finally:
+            ec.load_clusters = orig
+            ec.cmd_groups(None)  # restore committed report
+
+
 if __name__ == "__main__":
     unittest.main()
