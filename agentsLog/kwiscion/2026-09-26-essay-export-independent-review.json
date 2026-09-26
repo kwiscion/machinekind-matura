@@ -1,0 +1,263 @@
+{
+  "review_status": "root24_data_integration_accepted_for_bounded_pilot_full90_structure_verified_content_followup_pending",
+  "scope": "PR130 merged401e1bc local export_v1; no Git mutation, inference or training",
+  "checks": {
+    "counts": true,
+    "ids_unique": true,
+    "lf_train_hash": true,
+    "lf_eval_hash": true,
+    "schema": true,
+    "root24_exact_bound": true,
+    "component_separation": true,
+    "root_dependency_links": true,
+    "all_contracts": true,
+    "greg66_binding_construction": true,
+    "withdrawn_absent": true,
+    "attribution_one_per_row": true,
+    "three_reference_only_urls": true,
+    "no_source_fields_in_training": true,
+    "eval_input_only": true
+  },
+  "focused_tests": {
+    "passed": 6,
+    "failed": 0,
+    "excluded": "Two tests write shared group reports; not run in read-only audit. Equivalent separation/components checked independently without shared writes."
+  },
+  "counts": {
+    "train": 90,
+    "essays": 34,
+    "repairs": 56,
+    "root_rows": 24,
+    "greg_rows": 66,
+    "train_groups": 30,
+    "train_components": 28,
+    "eval_inputs": 16,
+    "shared_eval_components": 0
+  },
+  "root24_manifest": {
+    "status": "data_integration_accepted_for_bounded_root_only_pilot",
+    "rows": 24,
+    "essays": 12,
+    "repairs": 12,
+    "unique_targets": 12,
+    "source_export_sha256": "83153814da8251210f2b9d225dc713ad245c273bdc5d46dd1216b0e4b97178f5",
+    "train_sha256": "768f419504c26028482951d80abddeb889b46e8066276fdd4c8a497fdd2ed5b3",
+    "attribution_sha256": "48229c5691976df821c593754c176bf57ba188f963371c3427391281f4caf735",
+    "eval_sha256": "5979ee0b8e0e4f084cf6070f42d31892ee53c1f5485409b4fc5dac1266055a28",
+    "root_bindings": [
+      {
+        "id": "astra-seed-essay-solon",
+        "prompt_sha256": "7af2fecad0fde2f22226aacbf2c209c7ff7f445f48b80d6f96d15a55b14b99bf",
+        "response_sha256": "b0ef44a7f5bcbee0c3f4d8bcdbb53a8631e3aaa12b68fb40d2e6a597f4655241",
+        "review_match": true,
+        "source_group_id": "C-athens"
+      },
+      {
+        "id": "astra-seed-essay-casimir",
+        "prompt_sha256": "753ea129e0086b4ed2700ba8ee4c4a84438022d2318a24c8143bfe14189f73b9",
+        "response_sha256": "e264319081e527f89f87beb9f7b9111a0d218fabf1342b7e9f45ee1ccb99e556",
+        "review_match": true,
+        "source_group_id": "C-casimir3"
+      },
+      {
+        "id": "astra-seed-essay-lublin",
+        "prompt_sha256": "0491310b9321b583a0c4500a23456def5ba3927aefb572b92fbdf43bac97154d",
+        "response_sha256": "190790b00af990e72abd010e73dbf3c782cdab228808ac67e0fab868f474e2b9",
+        "review_match": true,
+        "source_group_id": "C-lublin"
+      },
+      {
+        "id": "astra-seed-essay-january",
+        "prompt_sha256": "8209497b47fae848e829a28367e9d6413b6c0acc0146d3c403f214aaec1d113a",
+        "response_sha256": "e9096583bd7e09afe1f80bf026b1a756e20b05897699a5ec0a0b3a33a91a2bc8",
+        "review_match": true,
+        "source_group_id": "C-january"
+      },
+      {
+        "id": "astra-seed-repair-solon",
+        "prompt_sha256": "595a073f5c3a29874fbaae23fd825af745a476f71fe2f8dd32ed9fd7a81359ed",
+        "response_sha256": "b0ef44a7f5bcbee0c3f4d8bcdbb53a8631e3aaa12b68fb40d2e6a597f4655241",
+        "review_match": true,
+        "source_group_id": "C-athens"
+      },
+      {
+        "id": "astra-seed-repair-casimir",
+        "prompt_sha256": "b95ec296ececb8ae0e77ee4ec7f966aae55492ea4cd7b65b54d6c1254d9df623",
+        "response_sha256": "e264319081e527f89f87beb9f7b9111a0d218fabf1342b7e9f45ee1ccb99e556",
+        "review_match": true,
+        "source_group_id": "C-casimir3"
+      },
+      {
+        "id": "astra-seed-repair-lublin",
+        "prompt_sha256": "bd7930d57c559b7ab302d06bec4ad34a64ce0bf44f3f2a8bae9e38ec33c29644",
+        "response_sha256": "190790b00af990e72abd010e73dbf3c782cdab228808ac67e0fab868f474e2b9",
+        "review_match": true,
+        "source_group_id": "C-lublin"
+      },
+      {
+        "id": "astra-seed-repair-january",
+        "prompt_sha256": "444f7df3f2993c38e17f9ba66c7f4cabd6dd6523581a6f51c463c920ad578eb2",
+        "response_sha256": "e9096583bd7e09afe1f80bf026b1a756e20b05897699a5ec0a0b3a33a91a2bc8",
+        "review_match": true,
+        "source_group_id": "C-january"
+      },
+      {
+        "id": "sol-corpus-essay-augustus",
+        "prompt_sha256": "423d4a052c0f6f5fe0e6fc99bcf74c387f3a87403b5e4c5a04d2583c6cf7c064",
+        "response_sha256": "f191eead21de9a16e1821ebe554b012c4c8fe18691b2ae9bfdbd0dfdf72cf4c3",
+        "review_match": true,
+        "source_group_id": "C-rome-empire"
+      },
+      {
+        "id": "sol-corpus-essay-investiture",
+        "prompt_sha256": "fea60afa413734334912471a3cd99cccad07ef5ebd5a63cb47f52e5f066edee0",
+        "response_sha256": "4d4506f5b14c51fb38a70e86afa9200177d06a7be5cd9b377fcd8fa184c81e7a",
+        "review_match": true,
+        "source_group_id": "C-church-conflicts"
+      },
+      {
+        "id": "sol-corpus-essay-augsburg",
+        "prompt_sha256": "52d072e88568d296f9f359bd7db2b4f5ab15ca5ce20e147ae5616aea65f24607",
+        "response_sha256": "a1e4177cd8d4000efa8cb0d3bb98c35ba5e29710eea37213328d0b7d7471ef4a",
+        "review_match": true,
+        "source_group_id": "C-reformation"
+      },
+      {
+        "id": "sol-corpus-essay-vienna",
+        "prompt_sha256": "c75304ecf39c60b4d7669357954b60f8369706e727d16f009b047cafdb0a14eb",
+        "response_sha256": "516f00a0b1a5a64331b3cd6e33378f14517fba2696c188747aa62f5dec9ac630",
+        "review_match": true,
+        "source_group_id": "C-vienna"
+      },
+      {
+        "id": "sol-corpus-essay-industrial",
+        "prompt_sha256": "892536ab3618437107d0f8cb5e0e015d06097aa315fe7c28668e92b6c8d29165",
+        "response_sha256": "93389046ac6d42908d60a15899b52254b99cf79cad7150ccc572bddffa79669a",
+        "review_match": true,
+        "source_group_id": "C-industrial"
+      },
+      {
+        "id": "sol-corpus-essay-meiji",
+        "prompt_sha256": "85f05d8304e27b141b5fc5320767408d91db38be9a46ca8f2394410dd3f59a6c",
+        "response_sha256": "420d45a8cd0e525742a8aa3ec2df7e9a2e420c95599313c4482b50d45194079c",
+        "review_match": true,
+        "source_group_id": "C-meiji"
+      },
+      {
+        "id": "sol-corpus-essay-league",
+        "prompt_sha256": "6a68e5788051d716ca97e7791bfc1ed9b286e0f73e1b2201b5fa8a15e51553d2",
+        "response_sha256": "17830eee0a473b7bb916ac482a9f70e375d8d6ee9798fdd70dd3b2ebea15ee0e",
+        "review_match": true,
+        "source_group_id": "C-league"
+      },
+      {
+        "id": "sol-corpus-essay-marshall",
+        "prompt_sha256": "d3af731b93ae0fc2427672e17e8609da5f243f52d913d93d9b998a4fe5148c4b",
+        "response_sha256": "1cc47dfe1bdff2e83729f2029ea853a457fa0c1149ecbbe7527a457daef31588",
+        "review_match": true,
+        "source_group_id": "C-cold-war"
+      },
+      {
+        "id": "sol-corpus-repair-augustus",
+        "prompt_sha256": "5b679e519c8854357d75c20ec4af474eef3cce77319eecaa06e2e05be74aa0c5",
+        "response_sha256": "f191eead21de9a16e1821ebe554b012c4c8fe18691b2ae9bfdbd0dfdf72cf4c3",
+        "review_match": true,
+        "source_group_id": "C-rome-empire"
+      },
+      {
+        "id": "sol-corpus-repair-investiture",
+        "prompt_sha256": "639823ee29a1ae36b70c29fec67dc295f99ee687681af9fdddc2957391172128",
+        "response_sha256": "4d4506f5b14c51fb38a70e86afa9200177d06a7be5cd9b377fcd8fa184c81e7a",
+        "review_match": true,
+        "source_group_id": "C-church-conflicts"
+      },
+      {
+        "id": "sol-corpus-repair-augsburg",
+        "prompt_sha256": "33e231c8481729407e9a93003fdbe393aefe608b186300ed60fed5faafb839c4",
+        "response_sha256": "a1e4177cd8d4000efa8cb0d3bb98c35ba5e29710eea37213328d0b7d7471ef4a",
+        "review_match": true,
+        "source_group_id": "C-reformation"
+      },
+      {
+        "id": "sol-corpus-repair-vienna",
+        "prompt_sha256": "c3d446ab044ccd4fc86a3cc0fbb1e68fcce8ce1cd82bc9f239ced572d8a0a3a7",
+        "response_sha256": "516f00a0b1a5a64331b3cd6e33378f14517fba2696c188747aa62f5dec9ac630",
+        "review_match": true,
+        "source_group_id": "C-vienna"
+      },
+      {
+        "id": "sol-corpus-repair-industrial",
+        "prompt_sha256": "499fed29e00816be085295746c640612c36d9192f3cc9d29a8081dd60d9edd4c",
+        "response_sha256": "93389046ac6d42908d60a15899b52254b99cf79cad7150ccc572bddffa79669a",
+        "review_match": true,
+        "source_group_id": "C-industrial"
+      },
+      {
+        "id": "sol-corpus-repair-meiji",
+        "prompt_sha256": "71dc268630c7085cfd719043c644791f35057543a28725939e1237d1239cd1e4",
+        "response_sha256": "420d45a8cd0e525742a8aa3ec2df7e9a2e420c95599313c4482b50d45194079c",
+        "review_match": true,
+        "source_group_id": "C-meiji"
+      },
+      {
+        "id": "sol-corpus-repair-league",
+        "prompt_sha256": "f875fd4a25797d11ba8e5f2c61c2857bc8bd75ca5e9be2f26db8b1452539e599",
+        "response_sha256": "17830eee0a473b7bb916ac482a9f70e375d8d6ee9798fdd70dd3b2ebea15ee0e",
+        "review_match": true,
+        "source_group_id": "C-league"
+      },
+      {
+        "id": "sol-corpus-repair-marshall",
+        "prompt_sha256": "c58200d77255ec727d70b51c8ff9345eb86c3b3dbad1d0006f719895619d275c",
+        "response_sha256": "1cc47dfe1bdff2e83729f2029ea853a457fa0c1149ecbbe7527a457daef31588",
+        "review_match": true,
+        "source_group_id": "C-cold-war"
+      }
+    ],
+    "do_not_use_as_posttraining_test": [
+      "#80 Casimir III",
+      "#80 Lublin Union",
+      "#80 January uprising"
+    ],
+    "eval_mode": "External generated-answer historical quality review; no gold-target eval_loss",
+    "limitations": [
+      "Not exhaustive benchmark exclusion certificate; original independently authored topic provenance and component checks support this bounded pilot.",
+      "No inference/training/model feasibility approved or performed by this audit."
+    ]
+  },
+  "reference_text_scan": [
+    {
+      "source_id": "mit-aristotle",
+      "snapshot_sha256": "c3c627e4f6191544c9c2f6cb5558b0a8178624b6b9487c9be0368f05fd61087d",
+      "shared_20word_windows": 0
+    },
+    {
+      "source_id": "uj-archive",
+      "snapshot_sha256": "b993a44e3bef48c224a178f2cd003843462dbce29465a765fb552db46eb3c988",
+      "shared_20word_windows": 0
+    },
+    {
+      "source_id": "agad-lublin",
+      "snapshot_sha256": "bec8772f63047b0edbd1a97276d3b70e5d18b604112bd28daba463d2bf8164f8",
+      "shared_20word_windows": 0
+    }
+  ],
+  "reference_text_scan_method": "HTML text; union of UTF8/CP1250/ISO8859-2 decodings; lower-case Unicode word20grams against all root user+assistant strings. No matching20word passage in the three reference-only snapshots. Not a proof about shorter phrase reuse.",
+  "actual_findings": [
+    {
+      "severity": "metadata_fix",
+      "finding": "export_v1 attribution retains unknown/not-redistributable license text but drops allowed_use for three reference-only sources. Derived root-only attribution restores reference_fact_check_only and source_text_exported=false; no teacher/example edits."
+    },
+    {
+      "severity": "remaining_content_review",
+      "finding": "Four Greg source corrections await separately assigned independent authoritative checks. Their existing accepted text hashes and deterministic repair targets are validly bound, but this bounded integration audit does not claim historical re-review of34 essays."
+    }
+  ],
+  "limits": [
+    "Zero canonical title matches is not exhaustive benchmark exclusion; no such certification claimed.",
+    "CasimirIII, LublinUnion and JanuaryUprising root groups overlap #80DEV, which cannot serve as clean posttraining testing.",
+    "Eval16 has no assistant targets: use generated-output quality review, not eval_loss. Known factcard caveats must be checked rather than treating cards as gold.",
+    "Root source reviews accepted historical content with limits; this closes the demonstrated grouping/hash/export step only.",
+    "No model/runtime training feasibility or training result inferred."
+  ]
+}

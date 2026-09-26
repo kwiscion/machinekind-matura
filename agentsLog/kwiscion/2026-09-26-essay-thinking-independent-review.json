@@ -1,0 +1,706 @@
+{
+  "review_status": "provisional_independent_sol_not_official",
+  "input_sha256": "4d2c4fcbbd1ef7f6251cb190b5ab63277fc7c1ddc659f3cd59234e83ee48898f",
+  "scope": "six original DEV topics; twelve draft answers and six T finals; each arm denominator90, not full-exam60",
+  "exposure": "Aggregate 7 versus 4.5 and 14 versus 4 errors; first T007 draft/final accidentally visible. Remaining drafts anonymized. No owner per-item grades read.",
+  "first_pass_frozen_at": "2026-09-26T19:38:04.768924+00:00",
+  "word_count_method": "Strip leading topic heading; count whitespace-separated tokens containing a Unicode letter/digit. Standalone punctuation is not a word.",
+  "first_pass_totals": {
+    "N": 51,
+    "T": 62,
+    "errors_N": 14,
+    "errors_T": 4
+  },
+  "totals": {
+    "N": {
+      "points": 52,
+      "low": 44,
+      "high": 59,
+      "max_points": 90,
+      "distinct_errors": 12
+    },
+    "T": {
+      "points": 62,
+      "low": 52,
+      "high": 65,
+      "max_points": 90,
+      "distinct_errors": 4
+    },
+    "T_final": {
+      "points": 66,
+      "low": 57,
+      "high": 71,
+      "max_points": 90,
+      "distinct_errors": 4
+    }
+  },
+  "items": [
+    {
+      "label": "R01",
+      "item": "dev-essay-002",
+      "arm": "T",
+      "sha256": "a6be58447495f525eb473e57f20c1c495164e6d3d090aff8ab7e73c97f669ec8",
+      "body_words": 421,
+      "all_words": 424,
+      "aspects": [
+        3,
+        3,
+        3
+      ],
+      "distinct_errors": 1,
+      "coherence": 3,
+      "points": 11,
+      "low": 9,
+      "high": 11,
+      "stage": "draft",
+      "max_points": 15,
+      "argument_evidence": [
+        "Political: magnate/local power after administrative disruption is a causal argument, despite generality.",
+        "Economic: plunder destroys workshops/crops, reducing trade and fiscal rebuilding capacity.",
+        "Social: mortality, hunger, epidemic and displacement are linked to damaged settlement and religious distrust."
+      ],
+      "factual_errors": [
+        "P2: permanent loss of Pomerania is materially misleading; Royal Prussia was retained. Scope ambiguous because Lębork/Bytów changed status in1657."
+      ],
+      "uncertainties": [
+        "Mass deportation scale/attribution is unsupported precision; not a second established error.",
+        "Centralized in magnate hands means local oligarchic concentration, not necessarily a logical contradiction."
+      ],
+      "source_ids": [
+        "oliwa"
+      ],
+      "initial_points": 11,
+      "initial_error_count": 1,
+      "error_deduction": 1
+    },
+    {
+      "label": "R02",
+      "item": "dev-essay-006",
+      "arm": "T",
+      "sha256": "92dd286de5ddc84b7680f1614d94e200e3c76c8284fe34d1bd798375517c91c9",
+      "body_words": 364,
+      "all_words": 367,
+      "aspects": [
+        1,
+        3,
+        3
+      ],
+      "distinct_errors": 0,
+      "coherence": 3,
+      "points": 10,
+      "low": 9,
+      "high": 10,
+      "stage": "draft",
+      "max_points": 15,
+      "argument_evidence": [
+        "Political: prestige and recognition repeated without a concrete diplomatic act or coronation; superficial.",
+        "Church: Gniezno1000 and independent hierarchy explicitly support administrative cohesion.",
+        "Military: Czech and Kyiv expansion linked to strategic territory, force and prestige."
+      ],
+      "factual_errors": [],
+      "uncertainties": [
+        "Lubuszy may be garbled Łużyce; counted as ambiguous terminology rather than established invented conquest.",
+        "Monarch equal to emperor overstates aspiration but is not a claimed formal legal rank.",
+        "No automatic penalty for omitting coronation from this draft."
+      ],
+      "source_ids": [
+        "chrobry"
+      ],
+      "initial_points": 10,
+      "initial_error_count": 0,
+      "error_deduction": 0
+    },
+    {
+      "label": "R03",
+      "item": "dev-essay-012",
+      "arm": "T",
+      "sha256": "8266e8c2cf0781ef51d0d1f69055d6c536b06bcb0cabb4c8edeb97de858f0d5c",
+      "body_words": 375,
+      "all_words": 378,
+      "aspects": [
+        3,
+        3,
+        3
+      ],
+      "distinct_errors": 1,
+      "coherence": 3,
+      "points": 11,
+      "low": 9,
+      "high": 12,
+      "stage": "draft",
+      "max_points": 15,
+      "argument_evidence": [
+        "Military: Warsaw1920 and Niemen successes explain survival and defensive capacity.",
+        "Political: defeating revolution and Riga connect sovereignty to time for institution building.",
+        "Territorial: Belarus/Ukraine and eastern urban centres explain strategic/economic scope."
+      ],
+      "factual_errors": [
+        "P2: general Piłsudski is the wrong1920 rank; he was Marshal."
+      ],
+      "uncertainties": [
+        "Wilno was not awarded by Riga; the essay attributes its security to the war broadly, so this is an imprecise linkage rather than a second certain error.",
+        "Bolshevik military power finally broken is rhetoric about this campaign, not literal permanent Soviet disarmament."
+      ],
+      "source_ids": [
+        "rank",
+        "riga"
+      ],
+      "initial_points": 11,
+      "initial_error_count": 1,
+      "error_deduction": 1
+    },
+    {
+      "label": "R04",
+      "item": "dev-essay-011",
+      "arm": "T",
+      "sha256": "72df97f9f5e839cf881ca1e7db5f58947ea61bd5919d251af6da5c7673ebe352",
+      "body_words": 410,
+      "all_words": 413,
+      "aspects": [
+        3,
+        3,
+        3
+      ],
+      "distinct_errors": 1,
+      "coherence": 3,
+      "points": 11,
+      "low": 9,
+      "high": 12,
+      "stage": "draft",
+      "max_points": 15,
+      "argument_evidence": [
+        "Constitutional: veto blocks fiscal/military reform and weakens defence; causal process supports thesis.",
+        "Internal: magnate clientelism connects private interests with fragmented collective action.",
+        "International: named powers/rulers, intervention and correctly dated partitions support external pressure."
+      ],
+      "factual_errors": [
+        "P2: inability to establish permanent defence taxes contradicts the1717 settlement. Treat tax/standing-army absence as one fiscal-military misconception."
+      ],
+      "uncertainties": [
+        "Modern army wording may mean inadequacy rather than literal absence.",
+        "Frederick II is not expressly said to have personally conducted all three partitions; do not invent that error.",
+        "Failure of appropriate reform is a one-sided interpretation, not proof the author denies every reform."
+      ],
+      "source_ids": [
+        "tax"
+      ],
+      "initial_points": 11,
+      "initial_error_count": 1,
+      "error_deduction": 1
+    },
+    {
+      "label": "R05",
+      "item": "dev-essay-011",
+      "arm": "N",
+      "sha256": "a46809a6d24934bc20d5190bb36b11269733d360d078a8fec02181d2f78dc68a",
+      "body_words": 376,
+      "all_words": 379,
+      "aspects": [
+        3,
+        3,
+        3
+      ],
+      "distinct_errors": 0,
+      "coherence": 3,
+      "points": 12,
+      "low": 10,
+      "high": 12,
+      "stage": "draft",
+      "max_points": 15,
+      "argument_evidence": [
+        "Constitutional: veto/fiscal weakness explains inability to modernize.",
+        "Internal: patronage and factional dependence explain external manipulation.",
+        "International: neighbours, interference and three correct partition dates explain final destruction."
+      ],
+      "factual_errors": [],
+      "uncertainties": [
+        "Strong fiscal/military institutions absent is imprecise but not the same as denying any standing taxes/army.",
+        "No canon checklist: absence of a named confederation alone does not erase the explained clientelist mechanism."
+      ],
+      "source_ids": [
+        "tax",
+        "targowica"
+      ],
+      "initial_points": 12,
+      "initial_error_count": 0,
+      "error_deduction": 0
+    },
+    {
+      "label": "R06",
+      "item": "dev-essay-007",
+      "arm": "N",
+      "sha256": "afdd317f3c5aafa67a2dc51ba87ee456545f06ad2c3008ad6058cd3cc07327da",
+      "body_words": 380,
+      "all_words": 383,
+      "aspects": [
+        1,
+        1,
+        3
+      ],
+      "distinct_errors": 5,
+      "coherence": 3,
+      "points": 6,
+      "low": 5,
+      "high": 8,
+      "stage": "draft",
+      "max_points": 15,
+      "argument_evidence": [
+        "Territorial: key treaty settlement is mostly wrong, leaving a weak correct northern-gains core.",
+        "Political: prestige/subordination core remains but supposed foundation and lasting peace distort the mechanism.",
+        "Economic: exports, access and merchant markets form a relevant causal chain."
+      ],
+      "factual_errors": [
+        "P1: Pereśwaga is not an identifiable battle in these wars; unsupported invented battle.",
+        "P2:1466 transfer of Samogitia to Poland is wrong in territory, recipient and settlement.",
+        "P2:1466 Polish acquisition of parts of Masuria is wrong.",
+        "P3:1466 created the Prussian Order state is wrong; that state pre-existed the treaty.",
+        "P3: conflict definitively ended and regional relations stayed stable for centuries is false; later Polish-Teutonic war1519–1521 is a counterexample."
+      ],
+      "uncertainties": [
+        "The last error is sensitive to rhetorical rather than literal reading; count range4–5.",
+        "Territorial and political lower argument levels reflect loss of usable supporting facts, distinct from the single rubric error deduction."
+      ],
+      "source_ids": [
+        "thorn",
+        "teutonic",
+        "later_teutonic_war"
+      ],
+      "initial_points": 6,
+      "initial_error_count": 5,
+      "error_deduction": 2
+    },
+    {
+      "label": "R07",
+      "item": "dev-essay-006",
+      "arm": "N",
+      "sha256": "3e976f368e0864bbcf09f2ae238db46768298cf5501c3e8d0e7eace30c5748d0",
+      "body_words": 360,
+      "all_words": 363,
+      "aspects": [
+        1,
+        1,
+        1
+      ],
+      "distinct_errors": 3,
+      "coherence": 3,
+      "points": 4,
+      "low": 4,
+      "high": 6,
+      "stage": "draft",
+      "max_points": 15,
+      "argument_evidence": [
+        "Political: expansion/prestige mechanism has little reliable concrete support and invented successor.",
+        "Church: independent hierarchy effect is relevant but central event is invented.",
+        "Military: general annexation/integration claim rests on a wrong dated example; Lusatia is the limited valid core."
+      ],
+      "factual_errors": [
+        "P2: alleged successor Władysław I Badêmy is invented; successor was Mieszko II.",
+        "P3: council at Mogiła in1000 is wrong; Gniezno meeting/metropolis.",
+        "P4: capture of Prague in995 is wrong; Chrobry took Bohemia in1003."
+      ],
+      "uncertainties": [
+        "Silesian campaigns may conflate Mieszko I and Chrobry, but vague undated wording is not counted as a fourth error.",
+        "Gniezno bishopric wording lacks archiepiscopal precision but is not counted separately from the ecclesiastical-event error."
+      ],
+      "source_ids": [
+        "chrobry",
+        "successor"
+      ],
+      "initial_points": 4,
+      "initial_error_count": 3,
+      "error_deduction": 2
+    },
+    {
+      "label": "R08",
+      "item": "dev-essay-007",
+      "arm": "T",
+      "sha256": "d688d6a46e57b60ef5aced91cb56bec837db99f7269975f1e33b6c0692aacd57",
+      "body_words": 466,
+      "all_words": 471,
+      "aspects": [
+        3,
+        1,
+        3
+      ],
+      "distinct_errors": 1,
+      "coherence": 3,
+      "points": 9,
+      "low": 8,
+      "high": 10,
+      "stage": "draft",
+      "max_points": 15,
+      "argument_evidence": [
+        "Territorial: Grunwald1410, Warmia and1466 gains linked to security; sufficient despite omitting Gdańsk by name.",
+        "Political: repeated prestige/arbitration/safety assertions without explaining treaty dependency; superficial.",
+        "Economic: access to ports, grain/timber exports and trade growth connect gains to prosperity."
+      ],
+      "factual_errors": [
+        "P3: elimination of the Order as a future military threat is overstated as a settled fact; later wars refute literal reading."
+      ],
+      "uncertainties": [
+        "Grunwald broke military power means severe defeat rather than immediate state extinction.",
+        "Trade monopoly language is broad and weakly supported; not treated as a separate established legal monopoly claim.",
+        "Error count0–1 depending on rhetorical reading; politics remains shallow either way."
+      ],
+      "source_ids": [
+        "thorn",
+        "teutonic",
+        "later_teutonic_war"
+      ],
+      "initial_points": 9,
+      "initial_error_count": 1,
+      "error_deduction": 1
+    },
+    {
+      "label": "R09",
+      "item": "dev-essay-002",
+      "arm": "N",
+      "sha256": "e87315998cf109ddbd3f7425d084159213c63e480eb2b8df66bad2354bd3ea63",
+      "body_words": 387,
+      "all_words": 390,
+      "aspects": [
+        3,
+        3,
+        3
+      ],
+      "distinct_errors": 0,
+      "coherence": 3,
+      "points": 12,
+      "low": 10,
+      "high": 12,
+      "stage": "draft",
+      "max_points": 15,
+      "argument_evidence": [
+        "Political: weakened crown, magnate power and multi-front pressure explain reduced international capacity.",
+        "Economic: destruction of urban/agrarian production explains fiscal impoverishment and slow recovery.",
+        "Social: war/epidemic mortality and regional depopulation explain lasting social disruption."
+      ],
+      "factual_errors": [],
+      "uncertainties": [
+        "Factories and total war are loose modern wording, not automatically a distinct historical falsehood.",
+        "Russian/Brandenburg pressure is placed in the broader concurrent-war context; no invented specific territorial settlement.",
+        "No quantified demographic claim to test."
+      ],
+      "source_ids": [
+        "oliwa",
+        "warsaw"
+      ],
+      "initial_points": 12,
+      "initial_error_count": 0,
+      "error_deduction": 0
+    },
+    {
+      "label": "R10",
+      "item": "dev-essay-008",
+      "arm": "T",
+      "sha256": "ad6117988f5e70a52457958e0e1832d7aa4fd015fba61e473bca3a8f4482321d",
+      "body_words": 425,
+      "all_words": 428,
+      "aspects": [
+        1,
+        3,
+        3
+      ],
+      "distinct_errors": 0,
+      "coherence": 3,
+      "points": 10,
+      "low": 8,
+      "high": 10,
+      "stage": "draft",
+      "max_points": 15,
+      "argument_evidence": [
+        "Political: unnamed underground activity and organic work give only a general account of preserving political identity.",
+        "Cultural: teaching, press and reading groups explain intergenerational language transmission.",
+        "Social: cooperatives/professional/agricultural associations link economic self-help to durable national organization."
+      ],
+      "factual_errors": [],
+      "uncertainties": [
+        "Geography across partitions is insufficiently differentiated, but the Russian repression statement is explicitly scoped to Russia.",
+        "Malformed sentence in political paragraph does not break the recoverable overall argument."
+      ],
+      "source_ids": [
+        "tcl"
+      ],
+      "initial_points": 10,
+      "initial_error_count": 0,
+      "error_deduction": 0
+    },
+    {
+      "label": "R11",
+      "item": "dev-essay-008",
+      "arm": "N",
+      "sha256": "987a4eb5f2eeee2501dba65ada90a2d29ccd96c7fb1d20c1a46a68dd3ce753b9",
+      "body_words": 403,
+      "all_words": 406,
+      "aspects": [
+        1,
+        3,
+        3
+      ],
+      "distinct_errors": 1,
+      "coherence": 3,
+      "points": 9,
+      "low": 7,
+      "high": 10,
+      "stage": "draft",
+      "max_points": 15,
+      "argument_evidence": [
+        "Political: unnamed liberal/national organizations and1905 protests give a thin political account.",
+        "Cultural: literature/press explain historical memory and language survival, despite a disputed parenthesis.",
+        "Social: reading associations/church/teaching explain cross-class solidarity."
+      ],
+      "factual_errors": [
+        "P3: generalized ban on Polish-language books overstates censorship; legal Polish publication continued."
+      ],
+      "uncertainties": [
+        "First pass additionally counted Sienkiewicz later period and Towarzystwo Czytelników. Both are now non-counted ambiguities: later can mean later nineteenth century; the malformed organization name can be recognizable imprecision.",
+        "The church-as-refuge claim is broad, not a specific false legal assertion."
+      ],
+      "source_ids": [
+        "sienkiewicz",
+        "tcl"
+      ],
+      "initial_points": 8,
+      "initial_error_count": 3,
+      "adjudication": "Two ambiguous allegations removed after conservative semantic/source check; first pass preserved.",
+      "error_deduction": 1
+    },
+    {
+      "label": "R12",
+      "item": "dev-essay-012",
+      "arm": "N",
+      "sha256": "69a64e53467a58681696503b5d9d891f24a6ed7b406274a161bc70d327cd1905",
+      "body_words": 348,
+      "all_words": 351,
+      "aspects": [
+        3,
+        3,
+        3
+      ],
+      "distinct_errors": 3,
+      "coherence": 2,
+      "points": 9,
+      "low": 8,
+      "high": 11,
+      "stage": "draft",
+      "max_points": 15,
+      "argument_evidence": [
+        "Military: Warsaw manoeuvre and mobilization explain survival.",
+        "Political: Riga/sovereignty argument remains usable despite wrong attribution of federalism.",
+        "Territorial: eastern border/Belarus/Ukraine and strategic hinterland are functional, with a contradictory safety conclusion."
+      ],
+      "factual_errors": [
+        "P2: Piłsudski is incorrectly styled general in1920.",
+        "P3: the defeated federal conception is assigned to the Bolsheviks instead of Piłsudski.",
+        "P4: the Riga border supposedly removed direct Soviet adjacency; Poland still bordered Soviet territory."
+      ],
+      "uncertainties": [
+        "Coherence2: the eastern-border paragraph jumps from setting a border with the opponent to removing that adjacency. This is the identified internal inference defect, not an automatic extra factual-error penalty.",
+        "If coherence judged separately as intact, high bound restores that point."
+      ],
+      "source_ids": [
+        "rank",
+        "riga"
+      ],
+      "initial_points": 9,
+      "initial_error_count": 3,
+      "error_deduction": 2
+    }
+  ],
+  "finals": [
+    {
+      "item": "dev-essay-007",
+      "arm": "T",
+      "stage": "final",
+      "sha256": "0f454745a732a50081b9e49cdcee55db16cfc6c3d784e4d4b143141e83e27597",
+      "body_words": 415,
+      "max_points": 15,
+      "aspects": [
+        3,
+        1,
+        3
+      ],
+      "distinct_errors": 2,
+      "error_deduction": 1,
+      "coherence": 3,
+      "points": 9,
+      "low": 8,
+      "high": 10,
+      "argument_evidence": "Retains the earlier territorial/economic argument and shallow political repetition. Adds a new false Grunwald-result partition into Prussian/Livonian states; no score gain.",
+      "uncertainties": [
+        "New Grunwald-caused Prussian/Livonian division is an error.",
+        "Earlier eliminated-future-threat allegation retained, with rhetorical uncertainty.",
+        "Samogitia loss after1410 is simplified but temporary cession in1411 makes it not a separate certain error."
+      ],
+      "source_ids": [
+        "thorn",
+        "teutonic",
+        "later_teutonic_war"
+      ]
+    },
+    {
+      "item": "dev-essay-006",
+      "arm": "T",
+      "stage": "final",
+      "sha256": "472568e193212b7f3a7de1016c7e3c401a707a63c172371aeaf919b33b624fc1",
+      "body_words": 412,
+      "max_points": 15,
+      "aspects": [
+        3,
+        3,
+        3
+      ],
+      "distinct_errors": 0,
+      "error_deduction": 0,
+      "coherence": 3,
+      "points": 12,
+      "low": 11,
+      "high": 13,
+      "argument_evidence": "Political evidence now names coronation1025 and Bautzen1018. Church argument adds independent dioceses and Adalbert. Military evidence specifies Moravia/Kyiv/Red Ruthenia and strategic effects. Satisfactory across all three; rich military/church interpretation is possible.",
+      "uncertainties": [
+        "Moravia1003 conventional chronology has scholarly dating uncertainty; no invented precise contradiction established.",
+        "Status equal to emperor remains inflated rhetoric."
+      ],
+      "source_ids": [
+        "chrobry"
+      ]
+    },
+    {
+      "item": "dev-essay-011",
+      "arm": "T",
+      "stage": "final",
+      "sha256": "499ff819a47482cc363d1688cc3aaab084e4e4ae4cb5d779d0286b83fffe87ac",
+      "body_words": 395,
+      "max_points": 15,
+      "aspects": [
+        3,
+        3,
+        3
+      ],
+      "distinct_errors": 1,
+      "error_deduction": 1,
+      "coherence": 2,
+      "points": 10,
+      "low": 9,
+      "high": 12,
+      "argument_evidence": "Targowica1792 and named leaders now concretely illustrate rollback and external dependence. Fiscal error remains. Conclusion says no modern reforms while body describes reforms being dismantled: minor unsupported/contradictory conclusion, coherence2.",
+      "uncertainties": [
+        "Do not count the French diplomatic break as invented merely because unfamiliar; historical accounts describe it.",
+        "Frederick II context does not explicitly assign him1793/1795.",
+        "No rich score merely from adding names."
+      ],
+      "source_ids": [
+        "tax",
+        "targowica",
+        "france_break"
+      ]
+    },
+    {
+      "item": "dev-essay-002",
+      "arm": "T",
+      "stage": "final",
+      "sha256": "bfaf554b321878b34de9b7e09c7843f28e941fe70605bfdebc89260e951bd4be",
+      "body_words": 431,
+      "max_points": 15,
+      "aspects": [
+        3,
+        3,
+        3
+      ],
+      "distinct_errors": 0,
+      "error_deduction": 0,
+      "coherence": 3,
+      "points": 12,
+      "low": 10,
+      "high": 12,
+      "argument_evidence": "Pomerania allegation removed; economic/social causal chains retained. Warsaw90% is a published estimate, not independently established precision. No automatic reward just for adding a number.",
+      "uncertainties": [
+        "Warsaw90% varies with geographical population definition/period; not a secure falsehood."
+      ],
+      "source_ids": [
+        "warsaw",
+        "oliwa"
+      ]
+    },
+    {
+      "item": "dev-essay-012",
+      "arm": "T",
+      "stage": "final",
+      "sha256": "fb2d9fc7b276a2136095093229e7b4aa634411db82ece480a88fd7105c7ba520",
+      "body_words": 389,
+      "max_points": 15,
+      "aspects": [
+        3,
+        3,
+        3
+      ],
+      "distinct_errors": 0,
+      "error_deduction": 0,
+      "coherence": 3,
+      "points": 12,
+      "low": 10,
+      "high": 13,
+      "argument_evidence": "Military paragraph adds Wieprz/Komarów/Niemen; removes the wrong general rank. Sovereignty and territory arguments remain functional. Wilno remains broad war attribution, not explicitly a Riga award.",
+      "uncertainties": [
+        "Scope of Wilno/Riga linkage still deserves qualification.",
+        "Extra battle list alone does not force rich argument credit."
+      ],
+      "source_ids": [
+        "rank",
+        "riga"
+      ]
+    },
+    {
+      "item": "dev-essay-008",
+      "arm": "T",
+      "stage": "final",
+      "sha256": "adc9a5b3767402111c3144399b9eff570edef73987b864de8582b0095fc99b11",
+      "body_words": 433,
+      "max_points": 15,
+      "aspects": [
+        3,
+        3,
+        3
+      ],
+      "distinct_errors": 1,
+      "error_deduction": 1,
+      "coherence": 3,
+      "points": 11,
+      "low": 9,
+      "high": 11,
+      "argument_evidence": "Political paragraph gains a concrete1905 concessions/organization mechanism; culture/social chains retained. Gains are tempered by a1906 party inserted into a period ending1905.",
+      "uncertainties": [
+        "PPS Revolutionary Faction dates to1906, outside the specified endpoint.",
+        "Legal unions also require1906 qualification; cluster treated as one out-of-scope revolution-aftermath issue; two-error count leaves deduction unchanged.",
+        "Return of Polish to schools applies especially to private institutions; general wording is imprecise."
+      ],
+      "source_ids": [
+        "pps",
+        "tcl"
+      ]
+    }
+  ],
+  "sources": {
+    "thorn": "https://www.szukajwarchiwach.gov.pl/web/aktualnosci/-/nowosci-swa-akt-pokoju-torunskiego-z-1466-r-od-teraz-na-szukaj-w-archiwach-?redirect=%2Fweb%2Faktualnosci",
+    "teutonic": "https://zpe.gov.pl/a/wojna-trzynastoletnia-polski-z-zakonem-krzyzackim/DVhXDJsl3",
+    "chrobry": "https://www.gniezno.eu/cms/20471/boleslaw_chrobry",
+    "successor": "https://zpe.gov.pl/pdf/PdXe8r12K",
+    "riga": "https://www.aan.gov.pl/traktatryski/m/home",
+    "rank": "https://1920.gov.pl/19-marca-1920/",
+    "tax": "https://bazhum.muzhp.pl/media/files/Prawo_Kanoniczne_kwartalnik_prawno_historyczny/Prawo_Kanoniczne_kwartalnik_prawno_historyczny-r1996-t39-n3_4/Prawo_Kanoniczne_kwartalnik_prawno_historyczny-r1996-t39-n3_4-s243-268/Prawo_Kanoniczne_kwartalnik_prawno_historyczny-r1996-t39-n3_4-s243-268.pdf",
+    "sienkiewicz": "https://mnki.pl/pl/list-kraszewskiego-do-sienkiewicza",
+    "tcl": "https://pw.ipn.gov.pl/download/163/22000/WielkopolaniekuNiepodleglejkatalogWWWindd.pdf",
+    "oliwa": "https://zpe.gov.pl/watek/LP59ZRXQZ2/2/a/kres-potopu-szwedzkiego-bilans-strat/D266MDBQG",
+    "warsaw": "https://culture.pl/pl/artykul/xvii-wieczne-skarby-wydobyte-z-wisly",
+    "pps": "https://katowice.ipn.gov.pl/pl3/aktualnosci/218835%2CW-Katowicach-upamietniono-90-rocznice-smierci-Marszalka-Jozefa-Pilsudskiego.html",
+    "targowica": "https://www.ipsb.nina.gov.pl/a/biografia/stanislaw-ii-august-1732-1798-krol-polski-stanislaw-antoni-poniatowski",
+    "later_teutonic_war": "https://sklep.muzhp.pl/towary/hold-pruski-1525-historia-pamiec-i-narracje-o-scenariuszach-alternatywnych-t232.html",
+    "france_break": "https://www.ipsb.nina.gov.pl/a/biografia/ignacy-potocki-h-pilawa-1750-1809-marszalek-litewski-wolnomularz"
+  },
+  "limitations": [
+    "No owner per-item grades read, even after first-pass freeze.",
+    "Factual counts are reviewer claim classifications, not objective validated benchmark labels. Some central allegations remain interpretation-sensitive; exact14-to4 is not robustly reproduced.",
+    "General causal historical processes can earn satisfactory credit without a prescribed proper-name checklist. No essay automatically gains coherence for headings or loses it for repetition.",
+    "No training/retrieval writes, model calls, May2025 access, Git or remote mutation."
+  ]
+}

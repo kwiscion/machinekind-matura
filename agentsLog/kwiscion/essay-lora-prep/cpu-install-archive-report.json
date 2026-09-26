@@ -1,0 +1,8 @@
+{
+  "started_at": "2026-09-26T19:47:01.325299+00:00",
+  "deadline_utc": "2026-09-26T19:51:30Z",
+  "steps": [],
+  "status": "BLOCKED",
+  "error": "Command '['C:\\\\Users\\\\kwisc\\\\Documents\\\\my-projects\\\\matura\\\\agentsLog\\\\kwiscion\\\\essay-lora-prep\\\\evidence-private\\\\cpu-venv\\\\Scripts\\\\python.exe', '-m', 'pip', 'install', '--constraint', 'C:\\\\Users\\\\kwisc\\\\Documents\\\\my-projects\\\\matura\\\\agentsLog\\\\kwiscion\\\\essay-lora-prep\\\\evidence-private\\\\constraints.txt', 'https://codeload.github.com/huggingface/transformers/zip/96331a9f93b72697f160a958d2883d4b49a56739', 'https://codeload.github.com/huggingface/peft/zip/b8674c86183a5dee38d0c3ede392e189593025e5']' timed out after 268.0 seconds",
+  "finished_at": "2026-09-26T19:51:29.335020+00:00"
+}

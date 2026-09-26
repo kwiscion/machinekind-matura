@@ -1,0 +1,79 @@
+{
+  "candidate_id": "gemma4-unified-essay-lora-r8-pilot",
+  "status": "PREPARATION_ONLY_NOT_RUNTIME_QUALIFIED",
+  "base_repository": "google/gemma-4-12B-it",
+  "base_revision": "707f0a3b8a3c7ad586ed01e27eafbad8a27dd0f7",
+  "architecture": "Gemma4UnifiedForConditionalGeneration",
+  "config_sha256": "478c46e8d2c52d5c2d85bf67e3b3e8c90e7c9d91086cee27e3c267907e936bd9",
+  "transformers_git_revision": "96331a9f93b72697f160a958d2883d4b49a56739",
+  "peft_git_revision": "b8674c86183a5dee38d0c3ede392e189593025e5",
+  "llama_cpp_git_revision": "fcb3074f2bc06943a564d7f293f9e66d4bece02a",
+  "software_status": "source_support_confirmed; installation_and_runtime_not_tested",
+  "hardware": "single owner-assigned H100 80GB; no worker assigned by this preparation",
+  "dtype": "bfloat16",
+  "quantized_training": false,
+  "lora": {
+    "r": 8,
+    "lora_alpha": 16,
+    "lora_dropout": 0.05,
+    "target_modules": "^model\\.language_model\\.layers\\.\\d+\\.self_attn\\.(q_proj|v_proj)$",
+    "bias": "none",
+    "task_type": "CAUSAL_LM",
+    "modules_to_save": null
+  },
+  "max_sequence_length": 4096,
+  "truncation": "forbidden; reject and report oversized rows",
+  "packing": false,
+  "loss": "assistant_completion_and_turn_terminator_only",
+  "enable_thinking": false,
+  "promotion_comparisons": [
+    "matched unchanged-base versus candidate with the identical nonthinking essay prompt",
+    "candidate versus strongest current unchanged-base native-thinking 20k route"
+  ],
+  "candidate_thinking_on_status": "not trained or verified; requires separate declared comparison",
+  "micro_batch_size": 1,
+  "gradient_accumulation_steps": 8,
+  "gradient_checkpointing": true,
+  "use_cache": false,
+  "learning_rate": 0.0001,
+  "weight_decay": 0.0,
+  "epochs": 3,
+  "max_steps_rule": "3 frozen epochs, with upper bound 3*ceil(train_record_count/8) and hard cap120 optimizer steps; stop earlier at wall deadline",
+  "hard_wall_seconds": 3600,
+  "seed": 42,
+  "export_quantization": "Q4_K_M",
+  "mandatory_runtime_gates": [
+    "exact pinned base and template metadata; locally complete base snapshot",
+    "installed package/git revisions and torch CUDA BF16 verified",
+    "actual tokenizer prefix equality and no truncation on all cleared rows",
+    "text-only LoRA attachment, nonzero finite backward gradient, finite one-step loss and measured memory",
+    "unmodified base conversion plus matching projector and quantization succeeds",
+    "merge preserves state keys/shapes and non-text weights",
+    "entire submitted weight inventory fits aggregate 8,800,000,000-byte limit and loads offline",
+    "independent evaluation of deployed quantized artifact and unchanged-route controls",
+    "choose one deployment option and prove its route-specific runtime/regression requirements; no dual full copies"
+  ],
+  "aggregate_submission_weight_limit_bytes": 8800000000,
+  "weight_limit_scope": "All submitted models, adapters, shards and projectors together; no separate per-route allowance",
+  "known_registry_base_plus_projector_bytes": 7556497632,
+  "remaining_bytes_with_known_registry_pair": 1243502368,
+  "deployment_options": {
+    "shared_base_adapter": {
+      "status": "NOT_RUNTIME_PROVEN",
+      "requirements": [
+        "one base plus matching projector plus all adapter weights fit aggregate limit",
+        "exact architecture adapter conversion/loading and reversible route switching proven offline",
+        "adapter-disabled routes retain the baseline behavior under matched regression checks"
+      ]
+    },
+    "single_merged_model": {
+      "status": "EXPORT_AND_REGRESSION_NOT_PROVEN",
+      "requirements": [
+        "one merged quantized model plus matching projector serves all routes",
+        "no second full base model in submission",
+        "full nonessay and image-route regression check plus full end-to-end exam promotion"
+      ]
+    }
+  },
+  "dual_full_model_routing": "INELIGIBLE: do not ship unchanged base and a second full merged essay model"
+}

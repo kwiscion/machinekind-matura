@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "scope": "Jinja rendering only; actual tokenizer boundary check remains pending",
+  "jinja2_version": "3.1.6",
+  "template_sha256": "ae53464bf3be25802b3a5b37def7fd89667067d7577049b3b2d74c4d8de4c6d4",
+  "nonthinking_prefix": "<bos><|turn>user\nSYNTHETIC PROMPT<turn|>\n<|turn>model\n<|channel>thought\n<channel|>",
+  "ordinary_full_chat": "<bos><|turn>user\nSYNTHETIC PROMPT<turn|>\n<|turn>model\nSYNTHETIC ANSWER<turn|>\n",
+  "ordinary_full_chat_has_empty_thought": false,
+  "preparation_rule": "Exact nonthinking prefix + original answer + <turn|>; prefix labels masked; no extra BOS/EOS"
+}

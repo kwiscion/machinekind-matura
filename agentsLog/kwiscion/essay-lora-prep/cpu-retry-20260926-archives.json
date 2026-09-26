@@ -1,0 +1,16 @@
+[
+  {
+    "package": "peft",
+    "revision": "b8674c86183a5dee38d0c3ede392e189593025e5",
+    "sha256": "05a70e1ef6ac1633da4d2ca3b90db5df7cb5f24d9b9b123ce0763e9e83b42dd2",
+    "bytes": 12396774,
+    "archive_root_verified": true
+  },
+  {
+    "package": "transformers",
+    "revision": "96331a9f93b72697f160a958d2883d4b49a56739",
+    "sha256": "c97fdf3bfb260db12b4fecf1a7647f51ca0e2b52cc75a947ca1a3d6cc4f4ed8c",
+    "bytes": 28559616,
+    "archive_root_verified": true
+  }
+]

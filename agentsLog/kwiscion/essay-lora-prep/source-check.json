@@ -1,0 +1,19 @@
+{
+  "status": "PASS_STATIC_SOURCE_CHECK",
+  "architecture": "Gemma4UnifiedForConditionalGeneration",
+  "model_type": "gemma4_unified",
+  "layers": 48,
+  "sliding_layers": 40,
+  "full_layers": 8,
+  "unified_text_converter_registered": true,
+  "unified_projector_converter_registered": true,
+  "lora_module_count_expected": 88,
+  "lora_parameters_arithmetic": 5193728,
+  "bf16_adapter_tensor_bytes_arithmetic": 10387456,
+  "git_pins": {
+    "huggingface/transformers": "96331a9f93b72697f160a958d2883d4b49a56739",
+    "huggingface/peft": "b8674c86183a5dee38d0c3ede392e189593025e5",
+    "ggml-org/llama.cpp": "fcb3074f2bc06943a564d7f293f9e66d4bece02a"
+  },
+  "runtime_attach_backward_merge_export": "NOT_EXECUTED"
+}
