@@ -18,6 +18,8 @@ Deliver the strongest measured offline system for Sunday's exam. **48/60 (80%) r
 | --- | ---: | --- |
 | Laptop bare Gemma 4 12B Q4 | **35/60 [28,40]** | Best observed fallback; corrected source-v2 evidence is a labeled 39+1 composite |
 | RTX bare Gemma, source-v2, Ollama 0.34.4/context 32768 | **34/60 [25,39]** | Fresh 40/40 control in **146.6 seconds**; fast iteration is practical, formal quality equivalence is not established |
+| H100 bare source-v2, temperature omitted |31/60 [21,34]|40 complete in112.75s; disjoint Sol first-pass review, not promoted |
+| H100 temperature0.2 |24/60 [19,27]|38 complete,1 failed, essay unsent; no promotion or imputed essay |
 | Qwen 3.5 9B |25/60 [16,29]|36 complete, four truncated |
 | Blanket format / generic policy |35/60 [28,39] / 32/60 [22,35]|Neither promoted |
 | Full bounded RAG |27/60 [22,33]|Not promoted; essay degradation and irrelevant retrieval |
@@ -29,7 +31,7 @@ All scores are agent rubric reviews, not organizer grades. A qualifying result c
 
 | Owner | Worker / track | First concrete deliverable |
 | --- | --- | --- |
-| @kwiscion, Sol workers ([#81](https://github.com/kwiscion/machinekind-matura/issues/81)) | Existing **central H100**; common control, sampling and integration | Freeze source-v2/prompt/runtime provenance; run matched bare control and explicit temperature 0.2 arm; independent review before promotion. Audit organizer-versus-evaluation prompt parity on CPU in parallel. |
+| @kwiscion, Sol workers ([#81](https://github.com/kwiscion/machinekind-matura/issues/81)) | Existing **central H100**; common control, sampling and integration | Matched control/candidate terminal and reviewed; [results](agentsLog/kwiscion/2026-09-26-h100-matched-score.md) do not beat fallback. CPU launcher resilience [#100](https://github.com/kwiscion/machinekind-matura/issues/100) next; organizer prompt parity review remains separate. |
 | @semberecki ([#95](https://github.com/kwiscion/machinekind-matura/issues/95)) | Existing **RTX 5090 Laptop**; source grounding | Independent observation of each supplied source before comparison. Compare one-pass versus observation+answer on a small fixed panel, then a frozen full candidate if useful. Keep image resolution unchanged in the first arm. |
 | @Bukareszt ([#96](https://github.com/kwiscion/machinekind-matura/issues/96)) | CPU initially; **additional H100 offered, not provisioned**; selective retrieval | Portable-runtime PR #93 accepted; now query/date ablations, relevance gate allowing zero hits, external-fact/mixed routing. Preserve the existing licensed index and unchanged solver sources. |
 | @Pewciu6 ([#80](https://github.com/kwiscion/machinekind-matura/issues/80)) | CPU initially; **additional H100 offered, not provisioned**; essay specialist | Dedicated essay prompt and matched-cap plan/write pilot; prepare one bounded essay-only LoRA feasibility path with independent data. Root/other reviewers grade this track, not its author alone. Existing scoring work remains on #11. |
@@ -52,7 +54,7 @@ Second-wave options, selected by findings: minimal per-form output slots; statem
 
 ## Compute and deployment gates
 
-The existing H100 readiness result (retained locally) verifies text/image inference on Ollama 0.34.4/context 32768 and a locally backed-up evidence archive. The initial two-call readiness envelope is complete. **No full H100 exam batch or remote offline qualification has yet passed.** Each new run needs its own bounded declaration. Record the owner-supplied hourly rate and bounded estimate in the private launch record; billing is unverified and an idle instance still costs money. Additional-instance prices are unknown until supplied. No new purchases or resource provisioning by agents.
+The existing H100 readiness result (retained locally) verifies text/image inference on Ollama 0.34.4/context 32768 and a locally backed-up evidence archive. The initial two-call readiness envelope and the separate79-call paired attempt are terminal. **One full H100 control completed; the paired temperature attempt stopped incomplete. Both are locally backed up and provisionally graded. Remote offline qualification remains pending.** Each new run needs its own bounded declaration. Record the owner-supplied hourly rate and bounded estimate in the private launch record; billing is unverified and an idle instance still costs money. Additional-instance prices are unknown until supplied. No new purchases or resource provisioning by agents.
 
 Keep the existing Gemma model/projector hashes pinned: combined **7,556,497,632 bytes**. Root owns the central H100; Piotrek retains his RTX. Preserve local backups of remote outputs/configs/logs after every completed bounded run. Stop only a freshly identified owned process; never disrupt another worker.
 
