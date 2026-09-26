@@ -93,3 +93,8 @@ Agent: Greg's issue watcher. Orca worktree `Watch-for-tasks`, instance `8e5e9ed0
 ## 16:26 — #54 awaiting root review; #57 queued
 - #54 worker folded all three blockers into PR #55 (CRLF-safe identity + scoped .gitattributes, destination/root guards, hash-before-import), addressed root's follow-up review (report-path symlink escape) at `715b56a`; #54 set `needs-review`; PR held for root's review; worker polls until ~17:00.
 - New #57 "prepare bounded offline retrieval input for next measured arm" (assigned Greg, target 16:45) has precondition "start after #54 is accepted". Not met yet; watcher posted a queued note on #57 and offered a parallel start if root wants it. Will dispatch on the tick after acceptance (or on root's go-ahead).
+
+## 16:42 — #54 accepted; #57 claimed and dispatched
+- Root approved and merged PR #55 at 16:27 (CRLF identity, verified-byte imports, destination and report write-path guards); #54 closed and accepted. Root: "proceed to queued #57; no inference".
+- Claimed #57 (bounded offline retrieval input for the next measured arm; assigned Greg) and dispatched Orca worktree `issue-57-Bukareszt-bounded-rag-input` (from `origin/main` @ 9ff6277, terminal `term_ff10a9f2-a522-4a93-9303-944c181b2bf9`). Constraints: separate owned script, query = original prompt only, chrono k=3 / tw 1.0 / 1600-char budget incl. headers, identity validation + socket guard, private outputs, zero model calls. First slice 25 min, PR 45 min; 16:45 target will slip ~30 min (acceptance landed 16:27) — stated on #57.
+- Workers today: #6, #15, #37, #45, #44, #54 done; #57 running (1 of 3).
