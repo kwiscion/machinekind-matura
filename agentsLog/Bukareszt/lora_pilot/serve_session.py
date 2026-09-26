@@ -93,9 +93,10 @@ def main():
     log = (a.run / f'server-{a.artifact}.log').open('wb')
     env = {k: v for k, v in os.environ.items() if not k.startswith('LLAMA_ARG_')}
     proc = subprocess.Popen(cmd, stdout=log, stderr=subprocess.STDOUT, env=env)  # same process group, no setsid
-    ident = {'pid': proc.pid, 'start_ticks': start_ticks(proc.pid), 'exe': os.readlink(f'/proc/{proc.pid}/exe')}
-    report['server_identity'] = ident
+    ident = None
     try:
+        ident = {'pid': proc.pid, 'start_ticks': start_ticks(proc.pid), 'exe': os.readlink(f'/proc/{proc.pid}/exe')}
+        report['server_identity'] = ident
         if ident['exe'] != str(SERVER.resolve()):
             raise SystemExit('unexpected server executable')
         t0 = time.monotonic()
@@ -154,10 +155,11 @@ def main():
     finally:
         # Cleanup ONLY the server this session started (identity re-checked).
         try:
-            if proc.poll() is None and start_ticks(proc.pid) == ident['start_ticks'] and os.readlink(f'/proc/{proc.pid}/exe') == ident['exe']:
+            # ident is None only if TERM arrived right after Popen: proc is then our own just-started child.
+            if proc.poll() is None and (ident is None or (start_ticks(proc.pid) == ident['start_ticks'] and os.readlink(f'/proc/{proc.pid}/exe') == ident['exe'])):
                 proc.send_signal(signal.SIGTERM)
                 try:
-                    proc.wait(20)
+                    proc.wait(3)  # KILL escalation stays inside TO()'s 10 s --kill-after grace
                 except subprocess.TimeoutExpired:
                     proc.kill(); proc.wait(10)
         finally:
