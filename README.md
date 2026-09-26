@@ -2,6 +2,8 @@
 
 Current handoff: [morning status and active work](agentsLog/kwiscion/2026-09-26-morning-status.md). After the Windows restart, the owner extended lead work through **10:47 Europe/Warsaw on September 26**; this supersedes the original overnight operational cutoffs.
 
+For the installed HF CLI and project-specific account login, see [Hugging Face setup](docs/huggingface.md). Run `.\scripts\hf.ps1 auth login` from PowerShell, then confirm `kwiscion` with `auth whoami`.
+
 Overnight hackathon working assumption: **Polish history matura**. The lead must confirm the final subject before promotion; all records carry a `subject` field so other work can proceed. The final system may use local retrieval and tools, and each saved model's weights must fit within **8 GB**. Closed models and synthetic data are allowed during development; the final inference path must run offline.
 
 The handoff package is in [docs/overnight/PLAN.md](docs/overnight/PLAN.md). Start with [SETUP.md](docs/overnight/SETUP.md), then read [CONTRACTS.md](docs/overnight/CONTRACTS.md) and your assigned issue. Source and publication rules are in [SOURCE.md](SOURCE.md). GitHub issues are the overnight scheduling authority; live assignments are recorded in [ISSUE_LINKS.md](docs/overnight/ISSUE_LINKS.md); local issue bodies preserve the original briefs.
