@@ -1,5 +1,9 @@
 # Agent instructions
 
+## Binding organizer update — 26 September, 22:10 Europe/Warsaw
+
+ALL submitted models together must fit8GB+10%margin, per the owner's new organizer clarification. Operational cap:8,800,000,000bytes aggregate, conservatively including projectors/adapters. This supersedes every older per-model interpretation below. Pinned Gemma+projector uses7,556,497,632bytes. Final design uses one shared multimodal model; no Gemma+Qwen/Bielik or two full essay/base copies. Development may still use separate models. LoRA requires a proven small shared-base adapter path or one merged model that passes all-route regression. Read docs/SUBMISSION_WEIGHT_BUDGET.md and the compact WINNING_PLAN.md; detailed checkpoints moved to agentsLog. Continue the running single-Gemma full40 wave unchanged.
+
 ## Current control — 26 September, 22:05 Europe/Warsaw
 
 WINNING_PLAN.md and current issue claims govern. Independent essay review confirms a thinking benefit on six original DEV topics (52/90→62/90), with factual rewrite regressions; Paweł has claimed a new bounded plain-prose/exact-span-edit wave on #80. The second heterogeneous-observer panel ties4/6→4/6, so that bundle is parked. Root reclaims the sole full40 organizer-path native-thinking execution on #38; Łukasz is assigned independent second grading and must not launch a duplicate. Root24essay/repair rows pass integration review; Greg's90-row export and16evalinputs are available, with PR131's source corrections under final independent review. CPU LoRA compatibility and export remain unqualified; no history training has run. Final fallback35/60 and sealed May2025 remain unchanged. Older corpus counts and selected-panel promotion suggestions below are historical.
