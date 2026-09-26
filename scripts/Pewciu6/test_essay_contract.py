@@ -123,6 +123,9 @@ class SyntheticMalformedOutputs(unittest.TestCase):
                     self.assertEqual({o["op"] for o in check["ops"]}, exp["ops"])
                 if "wrapper" in exp:
                     self.assertIn(exp["wrapper"], check["parse"]["wrappers"])
+                if "advisory" in exp:
+                    self.assertTrue(any(a.startswith(exp["advisory"]) for a in check["validation"]["advisory"]))
+                    self.assertFalse(any(t.startswith("lexical") for t in check["triggers"]))
 
     def test_cleanup_only_removes_whole_wrappers(self):
         """Every cleaned paragraph is verbatim original text; no sentence is edited or invented."""
@@ -130,7 +133,8 @@ class SyntheticMalformedOutputs(unittest.TestCase):
             check = ec.contract_check(raw, self.task, cs.TOPIC)
             if not check["clean"]:
                 continue
-            body = norm(ec.parse_output(raw)["body"])
+            # v2: a heading marker may be stripped (0 words); the text itself stays verbatim
+            body = norm(re.sub(r"(?m)^[ \t]*#{1,6}[ \t]+|\*\*|__", "", ec.parse_output(raw)["body"]))
             for para in ec.paragraphs(check["clean"]):
                 self.assertIn(norm(para), body, name)
             removed = sum(ec.words(o["text"]) for o in check["ops"])
@@ -159,6 +163,70 @@ class SyntheticMalformedOutputs(unittest.TestCase):
         self.assertIn("wyłącznie o temacie nr 1", ec.repair_prompt(self.task, cs.TOPIC, "", multi, 1))
         aspect = ec.contract_check(cs.CASES["missing_aspect"], self.task, cs.TOPIC)
         self.assertIn("kulturalny", ec.repair_prompt(self.task, cs.TOPIC, aspect["clean"] or "", aspect, 1))
+
+
+class ContentPreservationV2(unittest.TestCase):
+    """Root review of PR119 (issue #80 comment 5848806894): two reproduced content-loss cases."""
+
+    def setUp(self):
+        self.task, _ = task_of()
+
+    def lead_body(self) -> str:
+        # the lead's shape: a ~400-word body with the sentence as a separate '#' paragraph
+        return "\n\n".join([cs.INTRO, cs.POL * 3, "# " + cs.KONST, cs.GOS * 3, cs.KUL * 3, cs.END])
+
+    def test_heading_formatted_sentence_is_kept(self):
+        body = self.lead_body()
+        self.assertGreaterEqual(ec.words(body), 380)
+        cleaned = ec.clean_body(body, 1)
+        self.assertTrue(cleaned["ok"], cleaned["error"])
+        self.assertIn(cs.KONST, cleaned["text"])
+        self.assertNotIn("# W 1791", cleaned["text"])
+        self.assertEqual(ec.words(cleaned["text"]), ec.words(body))  # nothing removed
+        self.assertEqual([o["op"] for o in cleaned["ops"]], ["heading_marker_stripped"])
+        self.assertIn(cs.KONST, ec.contract_check(cs.as_json(body), self.task, 1)["clean"])
+
+    def test_bold_sentence_is_kept_and_label_removed(self):
+        body = "\n\n".join([cs.INTRO, "**Aspekt polityczny:**", cs.POL * 3, "**" + cs.KONST + "**", cs.GOS * 3,
+                             cs.KUL * 3, cs.END])
+        cleaned = ec.clean_body(body, 1)
+        self.assertTrue(cleaned["ok"], cleaned["error"])
+        self.assertIn(cs.KONST, cleaned["text"])
+        self.assertNotIn("Aspekt polityczny:", cleaned["text"])
+
+    def test_fact_after_json_is_rejected(self):
+        raw = cs.as_json(cs.essay(3)) + "\n" + cs.UNIA
+        parsed = ec.parse_output(raw)
+        self.assertFalse(parsed["ok"])
+        self.assertEqual(parsed["error"], "ambiguous_text_outside_json")
+        self.assertEqual(parsed["outside"], cs.UNIA)
+        self.assertFalse(ec.parse_output(cs.UNIA + "\n" + cs.as_json(cs.essay(3)))["ok"])  # before, too
+
+    def test_recognized_wrappers_still_pass(self):
+        for wrap in ("Oczywiście! Oto wypracowanie w wymaganym formacie:", "Oto moja odpowiedź:", "Jasne.",
+                     "Liczba słów: 468", "Mam nadzieję, że to pomoże!", "```json"):
+            with self.subTest(wrapper=wrap):
+                self.assertTrue(ec.outside_is_wrapper(wrap))
+        for bad in (cs.UNIA, "Oto moja odpowiedź. Kazimierz założył Akademię.", "Panowanie było przełomowe",
+                    "Oto wypracowanie o roku 1370:"):
+            with self.subTest(bad=bad):
+                self.assertFalse(ec.outside_is_wrapper(bad))
+
+    def test_lexical_checks_are_advisory(self):
+        task = ec.parse_task(THREE_TOPICS)
+        # topic 3 requires a source; a body that never says "źródło" still passes the hard gate
+        val = ec.validate(cs.essay(3), task, 3)
+        self.assertTrue(val["ok"], val["hard"])
+        self.assertIn("lexical_source_marker_absent", val["advisory"])
+        val1 = ec.validate("\n\n".join([cs.INTRO, cs.GOS * 9, cs.END]), task, 1)
+        self.assertTrue(val1["ok"])
+        self.assertTrue(any(a.startswith("lexical_aspect_absent") for a in val1["advisory"]))
+        # the hard gate still enforces topic identity and minimum length
+        self.assertFalse(ec.validate(cs.INTRO, task, 1)["ok"])
+        self.assertFalse(ec.validate(cs.essay(3) + "\n\nTemat 2\n\nInny tekst.", task, 1)["ok"])
+
+    def test_revision_bumped(self):
+        self.assertEqual(ec.CONTRACT_REVISION, "essay-contract-v2")
 
 
 class RepairLoop(unittest.TestCase):
