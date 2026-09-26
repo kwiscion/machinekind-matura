@@ -8,14 +8,16 @@ The organizer allows **8 GB + 10% across all submitted model weights together**.
 
 | Active track | Owner | Task |
 |---|---|---|
-| Organizer integration, offline qualification, freeze | @kwiscion + Sol | [#3](https://github.com/kwiscion/machinekind-matura/issues/3) |
-| Argument planning versus thinking essays | @Pewciu6 | [#80](https://github.com/kwiscion/machinekind-matura/issues/80) |
+| Recovery harness and timed champion rehearsal | @kwiscion + Sol | [#3](https://github.com/kwiscion/machinekind-matura/issues/3) |
+| Structured prompts; one fast grading pass | Root Sol; @Pewciu6 grading standby | [#80](https://github.com/kwiscion/machinekind-matura/issues/80) |
 | Single-model essay LoRA pilot | @Bukareszt | [#117](https://github.com/kwiscion/machinekind-matura/issues/117) |
-| Source-grounded essay evaluation checklist | @ljaniec | [#143](https://github.com/kwiscion/machinekind-matura/issues/143) |
-| Standalone Qwen native-thinking challenger | Root Sol proxy; @semberecki standby | [#95](https://github.com/kwiscion/machinekind-matura/issues/95) |
+| Structured-reasoning comparison | @ljaniec | [#151](https://github.com/kwiscion/machinekind-matura/issues/151) |
+| Qwen preparation parked; standby | @semberecki | [#95](https://github.com/kwiscion/machinekind-matura/issues/95) |
 | Standby; Bielik proxy completed | @przemeknowak781 | [#97](https://github.com/kwiscion/machinekind-matura/issues/97) |
 
-For execution, read [AGENTS.md](AGENTS.md), [source/split rules](SOURCE.md), the current issue and [Sunday operator runbook](agentsLog/kwiscion/SUNDAY_OPERATOR_RUNBOOK.md). Final inference is offline; May 2025 remains sealed. No fine-tuned candidate is qualified yet. Assignment alone does not start a worker; the old overnight heartbeat remains paused.
+The [recovery runtime guide](agentsLog/kwiscion/final-package-prep/RECOVERY_RUNTIME.md) documents the improved harness: larger context/output budgets, up to three recovery retries, preserved candidates, no blank answers, and a 60/120-minute deadline with recovery reserve. Its full champion rehearsal is underway; CPU checks and confirmed 65,536-token runtime context do not establish whole-run quality yet. The [older Sunday runbook](agentsLog/kwiscion/SUNDAY_OPERATOR_RUNBOOK.md) preserves the fallback.
+
+For execution, read [AGENTS.md](AGENTS.md), [source/split rules](SOURCE.md) and the current issue. **Requesting final questions freezes all team projects:** commit code, prompts and settings first. Final inference is offline; May 2025 remains sealed. No fine-tuned candidate is qualified yet. Assignment alone does not start a worker; the old overnight heartbeat remains paused.
 
 The portable [inference runner](docs/inference.md) accepts JSONL records with `id`, `prompt` and optional `images`. A CPU dry run:
 

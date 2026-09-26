@@ -334,16 +334,29 @@ def process_identity(pid, helper):
             'namespace': os.readlink(f'/proc/{pid}/ns/net')}
 
 
+def inherited_parent_identity(pid, receipt):
+    """New user namespaces cannot dereference the host parent's exe/ns links.
+
+    Executable/namespace were verified by the locked host parent before unshare.
+    Bind that receipt to live PID/start/argv plus the inherited FD challenge below;
+    never interpret permission denial as an independently verified executable.
+    """
+    need(receipt.get('pid') == pid, 'Parent receipt PID')
+    live_ticks = Path(f'/proc/{pid}/stat').read_text().split(') ', 1)[1].split()[19]
+    live_argv = [x for x in Path(f'/proc/{pid}/cmdline').read_bytes().decode().split('\0') if x]
+    need(live_ticks == receipt.get('ticks') and live_argv == receipt.get('argv'), 'Parent identity changed')
+    return dict(receipt)
+
 def check_supervisor(root, m, parent, fd, host_net, helper):
     """Require the locked, guarded parent plus its inherited anonymous pipe."""
     need(type(fd) is int and fd >= 3 and os.getppid() == parent, 'Internal supervisor handshake required')
     proof = read(root / 'results/supervisor.json')
-    identity = process_identity(parent, helper)
+    identity = inherited_parent_identity(parent, proof['identity'])
     need(identity == proof['identity'] and identity['namespace'] == host_net and
          identity['executable'] == str(Path(sys.executable).resolve()) and
          identity['argv'][-4:] == [str(root / 'run_native_package.py'), str(root), '--execute', '--guarded'],
          'Genuine guarded supervisor identity required')
-    timer = process_identity(proof['guardian']['pid'], helper)
+    timer = inherited_parent_identity(proof['guardian']['pid'], proof['guardian'])
     need(timer == proof['guardian'] and Path(timer['executable']).name == 'timeout' and
          timer['argv'][1:3] == ['--signal=TERM', '--kill-after=5s'], 'Live OS guardian ancestry')
     # Check actual ancestry, not only two separately live processes.
