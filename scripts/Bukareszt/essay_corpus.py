@@ -361,6 +361,27 @@ def cmd_check(args):
     return 0
 
 
+def cmd_evalcards(args):
+    """Verbatim/cluster check for eval fact cards (grading reference only, never training)."""
+    ev = {e["id"]: e for e in load_jsonl(CORPUS / "eval16_topics.jsonl")}
+    cards = load_jsonl(CORPUS / "eval16_factcards.jsonl")
+    errs, per = [], defaultdict(int)
+    for c in cards:
+        e = ev.get(c.get("eval_id"))
+        if e is None or c["cluster_id"] != e["cluster_id"] or c["source_id"] not in e["source_ids"]:
+            errs.append(f'{c["fact_id"]}: eval id/cluster/source mismatch')
+            continue
+        t = source_text(c["source_id"])
+        if t is None or norm(c["quote"]) not in t:
+            errs.append(f'{c["fact_id"]}: quote not verbatim')
+        per[c["eval_id"]] += 1
+    thin = sorted(i for i in ev if per[i] < 5)
+    rep = {"cards": len(cards), "per_eval": dict(sorted(per.items())), "errors": errs, "thin_items": thin,
+           "sha256": sha256_file(CORPUS / "eval16_factcards.jsonl")}
+    print(json.dumps(rep, ensure_ascii=False, indent=1))
+    return 1 if errs or thin else 0
+
+
 # ---------------------------------------------------------------- repair pairs
 
 WRAPPERS = [
@@ -492,6 +513,7 @@ def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = ap.add_subparsers(dest="cmd", required=True)
     sub.add_parser("groups")
+    sub.add_parser("evalcards")
     c = sub.add_parser("check")
     c.add_argument("--essays", required=True)
     c.add_argument("--factcards", required=True)
@@ -507,7 +529,7 @@ def main(argv=None):
     e.add_argument("--repairs")
     e.add_argument("--out-dir", required=True)
     a = ap.parse_args(argv)
-    return {"groups": cmd_groups, "check": cmd_check, "repairs": cmd_repairs, "export": cmd_export}[a.cmd](a)
+    return {"groups": cmd_groups, "evalcards": cmd_evalcards, "check": cmd_check, "repairs": cmd_repairs, "export": cmd_export}[a.cmd](a)
 
 
 if __name__ == "__main__":

@@ -7,7 +7,8 @@
     "eval_bukareszt_16": 16,
     "reserved_root_seed_train": 4,
     "train_bukareszt_batch1": 8,
-    "train_bukareszt_planned": 17
+    "train_bukareszt_planned": 9,
+    "train_bukareszt_batch2": 8
   },
   "dev_pewciu6_clusters": [
     "C-1905",
@@ -121,6 +122,6 @@
     "C-teutonic: #4 strict training records overlap Paweł #80 DEV fixtures",
     "C-ww1-independence: eval_bukareszt_16 shares a cluster with #4 legacy DRAFT records (not export-eligible; keep excluded)"
   ],
-  "group_map_sha256": "49e9d506a0a77b8a092ffb631c87e3f1a439ce310cc5c17911485ea273270fc1",
-  "clusters_sha256": "d3f273b768884b63fb254a02fb7b20db00c4df334be5d38450b8a44276a66c0b"
+  "group_map_sha256": "d0ade7bfa6bd4c155c5e957f9fa53becfcc9c24d549e95cf9f2e1929fce1fca3",
+  "clusters_sha256": "fc86eee6f4238826957d05aeeb3bd325f985f1f913a4e830816ce13a56c968bd"
 }

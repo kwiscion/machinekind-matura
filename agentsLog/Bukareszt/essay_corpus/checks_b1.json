@@ -1,0 +1,68 @@
+{
+  "essays": "agentsLog/Bukareszt/essay_corpus/drafts/b1_essays.jsonl",
+  "essays_sha256": "6c82e09a5ad02ab42c522f0c47984b6bd74144b3b3e08a04221e50c336189e43",
+  "factcards": "agentsLog/Bukareszt/essay_corpus/drafts/b1_factcards.jsonl",
+  "factcards_sha256": "419ddc7ee1c4ea0e93290a12ac138158033753406148a31a67a5fea11940ff52",
+  "factcards_total": 128,
+  "factcards_failing": {},
+  "results": [
+    {
+      "id": "bk117-b1-piast",
+      "cluster_id": "C-piast-origins",
+      "words": 421,
+      "pass": true,
+      "errors": []
+    },
+    {
+      "id": "bk117-b1-charlemagne",
+      "cluster_id": "C-charlemagne",
+      "words": 434,
+      "pass": true,
+      "errors": []
+    },
+    {
+      "id": "bk117-b1-industrial",
+      "cluster_id": "C-industrial",
+      "words": 436,
+      "pass": true,
+      "errors": []
+    },
+    {
+      "id": "bk117-b1-thirty",
+      "cluster_id": "C-thirty-years",
+      "words": 428,
+      "pass": true,
+      "errors": []
+    },
+    {
+      "id": "bk117-b1-vienna",
+      "cluster_id": "C-vienna",
+      "words": 418,
+      "pass": true,
+      "errors": []
+    },
+    {
+      "id": "bk117-b1-versailles",
+      "cluster_id": "C-versailles",
+      "words": 429,
+      "pass": true,
+      "errors": []
+    },
+    {
+      "id": "bk117-b1-communist",
+      "cluster_id": "C-communist-takeover",
+      "words": 440,
+      "pass": true,
+      "errors": []
+    },
+    {
+      "id": "bk117-b1-1970",
+      "cluster_id": "C-1970",
+      "words": 426,
+      "pass": true,
+      "errors": []
+    }
+  ],
+  "passed": 8,
+  "total": 8
+}
