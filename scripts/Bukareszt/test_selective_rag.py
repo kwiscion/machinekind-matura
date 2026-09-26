@@ -112,6 +112,10 @@ class RouterTests(unittest.TestCase):
             with self.subTest(expected=expected, prompt=prompt[-50:]):
                 self.assertEqual(S.route(prompt)["route"], expected)
 
+    def test_thesis_argument_short_task_is_not_essay(self):
+        r = S.route("Tekst źródłowy\nOrmel zbudował most.\nPodaj jeden argument potwierdzający tezę autora.")
+        self.assertNotEqual(r["route"], "essay")
+
     def test_router_ignores_answer_side_metadata(self):
         # the router takes only the prompt string; evaluator task_type / keys cannot reach it
         self.assertEqual(S.route.__code__.co_argcount, 1)

@@ -102,7 +102,9 @@ ESSAY_RE = re.compile(
     r"wypracowani|rozprawk|\besej|wypowiedź (?:argumentacyjn|pisemn)|dłuższ\w* wypowied|"
     r"(?:co najmniej|minimum|min\.|nie mniej niż|około)\s*\d+\s*słów|\d+\s*słów|"
     r"\(0\s*[–-]\s*1[0-9]\)|maks\.\s*1[0-9]\s*pkt", re.I)
-LONG_FORM_RE = re.compile(r"\btez[aęy]\b|argument|zakończeni|wstęp\w*\b", re.I)  # >= 2 distinct cues = essay
+# thesis/argument alone is a common short decision+justification pattern; long form also needs a composition cue
+LONG_FORM_RE = re.compile(r"\btez[aęy]\b|argument|zakończeni|wstęp\w*\b", re.I)
+COMPOSITION_RE = re.compile(r"zakończeni|wstęp", re.I)
 SOURCE_ONLY_RE = re.compile(
     r"na podstawie (?:tekstu|tekstów|źródła|źródeł|ilustracji|mapy|tabeli|wykresu|fotografii|plakatu|obu|materiału|"
     r"przytoczon|zamieszczon|podan)", re.I)
@@ -251,7 +253,7 @@ def route(prompt: str) -> dict:
     long_form = {m.group(0).lower()[:4] for m in LONG_FORM_RE.finditer(prompt)}
     material = bool(MATERIAL_RE.search(text)) or any(is_bibliography(line) for line in text.split("\n"))
     signals = {"material": material, "commands": len(commands),
-               "essay": bool(ESSAY_RE.search(prompt)) or len(long_form) >= 2,
+               "essay": bool(ESSAY_RE.search(prompt)) or (len(long_form) >= 2 and bool(COMPOSITION_RE.search(prompt))),
                "source_only": bool(SOURCE_ONLY_RE.search(command)) and not OWN_KNOWLEDGE_RE.search(command),
                "source_cue": bool(SOURCE_CUE_RE.search(command)), "external_cue": bool(EXTERNAL_CUE_RE.search(command))}
     if signals["essay"]:
