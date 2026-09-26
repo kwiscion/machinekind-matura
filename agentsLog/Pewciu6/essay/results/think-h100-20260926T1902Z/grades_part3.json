@@ -1,0 +1,597 @@
+[
+ {
+  "code": "E03",
+  "topic_elements": [
+   "ustrojowy",
+   "wewnątrzpolityczny",
+   "międzynarodowy"
+  ],
+  "elements": [
+   {
+    "element": "ustrojowy",
+    "level": "superficial",
+    "note": "Only generic liberum veto / złota wolność; no Sejm Niemy 1717, no zerwane sejmy, no reform attempts (Konarski, Rada Nieustająca, Konstytucja 3 maja)."
+   },
+   {
+    "element": "wewnątrzpolityczny",
+    "level": "superficial",
+    "note": "Generic magnateria/klientelizm; 'konfederacja' unnamed; no Czartoryscy/Familia, Radom, Bar, Targowica."
+   },
+   {
+    "element": "międzynarodowy",
+    "level": "superficial",
+    "note": "Names Russia/Prussia/Austria and partition dates only; no Repnin, prawa kardynalne, 1720 alliance, Katarzyna II/Fryderyk II."
+   }
+  ],
+  "functional_knowledge": "none",
+  "claims": [
+   {
+    "claim": "Liberum veto originally to protect minority, later blocked reforms",
+    "verdict": "correct",
+    "note": "Generic but acceptable."
+   },
+   {
+    "claim": "Privileges built the state's power in XVI-XVII c.",
+    "verdict": "correct",
+    "note": "Interpretive, acceptable."
+   },
+   {
+    "claim": "Magnates built clientelism over szlachta",
+    "verdict": "correct",
+    "note": "Generic."
+   },
+   {
+    "claim": "Conflicts between factions/candidates ended in civil wars",
+    "verdict": "correct",
+    "note": "E.g. 1733-1735 war of Polish succession, not named."
+   },
+   {
+    "claim": "Neighbours supported confederations and interfered in royal elections",
+    "verdict": "correct",
+    "note": "Generic."
+   },
+   {
+    "claim": "Partitions 1772, 1793, 1795",
+    "verdict": "correct",
+    "note": ""
+   },
+   {
+    "claim": "Russia, Prussia, Austria as absolutist powers",
+    "verdict": "correct",
+    "note": ""
+   }
+  ],
+  "A_before_deduction": 3,
+  "factual_errors": [],
+  "A_deduction": 0,
+  "A": 3,
+  "B": 3,
+  "total": 6,
+  "format_score": 1,
+  "format_issues": [
+   "Leading 'Temat nr 1' line before the essay (topic-number label, minor wrapper)",
+   "Typo 'Symbollem'"
+  ],
+  "comment": "Coherent but entirely generic essay with almost no concrete facts beyond partition dates; all three aspects superficial."
+ },
+ {
+  "code": "E06",
+  "topic_elements": [
+   "terytorialny",
+   "polityczny",
+   "gospodarczy"
+  ],
+  "elements": [
+   {
+    "element": "terytorialny",
+    "level": "superficial",
+    "note": "Grunwald 1410 and II pokój toruński 1466 named, but gains reduced to 'Warmia i dobra pruskie'; Pomorze Gdańskie, ziemia chełmińska/michałowska, Malbork, Elbląg, hołd lenny omitted; no 1411/1422/1435 treaties."
+   },
+   {
+    "element": "polityczny",
+    "level": "superficial",
+    "note": "Generic prestige/arbiter claims; no Związek Pruski, akt inkorporacji 1454, lenno zakonu, Kazimierz Jagiellończyk."
+   },
+   {
+    "element": "gospodarczy",
+    "level": "superficial",
+    "note": "Generic grain/timber export and Baltic ports; Gdańsk and Wisła not named."
+   }
+  ],
+  "functional_knowledge": "none",
+  "claims": [
+   {
+    "claim": "Battle of Grunwald 1410 broke Order's military power",
+    "verdict": "correct",
+    "note": ""
+   },
+   {
+    "claim": "Order lost Żmudź",
+    "verdict": "correct",
+    "note": "In I pokój toruński 1411 (for lifetimes) and definitively at Melno 1422 - not dated here."
+   },
+   {
+    "claim": "Loss of Żmudź caused a temporary division of Order's lands into Prussian and Livonian states",
+    "verdict": "incorrect",
+    "note": "The Livonian branch was a separate entity long before; Żmudź separated them geographically, and there was nothing 'temporary' created."
+   },
+   {
+    "claim": "II pokój toruński 1466 ended Thirteen Years' War",
+    "verdict": "correct",
+    "note": ""
+   },
+   {
+    "claim": "Poland gained Warmia and 'many Prussian estates' in 1466",
+    "verdict": "correct",
+    "note": "Incomplete: main gain was Pomorze Gdańskie, ziemia chełmińska and michałowska, Malbork, Elbląg (Prusy Królewskie)."
+   },
+   {
+    "claim": "Access to Baltic ports broke Order's trade monopoly, enabling grain/timber export",
+    "verdict": "correct",
+    "note": "Generic, correct in substance (Gdańsk)."
+   }
+  ],
+  "A_before_deduction": 3,
+  "factual_errors": [
+   {
+    "claim": "Loss of Żmudź produced a 'temporary division' of the Order's state into Prussian and Livonian parts",
+    "correction": "The Livonian Order was already a distinct branch; Żmudź's loss (1411/1422) only kept them geographically separated."
+   }
+  ],
+  "A_deduction": 1,
+  "A": 2,
+  "B": 3,
+  "total": 5,
+  "format_score": 1,
+  "format_issues": [
+   "Leading 'Temat nr 1' line before the essay (topic-number label, minor wrapper)"
+  ],
+  "comment": "Fluent, well-structured but formulaic; omits the core territorial outcome (Pomorze Gdańskie/Prusy Królewskie) and gives only generic political and economic points."
+ },
+ {
+  "code": "E09",
+  "topic_elements": [
+   "terytorialny",
+   "polityczny",
+   "gospodarczy"
+  ],
+  "elements": [
+   {
+    "element": "terytorialny",
+    "level": "superficial",
+    "note": "Territorial outcome of 1466 misstated (Żmudź, Mazury); Pomorze Gdańskie only in conclusion."
+   },
+   {
+    "element": "polityczny",
+    "level": "superficial",
+    "note": "Mentions 1422 and 1431-1435 wars, but with wrong name and confused treaty reference; no Związek Pruski, hołd lenny."
+   },
+   {
+    "element": "gospodarczy",
+    "level": "superficial",
+    "note": "Generic grain/timber trade and ports; no Gdańsk, Wisła."
+   }
+  ],
+  "functional_knowledge": "none",
+  "claims": [
+   {
+    "claim": "Grunwald 1410",
+    "verdict": "correct",
+    "note": ""
+   },
+   {
+    "claim": "Thirteen Years' War ended by pokój toruński 1466",
+    "verdict": "correct",
+    "note": ""
+   },
+   {
+    "claim": "By 1466 treaty Poland gained Żmudź",
+    "verdict": "incorrect",
+    "note": "Żmudź went to Lithuania in 1411 (I Toruń) and definitively 1422 (Melno)."
+   },
+   {
+    "claim": "By 1466 treaty Poland gained fragments of Warmia and Mazury",
+    "verdict": "incorrect",
+    "note": "Poland gained all Warmia (bishopric) plus Pomorze Gdańskie, ziemia chełmińska and michałowska; Mazury stayed with the Order."
+   },
+   {
+    "claim": "Loss of Żmudź divided the Order into Prussian (Wisła, Pregoła) and Livonian (Dźwina, Narwa) parts",
+    "verdict": "correct",
+    "note": "Geographic separation acceptable; but chronologically attached here to 1466."
+   },
+   {
+    "claim": "Wojna golubska 1422",
+    "verdict": "correct",
+    "note": ""
+   },
+   {
+    "claim": "'Wojna nieszawska' 1431-1435",
+    "verdict": "incorrect",
+    "note": "The 1431-1435 war is not called 'nieszawska' (Nieszawa = statuty 1454); ended with pokój brzeski 1435."
+   },
+   {
+    "claim": "These wars stemmed from differing interpretation of the pokój toruński",
+    "verdict": "incorrect",
+    "note": "Only the first Toruń peace (1411) could be meant; in context (referring to 1466) it is chronologically wrong."
+   },
+   {
+    "claim": "Capture of fortresses Stargard and Kiszew",
+    "verdict": "unverifiable-or-invented",
+    "note": "Not recognisable key events; key episodes were Chojnice 1454, purchase of Malbork 1457, Świecino 1462."
+   },
+   {
+    "claim": "Pokój toruński created an autonomous 'państwo Zakonu Pruskiego'",
+    "verdict": "incorrect",
+    "note": "The Order's state was not created in 1466; it became a Polish fief (grand master's hołd lenny)."
+   },
+   {
+    "claim": "Trade in grain and timber via Baltic",
+    "verdict": "correct",
+    "note": "Generic."
+   }
+  ],
+  "A_before_deduction": 3,
+  "factual_errors": [
+   {
+    "claim": "1466: Poland gained Żmudź",
+    "correction": "Żmudź went to Lithuania in 1411/1422."
+   },
+   {
+    "claim": "1466: Poland gained fragments of Warmia and Mazury",
+    "correction": "All Warmia plus Pomorze Gdańskie, ziemia chełmińska and michałowska; Mazury remained with the Order."
+   },
+   {
+    "claim": "'Wojna nieszawska (1431-1435)'",
+    "correction": "Polish-Teutonic war 1431-1435, ended by pokój brzeski 1435."
+   },
+   {
+    "claim": "1466 created an autonomous state of the Prussian Order",
+    "correction": "The Order's state existed; it became a vassal (lenno) of Poland."
+   }
+  ],
+  "A_deduction": 2,
+  "A": 1,
+  "B": 2,
+  "total": 3,
+  "format_score": 1,
+  "format_issues": [
+   "Leading 'Temat nr 1' line before the essay (topic-number label, minor wrapper)"
+  ],
+  "comment": "Attempts more detail than peers but the added facts are largely wrong (Żmudź and Mazury in 1466, 'wojna nieszawska'); body and conclusion contradict each other on territorial gains."
+ },
+ {
+  "code": "E12",
+  "topic_elements": [
+   "terytorialny",
+   "polityczny",
+   "gospodarczy"
+  ],
+  "elements": [
+   {
+    "element": "terytorialny",
+    "level": "superficial",
+    "note": "Grunwald 1410 and 1466 named; gains reduced to Warmia and 'dobra prusyńskie'; Pomorze Gdańskie omitted."
+   },
+   {
+    "element": "polityczny",
+    "level": "superficial",
+    "note": "Generic prestige/arbiter/Jagiellonian consolidation; no specifics."
+   },
+   {
+    "element": "gospodarczy",
+    "level": "superficial",
+    "note": "Generic grain/timber export, ports, merchant class; no Gdańsk."
+   }
+  ],
+  "functional_knowledge": "none",
+  "claims": [
+   {
+    "claim": "Grunwald 1410 broke Order's military power",
+    "verdict": "correct",
+    "note": ""
+   },
+   {
+    "claim": "Traktat toruński 1466 defined new borders",
+    "verdict": "correct",
+    "note": ""
+   },
+   {
+    "claim": "Poland gained Warmia and significant part of Prussian lands",
+    "verdict": "correct",
+    "note": "Incomplete; Pomorze Gdańskie/Prusy Królewskie omitted; 'prusyńskich' is odd wording."
+   },
+   {
+    "claim": "Victory eliminated one of the most dangerous military states",
+    "verdict": "correct",
+    "note": "Overgeneralisation: Order survived as a vassal until 1525."
+   },
+   {
+    "claim": "Breaking Order's trade monopoly opened grain/timber export",
+    "verdict": "correct",
+    "note": "Generic."
+   }
+  ],
+  "A_before_deduction": 3,
+  "factual_errors": [],
+  "A_deduction": 0,
+  "A": 3,
+  "B": 3,
+  "total": 6,
+  "format_score": 1,
+  "format_issues": [
+   "Leading 'Temat nr 1' line before the essay (topic-number label, minor wrapper)"
+  ],
+  "comment": "Well-organised but padded and repetitive; all three aspects argued at a generic level without concrete facts beyond two dates."
+ },
+ {
+  "code": "E15",
+  "topic_elements": [
+   "polityczny",
+   "kulturowy",
+   "społeczny"
+  ],
+  "elements": [
+   {
+    "element": "polityczny",
+    "level": "superficial",
+    "note": "Vague 'ruch liberalny i narodowy', 'organizacje w kręgach inteligencji'; no Liga Narodowa, PPS, SDKPiL, ruch ludowy, autonomia galicyjska, Koło Polskie."
+   },
+   {
+    "element": "kulturowy",
+    "level": "superficial",
+    "note": "Only Sienkiewicz (misdated) and generic literature/press; no Matejko, Prus, Orzeszkowa, Akademia Umiejętności."
+   },
+   {
+    "element": "społeczny",
+    "level": "superficial",
+    "note": "Generic associations, church, secret schools; no praca organiczna, Września 1901, Drzymała, Towarzystwo Tajnego Nauczania, Uniwersytet Latający."
+   }
+  ],
+  "functional_knowledge": "none",
+  "claims": [
+   {
+    "claim": "Powstanie styczniowe 1863, fall 1864",
+    "verdict": "correct",
+    "note": ""
+   },
+   {
+    "claim": "Shift from armed conspiracy to political activity",
+    "verdict": "correct",
+    "note": "Generic (pozytywizm not named)."
+   },
+   {
+    "claim": "Bans on publishing books in Polish",
+    "verdict": "incorrect",
+    "note": "Overstated: censorship and school russification existed, but there was no general ban on Polish books (the press ban concerned Lithuanian in Latin script)."
+   },
+   {
+    "claim": "Henryk Sienkiewicz created works in a later period",
+    "verdict": "incorrect",
+    "note": "Trylogia 1884-1888, Quo vadis 1896, Krzyżacy 1900 fall within 1864-1905."
+   },
+   {
+    "claim": "Church was an asylum for Polishness especially in Russian and Austrian partitions",
+    "verdict": "incorrect",
+    "note": "In autonomous Galicia there was no such need; the Church's defensive role is classic for Prussian (Kulturkampf) and Russian partitions."
+   },
+   {
+    "claim": "'Towarzystwo Czytelników'",
+    "verdict": "unverifiable-or-invented",
+    "note": "No such known organisation; likely Towarzystwo Czytelni Ludowych (1880)."
+   },
+   {
+    "claim": "Secret schools",
+    "verdict": "correct",
+    "note": "Generic."
+   },
+   {
+    "claim": "Independence regained 1918",
+    "verdict": "correct",
+    "note": ""
+   }
+  ],
+  "A_before_deduction": 3,
+  "factual_errors": [
+   {
+    "claim": "Sienkiewicz wrote in a later period",
+    "correction": "His main works (1884-1900) fall within the period."
+   },
+   {
+    "claim": "Church asylum especially in Austrian partition",
+    "correction": "Galicia had autonomy; the Church's role was key in Prussian and Russian partitions."
+   },
+   {
+    "claim": "'Towarzystwo Czytelników'",
+    "correction": "Towarzystwo Czytelni Ludowych (1880, Poznań)."
+   }
+  ],
+  "A_deduction": 2,
+  "A": 1,
+  "B": 2,
+  "total": 3,
+  "format_score": 1,
+  "format_issues": [
+   "Leading 'Temat nr 1' line before the essay (topic-number label, minor wrapper)"
+  ],
+  "comment": "Thesis clear but argumentation is almost fact-free and contains several errors; the political paragraph is muddled ('opór wobec unifikacji państw zaborczych')."
+ },
+ {
+  "code": "E18",
+  "topic_elements": [
+   "polityczny",
+   "gospodarczy",
+   "społeczny"
+  ],
+  "elements": [
+   {
+    "element": "polityczny",
+    "level": "superficial",
+    "note": "No Jan Kazimierz, Karol X Gustaw, Ujście, Kiejdany, Jasna Góra, śluby lwowskie, Welawa-Bydgoszcz, Oliwa 1660; generic claims only."
+   },
+   {
+    "element": "gospodarczy",
+    "level": "superficial",
+    "note": "Generic destruction; anachronistic 'fabryki', 'przedsiębiorstwa'."
+   },
+   {
+    "element": "społeczny",
+    "level": "superficial",
+    "note": "Depopulation, Mazowsze/Wielkopolska, looting of churches; no figures or examples."
+   }
+  ],
+  "functional_knowledge": "none",
+  "claims": [
+   {
+    "claim": "Potop 1655-1660",
+    "verdict": "correct",
+    "note": ""
+   },
+   {
+    "claim": "Sweden, Russia and Brandenburg exploited the weakness",
+    "verdict": "correct",
+    "note": ""
+   },
+   {
+    "claim": "After the war, despite regaining independence",
+    "verdict": "incorrect",
+    "note": "The Commonwealth never lost its statehood/independence during the Deluge."
+   },
+   {
+    "claim": "Accelerated degeneration of liberum veto",
+    "verdict": "correct",
+    "note": "Acceptable (first veto 1652, abuse grew after 1660)."
+   },
+   {
+    "claim": "Loss of some territories to neighbours",
+    "verdict": "correct",
+    "note": "Oliwa 1660 (Inflanty), Welawa 1657 (suzerainty over Prusy Książęce); vague."
+   },
+   {
+    "claim": "Swedes used 'total war' destroying factories",
+    "verdict": "incorrect",
+    "note": "Anachronism: no factories/enterprises in 17th-c. Poland (manufaktury at most); 'wojna totalna' is an anachronistic term."
+   },
+   {
+    "claim": "Looting of cultural goods",
+    "verdict": "correct",
+    "note": ""
+   },
+   {
+    "claim": "Commonwealth lost status of one of Europe's main trade centres",
+    "verdict": "unverifiable-or-invented",
+    "note": "Overstatement."
+   },
+   {
+    "claim": "Depopulation esp. Mazowsze and Wielkopolska",
+    "verdict": "correct",
+    "note": ""
+   }
+  ],
+  "A_before_deduction": 3,
+  "factual_errors": [
+   {
+    "claim": "'mimo odzyskania niepodległości'",
+    "correction": "The Commonwealth did not lose independence; it expelled the occupiers."
+   },
+   {
+    "claim": "Destruction of 'fabryki', collapse of 'przedsiębiorstw'",
+    "correction": "Anachronism; 17th-century economy had workshops/manufactories, not factories."
+   }
+  ],
+  "A_deduction": 1,
+  "A": 2,
+  "B": 3,
+  "total": 5,
+  "format_score": 1,
+  "format_issues": [
+   "Leading 'Temat nr 1' line before the essay (topic-number label, minor wrapper)",
+   "Literal '\\n' artifact before conclusion; typos ('załamanania')"
+  ],
+  "comment": "Structured and on topic but with no names, battles or treaties at all; generic and partly anachronistic."
+ },
+ {
+  "code": "E21",
+  "topic_elements": [
+   "ustrojowy",
+   "wewnątrzpolityczny",
+   "międzynarodowy"
+  ],
+  "elements": [
+   {
+    "element": "ustrojowy",
+    "level": "superficial",
+    "note": "Liberum veto, lack of taxes and army explained, but no concrete facts (Sejm Niemy 1717, zerwane sejmy, prawa kardynalne, reforms)."
+   },
+   {
+    "element": "wewnątrzpolityczny",
+    "level": "satisfying",
+    "note": "Targowica 1792 with Branicki, Rzewuski, Russian troops, undoing Konstytucja 3 maja."
+   },
+   {
+    "element": "międzynarodowy",
+    "level": "satisfying",
+    "note": "Katarzyna II, Fryderyk II, three partitions with dates; no 1720/1764 treaties or Repnin."
+   }
+  ],
+  "functional_knowledge": "full-2",
+  "claims": [
+   {
+    "claim": "Liberum veto blocked fiscal/military reforms",
+    "verdict": "correct",
+    "note": ""
+   },
+   {
+    "claim": "Lack of standing modern army and permanent taxes",
+    "verdict": "correct",
+    "note": ""
+   },
+   {
+    "claim": "Konfederacja targowicka 1792",
+    "verdict": "correct",
+    "note": ""
+   },
+   {
+    "claim": "Organised by Franciszek Ksawery Branicki and Seweryn Rzewuski",
+    "verdict": "correct",
+    "note": "Also Szczęsny Potocki."
+   },
+   {
+    "claim": "Supported by Catherine II's troops",
+    "verdict": "correct",
+    "note": ""
+   },
+   {
+    "claim": "Targowica dismantled Konstytucja 3 maja reforms incl. military",
+    "verdict": "correct",
+    "note": ""
+   },
+   {
+    "claim": "Targowica broke relations with France",
+    "verdict": "unverifiable-or-invented",
+    "note": "Not a recognised key act of the confederation."
+   },
+   {
+    "claim": "Prussia under Frederick II and Russia under Catherine II; partitions 1772, 1793, 1795",
+    "verdict": "correct",
+    "note": "Frederick II died 1786; 1793/1795 were under Frederick William II - imprecise, not counted."
+   },
+   {
+    "claim": "Final liquidation 1795",
+    "verdict": "correct",
+    "note": ""
+   }
+  ],
+  "A_before_deduction": 7,
+  "factual_errors": [],
+  "A_deduction": 0,
+  "A": 7,
+  "B": 2,
+  "total": 9,
+  "format_score": 1,
+  "format_issues": [
+   "Leading 'Temat nr 1' line before the essay (topic-number label, minor wrapper)",
+   "Garbled phrase 'kapitulacja przedmowa mocarstw' in conclusion"
+  ],
+  "comment": "Strongest of the set: concrete Targowica and partition material, but the systemic aspect remains fact-free and the thesis is somewhat circular; garbled phrase in the conclusion."
+ }
+]
