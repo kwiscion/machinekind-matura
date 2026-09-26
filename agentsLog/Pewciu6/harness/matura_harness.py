@@ -881,8 +881,13 @@ def blind_merge(args):
             rv = r.get("review") or {}
             if rv.get("points") is None:
                 continue
-            by_blind[r["blind_id"]].append((rv.get("reviewer") or os.path.basename(p),
-                                            float(rv["points"]), float(r.get("max_points", 1))))
+            reviewer = rv.get("reviewer") or os.path.basename(p)
+            reviews = by_blind[r["blind_id"]]
+            if any(previous[0] == reviewer for previous in reviews):
+                raise ValueError("duplicate reviewer %s for %s" % (reviewer, r["blind_id"]))
+            if len(reviews) >= 3:
+                raise ValueError("at most three distinct reviewers are supported for %s" % r["blind_id"])
+            reviews.append((reviewer, float(rv["points"]), float(r.get("max_points", 1))))
     per_model = defaultdict(lambda: {"items": 0, "points": 0.0, "max_points": 0.0})
     diffs, exact, multi = [], 0, 0
     merged = []
@@ -892,25 +897,29 @@ def blind_merge(args):
             continue
         pts = [x[1] for x in revs]
         mean = sum(pts) / len(pts)
+        adjudicated = sorted(pts)[1] if len(pts) == 3 else mean
         if len(pts) > 1:
             multi += 1
             diffs.append(max(pts) - min(pts))
             exact += int(max(pts) == min(pts))
         key = "%s@%s" % (m.get("model"), m.get("model_revision"))
         per_model[key]["items"] += 1
-        per_model[key]["points"] += mean
+        per_model[key]["points"] += adjudicated
         per_model[key]["max_points"] += revs[0][2]
         merged.append({"blind_id": bid, "id": m["id"], "model": m.get("model"),
                        "model_revision": m.get("model_revision"),
                        "reviews": [{"reviewer": a, "points": b} for a, b, _ in revs],
-                       "mean_points": round(mean, 3), "disagreement": round(max(pts) - min(pts), 3)})
+                       "mean_points": round(mean, 3), "adjudicated_points": round(adjudicated, 3),
+                       "aggregation": "median" if len(pts) == 3 else "mean",
+                       "disagreement": round(max(pts) - min(pts), 3)})
     # pairwise stats on the first two raters of each multi-rated item
     pairs = [(r["reviews"][0]["points"], r["reviews"][1]["points"]) for r in merged if len(r["reviews"]) > 1]
     pa, pb = [x for x, _ in pairs], [y for _, y in pairs]
     args.third_rater_range = getattr(args, "third_rater_range", 3.0)
-    third = [r["blind_id"] for r in merged if r["disagreement"] >= args.third_rater_range]
+    third = [r["blind_id"] for r in merged
+             if len(r["reviews"]) == 2 and r["disagreement"] >= args.third_rater_range]
     for r in merged:
-        r["needs_third_rater"] = r["disagreement"] >= args.third_rater_range
+        r["needs_third_rater"] = r["blind_id"] in third
     summary = {
         "provisional": True,
         "reviewed_items": len(merged),
@@ -924,8 +933,8 @@ def blind_merge(args):
         "cohen_kappa_quadratic": cohen_kappa(pa, pb, "quadratic"),
         "third_rater_range": args.third_rater_range,
         "needs_third_rater": third,
-        "disagreement_policy": "all ratings kept; merged score = mean of raters; range >= "
-                               "third_rater_range -> third blind rater, then median of three",
+        "disagreement_policy": "all distinct ratings kept; one/two ratings use mean; two-rater range >= "
+                               "third_rater_range requests a third blind rater; three ratings use median",
         "per_model": {k: dict(v, points=round(v["points"], 3)) for k, v in per_model.items()},
     }
     if args.out:

@@ -113,6 +113,50 @@ class TestAdapterContractIngestion(unittest.TestCase):
 
 
 class TestCohenKappa(unittest.TestCase):
+    def merge_ratings(self, points, names=None):
+        with tempfile.TemporaryDirectory() as d:
+            mapping = os.path.join(d, "mapping.jsonl")
+            mh.write_jsonl(mapping, [{"blind_id": "b", "id": "synthetic", "model": "m", "model_revision": "r"}])
+            paths = []
+            for i, score in enumerate(points):
+                path = os.path.join(d, "r%d.jsonl" % i)
+                mh.write_jsonl(path, [{"blind_id": "b", "max_points": 6,
+                                      "review": {"reviewer": names[i] if names else "r%d" % i, "points": score}}])
+                paths.append(path)
+            return mh.blind_merge(Args(reviewed=paths, mapping=mapping, out=None, third_rater_range=3.0))
+
+    def test_third_distinct_rater_uses_median_and_resolves_escalation(self):
+        summary, merged = self.merge_ratings([0, 6, 6])
+        self.assertEqual(merged[0]["mean_points"], 4.0)
+        self.assertEqual(merged[0]["adjudicated_points"], 6.0)
+        self.assertEqual(merged[0]["aggregation"], "median")
+        self.assertEqual(summary["per_model"]["m@r"]["points"], 6.0)
+        self.assertEqual(len(merged[0]["reviews"]), 3)
+        self.assertFalse(merged[0]["needs_third_rater"])
+        self.assertEqual(summary["needs_third_rater"], [])
+
+    def test_unfilled_third_review_keeps_two_rater_mean_and_escalation(self):
+        summary, merged = self.merge_ratings([0, 6, None])
+        self.assertEqual(merged[0]["adjudicated_points"], 3.0)
+        self.assertEqual(merged[0]["aggregation"], "mean")
+        self.assertEqual(summary["needs_third_rater"], ["b"])
+        self.assertEqual(len(merged[0]["reviews"]), 2)
+
+    def test_duplicate_reviewer_cannot_act_as_third_rater(self):
+        with self.assertRaisesRegex(ValueError, "duplicate reviewer"):
+            self.merge_ratings([0, 6, 6], ["one", "two", "two"])
+
+    def test_anonymous_file_raters_and_single_review(self):
+        summary, merged = self.merge_ratings([0, 6, 6], [None, None, None])
+        self.assertEqual(merged[0]["adjudicated_points"], 6.0)
+        summary, merged = self.merge_ratings([6, None])
+        self.assertEqual(merged[0]["adjudicated_points"], 6.0)
+        self.assertFalse(merged[0]["needs_third_rater"])
+
+    def test_fourth_rater_requires_an_explicit_policy(self):
+        with self.assertRaisesRegex(ValueError, "at most three"):
+            self.merge_ratings([0, 6, 6, 0])
+
     def test_known_values(self):
         self.assertEqual(mh.cohen_kappa([1, 2, 3], [1, 2, 3]), 1.0)
         # classic 2x2 example: po = 0.7, pe = 0.5 -> kappa 0.4
