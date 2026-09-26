@@ -1,0 +1,107 @@
+{
+  "artifact": "bounded-rag-gemma-val40-answer-only.jsonl",
+  "artifact_sha256": "f3b9b65abb3cd8257ca41f45e837def3622d7448cf189d73150968e7dda3621d",
+  "artifact_line_endings": "LF; .gitattributes applies text eol=lf to bounded-rag-*.jsonl",
+  "complete": true,
+  "record_count": 40,
+  "expected_total_records": 40,
+  "unique_ids": 40,
+  "id_order_sha256": "d019ea87f3a6b9bdee0a1bc5ec6ee6eb4d838f1a5c3b489932cd3db67aa080a6",
+  "status": "COMPLETE: 40/40 answers. This is a handoff, not a score.",
+  "run": {
+    "arm": "bounded RAG on bare source-v2; no generic policy or crop variant",
+    "model": "gemma4:12b-it-q4_K_M",
+    "model_digest": "4eb23ef187e2c5462566d6a1d3bbbc2f1346d0b4327cbb66d58fffbcc9b2b05c",
+    "input_sha256": "60728768a527a14b08c81129373e3f62d55418e30bccf968555be0658f090937",
+    "source_v2_sha256": "6615fea2e6fd1d6f9db5b781fa84a883899d1c2fb83a28b914638089e6b015a4",
+    "experiment_manifest_sha256": "a7c5a43098693e339446383b2b8925ec8b4117c6db2adc11e61ad3b196d8c4f3",
+    "run_manifest_sha256": "a7c5a43098693e339446383b2b8925ec8b4117c6db2adc11e61ad3b196d8c4f3",
+    "config_sha256": "3d9c501891d5307a863096274abdfeec716ee8fa163b5c259569f3592ed8effa",
+    "run_script_sha256": "c3132862166a47064e55c4db248f708c5bec72b4de4255b6c0c392ee77e8ecea",
+    "infer_sha256": "b702857347fd0fa99b9aba9a844afca1a4a8634b22eaa826199d27986dca1f0a",
+    "stop_logic_sha256": "39a6a27763c34934bb3083ac46992dc2f8f85ae15739c79ea1295330ccff33df",
+    "git_revision_at_launch": "64a78e02dabe7140bffc4fe4922f99c54963f0fb",
+    "started_at": "2026-09-26T15:02:14.010389+00:00",
+    "elapsed_seconds": 1657.607,
+    "derived_end_time": "2026-09-26T15:29:51.617389+00:00",
+    "ollama_version": "0.30.7",
+    "parameters": "temperature                    1\ntop_k                          64\ntop_p                          0.95",
+    "sampling": "original defaults not fixed; no temperature/seed sent",
+    "max_calls": 40,
+    "calls_recorded": 40,
+    "per_call_requested_output_tokens": 1024,
+    "max_requested_total_output_tokens": 40960,
+    "paid_api_cost_usd": 0,
+    "stop_reason": null,
+    "unsent_ids": [],
+    "runtime": {
+      "ollama_version": "0.30.7",
+      "model_status_before_run": null,
+      "model_status_after_first": {
+        "name": "gemma4:12b-it-q4_K_M",
+        "model": "gemma4:12b-it-q4_K_M",
+        "size": 8908324205,
+        "digest": "4eb23ef187e2c5462566d6a1d3bbbc2f1346d0b4327cbb66d58fffbcc9b2b05c",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "gemma4",
+          "families": [
+            "gemma4"
+          ],
+          "parameter_size": "11.9B",
+          "quantization_level": "Q4_K_M"
+        },
+        "expires_at": "2026-09-26T17:08:03.059228003+02:00",
+        "size_vram": 5925356174,
+        "context_length": 4096
+      },
+      "elapsed_seconds": 1657.607,
+      "stop_reason": null,
+      "unsent_ids": []
+    }
+  },
+  "actual_usage": {
+    "prompt_tokens": 51859,
+    "completion_tokens": 6690,
+    "total_tokens": 58549,
+    "latency_seconds_sum": 1656.487,
+    "latency_seconds_mean": 41.412,
+    "latency_seconds_max": 140.794,
+    "dispatcher_elapsed_seconds": 1657.607
+  },
+  "response_status": {
+    "errors": 0,
+    "finish_reason_counts": {
+      "stop": 40
+    }
+  },
+  "immutable_snapshots": {
+    "private_full40_path": "agentsLog/kwiscion/private/bounded-rag-20260926/gemma-bounded-rag.complete40.snapshot.raw.jsonl",
+    "private_full40_sha256": "fe2eb0acc2bba924e59cf00e239c694a69a7567ed1ac6f571d5f8948925941b8",
+    "private_last20_path": "agentsLog/kwiscion/private/bounded-rag-20260926/gemma-bounded-rag.last20.snapshot.raw.jsonl",
+    "private_last20_sha256": "bbd52abf9b61074f20d9e3e8a3902d4dbf833634c7b77f6be46e1470ea9ea5ea",
+    "prior_first20_path": "agentsLog/kwiscion/private/bounded-rag-20260926/gemma-bounded-rag.first20.snapshot.raw.jsonl",
+    "prior_first20_sha256": "f0ac3697a7fc23257b39d4baef8c8c966d45a0d14101ca1e107c28c8599376b6"
+  },
+  "provenance_sha256": {
+    "input_sha256": "60728768a527a14b08c81129373e3f62d55418e30bccf968555be0658f090937",
+    "source_v2_sha256": "6615fea2e6fd1d6f9db5b781fa84a883899d1c2fb83a28b914638089e6b015a4",
+    "experiment_manifest_sha256": "a7c5a43098693e339446383b2b8925ec8b4117c6db2adc11e61ad3b196d8c4f3",
+    "run_metadata_sha256": "fcb7a38d14af62fbcb56f8612103de649619b5af14c487e496031157beae9798",
+    "raw_full_sha256": "fe2eb0acc2bba924e59cf00e239c694a69a7567ed1ac6f571d5f8948925941b8",
+    "raw_full_snapshot_sha256": "fe2eb0acc2bba924e59cf00e239c694a69a7567ed1ac6f571d5f8948925941b8",
+    "raw_last20_snapshot_sha256": "bbd52abf9b61074f20d9e3e8a3902d4dbf833634c7b77f6be46e1470ea9ea5ea"
+  },
+  "source_overlap_audit": {
+    "method": "Compared each exact final answer to its corresponding frozen private RAG input prompt, including retrieved evidence, using the longest exact contiguous word sequence. No answers were changed.",
+    "longest_exact_contiguous_words": 21,
+    "passages_over_25_words": [],
+    "result": "No exact contiguous passage over25 words found; answers remain exact."
+  },
+  "limitations": [
+    "Output records preserve exact final strings, errors and finish reasons; no answer postprocessing.",
+    "Context fit was character-estimated; exact multimodal tokenizer fit and absence of silent truncation are not proven.",
+    "No grading or score is included."
+  ]
+}
