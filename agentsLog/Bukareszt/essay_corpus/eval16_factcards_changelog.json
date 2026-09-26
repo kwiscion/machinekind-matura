@@ -1,0 +1,104 @@
+{
+  "changed_at": "2026-09-26T21:54:20+02:00",
+  "by": "Greg #117 worker (parent session), per independent review reviews/eval16_cards_review.json and root 19:49Z",
+  "before_sha256": "1264509cbbf17f6c247e67b0839db013fc7885348ebed04a52f3346d6538a07e",
+  "after_sha256": "3dc416bc44eca3405caab01d9ca176fd5be027ed9e23db4e5205fc9bddee52fb",
+  "changes": [
+    {
+      "fact_id": "ev-01-f03",
+      "action": "corrected",
+      "before": {
+        "fact_id": "ev-01-f03",
+        "eval_id": "bk117-eval-01",
+        "cluster_id": "C-persian-wars",
+        "source_id": "plwiki-wojny-perskie",
+        "quote": "Herodot twierdzi, że stała za nim chęć zemsty Dariusza na Grekach, którzy udzielili pomocy powstańcom",
+        "fact": "Według Herodota najazd perski wynikał z chęci zemsty Dariusza na Grekach, którzy pomogli powstańcom."
+      },
+      "after": {
+        "fact_id": "ev-01-f03",
+        "eval_id": "bk117-eval-01",
+        "cluster_id": "C-persian-wars",
+        "source_id": "plwiki-wojny-perskie",
+        "quote": "Herodot twierdzi, że stała za nim chęć zemsty Dariusza na Grekach, którzy udzielili pomocy powstańcom, są jednak powody, by tezę te uznać za element ateńskiej propagandy",
+        "fact": "Według Herodota najazd perski wynikał z chęci zemsty Dariusza na Grekach, którzy pomogli powstańcom, ale teza ta może być elementem ateńskiej propagandy."
+      }
+    },
+    {
+      "fact_id": "ev-04-f04",
+      "action": "corrected",
+      "before": {
+        "fact_id": "ev-04-f04",
+        "eval_id": "bk117-eval-04",
+        "cluster_id": "C-black-death",
+        "source_id": "plwiki-czarna-smierc",
+        "quote": "Z tych przyczyn w stuleciu poprzedzającym czarną śmierć powszechne stały się niedobory żywności, a także szybko rosnące ceny.",
+        "fact": "Przed epidemią powszechne były niedobory żywności i rosnące ceny, co osłabiało odporność ludności."
+      },
+      "after": {
+        "fact_id": "ev-04-f04",
+        "eval_id": "bk117-eval-04",
+        "cluster_id": "C-black-death",
+        "source_id": "plwiki-czarna-smierc",
+        "quote": "Z tych przyczyn w stuleciu poprzedzającym czarną śmierć powszechne stały się niedobory żywności, a także szybko rosnące ceny. Deficyty pszenicy, owsa i jęczmienia zmniejszały liczbę zwierząt gospodarczych, co z kolei przełożyło się na niedożywienie, obniżające odporność.",
+        "fact": "Przed epidemią powszechne były niedobory żywności i rosnące ceny; braki zbóż zmniejszały pogłowie zwierząt, co prowadziło do niedożywienia obniżającego odporność."
+      }
+    },
+    {
+      "fact_id": "ev-05-f09",
+      "action": "corrected",
+      "before": {
+        "fact_id": "ev-05-f09",
+        "eval_id": "bk117-eval-05",
+        "cluster_id": "C-lokietek",
+        "source_id": "plwiki-wladyslaw-lokietek",
+        "quote": "Trzy dni później, rankiem 27 września 1331, oddziały polskie liczące około 5000 ludzi, dowodzone osobiście przez króla Władysława Łokietka i jego syna królewicza Kazimierza napotkały w rejonie Radziejowa tylną straż krzyżacką, korpus Altenburga.",
+        "fact": "27 września 1331 roku około 5000 Polaków pod wodzą Łokietka i Kazimierza starło się z Krzyżakami pod Radziejowem i Płowcami."
+      },
+      "after": {
+        "fact_id": "ev-05-f09",
+        "eval_id": "bk117-eval-05",
+        "cluster_id": "C-lokietek",
+        "source_id": "plwiki-wladyslaw-lokietek",
+        "quote": "Trzy dni później, rankiem 27 września 1331, oddziały polskie liczące około 5000 ludzi, dowodzone osobiście przez króla Władysława Łokietka i jego syna królewicza Kazimierza napotkały w rejonie Radziejowa tylną straż krzyżacką, korpus Altenburga.",
+        "fact": "27 września 1331 roku około 5000 Polaków pod wodzą Łokietka i królewicza Kazimierza rozbiło w rejonie Radziejowa tylną straż krzyżacką (korpus Altenburga)."
+      }
+    },
+    {
+      "fact_id": "ev-05-f11",
+      "action": "added",
+      "after": {
+        "fact_id": "ev-05-f11",
+        "eval_id": "bk117-eval-05",
+        "cluster_id": "C-lokietek",
+        "source_id": "plwiki-wladyslaw-lokietek",
+        "quote": "Po południu doszło do kolejnego starcia pod wsią Płowce. W bitwie między Radziejowicami a Płowcami poległo w sumie 73 braci zakonnych.",
+        "fact": "Po południu tego samego dnia doszło do starcia pod Płowcami; w walkach między Radziejowicami a Płowcami poległo 73 braci zakonnych."
+      }
+    },
+    {
+      "fact_id": "ev-04-f11",
+      "action": "added",
+      "after": {
+        "fact_id": "ev-04-f11",
+        "eval_id": "bk117-eval-04",
+        "cluster_id": "C-black-death",
+        "source_id": "plwiki-czarna-smierc",
+        "quote": "W drugiej połowie stulecia w Polsce wzrosła powierzchnia lasów, płace robotników w Krakowie rosły, a ceny zboża spadały.",
+        "fact": "W drugiej połowie XIV wieku w Polsce rosły płace robotników w Krakowie, spadały ceny zboża i zwiększała się powierzchnia lasów."
+      }
+    },
+    {
+      "fact_id": "ev-04-f12",
+      "action": "added",
+      "after": {
+        "fact_id": "ev-04-f12",
+        "eval_id": "bk117-eval-04",
+        "cluster_id": "C-black-death",
+        "source_id": "plwiki-czarna-smierc",
+        "quote": "Takie same zjawiska miały miejsce w krajach Europy Zachodniej i były wyraźnie powiązane z epidemią i gwałtownym zmniejszeniem się populacji, które doprowadziło do nadwyżki żywności (a więc spadku cen) i niedoboru wykwalifikowanej siły roboczej (i w konsekwencji wzrostu płac).",
+        "fact": "W Europie Zachodniej gwałtowny spadek liczby ludności po epidemii doprowadził do nadwyżki żywności i spadku cen oraz do niedoboru wykwalifikowanej siły roboczej i wzrostu płac."
+      }
+    }
+  ]
+}

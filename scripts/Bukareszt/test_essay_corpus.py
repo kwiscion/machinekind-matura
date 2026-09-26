@@ -136,5 +136,31 @@ class CrlfCheckoutTest(unittest.TestCase):
                     self.assertEqual(disk, man[key], rel)
 
 
+class SourceErrorAuditTest(unittest.TestCase):
+    """Cards carrying audited pinned-source errors must not back exported text (source_error_audit.json)."""
+    BAD = {"b1-charlemagne-f06": set(), "b2-conferences-f05": set(), "b2-ussr-f14": set(),
+           "b1-versailles-f08": {"bk117-b1-versailles"}}  # f08 only for the 2010 date, wording corrected
+    ERR_STRINGS = ["799/800", "Śląsk Opolski", "Litwa, Łotwa, Estonia i Ukraina", "reparacje spłacono"]
+
+    def test_exports_free_of_audited_errors(self):
+        latest = {}
+        for f in sorted((ec.CORPUS / "drafts").glob("*_essays.jsonl")):
+            for r in ec.load_jsonl(f):
+                if r["id"] not in latest or r.get("repair_round", 0) >= latest[r["id"]].get("repair_round", 0):
+                    latest[r["id"]] = r
+        for exp in ("export_pilot_v1", "export_v1"):
+            rows = ec.load_jsonl(ec.CORPUS / exp / "train_sft.jsonl")
+            text = "\n".join(m["content"] for r in rows for m in r["messages"])
+            for s in self.ERR_STRINGS:
+                self.assertNotIn(s, text, (exp, s))
+            ids = {r["id"] for r in rows}
+            for eid in ids & set(latest):
+                used = set(latest[eid]["fact_ids_used"])
+                if f"{eid}-repair-extra_topic" in ids:
+                    used |= set(latest[eid].get("off_topic_fact_ids", []))
+                for card in used & set(self.BAD):
+                    self.assertIn(eid, self.BAD[card], (exp, eid, card))
+
+
 if __name__ == "__main__":
     unittest.main()
