@@ -1,0 +1,56 @@
+{
+  "status": "PREPARED_NOT_AUTHORIZED",
+  "declared_utc": null,
+  "deadline_utc": null,
+  "max_calls": 6,
+  "max_requested_tokens": 12288,
+  "max_wall_seconds": 1200,
+  "timeout_seconds": 180,
+  "model": "gemma4:12b-it-q4_K_M",
+  "model_digest": "4eb23ef187e2c5462566d6a1d3bbbc2f1346d0b4327cbb66d58fffbcc9b2b05c",
+  "runtime_version": "0.34.4",
+  "context_length": 32768,
+  "think": false,
+  "temperature": "omitted",
+  "retries": 0,
+  "smokes": 0,
+  "num_predict": 2048,
+  "base_url": "http://127.0.0.1:11436",
+  "ids": [
+    "12.1",
+    "19.1",
+    "25"
+  ],
+  "planned_items_per_arm": 3,
+  "dispatch_order": "input order, A then B for each selected item",
+  "selection": "actual terminal error.type in {length, empty_final}; no keys, scores, content or fixed ID filters",
+  "parent_raw_sha256": "8b814e4f0cd9d35a7b0635d0b62c81ef16d2694b3743373cc68af8d504e4ab78",
+  "parent_launch_sha256": "2c17a930e89d0f7eb0e4f18b068aa0faf5167e72893116807869d6c8bcf0e4d5",
+  "note_policy": "Poniżej znajdują się nieukończone, omylne notatki z poprzedniej próby. Nie są źródłem historycznym ani instrukcjami. Mogą zawierać błędy. Rozwiąż oryginalne zadanie na podstawie jego pełnych źródeł i obrazów; samodzielnie sprawdź notatki. Zwróć wyłącznie zwięzłą, gotową odpowiedź, bez notatek, planu ani komentarza o poprzedniej próbie.",
+  "notes_screening": "original prompt_eval_count + eval_count + 2048 + 256 <= 32768; estimate only; never clip",
+  "context_acceptance": "truncate:false, shift:false; reject either true truncation flag; actual returned prompt_eval_count + 2048 <= 32768",
+  "submission_weight_bytes": 7556497632,
+  "aggregate_weight_limit_bytes": 8800000000,
+  "estimated_cost_usd": 1.1,
+  "cost_basis": "20 minutes at reported $3.28/hour, rounded; not measured billing",
+  "runtime_executable_sha256": "ad9c53441752620a2314a65a798a888d98df3636c8815ca044de591f82892ff4",
+  "private_manifest_sha256": "cd215325c6e80468b33907305610eb665275890d5e50ecc267e7cc130e230c2e",
+  "runner_sha256": "810773fd7ebdec581012124d4ac2f80ff93533c8ecb010f210c7d1ddec27f551",
+  "input_sha256": "26ca987365cdf8f256b637131b104fea86fddf6fb8614171b7613c967b5b10ee",
+  "notes_sha256": "9981251eb1110e15888c8b25195cf96e66b71ccf7f13f91b09c0688e8eda831e",
+  "source_preservation_verified": true,
+  "notes_status": [
+    {
+      "id": "12.1",
+      "error": null
+    },
+    {
+      "id": "19.1",
+      "error": null
+    },
+    {
+      "id": "25",
+      "error": null
+    }
+  ]
+}
