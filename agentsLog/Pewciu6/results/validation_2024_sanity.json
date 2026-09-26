@@ -1,0 +1,241 @@
+{
+  "provisional": true,
+  "keys_sha256": "f66e387793c5dfad2bac8723a73716e434a9d6ecab40c544f8b529723f512123",
+  "oracle": {
+    "items_tested": 39,
+    "items_excluded_no_reference": 1,
+    "overall": {
+      "n": 39,
+      "correct": 16,
+      "partial": 0,
+      "incorrect": 0,
+      "needs_review": 23,
+      "points": 18.0,
+      "points_upper_bound": 45.0,
+      "max_points": 45.0,
+      "accuracy": 0.4103,
+      "points_rate": 0.4,
+      "points_rate_upper_bound": 1.0
+    },
+    "by_scoring_mode": {
+      "gate+manual": {
+        "n": 14,
+        "points": 0.0,
+        "upper": 14.0,
+        "max": 14.0,
+        "full_credit": 0,
+        "status": {
+          "needs_review": 14
+        }
+      },
+      "auto": {
+        "n": 16,
+        "points": 18.0,
+        "upper": 18.0,
+        "max": 18.0,
+        "full_credit": 16,
+        "status": {
+          "correct": 16
+        }
+      },
+      "manual": {
+        "n": 9,
+        "points": 0.0,
+        "upper": 13.0,
+        "max": 13.0,
+        "full_credit": 0,
+        "status": {
+          "needs_review": 9
+        }
+      }
+    },
+    "auto_items_not_full_credit": 0,
+    "error_category_counts": {
+      "chronology": 0,
+      "entity_confusion": 0,
+      "essay_structure": 0,
+      "abstention": 0,
+      "citation_unsupported": 0,
+      "image_ocr": 0,
+      "content_incorrect": 0
+    }
+  },
+  "oracle_wrapped": {
+    "items_tested": 39,
+    "items_excluded_no_reference": 1,
+    "overall": {
+      "n": 39,
+      "correct": 16,
+      "partial": 0,
+      "incorrect": 0,
+      "needs_review": 23,
+      "points": 18.0,
+      "points_upper_bound": 45.0,
+      "max_points": 45.0,
+      "accuracy": 0.4103,
+      "points_rate": 0.4,
+      "points_rate_upper_bound": 1.0
+    },
+    "by_scoring_mode": {
+      "gate+manual": {
+        "n": 14,
+        "points": 0.0,
+        "upper": 14.0,
+        "max": 14.0,
+        "full_credit": 0,
+        "status": {
+          "needs_review": 14
+        }
+      },
+      "auto": {
+        "n": 16,
+        "points": 18.0,
+        "upper": 18.0,
+        "max": 18.0,
+        "full_credit": 16,
+        "status": {
+          "correct": 16
+        }
+      },
+      "manual": {
+        "n": 9,
+        "points": 0.0,
+        "upper": 13.0,
+        "max": 13.0,
+        "full_credit": 0,
+        "status": {
+          "needs_review": 9
+        }
+      }
+    },
+    "auto_items_not_full_credit": 0,
+    "error_category_counts": {
+      "chronology": 0,
+      "entity_confusion": 0,
+      "essay_structure": 0,
+      "abstention": 0,
+      "citation_unsupported": 0,
+      "image_ocr": 0,
+      "content_incorrect": 0
+    }
+  },
+  "shotgun": {
+    "items_tested": 40,
+    "items_excluded_no_reference": 0,
+    "overall": {
+      "n": 40,
+      "correct": 0,
+      "partial": 0,
+      "incorrect": 19,
+      "needs_review": 21,
+      "points": 0.0,
+      "points_upper_bound": 36.0,
+      "max_points": 60.0,
+      "accuracy": 0.0,
+      "points_rate": 0.0,
+      "points_rate_upper_bound": 0.6
+    },
+    "by_scoring_mode": {
+      "gate+manual": {
+        "n": 14,
+        "points": 0.0,
+        "upper": 0.0,
+        "max": 14.0,
+        "full_credit": 0,
+        "status": {
+          "incorrect": 14
+        }
+      },
+      "auto": {
+        "n": 16,
+        "points": 0.0,
+        "upper": 11.0,
+        "max": 18.0,
+        "full_credit": 0,
+        "status": {
+          "needs_review": 11,
+          "incorrect": 5
+        }
+      },
+      "manual": {
+        "n": 10,
+        "points": 0.0,
+        "upper": 25.0,
+        "max": 28.0,
+        "full_credit": 0,
+        "status": {
+          "needs_review": 10
+        }
+      }
+    },
+    "auto_items_not_full_credit": 16,
+    "error_category_counts": {
+      "chronology": 0,
+      "entity_confusion": 0,
+      "essay_structure": 1,
+      "abstention": 0,
+      "citation_unsupported": 0,
+      "image_ocr": 0,
+      "content_incorrect": 19
+    }
+  },
+  "null": {
+    "items_tested": 40,
+    "items_excluded_no_reference": 0,
+    "overall": {
+      "n": 40,
+      "correct": 0,
+      "partial": 0,
+      "incorrect": 40,
+      "needs_review": 0,
+      "points": 0.0,
+      "points_upper_bound": 0.0,
+      "max_points": 60.0,
+      "accuracy": 0.0,
+      "points_rate": 0.0,
+      "points_rate_upper_bound": 0.0
+    },
+    "by_scoring_mode": {
+      "gate+manual": {
+        "n": 14,
+        "points": 0.0,
+        "upper": 0.0,
+        "max": 14.0,
+        "full_credit": 0,
+        "status": {
+          "incorrect": 14
+        }
+      },
+      "auto": {
+        "n": 16,
+        "points": 0.0,
+        "upper": 0.0,
+        "max": 18.0,
+        "full_credit": 0,
+        "status": {
+          "incorrect": 16
+        }
+      },
+      "manual": {
+        "n": 10,
+        "points": 0.0,
+        "upper": 0.0,
+        "max": 28.0,
+        "full_credit": 0,
+        "status": {
+          "incorrect": 10
+        }
+      }
+    },
+    "auto_items_not_full_credit": 16,
+    "error_category_counts": {
+      "chronology": 0,
+      "entity_confusion": 0,
+      "essay_structure": 0,
+      "abstention": 40,
+      "citation_unsupported": 0,
+      "image_ocr": 0,
+      "content_incorrect": 0
+    }
+  }
+}
