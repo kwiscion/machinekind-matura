@@ -21,7 +21,7 @@ ROOT = Path(__file__).resolve().parents[2]
 BASE = ROOT / "data/przemeknowak781"
 STRICT = BASE / "cache/strict"
 LOG = ROOT / "agentsLog/przemeknowak781/strict"
-KINDS = {"judge-S": "S", "judge-Q": "Q", "repair": "repairs"}
+KINDS = {"judge-S": "S", "judge-Q": "Q", "repair": "repairs", "audit": "context_audit", "confirm": "context_confirm"}
 REVIEWER = "claude-opus-5-5 dual-lens (S evidence support, Q exam quality), rubric verify_strict_v2"
 
 
@@ -41,9 +41,12 @@ def extract(args):
             continue
         kind = KINDS.get(label[r["key"]].split(" ")[0])
         if kind:
-            items = r["result"].get("verdicts") or r["result"].get("items") or []
+            res = r["result"]
+            items = res.get("verdicts") or res.get("items") or res.get("records") or []
             out[kind].update({v["id"]: v for v in items})
     for kind, d in out.items():
+        if not d:
+            continue
         write_jsonl(LOG / f"{args.prefix}_{kind}.jsonl", [d[k] for k in sorted(d)])
     print({k: len(v) for k, v in out.items()})
 
@@ -91,6 +94,7 @@ def batch(args):
     for b in range(args.n):
         write_jsonl(STRICT / f"sbatch-{args.tag}-{b + 1:02d}.jsonl", [
             {"id": r["id"], "task_type": r["task_type"], "source_titles": [titles[s] for s in r["source_ids"]],
+             "article_files": [str(BASE / "cache" / f"{s}.json") for s in r["source_ids"]],
              "era": r.get("era", ""), "prompt": r["prompt"], "answer": r["answer"],
              "evidence": [{"locator": e["locator"], "claim": e["claim"]} for e in r["evidence"]]}
             for r in rows[b :: args.n]])
@@ -98,14 +102,19 @@ def batch(args):
 
 
 def finalize(args):
+    excluded = set()
+    if args.exclude_confirmed:
+        excluded = {c["id"] for c in load_jsonl(args.exclude_confirmed) if c.get("confirmed")}
     rows, seen = [], set()
     for path in args.accepted:
         for ex in load_jsonl(path):
-            if ex["id"] not in seen:
+            if ex["id"] not in seen and ex["id"] not in excluded:
                 seen.add(ex["id"])
+                if args.exclude_confirmed:
+                    ex["audit"]["notes"] += "; context_audit_v1: passed"
                 rows.append(ex)
     write_jsonl(BASE / "train_strict.jsonl", rows)
-    summary = {"verified_strict": len(rows),
+    summary = {"verified_strict": len(rows), "excluded_by_context_audit": sorted(excluded),
                "by_era": dict(Counter(r.get("era") for r in rows)),
                "by_task_type": dict(Counter(r["task_type"] for r in rows)),
                "by_round": dict(Counter(r["audit"]["notes"].split(":")[0] for r in rows)),
@@ -130,6 +139,7 @@ def main():
     b.add_argument("--n", type=int, default=12)
     f = sub.add_parser("finalize")
     f.add_argument("accepted", nargs="+")
+    f.add_argument("--exclude-confirmed", help="context_confirm JSONL; ids with confirmed=true are dropped")
     args = ap.parse_args()
     {"extract": extract, "apply": apply, "batch": batch, "finalize": finalize}[args.cmd](args)
 

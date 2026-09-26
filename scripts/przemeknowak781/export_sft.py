@@ -29,7 +29,7 @@ def in_holdout(group, fraction, seed):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--input", default=BASE / "train.jsonl")
+    ap.add_argument("--input", default=BASE / "train_strict.jsonl")
     ap.add_argument("--holdout", type=float, default=0.1)
     ap.add_argument("--distractors", type=int, default=2)
     ap.add_argument("--seed", type=int, default=13)

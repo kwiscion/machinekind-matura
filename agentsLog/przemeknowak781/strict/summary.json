@@ -1,0 +1,30 @@
+{
+ "verified_strict": 211,
+ "excluded_by_context_audit": [
+  "pn781-es-04-006",
+  "pn781-es-08-002",
+  "pn781-es-08-005",
+  "pn781-es-09-001",
+  "pn781-hk-03-001",
+  "pn781-hk-08-003",
+  "pn781-hk-r202-022"
+ ],
+ "by_era": {
+  "medieval": 50,
+  "early_modern": 72,
+  "19th_century": 31,
+  "20th_century": 58
+ },
+ "by_task_type": {
+  "short_answer": 49,
+  "chronology": 58,
+  "source_analysis": 47,
+  "essay_plan": 57
+ },
+ "by_round": {
+  "r1": 23,
+  "rB": 118,
+  "rC": 70
+ },
+ "sources_covered": 89
+}

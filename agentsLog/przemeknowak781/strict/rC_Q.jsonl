@@ -1,0 +1,96 @@
+{"id": "pn781-es-01-001", "pass": true, "notes": ""}
+{"id": "pn781-es-01-002", "pass": true, "notes": ""}
+{"id": "pn781-es-01-003", "pass": true, "notes": ""}
+{"id": "pn781-es-01-004", "pass": false, "notes": "prompt_not_standalone: 'oblężenie Wiednia przez armię osmańską' gives no year, so it could mean 1529 or 1683. The answer relies on 1683-specific details (rawelin Zamkowy 3 września, cesarz w Linzu/Pasawie)."}
+{"id": "pn781-es-01-005", "pass": false, "notes": "other:dates without year in key arguments ('27 lutego na Krakowskim Przedmieściu', '8 kwietnia na Placu Zamkowym') and 'na okres wyborów' with no election named, so the facts are ambiguous; the counterargument does not really challenge the thesis"}
+{"id": "pn781-es-01-006", "pass": true, "notes": ""}
+{"id": "pn781-es-02-001", "pass": true, "notes": ""}
+{"id": "pn781-es-02-002", "pass": true, "notes": ""}
+{"id": "pn781-es-02-003", "pass": true, "notes": ""}
+{"id": "pn781-es-02-004", "pass": false, "notes": "other:dangling_referent: the counterargument says 'jeszcze w piątym tygodniu po zawarciu rozejmu', but the answer never introduces any truce. The counterargument also concedes that it happened after the abdication, so it barely counters the thesis."}
+{"id": "pn781-es-02-005", "pass": true, "notes": ""}
+{"id": "pn781-es-02-006", "pass": true, "notes": ""}
+{"id": "pn781-es-03-001", "pass": true, "notes": ""}
+{"id": "pn781-es-03-002", "pass": true, "notes": ""}
+{"id": "pn781-es-03-003", "pass": true, "notes": ""}
+{"id": "pn781-es-03-004", "pass": true, "notes": ""}
+{"id": "pn781-es-03-005", "pass": true, "notes": ""}
+{"id": "pn781-es-03-006", "pass": false, "notes": "other:plan structure incoherent - the thesis already contains the SPD objection that is then presented as the kontrargument, and the 'mieszana narodowościowo' Straż is not a counterargument to the changes asked about; argument 1 (Kiel mutiny, German capitulation) is background, not a change in Wielkopolska"}
+{"id": "pn781-es-04-001", "pass": true, "notes": ""}
+{"id": "pn781-es-04-002", "pass": true, "notes": ""}
+{"id": "pn781-es-04-003", "pass": true, "notes": ""}
+{"id": "pn781-es-04-004", "pass": true, "notes": ""}
+{"id": "pn781-es-04-005", "pass": true, "notes": ""}
+{"id": "pn781-es-04-006", "pass": true, "notes": ""}
+{"id": "pn781-es-05-001", "pass": true, "notes": ""}
+{"id": "pn781-es-05-002", "pass": true, "notes": ""}
+{"id": "pn781-es-05-003", "pass": true, "notes": ""}
+{"id": "pn781-es-05-004", "pass": false, "notes": "other:points_not_thesis_driven: arguments 1 (distinguished himself at Zieleńce, Włodzimierz and Dubienka) and 2 (named on the Virtuti Militari list) do not support the thesis that he put principles above personal interest. Receiving the order even points the other way."}
+{"id": "pn781-es-05-005", "pass": true, "notes": ""}
+{"id": "pn781-es-05-006", "pass": true, "notes": ""}
+{"id": "pn781-es-06-001", "pass": true, "notes": ""}
+{"id": "pn781-es-06-002", "pass": true, "notes": ""}
+{"id": "pn781-es-06-003", "pass": true, "notes": ""}
+{"id": "pn781-es-06-004", "pass": true, "notes": ""}
+{"id": "pn781-es-06-005", "pass": true, "notes": ""}
+{"id": "pn781-es-06-006", "pass": false, "notes": "answer_incomplete: prompt asks for 'przebieg kampanii wrześniowej', but the plan gives only the start and end dates (1 IX, 6 X, Kock) and the 3 IX coalition war; there are no military operations and no date for the Soviet invasion. Most points deal with the government's legal stance"}
+{"id": "pn781-es-07-001", "pass": true, "notes": ""}
+{"id": "pn781-es-07-002", "pass": true, "notes": ""}
+{"id": "pn781-es-07-003", "pass": true, "notes": ""}
+{"id": "pn781-es-07-004", "pass": false, "notes": "other:vague_referent: 'rozwój jednej z dziedzin produkcji był możliwy głównie dzięki eksportowi na rynki rosyjskie' (in the thesis, counterargument and conclusion) never says which branch, so the counterargument is unclear."}
+{"id": "pn781-es-07-005", "pass": true, "notes": ""}
+{"id": "pn781-es-07-006", "pass": true, "notes": ""}
+{"id": "pn781-es-08-001", "pass": true, "notes": ""}
+{"id": "pn781-es-08-002", "pass": true, "notes": ""}
+{"id": "pn781-es-08-003", "pass": false, "notes": "language_error: point 5 'już 23 listopada członkowie sprzysiężenia Podchorążych byli ostrzeżeni o ich dekonspiracji' - pronoun error ('ich' for the subject, should be 'swojej'), and 'już' is a dangling fragment carried over from the claim with no year or reference point"}
+{"id": "pn781-es-08-004", "pass": true, "notes": ""}
+{"id": "pn781-es-08-005", "pass": true, "notes": ""}
+{"id": "pn781-es-08-006", "pass": true, "notes": ""}
+{"id": "pn781-es-09-001", "pass": true, "notes": ""}
+{"id": "pn781-es-09-002", "pass": true, "notes": ""}
+{"id": "pn781-es-09-003", "pass": true, "notes": ""}
+{"id": "pn781-es-09-004", "pass": true, "notes": ""}
+{"id": "pn781-es-09-005", "pass": true, "notes": ""}
+{"id": "pn781-es-09-006", "pass": false, "notes": "answer_incomplete: prompt says 'Oceń decyzję', but the thesis and wniosek give no evaluation. The wniosek ends with 'pozostaje nadal przedmiotem debat i intensywnych dyskusji'. Arguments 2-3 describe events after the uprising began (Soviet halt, limited Western aid) rather than grounds for judging the decision itself. other:'radziecki dyktator' is left unnamed"}
+{"id": "pn781-es-10-001", "pass": true, "notes": ""}
+{"id": "pn781-es-10-002", "pass": true, "notes": ""}
+{"id": "pn781-es-10-003", "pass": true, "notes": ""}
+{"id": "pn781-es-10-004", "pass": false, "notes": "wrong_task_type/other: point 2 ('Wybuch powstania – niekończąca się polityka obietnic i ograniczanie swobód Węgrów doprowadziły do wybuchu powstania') has no concrete fact. language_error: 'dominować nad innymi ludźmi' is awkward. The counterargument's 'Chorwatom, którzy 11 września 1848 r. rozpoczęli wojnę' does not say who the war was against, and it does not counter the thesis about causes and suppression."}
+{"id": "pn781-es-10-005", "pass": false, "notes": "other:argument 1 is not standalone: 'swoje ustępstwa' names no concessions and 'jeszcze w końcu sierpnia' gives no year; 'plan Kani' in the counterargument and conclusion is never explained"}
+{"id": "pn781-es-10-006", "pass": true, "notes": ""}
+{"id": "pn781-hk-01-001", "pass": true, "notes": ""}
+{"id": "pn781-hk-02-007", "pass": true, "notes": ""}
+{"id": "pn781-hk-02-028", "pass": true, "notes": ""}
+{"id": "pn781-hk-02-029", "pass": true, "notes": ""}
+{"id": "pn781-hk-02-030", "pass": true, "notes": ""}
+{"id": "pn781-hk-03-003", "pass": true, "notes": ""}
+{"id": "pn781-hk-03-010", "pass": true, "notes": ""}
+{"id": "pn781-hk-04-008", "pass": true, "notes": ""}
+{"id": "pn781-hk-04-017", "pass": false, "notes": "trivial_echo: the answer to 'Jakiego okresu dotyczy' (1815–1832) is the quoted passage's own text, and the list of attributes repeats the quote word for word. Sorting them into domains is the only analysis added."}
+{"id": "pn781-hk-04-027", "pass": true, "notes": ""}
+{"id": "pn781-hk-04-029", "pass": true, "notes": ""}
+{"id": "pn781-hk-05-003", "pass": true, "notes": ""}
+{"id": "pn781-hk-06-002", "pass": false, "notes": "trivial_echo; other:answer restates the quoted list with generic domain labels, and the 'm.in.' part is a reading-comprehension question, not history; the prompt never asks who 'jego' (the senior) is"}
+{"id": "pn781-hk-06-009", "pass": true, "notes": ""}
+{"id": "pn781-hk-06-013", "pass": true, "notes": ""}
+{"id": "pn781-hk-06-019", "pass": true, "notes": ""}
+{"id": "pn781-hk-06-021", "pass": true, "notes": ""}
+{"id": "pn781-hk-07-001", "pass": true, "notes": ""}
+{"id": "pn781-hk-07-006", "pass": true, "notes": ""}
+{"id": "pn781-hk-07-018", "pass": true, "notes": ""}
+{"id": "pn781-hk-07-023", "pass": true, "notes": ""}
+{"id": "pn781-hk-08-011", "pass": true, "notes": ""}
+{"id": "pn781-hk-08-012", "pass": true, "notes": ""}
+{"id": "pn781-hk-09-006", "pass": true, "notes": ""}
+{"id": "pn781-hk-10-003", "pass": true, "notes": ""}
+{"id": "pn781-hk-10-007", "pass": true, "notes": ""}
+{"id": "pn781-hk-10-009", "pass": true, "notes": ""}
+{"id": "pn781-hk-10-013", "pass": true, "notes": ""}
+{"id": "pn781-hk-10-018", "pass": true, "notes": ""}
+{"id": "pn781-hk-r201-018", "pass": true, "notes": ""}
+{"id": "pn781-hk-r202-021", "pass": true, "notes": ""}
+{"id": "pn781-hk-r202-026", "pass": true, "notes": ""}
+{"id": "pn781-train-0003", "pass": true, "notes": ""}
+{"id": "pn781-train-0006", "pass": true, "notes": ""}
+{"id": "pn781-train-0018", "pass": true, "notes": ""}
+{"id": "pn781-train-0020", "pass": true, "notes": ""}
