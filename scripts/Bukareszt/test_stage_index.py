@@ -6,12 +6,14 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 import shutil
 import subprocess
 import sys
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 
 HERE = Path(__file__).resolve().parent
 REPO = HERE.parent.parent
@@ -19,6 +21,14 @@ sys.path.insert(0, str(HERE))
 import stage_index as si  # noqa: E402
 
 RETRIEVAL_SRC = REPO / "agentsLog" / "Bukareszt" / "scripts" / "retrieval.py"
+SOURCES_SRC = REPO / "agentsLog" / "Bukareszt" / "sources" / "sources.jsonl"
+MANIFEST_SRC = REPO / "agentsLog" / "Bukareszt" / "staging" / "manifest.json"
+
+
+def to_crlf(path: Path) -> None:
+    """What a Windows `core.autocrlf=true` checkout does to a Git-tracked text file."""
+    data = path.read_bytes().replace(b"\r\n", b"\n")
+    path.write_bytes(data.replace(b"\n", b"\r\n"))
 
 
 def sha(b: bytes) -> str:
@@ -210,6 +220,127 @@ class StageIndexTests(unittest.TestCase):
     def test_manifest_must_carry_pinned_values(self):
         with self.assertRaisesRegex(si.StageError, "pinned values"):
             si.load_manifest(self.c.manifest_path)  # synthetic manifest is not the #44 index
+
+
+    # ---- #44 follow-up: CRLF-safe text identity, fail-closed pinned inputs, cwd/relative paths ----
+
+    def test_lf_normalization_policy(self):
+        d = self.c.tmp / "norm"
+        d.mkdir(exist_ok=True)
+        cases = {"trail.txt": (b"a\r\nb\r\n", b"a\nb\n"), "notrail.txt": (b"a\r\nb", b"a\nb"),
+                 "lonecr.txt": (b"a\rb\n", b"a\rb\n"), "mixed.txt": (b"a\r\nb\nc\r\n", b"a\nb\nc\n"),
+                 "bom.txt": (b"\xef\xbb\xbfa\r\n", b"\xef\xbb\xbfa\n")}
+        for name, (raw, want) in cases.items():
+            (d / name).write_bytes(raw)
+            self.assertEqual(si.lf_bytes(d / name), want, name)
+            self.assertEqual(si.sha256_text_file(d / name), sha(want), name)
+        # a trailing newline is significant: it is neither added nor stripped
+        self.assertNotEqual(si.sha256_text_file(d / "trail.txt"), si.sha256_text_file(d / "notrail.txt"))
+
+    def test_real_pinned_inputs_have_same_identity_in_crlf_checkout(self):
+        """The committed sources.jsonl / retrieval.py give the pinned hashes both as LF and as CRLF."""
+        manifest = json.loads(MANIFEST_SRC.read_text(encoding="utf-8"))
+        d = self.c.tmp / "real-crlf"
+        d.mkdir(exist_ok=True)
+        for src, pinned in ((SOURCES_SRC, si.PINNED_SOURCES_SHA256), (RETRIEVAL_SRC, manifest["retrieval_script_sha256"])):
+            self.assertEqual(si.sha256_text_file(src), pinned, src)
+            self.assertEqual(si.sha256_file(src), pinned, f"{src} is committed with LF, so the byte hash is unchanged")
+            crlf = d / src.name
+            shutil.copy(src, crlf)
+            to_crlf(crlf)
+            self.assertIn(b"\r\n", crlf.read_bytes())
+            self.assertNotEqual(si.sha256_file(crlf), pinned, "raw CRLF bytes differ (the reported 701ad15... failure)")
+            self.assertEqual(si.sha256_text_file(crlf), pinned)
+
+    def test_stage_passes_in_crlf_checkout_and_bundle_is_identical(self):
+        clone = self.c.fresh_clone()
+        for rel in ("sources/sources.jsonl", "scripts/retrieval.py", "queries/train_queries.jsonl", "staging/manifest.json"):
+            to_crlf(clone / rel)
+        self.assertNotEqual(si.sha256_file(clone / "sources" / "sources.jsonl"), self.c.manifest["sources_sha256"])
+        report = clone / "report.json"
+        rc = si.main(["stage", "--allow-unpinned", "--root", str(clone), "--bundle", str(self.c.bundle), "--report", str(report)])
+        rep = json.loads(report.read_text(encoding="utf-8"))
+        self.assertEqual(rc, 0, rep["blocker"])
+        self.assertEqual(rep["path_used"], "bundle")
+        self.assertEqual(rep["sources_sha256"]["actual"], self.c.manifest["sources_sha256"])
+        self.assertEqual(rep["retrieval_script_sha256"]["actual"], self.c.manifest["retrieval_script_sha256"])
+        # a manifest and bundle built from the CRLF checkout are identical to the LF ones
+        m = si.build_manifest(clone, self.c.manifest["query_proof"], si.sha256_text_file(clone / "scripts" / "retrieval.py"))
+        for key in ("sources_sha256", "index_sha256", "graph_content_sha256", "retrieval_script_sha256", "files"):
+            self.assertEqual(m[key], self.c.manifest[key], key)
+        info = si.write_bundle(clone, self.c.manifest, self.c.tmp / "crlf-bundle.tar.gz")
+        self.assertEqual(info["sha256"], self.c.manifest["bundle"]["sha256"])
+
+    def _stage_without_side_effects(self, clone, *extra):
+        """Run `stage` with every import/network/rebuild entry point replaced by a recorder."""
+        calls = []
+        report = clone / "report.json"
+        with mock.patch.object(si, "load_retrieval", side_effect=lambda *a: calls.append("load_retrieval")), \
+                mock.patch.object(si, "rebuild_raw", side_effect=lambda *a, **k: calls.append("rebuild_raw") or []), \
+                mock.patch.object(si, "fetch_pinned", side_effect=lambda *a: calls.append("fetch_pinned")), \
+                mock.patch.object(si, "api_get", side_effect=lambda *a, **k: calls.append("api_get")), \
+                mock.patch.object(si, "unpack_bundle", side_effect=lambda *a: calls.append("unpack_bundle")):
+            rc = si.main(["stage", "--allow-unpinned", "--root", str(clone), "--report", str(report), *extra])
+        return rc, json.loads(report.read_text(encoding="utf-8")), calls
+
+    def test_tampered_retriever_fails_closed_before_import_or_rebuild(self):
+        clone = self.c.fresh_clone()
+        (clone / "scripts" / "retrieval.py").write_bytes((clone / "scripts" / "retrieval.py").read_bytes() + b"# tampered\n")
+        tampered = si.sha256_text_file(clone / "scripts" / "retrieval.py")
+        for extra in (["--rebuild"], []):  # explicit rebuild and the automatic no-bundle fallback
+            rc, rep, calls = self._stage_without_side_effects(clone, *extra)
+            self.assertEqual(rc, 1)
+            self.assertEqual(calls, [], "nothing imported, fetched, unpacked or rebuilt")
+            self.assertIn("retrieval_script_sha256", rep["blocker"])
+            self.assertIn(str(clone / "scripts" / "retrieval.py"), rep["blocker"])
+            self.assertIn(self.c.manifest["retrieval_script_sha256"], rep["blocker"])
+            self.assertIn(tampered, rep["blocker"])
+            self.assertFalse(rep["phases"]["pinned_inputs"]["ok"])
+            self.assertEqual(rep["status"], "FAIL")
+        self.assertFalse((clone / "raw").exists())
+        self.assertFalse((clone / "index").exists())
+        rc = si.main(["verify", "--root", str(clone), "--manifest", str(self.c.manifest_path)])
+        self.assertEqual(rc, 1)
+
+    def test_tampered_sources_fails_closed_before_rebuild(self):
+        clone = self.c.fresh_clone()
+        path = clone / "sources" / "sources.jsonl"
+        path.write_bytes(path.read_bytes().replace(b'"revision_id": 1', b'"revision_id": 7', 1))
+        rc, rep, calls = self._stage_without_side_effects(clone, "--rebuild")
+        self.assertEqual(rc, 1)
+        self.assertEqual(calls, [])
+        self.assertIn("sources_sha256", rep["blocker"])
+        self.assertIn(str(path), rep["blocker"])
+        self.assertIn(self.c.manifest["sources_sha256"], rep["blocker"])
+
+    def test_missing_retriever_fails_closed(self):
+        clone = self.c.fresh_clone()
+        (clone / "scripts" / "retrieval.py").unlink()
+        rc, rep, calls = self._stage_without_side_effects(clone, "--rebuild")
+        self.assertEqual(rc, 1)
+        self.assertEqual(calls, [])
+        self.assertIn("is missing", rep["blocker"])
+
+    def test_stage_from_other_cwd_with_relative_paths(self):
+        """Fresh clone staged by a subprocess whose cwd is elsewhere, with relative --root/--bundle/--report."""
+        clone = self.c.fresh_clone()
+        other = self.c.tmp / "elsewhere" / "deeper"
+        other.mkdir(parents=True)
+        rel = lambda p: os.path.relpath(p, other)  # noqa: E731
+        proc = subprocess.run([sys.executable, str(HERE / "stage_index.py"), "stage", "--allow-unpinned", "--root", rel(clone),
+                               "--bundle", rel(self.c.bundle), "--report", "rep.json"], cwd=other, capture_output=True, text=True)
+        self.assertEqual(proc.returncode, 0, proc.stdout + proc.stderr)
+        rep = json.loads((other / "rep.json").read_text(encoding="utf-8"))
+        self.assertEqual(rep["status"], "PASS")
+        self.assertEqual(rep["root"], str(clone.resolve()))
+        self.assertEqual(si.sha256_file(clone / "index" / "bm25_index.json"), self.c.manifest["index_sha256"])
+        self.assertFalse((other / "raw").exists())
+        self.assertFalse((other / "index").exists())
+
+    def test_default_root_does_not_depend_on_cwd(self):
+        self.assertEqual(si.DEFAULT_ROOT, REPO / "agentsLog" / "Bukareszt")
+        self.assertTrue(si.DEFAULT_ROOT.is_absolute())
+        self.assertTrue((si.DEFAULT_ROOT / "staging" / "manifest.json").is_file())
 
 
 if __name__ == "__main__":

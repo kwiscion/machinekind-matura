@@ -12,6 +12,9 @@ Order of attempts (the report records which one ran):
   3. rebuild from pinned revisions (`--rebuild`, or automatic when no bundle exists): each source is fetched
      from the Wikimedia API, its revision ID and normalized-text SHA-256 must equal `sources/sources.jsonl`;
      any difference is listed per source and the command exits nonzero. Revisions are never refreshed.
+Before any path runs (and before the retriever is imported), the Git-tracked `scripts/retrieval.py` and
+`sources/sources.jsonl` must hash to the manifest; these text inputs are hashed after CRLF -> LF normalization so a
+Windows `core.autocrlf` checkout and a Linux checkout give the same pinned identity. Any mismatch exits 1.
 Then the index SHA-256 must equal the pinned value, the graph content hash must match, and one existing TRAIN
 query is executed with `--mode chrono --k 5 --title-weight 1.0` in a child process whose socket layer is
 disabled (plus `unshare -rn` on Linux when available); its ranking must equal the committed proof.
@@ -82,6 +85,22 @@ def sha256_bytes(b: bytes) -> str:
     return hashlib.sha256(b).hexdigest()
 
 
+def lf_bytes(path: Path) -> bytes:
+    """Bytes of a Git-tracked text file with CRLF -> LF, so Windows (`core.autocrlf=true`) and Linux checkouts agree.
+
+    Policy: only the two-byte sequence CR LF becomes LF. Nothing else changes: a trailing newline is kept or
+    left absent exactly as committed, a lone CR and a UTF-8 BOM are kept (and therefore fail the pin).
+    For an LF file this is the identity, so every pinned hash recorded before this change is unchanged.
+    """
+    return path.read_bytes().replace(b"\r\n", b"\n")
+
+
+def sha256_text_file(path: Path) -> str:
+    """Pinned identity of a Git-tracked text input (sources.jsonl, retrieval.py): SHA-256 of `lf_bytes`.
+    Untracked binary assets (raw/, index/, bundle) keep exact byte hashes via `sha256_file`."""
+    return sha256_bytes(lf_bytes(path))
+
+
 def load_json(path: Path):
     with open(path, encoding="utf-8") as f:
         return json.load(f)
@@ -144,10 +163,11 @@ def verify_staged(root: Path, manifest: dict) -> dict:
     """Hash-check sources.jsonl, raw/, index/ and graph. Raises StageError with the first difference list."""
     sources_path = root / "sources" / "sources.jsonl"
     checks: dict = {}
-    got = sha256_file(sources_path)
-    checks["sources_sha256"] = {"expected": manifest["sources_sha256"], "actual": got}
+    got = sha256_text_file(sources_path)
+    checks["sources_sha256"] = {"expected": manifest["sources_sha256"], "actual": got, "hash": "sha256 of CRLF->LF normalized text"}
     if got != manifest["sources_sha256"]:
-        raise StageError(f"sources.jsonl differs: expected {manifest['sources_sha256']} actual {got}")
+        raise StageError(f"{sources_path}: sources.jsonl differs: expected {manifest['sources_sha256']} actual {got} "
+                         "(SHA-256 of CRLF->LF normalized text)")
     rows = read_jsonl(sources_path)
     if len(rows) != manifest["n_sources"]:
         raise StageError(f"sources.jsonl has {len(rows)} rows, expected {manifest['n_sources']}")
@@ -212,6 +232,13 @@ def attribution_markdown(rows: list[dict], manifest: dict) -> str:
     return "\n".join(lines) + "\n"
 
 
+TEXT_MEMBERS = {"sources.jsonl"}  # Git-tracked text: bundled and hashed as LF-normalized bytes
+
+
+def member_bytes(name: str, path: Path) -> bytes:
+    return lf_bytes(path) if name in TEXT_MEMBERS else path.read_bytes()
+
+
 def bundle_members(root: Path, rows: list[dict]) -> list[tuple[str, Path]]:
     members = [("sources.jsonl", root / "sources" / "sources.jsonl")]
     members += [(r["local_path"], root / r["local_path"]) for r in rows]
@@ -227,7 +254,7 @@ def build_manifest(root: Path, query_proof: dict | None, retrieval_script_sha: s
     return {
         "issue": 44,
         "built_at": now_iso(),
-        "sources_sha256": sha256_file(root / "sources" / "sources.jsonl"),
+        "sources_sha256": sha256_text_file(root / "sources" / "sources.jsonl"),
         "n_sources": len(rows),
         "n_chunks": payload["meta"]["n_chunks"],
         "index_sha256": sha256_file(index_path),
@@ -237,7 +264,8 @@ def build_manifest(root: Path, query_proof: dict | None, retrieval_script_sha: s
         "retrieval_script_sha256": retrieval_script_sha,
         "licenses": sorted({r["license"] for r in rows}),
         "sites": sorted({r["site"] for r in rows}),
-        "files": {name: {"sha256": sha256_file(p), "bytes": p.stat().st_size} for name, p in bundle_members(root, rows)},
+        "files": {name: {"sha256": sha256_bytes(b), "bytes": len(b)}
+                  for name, p in bundle_members(root, rows) for b in (member_bytes(name, p),)},
         "query_proof": query_proof,
     }
 
@@ -263,6 +291,11 @@ def write_bundle(root: Path, manifest: dict, out: Path) -> dict:
                 tar.addfile(ti, io.BytesIO(data))
             for name, p in bundle_members(root, rows):
                 ti = tarfile.TarInfo(f"{BUNDLE_PREFIX}/{name}")
+                if name in TEXT_MEMBERS:
+                    data = member_bytes(name, p)
+                    ti.size, ti.mtime, ti.mode = len(data), 0, 0o644
+                    tar.addfile(ti, io.BytesIO(data))
+                    continue
                 ti.size, ti.mtime, ti.mode = p.stat().st_size, 0, 0o644
                 with open(p, "rb") as f:
                     tar.addfile(ti, f)
@@ -297,9 +330,11 @@ def unpack_bundle(bundle: Path, root: Path, manifest: dict) -> dict:
                 problems.append(f"{name}: expected {info['sha256']} actual {h}")
         if problems:
             raise StageError("bundle members differ from manifest:\n  " + "\n  ".join(problems))
-        got_sources = sha256_file(base / "sources.jsonl")
-        if got_sources != sha256_file(root / "sources" / "sources.jsonl"):
-            raise StageError(f"bundle sources.jsonl {got_sources} differs from the clone's sources.jsonl")
+        got_sources = sha256_text_file(base / "sources.jsonl")
+        clone_sources = sha256_text_file(root / "sources" / "sources.jsonl")
+        if got_sources != clone_sources:
+            raise StageError(f"bundle sources.jsonl {got_sources} differs from the clone's {root / 'sources' / 'sources.jsonl'} "
+                             f"{clone_sources} (SHA-256 of CRLF->LF normalized text)")
         for sub in ("raw", "index"):
             dest = root / sub
             if dest.exists():
@@ -499,6 +534,30 @@ def pick_train_query(root: Path, query_id: str | None) -> dict:
 # commands
 # --------------------------------------------------------------------------------------
 
+def check_pinned_inputs(root: Path, manifest: dict) -> dict:
+    """Fail closed before anything imports the retriever or touches the network: the clone's Git-tracked
+    retriever and source manifest must equal the pinned identity (LF-normalized text SHA-256). Any mismatch
+    raises StageError naming each file with expected/actual normalized and raw byte hashes."""
+    inputs = {"retrieval_script_sha256": root / "scripts" / "retrieval.py", "sources_sha256": root / "sources" / "sources.jsonl"}
+    out, problems = {}, []
+    for key, path in inputs.items():
+        expected = manifest.get(key)
+        if not path.is_file():
+            out[key] = {"file": str(path), "expected": expected, "actual": None}
+            problems.append(f"  {key}: {path} is missing (expected {expected})")
+            continue
+        actual = sha256_text_file(path)
+        out[key] = {"file": str(path), "expected": expected, "actual": actual, "raw_bytes_sha256": sha256_file(path),
+                    "hash": "sha256 of CRLF->LF normalized text"}
+        if not expected or actual != expected:
+            problems.append(f"  {key}: {path} expected {expected} actual {actual} (CRLF->LF normalized; raw bytes {out[key]['raw_bytes_sha256']})")
+    if problems:
+        raise StageError("pinned input identity differs from the manifest; nothing was imported, fetched or rebuilt:\n"
+                         + "\n".join(problems)
+                         + "\n  (the clone's retriever/source manifest is not the pinned one; never run `retrieval.py fetch` here)")
+    return out
+
+
 def load_manifest(path: Path, allow_unpinned: bool = False) -> dict:
     if not path.exists():
         raise StageError(f"manifest missing: {path} (run `stage_index.py bundle` on the machine that has the verified assets)")
@@ -513,7 +572,7 @@ def load_manifest(path: Path, allow_unpinned: bool = False) -> dict:
 
 def cmd_bundle(args) -> int:
     root = Path(args.root).resolve()
-    retrieval_sha = sha256_file(root / "scripts" / "retrieval.py")
+    retrieval_sha = sha256_text_file(root / "scripts" / "retrieval.py")
     manifest = build_manifest(root, None, retrieval_sha)
     pinned = {"index_sha256": PINNED_INDEX_SHA256, "sources_sha256": PINNED_SOURCES_SHA256, "n_sources": PINNED_N_SOURCES, "n_chunks": PINNED_N_CHUNKS}
     wrong = {k: manifest[k] for k, v in pinned.items() if manifest[k] != v}
@@ -540,7 +599,7 @@ def cmd_bundle(args) -> int:
 def cmd_verify(args) -> int:
     root = Path(args.root).resolve()
     manifest = load_manifest(Path(args.manifest) if args.manifest else root / "staging" / "manifest.json")
-    checks = verify_staged(root, manifest)
+    checks = {"pinned_inputs": check_pinned_inputs(root, manifest), **verify_staged(root, manifest)}
     print(json.dumps({"status": "PASS", "checks": checks}, indent=2))
     return 0
 
@@ -555,9 +614,7 @@ def cmd_stage(args) -> int:
                                "n_sources": manifest["n_sources"], "n_chunks": manifest["n_chunks"], **RETRIEVAL_CONFIG},
                     "phases": {}, "path_used": None, "blocker": None, "argv": sys.argv[1:]}
     report_path = Path(args.report) if args.report else root / "private" / "stage_report.json"
-    retrieval = load_retrieval(root)
-    report["retrieval_script_sha256"] = {"expected": manifest["retrieval_script_sha256"], "actual": sha256_file(root / "scripts" / "retrieval.py")}
-    report["sources_sha256"] = {"expected": manifest["sources_sha256"], "actual": sha256_file(root / "sources" / "sources.jsonl")}
+    retrieval = None
 
     def phase(name, fn):
         t0 = time.perf_counter()
@@ -570,11 +627,9 @@ def cmd_stage(args) -> int:
             raise
 
     try:
-        # hard preconditions: the clone's pinned inputs must be the pinned ones before any path runs
-        for key in ("retrieval_script_sha256", "sources_sha256"):
-            if report[key]["expected"] != report[key]["actual"]:
-                raise StageError(f"{key} differs from the manifest: expected {report[key]['expected']} actual {report[key]['actual']}"
-                                 " (the clone's retriever/manifest is not the pinned one; never run `retrieval.py fetch` here)")
+        # hard preconditions, before the retriever is imported and before any bundle/rebuild path runs
+        report.update(phase("pinned_inputs", lambda: check_pinned_inputs(root, manifest)))
+        retrieval = load_retrieval(root)
         staged = False
         if not args.rebuild and not args.force:
             try:
