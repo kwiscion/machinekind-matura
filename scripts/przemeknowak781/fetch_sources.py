@@ -127,10 +127,19 @@ def main():
     cache = out_dir / "cache"
     cache.mkdir(parents=True, exist_ok=True)
 
+    manifest = out_dir / "sources.jsonl"
+    pinned = {}
+    if manifest.exists():
+        for line in manifest.read_text(encoding="utf-8").splitlines():
+            if line.strip():
+                rec = json.loads(line)
+                pinned[rec["source_id"]] = (rec["title"], int(rec["url"].rsplit("oldid=", 1)[1]))
+
     records, missing = [], []
     for t in parse_topics(args.topics):
-        if t["oldid"]:
-            title, oldid = t["title"], int(t["oldid"])
+        if t["oldid"] or t["source_id"] in pinned:
+            title, oldid = pinned.get(t["source_id"], (t["title"], None))
+            oldid = int(t["oldid"]) if t["oldid"] else oldid
             rev_ts = None
         else:
             title, oldid, rev_ts = resolve_oldid(t["title"])
@@ -146,6 +155,10 @@ def main():
             text = clean("".join(sec["parts"]))
             if text and sec["heading"].lower() not in DROP_SECTIONS:
                 sections.append({"idx": len(sections), "heading": sec["heading"], "text": text})
+        if sections and sections[0]["text"].startswith("To jest strona ujednoznaczniająca"):
+            missing.append(f"{t['title']} (disambiguation)")
+            print(f"DISAMBIGUATION {t['title']}", file=sys.stderr)
+            continue
         doc = {"source_id": t["source_id"], "title": title, "oldid": oldid,
                "era": t["era"], "sections": sections}
         body = json.dumps(doc, ensure_ascii=False, indent=1)

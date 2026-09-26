@@ -25,7 +25,7 @@ Zygmunt I Stary|||| early_modern
 Zygmunt II August|||| early_modern
 Ruch egzekucyjny|||| early_modern
 Unia lubelska|80758426|src-plwiki-unia-lubelska|grp-unia-lubelska-1569| early_modern
-Konfederacja warszawska|||| early_modern
+Konfederacja warszawska (1573)|||| early_modern
 Artykuły henrykowskie|||| early_modern
 Pacta conventa|||| early_modern
 Wolna elekcja|||| early_modern
@@ -94,7 +94,7 @@ Bitwa o Monte Cassino|||| 20th_century
 Konferencja jałtańska|||| 20th_century
 Polski Komitet Wyzwolenia Narodowego|||| 20th_century
 Poznański Czerwiec|||| 20th_century
-Październik 1956|||| 20th_century
+Polski październik 1956|||| 20th_century
 Marzec 1968|||| 20th_century
 Grudzień 1970|||| 20th_century
 Sierpień 1980|||| 20th_century

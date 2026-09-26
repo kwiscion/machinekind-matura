@@ -35,6 +35,17 @@ def load_jsonl(path):
         return [json.loads(line) for line in f if line.strip()]
 
 
+def load_context(sources_path):
+    sources = {s["source_id"]: s for s in load_jsonl(sources_path)}
+    texts = {}
+    for sid, s in sources.items():
+        cached = Path(sources_path).parent / s.get("local_path", "")
+        if cached.is_file():
+            doc = json.loads(cached.read_text(encoding="utf-8"))
+            texts[sid] = norm(" ".join(sec["text"] for sec in doc["sections"]))
+    return sources, texts
+
+
 def check(ex, sources, texts):
     errors = []
     for key in REQUIRED:
@@ -90,14 +101,7 @@ def main():
     ap.add_argument("--report", default=None)
     args = ap.parse_args()
 
-    sources = {s["source_id"]: s for s in load_jsonl(args.sources)}
-    texts = {}
-    for sid, s in sources.items():
-        cached = Path(args.sources).parent / s.get("local_path", "")
-        if cached.is_file():
-            doc = json.loads(cached.read_text(encoding="utf-8"))
-            texts[sid] = norm(" ".join(sec["text"] for sec in doc["sections"]))
-
+    sources, texts = load_context(args.sources)
     examples = [ex for path in args.examples for ex in load_jsonl(path)]
     results, seen_ids, by_hash = {}, Counter(), defaultdict(list)
     for ex in examples:
