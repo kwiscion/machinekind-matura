@@ -4,11 +4,13 @@
 
 Reviewer: independent Sol `/root/essay_corpus_sol`, 26 September 2026. No GPU, inference, remote-host operation, Git mutation or production-weight modification occurred. The local WSL calls ran only tiny CPU filesystem fixtures.
 
+Publication note from lead: removed redundant trailing blank lines from the README and refreshed its hash below. Guard and test bytes remain exactly as independently reviewed; no implementation change followed approval.
+
 | File under `agentsLog/kwiscion/final-package-prep/` | Exact SHA256 |
 |---|---|
 | `guard.py` | `8ec6a7cf2f75615c2713c9db9e1cae408087be251b9b0e11437fe31e4c230473` |
 | `test_guard.py` | `c3ce0882842d2243085162c891d7ed4f4c552b6b86112237feab96220e51fc70` |
-| `README.md` | `a58fd8b6c7759cef514b12f15332f03cbe4ba955d40fe3692914514d262f39ab` |
+| `README.md` | `569ab698c36e3341177af8ed2bc8e685836d9309c9263a2ee2f95d5478ca20c3` |
 
 ## Verified behavior
 

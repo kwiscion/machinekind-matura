@@ -27,5 +27,3 @@ python agentsLog/kwiscion/final-package-prep/guard.py snapshot SNAPSHOT.json --r
 `SNAPSHOT.json` contains `version`, `tags` and `ps` objects from the corresponding read-only Ollama APIs. The command verifies the separately located runtime binary hash, version, single Gemma identity and loaded context. Omit `--require-loaded` to allow an unloaded cache. A saved snapshot cannot prove current server ownership, environment, freshness or network isolation; those remain required in the separately declared final runner proof. No runtime binary bytes are misreported as model weights.
 
 Validation: 14 small fixture tests pass in WSL/Linux; Windows passes 13 with the symlink-privilege test skipped. Linux exercises that test. No full model allocation, downloads, GPU calls or staged production cache were used for these checks.
-
-
