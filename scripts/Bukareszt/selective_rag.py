@@ -26,8 +26,9 @@ The answering prompt always keeps the complete original task, sources and biblio
 
 Router (question text only; no evaluator task_type, keys, answers or IDs): essay | supplied_source |
 external_fact | mixed | ambiguous. Only external_fact and mixed may retrieve; everything else stays bare.
-Gate: the top-1 hit of the decontaminated query must share >= GATE_MIN_TERMS distinctive (idf >= GATE_MIN_IDF)
-question terms with that chunk and cover >= GATE_MIN_COVERAGE of the query's distinctive terms; otherwise zero hits.
+Gate: distinctive query terms = idf >= GATE_MIN_IDF, not digits, not generic exam-instruction words. The top-1 hit of
+the decontaminated query passes if one of them is in its article title, or >= GATE_MIN_TERMS of them are in the chunk
+covering >= GATE_MIN_COVERAGE of them; otherwise zero hits.
 The passed chunk is reduced to one compact sentence window (<= WINDOW_CHARS) around the matched terms.
 Stdlib only; socket-guarded; zero model calls.
 """
@@ -51,9 +52,20 @@ TITLE_WEIGHT = 1.0
 RANK_K = 5
 GATE_MIN_IDF = 3.0
 GATE_MIN_TERMS = 2
-GATE_MIN_COVERAGE = 0.25
+GATE_MIN_COVERAGE = 0.2
+GATE_MIN_TITLE_TERMS = 1
 WINDOW_CHARS = 480
 BUDGET_CHARS = 800  # whole evidence block incl. #57 header/footer; one passage only
+
+# generic exam-instruction vocabulary: never counts as topical evidence in the gate (not derived from any exam item)
+GENERIC_WORDS = (
+    "podaj podać nazwę nazwa nazwy nazwisko imię imienia rok roku datę data zadanie zadania tekst tekstu tekście tekstów "
+    "źródło źródła źródłowy źródle źródeł materiał ilustracja ilustracji mapa mapy wyjaśnij określ wymień oceń uzasadnij "
+    "rozstrzygnij porównaj wskaż przedstaw napisz wypisz zaznacz odpowiedź odpowiedzi jeden jedna jedną jedno dwa dwie trzy "
+    "który która które którego której opisany opisana opisane opisanej opisanego opisanym przytoczono fragment fragmentu "
+    "własnej wiedzy podstawie mowa czego tego tej wtedy później następnie zbudowano zawarto odwołaj przyczynę przyczyny "
+    "skutek skutki dlaczego przykład przykłady wydarzenie wydarzenia postać postaci państwo państwa okres okresu"
+)
 
 BARE_HEADER = (
     "Rozwiąż poniższe zadanie z egzaminu maturalnego z historii (poziom rozszerzony). "
@@ -243,21 +255,26 @@ def route(prompt: str) -> dict:
 # --------------------------------------------------------------------------------------
 
 def distinctive_terms(retrieval, idx, text: str) -> set[str]:
-    return {t for t in set(retrieval.tokenize(text)) if not t.isdigit() and idx.idf(t) >= GATE_MIN_IDF}
+    generic = set(retrieval.tokenize(GENERIC_WORDS))
+    return {t for t in set(retrieval.tokenize(text))
+            if not t.isdigit() and t not in generic and idx.idf(t) >= GATE_MIN_IDF}
 
 
 def gate(retrieval, idx, query: dict, hits: list[dict]) -> dict:
+    """Pass the top-1 hit only with lexical support: a distinctive question term in its article title, or
+    >= GATE_MIN_TERMS distinctive terms in the chunk covering >= GATE_MIN_COVERAGE of them. Otherwise zero hits."""
     terms = distinctive_terms(retrieval, idx, query["text"])
     if not hits or not terms:
         return {"pass": False, "reason": "no hits" if not hits else "no distinctive query terms",
-                "query_terms": len(terms), "matched": [], "coverage": 0.0}
+                "query_terms": len(terms), "matched": [], "title_matched": [], "coverage": 0.0}
     top = hits[0]
-    chunk_terms = set(retrieval.tokenize(top["text"] + " " + top["title"]))
-    matched = sorted(terms & chunk_terms)
+    title_terms = set(retrieval.tokenize(top["title"]))
+    matched = sorted(terms & (set(retrieval.tokenize(top["text"])) | title_terms))
+    title_matched = sorted(terms & title_terms)
     coverage = round(len(matched) / len(terms), 3)
-    ok = len(matched) >= GATE_MIN_TERMS and coverage >= GATE_MIN_COVERAGE
-    return {"pass": ok, "reason": "ok" if ok else "weak lexical support", "query_terms": len(terms),
-            "matched": matched, "coverage": coverage}
+    ok = len(title_matched) >= GATE_MIN_TITLE_TERMS or (len(matched) >= GATE_MIN_TERMS and coverage >= GATE_MIN_COVERAGE)
+    return {"pass": ok, "reason": ("title match" if title_matched else "chunk terms") if ok else "weak lexical support",
+            "query_terms": len(terms), "matched": matched, "title_matched": title_matched, "coverage": coverage}
 
 
 def compact_window(retrieval, text: str, matched: list[str], limit: int = WINDOW_CHARS) -> str:
@@ -455,7 +472,8 @@ def cmd_prepare(args) -> dict:
         "status": "prepared_not_launched", "issue": 96, "created_at": si.now_iso(), "model_calls": 0,
         "network": guard, "fetch_or_rebuild": False,
         "settings": {"variant": SELECTED_VARIANT, "variant_flags": VARIANTS[SELECTED_VARIANT], "rank_k": RANK_K,
-                     "gate": {"min_idf": GATE_MIN_IDF, "min_terms": GATE_MIN_TERMS, "min_coverage": GATE_MIN_COVERAGE},
+                     "gate": {"min_idf": GATE_MIN_IDF, "min_terms": GATE_MIN_TERMS, "min_coverage": GATE_MIN_COVERAGE,
+                              "min_title_terms": GATE_MIN_TITLE_TERMS, "generic_words_sha256": sha256_text(GENERIC_WORDS)},
                      "window_chars": WINDOW_CHARS, "budget_chars": BUDGET_CHARS, "max_passages": 1,
                      "layout": "[#57 evidence block with one compact passage] + original prompt (verbatim suffix); "
                                "unrouted/gated-out cases byte-identical to input"},
@@ -473,7 +491,8 @@ def cmd_prepare(args) -> dict:
     with open(output, "xb") as f:
         f.write(payload)
     if pair_files:
-        by_id_in = {c["id"]: c for c in cases}
+        # bare pair = the output row with the original prompt restored, so image paths resolve from the same dir
+        by_id_in = {c["id"]: dict(r, prompt=c["prompt"]) for c, r in zip(cases, rows)}
         by_id_out = {r["id"]: r for r in rows}
         for pf, source in zip(pair_files, (by_id_in, by_id_out)):
             data = "".join(json.dumps(source[i], ensure_ascii=False) + "\n" for i in pairs).encode("utf-8")
@@ -508,7 +527,10 @@ def cmd_ablate(args) -> dict:
               "pipeline": evaluate_pipeline(retrieval, idx, graph, rows)}
     out = Path(args.out)
     out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(json.dumps(result, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    per_case = result["ablation"].pop("per_case")
+    text = json.dumps(result, ensure_ascii=False, indent=1)
+    rows = ",\n".join(json.dumps(r, ensure_ascii=False) for r in per_case)
+    out.write_text(text[:-2] + ',\n "per_case": [\n' + rows + "\n ]\n}\n", encoding="utf-8")
     return result
 
 
