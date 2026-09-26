@@ -1,0 +1,588 @@
+{
+  "status": "provisional",
+  "auditor": "independent-subagent claude-fable-5-1 (fresh context, 2026-09-26, v2)",
+  "n_queries": 40,
+  "n_citations": 120,
+  "citation_precision_strict": 0.217,
+  "citation_precision_lenient": 0.558,
+  "top1_precision_strict": 0.4,
+  "top1_precision_lenient": 0.725,
+  "counts": {
+    "supported": 26,
+    "partial": 41,
+    "unsupported": 53
+  },
+  "top1_counts": {
+    "supported": 16,
+    "unsupported": 11,
+    "partial": 13
+  },
+  "unsupported": [
+    {
+      "id": "ret-train-q01",
+      "rank": 2,
+      "chunk_id": "plwiki-kodeks-hammurabiego#0147",
+      "note": "Says Hammurabi had the laws engraved on a stele (who), but gives no date/century."
+    },
+    {
+      "id": "ret-train-q01",
+      "rank": 3,
+      "chunk_id": "plwiki-kodeks-hammurabiego#0151",
+      "note": "About Polish translations (1905, 1957, 1996); nothing on when/by whom it was written."
+    },
+    {
+      "id": "ret-train-q02",
+      "rank": 1,
+      "chunk_id": "plwiki-demokracja-atenska#0000",
+      "note": "General intro to Athenian democracy; ostracism not mentioned."
+    },
+    {
+      "id": "ret-train-q02",
+      "rank": 2,
+      "chunk_id": "plwiki-demokracja-atenska#0017",
+      "note": "Origins of Athens and Draco; no ostracism."
+    },
+    {
+      "id": "ret-train-q02",
+      "rank": 3,
+      "chunk_id": "plwiki-demokracja-atenska#0003",
+      "note": "Describes the Ekklesia sessions; no ostracism, sherds or 10-year exile."
+    },
+    {
+      "id": "ret-train-q03",
+      "rank": 1,
+      "chunk_id": "plwiki-karol-wielki#0159",
+      "note": "Pope placed imperial diadem on Charles at Christmas in a Roman church; year 800 and the name Leo III are absent."
+    },
+    {
+      "id": "ret-train-q03",
+      "rank": 2,
+      "chunk_id": "plwiki-karol-wielki#0173",
+      "note": "Later cult/relics of Charlemagne; no coronation facts."
+    },
+    {
+      "id": "ret-train-q03",
+      "rank": 3,
+      "chunk_id": "plwiki-karol-wielki#0172",
+      "note": "Assessment of reign and 1165 canonisation; no coronation year or pope."
+    },
+    {
+      "id": "ret-train-q04",
+      "rank": 2,
+      "chunk_id": "plwiki-wielka-karta-swobod#0207",
+      "note": "Lists king's obligations (art. 51, 52, 61 sanctions) but not the imprisonment/tax provisions named in the claim."
+    },
+    {
+      "id": "ret-train-q04",
+      "rank": 3,
+      "chunk_id": "plwiki-wojna-o-niepodleglosc-usa#1006",
+      "note": "Only cites Magna Carta as a tradition for American colonists; does not state its provisions."
+    },
+    {
+      "id": "ret-train-q05",
+      "rank": 2,
+      "chunk_id": "plwiki-mieszko-i#0304",
+      "note": "Context of the baptism (964 talks, 965 marriage) but no year of the baptism itself."
+    },
+    {
+      "id": "ret-train-q05",
+      "rank": 3,
+      "chunk_id": "plwiki-chrzest-polski#0291",
+      "note": "Discusses Mieszko's baptismal name; no date."
+    },
+    {
+      "id": "ret-train-q06",
+      "rank": 2,
+      "chunk_id": "plwiki-zjazd-gnieznienski#0359",
+      "note": "Gives March 1000 and Otto III's pilgrimage/meeting with Bolesław, but no outcomes (archbishopric/bishoprics)."
+    },
+    {
+      "id": "ret-train-q07",
+      "rank": 2,
+      "chunk_id": "plwiki-unia-lubelska#1046",
+      "note": "Only says Krewo was a preliminary agreement with conditions; lists none of them."
+    },
+    {
+      "id": "ret-train-q07",
+      "rank": 3,
+      "chunk_id": "plwiki-unia-lubelska#1047",
+      "note": "Confirms only that the Krewo union envisaged incorporating Lithuania into the Crown; no baptism/marriage."
+    },
+    {
+      "id": "ret-train-q08",
+      "rank": 1,
+      "chunk_id": "plwiki-bitwa-pod-grunwaldem#0647",
+      "note": "Lists Teutonic banners and participants; does not name Ulrich von Jungingen or Jagiełło as commanders."
+    },
+    {
+      "id": "ret-train-q08",
+      "rank": 2,
+      "chunk_id": "plwiki-bitwa-pod-grunwaldem#0659",
+      "note": "Commemoration; gives only the date 15 VII 1410, no commanders."
+    },
+    {
+      "id": "ret-train-q08",
+      "rank": 3,
+      "chunk_id": "plwiki-wojna-trzynastoletnia#0667",
+      "note": "Thirteen Years' War background; names Jagiełło as king, not as commander at Grunwald, and no Teutonic commander."
+    },
+    {
+      "id": "ret-train-q09",
+      "rank": 1,
+      "chunk_id": "plwiki-ii-pokoj-torunski#0764",
+      "note": "Date/place of the treaty (19 Oct 1466, Toruń); no territorial terms."
+    },
+    {
+      "id": "ret-train-q09",
+      "rank": 2,
+      "chunk_id": "plwiki-wojna-trzynastoletnia#0752",
+      "note": "Negotiations and swearing of the treaty; no list of lands."
+    },
+    {
+      "id": "ret-train-q10",
+      "rank": 2,
+      "chunk_id": "plwiki-marcin-luter#0804",
+      "note": "95 theses condemned \"sprzedaż odpustów\", but no year given."
+    },
+    {
+      "id": "ret-train-q11",
+      "rank": 2,
+      "chunk_id": "plwiki-unia-lubelska#1053",
+      "note": "Only the 1 July \"Dzień Sejmu\" commemoration; no content of the union."
+    },
+    {
+      "id": "ret-train-q11",
+      "rank": 3,
+      "chunk_id": "plwiki-unia-lubelska#1050",
+      "note": "Lublin sejm of 1569 and incorporation of lands; no 1 July date and no creation of common state/sejm/ruler."
+    },
+    {
+      "id": "ret-train-q12",
+      "rank": 2,
+      "chunk_id": "plwiki-konfederacja-warszawska#1058",
+      "note": "Says religious peace was one issue of the act; the guarantee list is cut off."
+    },
+    {
+      "id": "ret-train-q12",
+      "rank": 3,
+      "chunk_id": "plwiki-konfederacja-warszawska#1061",
+      "note": "Election of Henryk Walezy; only notes confederation terms added to pacta conventa, not their content."
+    },
+    {
+      "id": "ret-train-q13",
+      "rank": 1,
+      "chunk_id": "plwiki-artykuly-henrykowskie#1071",
+      "note": "Defines them as permanent laws every elected king had to sign; no specific limitations."
+    },
+    {
+      "id": "ret-train-q13",
+      "rank": 2,
+      "chunk_id": "plwiki-artykuly-henrykowskie#1070",
+      "note": "Only defines them as legal acts of the 1573 election sejm; no limitations."
+    },
+    {
+      "id": "ret-train-q14",
+      "rank": 2,
+      "chunk_id": "plwiki-bitwa-pod-wiedniem#1164",
+      "note": "Bibliography only."
+    },
+    {
+      "id": "ret-train-q14",
+      "rank": 3,
+      "chunk_id": "plwiki-bitwa-pod-wiedniem#1161",
+      "note": "Commemorative plaque with date only; no commander or enemy."
+    },
+    {
+      "id": "ret-train-q15",
+      "rank": 1,
+      "chunk_id": "plwiki-konstytucja-marcowa#2018",
+      "note": "Wrong document: March Constitution of 1921 (only mentions 3 May as tradition)."
+    },
+    {
+      "id": "ret-train-q15",
+      "rank": 2,
+      "chunk_id": "plwiki-konstytucja-marcowa#2017",
+      "note": "Header of March Constitution principles list; no content."
+    },
+    {
+      "id": "ret-train-q16",
+      "rank": 1,
+      "chunk_id": "plwiki-rozbiory-polski#1218",
+      "note": "About third states not recognising the partitions; no years or partitioning powers."
+    },
+    {
+      "id": "ret-train-q16",
+      "rank": 2,
+      "chunk_id": "plwiki-rozbiory-polski#1212",
+      "note": "Causes of the 1772 first partition with Russia, Prussia, Austria; nothing on 1793/1795."
+    },
+    {
+      "id": "ret-train-q16",
+      "rank": 3,
+      "chunk_id": "plwiki-rozbiory-polski#1207",
+      "note": "1772-1795 and the three powers, but no individual partition years or which powers took part in each."
+    },
+    {
+      "id": "ret-train-q17",
+      "rank": 1,
+      "chunk_id": "plwiki-insurekcja-kosciuszkowska#1237",
+      "note": "7 May 1794 universal regulating peasant duties, government protection and security of property; personal freedom and reduced pańszczyzna not stated."
+    },
+    {
+      "id": "ret-train-q17",
+      "rank": 2,
+      "chunk_id": "plwiki-konstytucja-3-maja#1193",
+      "note": "\"przyznawał wolność chłopom i ziemię, tym którzy będą walczyć\" confirms freedom only; no reduced pańszczyzna or land security; land-for-fighters wording differs from claim."
+    },
+    {
+      "id": "ret-train-q17",
+      "rank": 3,
+      "chunk_id": "plwiki-uwlaszczenie-chlopow#1482",
+      "note": "Truncated right at \"wydał Uniwersał połaniecki (właśc.\"; no content of the universal."
+    },
+    {
+      "id": "ret-train-q18",
+      "rank": 1,
+      "chunk_id": "plwiki-ksiestwo-warszawskie#1277",
+      "note": "1815 partition of the Duchy; no founding treaty or ruler."
+    },
+    {
+      "id": "ret-train-q18",
+      "rank": 2,
+      "chunk_id": "plwiki-ksiestwo-warszawskie#1271",
+      "note": "Economy of the Duchy; no treaty or ruler."
+    },
+    {
+      "id": "ret-train-q19",
+      "rank": 1,
+      "chunk_id": "plwiki-kongres-wiedenski#1285",
+      "note": "Social atmosphere of the congress; no decisions on Polish lands."
+    },
+    {
+      "id": "ret-train-q19",
+      "rank": 2,
+      "chunk_id": "plwiki-kongres-wiedenski#1278",
+      "note": "Dates and general aims of the congress; nothing on Polish lands."
+    },
+    {
+      "id": "ret-train-q19",
+      "rank": 3,
+      "chunk_id": "plwiki-krolestwo-polskie-kongresowe#1292",
+      "note": "Kingdom of Poland created by the congress in union with Russia; no Grand Duchy of Poznań or Free City of Kraków."
+    },
+    {
+      "id": "ret-train-q20",
+      "rank": 2,
+      "chunk_id": "plwiki-powstanie-listopadowe#1320",
+      "note": "Gives the night of 29/30 Nov 1830 but not the triggering event."
+    },
+    {
+      "id": "ret-train-q20",
+      "rank": 3,
+      "chunk_id": "plwiki-powstanie-listopadowe#1325",
+      "note": "Events of the following day; no start date or triggering event."
+    },
+    {
+      "id": "ret-train-q21",
+      "rank": 1,
+      "chunk_id": "plwiki-powstanie-styczniowe#1431",
+      "note": "States outbreak set for 'noc z 22 na 23 stycznia' 1863 (plan), but nothing on 'czerwoni'/'biali' camps."
+    },
+    {
+      "id": "ret-train-q21",
+      "rank": 2,
+      "chunk_id": "plwiki-powstanie-styczniowe#1434",
+      "note": "Covers early fighting 'Wystąpienia powstańcze 21–25 stycznia' without the outbreak date/year or the political camps."
+    },
+    {
+      "id": "ret-train-q21",
+      "rank": 3,
+      "chunk_id": "plwiki-powstanie-styczniowe#1432",
+      "note": "Mentions 22 stycznia manifest of the Rząd Narodowy (implicit outbreak date) but no year stated here and no camps."
+    },
+    {
+      "id": "ret-train-q22",
+      "rank": 3,
+      "chunk_id": "plwiki-uwlaszczenie-chlopow#1491",
+      "note": "About the Austrian partition (1848 reskrypt of Ferdynand I), not the Russian one."
+    },
+    {
+      "id": "ret-train-q23",
+      "rank": 1,
+      "chunk_id": "plwiki-kulturkampf#1502",
+      "note": "Describes anti-Polish character and Bismarck in 1870s, but does not define it as policy against the Catholic Church (only 'bardziej nacjonalistyczny niż religijny')."
+    },
+    {
+      "id": "ret-train-q23",
+      "rank": 3,
+      "chunk_id": "plwiki-uwlaszczenie-chlopow#1486",
+      "note": "About peasant enfranchisement in the Prussian partition, not Kulturkampf."
+    },
+    {
+      "id": "ret-train-q24",
+      "rank": 2,
+      "chunk_id": "plwiki-akt-5-listopada#1687",
+      "note": "Entente protests 'przeciw rozporządzaniu Królestwem Polskim przez okupantów' imply content but not issuers or the promise explicitly."
+    },
+    {
+      "id": "ret-train-q24",
+      "rank": 3,
+      "chunk_id": "plwiki-akt-5-listopada#1688",
+      "note": "Discusses the act's international impact; does not state its content or issuers."
+    },
+    {
+      "id": "ret-train-q25",
+      "rank": 1,
+      "chunk_id": "plwiki-bitwa-warszawska#1974",
+      "note": "'kontruderzenie znad Wieprza 16 sierpnia 1920' reaching 'na tyły wojsk radzieckich', but no battle dates or defeat of Tuchaczewski's front."
+    },
+    {
+      "id": "ret-train-q25",
+      "rank": 2,
+      "chunk_id": "plwiki-bitwa-warszawska#1955",
+      "note": "'13–25 sierpnia 1920', defeat of 'Frontu Zachodniego ... Tuchaczewskiego', 'Kluczową rolę odegrała kontrofensywa' — Wieprz strike only implicit, no 16 Aug."
+    },
+    {
+      "id": "ret-train-q25",
+      "rank": 3,
+      "chunk_id": "plwiki-jozef-pilsudski#1737",
+      "note": "Gives 13–25 Aug dates, Radzymin and 'walk nad Wkrą', Wieprz group mentioned, but not its outcome."
+    },
+    {
+      "id": "ret-train-q26",
+      "rank": 1,
+      "chunk_id": "plwiki-traktat-wersalski#1831",
+      "note": "About the Treaty of Versailles, wrong event."
+    },
+    {
+      "id": "ret-train-q26",
+      "rank": 2,
+      "chunk_id": "plwiki-wojna-polsko-bolszewicka#1847",
+      "note": "'18 marca 1921, również w Rydze, podpisany został pokojowy traktat ryski, który wytyczył granicę' — how the border ran is not given."
+    },
+    {
+      "id": "ret-train-q26",
+      "rank": 3,
+      "chunk_id": "plwiki-traktat-ryski#1991",
+      "note": "'podpisany w Rydze dnia 18 marca 1921' and 'ustalał przebieg granic' but no border course (Zbrucz, territories). CLAIM-DOUBT: Wileńszczyzna was not assigned to Poland by the Riga treaty itself (Wilno question left to Poland–Lithuania)."
+    },
+    {
+      "id": "ret-train-q27",
+      "rank": 1,
+      "chunk_id": "plwiki-przewrot-majowy#2067",
+      "note": "Attributes the coup to Piłsudski and 'maj 1926' only implicitly; no 12–15 May dates."
+    },
+    {
+      "id": "ret-train-q27",
+      "rank": 2,
+      "chunk_id": "plwiki-przewrot-majowy#2094",
+      "note": "'strat w ludziach w dniach 12–15 maja' and 'piłsudczyków' — year and leader only implicit."
+    },
+    {
+      "id": "ret-train-q27",
+      "rank": 3,
+      "chunk_id": "plwiki-jozef-pilsudski#1788",
+      "note": "Political controversy about the coup; no date and no explicit actor."
+    },
+    {
+      "id": "ret-train-q28",
+      "rank": 1,
+      "chunk_id": "plwiki-centralny-okreg-przemyslowy#2131",
+      "note": "'budowany w latach 1936–1939' but no initiator (Kwiatkowski not named)."
+    },
+    {
+      "id": "ret-train-q28",
+      "rank": 2,
+      "chunk_id": "plwiki-centralny-okreg-przemyslowy#2146",
+      "note": "Commemoration (coin, comic, museum); no initiator or years of construction."
+    },
+    {
+      "id": "ret-train-q28",
+      "rank": 3,
+      "chunk_id": "plwiki-centralny-okreg-przemyslowy#2145",
+      "note": "Propaganda about COP; no initiator or construction years."
+    },
+    {
+      "id": "ret-train-q29",
+      "rank": 2,
+      "chunk_id": "plwiki-pakt-ribbentrop-molotow#2165",
+      "note": "'dokonali podziału terytoriów państw Europy Środkowej i Wschodniej' but not attributed to the secret protocol, no Polish line."
+    },
+    {
+      "id": "ret-train-q29",
+      "rank": 3,
+      "chunk_id": "plwiki-pakt-ribbentrop-molotow#2170",
+      "note": "About how the secret content leaked to other powers; no content of the protocol."
+    },
+    {
+      "id": "ret-train-q30",
+      "rank": 2,
+      "chunk_id": "plwiki-zbrodnia-katynska#2516",
+      "note": "Names Politburo members (incl. Beria) as guilty, but no decision date or the decision itself."
+    },
+    {
+      "id": "ret-train-q30",
+      "rank": 3,
+      "chunk_id": "plwiki-zbrodnia-katynska#2489",
+      "note": "About archives and Chatyń disinformation; irrelevant to the decision."
+    },
+    {
+      "id": "ret-train-q31",
+      "rank": 1,
+      "chunk_id": "plwiki-powstanie-warszawskie#2692",
+      "note": "'W trakcie dwumiesięcznych walk' gives duration approximately; no start date."
+    },
+    {
+      "id": "ret-train-q31",
+      "rank": 2,
+      "chunk_id": "plwiki-powstanie-warszawskie#2615",
+      "note": "Pre-uprising deliberations (29 lipca); no outbreak date or duration."
+    },
+    {
+      "id": "ret-train-q31",
+      "rank": 3,
+      "chunk_id": "plwiki-powstanie-warszawskie#2611",
+      "note": "Late-July 1944 context and PKWN; no outbreak date or duration."
+    },
+    {
+      "id": "ret-train-q32",
+      "rank": 1,
+      "chunk_id": "plwiki-konferencja-jaltanska#2776",
+      "note": "Only dates/participants of the conference (4–11 lutego 1945); no decisions about Poland."
+    },
+    {
+      "id": "ret-train-q32",
+      "rank": 2,
+      "chunk_id": "plwiki-konferencja-jaltanska#2781",
+      "note": "Confirms imposition of 'tzw. linii Curzona jako granicy polsko-sowieckiej'; no western compensation, government, or elections."
+    },
+    {
+      "id": "ret-train-q32",
+      "rank": 3,
+      "chunk_id": "plwiki-konferencja-jaltanska#2782",
+      "note": "Reactions ('zdrada jałtańska', RJN protest); no specific decisions."
+    },
+    {
+      "id": "ret-train-q33",
+      "rank": 1,
+      "chunk_id": "plwiki-pkwn#2825",
+      "note": "Membership of PKWN; nothing on the Manifesto's content."
+    },
+    {
+      "id": "ret-train-q33",
+      "rank": 2,
+      "chunk_id": "plwiki-pkwn#2820",
+      "note": "Where/how the Manifesto was published; only says communist fragments removed, not its content."
+    },
+    {
+      "id": "ret-train-q33",
+      "rank": 3,
+      "chunk_id": "plwiki-pkwn#2807",
+      "note": "Radio Moskwa announcement and PKWN creation; no Manifesto content."
+    },
+    {
+      "id": "ret-train-q34",
+      "rank": 1,
+      "chunk_id": "plwiki-poznanski-czerwiec#2861",
+      "note": "Post-event leaflets nationwide incl. 'Robotnicy poznańscy żądają na miesiąc 1500 złotych', 'Chcemy wolności' — not the workers' own 28 June demands directly."
+    },
+    {
+      "id": "ret-train-q34",
+      "rank": 2,
+      "chunk_id": "plwiki-solidarnosc#2948",
+      "note": "'wysuwano postulaty socjalne, ale również polityczne' and 'krwawo stłumionych zamieszek'; no specifics (Cegielski, prices, army)."
+    },
+    {
+      "id": "ret-train-q34",
+      "rank": 3,
+      "chunk_id": "plwiki-poznanski-czerwiec#2856",
+      "note": "Fighting outside Poznań (Mrowino, Kościan); no slogans or demands."
+    },
+    {
+      "id": "ret-train-q35",
+      "rank": 1,
+      "chunk_id": "plwiki-porozumienia-sierpniowe#2940",
+      "note": "Only defines the accords as four agreements ending August 1980; no provisions."
+    },
+    {
+      "id": "ret-train-q35",
+      "rank": 3,
+      "chunk_id": "plwiki-porozumienia-sierpniowe#2942",
+      "note": "Demand for 'niezależnych związków zawodowych' and authorities 'zgodziły się ... zaakceptować postulaty' — the provision only implicit."
+    },
+    {
+      "id": "ret-train-q36",
+      "rank": 1,
+      "chunk_id": "plwiki-stan-wojenny#3043",
+      "note": "Date only implicit ('16 miesięcy po strajkach w 1980', 'grudnia 1981'); WRON/Jaruzelski not mentioned."
+    },
+    {
+      "id": "ret-train-q36",
+      "rank": 2,
+      "chunk_id": "plwiki-stan-wojenny#3057",
+      "note": "Legal basis (art. 33 Konstytucji PRL, Rada Państwa); no date or WRON head."
+    },
+    {
+      "id": "ret-train-q36",
+      "rank": 3,
+      "chunk_id": "plwiki-stan-wojenny#3039",
+      "note": "'13 grudnia 1981, w dniu wprowadzenia stanu wojennego' but no WRON head."
+    },
+    {
+      "id": "ret-train-q37",
+      "rank": 1,
+      "chunk_id": "plwiki-okragly-stol#3101",
+      "note": "Implies semi-free elections ('65% Sejmu w rękach komunistycznego reżymu'); no Solidarność legalization, Senate or president."
+    },
+    {
+      "id": "ret-train-q37",
+      "rank": 2,
+      "chunk_id": "plwiki-okragly-stol#3104",
+      "note": "Photographs of the event; no provisions."
+    },
+    {
+      "id": "ret-train-q37",
+      "rank": 3,
+      "chunk_id": "plwiki-okragly-stol#3087",
+      "note": "'od 6 lutego do 5 kwietnia 1989' and 'częściowo wolne wybory do Sejmu'; no Senate, president, or legalization of Solidarność."
+    },
+    {
+      "id": "ret-train-q38",
+      "rank": 1,
+      "chunk_id": "plwiki-mur-berlinski#3285",
+      "note": "'otwarcie granic o północy' before '10 listopada 1989' implies 9 Nov only indirectly."
+    },
+    {
+      "id": "ret-train-q38",
+      "rank": 2,
+      "chunk_id": "plwiki-mur-berlinski#3303",
+      "note": "Victims of the wall; no fall date."
+    },
+    {
+      "id": "ret-train-q38",
+      "rank": 3,
+      "chunk_id": "plwiki-mur-berlinski#3310",
+      "note": "Memorial path; no fall date."
+    },
+    {
+      "id": "ret-train-q39",
+      "rank": 3,
+      "chunk_id": "plwiki-plan-marshalla#3254",
+      "note": "Economic outcomes in the East; no reason for Poland's non-participation."
+    },
+    {
+      "id": "ret-train-q40",
+      "rank": 2,
+      "chunk_id": "plwiki-wojna-trzydziestoletnia#0885",
+      "note": "Cultural works list; no ending or principles."
+    },
+    {
+      "id": "ret-train-q40",
+      "rank": 3,
+      "chunk_id": "plwiki-wojna-trzydziestoletnia#0864",
+      "note": "Gives end date '24 października 1648' but no peace terms or principles."
+    }
+  ],
+  "verdicts_file": "audit/audit_verdicts_chrono_v2.jsonl",
+  "verdicts_sha256": "8efbc060fa772f8bf814c04a4372cbc08a61170cc25fe73a3af1c2506e9da646"
+}

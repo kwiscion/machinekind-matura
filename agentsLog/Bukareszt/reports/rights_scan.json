@@ -1,0 +1,11 @@
+{
+  "sources": 107,
+  "redistributable_sources": 107,
+  "committed_files_scanned": 34,
+  "queries_hashed": 40,
+  "problems": [],
+  "warnings": [
+    "agentsLog/Bukareszt/audit/audit_sample_bm25.jsonl: carries excerpts from 49 source(s) (all CC BY-SA/PD, attributed via sources.jsonl)",
+    "agentsLog/Bukareszt/audit/audit_sample_chrono_v2.jsonl: carries excerpts from 47 source(s) (all CC BY-SA/PD, attributed via sources.jsonl)"
+  ]
+}
