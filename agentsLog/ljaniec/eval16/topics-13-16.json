@@ -1,0 +1,532 @@
+[
+  {
+    "id": "bk117-eval-13",
+    "source_group_id": "C-ww1-independence",
+    "prompt_sha256": "488f717d95e0f8e453c6ce1c0b51e9ed3f50ff2783dc1de78a45b2e4d46ebdcf",
+    "status": "complete_evaluation_notes",
+    "topics": [
+      {
+        "number": 1,
+        "requirements": [
+          "Explain how the war enabled Polish independence; evaluate political, military and international mechanisms"
+        ],
+        "aspects": [
+          {
+            "name": "political",
+            "facts": [
+              {
+                "claim": "In November 1918 the Regency Council transferred military then civil authority to Piłsudski.",
+                "source_id": "13-mhp",
+                "locator": "11/14 November 1918"
+              },
+              {
+                "claim": "The Polish Liquidation Commission was formed in Kraków on 28 October 1918 to take authority over former Austrian-partition lands.",
+                "source_id": "13-mhp",
+                "locator": "1918, 28 October"
+              }
+            ],
+            "causal_explanation": "Wartime imperial breakdown opened space for Polish authorities. The Kraków commission and transfer of existing administrative authority helped consolidate the emerging state; Polish institutions used the opening rather than receiving complete borders automatically."
+          },
+          {
+            "name": "military",
+            "facts": [
+              {
+                "claim": "Polish Legions were organized with Austrian approval in 1914; Piłsudski and Legion soldiers broke with the German oath in 1917.",
+                "source_id": "13-mhp",
+                "locator": "27 August 1914;9 July 1917"
+              }
+            ],
+            "causal_explanation": "Military organization supplied cadres while the oath crisis demonstrates that alignment with a partitioning power was tactical."
+          },
+          {
+            "name": "international",
+            "facts": [
+              {
+                "claim": "Wilson publicly called for an independent Poland with access to the sea in point XIII.",
+                "source_id": "13-wilson",
+                "locator": "point XIII"
+              },
+              {
+                "claim": "Germany signed the western-front armistice at Compiègne on 11 November 1918.",
+                "source_id": "13-mhp",
+                "locator": "1918, 11 November (Compiègne)"
+              }
+            ],
+            "causal_explanation": "International endorsement made restoration a stated war aim, while German military defeat removed a major occupying constraint. Neither declaration nor armistice alone settled all Polish borders."
+          }
+        ],
+        "traps": [
+          {
+            "claim_or_issue": "Independence and all borders were settled by Wilson or on 11 November 1918.",
+            "classification": "false_fact",
+            "correction_or_caveat": "The speech is a proposal;11 November transferred military authority,14 November civil authority. Do not equate those acts with a completed territorial settlement.",
+            "source_ids": [
+              "13-wilson",
+              "13-mhp"
+            ]
+          }
+        ],
+        "interpretive_flexibility": "Accept different weights for military organization, diplomacy and partitioning-power collapse if evidence connects them."
+      },
+      {
+        "number": 2,
+        "requirements": [
+          "Compare Piłsudski and Dmowski: initial alignments, instruments and evolution during the war"
+        ],
+        "aspects": [
+          {
+            "name": "Piłsudski: armed initiative and tactical alignment",
+            "facts": [
+              {
+                "claim": "Legion formation accompanied Austrian cooperation; Piłsudski was imprisoned after the 1917 oath refusal.",
+                "source_id": "13-mhp",
+                "locator": "27 August 1914;9 July 1917"
+              }
+            ],
+            "causal_explanation": "Armed cadres were intended as leverage; breaking the oath prevents describing his position as permanent German loyalty."
+          },
+          {
+            "name": "Dmowski: Entente diplomacy",
+            "facts": [
+              {
+                "claim": "Dmowski headed the 1917 Polish National Committee, recognized by France and other Entente powers.",
+                "source_id": "13-mhp",
+                "locator": "15 August;9 September 1917"
+              }
+            ],
+            "causal_explanation": "Diplomatic recognition furnished an external representation for Polish claims, distinct from Piłsudski’s domestic military route."
+          }
+        ],
+        "traps": [
+          {
+            "claim_or_issue": "One leader alone created independence.",
+            "classification": "vague_argument",
+            "correction_or_caveat": "An exclusive assertion needs evidence accounting for the other route and international conditions; disagreement about relative importance is interpretive.",
+            "source_ids": [
+              "13-mhp"
+            ]
+          }
+        ],
+        "interpretive_flexibility": "These comparison dimensions organize evaluation; they are not extra aspects imposed by an official marking key."
+      }
+    ],
+    "sources": [
+      {
+        "source_id": "13-mhp",
+        "url": "https://obw.muzhp.pl/kalendarium",
+        "title": "Odważmy się być wolnymi: Kalendarium",
+        "publisher": "Muzeum Historii Polski",
+        "retrieved_at": "2026-09-26",
+        "locator": "1914–1918 dated entries: 27 Aug 1914, 9 Jul/15 Aug 1917, 4/11/14 Nov 1918; 1918, 28 October and 11 November (Compiègne)",
+        "verification_status": "Full relevant page text opened and checked through web research",
+        "rights_note": "Reference fact checking only; original concise notes, no source text/images exported; no redistribution license asserted"
+      },
+      {
+        "source_id": "13-wilson",
+        "url": "https://avalon.law.yale.edu/20th_century/wilson14.asp",
+        "title": "President Woodrow Wilson's Fourteen Points",
+        "publisher": "Yale Law School, Avalon Project (primary speech)",
+        "retrieved_at": "2026-09-26",
+        "locator": "8 January 1918, point XIII",
+        "verification_status": "Full relevant page text opened and checked through web research",
+        "rights_note": "Reference fact checking only; original concise notes, no source text/images exported; no redistribution license asserted"
+      }
+    ],
+    "limits": [
+      "No candidate essays inspected. The catalogue is illustrative, not a required list of names/events."
+    ]
+  },
+  {
+    "id": "bk117-eval-14",
+    "source_group_id": "C-1939",
+    "prompt_sha256": "32829e51750b652fc1d955038aaf4e8e3524f1e685135443083838b4fe98ce25",
+    "status": "complete_evaluation_notes",
+    "topics": [
+      {
+        "number": 1,
+        "requirements": [
+          "Explain defeat in September 1939 using international and military aspects"
+        ],
+        "aspects": [
+          {
+            "name": "international",
+            "facts": [
+              {
+                "claim": "Britain and France declared war on 3 September; the Soviet invasion followed on 17 September.",
+                "source_id": "14-ushmm",
+                "locator": "Invasion and Partition of Poland"
+              }
+            ],
+            "causal_explanation": "A declaration did not supply a timely relieving offensive; invasion from the east compounded German pressure."
+          },
+          {
+            "name": "military",
+            "facts": [
+              {
+                "claim": "Germany held major military superiority and combined aircraft and armored movement; Poland subsequently faced two invading powers.",
+                "source_id": "14-ushmm",
+                "locator": "Key Facts 1–2; invasion paragraphs"
+              }
+            ],
+            "causal_explanation": "Material and operational asymmetry plus a second front explain defeat more concretely than a claim of Polish cowardice."
+          }
+        ],
+        "traps": [
+          {
+            "claim_or_issue": "Poland surrendered nationally on 17 September or cavalry routinely charged tanks.",
+            "classification": "false_fact_or_unverified_precision",
+            "correction_or_caveat": "The last operational Polish unit surrendered 6 October. The cavalry claim is not established by these sources and requires checking rather than repeating.",
+            "source_ids": [
+              "14-ushmm"
+            ]
+          }
+        ],
+        "interpretive_flexibility": "Permit arguments weighing operational plans, mobilization or geography when separately supported; no single-cause thesis is required."
+      },
+      {
+        "number": 2,
+        "requirements": [
+          "Distinguish public nonaggression from the secret protocol; explain regional consequences"
+        ],
+        "aspects": [
+          {
+            "name": "agreement and spheres",
+            "facts": [
+              {
+                "claim": "The public treaty signed on 23 August 1939 pledged mutual nonaggression, non-support for a third power attacking either signatory, and exclusion from hostile groupings.",
+                "source_id": "14-treaty",
+                "locator": "Articles I, II and IV; signature date"
+              },
+              {
+                "claim": "The secret protocol of 23 August 1939 assigned spheres in Eastern Europe; its Polish clause used the Narew–Vistula–San line.",
+                "source_id": "14-protocol",
+                "locator": "clauses 1–3"
+              },
+              {
+                "claim": "The secret protocol placed Finland, Estonia and Latvia in the Soviet sphere and recorded Soviet interest in Bessarabia; the initial Baltic dividing line was Lithuania’s northern boundary.",
+                "source_id": "14-protocol",
+                "locator": "Clauses 1 and 3"
+              }
+            ],
+            "causal_explanation": "Public promises removed the immediate prospect of war between the signatories, while secret territorial understandings reduced the diplomatic obstacle to aggression. Distinguish the August spheres from later border revisions and actual occupations."
+          },
+          {
+            "name": "consequences",
+            "facts": [
+              {
+                "claim": "Germany invaded 1 September, the USSR 17 September; the defeated country was partitioned.",
+                "source_id": "14-ushmm",
+                "locator": "Key Facts; Invasion and Partition of Poland"
+              }
+            ],
+            "causal_explanation": "The military implementation turned diplomatic spheres into occupation, while later border arrangements must be dated separately."
+          }
+        ],
+        "traps": [
+          {
+            "claim_or_issue": "The August protocol used exactly the final September occupation border.",
+            "classification": "false_fact",
+            "correction_or_caveat": "Read the August river line as written; distinguish the subsequent partition from the original clause.",
+            "source_ids": [
+              "14-protocol",
+              "14-ushmm"
+            ]
+          }
+        ],
+        "interpretive_flexibility": "A regional analysis may also discuss Baltic or Bessarabian clauses; do not demand exact full-document recitation."
+      }
+    ],
+    "sources": [
+      {
+        "source_id": "14-ushmm",
+        "url": "https://encyclopedia.ushmm.org/content/en/article/invasion-of-poland-fall-1939",
+        "title": "Invasion of Poland, Fall1939",
+        "publisher": "United States Holocaust Memorial Museum",
+        "retrieved_at": "2026-09-26",
+        "locator": "Key Facts; Hitler’s Non-Aggression Pact with Poland; Invasion and Partition of Poland",
+        "verification_status": "Full relevant page text opened and checked through web research",
+        "rights_note": "Reference fact checking only; original concise notes, no source text/images exported; no redistribution license asserted"
+      },
+      {
+        "source_id": "14-protocol",
+        "url": "https://avalon.law.yale.edu/20th_century/addsepro.asp",
+        "title": "Secret Additional Protocol,23August1939",
+        "publisher": "Yale Law School, Avalon Project (primary diplomatic document)",
+        "retrieved_at": "2026-09-26",
+        "locator": "Clauses 1–3; dated signature",
+        "verification_status": "Full relevant page text opened and checked through web research",
+        "rights_note": "Reference fact checking only; original concise notes, no source text/images exported; no redistribution license asserted"
+      },
+      {
+        "source_id": "14-treaty",
+        "url": "https://avalon.law.yale.edu/20th_century/nonagres.asp",
+        "title": "Treaty of Nonaggression Between Germany and the Union of Soviet Socialist Republics",
+        "publisher": "Yale Law School, Avalon Project (primary document translation)",
+        "retrieved_at": "2026-09-26",
+        "locator": "Articles I, II and IV; Moscow signature date",
+        "verification_status": "Full rendered primary document checked",
+        "rights_note": "Reference-only verification; original concise factual paraphrase, no long passage or source image redistributed; reuse rights not presumed."
+      }
+    ],
+    "limits": [
+      "Specific alternative military explanations need independent supporting evidence; these notes do not settle counterfactual rescue feasibility."
+    ]
+  },
+  {
+    "id": "bk117-eval-15",
+    "source_group_id": "C-alexander",
+    "prompt_sha256": "1922661e398212afceef531acce8f23b1c5984978eed174591b267d828a75d17",
+    "status": "complete_evaluation_notes",
+    "topics": [
+      {
+        "number": 1,
+        "requirements": [
+          "Evaluate political, military and cultural effects of Alexander’s conquests"
+        ],
+        "aspects": [
+          {
+            "name": "political",
+            "facts": [
+              {
+                "claim": "Successor dynasties included Ptolemies in Egypt, Seleucids in the Near East and Antigonids in Macedonia.",
+                "source_id": "15-met",
+                "locator": "successor-dynasty paragraph"
+              }
+            ],
+            "causal_explanation": "Conquest enabled new monarchies; their continuation need not imply survival of one unified empire."
+          },
+          {
+            "name": "military",
+            "facts": [
+              {
+                "claim": "Alexander’s campaigns from 334 to 323 BCE extended through Egypt and the Persian realm toward India.",
+                "source_id": "15-met",
+                "locator": "opening paragraph"
+              }
+            ],
+            "causal_explanation": "Campaign reach displaced the prior imperial order and exposed the limits of maintaining control across a huge territory."
+          },
+          {
+            "name": "cultural",
+            "facts": [
+              {
+                "claim": "Conquest and subsequent mobility widened exchange between Greek and other traditions.",
+                "source_id": "15-met",
+                "locator": "opening and cultural-exchange paragraphs"
+              },
+              {
+                "claim": "The Hellenistic successor world developed great libraries at Alexandria and Pergamon.",
+                "source_id": "15-met",
+                "locator": "Paragraph beginning Hellenistic art is richly diverse"
+              }
+            ],
+            "causal_explanation": "Conquest widened contact; successor patronage supported scholarly and artistic centers, illustrated by these libraries. This is a consequence of the Hellenistic world, not a claim that Alexander personally founded every institution or replaced all local cultures."
+          }
+        ],
+        "traps": [
+          {
+            "claim_or_issue": "Alexander created one culturally uniform empire lasting intact for centuries.",
+            "classification": "false_fact",
+            "correction_or_caveat": "The source distinguishes a short-lived united empire from varied successor kingdoms and cultures.",
+            "source_ids": [
+              "15-met"
+            ]
+          }
+        ],
+        "interpretive_flexibility": "Credit both creative exchange and violent imperial domination when the essay supplies sound evidence."
+      },
+      {
+        "number": 2,
+        "requirements": [
+          "Explain disintegration after Alexander’s death rather than merely list successor states"
+        ],
+        "aspects": [
+          {
+            "name": "loss of central authority and successor competition",
+            "facts": [
+              {
+                "claim": "Alexander died in 323 BCE; his generals divided the lands into their own kingdoms.",
+                "source_id": "15-met",
+                "locator": "opening and successor paragraphs"
+              }
+            ],
+            "causal_explanation": "Inference: an empire assembled around military leadership was vulnerable when commanders established territorial power after that leader’s death. Treat the inference as an argument, not a quoted source claim."
+          }
+        ],
+        "traps": [
+          {
+            "claim_or_issue": "All mature successor kingdoms appeared instantly and without conflict in 323 BCE.",
+            "classification": "unsupported_precision",
+            "correction_or_caveat": "The museum gives the general succession process; it does not justify exact instantaneous state borders or every succession-war date.",
+            "source_ids": [
+              "15-met"
+            ]
+          }
+        ],
+        "interpretive_flexibility": "Other causal accounts involving succession arrangements or regional resistance are valid if independently sourced; no dynastic event list is compulsory."
+      }
+    ],
+    "sources": [
+      {
+        "source_id": "15-met",
+        "url": "https://www.metmuseum.org/essays/art-of-the-hellenistic-age-and-the-hellenistic-tradition",
+        "title": "Art of the Hellenistic Age and the Hellenistic Tradition",
+        "publisher": "The Metropolitan Museum of Art",
+        "retrieved_at": "2026-09-26",
+        "locator": "Opening historical paragraphs; paragraph on successors and Hellenistic dynasties; cultural exchanges paragraph; paragraph beginning Hellenistic art is richly diverse",
+        "verification_status": "Full relevant page text opened and checked through web research",
+        "rights_note": "Reference fact checking only; original concise notes, no source text/images exported; no redistribution license asserted"
+      }
+    ],
+    "limits": [
+      "Britannica direct page failed during research; no facts were attributed to that failed page. Precise succession-war dates and heir disputes require further verification."
+    ]
+  },
+  {
+    "id": "bk117-eval-16",
+    "source_group_id": "C-1956",
+    "prompt_sha256": "cc1d8d2af1f7e7671f67cd14b879de147735168f267bb6105f6194f1e526cbee",
+    "status": "complete_evaluation_notes",
+    "topics": [
+      {
+        "number": 1,
+        "requirements": [
+          "Explain causes and consequences of 1956 in Poland: political, social and economic"
+        ],
+        "aspects": [
+          {
+            "name": "political",
+            "facts": [
+              {
+                "claim": "Khrushchev criticized Stalin in February 1956; October brought Gomułka’s return amid Soviet pressure.",
+                "source_id": "16-musial",
+                "locator": "Skutki tajnego referatu;October paragraphs"
+              }
+            ],
+            "causal_explanation": "Destalinization weakened established authority and opened conflict over change, without proving the end of communist government."
+          },
+          {
+            "name": "social",
+            "facts": [
+              {
+                "claim": "Poznań workers demonstrated 28 June; the authorities sent regular army units and suppressed the revolt.",
+                "source_id": "16-musial",
+                "locator": "Poznań paragraphs"
+              },
+              {
+                "claim": "October also brought widespread demonstrations and attempts at independent organization.",
+                "source_id": "16-musial",
+                "locator": "Final paragraphs on social mobilization"
+              }
+            ],
+            "causal_explanation": "Repression deepened the legitimacy crisis; later mobilization shows social consequences."
+          },
+          {
+            "name": "economic",
+            "facts": [
+              {
+                "claim": "Falling real wages, shortages and production pressures contributed to protest.",
+                "source_id": "16-brzechczyn",
+                "locator": "Dlaczego w Poznaniu?"
+              },
+              {
+                "claim": "After October, peasants dissolved collective farms.",
+                "source_id": "16-musial",
+                "locator": "Final paragraph on rural responses to October"
+              }
+            ],
+            "causal_explanation": "Material grievances drove protest; rural dissolution illustrates an economic consequence of the political opening."
+          }
+        ],
+        "traps": [
+          {
+            "claim_or_issue": "1956 ended PZPR rule or Soviet influence.",
+            "classification": "false_fact",
+            "correction_or_caveat": "Gomułka’s October appeal still defended relations with the USSR; distinguish partial change from systemic independence.",
+            "source_ids": [
+              "16-october"
+            ]
+          }
+        ],
+        "interpretive_flexibility": "Credit accounts emphasizing social pressure, internal party struggle or international context if they connect causes and outcomes."
+      },
+      {
+        "number": 2,
+        "requirements": [
+          "Explain the June protest’s course and significance"
+        ],
+        "aspects": [
+          {
+            "name": "course",
+            "facts": [
+              {
+                "claim": "Workers came onto Poznań streets 28 June over pay, norms and shortages; repression involved regular troops.",
+                "source_id": "16-musial",
+                "locator": "Poznań paragraphs"
+              }
+            ],
+            "causal_explanation": "Failed handling of demands and repression escalated a labor dispute into a challenge to communist power."
+          },
+          {
+            "name": "significance",
+            "facts": [
+              {
+                "claim": "The Poznań revolt catalyzed subsequent debate and social mobilization in 1956.",
+                "source_id": "16-musial",
+                "locator": "Poznań and ensuing public-activity paragraphs"
+              }
+            ],
+            "causal_explanation": "Its significance lies in pressure on the regime, not an immediate successful seizure of national power."
+          }
+        ],
+        "traps": [
+          {
+            "claim_or_issue": "Gomułka was already party leader during the June revolt; June and October were the same event.",
+            "classification": "false_fact",
+            "correction_or_caveat": "Keep June repression distinct from the October leadership transition. Exact casualty totals vary across historical compilations; do not penalize a plausible sourced count automatically.",
+            "source_ids": [
+              "16-musial",
+              "16-october"
+            ]
+          }
+        ],
+        "interpretive_flexibility": "Revolt, uprising and workers’ protest may be defensible labels; evaluate explained content rather than enforce one label."
+      }
+    ],
+    "sources": [
+      {
+        "source_id": "16-brzechczyn",
+        "url": "https://ipn.gov.pl/pl/historia-z-ipn/244504,Krzysztof-Brzechczyn-Jak-doszlo-do-Poznanskiego-Czerwca.html",
+        "title": "Krzysztof Brzechczyn: Jak doszło do Poznańskiego Czerwca?",
+        "publisher": "Instytut Pamięci Narodowej",
+        "retrieved_at": "2026-09-26",
+        "locator": "Dlaczego w Polsce?; Dlaczego w Poznaniu?",
+        "verification_status": "Full relevant page text opened and checked through web research",
+        "rights_note": "Reference fact checking only; original concise notes, no source text/images exported; no redistribution license asserted"
+      },
+      {
+        "source_id": "16-musial",
+        "url": "https://archiwum.ipn.gov.pl/pl/historia-z-ipn/196116,Filip-Musial-Ucieczka-przed-spoleczenstwem.html",
+        "title": "Filip Musiał: Ucieczka przed społeczeństwem",
+        "publisher": "Instytut Pamięci Narodowej",
+        "retrieved_at": "2026-09-26",
+        "locator": "Skutki tajnego referatu; Poznań paragraphs; October paragraphs",
+        "verification_status": "Full relevant page text opened and checked through web research",
+        "rights_note": "Reference fact checking only; original concise notes, no source text/images exported; no redistribution license asserted"
+      },
+      {
+        "source_id": "16-october",
+        "url": "https://lodz.ipn.gov.pl/pl6/aktualnosci/153047,Lodzki-Pazdziernik-1956-r.html",
+        "title": "Łódzki Październik1956r.",
+        "publisher": "Instytut Pamięci Narodowej",
+        "retrieved_at": "2026-09-26",
+        "locator": "paragraphs on VIIIPlenum 19–21 October and Gomułka’s response",
+        "verification_status": "Full relevant page text opened and checked through web research",
+        "rights_note": "Reference fact checking only; original concise notes, no source text/images exported; no redistribution license asserted"
+      }
+    ],
+    "limits": [
+      "No exact casualty total is prescribed. Institutional articles were checked; precise economic outcome magnitudes and every reform date require separate verification."
+    ]
+  }
+]
