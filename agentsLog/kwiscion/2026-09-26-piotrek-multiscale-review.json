@@ -1,0 +1,158 @@
+{
+  "review_status": "provisional_independent_sol",
+  "known_validation": true,
+  "scope": "Six selected items, eight possible points per arm; only control/final graded.",
+  "merge_commit": "84afe8a0671e6952623682d86638ddc9fa6086fd",
+  "answer_sha256": "b3072b4e466904a26b8c95c1cba83d69a708c8e70a9441acdc1323ae885f4512",
+  "manifest_sha256": "4804cdbaf6d872d9460deff210bfee52696bd56c17befac5cb217e340361d252",
+  "integrity": {
+    "rows": 18,
+    "unique_id_pass_pairs": 18,
+    "errors": 0,
+    "unsent": 0,
+    "empty_answers": 0,
+    "length_stops": 0
+  },
+  "method": "Fresh manual grading against official May 2024 rules, original text and all six referenced source images. No prior panel comparison grades read. Reviewer did not generate outputs.",
+  "limitation": "An extraction filter used the wrong field and displayed auxiliary observation rows before grading. Thus this review is not observation-blind; observations received no points.",
+  "range_definition": "Descriptive rubric interpretation bounds, not confidence intervals.",
+  "arms": {
+    "control": {
+      "items": [
+        {
+          "id": "val2024-hist-z5.1",
+          "max_points": 1,
+          "points": 0,
+          "low": 0,
+          "high": 0,
+          "reason": "Correct decision but materially misidentifies the map and its chronology.",
+          "error_category": "source_misidentification"
+        },
+        {
+          "id": "val2024-hist-z14.1",
+          "max_points": 1,
+          "points": 0,
+          "low": 0,
+          "high": 0,
+          "reason": "Incorrect decision; geographical overlap does not establish the same campaign.",
+          "error_category": "wrong_decision"
+        },
+        {
+          "id": "val2024-hist-z25",
+          "max_points": 3,
+          "points": 2,
+          "low": 1,
+          "high": 3,
+          "reason": "Recognizes suppression of the opposition and interprets removal of its name. Context is broad; the graphic is misdescribed. One versus two interpreted elements and adequacy of context need adjudication.",
+          "error_category": "partial_graphic_and_context"
+        },
+        {
+          "id": "val2024-hist-z2",
+          "max_points": 1,
+          "points": 1,
+          "low": 1,
+          "high": 1,
+          "reason": "Correct distinction between the ruler's conquests and successor states, supported by both sources.",
+          "error_category": "none"
+        },
+        {
+          "id": "val2024-hist-z4",
+          "max_points": 1,
+          "points": 1,
+          "low": 1,
+          "high": 1,
+          "reason": "Correctly links one visible feature to each required architectural tradition.",
+          "error_category": "none"
+        },
+        {
+          "id": "val2024-hist-z13",
+          "max_points": 1,
+          "points": 1,
+          "low": 0,
+          "high": 1,
+          "reason": "Correct event and explicit valid date link; invented bodily imagery weakens source grounding and permits a stricter zero.",
+          "error_category": "hallucinated_graphic_details"
+        }
+      ],
+      "total": 5,
+      "low": 3,
+      "high": 6,
+      "max_points": 8
+    },
+    "final": {
+      "items": [
+        {
+          "id": "val2024-hist-z5.1",
+          "max_points": 1,
+          "points": 1,
+          "low": 1,
+          "high": 1,
+          "reason": "Correct decision with accurate identification of both source situations and a relevant map feature.",
+          "error_category": "none"
+        },
+        {
+          "id": "val2024-hist-z14.1",
+          "max_points": 1,
+          "points": 0,
+          "low": 0,
+          "high": 0,
+          "reason": "Correct decision but assigns the map to the wrong conflict and invents supporting battle dates; both-source justification fails.",
+          "error_category": "invented_chronology"
+        },
+        {
+          "id": "val2024-hist-z25",
+          "max_points": 3,
+          "points": 0,
+          "low": 0,
+          "high": 0,
+          "reason": "Wrong historical episode and invented meaning of the inscription; does not explain the actual cartoon message.",
+          "error_category": "historical_and_visual_hallucination"
+        },
+        {
+          "id": "val2024-hist-z2",
+          "max_points": 1,
+          "points": 1,
+          "low": 1,
+          "high": 1,
+          "reason": "Correct distinction between the ruler's conquests and successor states, supported by both sources; incidental approximate date does not defeat the core.",
+          "error_category": "none"
+        },
+        {
+          "id": "val2024-hist-z4",
+          "max_points": 1,
+          "points": 1,
+          "low": 1,
+          "high": 1,
+          "reason": "Correctly links one visible feature to each required architectural tradition.",
+          "error_category": "none"
+        },
+        {
+          "id": "val2024-hist-z13",
+          "max_points": 1,
+          "points": 1,
+          "low": 0,
+          "high": 1,
+          "reason": "Correct event and explicit valid date link, plus relevant insignia; invented bodily imagery permits a stricter zero.",
+          "error_category": "hallucinated_graphic_details"
+        }
+      ],
+      "total": 4,
+      "low": 3,
+      "high": 4,
+      "max_points": 8
+    }
+  },
+  "paired_change": {
+    "central": -1,
+    "low": -2,
+    "high": 0,
+    "method": "Apply the same z13 interpretation to both arms; its uncertainty cancels. Remaining range is z25 control 1-3 versus final0, plus z5.1 gain1.",
+    "gains": [
+      "val2024-hist-z5.1"
+    ],
+    "regressions": [
+      "val2024-hist-z25"
+    ]
+  },
+  "mechanism": "Bundle: retained original110DPI images plus added220DPI full pages and same-model observation; both arms temperature0.2. Not isolated crop or resolution effect."
+}
