@@ -1,0 +1,6 @@
+2026-09-26T22:11:20Z [preflight] wave start=2026-09-26T22:11:20Z deadline=2026-09-26T23:11:10Z left=3590s
+/ephemeral/mm-lora/pilot-run2/probe-manifest.json f597cd604673246c72054f8648ad63258702056c8810431433ef7b654f075879
+{"mode": "synthetic_probe", "execute": false}
+2026-09-26T22:12:06Z [probe] probe PASS
+{"artifact": "control", "status": "FAIL", "criteria": {"two_calls_http_200": true, "nonempty_text": true, "finish_reason_stop": true, "completion_tokens_le_512": true, "image_tokens_consumed": true, "served_template_is_pinned_hf": false}}
+2026-09-26T22:12:15Z [control_serving] TERMINAL rc=1 left=3535s
