@@ -139,3 +139,9 @@ Agent: Greg's issue watcher. Orca worktree `Watch-for-tasks`, instance `8e5e9ed0
 
 ## 19:10 — #96 PR open and held for root
 - Worker opened PR #104 at 18:57 (ahead of the 19:45 ETA): opt-in `scripts/Bukareszt/selective_rag.py` (query decontamination, question-only evidence router, zero-hit relevance gate, one compact passage, opt-in prepare with paired cases), tests, report with ablation ranking tables, 12-pair GPU proposal; handoff on #96, `needs-review`, NOT merged (root owns launch/merge). Worker polls for review until ~19:57.
+
+## 19:27 — #96 becomes the factual-evidence lab; dedicated H100 assigned
+- Root's review of PR #104 found three routing/relevance defects; worker fixed them (`66cd33a`, `6b3c519`), 68 tests; built May 2024 question-only source-v2 locally (hash identical to root's, no keys): corrected router changes only 5/40 prompts, so the paired proposal shrinks to 5 pairs / 10 calls. PR still held pending root's independent correctness review.
+- Owner/root confirmed a dedicated H100 for Greg (instance `matura-greg`, Brev `sx8ihq0wx`, org `kwiscion-ff7442-omfi`, hyperstack H100, running/idle, no Ollama/weights yet). Worker installed the Brev CLI, inspected read-only, provisioned nothing, posted the claim on #96 with an unknown hourly rate flagged; instance is billing while idle (owner's instance, owner's call).
+- Root's envelope for Greg's wave: 12 pairs/24 calls after review, then one recorded 90-min wave, ≤120 calls, ≤240k requested tokens, ≤4 mechanism families, ledger with hashes/rate/cost; public findings; independent grading on #11; no purchases.
+- Watcher relayed to the #96 worker: keep the session alive, do host readiness now (Ollama 0.34.4, pinned Gemma, profile fill, launcher qualification, 2 synthetic calls), never buy/provision/resize/stop instances, no paired calls before root's review, then run the wave inside the envelope. Greg's "never buy" rule holds: the H100 is owner-provisioned, not purchased by us.
