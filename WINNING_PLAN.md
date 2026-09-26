@@ -1,81 +1,70 @@
 # Winning plan
 
-Owner: @kwiscion. Current decision record: **26 September 2026, 17:54 Europe/Warsaw**. Consult this before dispatch, scope changes, accepting results and reporting progress. GitHub issues are the live scheduling authority. Explicit newer owner decisions override this document. [Earlier checkpoints](agentsLog/kwiscion/2026-09-26-plan-history-through-1608.md) are historical.
+Owner: @kwiscion. Current decision: **26 September 2026, evening acceleration (18:30 Europe/Warsaw)**. Consult this before dispatch, scope changes, accepting results and reporting progress. GitHub issues are the live scheduling authority; newer explicit owner decisions prevail. [Earlier checkpoints](agentsLog/kwiscion/2026-09-26-plan-history-through-1608.md) remain historical.
 
-## Objective and evidence
+## Strategy: central diagnosis, parallel experiments
 
-**Reach 48/60 independently reviewed May 2024 history validation points by 18:00 today, then deliver the strongest measured offline system for Sunday's exam.** This is an unmet target, not a promised result. Final freeze: Sunday 27 September at 11:00 Europe/Warsaw. Highest final score is the only competition track.
+**Keep one central failure audit and distribute distinct improvement experiments across the available GPUs.** Do not spend every teammate's budget repeating the same full audit. Each experiment owner adds evidence from their own slice; an independent reviewer grades the resulting answers. Root integrates the findings and protects the unchanged fallback. The owner has explicitly resumed intensive work.
 
-A qualifying score covers all 40 items and 60 available points with every required source and image. Failed, incomplete and unsent items remain in the denominator. Agent rubric review is provisional; report uncertainty, completion and disagreements. Automatic bounds, partial runs, synthetic smoke and hypothetical oracle routing are not full scores. Never edit answers during grading.
+The Astra [40-case audit](agentsLog/kwiscion/2026-09-26-failure-audit-astra.md) is the shared diagnosis. Missing-point opportunity accounts: visual recognition/localization 5, independent source comparison 3, historical entities/relations 7, contradictory commitments 3, essay quality 7. These are observed symptoms, not additive guaranteed gains. [Routing and retrieval diagnostics](agentsLog/kwiscion/2026-09-26-routing-evidence.md) identify bibliography-year contamination in the current whole-prompt retrieval query. There are no guaranteed free formatting points.
 
-| Preserved v1 baseline | Consolidated provisional score | Review range | Completion |
-| --- | ---: | ---: | --- |
-| Gemma 4 12B Q4 | **35/60 (58.3%)** | 28–40 | 40/40 complete |
-| Qwen 3.5 9B | 25/60 | 16–29 | 36 complete; four truncated |
+Route by **answer form AND evidence needed**: choice/PF, short identification, decision+justification, essay; supplied-source, external-fact, or mixed evidence. Derive routes only from question/source structure, never evaluation keys or validation IDs. Ambiguous cases retain the bare fallback. Exclude essays from initial RAG experiments; first test an essay-specific prompt, then an independently trained essay-only adapter if feasible. Keep the base model for other tasks.
 
-[PR #53 scorecard](agentsLog/Pewciu6/2026-09-26T1551-score-consolidated.md) governs these totals. Gemma is the working baseline, **13 points short** of the target. Main losses: visual interpretation, factual recall and essay reasoning. Even hypothetical perfect routing between these existing answers reaches only 40/60; a router alone cannot solve the gap.
+## Objective and honest current result
 
-Both v1 inputs omitted one required image. Source-v2 repairs it without changing the other 39 cases; Gemma's one correction is published separately for scoring. Any reuse is a labeled 39+1 composite, not a fresh full run. Qwen's unused correction call is canceled. May 2025 remains sealed; no candidate is finally frozen.
+Deliver the strongest measured offline system for Sunday's exam. **48/60 (80%) remains the target; the Saturday 18:00 target was missed.** Final freeze: Sunday 27 September at 11:00 Europe/Warsaw. Highest final score is the only competition track.
 
-## Current experiment and queue
+| Arm | Provisional independent score | What it establishes |
+| --- | ---: | --- |
+| Laptop bare Gemma 4 12B Q4 | **35/60 [28,40]** | Best observed fallback; corrected source-v2 evidence is a labeled 39+1 composite |
+| RTX bare Gemma, source-v2, Ollama 0.34.4/context 32768 | **34/60 [25,39]** | Fresh 40/40 control in **146.6 seconds**; fast iteration is practical, formal quality equivalence is not established |
+| Qwen 3.5 9B |25/60 [16,29]|36 complete, four truncated |
+| Blanket format / generic policy |35/60 [28,39] / 32/60 [22,35]|Neither promoted |
+| Full bounded RAG |27/60 [22,33]|Not promoted; essay degradation and irrelevant retrieval |
+| Three source crops |3/6 [1,3] versus bare 2/6 [1,2]|Selected diagnostic only; gain disputed |
 
-**Laptops and GPU ownership:** the laptop RAG run is terminal. Root owns only separately declared local offline qualification. Piotrek owns the newly declared [RTX runtime-transfer control](agentsLog/kwiscion/2026-09-26-rtx-runtime-transfer-launch.md) on #33: full40-case bare source-v2, existing Gemma/Ollama0.34.4/context32768, thinking off,1024 output, max40calls/$0/no retries. The laptop used0.30.7/context4096; this measures a distinct runtime configuration and actual full-exam throughput. Target18:15 if input acquisition permits, dispatch cutoff18:40 or2400 elapsed seconds. No duplicate worker or temperature call yet.
+All scores are agent rubric reviews, not organizer grades. A qualifying result covers all 40 items/60 points; errors and unsent items stay in the denominator. Preserve exact answers and gains AND regressions. Hypothetical RAG-short/bare-essay routing reaches only 33/60. Perfecting the baseline essay alone reaches at most 42/60: source/factual improvements are also necessary.
 
-**Completed retrieval attempt:** all40 responses completed normally in27.63minutes, zero errors/unsent,58,549 total tokens,$0. Exact answer handoff is merged in [PR75](https://github.com/kwiscion/machinekind-matura/pull/75). Disjoint Sol first-pass reviews give26/60 [23,31]; Paweł's [complete independent review](agentsLog/Pewciu6/2026-09-26T1747-score-gemma-rag-full.md) gives **27/60 [22,33]**, versus bare35. The short items lost2 points and the essay lost6 on this draw. Do not promote retrieval. Original launch, disagreement ranges and immutable outputs remain preserved.
+## Parallel ownership and next deliverables
 
-| Completed intervention | Reviewed result | Decision |
+| Owner | Worker / track | First concrete deliverable |
 | --- | --- | --- |
-| Blanket answer format, exploratory interrupted11+29 run |35/60 [28,39], tied with bare |Not promoted; [PR58 review](agentsLog/Pewciu6/2026-09-26T1623-score-gemma-format.md) and earlier history preserve its ownership/continuation caveat |
-| Generic question policy, full40-case source-v2 run |Sol30/60 [24,34]; independent adjudication32/60 [22,35] |Not promoted; [PR61 review](agentsLog/Pewciu6/2026-09-26T1651-score-gemma-policy.md) |
-| Three source-group crops, selected6-point diagnostic |Independent3/6 [1,3] versus bare2/6 [1,2] |No demonstrated crop effect or full-score promotion; [PR65 review](agentsLog/Pewciu6/2026-09-26T1704-score-gemma-crops.md) |
-| Bounded chrono retrieval, complete40-case source-v2 |Sol26/60 [23,31]; independent27/60 [22,33] |Not promoted; all40 exact answers published, essay/contradiction uncertainty retained |
+| @kwiscion, Sol workers | Existing **central H100**; common control, sampling and integration | Freeze source-v2/prompt/runtime provenance; run matched bare control and explicit temperature 0.2 arm; independent review before promotion. Audit organizer-versus-evaluation prompt parity on CPU in parallel. |
+| @semberecki | Existing **RTX 5090 Laptop**; source grounding | Independent observation of each supplied source before comparison. Compare one-pass versus observation+answer on a small fixed panel, then a frozen full candidate if useful. Keep image resolution unchanged in the first arm. |
+| @Bukareszt | CPU initially; **additional H100 offered, not provisioned**; selective retrieval | Finish portable-runtime PR #93, then query/date ablations, relevance gate allowing zero hits, external-fact/mixed routing. Preserve the existing licensed index and unchanged solver sources. |
+| @Pewciu6 | CPU initially; **additional H100 offered, not provisioned**; essay specialist | Dedicated essay prompt and matched-cap plan/write pilot; prepare one bounded essay-only LoRA feasibility path with independent data. Root/other reviewers grade this track, not its author alone. Existing scoring work remains on #11. |
+| @przemeknowak781 | CPU; essay data and factual QA | First 12 independent, rights-cleared, multi-era essay examples plus provenance/source-group splits and factual checks; expand only after review. Never use fixed exam-derived topics or rubrics. Preserve existing alias-repair WIP. |
+| @ljaniec | CPU; runtime, export and cross-review | Review PR #93 at exact head; verify prompt/runtime parity and plan offline qualification on each actual deployment runtime. Check adapter/export feasibility and model size independently. |
 
-The visual audit found no further missing sources after the z13 repair. Higher DPI alone retains the same backend spatial budget; crops preserve full source panels but have not established a gain. Original inputs, attempts and exact answer handoffs remain preserved. All runs used unfixed server sampling defaults, so individual changes do not establish causal effects.
+Issues contain the executable scope, acceptance conditions and start claim. One active parent worker per owner and one inference/training worker per GPU. An assignment is not proof of execution. Claim with host, session, start and ETA. Extra H100 names/access must be supplied before scheduling them; never infer that an offered machine exists. Blackwells remain unavailable.
 
-The17:00 improvement gate slipped: tested prompts did not beat35. RAG completed17:30 and its full independent review arrived17:49. The48/60 target remains unmet. Bare Gemma remains fallback until a complete better result is reviewed. Do not reinterpret a missed deadline as permission to inflate grades or open May2025.
+## Fast experimental loop
 
-Greg's optional organizer-package retrieval integration #62 is accepted inPR68 after84 independent tests. The fixed [two-item synthetic offline rehearsal](agentsLog/kwiscion/2026-09-26-offline-rehearsal-result.md) passed actual isolated server/CUDA execution and cleanup: valid2/2 answers,7completion tokens,68.89seconds,$0. The generic arbitrary-package launcher [#66](https://github.com/kwiscion/machinekind-matura/issues/66) passed9 independent CPU tests plus7 edge checks and its [separate actual isolated qualification](agentsLog/kwiscion/2026-09-26-final-launcher-qualification-result.md):2/2 valid nonempty answers,7completion tokens,$0, cleanup verified. Neither synthetic check is an exam score or an organizer receipt. The runnable [operator runbook](agentsLog/kwiscion/SUNDAY_OPERATOR_RUNBOOK.md) applies to the verified laptop runtime; remote portability is a separate gate.
+1. Freeze each arm's hypothesis, exact input/config/prompt hashes, comparator, runtime/model/projector, owner, call/token/time/cost cap and stop rule in a launch record. Read the current GPU claim before launch.
+2. Use independent DEV or original synthetic fixtures for prompt/router preparation. A small diagnostic panel must include previously correct controls as well as failures. Known-validation diagnostics must be labeled as such; do not turn them into training examples or item-specific rules.
+3. Test one main change per arm. Record intermediate observation/plan artifacts privately. Keep the final-answer cap comparable; account separately for extra reasoning calls. Permit empty retrieval and baseline fallback.
+4. Freeze the generic implementation, then execute all 40 known-validation items. Independent reviewers grade exact answers, blind to arm where feasible; split grading across reviewers and adjudicate uncertain/changed cases. A one-point fluctuation is a replication candidate, not proof of improvement.
+5. Combine only supported components and execute the combined system end-to-end, including its actual organizer-package prompt path. A sum of component gains is not the combined score. Preserve the original fallback and an immediate rollback command.
 
-**New central worker:** the owner supplied Brev instance `voiceless-amaranth-zebra` in `kwiscion-ff7442-omfi`, stated $3.28/hour. Root Sol is the sole worker on[#81](https://github.com/kwiscion/machinekind-matura/issues/81), following the [readiness declaration](agentsLog/kwiscion/2026-09-26-h100-readiness-launch.md). Actual hardware reports H100PCIe81,559MiB, driver580.126.09, no active compute,125GiB RAM and1.2TB free. Runtime/text/image verification and local backup are in progress: max60minutes/$3.28 estimated instance time,2syntheticcalls/2048requestedtokens. No full H100 batch yet. Piotrek keeps his claimed RTX control; the H100 owns subsequent experiments after readiness. No provision/resize/extra purchase or unrelated credentials.
+First wave: CPU artifacts and start claims within 30 minutes; first bounded GPU diagnostics within 60 minutes of a ready worker. Review the first wave around **19:30**, choose/replicate candidates around **20:30**, and aim for a complete combined validation plus offline qualification by **22:00**. These are coordination targets, not permission to exceed a run's envelope. Overnight training is limited to declared experiments with an unattended stop and local backup; Sunday 11:00 freeze remains binding.
 
-Piotrek delivered three successful synthetic calls inPR73 on an RTX5090 Laptop with24,463MiB. The [independent review](agentsLog/kwiscion/2026-09-26-pr73-runtime-review.md) accepts readiness for the next bounded run; synthetic54decode tokens/s does not establish mixed-exam speed or stage compliance. Łukasz delivered0.34.4 runtime guidance inPR71 and reviews actual evidence. The supplied rules describe a few-minute stage window; the owner has been asked for the actual allowance. No purchases or unavailable Blackwells.
+Second-wave options, selected by findings: minimal per-form output slots; statement-wise PF voting; selective thinking with a verified runtime flag; triggered decision/explanation consistency checks; separate visual-resolution/token-budget ablation; essay-only LoRA. Do not launch all options or build a specialist fleet by default.
 
-After18:00, choose one next hypothesis from the [Sunday decision memo](agentsLog/kwiscion/2026-09-26-sunday-score-decision.md) and RTX result. Greg'sPR77 is independently reviewed and merged: optional explicit-temperature0.2 candidate, omitted request bytes unchanged, zero model calls. It offers a single-pass comparison before adding latency. Root Sol prepares the separate essay pilot on[#80](https://github.com/kwiscion/machinekind-matura/issues/80), CPU only; only the VALIDATION essay is currently available, DEV remains missing. Increased visual-token budget is another proposal requiring a frozen test; do not stack these. Perfecting the8/15 essay alone still leaves six points missing from48. No specialist fleet, new retriever or training on24 smoke examples.
+## Compute and deployment gates
 
-## Owners and handoffs
+The existing H100 readiness result (retained locally) verifies text/image inference on Ollama 0.34.4/context 32768 and a locally backed-up evidence archive. The initial two-call readiness envelope is complete. **No full H100 exam batch or remote offline qualification has yet passed.** Each new run needs its own bounded declaration. Record the owner-supplied hourly rate and bounded estimate in the private launch record; billing is unverified and an idle instance still costs money. Additional-instance prices are unknown until supplied. No new purchases or resource provisioning by agents.
 
-| Owner | Live issue | Current deliverable |
-| --- | --- | --- |
-| @kwiscion | [#3](https://github.com/kwiscion/machinekind-matura/issues/3), [#81](https://github.com/kwiscion/machinekind-matura/issues/81), [#80](https://github.com/kwiscion/machinekind-matura/issues/80) | H100 readiness Sol worker; separate CPU essay-pilot Sol worker; root owns integration and candidate decisions; generic laptop qualification passed |
-| @Pewciu6 | [#11](https://github.com/kwiscion/machinekind-matura/issues/11) | Full RAG27/60 delivered; RTX control next when delivered |
-| @Bukareszt | [#72](https://github.com/kwiscion/machinekind-matura/issues/72) | Explicit-temperature PR77 accepted; next remote offline-portability handoff being assigned, zero model calls |
-| @ljaniec | [#38](https://github.com/kwiscion/machinekind-matura/issues/38) | Review Piotrek runtime/throughput evidence; check visual-token control support without calls |
-| @semberecki | [#33](https://github.com/kwiscion/machinekind-matura/issues/33) | Readiness delivered; execute the separately declared full RTX runtime-transfer control |
-| @przemeknowak781 | [#4](https://github.com/kwiscion/machinekind-matura/issues/4) | Integrate reviewed source-alias patch preserving 24 records (23 train/one holdout); unacknowledged, outside critical path |
+Keep the existing Gemma model/projector hashes pinned: combined **7,556,497,632 bytes**. Root owns the central H100; Piotrek retains his RTX. Preserve local backups of remote outputs/configs/logs after every completed bounded run. Stop only a freshly identified owned process; never disrupt another worker.
 
-An assignment is not proof of execution. Claim with session, start time and ETA; maintain one active parent worker per owner/issue. Publish the first useful artifact or concrete blocker. Blackwells are unavailable. Do not wait for an unclaimed GPU when the laptop can execute the declared arm.
+The laptop generic organizer-package launcher passed actual isolated CPU/CUDA synthetic qualification. Remote portability is separate: PR #93 adds frozen runtime profiles but does not by itself prove H100 offline execution. The organizer adapter and scored validation runner currently construct different prompts; resolve or measure that difference before final deployment. The [operator runbook](agentsLog/kwiscion/SUNDAY_OPERATOR_RUNBOOK.md) remains the verified laptop fallback.
 
-## Decision gates today
+## Non-negotiable boundaries and final handoff
 
-| Time | Required decision/evidence |
-| --- | --- |
-| 16:00 — achieved | Stronger working base selected: Gemma; organizer adapter implemented; both baseline scorecards reviewed |
-| 17:00 — slipped | Policy did not beat bare35; three-crop gain disputed. Retrieval attempt declared17:02 after preparation/review |
-| 17:30 | Candidate selection and offline package rehearsal; stop broad experiments and fix concrete submission defects |
-| 18:00 | Honest score against 48/60, failures and uncertainty preserved, next Sunday work chosen from evidence |
+- Final inference is offline; each saved model including vision/projector components is at most **8,000,000,000 bytes**. Report adapters separately under the event rule. Validate the actual final export and runtime, not merely training success.
+- Follow [SOURCE.md](SOURCE.md) and [contracts](docs/overnight/CONTRACTS.md). Fixed 2023/2024/2025 questions, answers, rubrics, source packs and paraphrases never enter training or retrieval. Independently licensed general history material is allowed. May 2025 remains sealed until a separate lead release after candidate freeze.
+- Public sharing is limited to checked exact final model answers, IDs/errors and provenance. Keep official keys, questions/source packs, reasoning/provider envelopes and credentials private. Do not edit answers to make publication or grading easier.
+- User authorizes project Git/GitHub, HF and bounded paid inference through normal existing/project credentials. No unrelated-project credentials, purchases, reset credits or HF publication on the current path. Record estimated and actual usage separately.
+- Preserve attributable dirty work. Merge only scoped passing changes at the exact reviewed head; no admin merge, force push or broad reset. Use Sol/Luna for implementation and review; reserve Astra for central diagnosis and decisions.
+- While active, reconcile changed GitHub state approximately every 15 minutes; stay quiet on unchanged checks. The old morning heartbeat remains paused to avoid duplicate dispatchers.
 
-If a gate slips, record the cause and move resources to the bottleneck. Do not inflate grades, change the denominator, stack unmeasured interventions or rush training merely to show activity.
-
-## Non-negotiable boundaries
-
-- Final inference is offline. Each saved model, including vision/projector components, is at most **8,000,000,000 bytes**; report adapters separately under the event rule. Gemma's current model plus projector is 7,556,497,632 bytes.
-- Follow [SOURCE.md](SOURCE.md) and [contracts](docs/overnight/CONTRACTS.md). Fixed 2023/2024/2025 questions, keys, source packs and paraphrases never enter training or retrieval corpora. Independently licensed general history sources may be retrieved. May 2025 needs a separate lead release after candidate freeze; the time of day alone never releases it.
-- User permits public model answers. Publish exact final strings, IDs/errors and provenance after checking quotations; keep official keys, question/source packs, reasoning/provider envelopes and credentials private. Flag quotation issues instead of editing scoring answers.
-- User authorizes project Git/GitHub, HF and bounded paid inference through existing normal/project credentials. Record estimates and actual usage before paid runs. No purchases, reset credits or unrelated-project credentials. No HF publication on the current path.
-- Preserve attempts and attributable dirty work. Merge only passing scoped changes at the reviewed head; no admin merge, force push, broad reset or another owner's silent overwrite.
-
-## Operating loop and final handoff
-
-Use Sol for bounded implementation/review and Luna for extraction/checks. During active work, inspect changed GitHub state about every 15 minutes and react to delivered results. Keep unchanged checks quiet. The active Codex goal drives lead continuation; the old morning heartbeat stays paused to avoid duplicate dispatchers.
-
-Final handoff must contain model/projector hashes and legal sizes, frozen prompt/retrieval settings, runnable offline environment, exact organizer-package command, validated answers.json, complete scorecard and limitations. The [organizer guide](https://matura-json-guide.ania-olchowik.chatgpt.site/) specifies exam.json, PNGs and an answer template; preserve every ID and emit the required JSON schema. Adapter acceptance is separate from model quality and the submission receipt. Confirm registration, team-code custody and Sunday attendance privately; never invent a submission link or publish the team code.
+Final handoff: model/projector hashes and sizes; frozen prompts/router/retrieval/adapters; runnable offline environment; exact organizer-package command; valid answers.json covering every ID; complete independent scorecard, latency/cost evidence and limitations. The [organizer guide](https://matura-json-guide.ania-olchowik.chatgpt.site/) defines the input package and answer template. Schema acceptance is separate from model quality and an actual submission receipt.
