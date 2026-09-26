@@ -38,3 +38,11 @@ Every reserved call/request is durable before send. HTTP runs in a bounded child
 Current structured multistage route orchestration is separate and not silently enabled. This path executes the four-attempt single-answer recovery policy only. Dynamic throughput,65k-context memory use and whole-run quality await the declared full rehearsal; no additional standalone smoke is required by this guide.
 
 CPU checks: `test_recovery_harness.py`, `test_recovery_binding.py`, `test_native_package.py` (Python3, `-X utf8`).
+
+## Essay-only repair correction after the first rehearsal
+
+The [completed rehearsal](../2026-09-27-champion-rehearsal-result.md) remains immutable and scored separately. Current-source essay retries now report the measured word count and contract warnings, include the best prior complete essay as an explicitly fallible draft, and request supported causal development toward 400–500 words without filler or invented facts. Complete original task text and images remain unchanged.
+
+Selection uses only a deterministic mechanical tuple: number of hard format violations (under 300 words or detected plan/multiple-topic marker), then distance from the 400–500 band. Earlier candidates win ties. Failed/empty responses and mechanically worse complete repairs cannot replace the saved essay; replay uses the same selection. Nonessay selection and the four-attempt deadline/budget ladder are unchanged. Status distinguishes an initial failed-answer recovery from a mere mechanical improvement that still leaves warnings. This is not a factual-quality score or evidence of improved exam points; no grade keys or task-specific historical hints enter the policy. A new package must freeze the new scheduler hash before any later authorized execution.
+
+Optional essay drafts are limited to `notes_chars` (6,000 characters) with an explicit excerpt label; the full candidate remains in the checkpoint. Admission conservatively charges every added UTF-8 byte plus 256 framing tokens against the maximum observed prompt usage. If escalation no longer fits, the lower output cap is retained; if optional feedback still lacks room, it is omitted. Original task text/images are never clipped. This is a conservative allowance, not an exact tokenizer proof; actual runtime/context checks still apply.

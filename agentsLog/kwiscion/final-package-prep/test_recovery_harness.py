@@ -81,4 +81,33 @@ class Tests(unittest.TestCase):
   route.provenance_sha256='synthetic'
   p=self.setup_run([]);self.run_it(p,route=route);self.assertFalse(p[4].calls)
   self.assertIn('stage-result protocol',(p[0]/'answer-status.json').read_text())
+ def test_essay_repair_preserves_best_band_distance_and_resume(self):
+  texts=[('draft'+str(i)+' ')+('word '*(count-1)).rstrip() for i,count in enumerate((372,392,376,363))]
+  p=self.setup_run([good(t) for t in texts],[{'id':'essay','content':'complete original','kind':'essay'}])
+  actual=self.run_it(p);self.assertEqual(actual['answers'][0]['answer'],texts[1]);self.assertEqual(len(p[4].calls),4)
+  self.assertIn('392',p[4].calls[3][0]['messages'][0]['content']);self.assertIn(texts[1],p[4].calls[3][0]['messages'][0]['content']);self.assertNotIn(texts[2],p[4].calls[3][0]['messages'][0]['content'])
+  self.assertEqual(self.run_it(p,resume=True),actual);self.assertEqual(len(p[4].calls),4)
+  state=json.loads((p[0]/'answer-status.json').read_text())['items']['essay'];self.assertEqual(state['selected_answer_attempt'],1);self.assertEqual(state['mechanical_rank'],[0,8])
+  self.assertTrue(state['mechanical_format_improved']);self.assertFalse(state['format_contract_satisfied']);self.assertFalse(state['successful_recovery'])
+ def test_essay_hard_constraints_before_band_and_earlier_tie(self):
+  first='first '+('word '*349).rstrip();tie='other '+('word '*349).rstrip();plan='Plan: '+('word '*409).rstrip()
+  state={'kind':'essay','answer':None};r.select_complete(state,{'answer':first,'attempt':0});r.select_complete(state,{'answer':tie,'attempt':1});r.select_complete(state,{'answer':plan,'attempt':2})
+  self.assertEqual(state['answer'],first);self.assertEqual(state['selected_answer_attempt'],0)
+  nonessay={'kind':'ordinary','answer':first};r.select_complete(nonessay,{'answer':tie,'attempt':1});self.assertEqual(nonessay['answer'],tie)
+ def test_essay_repair_warning_draft_and_full_sources_images(self):
+  draft='word '*350;case={'id':'essay','kind':'essay','content':[{'text':'entire original task'},{'image_url':{'url':'data:image/png;base64,YWJj'}}]}
+  body,_=r.step(case,1,[{'answer':draft,'raw':good()}],r.config());message=body['messages'][0]
+  self.assertTrue(message['content'].startswith('entire original task'));self.assertEqual(message['images'],['YWJj']);self.assertIn(draft,message['content']);self.assertIn('350',message['content']);self.assertIn('400\u2013500',message['content']);self.assertFalse(body['truncate']);self.assertFalse(body['shift'])
+ def test_oversized_optional_draft_is_bounded_checkpoint_unchanged(self):
+  draft='word '*19000;history=[{'answer':draft,'raw':good()}];case={'id':'essay','kind':'essay','content':'full original'}
+  body,settings=r.step(case,1,history,r.config());suffix=settings['suffix']
+  self.assertIn(draft[:6000],suffix);self.assertNotIn(draft,suffix);self.assertIn('SKR\u00d3CONY SZKIC',suffix);self.assertEqual(history[0]['answer'],draft)
+  self.assertLess(len(suffix),7500);self.assertTrue(body['messages'][0]['content'].startswith('full original'))
+ def test_added_suffix_blocks_escalation_and_is_omitted_at_context_edge(self):
+  case={'id':'essay','kind':'essay','content':[{'text':'unchanged full original'},{'image_url':{'url':'data:image/png;base64,YWJj'}}]};draft='word '*350
+  body,settings=r.step(case,1,[{'answer':draft,'raw':good(prompt_eval_count=16000)}],r.config())
+  self.assertEqual(settings['cap'],32768);self.assertIn(draft,settings['suffix'])
+  body,settings=r.step(case,1,[{'answer':draft,'raw':good(prompt_eval_count=32000)}],r.config())
+  self.assertEqual(settings['cap'],32768);self.assertEqual(settings['suffix'],'');self.assertEqual(body['messages'][0]['content'],'unchanged full original');self.assertEqual(body['messages'][0]['images'],['YWJj'])
+  self.assertIn('optional_suffix_omitted',settings)
 if __name__=='__main__':unittest.main()
