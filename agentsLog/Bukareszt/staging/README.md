@@ -88,7 +88,7 @@ All three: index SHA-256 `350800b1…0429`, 0/107 raw differences, graph content
 index load 0.10 s, ranking 0.7 ms. Guards used: `socket-guard`, `proxy-env-stripped` (`unshare` is not available
 on macOS; it is added automatically on Linux when `unshare -rn true` succeeds).
 
-Tests: `python3 -m unittest -v scripts.Bukareszt.test_stage_index` (22 tests since the follow-up below, synthetic two-source corpus, no
+Tests: `python3 -m unittest -v scripts.Bukareszt.test_stage_index` (29 tests since the follow-ups below, synthetic two-source corpus, no
 network): bundle round trip in a fresh clone, byte-deterministic bundle, tampered member / raw file / archive hash
 each fail naming the item and hashes, manifest without an archive hash refused, rebuild drift reported per source
 without rewriting the manifest or `raw/`, exact rebuild reproduces the index hash without touching
@@ -125,8 +125,36 @@ Evidence (real `git -c core.autocrlf=true clone`, macOS, bundle `da0d4ad7…`):
 | [tampered](stage_report_crlf_clone_tampered_retriever.json) | fix, `--rebuild`, no bundle, edited `retrieval.py` | exit 1 after the `pinned_inputs` phase; no import, fetch or rebuild |
 
 `bundle` run on the CRLF clone reproduced `da0d4ad7…` (3,942,102 B) and the same manifest `files`, hashes and query
-proof. Recommended for the lead (the shared root file was not edited here): add `agentsLog/Bukareszt/** text eol=lf`
-to the root `.gitattributes` so that checkouts also stay LF on disk.
+proof.
+
+### #54 additions (lead's three blockers, same PR #55)
+
+- **Canonical checkout.** The nested [`agentsLog/Bukareszt/.gitattributes`](../.gitattributes) sets `text eol=lf` for
+  exactly `sources/sources.jsonl` and `scripts/retrieval.py`. It lives in an owned path, the root `.gitattributes`
+  is untouched, and no global Git settings were changed. A fresh `core.autocrlf=true` clone now writes both files
+  as LF, so their bytes hash to `8b77a63a…`/`5ce9918f…`. All other files keep the user's line endings.
+  **Existing CRLF working files:** Git does not rewrite an unchanged blob on pull or checkout, so a clone made
+  before this change keeps CRLF copies. `stage`/`verify` accept them anyway, because they hash CRLF→LF-normalized
+  text: tested on such a clone, with PASS and 29/29 tests. To refresh them on disk, delete the two files and run
+  `git checkout -- agentsLog/Bukareszt/sources/sources.jsonl agentsLog/Bukareszt/scripts/retrieval.py`; tested,
+  this gives the pinned byte hashes.
+- **Owned destinations.**
+  - `stage` resolves `--root` and refuses any root that does not resolve to the workspace's `agentsLog/Bukareszt`.
+    Only `--allow-unpinned`, which is for tests, lifts this, and even then the root must contain
+    `staging/manifest.json` and `sources/sources.jsonl`.
+  - Before any delete or move, every component of `raw/`, `index/`, `private/rebuild-tmp/` and
+    `private/rebuild-drift/` must be a real directory, not a symlink or junction, and must resolve inside the root.
+    A violation is refused without modifying it (phase `destinations`).
+  - `unpack_bundle` and `rebuild_raw` re-check their destinations before touching them.
+  - Accepted `raw/`/`index/` stay intact on any failure.
+- **Retriever verified before import.** `load_retrieval(root, expected_sha256)` reads `retrieval.py` once and
+  checks its normalized SHA-256. Only then does it compile exactly those bytes; nothing is imported from
+  `sys.path`. The offline query child receives `--retrieval-sha256` and checks it the same way. A regression
+  fixture that writes a marker file on import proves the wrong-hash file is never executed: by `load_retrieval`,
+  by a full `stage`, or by the child.
+- **Test fix from the lead's review.** The real-file test no longer assumes the checkout itself is LF. It asserts
+  the canonical identity and uses an explicit LF fixture. The synthetic corpus also pins the normalized retriever
+  hash, so the whole suite passes on a CRLF checkout.
 
 ## Limits
 

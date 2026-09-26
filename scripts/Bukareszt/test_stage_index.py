@@ -64,7 +64,7 @@ class SyntheticCorpus:
         retrieval = si.load_retrieval(self.root, si.sha256_text_file(self.root / "scripts" / "retrieval.py"))
         si.rebuild_index(retrieval, self.root)
         self.retrieval = retrieval
-        self.manifest = si.build_manifest(self.root, None, si.sha256_file(self.root / "scripts" / "retrieval.py"))
+        self.manifest = si.build_manifest(self.root, None, si.sha256_text_file(self.root / "scripts" / "retrieval.py"))
         proof = si.run_offline_query(self.root, "Kiedy zawarto unię lubelską?", "chrono", 2, 1.0, self.manifest["retrieval_script_sha256"])
         self.manifest["query_proof"] = {"query_id": "t-q01", "query": "Kiedy zawarto unię lubelską?", "mode": "chrono", "k": 2,
                                         "title_weight": 1.0, "results": proof["results"]}
