@@ -11,15 +11,15 @@ def digest(path):
 def main():
     folder = Path(__file__).resolve().parent
     root = folder.parents[2]
-    manifest = json.loads((folder / "manifest.json").read_text())
+    manifest = json.loads((folder / "manifest.json").read_text(encoding="utf-8"))
     source_input = root / manifest["input_path"]
     assert digest(source_input) == manifest["input_sha256"], "input bytes changed"
-    inputs = {r["id"]: r for r in map(json.loads, source_input.read_text().splitlines())}
+    inputs = {r["id"]: r for r in map(json.loads, source_input.read_text(encoding="utf-8").splitlines())}
     records = []
     for name, expected in manifest["files_sha256"].items():
         assert digest(folder / name) == expected, f"frozen file changed: {name}"
         if name.startswith("topics-"):
-            records.extend(json.loads((folder / name).read_text()))
+            records.extend(json.loads((folder / name).read_text(encoding="utf-8")))
     assert len(records) == 16 and len({r["id"] for r in records}) == 16
     assert {r["id"] for r in records} == set(inputs)
     aspects = 0
@@ -40,7 +40,7 @@ def main():
                     assert fact["claim"] and fact["locator"] and fact["source_id"] in sources
             for trap in topic["traps"]:
                 assert all(s in sources for s in trap["source_ids"])
-    source_rows = list(map(json.loads, (folder / "sources.jsonl").read_text().splitlines()))
+    source_rows = list(map(json.loads, (folder / "sources.jsonl").read_text(encoding="utf-8").splitlines()))
     assert len({s["source_id"] for s in source_rows}) == len(source_rows)
     for source in source_rows:
         assert all(source.get(k) for k in ["source_id", "url", "title", "publisher",
