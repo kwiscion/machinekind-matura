@@ -1,0 +1,29 @@
+{
+  "status": "CPU_PREPARATION_COMPLETE_NOT_AUTHORIZED",
+  "tests": {
+    "command": "python -X utf8 agentsLog/kwiscion/answer-recovery-prep/test_recovery.py",
+    "passed": 13,
+    "failed": 0
+  },
+  "preflight": "PASS file-only; no HTTP",
+  "generation_calls": 0,
+  "selected_items_per_arm": 3,
+  "private_package": "agentsLog/kwiscion/private/answer-recovery-20260926/package-v2",
+  "independent_review": {
+    "status": "PASS",
+    "reviewer": "harness_sol",
+    "report": "agentsLog/kwiscion/2026-09-26-answer-recovery-independent-review.md",
+    "reported_checks": [
+      "13 tests on Windows and Linux",
+      "actual infer/native image serialization",
+      "runtime mismatch after received response blanks answer and stops"
+    ]
+  },
+  "files": {
+    "run_gemma_answer_recovery.py": "810773fd7ebdec581012124d4ac2f80ff93533c8ecb010f210c7d1ddec27f551",
+    "prepare.py": "5fafccc11e2cccabe9e92abd7313ae0cf3ca182583921cfd309a94ac4660be10",
+    "test_recovery.py": "b9e0da3e8de184d45b0a9c73c2e466f914c7495c73fc73387a150c658efbcd19",
+    "candidate-public.json": "496c5339c448a160e4f6303c39e67c7445b8a27d17cf0207c0f6d568b20bd21c",
+    "README.md": "aeb70c94479886f09ac0733ae4524c30f080ccd72f5b11c1a59dd39f337baaac"
+  }
+}

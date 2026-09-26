@@ -6,6 +6,8 @@ All40 IDs, maximum points and exact decoded submitted-answer hashes were checked
 
 The previous organizer-path control scored29/60 and the best observed laptop fallback35/60. This result is higher, but grading calibration and the declared prompt/native-thinking bundle prevent attributing the difference to one setting. Keep the preserved fallback until independent second review and actual offline packaging. The new rule requires the entire submitted weight inventory to fit8.8GB; only one Gemma was used here.
 
+A [same-calibration essay follow-up](2026-09-26-essay-control-thinking-comparison.md) gives the old control7/15 [5,7] versus the new8/15 [7,8]. Its earlier5-point grade may partly reflect a1-versus3 military-argument threshold difference. Preserve that disagreement; do not treat the historical5→8 subtraction as three proven gained points or silently recompute the old full score from this one review.
+
 ## What to fix next
 
 - **Six available points were lost to three absent final answers:** printed12.1,19.1 and25 reached the combined thinking/final token cap. Do not grade their private reasoning as submitted answers. A separate generic failure-recovery comparison is being prepared: fresh nonthinking answer versus nonthinking finalization with the interrupted notes marked fallible. Selection comes solely from runtime errors, never keys or IDs. No rescue calls belong to this completed run.
