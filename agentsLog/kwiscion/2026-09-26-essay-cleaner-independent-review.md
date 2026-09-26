@@ -9,3 +9,7 @@ Root inspected the merged PR119 controller at13d453921cad8e820b51138dbfc434dc6fa
 Exact original synthetic examples and required regressions were sent to [#80](https://github.com/kwiscion/machinekind-matura/issues/80#issuecomment-5848806894). Existing raw experiments remain immutable. The new larger-thinking wave is separately authorized, but its adopted cleaner must preserve content before freezing. This review reports specific defects, not a claim that previous live essays lost content.
 
 The initial live contract probe's length-only expansion also added a factual error; reaching the soft400-word target no longer justifies a standalone repair. The hard300minimum and substantive argument quality remain separate.
+
+## Resolution
+
+PR124 merged as a824c26 implements content-preserving essay-contract-v2. Root reran both original independent probes against that revision: the substantive heading sentence is preserved verbatim and the extra dated sentence outside JSON is rejected. Both pass. Lexical aspect/source markers are now advisory. The author reports27CPUtests and54/56historical outputs passing the revised hard gate; this remains mechanical fidelity evidence, not factual accuracy.
