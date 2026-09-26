@@ -1,0 +1,86 @@
+{
+  "status": "successful_two_item_synthetic_generic_launcher_runtime_qualification",
+  "scope": "Actual run through the generic final launcher on two synthetic organizer-package fixtures only; format/runtime qualification, not a correctness score or real-exam run.",
+  "synthetic_only": true,
+  "model_calls": 2,
+  "completed": 2,
+  "nonempty_answers": 2,
+  "errors": 0,
+  "unsent": 0,
+  "finish_reason_counts": {
+    "stop": 2
+  },
+  "actual_cost_usd": 0,
+  "actual_usage": {
+    "prompt_tokens": 374,
+    "completion_tokens": 7,
+    "total_tokens": 381,
+    "latency_seconds_sum": 15.628
+  },
+  "packaging": {
+    "answer_file_sha256": "4e62aaee0315e6d411bc37c75c9e910e2add10ab2020959b7ab1e752fd25e037",
+    "answer_bytes": 203,
+    "template_ids_match": true,
+    "submission_performed": false
+  },
+  "runtime": {
+    "ollama_version": "0.30.7",
+    "model_digest": "4eb23ef187e2c5462566d6a1d3bbbc2f1346d0b4327cbb66d58fffbcc9b2b05c",
+    "expected_context_tokens": 4096,
+    "observed_loaded_context_tokens": 4096,
+    "gpu": "NVIDIA RTX 2000 Ada Generation Laptop GPU (CUDA)",
+    "gpu_layers_offloaded": "35/49",
+    "projector_offload": "disabled due to limited VRAM; projector remained on CPU",
+    "configured_model_plus_projector_bytes": 7556497632,
+    "model_limit_bytes": 8000000000
+  },
+  "offline_and_cleanup": {
+    "server_and_runner_shared_isolated_namespace": true,
+    "isolated_namespace": "net:[4026532228]",
+    "host_namespace_at_launch": "net:[4026531833]",
+    "only_loopback_interface": true,
+    "external_ipv4_failed_errno": 101,
+    "external_ipv6_failed_errno": 101,
+    "owned_process_group_absent_after_cleanup": true,
+    "isolated_namespace_absent_after_cleanup_readonly_check": true,
+    "host_daemon_stopped": false,
+    "host_api_version_after_cleanup": "0.30.7",
+    "host_api_available_after_cleanup": true,
+    "host_api_ps_empty_after_cleanup": true,
+    "host_namespace_current_process": "net:[4026531833]"
+  },
+  "provenance": {
+    "launch_sha256": "166d7098453ddda2d1ab391e5372a150d227d9c23caef619c46db5378601b5f0",
+    "prepared_input_sha256": "0d59ccf8d8f133954e48333254cbb0d9ee6fecd10f3a0927f137b31b0bbc7009",
+    "input_manifest_sha256": "c7157ebd814213a7dfc17666ed2b9e29a1dfe53449425932d4563029a404c548",
+    "config_sha256": "50a8e61789fbf8fbbb8f867cdf181742fb6974aee11ff10047f7037c48b61dad",
+    "raw_private_jsonl_sha256": "75a2a70580945aef3260981687657d0c00a1d47369eb003afd5d872a8ca684b1",
+    "final_answers_sha256": "4e62aaee0315e6d411bc37c75c9e910e2add10ab2020959b7ab1e752fd25e037",
+    "failure_report_sha256": "b77cc4ef093eb18d0fdd1be2b94923c25c1d48d3cce1161c83d37dae80f84bcf",
+    "network_proof_sha256": "ffd11ac7edccbf3a0ca3d094f95eec210f1ccbf2614cd3a9636d0ebdf262034d",
+    "cleanup_record_sha256": "315cfc042dbc31199d2ded2bad2367ee1d960f2cfe3834c3f51f03add6cebb5a",
+    "runtime_readiness_sha256": "c9db0ddfd72f3fa3e477729c44e4a03e9a56c7610101ed29083e6480841ef34a",
+    "runtime_observations_sha256": "da1d263b41593d2ae0319a695ce34d13870e25c07695494c4e212553cd206302",
+    "calls_record_sha256": "a7c92661192f2a4bbf3141e4b4349254f71fc9e2d488887b8758803bec3be900",
+    "selected_server_log_sha256": "069e9e4b6c5a73015e2545aecc1b3647074bf105cd0d066b49ae46c5ec93a47f",
+    "model_digest": "4eb23ef187e2c5462566d6a1d3bbbc2f1346d0b4327cbb66d58fffbcc9b2b05c",
+    "inference_runner_sha256": "b702857347fd0fa99b9aba9a844afca1a4a8634b22eaa826199d27986dca1f0a",
+    "launcher_sha256": "64ebf4a89c3538ead8a8a84cdea471655eb2c321974530ac6032c4a9fbea0611",
+    "adapter_sha256": "bec8b33731e24ff1ea845e7c7b0908d3227121986125cef8967fc384a1d8af74"
+  },
+  "related_fixed_launcher_rehearsal": {
+    "path": "agentsLog/kwiscion/2026-09-26-offline-rehearsal-result.json",
+    "sha256": "5d587395c024fa5ddb6a3094be909b083434eae30674ad891897b0af7d15e7e6",
+    "status": "successful_two_item_synthetic_offline_rehearsal",
+    "calls": 2,
+    "items_completed": 2,
+    "actual_completion_tokens": 7,
+    "elapsed_seconds": 68.891
+  },
+  "limitations": [
+    "Only two synthetic fixtures were run; the real 40-item package, its source/image completeness, whole-run context fit, event time window, final candidate, correctness and submission acceptance remain unproven.",
+    "The model ran partly on CPU: 35/49 layers were offloaded to CUDA; the multimodal projector was not offloaded due to limited VRAM.",
+    "Runtime proof is on the laptop RTX 2000 Ada, not the separate RTX 5090 control.",
+    "The synthetic output strings are intentionally omitted from this public qualification record."
+  ]
+}
