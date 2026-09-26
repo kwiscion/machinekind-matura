@@ -1,0 +1,24 @@
+{
+  "profile_id": "h100-native-linux-ollama-0.34.4-ctx32768",
+  "platform": "native-linux",
+  "ollama_version": "0.34.4",
+  "ollama_binary": "/home/shadeform/mm/runtime/bin/ollama",
+  "ollama_binary_sha256": "ad9c53441752620a2314a65a798a888d98df3636c8815ca044de591f82892ff4",
+  "server_path_env": "/home/shadeform/mm/runtime/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin",
+  "nvidia_smi": "/usr/bin/nvidia-smi",
+  "model_cache": "/home/shadeform/mm/models",
+  "model": "gemma4:12b-it-q4_K_M",
+  "manifest_digest": "4eb23ef187e2c5462566d6a1d3bbbc2f1346d0b4327cbb66d58fffbcc9b2b05c",
+  "assets": {
+    "1278394b693672ac2799eadc9a83fd98259a6a88a40acfb1dcaa6c6fc895a606": 7381382048,
+    "675ad6e68101ca9413ec806855c452362f0213f2dfc5800996b086fdb8119842": 175115584
+  },
+  "context_length": 32768,
+  "namespace_method": "unshare-rn",
+  "host_endpoint_check": {
+    "port": 11436,
+    "require_reachable": false
+  },
+  "block_foreign_ollama": true,
+  "verify_all_manifest_blobs": true
+}

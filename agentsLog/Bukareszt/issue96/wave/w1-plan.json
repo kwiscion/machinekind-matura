@@ -1,0 +1,9 @@
+{
+  "wave_id": "greg-h100-wave-1",
+  "family": "corrected-selective-rag",
+  "hypothesis": "One gated compact passage from the decontaminated query (PR #104 head 6b3c519) changes answers on the 5 source-v2 items the gate admits; bare is the paired comparator. Diagnostic only.",
+  "arms": [
+    {"name": "W1-bare", "type": "direct", "input": "../../private/selective-rag-96/selective.pairs-bare.jsonl"},
+    {"name": "W1-selective", "type": "direct", "input": "../../private/selective-rag-96/selective.pairs-selective.jsonl"}
+  ]
+}

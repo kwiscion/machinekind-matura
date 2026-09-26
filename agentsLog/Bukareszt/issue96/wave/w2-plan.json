@@ -1,0 +1,55 @@
+{
+ "wave_id": "greg-h100-wave-1",
+ "family": "comparator",
+ "subset": {
+  "file": "subset-s10.jsonl",
+  "ids": [
+   "val2024-hist-z20.2",
+   "val2024-hist-z23.2",
+   "val2024-hist-z14.1",
+   "val2024-hist-z19.2",
+   "val2024-hist-z25",
+   "val2024-hist-z7",
+   "val2024-hist-z17.1",
+   "val2024-hist-z8.2",
+   "val2024-hist-z18",
+   "val2024-hist-z12.3"
+  ],
+  "selection": "pool = 26 source-v2 items routed external_fact/mixed by the question-only router (PR #104 6b3c519); ordered by sha256('issue96-subset:'+id); first 6 that the published bare RTX review scored below max + first 4 scored at max (previously correct controls). No answer text or key used."
+ },
+ "arms": [
+  {
+   "name": "W2-bare",
+   "family": "comparator",
+   "type": "direct",
+   "input": "../../private/validation_2024_keyfree/subset-s10.jsonl"
+  },
+  {
+   "name": "W2-verify",
+   "family": "retrieve-verify-answer",
+   "type": "module",
+   "module": "../../../../scripts/Bukareszt/wave_mechanisms.py",
+   "function": "retrieve_verify",
+   "max_calls_per_case": 2,
+   "input": "../../private/validation_2024_keyfree/subset-s10.jsonl"
+  },
+  {
+   "name": "W2-relquery",
+   "family": "question-to-relation",
+   "type": "module",
+   "module": "../../../../scripts/Bukareszt/wave_mechanisms.py",
+   "function": "relation_query",
+   "max_calls_per_case": 2,
+   "input": "../../private/validation_2024_keyfree/subset-s10.jsonl"
+  },
+  {
+   "name": "W2-factcard",
+   "family": "fact-cards",
+   "type": "module",
+   "module": "../../../../scripts/Bukareszt/wave_mechanisms.py",
+   "function": "fact_card",
+   "max_calls_per_case": 1,
+   "input": "../../private/validation_2024_keyfree/subset-s10.jsonl"
+  }
+ ]
+}

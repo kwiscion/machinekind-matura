@@ -1,0 +1,20 @@
+{"run": "w2-mechanisms-s10", "arm": "W2-verify", "id": "val2024-hist-z20.2", "role": "aux_output", "text": "BRAK"}
+{"run": "w2-mechanisms-s10", "arm": "W2-verify", "id": "val2024-hist-z23.2", "role": "aux_output", "text": "1,2"}
+{"run": "w2-mechanisms-s10", "arm": "W2-verify", "id": "val2024-hist-z14.1", "role": "aux_output", "text": "1,2,3"}
+{"run": "w2-mechanisms-s10", "arm": "W2-verify", "id": "val2024-hist-z19.2", "role": "aux_output", "text": "BRAK"}
+{"run": "w2-mechanisms-s10", "arm": "W2-verify", "id": "val2024-hist-z25", "role": "aux_output", "text": "BRAK"}
+{"run": "w2-mechanisms-s10", "arm": "W2-verify", "id": "val2024-hist-z7", "role": "aux_output", "text": "2"}
+{"run": "w2-mechanisms-s10", "arm": "W2-verify", "id": "val2024-hist-z17.1", "role": "aux_output", "text": "BRAK"}
+{"run": "w2-mechanisms-s10", "arm": "W2-verify", "id": "val2024-hist-z8.2", "role": "aux_output", "text": "BRAK"}
+{"run": "w2-mechanisms-s10", "arm": "W2-verify", "id": "val2024-hist-z18", "role": "aux_output", "text": "BRAK"}
+{"run": "w2-mechanisms-s10", "arm": "W2-verify", "id": "val2024-hist-z12.3", "role": "aux_output", "text": "BRAK"}
+{"run": "w2-mechanisms-s10", "arm": "W2-relquery", "id": "val2024-hist-z20.2", "role": "aux_output", "text": "Kolektywizacja rolnictwa, walka z kułakami, Nowa Polityka Ekonomiczna, Stalin, ZSRR."}
+{"run": "w2-mechanisms-s10", "arm": "W2-relquery", "id": "val2024-hist-z23.2", "role": "aux_output", "text": "Referendum 2015, wyniki rzeczywiste i oficjalne, plakat, kontrowersje i manipulacje."}
+{"run": "w2-mechanisms-s10", "arm": "W2-relquery", "id": "val2024-hist-z14.1", "role": "aux_output", "text": "Wojna polska, Napoleon Bonaparte, kampania 1812, walki na Niemen, rok 1812."}
+{"run": "w2-mechanisms-s10", "arm": "W2-relquery", "id": "val2024-hist-z19.2", "role": "aux_output", "text": "Powstanie Śląska, generał i znaczek pocztowy Bielsko-Biała okres 1920"}
+{"run": "w2-mechanisms-s10", "arm": "W2-relquery", "id": "val2024-hist-z25", "role": "aux_output", "text": "Analiza rysunku z epoki, interpretacja elementów graficznych i kontekst historyczny."}
+{"run": "w2-mechanisms-s10", "arm": "W2-relquery", "id": "val2024-hist-z7", "role": "aux_output", "text": "Henryk V, polski władca, wypędzenie króla, średniowiecze, polskie konflikty z cesarstwem."}
+{"run": "w2-mechanisms-s10", "arm": "W2-relquery", "id": "val2024-hist-z17.1", "role": "aux_output", "text": "Kapitulacja pod Sedanem, proklamowanie cesarza Wilhelma I, zjednoczenie Niemiec, wiek XIX."}
+{"run": "w2-mechanisms-s10", "arm": "W2-relquery", "id": "val2024-hist-z8.2", "role": "aux_output", "text": "Przywileje, sejm walny, zasada jednomyślności, szlachta i senatorowie, Rzeczpospolita Obojga Narodów."}
+{"run": "w2-mechanisms-s10", "arm": "W2-relquery", "id": "val2024-hist-z18", "role": "aux_output", "text": "Symbolika i grafika plakatów propagandowych I wojny światowej, Ententa i Państwa Centralne."}
+{"run": "w2-mechanisms-s10", "arm": "W2-relquery", "id": "val2024-hist-z12.3", "role": "aux_output", "text": "Jan III Sobieski, rok 1699, śmierć Ludwiki Marii, sztuka baroku, klasycyzm."}
