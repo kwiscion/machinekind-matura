@@ -1,0 +1,84 @@
+{
+  "artifact": "Gemma 4 12B Q4 May 2024 VALIDATION answer-only model outputs",
+  "status": "approved_full_answer_only_handoff",
+  "publication_ready": true,
+  "partial": false,
+  "run_id": "gemma4-12b-val40-1024",
+  "run_started_local": "2026-09-26 14:52:54 Europe/Warsaw",
+  "run_finished_local": "2026-09-26 15:29 Europe/Warsaw",
+  "snapshot_time_local": "2026-09-26T15:35:29+02:00",
+  "record_count": 40,
+  "unique_ids": 40,
+  "expected_input_count": 40,
+  "completed_final_responses": 40,
+  "incomplete_outputs": 0,
+  "other_errors": 0,
+  "empty_final_channels": 0,
+  "model_tag": "gemma4:12b-it-q4_K_M",
+  "model_response_id": "gemma4:12b-it-q4_K_M",
+  "ollama_model_id": "4eb23ef187e2",
+  "model_revision": null,
+  "ollama_version": "0.30.7",
+  "observed_context_tokens": 4096,
+  "requested_max_output_tokens": 1024,
+  "reasoning_effort": "none",
+  "timeout_seconds": 420,
+  "input_v1_sha256": "f4df6bcb9c1152d42e3650e820dfee1b4d182a5ad065eea41c9c0be85a0003c7",
+  "source_attribution": {
+    "source_id": "cke-2024-mhip-arkusz",
+    "title": "Egzamin maturalny, Historia, poziom rozszerzony, formula 2023, maj 2024 - Arkusz egzaminacyjny (MHIP-R0-100-A-2405)",
+    "publisher": "Centralna Komisja Egzaminacyjna (CKE)",
+    "url": "https://cke.gov.pl/images/_EGZAMIN_MATURALNY_OD_2023/Arkusze_egzaminacyjne/2024/Historia/MHIP-R0-100-A-2405-arkusz.pdf",
+    "retrieved_at": "2026-09-25T23:58:25Z",
+    "sha256": "ad66a7c4f212ee1248661141971afae21060a28586086cc57460247a64463d21",
+    "license": "unknown",
+    "note": "Citation only; exam PDF and third-party source pack are not included."
+  },
+  "notice": "Model-generated outputs for evaluation of the fixed May 2024 VALIDATION split only. Not for training, retrieval, or generation. No prompts, exam source text/images, official keys, rubrics, reasoning channel, or provider response envelopes are included. Citing the exam does not grant redistribution rights to its source material.",
+  "copy_review": {
+    "method": "Compared each final assistant text with its same-item frozen prompt and the extracted text layer of the pinned CKE exam PDF using longest contiguous normalized word overlap.",
+    "candidate_threshold_words": 25,
+    "candidate_rows": [],
+    "result": "No 25-word contiguous overlap candidates in any of the 40 answers, including all ten newly completed rows and the essay response (val2024-hist-z26).",
+    "image_only_source_ocr": "Not performed; text present only within source images was not OCR-scanned."
+  },
+  "new_rows_since_partial": {
+    "count": 10,
+    "ids": [
+      "val2024-hist-z20.1",
+      "val2024-hist-z20.2",
+      "val2024-hist-z21",
+      "val2024-hist-z22.1",
+      "val2024-hist-z22.2",
+      "val2024-hist-z23.1",
+      "val2024-hist-z23.2",
+      "val2024-hist-z24",
+      "val2024-hist-z25",
+      "val2024-hist-z26"
+    ],
+    "essay_prompt_ids": [
+      "val2024-hist-z26"
+    ]
+  },
+  "partial_artifact_preserved": {
+    "path": "gemma4-12b-val40-1024.partial.jsonl",
+    "sha256": "8da19623a0a310cc179b40a1eab82380bb6021f98d444021b154696a84c50d1f",
+    "unchanged_during_release": true
+  },
+  "schema": [
+    "id",
+    "model",
+    "model_revision",
+    "raw_response",
+    "error",
+    "latency_s",
+    "finish_reason"
+  ],
+  "hashes": {
+    "raw_private_full_run_sha256_before_release": "eb3db72d7f9e8b68d11b7351e9890cb869e6a8f705032b985dea52b67e1581e8",
+    "raw_private_full_run_sha256_after_release": "eb3db72d7f9e8b68d11b7351e9890cb869e6a8f705032b985dea52b67e1581e8",
+    "answer_jsonl_sha256": "39a5dbbb5b7262b8fb15bacfea051f27258951c9a2af3a48c52fce1c213aeaf3"
+  },
+  "scoring": "No scoring performed for this release artifact.",
+  "cost_usd": 0
+}

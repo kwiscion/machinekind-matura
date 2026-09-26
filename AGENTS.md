@@ -2,6 +2,8 @@
 
 ## Active control — 26 September, 14:27 Europe/Warsaw
 
+15:45 update: consult the newest WINNING_PLAN.md checkpoint. Gemma's full v1 run is complete and is the stronger provisional working baseline (Sol 35/60 versus Qwen 24/60; Paweł's independent Qwen estimate is 26/60). No final freeze or May 2025 release. A competing Cursor session relaunched the intentionally stopped blanket-format arm; do not start or resume that arm or any other laptop experiment until the lead resolves worker ownership. Gemma's single source correction completed; Qwen's remains pending. Paweł has claimed adjudication; Greg delivered adapter fixes and staging, and Łukasz handles runtime. All earlier instructions about a missing Gemma baseline are superseded.
+
 15:15 update: the lead is preserving the already-running local Gemma v1 baseline (nonempty text/image responses verified); Piotrek prepares the RTX 5090 and waits for the next declared improvement, without duplicating that baseline. Greg finished #37 via #42 and now owns pinned-index deployment #44. Two disjoint Sol reviewers are doing Qwen's first-pass scoring on #11; Paweł owns independent adjudication. Source-completeness v2 is merged via #43; v1 remains preserved. Read the newer checkpoint in WINNING_PLAN.md and current issue comments before acting on older assignments below.
 
 At14:38 the owner authorized public GitHub sharing of model answers. Use answer-only evaluator handoffs with IDs/errors and provenance hashes, excluding copied source passages, official keys, question packs, credentials and reasoning/provider envelopes. Original raw files remain private. The active Codex goal drives lead continuation; the historical morning heartbeat remains paused.

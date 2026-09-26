@@ -2,7 +2,7 @@
 
 **This is the final handoff index.** Everything below is a rollup of the individual timestamped notes in this directory; read a note for full detail. Short summary: `2026-09-26T0745-final-handoff.md`.
 
-> **Afternoon update (2026-09-26, issue #11): real model outputs scored.** Qwen 3.5 9B VALIDATION v1: independent review **26/60** (range 17–29; automatic floor 5.0). See `2026-09-26T1540-score-qwen.md` and `results/review_qwen35-9b-val40-1024.json`. Gemma 4 12B review follows in a separate note. All grades are provisional agent review.
+> **Afternoon update (2026-09-26, issue #11): real model outputs scored and reconciled with the lead's Sol first pass (PR #52).** Consolidated provisional VALIDATION scores: **Gemma 4 12B 35/60** (28–40), **Qwen 3.5 9B 25/60** (16–29); automatic floors 11.0 / 5.0. See `2026-09-26T1551-score-consolidated.md` (supersedes the Qwen-only note `2026-09-26T1540-score-qwen.md`) and `results/review_*.json`. All grades are provisional agent review.
 
 - **Owner:** @Pewciu6 (eval worker, `overnight:eval`).
 - **Issues:** [#7](https://github.com/kwiscion/machinekind-matura/issues/7) (main, still open — CPU harness + VALIDATION audit), [#11](https://github.com/kwiscion/machinekind-matura/issues/11) (open, **waiting** for real model outputs), [#13](https://github.com/kwiscion/machinekind-matura/issues/13) (closed, contamination audit of the #6 corpus).

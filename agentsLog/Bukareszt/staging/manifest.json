@@ -1,0 +1,518 @@
+{
+  "built_at": "2026-09-26T15:34:08+0200",
+  "bundle": {
+    "bytes": 3942102,
+    "default_path": "agentsLog/Bukareszt/private/chrono_index_bundle_350800b1.tar.gz",
+    "name": "chrono_index_bundle_350800b1.tar.gz",
+    "sha256": "da0d4ad772182d8537e81bdbfdeed267b8edf54ad2a85494fcaaed6f80dd091e"
+  },
+  "files": {
+    "index/bm25_index.json": {
+      "bytes": 8514642,
+      "sha256": "350800b1924b8f0094171fc5d68652da0f9260d03273a51ad6421c1a03e70429"
+    },
+    "index/graph.json": {
+      "bytes": 71083,
+      "sha256": "d1f10c7d030132f1c18a111f78d5382f2b0585f2d453a2c1d2b005020750e8d8"
+    },
+    "raw/plwiki-absolutyzm.txt": {
+      "bytes": 13839,
+      "sha256": "3f186b2a6f61b4a3f731d025012b5a3801cdbd7407f8b7ad2af34237b22ff7c5"
+    },
+    "raw/plwiki-akt-5-listopada.txt": {
+      "bytes": 5273,
+      "sha256": "00292920ae3b3b257623206f1e6b30273d23043e5dab2cb6fef08853adffbaf0"
+    },
+    "raw/plwiki-aleksander-macedonski.txt": {
+      "bytes": 33630,
+      "sha256": "84fa714826dd793663dd158c44a5a188d9aec76c57d0f7dbe200e85ac93ce024"
+    },
+    "raw/plwiki-artykuly-henrykowskie.txt": {
+      "bytes": 2574,
+      "sha256": "e22c68656bf5ee2a17b023014d6b65b654058cc4d70cd5b2a9252a11d18dcf54"
+    },
+    "raw/plwiki-bitwa-pod-grunwaldem.txt": {
+      "bytes": 52646,
+      "sha256": "7fa894ad66dc0116365f2f7265bb19c219a4634d4b0ec771132d6b3ae8ebfb8a"
+    },
+    "raw/plwiki-bitwa-pod-wiedniem.txt": {
+      "bytes": 31922,
+      "sha256": "d0349e2413eb3bba9b51ce86e597140be968df2ebbf2087daec7c3480545654f"
+    },
+    "raw/plwiki-bitwa-warszawska.txt": {
+      "bytes": 45985,
+      "sha256": "89b85c4d4b431db3529fd51ddd64460bd576a174bf4ca8237ce3eaed8333d413"
+    },
+    "raw/plwiki-boleslaw-chrobry.txt": {
+      "bytes": 32030,
+      "sha256": "4bae521e75e757cd79fa26ebd5d00370254ea1491e15a206c8ef8681490eb898"
+    },
+    "raw/plwiki-boleslaw-krzywousty.txt": {
+      "bytes": 116355,
+      "sha256": "f4ad691e6fd48dd4185546ecd5f041a63994a1425cfc1e88f874add7fcd730d8"
+    },
+    "raw/plwiki-centralny-okreg-przemyslowy.txt": {
+      "bytes": 15624,
+      "sha256": "35e64ae449791a024421dd4fdf8cea38ce0913d06784422e2d1d7d44eaf88978"
+    },
+    "raw/plwiki-cesarstwo-rzymskie.txt": {
+      "bytes": 25043,
+      "sha256": "dffa96ea755896eef826cc69b05552810a04d7b127ff65dd87a425fe9807ffab"
+    },
+    "raw/plwiki-chrzest-polski.txt": {
+      "bytes": 41096,
+      "sha256": "a5476ef51fe310f5c5508875dcf409419d29422ca20852d41c94cf06a076068a"
+    },
+    "raw/plwiki-czarna-smierc.txt": {
+      "bytes": 33639,
+      "sha256": "b1cebe8fbdb12388bf0e95f9c6af97c52080b26f61777179c1da9b348a8dea0b"
+    },
+    "raw/plwiki-demokracja-atenska.txt": {
+      "bytes": 18590,
+      "sha256": "0f78ba591b4644bdb1afa4a68e60edc830a2644ff9788b2229c832a24c5a2ffd"
+    },
+    "raw/plwiki-grudzien-1970.txt": {
+      "bytes": 17188,
+      "sha256": "1e8b50cc2c11420cbf92a1a1b1912679205bb4e89382643d2c63385894952985"
+    },
+    "raw/plwiki-holokaust.txt": {
+      "bytes": 34259,
+      "sha256": "88fd66260b02b02d5c681c3f84126fe493e82c8d4a12fe4b23af952a917fcb1e"
+    },
+    "raw/plwiki-i-wojna-swiatowa.txt": {
+      "bytes": 162846,
+      "sha256": "04072bd5819a8c3fdfc0c09bf87d0b2aea89d2194c9a6155121e9f9d1c196492"
+    },
+    "raw/plwiki-ii-pokoj-torunski.txt": {
+      "bytes": 4385,
+      "sha256": "5574dda75b586a05e9f50d465d15e544533b1a33e05b666fcb833e2c5e54f7e3"
+    },
+    "raw/plwiki-insurekcja-kosciuszkowska.txt": {
+      "bytes": 25752,
+      "sha256": "bb30bddd81b4a90568e671dc06d57bcca017cc7d24f328f64c86478fc3f7d3a6"
+    },
+    "raw/plwiki-jozef-pilsudski.txt": {
+      "bytes": 126329,
+      "sha256": "b8c16d9d438ccff96f52faac79f5a02c94790318f150c5fcee80dc109780c210"
+    },
+    "raw/plwiki-kampania-wrzesniowa.txt": {
+      "bytes": 341074,
+      "sha256": "90ad812d569350ebbdb9dbe19046d2b7d75acb2bb3b0880674dcd0e4f6e81634"
+    },
+    "raw/plwiki-karol-wielki.txt": {
+      "bytes": 24888,
+      "sha256": "8740b3bc54c32221dd99446b1490d11f76eeb895dbdd25a7c011de56a54a1f8c"
+    },
+    "raw/plwiki-kazimierz-odnowiciel.txt": {
+      "bytes": 10870,
+      "sha256": "e755a3874a0b3f21ef5db62a63879f57f05edb5974a990e18e67bd4e8e411b66"
+    },
+    "raw/plwiki-kazimierz-wielki.txt": {
+      "bytes": 127808,
+      "sha256": "092295b8e20bda7e507d8f1c32af1b5889e4f7f5bd8560da0cc950434327a2b2"
+    },
+    "raw/plwiki-kodeks-hammurabiego.txt": {
+      "bytes": 7906,
+      "sha256": "c2be5e958045c99836a9c1dc839477405673a178a97e6517e34b45fe1f75e9d7"
+    },
+    "raw/plwiki-konfederacja-targowicka.txt": {
+      "bytes": 15032,
+      "sha256": "9b4023c32d92ddb9ed333b7130fdf1640488e7c93a69b97b1e27ad7ac118745b"
+    },
+    "raw/plwiki-konfederacja-warszawska.txt": {
+      "bytes": 21442,
+      "sha256": "01597a432eb8bb3da7973ec7c08d49052daf40bbd177c6722aedafcd1da969b7"
+    },
+    "raw/plwiki-konferencja-jaltanska.txt": {
+      "bytes": 8804,
+      "sha256": "809f756e696b53030f6cc96af28ef146d9325cbc15e142ebf2fb68a36a75fb5c"
+    },
+    "raw/plwiki-konferencja-poczdamska.txt": {
+      "bytes": 8979,
+      "sha256": "924dd616849f37dd5a7bd08fd7ba269a10a2918b1b6016d59c069c06bf2a16c9"
+    },
+    "raw/plwiki-kongres-wiedenski.txt": {
+      "bytes": 15547,
+      "sha256": "9449642e5e997be45d895eb5a426bac9fc558325f81be741fd40d41d888ad724"
+    },
+    "raw/plwiki-konstytucja-3-maja.txt": {
+      "bytes": 36469,
+      "sha256": "53d8152bf146de4f7937e7b27c1135cb255252da61884e3c4158cb061657ff09"
+    },
+    "raw/plwiki-konstytucja-kwietniowa.txt": {
+      "bytes": 30943,
+      "sha256": "513085914a425867d6e95fb5ee060e3936f2b339685d8bb840a754bffad83a3e"
+    },
+    "raw/plwiki-konstytucja-marcowa.txt": {
+      "bytes": 43576,
+      "sha256": "68e7ed68deeb83807e0f48c06cdd1c9d275979e929f1ff15a16653dcf94c95a7"
+    },
+    "raw/plwiki-krolestwo-polskie-kongresowe.txt": {
+      "bytes": 29478,
+      "sha256": "bee33d131abbbd5ec83859dc1c63660729fad163ef9d89b6ab19e4e4e0fb4901"
+    },
+    "raw/plwiki-ksiestwo-warszawskie.txt": {
+      "bytes": 25918,
+      "sha256": "423a27333f9c96a820f1ee875e8506fbf66be5e5ce33ceb7c0d76376e0c7e727"
+    },
+    "raw/plwiki-kulturkampf.txt": {
+      "bytes": 9399,
+      "sha256": "222f84126696b947a22142c9b2aa02fda2deea1533ac18665225df1f481bc67d"
+    },
+    "raw/plwiki-marcin-luter.txt": {
+      "bytes": 47937,
+      "sha256": "af735c643803a9f42f101f77a1946b9b4f9c585b15add0d7a44422025daa6b16"
+    },
+    "raw/plwiki-marzec-1968.txt": {
+      "bytes": 48590,
+      "sha256": "3375095f0753171eb6f65d05f21b6b2876432f4278970d59bc0953bce4dc78f1"
+    },
+    "raw/plwiki-mieszko-i.txt": {
+      "bytes": 43857,
+      "sha256": "12e791b7acb8e8d9cb67f38ba19f0bc6fb5a56f6c3d4df5edf5f729627a9f731"
+    },
+    "raw/plwiki-mur-berlinski.txt": {
+      "bytes": 66179,
+      "sha256": "5d606f8d56dfa2e3263c53983de7f8485f58e4fcf9f3540b23f7187e56592ea7"
+    },
+    "raw/plwiki-nato.txt": {
+      "bytes": 24486,
+      "sha256": "0a361dfd30641225b0da464e2c90183808f83745c37f3c719369b7eedef8309d"
+    },
+    "raw/plwiki-okragly-stol.txt": {
+      "bytes": 18665,
+      "sha256": "8d258738f0053935ec09978e2c7668f8d30be02fce748318d3637b5363179b9e"
+    },
+    "raw/plwiki-pakt-ribbentrop-molotow.txt": {
+      "bytes": 14506,
+      "sha256": "763161e1033ba9be7ae2501ccdb6fd18d62f1cbdd94514f21021f2eb3b4365d6"
+    },
+    "raw/plwiki-pkwn.txt": {
+      "bytes": 39442,
+      "sha256": "d04ca45cbb49a29b8dc96bfc4fa29cb683dca8d7e5fbb99e96fd140936487dec"
+    },
+    "raw/plwiki-plan-marshalla.txt": {
+      "bytes": 49859,
+      "sha256": "35c3b49143785294422c73ebb2215af5201645e253e7f5395f5a127117b4fd49"
+    },
+    "raw/plwiki-polska-w-ue.txt": {
+      "bytes": 19012,
+      "sha256": "18859ee0e65e1a61a5d3aeef52fc47d24689c955c7e09d7362867f020c72e01b"
+    },
+    "raw/plwiki-polski-pazdziernik.txt": {
+      "bytes": 12480,
+      "sha256": "9eda9eae777093ca9bc4936d1c4c4a86e901f89d8e0970e55025b3e32216dc71"
+    },
+    "raw/plwiki-polskie-panstwo-podziemne.txt": {
+      "bytes": 13254,
+      "sha256": "283ac776918a26eb3387126d4b680b7fd17718499d2d42f3c4535ca62772af90"
+    },
+    "raw/plwiki-porozumienia-sierpniowe.txt": {
+      "bytes": 4725,
+      "sha256": "c23174d4751473d77c3d78556772adf56f9e313275afab32497da3326879a1f3"
+    },
+    "raw/plwiki-potop-szwedzki.txt": {
+      "bytes": 42993,
+      "sha256": "f7ac214f755f346327ebe4cf91ea9b4f5027f26aeaa579d3986c14310e1cf507"
+    },
+    "raw/plwiki-powstanie-krakowskie.txt": {
+      "bytes": 10131,
+      "sha256": "e53ad00e9a5d31e96a656fa576462d85949a19933a37ed3e3d9a95b6f8153424"
+    },
+    "raw/plwiki-powstanie-listopadowe.txt": {
+      "bytes": 34362,
+      "sha256": "efeabec3d0680cbf10e20f98c8897384ea49d860dbb36dc2d117ed694bbae98a"
+    },
+    "raw/plwiki-powstanie-styczniowe.txt": {
+      "bytes": 84220,
+      "sha256": "3b8c628a9859e12004e7a55f8a9c5bbdec4994ddaff96d75b7d8eb986988fce2"
+    },
+    "raw/plwiki-powstanie-w-getcie-warszawskim.txt": {
+      "bytes": 43506,
+      "sha256": "beb4eedc9707e11e1a139990dc3b3d01165f36947ad6d34998735b2e3086a1e1"
+    },
+    "raw/plwiki-powstanie-warszawskie.txt": {
+      "bytes": 186717,
+      "sha256": "ff75cee96657ec3a4a39b49a5d1c6677528c931299501624d99b3887edad9186"
+    },
+    "raw/plwiki-poznanski-czerwiec.txt": {
+      "bytes": 37011,
+      "sha256": "04de551d8089b0294a6879877cf96f11521c7be9f20e03960c3668b70aa12273"
+    },
+    "raw/plwiki-praca-organiczna.txt": {
+      "bytes": 9188,
+      "sha256": "1450d8383375093d406b613f19174182f50ecc0eec1d96380b6a505bf911841c"
+    },
+    "raw/plwiki-przewrot-majowy.txt": {
+      "bytes": 58766,
+      "sha256": "22e9fc0cd671d755b6c7daf1b7b1e410f7b84ab18f787c0383559dc66e43b48b"
+    },
+    "raw/plwiki-referendum-1946.txt": {
+      "bytes": 13573,
+      "sha256": "9b3866e762074f3f82f66ffd0b52d643235a0921b94210744ac070e89f91d900"
+    },
+    "raw/plwiki-reformacja.txt": {
+      "bytes": 26350,
+      "sha256": "50250da9db1ac6dc0efae12ef4cfaf94846157a52cb0536739a779b8d26ccd54"
+    },
+    "raw/plwiki-republika-rzymska.txt": {
+      "bytes": 58890,
+      "sha256": "1054c38ff13835f5153e23d75b2f6c99ef1e6d1af5cad2165a93898c00028bbe"
+    },
+    "raw/plwiki-rewolucja-1905.txt": {
+      "bytes": 11561,
+      "sha256": "7930ff142766ecffeba54e2227f305d3346e2029818e706383d564bdbba39807"
+    },
+    "raw/plwiki-rewolucja-francuska.txt": {
+      "bytes": 133520,
+      "sha256": "8c20d8ec56f1fb9650bd0d628f299b00c83c6eab12349d35e1e978bf0c8b514f"
+    },
+    "raw/plwiki-rewolucja-przemyslowa.txt": {
+      "bytes": 11290,
+      "sha256": "8302320f85e0784fb464073e3e0737ef83540056f7670b2ab99ad8b4a7f2aea4"
+    },
+    "raw/plwiki-roman-dmowski.txt": {
+      "bytes": 41923,
+      "sha256": "53e08453a57e11b8aaa93c5625e2e397059f0eebb0af096e5cbde425dd4e6a88"
+    },
+    "raw/plwiki-rozbicie-dzielnicowe.txt": {
+      "bytes": 10357,
+      "sha256": "1b3bdec556bea7ec385e2307f67a01f9589784caa12f2d63fcbcedfc01541419"
+    },
+    "raw/plwiki-rozbiory-polski.txt": {
+      "bytes": 20688,
+      "sha256": "20197a00e64afcd6db2a1e0b9befa16029f4807e40e578918fb3d38cf094e6a0"
+    },
+    "raw/plwiki-rozpad-zsrr.txt": {
+      "bytes": 9359,
+      "sha256": "2ce49d305b9b64b121aee024a352f071ec58943dd689d5369551407035c43a53"
+    },
+    "raw/plwiki-schizma-wschodnia.txt": {
+      "bytes": 9818,
+      "sha256": "c5e78775a57458ebd357f16cf920c20406c9f2b1a74d960f0535d5fc4cb847d6"
+    },
+    "raw/plwiki-sejm-wielki.txt": {
+      "bytes": 14965,
+      "sha256": "a969a2972ad7d4813a020736396c797d8f7cdfa4dd6a2fb563d573e08f74934d"
+    },
+    "raw/plwiki-sobor-trydencki.txt": {
+      "bytes": 14220,
+      "sha256": "b966f4b0d3283a5de99ee5e393cc401f5fc5067aead1ba4c61463ea4b10b7e02"
+    },
+    "raw/plwiki-solidarnosc.txt": {
+      "bytes": 95280,
+      "sha256": "9cea55343f47cec9e936d2e43d5758d0788c8aef4dd828b932f95937cdba3dd7"
+    },
+    "raw/plwiki-spor-o-inwestyture.txt": {
+      "bytes": 6092,
+      "sha256": "2a91f1ca512cd1edf5a4fe684c7998ce0fd95f38546486beb4bfc99362feda1c"
+    },
+    "raw/plwiki-stan-wojenny.txt": {
+      "bytes": 74614,
+      "sha256": "e15f9384d1ca8b9a820a4a02ff1906c0a8f4c9cb40f8c64d228282b416473381"
+    },
+    "raw/plwiki-stefan-batory.txt": {
+      "bytes": 15628,
+      "sha256": "ca53fe924661709ac41b3a3a6692576731728c1a9f9616b5436c1cfe1c940fbc"
+    },
+    "raw/plwiki-traktat-ryski.txt": {
+      "bytes": 21647,
+      "sha256": "86594f9a0825b60e0a09d925b6358a08637324aef4635ebe7280c6c839c04a74"
+    },
+    "raw/plwiki-traktat-wersalski.txt": {
+      "bytes": 17310,
+      "sha256": "8adfba548171bde913de8697a55dff3be8075a60a97fe5128f873bfe4829bef2"
+    },
+    "raw/plwiki-unia-lubelska.txt": {
+      "bytes": 11032,
+      "sha256": "0f5d69d2aa21a397ae8588d7679476cb2fee7d839a94f6309609dd85da38c348"
+    },
+    "raw/plwiki-unia-w-krewie.txt": {
+      "bytes": 7805,
+      "sha256": "248a54d6b495c81e7685b2545b71eb8ecb981eeac2460c55f2faed47bf61086e"
+    },
+    "raw/plwiki-uwlaszczenie-chlopow.txt": {
+      "bytes": 19260,
+      "sha256": "25310ea3ef857f7e2d01c995790209d04c9b91b589b2fe860660b8d4a619a9ac"
+    },
+    "raw/plwiki-wielka-emigracja.txt": {
+      "bytes": 29774,
+      "sha256": "edd2ce054eded71985082c2899a458bee8bb17a0c8de0df43fe0f1386e6214b7"
+    },
+    "raw/plwiki-wielka-karta-swobod.txt": {
+      "bytes": 4844,
+      "sha256": "b86ef90b06552b574a99ebf40935697c0ca27455a7922fa0d500deac945c2ed9"
+    },
+    "raw/plwiki-wielki-kryzys.txt": {
+      "bytes": 19693,
+      "sha256": "637e265eeefc6081caad683653ab0646ae9104ff69ed3a50b4526dd3610fc1b6"
+    },
+    "raw/plwiki-wielkie-odkrycia-geograficzne.txt": {
+      "bytes": 18318,
+      "sha256": "5740e9c270e4bab8011278f59c22b9afa1bfb13519510bc3d586333c3074c900"
+    },
+    "raw/plwiki-wiosna-ludow.txt": {
+      "bytes": 20912,
+      "sha256": "42252d92b43f4b6d3a0a61bee37c3ac972168b6a97f01e46a605ac0c3f29701d"
+    },
+    "raw/plwiki-wladyslaw-lokietek.txt": {
+      "bytes": 45129,
+      "sha256": "3c6f4ce397bfc82ac690cebdc6ee136ad6c3b26a64268c8b15b24796389ec2b0"
+    },
+    "raw/plwiki-wojna-o-niepodleglosc-usa.txt": {
+      "bytes": 47109,
+      "sha256": "3aaaf9e696af46fda491e2f571ae97311fda826825121e91ffef4c534c6ed3dd"
+    },
+    "raw/plwiki-wojna-polsko-bolszewicka.txt": {
+      "bytes": 120327,
+      "sha256": "7ab36214b11c714c2bf3b43c0b3999527ffad635d67c72884bdaded91e25d09b"
+    },
+    "raw/plwiki-wojna-stuletnia.txt": {
+      "bytes": 26563,
+      "sha256": "70af549c1e653e8deb79135ff4d2c30836d4f68c645603bbde75c44d16629a62"
+    },
+    "raw/plwiki-wojna-trzydziestoletnia.txt": {
+      "bytes": 27183,
+      "sha256": "1cf86ce493d7d54b1820ced7c5f8377b0489ef0f915dae3cf5973dcfd30fd86f"
+    },
+    "raw/plwiki-wojna-trzynastoletnia.txt": {
+      "bytes": 120614,
+      "sha256": "090136c686498c14484a51858979e3684eccae9c7b202fcea0501f72c6bb44eb"
+    },
+    "raw/plwiki-wojny-perskie.txt": {
+      "bytes": 32181,
+      "sha256": "bb0543f9ded6072142df715097a4e4fda4317fbf9ceef6f458e30a80f4a4164e"
+    },
+    "raw/plwiki-wolna-elekcja.txt": {
+      "bytes": 9254,
+      "sha256": "eaddeede2268d3ed3cd4544959473d99e73f006758976ef0a8f70f7ca631528a"
+    },
+    "raw/plwiki-wybory-1989.txt": {
+      "bytes": 49442,
+      "sha256": "022ad2050e8a2db95b02af2564d0b4d367cdb00f86f691af64f93864d46af499"
+    },
+    "raw/plwiki-wyprawy-krzyzowe.txt": {
+      "bytes": 13951,
+      "sha256": "7d45b49c2607da81c2143bc254d8fa3fff97be2f0309c74294c22b984d39a56c"
+    },
+    "raw/plwiki-zbrodnia-katynska.txt": {
+      "bytes": 110738,
+      "sha256": "932f86335cff7a0904f9976d797020c6544d8a1ee1f37f62c3e6d30ce74e1147"
+    },
+    "raw/plwiki-zimna-wojna.txt": {
+      "bytes": 94711,
+      "sha256": "2445b1006dded9c718078065533c7c91f541db4350c5a6b643e63586bc9a99cb"
+    },
+    "raw/plwiki-zjazd-gnieznienski.txt": {
+      "bytes": 2607,
+      "sha256": "bb4a8bf0c120eeaa5029fb08804fa0e44beb1409778710fc81eabcfa9fe2a4d1"
+    },
+    "raw/plwiki-zjednoczenie-niemiec.txt": {
+      "bytes": 6619,
+      "sha256": "befb3369bb68a65bf7feae618944f9826b2f3cf7170065ad4d911099bc788475"
+    },
+    "raw/plwiki-zjednoczenie-wloch.txt": {
+      "bytes": 7260,
+      "sha256": "4f9f583367240c823233e42fc2a64f04476c04625f93e51c953d9444eba1265e"
+    },
+    "raw/plws-akt-5-listopada-1916.txt": {
+      "bytes": 1858,
+      "sha256": "63a39aacc5b01a9b2923925ea292b1659c38ad6752faf5aa9e40aae15185f17d"
+    },
+    "raw/plws-akt-konfederacji-targowickiej-1792.txt": {
+      "bytes": 5411,
+      "sha256": "993be83ff8fc50dee79cdc1f69ee07afd1a3f55ed36bceeb14aa83b9f057b33f"
+    },
+    "raw/plws-akt-konfederacji-warszawskiej-1573.txt": {
+      "bytes": 6651,
+      "sha256": "cc817f5305e181800a70c882198ab629135bb6d87afe995126c36893e3c7ba98"
+    },
+    "raw/plws-konstytucja-3-maja-1791.txt": {
+      "bytes": 35384,
+      "sha256": "fd817aa2c7df9bb3b222ccfa82ff941b835cd232df2b4016ad64ebbc2ba56018"
+    },
+    "raw/plws-konstytucja-marcowa-1921.txt": {
+      "bytes": 45011,
+      "sha256": "f7a1e5e38edcc4339b07928a11b611df7070743100f4239822e23b4a59a5e926"
+    },
+    "raw/plws-manifest-22-stycznia-1863.txt": {
+      "bytes": 4345,
+      "sha256": "d73f5d9c51ebaea65c7a63933d34fc191204b0b83645b7affcee64539e5c1209"
+    },
+    "raw/plws-manifest-pkwn-1944.txt": {
+      "bytes": 15542,
+      "sha256": "df3341522c182ae09fe5d77835d386ffd7008a460bbfe4415f32c622dc3f5b57"
+    },
+    "sources.jsonl": {
+      "bytes": 109723,
+      "sha256": "8b77a63afd25317d783a3e511e3f1f99f09b6cec3c740bdf101a0d069aadfeed"
+    }
+  },
+  "graph_content_sha256": "9ed53bb99bf0599fa67535ec1a0b14d0869e6c62c210d81193fa9fd0093a004b",
+  "index_bytes": 8514642,
+  "index_sha256": "350800b1924b8f0094171fc5d68652da0f9260d03273a51ad6421c1a03e70429",
+  "issue": 44,
+  "licenses": [
+    "CC BY-SA 4.0 (Wikipedia text); revision recorded",
+    "Public domain (primary document); Wikisource transcription layer CC BY-SA 4.0"
+  ],
+  "n_chunks": 3481,
+  "n_sources": 107,
+  "query_proof": {
+    "k": 5,
+    "mode": "chrono",
+    "python": "3.14.4",
+    "query": "Kiedy i przez kogo został spisany Kodeks Hammurabiego?",
+    "query_id": "ret-train-q01",
+    "recorded_on": "Mac",
+    "results": [
+      {
+        "chunk_id": "plwiki-kodeks-hammurabiego#0145",
+        "locator": "Wstęp [part 1]",
+        "rank": 1,
+        "score": 52.0181,
+        "source_id": "plwiki-kodeks-hammurabiego"
+      },
+      {
+        "chunk_id": "plwiki-kodeks-hammurabiego#0147",
+        "locator": "Źródła poznania [part 1]",
+        "rank": 2,
+        "score": 49.521,
+        "source_id": "plwiki-kodeks-hammurabiego"
+      },
+      {
+        "chunk_id": "plwiki-kodeks-hammurabiego#0151",
+        "locator": "Znajomość Prawa Hammurabiego w Polsce [part 1]",
+        "rank": 3,
+        "score": 42.4778,
+        "source_id": "plwiki-kodeks-hammurabiego"
+      },
+      {
+        "chunk_id": "plwiki-kodeks-hammurabiego#0148",
+        "locator": "Charakter praw Hammurabiego [part 1]",
+        "rank": 4,
+        "score": 41.1652,
+        "source_id": "plwiki-kodeks-hammurabiego"
+      },
+      {
+        "chunk_id": "plwiki-kodeks-hammurabiego#0150",
+        "locator": "Wartość praw Hammurabiego [part 1]",
+        "rank": 5,
+        "score": 41.1078,
+        "source_id": "plwiki-kodeks-hammurabiego"
+      }
+    ],
+    "title_weight": 1.0
+  },
+  "retrieval_config": {
+    "k": 5,
+    "mode": "chrono",
+    "title_weight": 1.0
+  },
+  "retrieval_script_sha256": "5ce9918fcc0151c8e15391781ace98deaf4b786977a69e6e773ccc9d7b0a51a3",
+  "sites": [
+    "wikipedia_pl",
+    "wikisource_pl"
+  ],
+  "sources_sha256": "8b77a63afd25317d783a3e511e3f1f99f09b6cec3c740bdf101a0d069aadfeed"
+}
