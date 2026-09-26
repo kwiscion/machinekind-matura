@@ -333,6 +333,7 @@ def native_usage(response):
 
 def answer_and_usage(response, manifest, think=False):
     if (response.get("error") is not None or response.get("truncated") is True
+            or response.get("context_truncated") is True
             or response.get("model") != manifest["model"]):
         raise StopWave("native error or response model changed")
     if response.get("done") is not True or response.get("done_reason") != "stop":
