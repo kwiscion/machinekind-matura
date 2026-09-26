@@ -1,0 +1,26 @@
+{
+  "artifact": "gemma-v2-source-correction-answer-only.jsonl",
+  "artifact_sha256": "64aa625c7ce924096b047ef9fb3d6559ec82804df1b271f4999b9282dec8872c",
+  "record_count": 1,
+  "unique_ids": 1,
+  "id_order_sha256": "bf186f431d987324b55db469de460cf862011dfa25f99dee8b9249d5e1fcedf8",
+  "source": "Single-item Gemma v2 source-completeness correction; separate from v1 and the exploratory format arm.",
+  "run_settings": {
+    "model": "gemma4:12b-it-q4_K_M",
+    "model_digest": "4eb23ef187e2c5462566d6a1d3bbbc2f1346d0b4327cbb66d58fffbcc9b2b05c",
+    "input_sha256": "85bce5d99ed077d873ee6b5ca9b8d60bfd232002c5c0a44e19be518c4adbe66e",
+    "config_sha256": "3d9c501891d5307a863096274abdfeec716ee8fa163b5c259569f3592ed8effa",
+    "script_sha256": "b702857347fd0fa99b9aba9a844afca1a4a8634b22eaa826199d27986dca1f0a",
+    "git_revision": "bb388b861ea727f6b02b7fdd37834a27d4501692"
+  },
+  "provenance_sha256": {
+    "private_raw": "8e3d6e64869e9c149afacf86e8ac2979420d1c020cc2fe47bb6b4bab28f4d0a9",
+    "run_metadata": "fd031c3938f44bf729af884a9a8786b445c3abd32fefaa8658e7f2966eb93c3e"
+  },
+  "response_status": {
+    "errors": 0,
+    "finish_reason_counts": {
+      "stop": 1
+    }
+  }
+}

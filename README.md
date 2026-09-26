@@ -4,7 +4,7 @@
 
 For the installed HF CLI and project-specific account login, see [Hugging Face setup](docs/huggingface.md). Run `.\scripts\hf.ps1 auth login` from PowerShell, then confirm `kwiscion` with `auth whoami`.
 
-Latest evidence (15:45): all 40 Gemma answers completed; the Sol first pass proposes **35/60**, compared with **24/60 for Qwen** (Paweł's separate Qwen review proposes 26/60). These are provisional agent scores requiring adjudication. The target remains 48/60. See [Gemma review](agentsLog/kwiscion/2026-09-26-gemma-review-full.md), [Qwen review](agentsLog/kwiscion/2026-09-26-qwen-review-full.md), and the control plan for the current GPU ownership conflict and next-arm decision. Earlier paragraphs below are historical snapshots where their times differ.
+Latest evidence (16:08): independent review and adjudication give **Gemma35/60 (58.3%) and Qwen25/60**. Gemma is our working baseline; the48/60 target is **13points away**. These are provisional agent grades, not organizer results. See the [consolidated scorecard](agentsLog/Pewciu6/2026-09-26T1551-score-consolidated.md). The laptop queue is clear and the lead is preparing one bounded question-policy experiment; Paweł reviews the earlier completed format experiment separately. The [control plan](WINNING_PLAN.md) governs dispatch. Earlier paragraphs below are historical snapshots.
 
 Subject, from the binding hackathon rules: **Polish history matura**. Records still carry a `subject` field. The final system may use local retrieval and tools, and each saved model's weights must fit within **8 GB**. Closed models and synthetic data are allowed during development; the final inference path must run offline.
 
