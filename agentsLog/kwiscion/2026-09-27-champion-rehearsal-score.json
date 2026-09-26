@@ -1,0 +1,518 @@
+{
+  "schema": "manual_score_pass_v1",
+  "status": "FULL40_SINGLE_PASS_COMPLETE",
+  "totals": {
+    "max_points": 60,
+    "central": 38,
+    "low": 37,
+    "high": 40
+  },
+  "nonessay_totals": {
+    "max_points": 45,
+    "central": 31,
+    "low": 30,
+    "high": 32
+  },
+  "essay": {
+    "chosen_topic": 3,
+    "one_topic_only": true,
+    "body_word_count": 362,
+    "whitespace_tokens": 363,
+    "count_convention": "Lexical words/numbers, hyphenated compound counted once; standalone dash excluded. Entire submitted text is body, without title/metadata.",
+    "official_minimum_300_pass": true,
+    "harness_target_400_500_pass": false,
+    "argumentation": {
+      "military": {
+        "level": "satisfactory",
+        "points": 3,
+        "evidence": "Legion cadres lead to the army; Warsaw victory protects sovereignty. These are concrete causal examples, but the account lacks the detail and range for rich argumentation."
+      },
+      "diplomatic": {
+        "level": "superficial",
+        "points": 1,
+        "evidence": "Federal/buffer-zone idea is relevant, but asserted alliances, international standing and recognition remain general, without an actual diplomatic action or tested consequence."
+      },
+      "political_constitutional": {
+        "level": "superficial",
+        "points": 1,
+        "evidence": "Integration and unity are asserted without a concrete office, institution, constitutional act or political decision illustrating the claimed mechanism."
+      }
+    },
+    "narrative_before_deduction": 5,
+    "factual_errors": [
+      {
+        "claim": "Piłsudski created and commanded the Polish Legions as a whole.",
+        "correction": "He commanded the First Brigade; the essay expands that command to the whole formation.",
+        "source": "https://muzeumpilsudski.pl/jozef-pilsudski-1867-1935/",
+        "source_additional": "https://muzeumpilsudskiblog.pl/legiony-pilsudskiego/",
+        "deduction": 1,
+        "uncertainty": "A generous reading as shorthand for his legionary formation would remove this deduction, giving the high bound8."
+      }
+    ],
+    "other_imprecision": "Międzymorze and the federal conception are compressed together; no additional independent deduction. Sweeping claims of successful recognition/integration lower argument specificity rather than being counted as multiple established errors.",
+    "coherence": 3,
+    "coherence_reason": "Clear position, three logically related aspect paragraphs and conclusion. Factual imprecision and insufficient evidence are not automatically coherence faults.",
+    "central": 7,
+    "low": 7,
+    "high": 8
+  },
+  "reused_count": 7,
+  "fresh_count": 33,
+  "blinding": "Not blinded: current champion identity and earlier aggregate38 were known; changed-answer prior item scores were not consulted. Seven exact matches reused only after frozen answer/source/key verification.",
+  "comparison": "Central total38 equals the parent-provided earlier38 aggregate. No demonstrated improvement; this comparison is aggregate-only, not a fresh regrade of the earlier arm.",
+  "answer_artifact": "agentsLog/kwiscion/private/champion-rehearsal-20260927/terminal-answers/all40-grading.jsonl",
+  "answer_artifact_sha256": "c650744f4ca2360a3cf1cc6a17d42433e2866a76f20f36374472004faef26a20",
+  "submission_sha256": "eb70f42aa7706aa7a622d61b1378925914d025ea02c4bfa3a06a8bd544356ce8",
+  "official_keys_sha256": "279abe703dc1af4119a35624d6db893e310fc7afaffbef2a00e678f423706486",
+  "source_exam_sha256": "907976be94f848fc3415ca0e4b1ba473e9dd08caa66984245a63e73d0fa27471",
+  "prior_answers_sha256": "11057839c6cb04a9b83d8149750202b6b975390fff9433bc8c4425c66219ae49",
+  "prior_grades_sha256": "21de78a8a73666307eca867232707a308144aa3fe40085bfb2f9e159c231e781",
+  "uncertainty_items": [
+    "3.2",
+    "18",
+    "26"
+  ],
+  "limitations": "One fast human/manual pass, no second grader. Bounds reflect rubric interpretation, not statistical intervals. No source/key passages reproduced. No inference/remote/Git operations.",
+  "records": [
+    {
+      "id": "val2024-hist-z1",
+      "printed_id": "1",
+      "answer_sha256": "7c48d0806fd756445217b318cfa3093195951e186df999c7a64d586ea8fcd1a0",
+      "max_points": 1,
+      "central": 0,
+      "low": 0,
+      "high": 0,
+      "reason": "Wrong relief selected and misidentified.",
+      "method": "fresh single-pass manual grade"
+    },
+    {
+      "id": "val2024-hist-z2",
+      "printed_id": "2",
+      "answer_sha256": "74fb476718a4f32e38c7c1a31f2c0dcf33bbe44d9ace620799ff8772b910f475",
+      "max_points": 1,
+      "central": 1,
+      "low": 1,
+      "high": 1,
+      "reason": "Correct chronological distinction supported by both sources.",
+      "method": "fresh single-pass manual grade"
+    },
+    {
+      "id": "val2024-hist-z3.1",
+      "printed_id": "3.1",
+      "answer_sha256": "60fe88300544e30bf286cae0ae338a7432a35aae6149baa1f711ed13d6e61919",
+      "max_points": 1,
+      "central": 1,
+      "low": 1,
+      "high": 1,
+      "reason": "Correct identification.",
+      "method": "verified byte-identical prior grade"
+    },
+    {
+      "id": "val2024-hist-z3.2",
+      "printed_id": "3.2",
+      "answer_sha256": "773925e860fb41de8024860aafb6e04bb24c9e908aadc5427fc9307558fe9047",
+      "max_points": 1,
+      "central": 1,
+      "low": 0,
+      "high": 1,
+      "reason": "Both offices identifiable in context; abbreviated trybunat may be judged insufficiently specific under the all-or-nothing rule.",
+      "method": "fresh single-pass manual grade"
+    },
+    {
+      "id": "val2024-hist-z4",
+      "printed_id": "4",
+      "answer_sha256": "469be0f069012ca6160962b9f860950bac141f700eef8d6dd7f5daa2208d3619",
+      "max_points": 1,
+      "central": 1,
+      "low": 1,
+      "high": 1,
+      "reason": "Correct Greek portico/fronton and Roman dome comparison.",
+      "method": "fresh single-pass manual grade"
+    },
+    {
+      "id": "val2024-hist-z5.1",
+      "printed_id": "5.1",
+      "answer_sha256": "efbc2a08b3b6dd69a7974e21373190656c3626010c165dac3f0db7a328bdf9a4",
+      "max_points": 1,
+      "central": 0,
+      "low": 0,
+      "high": 0,
+      "reason": "Wrong decision: mapped voyages misidentified as crusades.",
+      "method": "fresh single-pass manual grade"
+    },
+    {
+      "id": "val2024-hist-z5.2",
+      "printed_id": "5.2",
+      "answer_sha256": "5e09f9cd8a345adca61700b7d9ddcf8309922a099b797093b39ad7e13cfa0221",
+      "max_points": 1,
+      "central": 1,
+      "low": 1,
+      "high": 1,
+      "reason": "Correct state identification.",
+      "method": "fresh single-pass manual grade"
+    },
+    {
+      "id": "val2024-hist-z6",
+      "printed_id": "6",
+      "answer_sha256": "00878dda25e6dd663832f2c0bebf25c60428bccccd97b108ce69f42ca652c3a9",
+      "max_points": 2,
+      "central": 2,
+      "low": 2,
+      "high": 2,
+      "reason": "Explains hierarchy and functions with three groups, captions and placement; incidental inaccurate armor description does not undo sufficient evidence.",
+      "method": "fresh single-pass manual grade"
+    },
+    {
+      "id": "val2024-hist-z7",
+      "printed_id": "7",
+      "answer_sha256": "921c4b278afca598716d9718d0bce512c2fb5c200f2e959ff60236acf5e02f44",
+      "max_points": 1,
+      "central": 0,
+      "low": 0,
+      "high": 0,
+      "reason": "Wrong fragment selected as latest.",
+      "method": "fresh single-pass manual grade"
+    },
+    {
+      "id": "val2024-hist-z8.1",
+      "printed_id": "8.1",
+      "answer_sha256": "41c24bbc5640246d7546da8c30f13b504a82d0eb0251bbabee4f4b60e7cbec80",
+      "max_points": 1,
+      "central": 1,
+      "low": 1,
+      "high": 1,
+      "reason": "Correct act identification.",
+      "method": "fresh single-pass manual grade"
+    },
+    {
+      "id": "val2024-hist-z8.2",
+      "printed_id": "8.2",
+      "answer_sha256": "938b3eb82340aca798931a0705cbb515c8543f565abd830ca4ade309039d0acc",
+      "max_points": 1,
+      "central": 1,
+      "low": 1,
+      "high": 1,
+      "reason": "Correct common-institutions argument links senators and deputies across both sources.",
+      "method": "fresh single-pass manual grade"
+    },
+    {
+      "id": "val2024-hist-z9",
+      "printed_id": "9",
+      "answer_sha256": "b64346e3752b307c66abcc7e8780ab9f53f139538f817ae5816ede87e1f624e0",
+      "max_points": 1,
+      "central": 1,
+      "low": 1,
+      "high": 1,
+      "reason": "Correct confessional decision supported by papal and church-state imagery.",
+      "method": "fresh single-pass manual grade"
+    },
+    {
+      "id": "val2024-hist-z10",
+      "printed_id": "10",
+      "answer_sha256": "477890b75a0eb132cae066fc5952a9570d2da434bbf5abc0a3a3738f304949ce",
+      "max_points": 1,
+      "central": 1,
+      "low": 1,
+      "high": 1,
+      "reason": "Correct option.",
+      "method": "verified byte-identical prior grade"
+    },
+    {
+      "id": "val2024-hist-z11.1",
+      "printed_id": "11.1",
+      "answer_sha256": "2434c5bd323fb48adbfbed9766e77837f913c68c1abfc24186bcc76ed0e9c33c",
+      "max_points": 1,
+      "central": 0,
+      "low": 0,
+      "high": 0,
+      "reason": "One of two required identifications wrong; all-or-nothing criterion.",
+      "method": "fresh single-pass manual grade"
+    },
+    {
+      "id": "val2024-hist-z11.2",
+      "printed_id": "11.2",
+      "answer_sha256": "0cbfa086d2e25492dbbe4c2068545d6c71b9b694dec9ad3070a354eb3ce0b36e",
+      "max_points": 1,
+      "central": 1,
+      "low": 1,
+      "high": 1,
+      "reason": "Correct conversion and political motive.",
+      "method": "fresh single-pass manual grade"
+    },
+    {
+      "id": "val2024-hist-z12.1",
+      "printed_id": "12.1",
+      "answer_sha256": "00d216d31f56ad0849e528ccb6feeb0eb6147434764643c73746ee49c50d8c3f",
+      "max_points": 1,
+      "central": 0,
+      "low": 0,
+      "high": 0,
+      "reason": "Wrong monarch.",
+      "method": "fresh single-pass manual grade"
+    },
+    {
+      "id": "val2024-hist-z12.2",
+      "printed_id": "12.2",
+      "answer_sha256": "9ac6463cbc6e7e45cea508accb3280e7e5134f6f700a23b8d0e4d3d0f36bfd87",
+      "max_points": 1,
+      "central": 1,
+      "low": 1,
+      "high": 1,
+      "reason": "Correct historical term.",
+      "method": "verified byte-identical prior grade"
+    },
+    {
+      "id": "val2024-hist-z12.3",
+      "printed_id": "12.3",
+      "answer_sha256": "961b07915964ede30a739f21fa2edeb224337e0c468b0e35e1382f6a5895a2c6",
+      "max_points": 1,
+      "central": 1,
+      "low": 1,
+      "high": 1,
+      "reason": "Correct style and visible theatrical/dynamic features.",
+      "method": "fresh single-pass manual grade"
+    },
+    {
+      "id": "val2024-hist-z13",
+      "printed_id": "13",
+      "answer_sha256": "eb61640d6b6f4ed681d81bcd5ba0d8155e96cd072dc28193bb02a35e08df7eae",
+      "max_points": 1,
+      "central": 1,
+      "low": 1,
+      "high": 1,
+      "reason": "Correct event and dated felled-tree symbolism; unnecessary sword claim is inaccurate but sufficient visual evidence remains.",
+      "method": "fresh single-pass manual grade"
+    },
+    {
+      "id": "val2024-hist-z14.1",
+      "printed_id": "14.1",
+      "answer_sha256": "9a73a69c7408239d8b08b4c16503b055a381f91093e82aa5da25b9fda06a4040",
+      "max_points": 1,
+      "central": 0,
+      "low": 0,
+      "high": 0,
+      "reason": "Wrong decision: misdates the map and conflates campaigns.",
+      "method": "fresh single-pass manual grade"
+    },
+    {
+      "id": "val2024-hist-z14.2",
+      "printed_id": "14.2",
+      "answer_sha256": "0200946aa0d009b6b1e1fb830338cbd4d0a18607cda052562e66dfa8c3af52e6",
+      "max_points": 1,
+      "central": 1,
+      "low": 1,
+      "high": 1,
+      "reason": "Correct identification; selected option and name agree.",
+      "method": "verified byte-identical prior grade"
+    },
+    {
+      "id": "val2024-hist-z15.1",
+      "printed_id": "15.1",
+      "answer_sha256": "a45033385ae077d92aef81254a2ea0587dbd814366886db262f4423e937c1245",
+      "max_points": 1,
+      "central": 1,
+      "low": 1,
+      "high": 1,
+      "reason": "Correct uprising name.",
+      "method": "verified byte-identical prior grade"
+    },
+    {
+      "id": "val2024-hist-z15.2",
+      "printed_id": "15.2",
+      "answer_sha256": "b2435765d7f9046ac65c62d9ecb6fc7cc932ce0431279a183604ef56b97b41b9",
+      "max_points": 1,
+      "central": 1,
+      "low": 1,
+      "high": 1,
+      "reason": "Correct version and shared critical portrayal linked to both texts.",
+      "method": "fresh single-pass manual grade"
+    },
+    {
+      "id": "val2024-hist-z16.1",
+      "printed_id": "16.1",
+      "answer_sha256": "11f9f70114c5013aac7d87bdf6d3f956abb9223f40ed637302bffaceab8343cc",
+      "max_points": 1,
+      "central": 1,
+      "low": 1,
+      "high": 1,
+      "reason": "Correct doctrine-to-image connection with European intervention blocked.",
+      "method": "fresh single-pass manual grade"
+    },
+    {
+      "id": "val2024-hist-z16.2",
+      "printed_id": "16.2",
+      "answer_sha256": "ec433a5e9e7be1b45e2226820cf04fe93860b449a6bdc918dd4cea9c735fe094",
+      "max_points": 1,
+      "central": 1,
+      "low": 1,
+      "high": 1,
+      "reason": "Correct president and option.",
+      "method": "verified byte-identical prior grade"
+    },
+    {
+      "id": "val2024-hist-z17.1",
+      "printed_id": "17.1",
+      "answer_sha256": "3d47c7e8079fefa8eba5e03159fed6fc7a8cf0cba0d07b1edca071646a9e88cd",
+      "max_points": 1,
+      "central": 1,
+      "low": 1,
+      "high": 1,
+      "reason": "Correct defeat-to-unification causal link using both sources.",
+      "method": "fresh single-pass manual grade"
+    },
+    {
+      "id": "val2024-hist-z17.2",
+      "printed_id": "17.2",
+      "answer_sha256": "7c332932df19992b281eb8acca30e929ae64e6880b742e53265522e623b4c3f5",
+      "max_points": 1,
+      "central": 1,
+      "low": 1,
+      "high": 1,
+      "reason": "Correct dynasty.",
+      "method": "fresh single-pass manual grade"
+    },
+    {
+      "id": "val2024-hist-z18",
+      "printed_id": "18",
+      "answer_sha256": "4c91bd9d8eaa085a5650bc26072adff22891f719ed9857b35da6e54c6f68a20b",
+      "max_points": 1,
+      "central": 0,
+      "low": 0,
+      "high": 1,
+      "reason": "Correct side but diagnostic headgear misread as crown, with soldiers only generically labelled; two-element justification insufficiently grounded centrally. Generous beast-plus-attackers reading could earn one.",
+      "method": "fresh single-pass manual grade"
+    },
+    {
+      "id": "val2024-hist-z19.1",
+      "printed_id": "19.1",
+      "answer_sha256": "db9fc7fcd2dd98e5090f480ffdc23eaed8fc5145870a85b076423e9b4be98986",
+      "max_points": 2,
+      "central": 1,
+      "low": 1,
+      "high": 1,
+      "reason": "Two of three truth judgments correct; official partial-credit rule.",
+      "method": "fresh single-pass manual grade"
+    },
+    {
+      "id": "val2024-hist-z19.2",
+      "printed_id": "19.2",
+      "answer_sha256": "42e5968bd12223df863e82b94987d6e6bec9b5088f0b841b94a92bad5fabf84d",
+      "max_points": 1,
+      "central": 1,
+      "low": 1,
+      "high": 1,
+      "reason": "Correct general.",
+      "method": "fresh single-pass manual grade"
+    },
+    {
+      "id": "val2024-hist-z20.1",
+      "printed_id": "20.1",
+      "answer_sha256": "b2822b98320fd4a619efa4a2f444d0d728c2705f1ddab91d30f8f67a217c4b1b",
+      "max_points": 1,
+      "central": 1,
+      "low": 1,
+      "high": 1,
+      "reason": "Correct source and economic-policy explanation.",
+      "method": "fresh single-pass manual grade"
+    },
+    {
+      "id": "val2024-hist-z20.2",
+      "printed_id": "20.2",
+      "answer_sha256": "cf31a1d19da9e504fa52dda1f892d7964dc4a5b1f58e1d911d00a0c877114179",
+      "max_points": 2,
+      "central": 1,
+      "low": 1,
+      "high": 1,
+      "reason": "Two of three truth judgments correct; official partial-credit rule.",
+      "method": "fresh single-pass manual grade"
+    },
+    {
+      "id": "val2024-hist-z21",
+      "printed_id": "21",
+      "answer_sha256": "15b58b7669f8db3ad2b9f8fb539b55f8d5a9d5848c580ef09ae42cefc4510f77",
+      "max_points": 1,
+      "central": 1,
+      "low": 1,
+      "high": 1,
+      "reason": "Visible mass staging and symbols linked to propaganda and projected unity/power.",
+      "method": "fresh single-pass manual grade"
+    },
+    {
+      "id": "val2024-hist-z22.1",
+      "printed_id": "22.1",
+      "answer_sha256": "cdee0b8d35b3bac1932af148b387a59753a6e2fdbf7a5f452921c4e292e0f42a",
+      "max_points": 1,
+      "central": 1,
+      "low": 1,
+      "high": 1,
+      "reason": "Correct day, month and year.",
+      "method": "verified byte-identical prior grade"
+    },
+    {
+      "id": "val2024-hist-z22.2",
+      "printed_id": "22.2",
+      "answer_sha256": "c477cb81475de11512a038dcbd953df2b6418b3a6c576f9aae3ab82ce09b2c81",
+      "max_points": 2,
+      "central": 2,
+      "low": 2,
+      "high": 2,
+      "reason": "Both requested similarities supported: international effects and domestic restraint/inspiration.",
+      "method": "fresh single-pass manual grade"
+    },
+    {
+      "id": "val2024-hist-z23.1",
+      "printed_id": "23.1",
+      "answer_sha256": "dfef0c1bb7c8d7fa2e213e26e0f9e0260b342be904af0e3c8242dc9af1b9864d",
+      "max_points": 1,
+      "central": 1,
+      "low": 1,
+      "high": 1,
+      "reason": "Both methods identified correctly.",
+      "method": "fresh single-pass manual grade"
+    },
+    {
+      "id": "val2024-hist-z23.2",
+      "printed_id": "23.2",
+      "answer_sha256": "a6ed33285e29bf9d59ccad1412605d901b3512167fd9543ecc78170c3bffdad3",
+      "max_points": 1,
+      "central": 0,
+      "low": 0,
+      "high": 0,
+      "reason": "Wrong decision: poster assigned to wrong referendum question/percentage.",
+      "method": "fresh single-pass manual grade"
+    },
+    {
+      "id": "val2024-hist-z24",
+      "printed_id": "24",
+      "answer_sha256": "8b72e63d04f22f0ba2535b72785f749a872ac01000dd1c752d629890aea99f5b",
+      "max_points": 1,
+      "central": 0,
+      "low": 0,
+      "high": 0,
+      "reason": "Wrong decision conflates distinct crises.",
+      "method": "fresh single-pass manual grade"
+    },
+    {
+      "id": "val2024-hist-z25",
+      "printed_id": "25",
+      "answer_sha256": "2021898019fae28cf2cee015bb1f93435234eb4b116b8dfb818bdac46b2f4e80",
+      "max_points": 3,
+      "central": 0,
+      "low": 0,
+      "high": 0,
+      "reason": "Wrong period, actor, lettering and central message. Recognizing broom does not earn partial credit for an incorrect interpretation.",
+      "method": "fresh single-pass manual grade"
+    },
+    {
+      "id": "val2024-hist-z26",
+      "printed_id": "26",
+      "answer_sha256": "827e54926907567fe043746735ea31201159ae4090034b573e911020a689d5c3",
+      "max_points": 15,
+      "central": 7,
+      "low": 7,
+      "high": 8,
+      "reason": "Military satisfactory3, diplomacy superficial1, political-constitutional superficial1; narrative5 minus one factual point, plus coherence3.",
+      "method": "fresh single-pass manual grade"
+    }
+  ]
+}
