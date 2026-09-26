@@ -2,19 +2,30 @@
 
 - Issue: https://github.com/kwiscion/machinekind-matura/issues/4
 - Branch: `issue-4-przemeknowak781-data`
-- Work window: 2026-09-26 00:05–03:45 UTC (02:05–05:45 Europe/Warsaw)
 - Split used: TRAIN only. No 2023/2024/2025 exam questions, keys, rubrics or source packs were opened or used.
 
-## Use this
-| File | Content |
-| --- | --- |
-| `data/przemeknowak781/train_strict.jsonl` | **211 strictly verified TRAIN records** (canonical schema, `audit` filled) |
-| `data/przemeknowak781/sft/closed_book_{train,holdout}.jsonl` | Chat format (`messages`): system, question, answer. 199 train / 12 holdout |
-| `data/przemeknowak781/sft/grounded_{train,holdout}.jsonl` | Same, with the record's claims plus 2 distractor passages from other topics in the user turn (RAG-style) |
+## Export eligibility (lead repair, extended to rounds B, C and the context audit)
 
-The holdout is chosen by `source_group_id`, so no topic is in both parts. It is only an overfitting check for LoRA runs, not an exam split.
+`data/przemeknowak781/train_strict.jsonl` is the only default training input: **211 records**, reconstructed by `strict_eligibility.py` from committed verdicts only, with no new model judgment. A record is eligible only if both lenses are explicitly true in its round and the full-article context audit has no confirmed defect. The set is provisional and not human-verified.
 
-`train.jsonl` (231 records, Haiku-verified) is superseded; keep it only for provenance.
+| Round | Input | Accepted |
+| --- | --- | --- |
+| r1 | 231 legacy records, committed `r1_S`/`r1_Q` | 24 (23 after context audit) |
+| rB | 169 round-1 repairs + 60 essay plans, exactly as judged (`payload_rB`) | 120 (118) |
+| rC | 96 round-B repairs, exactly as judged (`payload_rC`) | 74 (70) |
+| rD | context audit over the 218 accepted records (`payload_rD`); 8 flagged, 7 confirmed by an independent agent | excludes 7 |
+
+`strict_provenance.json` pins every input by SHA-256 of UTF-8/LF-normalized text: `train.jsonl`, all verdict, repair and audit files, the 10 essay files, the three judged payload snapshots, and the four rubrics. Reconstruction checks that each judged payload equals the rebuilt record text (prompt, answer, task type, era, claims and locators), so a verdict cannot be reused for altered text even when a hash is re-pinned. The original round-1 pins are unchanged, and the lead's 24-record reconstruction is still reproduced; one of those 24 is excluded by the context audit. The exporter refuses legacy, altered or missing inputs and never overwrites existing export files.
+
+Grounded distractors are sampled only from the destination source-group partition, and exports include `context_source_group_ids`. Current split: 199 train / 12 internal holdout per variant, with 0 train rows citing a holdout group. General historical facts can appear independently in both groups; this is source-group isolation, not a promise that every fact is unique across splits.
+
+```bash
+python scripts/przemeknowak781/strict_eligibility.py --check
+python -m unittest discover -s scripts/przemeknowak781 -p 'test_*.py' -v
+python scripts/przemeknowak781/export_sft.py --output-dir data/przemeknowak781/cache/sft-reviewed
+```
+
+The tests are the lead's 6, with the expected counts updated from 24 to 211, plus 3 new ones: round counts and context exclusions; r1 as the lead's reconstruction minus one defect; and refusal of a repair whose text differs from the judged payload. `data/przemeknowak781/sft/` holds the export from the lead's exporter; the earlier export from commit 9b77039 leaked holdout passages into training context and was replaced. The verbatim-source gate (`validate.py`, which needs the local article cache) is inherited evidence and is not rerun in CI.
 
 | Era | n | Task type | n |
 | --- | --- | --- | --- |
@@ -23,47 +34,37 @@ The holdout is chosen by `source_group_id`, so no topic is in both parts. It is 
 | 19th_century | 31 | short_answer | 49 |
 | 20th_century | 58 | source_analysis | 47 |
 
-89 of 100 source articles are cited. All 211 records pass `validate.py` against the pinned revisions.
+89 of 100 source articles are cited.
 
-## How a record gets into train_strict.jsonl
-1. **Sources**: `fetch_sources.py` fetches 100 plwiki articles (medieval → 1989) by pinned `oldid`, splits them into sections into git-ignored `cache/`, and records SHA-256 of the extracted text. Reruns reuse oldids from `sources.jsonl` (98/98 hashes identical on re-fetch) and skip disambiguation pages.
-2. **Generation**: `claude-haiku-4-5` subagents (`prompts/haiku_gen_v1.md`, `haiku_gen_v2.md`) wrote short-answer, chronology, source-analysis and essay items; `claude-opus-5-5` wrote 60 essay plans (`prompts/essay_gen_v1.md`) over the 30 largest articles balanced by era; 20 items were written by hand from the pinned text.
-3. **Deterministic gate** (`validate.py`): schema and enums, known source ids, every claim a verbatim substring of the pinned revision (after Unicode, dash, quote and whitespace normalisation), every year in the answer inside a claim, no exact or near-duplicate prompts.
-4. **Strict dual-lens verification** (`prompts/verify_strict_v2.md`, `strict_rounds.py`). Two independent `claude-opus-5-5` judges per record: Lens S (every fact in the cited claims, no added interpretation) and Lens Q (standalone prompt, complete and fluent answer, correct task type). A failing record gets one repair (`prompts/repair_v2.md`: prompt and answer only, claims fixed), is gated again, and is judged by fresh judges.
-   - Round 1, 231 Haiku-era records: 24 passed both lenses; 169 repaired; 37 dropped. Calibration: the hand-written items passed Lens S 7/20 (real catches, e.g. facts from the article but not in the cited claim, plus complaints that a claim fragment did not name its subject), so Amendment 2.1 lets the cited article title fix the subject, nothing else, from round B.
-   - Round B, 229 candidates (169 repairs + 60 essays): 120 passed; 96 repaired; 13 dropped. The essays scored Lens Q 57/60 but Lens S 0/55: the generator used facts from the article that were not in its cited claims.
-   - Round C, 96 repairs, no further repair: 74 passed; missing verdicts were re-requested (none were needed).
-5. **Context audit** (`prompts/context_audit_v1.md`): all 218 accepted records were re-read against the full article paragraphs around each claim, since earlier judges saw only the claims. 8 flagged; an independent agent confirmed 7 and refuted 1. Confirmed defects included a disputed coronation date presented as settled, AK strength figures the article labels uncertain, and a troop count attributed to the wrong force. Those 7 were excluded, leaving 211.
+## How the records were produced and judged
+1. **Sources**: `fetch_sources.py` fetches 100 plwiki articles (medieval → 1989) by pinned `oldid` into git-ignored `cache/`, with SHA-256 of the extracted text. Reruns reuse oldids from `sources.jsonl` (98/98 hashes identical on re-fetch) and skip disambiguation pages.
+2. **Generation**: `claude-haiku-4-5` subagents (`prompts/haiku_gen_v1.md`, `haiku_gen_v2.md`); 60 essay plans by `claude-opus-5-5` (`prompts/essay_gen_v1.md`, 2 per source over the 30 largest articles, balanced by era); 20 items written by hand.
+3. **Deterministic gate** (`validate.py`): schema and enums, verbatim claims in the pinned revision after normalisation, every answer year inside a claim, no exact or near-duplicate prompts.
+4. **Strict dual-lens verification** (`prompts/verify_strict_v2.md`, orchestrated with `strict_rounds.py`): two independent `claude-opus-5-5` judges per record, Lens S (evidence support) and Lens Q (exam quality), one repair per failure (`prompts/repair_v2.md`, claims fixed), then fresh judges. Calibration: the hand-written items passed Lens S 7/20 in round 1; several failures only objected that a claim fragment did not name its subject, so Amendment 2.1 lets the cited article title fix the subject, nothing else, from round B. The essays scored Lens Q 57/60 but Lens S 0/55 in round B (facts from the article outside the cited claims) and entered only after repair.
+5. **Context audit** (`prompts/context_audit_v1.md`): all 218 accepted records re-read against the full article paragraphs; confirmed defects included a disputed coronation date stated as settled, AK strength figures the article calls uncertain, and a troop count attributed to the wrong force.
 
-Every verdict, repair, and audit finding is in `strict/` (`r1_*`, `rB_*`, `rC_*`, `rD_context_*`), and counts are in `strict/summary.json`. The earlier Haiku-only pipeline (`verification.py`, `prompts/verify_v1.md`, `repair_v1.md`) is kept for provenance.
-
-## Quality evidence
+## Quality evidence (provisional)
 | Set | Strict spot check (Opus, random) |
 | --- | --- |
-| Haiku-verified `train.jsonl` | 12/20 ([audit_sample.md](audit_sample.md)) |
+| Haiku-verified legacy `train.jsonl` | 12/20 ([audit_sample.md](audit_sample.md)) |
 | `train_strict.jsonl` | 10/10 (seed 29) |
 
-Kept from the 20 hand-written items: 18/20. The spot checks are provisional; no human review has been done.
+18 of the 20 hand-written items survived. No human review has been done.
 
-## Reproduce
-```bash
-python scripts/przemeknowak781/fetch_sources.py
-python scripts/przemeknowak781/validate.py data/przemeknowak781/train_strict.jsonl
-python scripts/przemeknowak781/export_sft.py
-```
-Python 3.12 standard library only. The LLM steps are subagent and workflow runs driven by the prompt files, so they are not bit-reproducible; raw generator outputs are in `data/przemeknowak781/generated/`.
+## Legacy artifacts (preserved, not export-eligible)
+`train.jsonl` (231 records; Haiku `verify_v1` labels), `generated/`, `verification.py` and the v1 prompts are kept for provenance and research. Their old `verified` labels do not make a record eligible.
 
 ## Cost
-- Haiku generation and first verification: about 2.8M subagent tokens.
-- Strict verification, essays, and context audit: about 10.2M `claude-opus-5-5` subagent tokens.
+- Haiku: about 2.8M subagent tokens.
+- `claude-opus-5-5` strict verification, essays and context audit: about 10.2M subagent tokens.
 - No purchases and no paid API keys. A local `qwen/qwen3.8-27b` (LM Studio) was tried as a verifier and dropped: about 3 tok/s with thinking not disabled.
 
 ## Rights
-Wikipedia text is CC BY-SA 4.0. Records hold short attributed claims with section locators and revision URLs, and raw article text is not committed. The SFT files contain answers derived from BY-SA text; before any public upload, the lead should confirm that share-alike terms are acceptable.
+Wikipedia text is CC BY-SA 4.0. Records hold short attributed claims with section locators and revision URLs; raw article text is not committed. The SFT files contain answers derived from BY-SA text, so the lead should confirm that share-alike terms are acceptable before any public upload.
 
 ## Limits
 - All verifiers are Anthropic models; there is no cross-family or human check.
-- Answers stay close to the source wording. That suits the grounded variant; the closed-book variant may teach an encyclopedic register.
+- Answers stay close to the source wording: good for the grounded variant, possibly an encyclopedic register for the closed-book variant.
 - 211 examples teach format and grounding behaviour, not broad knowledge; facts should come from retrieval (#6).
 - 19th century is the smallest era (31); 11 of 100 sources have no example.
-- The deterministic gate checks years only; days, months, and names rely on the judges.
+- The deterministic gate checks years only; days, months and names rely on the judges.

@@ -6,7 +6,8 @@ apply RECORDS PREFIX [--extra FILES...]
                              repaired records (and --extra records) that pass validate.py
                              -> cache/strict/PREFIX_candidates.jsonl
 batch RECORDS TAG [--n 12]   judge payloads -> cache/strict/sbatch-TAG-NN.jsonl
-finalize ACCEPTED...         -> data/przemeknowak781/train_strict.jsonl + summary
+finalize ACCEPTED...         -> cache/strict/train_strict_rounds.jsonl + summary (working copy only;
+                             the canonical train_strict.jsonl comes from strict_eligibility.py)
 
 Run from scripts/przemeknowak781.
 """
@@ -113,7 +114,7 @@ def finalize(args):
                 if args.exclude_confirmed:
                     ex["audit"]["notes"] += "; context_audit_v1: passed"
                 rows.append(ex)
-    write_jsonl(BASE / "train_strict.jsonl", rows)
+    write_jsonl(STRICT / "train_strict_rounds.jsonl", rows)
     summary = {"verified_strict": len(rows), "excluded_by_context_audit": sorted(excluded),
                "by_era": dict(Counter(r.get("era") for r in rows)),
                "by_task_type": dict(Counter(r["task_type"] for r in rows)),

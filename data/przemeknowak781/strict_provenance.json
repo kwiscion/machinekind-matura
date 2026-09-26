@@ -1,0 +1,71 @@
+{
+  "source_commit": "c5009a5e4cddfb35b11a75b74bfe61a669ea44bb",
+  "source_commits": {
+    "r1": "c5009a5e4cddfb35b11a75b74bfe61a669ea44bb",
+    "rB": "9b77039ca5763e7f3e6f983087e93d72ab284347",
+    "rC": "9b77039ca5763e7f3e6f983087e93d72ab284347"
+  },
+  "rounds": [
+    "r1",
+    "rB",
+    "rC",
+    "rD_context_audit"
+  ],
+  "rubric": "verify_strict_v2 before amendment 2.1",
+  "rubrics": {
+    "r1": "verify_strict_v2 before amendment 2.1",
+    "rB": "verify_strict_v2 with amendment 2.1",
+    "rC": "verify_strict_v2 with amendment 2.1"
+  },
+  "reviewer": "claude-opus-5-5 dual-lens (S evidence support, Q exam quality) per round, plus full-article context audit with independent confirmation; existing committed verdicts; provisional",
+  "essay_files": [
+    "data/przemeknowak781/generated/essay-01.jsonl",
+    "data/przemeknowak781/generated/essay-02.jsonl",
+    "data/przemeknowak781/generated/essay-03.jsonl",
+    "data/przemeknowak781/generated/essay-04.jsonl",
+    "data/przemeknowak781/generated/essay-05.jsonl",
+    "data/przemeknowak781/generated/essay-06.jsonl",
+    "data/przemeknowak781/generated/essay-07.jsonl",
+    "data/przemeknowak781/generated/essay-08.jsonl",
+    "data/przemeknowak781/generated/essay-09.jsonl",
+    "data/przemeknowak781/generated/essay-10.jsonl"
+  ],
+  "files": {
+    "data/przemeknowak781/train.jsonl": "52df361cefca4d20a99b0795c766740e7df9f5fb935b6c7911d70914a3acbd7f",
+    "agentsLog/przemeknowak781/strict/r1_S.jsonl": "83279cd88d0dc14db28609c0da52637d1bd695f251252ea2cd8832dd5049c91b",
+    "agentsLog/przemeknowak781/strict/r1_Q.jsonl": "f97a4276e6507e9c2c2cb67a19456de44c1e38d6be9e08337b0b29b555857ea4",
+    "agentsLog/przemeknowak781/strict/r1_repairs.jsonl": "0b40419cfce6fdcc7fac46cdcb1c90b4078621a1c55d4190472cb3f0a79b90ef",
+    "data/przemeknowak781/generated/essay-01.jsonl": "ab00bf7a2dcf17320523c6ceebf5768929bef7326cdb3c89bdfdc159ef67f8a2",
+    "data/przemeknowak781/generated/essay-02.jsonl": "591ecf7da18417923cb292d4bf1e7b1a904403a2ac82d70f93b62a64fed23587",
+    "data/przemeknowak781/generated/essay-03.jsonl": "d3daf4299fd0262d1e45b73cbf3e2512cb495096491d74e341d41d9c29ecf135",
+    "data/przemeknowak781/generated/essay-04.jsonl": "a4d0977013fbee3cf689375df26322242c9decbfd9469d6114ca4f99b4741f29",
+    "data/przemeknowak781/generated/essay-05.jsonl": "133956e1b7489c7aa2f67a2982612690b56cf932a4931b3651222d1323606f1e",
+    "data/przemeknowak781/generated/essay-06.jsonl": "bb227e9f23566b797c4d618481bb0baa377f92cbe00a4e1f64d54ecd888b01da",
+    "data/przemeknowak781/generated/essay-07.jsonl": "72723a58cc4b8813caaa033ba4bffc7a2b164687325f9474828cd908401adff8",
+    "data/przemeknowak781/generated/essay-08.jsonl": "75ae5d4b4aca6a3cad22554a3fd72b28239590ddccb4fe25b9dd6b7787b70f67",
+    "data/przemeknowak781/generated/essay-09.jsonl": "ed5024ef777b351bf03d9a6fe630e44b73a812ee2923235bb543e89e9be594d6",
+    "data/przemeknowak781/generated/essay-10.jsonl": "b09b7bc3cdc82b43771e3dbcfa8d5848f2d88ef1595d46c9efebe0d15c5a7b4a",
+    "agentsLog/przemeknowak781/strict/payload_rB.jsonl": "9c12514b81d1f9c2fa03364a41dd85d9edbb9826b201671c27b08d7955a9b729",
+    "agentsLog/przemeknowak781/strict/rB_S.jsonl": "d3ab3d78e126ae15ef75a461db277499b38b855f00ea0738d722a0e1abbec7c2",
+    "agentsLog/przemeknowak781/strict/rB_Q.jsonl": "be61766018f1708affd19d8ef586d41012a160179e22cac2bf68287a8fcdee93",
+    "agentsLog/przemeknowak781/strict/rB_repairs.jsonl": "767db1da7b02df0ae55c0240c87f0cebcac7b36fa086a605729aef8d05547629",
+    "agentsLog/przemeknowak781/strict/payload_rC.jsonl": "c83b4251ad3293e09f2491ce79ca873d507e291869dafc3156e03992ccee3cb3",
+    "agentsLog/przemeknowak781/strict/rC_S.jsonl": "d4c74875c01501e7dd713b4d8054df2006d72adde84e9252058231cb2654e3cb",
+    "agentsLog/przemeknowak781/strict/rC_Q.jsonl": "5048d3998c9ba48835b556aea723b79518857196be9a5a79c36b2676280899d5",
+    "agentsLog/przemeknowak781/strict/payload_rD.jsonl": "13c21b97c1427a4279397ced3b5850c5de436f811f8c415c44019f819e494207",
+    "agentsLog/przemeknowak781/strict/rD_context_audit.jsonl": "c5002b2517a15ee615f817385d96b53db447ccd157edf3624e7bed5300244687",
+    "agentsLog/przemeknowak781/strict/rD_context_confirm.jsonl": "f7872f17b841f61e291d61d8f96b94bb904135f74c083707247a15d48cb8bd6e",
+    "scripts/przemeknowak781/prompts/verify_strict_v2.md": "7525e1958ff04e8750de471cde1144b8574149cb1c5f823e0cdd3c7eae3162b7",
+    "scripts/przemeknowak781/prompts/repair_v2.md": "3b0fefc07f7bc02cd64a0a4dc11287ed0b1a3516fd188ac8cd5070c8ccca542a",
+    "scripts/przemeknowak781/prompts/essay_gen_v1.md": "a73a95efbc6dd4ab93e60916c8db706e8346113d862156ced7a6d226a0546938",
+    "scripts/przemeknowak781/prompts/context_audit_v1.md": "f994b45f7b3e24f07d459455e8aa753c7ae85fd4dcbc524cc0dbc0433227ed6f"
+  },
+  "limitations": [
+    "No new semantic verification or source fetch in this repair.",
+    "Strict membership reconstructs the recorded round-1 decisions, not human verification.",
+    "Legacy train.jsonl and generated files remain historical drafts, not export-eligible by themselves.",
+    "Round B/C/D verdict files were committed in 9b77039; the judged payload snapshots were committed with the merge of the lead repair. Payload equality proves which text each verdict refers to.",
+    "The verbatim-source gate (validate.py) is inherited evidence: it needs the local article cache and is not rerun by this check."
+  ],
+  "hash_normalization": "UTF-8 text with CRLF/CR normalized to LF (portable Git checkout)"
+}
