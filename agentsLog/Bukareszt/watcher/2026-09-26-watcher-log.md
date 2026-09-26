@@ -204,3 +204,8 @@ Agent: Greg's issue watcher. Orca worktree `Watch-for-tasks`, instance `8e5e9ed0
 - PR #141 (readiness corrections: wording, tokenizer-control evidence recovered, real-clearance prep proof, fail-closed export script) merged earlier (`7fdf385`).
 - The readiness worker held off to avoid a second worker on the host. Watcher decided: the same worker runs the declared wave (sole worker on `matura-greg`); relayed full instructions incl. independent review, start deadline, and a network-failure guard (do not start if PASS cannot be posted before 23:35).
 - Watcher host network intermittent again at 23:21 (GitHub API unreachable); #117 label update pending.
+
+## 23:37 — #117 23:35 window missed (serving binary missing); root set a new window
+- Worker did not start at 23:35 (go-ahead arrived 23:20, network intermittent) and found a concrete blocker: pinned llama.cpp `fcb3074f` on the host was built CPU-only with `llama-quantize` only, no `llama-server`/`llama-mtmd-cli`; CUDA 12.8 nvcc present. Posted on #117 at 23:22 (H100 idle, nothing run).
+- Root (23:24): building the serving targets is authorized prep. One owned prep worker ≤40 min (zero generation/training, pinned source, CUDA 12.8, record binary/build/help hashes), plus frozen operator/fixtures/ledger/manifests; independent review PASS with hashes/start/deadline, then the already-authorized 60-min pilot. New latest start 00:30, latest finish 01:30; prep+pilot ≤100 min (~$5.47 proxy); no retry/extension. Root asked the watcher to claim exactly one Greg worker.
+- Relayed verbatim to the same worker (sole worker on `matura-greg`) and posted the single-worker claim on #117.
