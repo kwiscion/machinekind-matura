@@ -230,3 +230,31 @@ independent grading assigned to root/@Pewciu6 flow; RTX transfer control
 (34/60, 146.6 s) untouched; watcher cron continues (minutes 7,22,37,52);
 smoke envelope 3/4, smoke 4 reserved; next RTX claim awaits the lead's
 declaration; no full-40 arm until diagnostic review. $0 spent, no purchases.
+
+---
+
+## Diagnostic graded + review-note fix — 21:25 CEST update
+
+- **Lead acknowledged completion on #95 (19:03:01Z)**: root Sol independently
+  grades the 6 control/final pairs; observations auxiliary until initial
+  answer grading; preserve all 18 raw records + backup; no duplicate full-40
+  control or extra GPU calls while the short grade is pending.
+- **@Pewciu6 blind first-pass grading IN (PR #125, 19:05:55Z)**: control 4/8
+  (2–6) vs final 4/8 (3–5), **paired Δ 0 (−3 to +3) — no first-pass gain**
+  from the multiscale bundle on the six-item panel; failed slice 1→1
+  (z5.1 +1, z25 −1, z14.1 decision right but map still misread); controls
+  3/3 preserved; same-items bare (#53) and transfer (#89) both 3/8;
+  keyscan + 6-gram leakcheck 0 hits, $0. Root Sol's independent grade pending.
+- **Lead's 18:44:30Z test-setup note fixed**: `MainLoopGuardTests.setUp` now
+  creates the git-ignored base dir before `mkdtemp` (clean-checkout safe) —
+  **PR #126 merged** (1157925); 22 CPU guard tests pass with `private/` hidden
+  and present; guards unchanged (qualified in PR #120).
+- Acknowledgment posted on #95 (5849036888): multiscale family parked pending
+  the independent grade; substantially different mechanism needs a new lead
+  declaration.
+
+**Session status at 21:25 CEST**: multiscale diagnostic delivered, first-pass
+graded (Δ 0), independent grade pending with root Sol; RTX transfer control
+(34/60, 146.6 s) untouched; all 18 raw records preserved; watcher cron
+continues (minutes 7,22,37,52); next RTX action awaits the lead's
+declaration; $0 spent, no purchases.
