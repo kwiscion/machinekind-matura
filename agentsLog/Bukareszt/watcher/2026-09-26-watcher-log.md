@@ -57,3 +57,9 @@ Agent: Greg's issue watcher. Orca worktree `Watch-for-tasks`, instance `8e5e9ed0
 - Lead opened #37 "Organizer package to offline answers.json — Greg" (assigned `@Bukareszt`, `ready`, lead comment: start now, 45-min slice, 90-min PR, team target 48/60 by 18:00). #38 (Lukasz, RTX 5090 runtime handoff) references Greg's adapter contract but is not Greg's.
 - Claimed #37 (comment with session/start/ETA, `ready` -> `in-progress`) and dispatched Orca worktree `issue-37-Bukareszt-submission-adapter` (branch of same name from `origin/main` @ edd6e01, terminal `term_2a83ab04-1524-4aa7-8fd5-4be51f9c8392`). Scope: `scripts/Bukareszt/` + `agentsLog/Bukareszt/`; mock contents gitignored; no GPU, no purchases.
 - Note: poll script's `claimed` heuristic flagged #37 as claimed because the lead's comment contains the word "claim"; the watcher checked labels/comments manually. Heuristic to tighten later (match "claiming" by a non-lead author or `in-progress` label only).
+
+## 14:57 — #37 first slice accepted with one P2; relayed to worker
+- Worker pushed first slice `b59eaad` at 14:46 (6 min after claim): stdlib CLI `scripts/Bukareszt/matura_package.py` (fetch-mock/check/prepare/finalize/validate/run/synthetic-outputs), real-mock aggregates confirmed (37 items / 60 points / 19 PNGs, hashes pinned), 29+ tests. Progress comment posted on #37.
+- Lead's Sol review (12:54Z): core integration passes; P2 = `finalize --report` may collide with `--output` and overwrite answers.json while exiting 0. Fix + regression required before acceptance. Essay budget warning accepted, no 512-token limit.
+- Watcher relayed the P2 and the WINNING_PLAN.md pointer to the worker terminal (`orca terminal send`). Worker still active (40 tests passing, rerunning real-mock evidence).
+- Lead's #3 checkpoint 14:51: WINNING_PLAN.md merged (#40), 48/60 target by 18:00, Greg's #37 noted as started; next gate 15:15 (not Greg's).
