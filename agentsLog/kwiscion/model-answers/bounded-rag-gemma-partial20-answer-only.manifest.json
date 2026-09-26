@@ -1,0 +1,68 @@
+{
+  "artifact": "bounded-rag-gemma-partial20-answer-only.jsonl",
+  "artifact_sha256": "83b752e5f22110e1e0531b3ad70d63fbbd4a52a92019fa3658b2dd9d4809885f",
+  "artifact_line_endings": "LF; .gitattributes applies text eol=lf to bounded-rag-*.jsonl",
+  "record_count": 20,
+  "expected_total_records": 40,
+  "unique_ids": 20,
+  "first_id": "val2024-hist-z1",
+  "last_id": "val2024-hist-z14.1",
+  "id_order_sha256": "61279027aedb7550c8f7c6d89308ea7b5670e28a81c251cfd7b378f827f08180",
+  "status": "PARTIAL HANDOFF: first20 of40 only; the full validation denominator remains60 points. This file is not a full score. The root-owned worker continues.",
+  "run": {
+    "arm": "bounded RAG on bare source-v2; no generic policy or crop variant",
+    "model": "gemma4:12b-it-q4_K_M",
+    "model_digest": "4eb23ef187e2c5462566d6a1d3bbbc2f1346d0b4327cbb66d58fffbcc9b2b05c",
+    "input_sha256": "60728768a527a14b08c81129373e3f62d55418e30bccf968555be0658f090937",
+    "source_v2_sha256": "6615fea2e6fd1d6f9db5b781fa84a883899d1c2fb83a28b914638089e6b015a4",
+    "experiment_manifest_sha256": "a7c5a43098693e339446383b2b8925ec8b4117c6db2adc11e61ad3b196d8c4f3",
+    "manifest_sha256": "a7c5a43098693e339446383b2b8925ec8b4117c6db2adc11e61ad3b196d8c4f3",
+    "config_sha256": "3d9c501891d5307a863096274abdfeec716ee8fa163b5c259569f3592ed8effa",
+    "run_script_sha256": "c3132862166a47064e55c4db248f708c5bec72b4de4255b6c0c392ee77e8ecea",
+    "infer_sha256": "b702857347fd0fa99b9aba9a844afca1a4a8634b22eaa826199d27986dca1f0a",
+    "stop_logic_sha256": "39a6a27763c34934bb3083ac46992dc2f8f85ae15739c79ea1295330ccff33df",
+    "git_revision_at_launch": "64a78e02dabe7140bffc4fe4922f99c54963f0fb",
+    "started_at": "2026-09-26T15:02:14.010389+00:00",
+    "ollama_version": "0.30.7",
+    "model_context_length": null,
+    "parameters": "temperature                    1\ntop_k                          64\ntop_p                          0.95",
+    "sampling": "original defaults not fixed; no temperature/seed sent",
+    "max_calls": 40,
+    "actual_calls_in_snapshot": 20,
+    "per_call_requested_output_tokens": 1024,
+    "max_requested_total_output_tokens": 40960,
+    "paid_api_cost_usd": 0
+  },
+  "actual_usage_first20": {
+    "prompt_tokens": 26215,
+    "completion_tokens": 2546,
+    "total_tokens": 28761,
+    "latency_seconds_sum": 688.087,
+    "latency_seconds_mean": 34.404,
+    "latency_seconds_max": 72.967
+  },
+  "response_status": {
+    "errors": 0,
+    "finish_reason_counts": {
+      "stop": 20
+    }
+  },
+  "immutable_snapshot": {
+    "private_path": "agentsLog/kwiscion/private/bounded-rag-20260926/gemma-bounded-rag.first20.snapshot.raw.jsonl",
+    "sha256": "f0ac3697a7fc23257b39d4baef8c8c966d45a0d14101ca1e107c28c8599376b6",
+    "bytes": 23786,
+    "run_metadata_sha256": "9b2f83110ad075f490e8157308a1017e9645e8ceaa68e670338b6510663598a7"
+  },
+  "source_overlap_audit": {
+    "method": "Compared each final answer to its corresponding private frozen RAG prompt, including retrieved evidence, using longest exact contiguous word sequence. No answer was modified.",
+    "longest_exact_contiguous_words": 14,
+    "passages_over_25_words": [],
+    "result": "No exact contiguous passage over25 words found; answers unchanged."
+  },
+  "limitations": [
+    "Only first20 of40 rows are included; 20 remain unsent or pending.",
+    "Partial output must not be reported as a full score; all60 points remain the denominator.",
+    "This is a delivery snapshot, not an independent grade.",
+    "The input manifest describes character-capped evidence; exact multimodal tokenizer fit and silent truncation cannot be established from prompt length alone."
+  ]
+}
