@@ -1,0 +1,50 @@
+{
+  "essays": "agentsLog/Bukareszt/essay_corpus/drafts/b2r_essays.jsonl",
+  "essays_sha256": "5d2515d59daaaa09d8a2698d7ff34045d8c67d53e4e931d45ec22ad35edc33de",
+  "factcards": [
+    "agentsLog/Bukareszt/essay_corpus/drafts/b2_factcards.jsonl",
+    "agentsLog/Bukareszt/essay_corpus/drafts/b2r_factcards.jsonl"
+  ],
+  "factcards_sha256": [
+    "4200fb5a701f0a2024875c1cde77c67c2ef5beaf65a2ee61049de33b03efb1e8",
+    "7842549de1ef33f9e6de05c60006919fa9d53afa77db9a06d2f9c9142798a444"
+  ],
+  "factcards_total": 131,
+  "factcards_failing": {},
+  "results": [
+    {
+      "id": "bk117-b2-hundred",
+      "cluster_id": "C-hundred-years",
+      "words": 449,
+      "essay_sha256": "bf6d1e40b66703dd08257dc443e771b77d087f2fd5176431bc7189a0b1960e23",
+      "pass": true,
+      "errors": []
+    },
+    {
+      "id": "bk117-b2-discoveries",
+      "cluster_id": "C-discoveries",
+      "words": 456,
+      "essay_sha256": "72f08dd235775b97b15180941ef5f71bccde32fd4a4e9088f4fa65d44b73b091",
+      "pass": true,
+      "errors": []
+    },
+    {
+      "id": "bk117-b2-katyn",
+      "cluster_id": "C-katyn",
+      "words": 452,
+      "essay_sha256": "77a8236cbeb4fe9e47abddb7f71c97f4673da9d4320ff1ae05ae23fca883889c",
+      "pass": true,
+      "errors": []
+    },
+    {
+      "id": "bk117-b2-conferences",
+      "cluster_id": "C-allied-conferences",
+      "words": 421,
+      "essay_sha256": "d5b1967f68fc304cf168d730653a61776beb4911842f0e219dfba141ae4e2f04",
+      "pass": true,
+      "errors": []
+    }
+  ],
+  "passed": 4,
+  "total": 4
+}

@@ -1,0 +1,84 @@
+{
+  "essays": "agentsLog/Bukareszt/essay_corpus/drafts/b3_essays.jsonl",
+  "essays_sha256": "27d8156bcc03a141ac65a63683ac5e10a95c8d5c25ec7de09817a24e5150eb7b",
+  "factcards": [
+    "agentsLog/Bukareszt/essay_corpus/drafts/b3_factcards.jsonl",
+    "agentsLog/Bukareszt/essay_corpus/drafts/b1_factcards.jsonl",
+    "agentsLog/Bukareszt/essay_corpus/drafts/b2_factcards.jsonl"
+  ],
+  "factcards_sha256": [
+    "151013f0307496a610ae6169440e98f92048f3f7ed5591e33ed5ad157aa773f3",
+    "419ddc7ee1c4ea0e93290a12ac138158033753406148a31a67a5fea11940ff52",
+    "4200fb5a701f0a2024875c1cde77c67c2ef5beaf65a2ee61049de33b03efb1e8"
+  ],
+  "factcards_total": 372,
+  "factcards_failing": {},
+  "results": [
+    {
+      "id": "bk117-b3-magna",
+      "cluster_id": "C-magna-carta",
+      "words": 408,
+      "essay_sha256": "6d5e3541c0589cb6a6b00dd58c7370e3175295e2fa2e9d939c14d4a2d447d631",
+      "pass": true,
+      "errors": []
+    },
+    {
+      "id": "bk117-b3-hammurabi",
+      "cluster_id": "C-hammurabi",
+      "words": 423,
+      "essay_sha256": "8da9d428f98004fe325e6947eaba9ddd3e2695b8436cd58ff9a1436b1cb0e8e1",
+      "pass": true,
+      "errors": []
+    },
+    {
+      "id": "bk117-b3-odnowiciel",
+      "cluster_id": "C-odnowiciel",
+      "words": 418,
+      "essay_sha256": "961bcb5230ad2f47fc7894a3f64b7318498ebefbcd2368c881ee9f94f4abafee",
+      "pass": true,
+      "errors": []
+    },
+    {
+      "id": "bk117-b3-euro",
+      "cluster_id": "C-euro-atlantic",
+      "words": 425,
+      "essay_sha256": "8d721fbdc63ff20629587eeb97eaa0ab192cf97d8607307509a6eb9f8ec195ac",
+      "pass": true,
+      "errors": []
+    },
+    {
+      "id": "bk117-b3-thirty-t2",
+      "cluster_id": "C-thirty-years",
+      "words": 422,
+      "essay_sha256": "d69464b49d06fd3563795a8398c6eebe97672eaab91daac4e86bf2640b59a4c5",
+      "pass": true,
+      "errors": []
+    },
+    {
+      "id": "bk117-b3-communist-t2",
+      "cluster_id": "C-communist-takeover",
+      "words": 427,
+      "essay_sha256": "ccda9d859ef1ec3dff30026fbf881d2745b991a2b10d994dadd1ac3223535c77",
+      "pass": true,
+      "errors": []
+    },
+    {
+      "id": "bk117-b3-katyn-t2",
+      "cluster_id": "C-katyn",
+      "words": 419,
+      "essay_sha256": "d4ce5b493b5b951550b52f052f82280e5475dcff6f7b5ff64877dc5d041d0545",
+      "pass": true,
+      "errors": []
+    },
+    {
+      "id": "bk117-b3-cop-t2",
+      "cluster_id": "C-cop",
+      "words": 420,
+      "essay_sha256": "edf4c8f3a33c60aa7fd3fba334ab8b6895aca2ef90eb8b83e5c58bb71e1fbf87",
+      "pass": true,
+      "errors": []
+    }
+  ],
+  "passed": 8,
+  "total": 8
+}
