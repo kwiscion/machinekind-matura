@@ -1,8 +1,12 @@
 {
   "essays": "agentsLog/Bukareszt/essay_corpus/drafts/b1_essays.jsonl",
   "essays_sha256": "6c82e09a5ad02ab42c522f0c47984b6bd74144b3b3e08a04221e50c336189e43",
-  "factcards": "agentsLog/Bukareszt/essay_corpus/drafts/b1_factcards.jsonl",
-  "factcards_sha256": "419ddc7ee1c4ea0e93290a12ac138158033753406148a31a67a5fea11940ff52",
+  "factcards": [
+    "agentsLog/Bukareszt/essay_corpus/drafts/b1_factcards.jsonl"
+  ],
+  "factcards_sha256": [
+    "419ddc7ee1c4ea0e93290a12ac138158033753406148a31a67a5fea11940ff52"
+  ],
   "factcards_total": 128,
   "factcards_failing": {},
   "results": [

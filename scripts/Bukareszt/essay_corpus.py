@@ -346,7 +346,7 @@ def cmd_check(args):
     rows, _ = collect_sources(cfg)
     s_cluster = {r["source_id"]: k2c.get(r["canonical_key"]) for r in rows if r["corpus"] == "bukareszt_107"}
     manifest = {d["source_id"]: d for d in load_jsonl(BK_SOURCES)}
-    cards = {c["fact_id"]: c for c in load_jsonl(args.factcards)}
+    cards = {c["fact_id"]: c for f in args.factcards for c in load_jsonl(f)}
     texts, results = {}, []
     card_errs = {}
     for fid, c in cards.items():
@@ -403,7 +403,7 @@ def cmd_check(args):
                         "essay_sha256": hashlib.sha256(rec["essay"].encode()).hexdigest(),
                         "pass": not e, "errors": e})
     out = {"essays": args.essays, "essays_sha256": sha256_file(args.essays),
-           "factcards": args.factcards, "factcards_sha256": sha256_file(args.factcards),
+           "factcards": args.factcards, "factcards_sha256": [sha256_file(f) for f in args.factcards],
            "factcards_total": len(cards), "factcards_failing": {k: v for k, v in card_errs.items() if v},
            "results": results, "passed": sum(r["pass"] for r in results), "total": len(results)}
     Path(args.out).write_text(json.dumps(out, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
@@ -629,7 +629,7 @@ def main(argv=None):
     lg.add_argument("--out", required=True)
     c = sub.add_parser("check")
     c.add_argument("--essays", required=True)
-    c.add_argument("--factcards", required=True)
+    c.add_argument("--factcards", nargs="+", required=True)
     c.add_argument("--out", required=True)
     r = sub.add_parser("repairs")
     r.add_argument("--essays", required=True)
