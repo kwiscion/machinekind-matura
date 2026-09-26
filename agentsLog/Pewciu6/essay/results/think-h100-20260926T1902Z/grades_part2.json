@@ -1,0 +1,618 @@
+[
+ {
+  "code": "E02",
+  "topic_elements": [
+   "polityczny",
+   "kościelny",
+   "militarny"
+  ],
+  "elements": [
+   {
+    "element": "polityczny",
+    "level": "superficial",
+    "note": "Entirely generic (diplomacy, prestige, equal to emperor); no Gniezno congress 1000, no coronation 1025, no peace of Budziszyn 1018."
+   },
+   {
+    "element": "kościelny",
+    "level": "satisfying",
+    "note": "Gniezno metropolis 1000 and independence from German church correctly used; little further detail (no suffragan sees named)."
+   },
+   {
+    "element": "militarny",
+    "level": "satisfying",
+    "note": "Bohemia, Kiev and eastern expansion named; Lusatia/Milsko and wars with Henry II missing; 'Lubusz' conquest dubious."
+   }
+  ],
+  "functional_knowledge": "full-2",
+  "claims": [
+   {
+    "claim": "Reign 992-1025",
+    "verdict": "correct",
+    "note": "Matches topic."
+   },
+   {
+    "claim": "Gniezno metropolis established in 1000",
+    "verdict": "correct",
+    "note": "Zjazd gnieźnieński, 1000."
+   },
+   {
+    "claim": "Metropolis made Poland independent of German bishoprics",
+    "verdict": "correct",
+    "note": "Removed claims of Magdeburg."
+   },
+   {
+    "claim": "Monumental masonry churches in Gniezno and Poznań",
+    "verdict": "correct",
+    "note": "Pre-Romanesque cathedrals existed; Poznań began under Mieszko I."
+   },
+   {
+    "claim": "Conquest of Lubusz",
+    "verdict": "unverifiable-or-invented",
+    "note": "Not a standard Chrobry conquest; likely confusion with Lusatia (Łużyce)."
+   },
+   {
+    "claim": "Subordination of Bohemia",
+    "verdict": "correct",
+    "note": "Bolesław ruled Bohemia 1003-1004."
+   },
+   {
+    "claim": "Capture of Kiev",
+    "verdict": "correct",
+    "note": "1018."
+   },
+   {
+    "claim": "Recognition as an equal of the emperor",
+    "verdict": "correct",
+    "note": "Otto III at Gniezno, broadly."
+   }
+  ],
+  "A_before_deduction": 7,
+  "factual_errors": [],
+  "A_deduction": 0,
+  "A": 7,
+  "B": 3,
+  "total": 10,
+  "format_score": 2,
+  "format_issues": [
+   "Opening line 'Temat nr 1' (topic marker only, not counted)"
+  ],
+  "comment": "Church and military aspects adequately supported with correct basics; the political paragraph is empty generalities and the 1025 coronation is omitted."
+ },
+ {
+  "code": "E05",
+  "topic_elements": [
+   "polityczny",
+   "kulturowy",
+   "społeczny"
+  ],
+  "elements": [
+   {
+    "element": "polityczny",
+    "level": "satisfying",
+    "note": "Organic work shift, 1905 revolution concessions, Piłsudski and Dmowski named; no Galician autonomy, Koło Polskie, Prussian Kulturkampf."
+   },
+   {
+    "element": "kulturowy",
+    "level": "superficial",
+    "note": "Secret schools, press, reading circles only generically; no names (Sienkiewicz, Matejko, TTN, Wrześnie)."
+   },
+   {
+    "element": "społeczny",
+    "level": "superficial",
+    "note": "Cooperatives, agricultural circles, intelligentsia generic; repeats 1905 material."
+   }
+  ],
+  "functional_knowledge": "full-1",
+  "claims": [
+   {
+    "claim": "Shift from armed struggle to organic work after 1864",
+    "verdict": "correct",
+    "note": ""
+   },
+   {
+    "claim": "Tsarist repressions after 1863",
+    "verdict": "correct",
+    "note": ""
+   },
+   {
+    "claim": "1905 strikes forced concessions incl. Polish in schools",
+    "verdict": "correct",
+    "note": "Polish allowed in private schools 1905."
+   },
+   {
+    "claim": "Partial legalisation of trade unions",
+    "verdict": "correct",
+    "note": "1906 temporary rules; roughly correct."
+   },
+   {
+    "claim": "PPS Frakcja Rewolucyjna under Piłsudski formed as part of 1905 events",
+    "verdict": "incorrect",
+    "note": "Split occurred in November 1906, outside the 1864-1905 window."
+   },
+   {
+    "claim": "National Democracy of Roman Dmowski active",
+    "verdict": "correct",
+    "note": ""
+   },
+   {
+    "claim": "Secret schools, reading circles, press",
+    "verdict": "correct",
+    "note": "Generic."
+   },
+   {
+    "claim": "Cooperatives and agricultural circles",
+    "verdict": "correct",
+    "note": "Generic."
+   },
+   {
+    "claim": "Multi-year school strike",
+    "verdict": "correct",
+    "note": "1905 school boycott in Królestwo lasted years."
+   },
+   {
+    "claim": "Independence in 1918",
+    "verdict": "correct",
+    "note": ""
+   }
+  ],
+  "A_before_deduction": 5,
+  "factual_errors": [
+   {
+    "claim": "PPS Frakcja Rewolucyjna formed during 1905 events",
+    "correction": "The PPS split into PPS-FR and PPS-Lewica occurred in November 1906."
+   }
+  ],
+  "A_deduction": 1,
+  "A": 4,
+  "B": 3,
+  "total": 7,
+  "format_score": 1,
+  "format_issues": [
+   "Literal '\\n' artifact before the conclusion",
+   "Opening line 'Temat nr 1'"
+  ],
+  "comment": "Political aspect adequate but leans heavily on 1905; cultural and social aspects are generic with almost no concrete facts."
+ },
+ {
+  "code": "E08",
+  "topic_elements": [
+   "militarny",
+   "polityczny",
+   "terytorialny"
+  ],
+  "elements": [
+   {
+    "element": "militarny",
+    "level": "satisfying",
+    "note": "Battle of Warsaw Aug 1920, Sikorski, Niemen battle; tactical description generic."
+   },
+   {
+    "element": "polityczny",
+    "level": "satisfying",
+    "note": "Stopping revolution, recognition, Treaty of Riga 1921 correctly placed."
+   },
+   {
+    "element": "terytorialny",
+    "level": "superficial",
+    "note": "Riga line mentioned without detail; Wilno and Lwów wrongly presented as gains of this war."
+   }
+  ],
+  "functional_knowledge": "full-2",
+  "claims": [
+   {
+    "claim": "War 1919-1921",
+    "verdict": "correct",
+    "note": ""
+   },
+   {
+    "claim": "Battle of Warsaw August 1920 halted Red Army",
+    "verdict": "correct",
+    "note": ""
+   },
+   {
+    "claim": "Commanded by 'gen.' Józef Piłsudski",
+    "verdict": "correct",
+    "note": "He was already Marshal (March 1920); imprecise title, not counted."
+   },
+   {
+    "claim": "Gen. Władysław Sikorski involved",
+    "verdict": "correct",
+    "note": "5th Army on the Wkra."
+   },
+   {
+    "claim": "'Cud nad Wisłą' name",
+    "verdict": "correct",
+    "note": ""
+   },
+   {
+    "claim": "Battle of the Niemen broke Bolshevik power",
+    "verdict": "correct",
+    "note": "September 1920."
+   },
+   {
+    "claim": "Treaty of Riga 1921",
+    "verdict": "correct",
+    "note": "18 March 1921."
+   },
+   {
+    "claim": "Poland gained Wilno and Lwów through the war",
+    "verdict": "incorrect",
+    "note": "Lwów was held since the Polish-Ukrainian war 1918-19; Wilno taken by Żeligowski (Oct 1920) and incorporated 1922, not by Riga."
+   },
+   {
+    "claim": "Border lasted two decades",
+    "verdict": "correct",
+    "note": "Until 1939."
+   }
+  ],
+  "A_before_deduction": 7,
+  "factual_errors": [
+   {
+    "claim": "Poland gained Wilno and Lwów thanks to the war/Riga",
+    "correction": "Lwów was Polish since 1919; Wilno came via Żeligowski's action 1920 and incorporation 1922."
+   }
+  ],
+  "A_deduction": 1,
+  "A": 6,
+  "B": 3,
+  "total": 9,
+  "format_score": 2,
+  "format_issues": [
+   "Opening line 'Temat nr 1' (task sheet asks for topic number)"
+  ],
+  "comment": "Solid, coherent essay with correct military and political core facts; territorial part is thin and misattributes Wilno/Lwów."
+ },
+ {
+  "code": "E11",
+  "topic_elements": [
+   "polityczny",
+   "gospodarczy",
+   "społeczny"
+  ],
+  "elements": [
+   {
+    "element": "polityczny",
+    "level": "satisfying",
+    "note": "Context of 1654 Russian war and Chmielnicki, capitulation of levée en masse, Oliwa 1660, magnate dominance."
+   },
+   {
+    "element": "gospodarczy",
+    "level": "superficial",
+    "note": "Generic looting; Warsaw -90% figure (debated); exaggerated 'main European trade centre'."
+   },
+   {
+    "element": "społeczny",
+    "level": "superficial",
+    "note": "Generic losses, epidemics, looted cultural goods; no concrete examples."
+   }
+  ],
+  "functional_knowledge": "full-1",
+  "claims": [
+   {
+    "claim": "Deluge 1655-1660",
+    "verdict": "correct",
+    "note": ""
+   },
+   {
+    "claim": "Earlier war with Russia (1654) and Chmielnicki uprising",
+    "verdict": "correct",
+    "note": ""
+   },
+   {
+    "claim": "Capitulation of pospolite ruszenie and collaboration with Sweden",
+    "verdict": "correct",
+    "note": "Ujście 1655, Kiejdany."
+   },
+   {
+    "claim": "Treaty of Oliwa 1660",
+    "verdict": "correct",
+    "note": ""
+   },
+   {
+    "claim": "Brandenburg exploited situation",
+    "verdict": "correct",
+    "note": "Wehlau-Bromberg 1657."
+   },
+   {
+    "claim": "Warsaw population fell by 90%",
+    "verdict": "unverifiable-or-invented",
+    "note": "Estimates vary; large drop is plausible, exact figure debated."
+   },
+   {
+    "claim": "Most looted cultural goods never recovered",
+    "verdict": "correct",
+    "note": "Broadly correct."
+   },
+   {
+    "claim": "Poland lost status of major European trade centre",
+    "verdict": "unverifiable-or-invented",
+    "note": "Overstated."
+   }
+  ],
+  "A_before_deduction": 5,
+  "factual_errors": [],
+  "A_deduction": 0,
+  "A": 5,
+  "B": 3,
+  "total": 8,
+  "format_score": 2,
+  "format_issues": [
+   "Opening line 'Temat nr 1' (task sheet asks for topic number)"
+  ],
+  "comment": "Coherent thesis with a decent political paragraph; economic and social aspects rely on generalities."
+ },
+ {
+  "code": "E14",
+  "topic_elements": [
+   "polityczny",
+   "kościelny",
+   "militarny"
+  ],
+  "elements": [
+   {
+    "element": "polityczny",
+    "level": "superficial",
+    "note": "Generic, plus invented successor 'Władysław I Badêmy' and wrong claim that 1000 prepared a successor's coronation."
+   },
+   {
+    "element": "kościelny",
+    "level": "superficial",
+    "note": "Core event invented ('Sobór w Mogile'); Gniezno called a bishopric."
+   },
+   {
+    "element": "militarny",
+    "level": "superficial",
+    "note": "Wrong campaigns (Silesia) and wrong date for Prague."
+   }
+  ],
+  "functional_knowledge": "none",
+  "claims": [
+   {
+    "claim": "Reign 992-1025",
+    "verdict": "correct",
+    "note": ""
+   },
+   {
+    "claim": "Close relations with the Empire and struggle for Rus influence",
+    "verdict": "correct",
+    "note": ""
+   },
+   {
+    "claim": "Successor 'Władysław I Badêmy' crowned later",
+    "verdict": "incorrect",
+    "note": "Successor was Mieszko II (crowned 1025); Bolesław himself was crowned 1025."
+   },
+   {
+    "claim": "'Sobór w Mogile' in 1000 granted metropolis",
+    "verdict": "incorrect",
+    "note": "It was the Congress of Gniezno (1000)."
+   },
+   {
+    "claim": "Bishopric in Gniezno",
+    "verdict": "incorrect",
+    "note": "Gniezno became an archbishopric (metropolis); minor, not counted separately."
+   },
+   {
+    "claim": "Independence from German and Czech bishoprics",
+    "verdict": "correct",
+    "note": ""
+   },
+   {
+    "claim": "Successful expeditions on Silesia",
+    "verdict": "incorrect",
+    "note": "Silesia was already part of the state under Mieszko I (c. 990)."
+   },
+   {
+    "claim": "Expeditions to Lusatia and wars with Bohemia",
+    "verdict": "correct",
+    "note": ""
+   },
+   {
+    "claim": "Capture of Prague in 995",
+    "verdict": "incorrect",
+    "note": "Bolesław held Prague in 1003-1004; 995 was the Slavník massacre."
+   }
+  ],
+  "A_before_deduction": 3,
+  "factual_errors": [
+   {
+    "claim": "Successor Władysław I Badêmy",
+    "correction": "Mieszko II Lambert; Bolesław himself crowned 1025."
+   },
+   {
+    "claim": "Sobór w Mogile 1000",
+    "correction": "Congress of Gniezno 1000."
+   },
+   {
+    "claim": "Expeditions on Silesia",
+    "correction": "Silesia already incorporated by Mieszko I."
+   },
+   {
+    "claim": "Prague taken 995",
+    "correction": "Prague held 1003-1004."
+   }
+  ],
+  "A_deduction": 2,
+  "A": 1,
+  "B": 2,
+  "total": 3,
+  "format_score": 2,
+  "format_issues": [
+   "Opening line 'Temat nr 1'",
+   "Garbled token 'Badêmego'"
+  ],
+  "comment": "Multiple invented or misdated key facts (fictitious council and successor, wrong Prague date); argumentation is superficial throughout."
+ },
+ {
+  "code": "E17",
+  "topic_elements": [
+   "polityczny",
+   "gospodarczy",
+   "społeczny"
+  ],
+  "elements": [
+   {
+    "element": "polityczny",
+    "level": "superficial",
+    "note": "Contains wrong territorial loss (Pomerania) and garbled terms ('wolęliwość', 'wolne głosowanie'); self-contradictory centralization claim."
+   },
+   {
+    "element": "gospodarczy",
+    "level": "superficial",
+    "note": "Generic looting and agricultural collapse, no concrete data."
+   },
+   {
+    "element": "społeczny",
+    "level": "satisfying",
+    "note": "Demographic catastrophe, epidemics, religious persecution and Catholic-Polish identity; still few specifics."
+   }
+  ],
+  "functional_knowledge": "full-1",
+  "claims": [
+   {
+    "claim": "Deluge 1655-1660",
+    "verdict": "correct",
+    "note": ""
+   },
+   {
+    "claim": "Occupation by Swedish and Prussian troops",
+    "verdict": "correct",
+    "note": "Brandenburg-Prussian involvement; acceptable."
+   },
+   {
+    "claim": "Loss of strategically important Pomerania",
+    "verdict": "incorrect",
+    "note": "No Pomerania lost; losses were Livonia (Oliwa) and suzerainty over Ducal Prussia (1657)."
+   },
+   {
+    "claim": "Growth of 'wolne głosowanie'/'wolęliwość' abuses",
+    "verdict": "incorrect",
+    "note": "Garbled terminology; free election existed since 1573, liberum veto first used 1652."
+   },
+   {
+    "claim": "State became more centralized in hands of magnates",
+    "verdict": "incorrect",
+    "note": "Terminological contradiction: it was decentralization/oligarchy."
+   },
+   {
+    "claim": "Hundreds of thousands died",
+    "verdict": "correct",
+    "note": "Plausible order of magnitude."
+   },
+   {
+    "claim": "Mass deportations of Polish and Lithuanian population",
+    "verdict": "unverifiable-or-invented",
+    "note": "Not an established feature of the Deluge."
+   },
+   {
+    "claim": "Persecution of religious minorities",
+    "verdict": "correct",
+    "note": "Arians expelled 1658 (not named)."
+   }
+  ],
+  "A_before_deduction": 5,
+  "factual_errors": [
+   {
+    "claim": "Loss of Pomerania",
+    "correction": "Oliwa ceded most of Livonia; Wehlau-Bromberg ended suzerainty over Ducal Prussia."
+   },
+   {
+    "claim": "'wolne głosowanie'/'wolęliwość' as consequence",
+    "correction": "Free election since 1573; liberum veto 1652 predates the Deluge."
+   },
+   {
+    "claim": "More centralized in hands of magnates",
+    "correction": "Magnate dominance meant decentralization."
+   }
+  ],
+  "A_deduction": 2,
+  "A": 3,
+  "B": 2,
+  "total": 5,
+  "format_score": 2,
+  "format_issues": [
+   "Opening line 'Temat nr 1'",
+   "Several misspellings ('Potop szwedzkie', 'wygrany', 'względy')"
+  ],
+  "comment": "Generic narrative with notable errors in the political part; social paragraph is the strongest but still thin."
+ },
+ {
+  "code": "E20",
+  "topic_elements": [
+   "polityczny",
+   "gospodarczy",
+   "społeczny"
+  ],
+  "elements": [
+   {
+    "element": "polityczny",
+    "level": "superficial",
+    "note": "Magnate growth and Oliwa 1660 only; garbled term 'wolęliwość'."
+   },
+   {
+    "element": "gospodarczy",
+    "level": "superficial",
+    "note": "Generic looting, no data except cultural losses."
+   },
+   {
+    "element": "społeczny",
+    "level": "superficial",
+    "note": "Warsaw -90% figure and generic trauma; no concrete social processes."
+   }
+  ],
+  "functional_knowledge": "none",
+  "claims": [
+   {
+    "claim": "Deluge 1655-1660",
+    "verdict": "correct",
+    "note": ""
+   },
+   {
+    "claim": "Magnates took control of local power",
+    "verdict": "correct",
+    "note": "Broadly."
+   },
+   {
+    "claim": "Mechanisms such as 'wolęliwość' strengthened",
+    "verdict": "incorrect",
+    "note": "Non-existent term; likely garbled liberum veto/free election."
+   },
+   {
+    "claim": "Treaty of Oliwa 1660 ended the conflict",
+    "verdict": "correct",
+    "note": ""
+   },
+   {
+    "claim": "Most looted cultural goods not recovered",
+    "verdict": "correct",
+    "note": "Broadly."
+   },
+   {
+    "claim": "Warsaw population fell by 90%",
+    "verdict": "unverifiable-or-invented",
+    "note": "Debated figure."
+   },
+   {
+    "claim": "Weaker competitiveness vs Sweden and Brandenburg",
+    "verdict": "correct",
+    "note": "Generic."
+   }
+  ],
+  "A_before_deduction": 3,
+  "factual_errors": [
+   {
+    "claim": "'wolęliwość'",
+    "correction": "No such mechanism; presumably liberum veto (from 1652) or free election (1573)."
+   }
+  ],
+  "A_deduction": 1,
+  "A": 2,
+  "B": 3,
+  "total": 5,
+  "format_score": 2,
+  "format_issues": [
+   "Opening line 'Temat nr 1' (task sheet asks for topic number)"
+  ],
+  "comment": "Coherent but formulaic; almost every aspect is argued with generalities and one nonsense term."
+ }
+]

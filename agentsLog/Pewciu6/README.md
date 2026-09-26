@@ -2,6 +2,8 @@
 
 **This is the final handoff index.** Everything below is a rollup of the individual timestamped notes in this directory; read a note for full detail. Short summary: `2026-09-26T0745-final-handoff.md`.
 
+> **Native-thinking wave (2026-09-26 21:02 Warsaw, #80, DEVELOPMENT):** K-think (think:true, 20480) vs K-nothink (4096), 6 DEV topics, 2 stages, 24/24 calls. Blind means /15: T-draft 7.00, T-final 7.67, N-draft 4.50, N-final 3.33 (3/6 invalid JSON). Thinking cut draft factual errors from 14 to 4; the review stage added new errors on 2 items. See `essay/results/think-h100-20260926T1902Z/README.md`.
+>
 > **Cleaner v2 (2026-09-26 20:50 Warsaw, #80):** heading markers are stripped but the prose is kept, and text outside the JSON must be a recognized wrapper. Lexical aspect/source checks are now advisory. 27 tests; 54/56 legacy outputs pass. See `2026-09-26T2050-cleaner-v2.md`.
 >
 > **Essay output contract (2026-09-26 20:30 Warsaw, issue #80 priority 1):** one frozen topic, a machine-checked `{topic_id, body}`, deterministic wrapper cleanup and ≤2 bounded repairs (`scripts/Pewciu6/essay_contract*.py`, 21 tests). The live probe used 3/4 remaining calls and produced a clean answer. The blind fidelity grader rated cleanup 17/17 faithful and found that the length-only repair did not help. See `2026-09-26T2030-essay-contract.md`.

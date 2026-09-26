@@ -1,0 +1,377 @@
+{
+ "revision": "essay-think-v1",
+ "contract_revision": "essay-contract-v2",
+ "template_sha256": "1d4503847fef4b48df4cf3a27bb310e7ec63ebeaf773596615f3545550d87198",
+ "fixtures_sha256": "617ca111cf54b824343aaa82baf913cac26fafbeb2e3d8280713aa11fff04657",
+ "selection": {
+  "salt": "issue80-think-v1",
+  "eras": [
+   [
+    "medieval",
+    -10000,
+    1500
+   ],
+   [
+    "early_modern",
+    1500,
+    1795
+   ],
+   [
+    "modern_1795_plus",
+    1795,
+    10000
+   ]
+  ],
+  "per_era": 2,
+  "topic_policy": "most-aspects"
+ },
+ "retriever": "/Users/pawel/orca/workspaces/machinekind-matura/issue-13-Pewciu6-contam/agentsLog/Bukareszt/scripts/retrieval.py",
+ "retriever_sha256": "5ce9918fcc0151c8e15391781ace98deaf4b786977a69e6e773ccc9d7b0a51a3",
+ "index_sha256": "350800b1924b8f0094171fc5d68652da0f9260d03273a51ad6421c1a03e70429",
+ "arms": {
+  "T": {
+   "name": "K-think",
+   "think": true,
+   "cap": 20480
+  },
+  "N": {
+   "name": "K-nothink",
+   "think": false,
+   "cap": 4096
+  }
+ },
+ "frozen_utc": "2026-09-26T18:57:16Z",
+ "items": [
+  {
+   "item": "dev-essay-007",
+   "topic": 1,
+   "topic_start_year": 1409,
+   "era": "medieval",
+   "selection_hash": "3945ba28a4b5d4a1913da99d60f660baae4bc9442ee2027463843cb9679f2631",
+   "full_task": "Zadanie zawiera dwa tematy wypracowania. Wybierz jeden z nich i napisz wypracowanie. Zajmij stanowisko wobec tezy zawartej w temacie i uzasadnij je. Praca powinna liczyć minimum 300 słów.\n\n1. Oceń skutki wojen Polski z zakonem krzyżackim w latach 1409–1466 dla państwa polskiego. W pracy uwzględnij aspekty: terytorialny, polityczny i gospodarczy.\n2. Przedstaw znaczenie konstytucji Nihil novi (1505) dla rozwoju demokracji szlacheckiej.\n\nWYPRACOWANIE\nna temat nr ....",
+   "full_task_sha256": "2bb3b73a4a3d5250d5b7fb07b8c4e097b254074991448296e147ef8b8b7e632c",
+   "writer_task_sha256": "a31ead65c62c5745141e5ccc55de3bbcb2a79f4d20894139f8a2c74441fb968f",
+   "draft_prompt_sha256": "532eae3aa50929bca49378e7d6f3271012ee715d56ebaaf598cdb773b78dfe25",
+   "evidence_sha256": "72a63b6506f982e1a415bb4123c35ec5c57da36a05bf24fb8535ad5305775d73",
+   "evidence": [
+    {
+     "chunk_id": "plwiki-wojna-trzynastoletnia#0667",
+     "source_id": "plwiki-wojna-trzynastoletnia",
+     "title": "Wojna trzynastoletnia",
+     "locator": "Geneza wojny > Osłabienie państwa zakonu krzyżackiego w początkach XV wieku [part 1]",
+     "score": 22.9279
+    },
+    {
+     "chunk_id": "plwiki-kazimierz-wielki#0540",
+     "source_id": "plwiki-kazimierz-wielki",
+     "title": "Kazimierz III Wielki",
+     "locator": "Polityka zagraniczna > Stosunki z zakonem krzyżackim [part 13]",
+     "score": 22.8871
+    },
+    {
+     "chunk_id": "plwiki-ii-pokoj-torunski#0764",
+     "source_id": "plwiki-ii-pokoj-torunski",
+     "title": "Drugi pokój toruński",
+     "locator": "Wstęp [part 1]",
+     "score": 22.6123
+    },
+    {
+     "chunk_id": "plwiki-wojna-trzynastoletnia#0749",
+     "source_id": "plwiki-wojna-trzynastoletnia",
+     "title": "Wojna trzynastoletnia",
+     "locator": "Przebieg wojny > IV etap wojny (lato 1462–1466): ofensywa polska > Końcowe walki [part 4]",
+     "score": 22.2425
+    }
+   ]
+  },
+  {
+   "item": "dev-essay-006",
+   "topic": 1,
+   "topic_start_year": 992,
+   "era": "medieval",
+   "selection_hash": "429eeb4e24ad07eb377d4a928c6e17308f97318c01218acca4e6ddf91f0ed6e2",
+   "full_task": "Wybierz jeden z podanych tematów i napisz wypracowanie. W wypracowaniu sformułuj stanowisko (tezę) i uzasadnij je, odwołując się do wiedzy historycznej. Wypracowanie powinno liczyć co najmniej 300 słów.\n\nTemat 1. Oceń znaczenie panowania Bolesława I Chrobrego (992–1025) dla umocnienia państwa polskiego. W pracy uwzględnij aspekty: polityczny, kościelny i militarny.\n\nTemat 2. Przedstaw przyczyny i skutki rozbicia dzielnicowego w Polsce po 1138 roku.",
+   "full_task_sha256": "f82172b0f9f7fc8232d98dd13f2679e5070fb95a50e35dc7eb7c806b31dbd4a3",
+   "writer_task_sha256": "ae158cfea3796706b595a50e0e920412f549df64cee6fdf9125e845321293be3",
+   "draft_prompt_sha256": "bf109c4b573df4e7efae422b639c62cc80d1d356f8200b4c2422c1a1ea6c4202",
+   "evidence_sha256": "9207b2c9605e72d091127edabc9c2527dae12c8170758348c18ed04d15ebcc36",
+   "evidence": [
+    {
+     "chunk_id": "plwiki-boleslaw-chrobry#0334",
+     "source_id": "plwiki-boleslaw-chrobry",
+     "title": "Bolesław I Chrobry",
+     "locator": "Wstęp [part 1]",
+     "score": 46.5365
+    },
+    {
+     "chunk_id": "plwiki-boleslaw-chrobry#0337",
+     "source_id": "plwiki-boleslaw-chrobry",
+     "title": "Bolesław I Chrobry",
+     "locator": "Lata panowania [part 1]",
+     "score": 37.6522
+    },
+    {
+     "chunk_id": "plwiki-boleslaw-chrobry#0335",
+     "source_id": "plwiki-boleslaw-chrobry",
+     "title": "Bolesław I Chrobry",
+     "locator": "Wstęp [part 2]",
+     "score": 34.7756
+    },
+    {
+     "chunk_id": "plwiki-boleslaw-chrobry#0344",
+     "source_id": "plwiki-boleslaw-chrobry",
+     "title": "Bolesław I Chrobry",
+     "locator": "Koronacja [part 1]",
+     "score": 32.1957
+    }
+   ]
+  },
+  {
+   "item": "dev-essay-011",
+   "topic": 1,
+   "topic_start_year": 1717,
+   "era": "early_modern",
+   "selection_hash": "8733e7db89dcf585444883591e43a6f321830a345fa54a32b2f15259593dda29",
+   "full_task": "Wybierz jeden z podanych tematów i napisz wypracowanie. W wypracowaniu sformułuj stanowisko (tezę) i uzasadnij je, odwołując się do wiedzy historycznej. Wypracowanie powinno liczyć co najmniej 300 słów.\n\nTemat 1. Oceń przyczyny upadku Rzeczypospolitej Obojga Narodów w XVIII wieku (1717–1795). W pracy uwzględnij aspekty: ustrojowy, wewnątrzpolityczny i międzynarodowy.\n\nTemat 2. Przedstaw przebieg i skutki insurekcji kościuszkowskiej (1794).",
+   "full_task_sha256": "9d0434fcedff7087062568414e2b26910da7353fdd49701cbc7f948a23e36184",
+   "writer_task_sha256": "7957947d0a7b25c866b17f5a30eb94e1b22bd04e0a0f8ade1a743386b1cce6eb",
+   "draft_prompt_sha256": "918d932f21d0d7bab9698225b7df1402e970e54f1996b042bd58a4a556b48f4c",
+   "evidence_sha256": "aacc976094b19067c8de551897e94b566966718e2e3c0293418f8a1c09328b82",
+   "evidence": [
+    {
+     "chunk_id": "plwiki-konfederacja-targowicka#1253",
+     "source_id": "plwiki-konfederacja-targowicka",
+     "title": "Konfederacja targowicka",
+     "locator": "Najjaśniejsza Konfederacja Obojga Narodów [part 1]",
+     "score": 25.5986
+    },
+    {
+     "chunk_id": "plwiki-sejm-wielki#1177",
+     "source_id": "plwiki-sejm-wielki",
+     "title": "Sejm Czteroletni",
+     "locator": "Tło wewnętrzne > Zaręczenie Wzajemne Obojga Narodów [part 1]",
+     "score": 25.1161
+    },
+    {
+     "chunk_id": "plwiki-rozbiory-polski#1207",
+     "source_id": "plwiki-rozbiory-polski",
+     "title": "Rozbiory Polski",
+     "locator": "Wstęp [part 1]",
+     "score": 22.9099
+    },
+    {
+     "chunk_id": "plwiki-konfederacja-targowicka#1254",
+     "source_id": "plwiki-konfederacja-targowicka",
+     "title": "Konfederacja targowicka",
+     "locator": "Najjaśniejsza Konfederacja Obojga Narodów [part 2]",
+     "score": 20.4188
+    }
+   ]
+  },
+  {
+   "item": "dev-essay-002",
+   "topic": 1,
+   "topic_start_year": 1655,
+   "era": "early_modern",
+   "selection_hash": "b252ea2d5c9c46ef2d09b43c4131be1e65b9eefd43272bce246b0ebad910d42a",
+   "full_task": "Zadanie zawiera dwa tematy wypracowania. Wybierz jeden z nich i napisz wypracowanie. Zajmij stanowisko wobec tezy zawartej w temacie i uzasadnij je. Praca powinna liczyć minimum 300 słów.\n\n1. Oceń wpływ potopu szwedzkiego (1655–1660) na sytuację Rzeczypospolitej Obojga Narodów. W pracy uwzględnij aspekty: polityczny, gospodarczy i społeczny.\n2. Przedstaw przyczyny i skutki powstania listopadowego (1830–1831) dla ziem polskich.\n\nWYPRACOWANIE\nna temat nr ....",
+   "full_task_sha256": "f23a1a0c3adc673a6220592404e5627ce81c5f11a48ac8096038117a08321953",
+   "writer_task_sha256": "db04d95d77b72fd48f3605789cecc115ba3460d9357f4b9e24115ea8bd3f071f",
+   "draft_prompt_sha256": "658b463650a14ab1263ef93bc9d75a397ed99ab40de2365a644fa121b8ed93db",
+   "evidence_sha256": "0c97d645de185caa4ddbf6f217f78d5dab852bbd573e19c8412d67f453520167",
+   "evidence": [
+    {
+     "chunk_id": "plwiki-potop-szwedzki#1097",
+     "source_id": "plwiki-potop-szwedzki",
+     "title": "Potop szwedzki",
+     "locator": "Wstęp [part 1]",
+     "score": 51.1479
+    },
+    {
+     "chunk_id": "plwiki-potop-szwedzki#1134",
+     "source_id": "plwiki-potop-szwedzki",
+     "title": "Potop szwedzki",
+     "locator": "W literaturze [part 1]",
+     "score": 36.1718
+    },
+    {
+     "chunk_id": "plwiki-potop-szwedzki#1129",
+     "source_id": "plwiki-potop-szwedzki",
+     "title": "Potop szwedzki",
+     "locator": "Wydarzenia militarne w trakcie potopu szwedzkiego > Kampania 1655 [part 1]",
+     "score": 31.2547
+    },
+    {
+     "chunk_id": "plwiki-potop-szwedzki#1098",
+     "source_id": "plwiki-potop-szwedzki",
+     "title": "Potop szwedzki",
+     "locator": "Wstęp [part 2]",
+     "score": 29.4283
+    }
+   ]
+  },
+  {
+   "item": "dev-essay-012",
+   "topic": 1,
+   "topic_start_year": 1919,
+   "era": "modern_1795_plus",
+   "selection_hash": "3d7fb360debdf1d358b1947f55595e813b0d0c4a9e95eb80ca5b0a840ad60066",
+   "full_task": "Zadanie zawiera dwa tematy wypracowania. Wybierz jeden z nich i napisz wypracowanie. Zajmij stanowisko wobec tezy zawartej w temacie i uzasadnij je. Praca powinna liczyć minimum 300 słów.\n\n1. Oceń znaczenie wojny polsko-bolszewickiej (1919–1921) dla odrodzonego państwa polskiego. W pracy uwzględnij aspekty: militarny, polityczny i terytorialny.\n2. Przedstaw okoliczności uchwalenia i główne założenia konstytucji marcowej (1921).\n\nWYPRACOWANIE\nna temat nr ....",
+   "full_task_sha256": "79b2dc8112feb2026bd7cdce09aca0c8e66d786b7879bd5bf731ffe9e459a7aa",
+   "writer_task_sha256": "941703448ec94ed692982cf314b3a53c1ec1adc13fda5668405c2d929f9dfe29",
+   "draft_prompt_sha256": "adf19889f1fb5c0af3edf2df1087256c6f008b032e4586e6af4efc245775a015",
+   "evidence_sha256": "2e59cb7a9501ad4f07e7b482eacfe5263add6cca0a843794ea5faec9c7a569ae",
+   "evidence": [
+    {
+     "chunk_id": "plwiki-wojna-polsko-bolszewicka#1847",
+     "source_id": "plwiki-wojna-polsko-bolszewicka",
+     "title": "Wojna polsko-bolszewicka",
+     "locator": "Wstęp [part 1]",
+     "score": 36.1201
+    },
+    {
+     "chunk_id": "plwiki-wojna-polsko-bolszewicka#1871",
+     "source_id": "plwiki-wojna-polsko-bolszewicka",
+     "title": "Wojna polsko-bolszewicka",
+     "locator": "Negocjacje polsko-bolszewickie w 1919 i rozmowy z gen. Antonem Denikinem [part 3]",
+     "score": 28.8717
+    },
+    {
+     "chunk_id": "plwiki-wojna-polsko-bolszewicka#1876",
+     "source_id": "plwiki-wojna-polsko-bolszewicka",
+     "title": "Wojna polsko-bolszewicka",
+     "locator": "Negocjacje polsko-bolszewickie w 1919 i rozmowy z gen. Antonem Denikinem [part 8]",
+     "score": 28.6583
+    },
+    {
+     "chunk_id": "plwiki-jozef-pilsudski#1728",
+     "source_id": "plwiki-jozef-pilsudski",
+     "title": "Józef Piłsudski",
+     "locator": "Wojna polsko-bolszewicka [part 1]",
+     "score": 27.2976
+    }
+   ]
+  },
+  {
+   "item": "dev-essay-008",
+   "topic": 1,
+   "topic_start_year": 1864,
+   "era": "modern_1795_plus",
+   "selection_hash": "6f5707bb4521d1bce4ee0388d33ae7c0a0385facd56baf5caf1c030717731f0c",
+   "full_task": "Wybierz jeden z podanych tematów i napisz wypracowanie. W wypracowaniu sformułuj stanowisko (tezę) i uzasadnij je, odwołując się do wiedzy historycznej. Wypracowanie powinno liczyć co najmniej 300 słów.\n\nTemat 1. Oceń skuteczność działań Polaków na rzecz zachowania tożsamości narodowej pod zaborami w latach 1864–1905. W pracy uwzględnij aspekty: polityczny, kulturowy i społeczny.\n\nTemat 2. Scharakteryzuj przyczyny i przebieg rewolucji 1905 roku w Królestwie Polskim.",
+   "full_task_sha256": "65cc30d39052bff940ffaef0e6c0a9f23cc8cd09950d1ffa2a9ca6b0ced818ea",
+   "writer_task_sha256": "c0e394b080289e684907833ad256c6f3d8c37363986e9e0f3508824bee5ee19e",
+   "draft_prompt_sha256": "d2fbedacc5f06e19a8f62e95b9a7fad8d82caac42a49ee823d7f881ba9d2d0ff",
+   "evidence_sha256": "78ec32cd8937f3628dc0a9babca095cc1f0f42e9f874f76bfc812e103bfc6231",
+   "evidence": [
+    {
+     "chunk_id": "plwiki-rewolucja-1905#1528",
+     "source_id": "plwiki-rewolucja-1905",
+     "title": "Rewolucja 1905 roku w Królestwie Polskim",
+     "locator": "Wstęp [part 1]",
+     "score": 22.1029
+    },
+    {
+     "chunk_id": "plwiki-rewolucja-1905#1543",
+     "source_id": "plwiki-rewolucja-1905",
+     "title": "Rewolucja 1905 roku w Królestwie Polskim",
+     "locator": "Skutki [part 2]",
+     "score": 19.0768
+    },
+    {
+     "chunk_id": "plwiki-roman-dmowski#1800",
+     "source_id": "plwiki-roman-dmowski",
+     "title": "Roman Dmowski",
+     "locator": "Życiorys > Narodowa Demokracja [part 2]",
+     "score": 18.8051
+    },
+    {
+     "chunk_id": "plwiki-rewolucja-1905#1531",
+     "source_id": "plwiki-rewolucja-1905",
+     "title": "Rewolucja 1905 roku w Królestwie Polskim",
+     "locator": "Przebieg [part 1]",
+     "score": 17.0508
+    },
+    {
+     "chunk_id": "plwiki-wiosna-ludow#1406",
+     "source_id": "plwiki-wiosna-ludow",
+     "title": "Wiosna Ludów",
+     "locator": "Wiosna Ludów na ziemiach polskich [part 2]",
+     "score": 19.0942
+    }
+   ]
+  }
+ ],
+ "batch": {
+  "batch": "t1",
+  "bundle_sha256": "dc882ab4990287668e0bd59aacd018c702356ad944bd0b4d4c03883a4f1a42c0",
+  "guard": {
+   "version": "0.34.4",
+   "digest": "4eb23ef187e2c5462566d6a1d3bbbc2f1346d0b4327cbb66d58fffbcc9b2b05c",
+   "capabilities": [
+    "completion",
+    "vision",
+    "audio",
+    "tools",
+    "thinking"
+   ],
+   "loaded": [],
+   "other_loaded_models": [],
+   "problems": []
+  },
+  "status": "complete",
+  "started": 1790449345.33801,
+  "order": [
+   [
+    "dev-essay-007",
+    "T"
+   ],
+   [
+    "dev-essay-007",
+    "N"
+   ],
+   [
+    "dev-essay-006",
+    "N"
+   ],
+   [
+    "dev-essay-006",
+    "T"
+   ],
+   [
+    "dev-essay-011",
+    "T"
+   ],
+   [
+    "dev-essay-011",
+    "N"
+   ],
+   [
+    "dev-essay-002",
+    "N"
+   ],
+   [
+    "dev-essay-002",
+    "T"
+   ],
+   [
+    "dev-essay-012",
+    "T"
+   ],
+   [
+    "dev-essay-012",
+    "N"
+   ],
+   [
+    "dev-essay-008",
+    "N"
+   ],
+   [
+    "dev-essay-008",
+    "T"
+   ]
+  ],
+  "stop_reason": null,
+  "finished": 1790450498.175097
+ }
+}
