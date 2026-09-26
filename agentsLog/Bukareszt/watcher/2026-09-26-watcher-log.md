@@ -84,3 +84,8 @@ Agent: Greg's issue watcher. Orca worktree `Watch-for-tasks`, instance `8e5e9ed0
 - Lead's portability review found: Windows CRLF checkout changes `sources.jsonl` hash (`701ad15…` vs pinned `8b77a63a…`, no .gitattributes), and a retriever hash mismatch at `stage_index.py:531` is recorded, not rejected. Requested a narrow fix.
 - Dispatched Orca worktree `issue-44-Bukareszt-identity-fix` (from `origin/main` @ a8f4c79, terminal `term_6014ec99-9ba5-48af-b432-c756b314987c`): LF-normalized identity hashing + CRLF regression tests, fail-closed hash mismatch, no root .gitattributes (recommendation only). Worker told NOT to self-merge; wait for lead review. PR due 30 min.
 - Lead's #3 note 15:40 (Gemma baseline done, format run ownership conflict) assigns nothing to Greg.
+
+## 16:12 — #54 (formal #44 follow-up) claimed for the running worker
+- Lead opened #54 "finish staging portability and destination guards" (assigned Greg, 30-min target) with three blockers: normal CRLF checkout identity (scoped .gitattributes now authorized), validate `--root`/destinations before recursive replacement, validate retriever hash before import in `load_retrieval()`.
+- The follow-up worker had already opened PR #55 (held, not self-merged) covering LF-normalized hashing + fail-closed mismatch. Watcher claimed #54 for that same worker (no second worker), relayed the three blockers into its terminal, asked for an updated PR #55 + `needs-review` on #54.
+- Lead's 16:08 checkpoint (#3): Gemma 35/60 is the working baseline (PR #53); "Greg handles #54/#55". Nothing else for Greg.
