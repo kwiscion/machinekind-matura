@@ -43,3 +43,5 @@ qwen-thinking-prep/** -text whitespace=cr-at-eol
 2026-09-27-recovery-harness-independent-review.* -text whitespace=cr-at-eol
 essay-planning-prep/** -text whitespace=cr-at-eol
 2026-09-27-structured-route-review.md -text whitespace=cr-at-eol
+2026-09-27-champion-rehearsal-* -text whitespace=cr-at-eol
+model-answers/champion-rehearsal-* -text whitespace=cr-at-eol
