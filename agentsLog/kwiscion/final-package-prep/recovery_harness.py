@@ -37,8 +37,8 @@ def source(case):
 
 def step(case,attempt,history,c,route=None):
  cap=c['initial_cap'];think=attempt<2;suffix='';notes='';reason=None
+ observed=[x['raw'].get('prompt_eval_count') for x in history if isinstance(x.get('raw'),dict) and type(x['raw'].get('prompt_eval_count')) is int]
  if attempt==1:
-  observed=[x['raw'].get('prompt_eval_count') for x in history if isinstance(x.get('raw'),dict) and type(x['raw'].get('prompt_eval_count')) is int]
   if observed and max(observed)+c['escalated_cap']<=c['context']:cap=c['escalated_cap']
   else:reason='Higher cap not proven to fit; retain32768 without truncating sources'
  if attempt==3:
@@ -46,6 +46,7 @@ def step(case,attempt,history,c,route=None):
   notes='\n'.join(x for x in usable if isinstance(x,str) and x.strip())[:c['notes_chars']]
   suffix='\n\nPodaj wy\u0142\u0105cznie kompletn\u0105 odpowied\u017a ko\u0144cow\u0105 na oryginalne zadanie.'
   if notes:suffix+='\nPoni\u017csze przerwane notatki s\u0105 omylne; sprawd\u017a je na podstawie oryginalnych \u017ar\u00f3de\u0142:\n'+notes
+ if attempt>0 and case.get('kind')=='essay':suffix+=essay_repair_suffix(history,c['notes_chars'])
  settings={'name':('initial','higher_cap','thinking_off','final_from_notes')[attempt],'suffix':suffix,'think':think,'cap':cap,'escalation_note':reason}
  if route:
   if getattr(route,'output_kind',None)!='final_answer':raise Fatal('Only final-answer suffix routes supported; planning requires a separate stage-result protocol')
@@ -54,6 +55,15 @@ def step(case,attempt,history,c,route=None):
    if set(extra)-{'name','suffix','cap','think'}:raise Fatal('Unknown route field')
    settings.update(extra)
  if type(settings['cap']) is not int or not 1<=settings['cap']<=c['escalated_cap'] or type(settings['think']) is not bool or not isinstance(settings['suffix'],str):raise Fatal('Route settings')
+ # Count each added UTF-8 byte as a token, plus framing margin. This deliberately
+ # overcounts prior optional text already included in observed prompt usage.
+ # It is conservative admission, not an exact tokenizer proof.
+ added=len(settings['suffix'].encode('utf8'))+256 if settings['suffix'] else 0
+ if settings['cap']>c['initial_cap'] and (not observed or max(observed)+added+settings['cap']>c['context']):
+  settings['cap']=c['initial_cap'];settings['escalation_note']='Added suffix prevents proven escalation; retain lower cap'
+ if settings['suffix'] and (not observed or max(observed)+added+settings['cap']>c['context']):
+  if route:raise Fatal('Custom route suffix lacks conservative context allowance')
+  settings['suffix']='';settings['optional_suffix_omitted']='No proven room for feedback/notes; original sources preserved'
  # Routes may customize initial behavior; the mandatory failure ladder remains enforced.
  if attempt>=2:settings['think']=False
  text,images=source(case);msg={'role':'user','content':text+settings['suffix']}
@@ -93,12 +103,41 @@ def diagnostics(text,kind):
  if re.search(r'(?im)^\s*(plan|temat\s*2|temat\s*3|liczba\s+s\u0142\u00f3w)\s*[:.)]',text):warnings.append('essay_format_or_multiple_topic_warning')
  return warnings
 
+def essay_rank(text):
+ """Mechanical format only; no factual/semantic grade or benchmark information."""
+ words=len(text.split());warnings=diagnostics(text,'essay')
+ hard=int(words<300)+int('essay_format_or_multiple_topic_warning' in warnings)
+ return hard,max(400-words,0,words-500)
+
+def essay_repair_suffix(history,draft_chars):
+ candidates=[e['answer'] for e in history if isinstance(e.get('answer'),str) and e['answer'].strip()]
+ if not candidates:return ''
+ # min() keeps the earlier candidate on equal mechanical rank.
+ best=min(candidates,key=essay_rank);warnings=diagnostics(best,'essay')
+ draft=best[:draft_chars]
+ if len(best)>draft_chars:draft+='\n[SKR\u00d3CONY SZKIC: dalsza cz\u0119\u015b\u0107 pomini\u0119ta; pe\u0142na wersja zachowana w zapisie.]'
+ labels={'essay_under_300_words':'mniej ni\u017c 300 s\u0142\u00f3w',
+         'essay_outside_requested_400_500_words':'poza wymaganym zakresem 400\u2013500 s\u0142\u00f3w',
+         'essay_format_or_multiple_topic_warning':'wykryty plan, komentarz o formacie lub nag\u0142\u00f3wek sugeruj\u0105cy kolejny temat'}
+ return ('\n\nKorekta formatu poprzedniej kompletnej odpowiedzi: '+str(len(best.split()))+' s\u0142\u00f3w. '
+         'Wykryte problemy: '+('; '.join(labels[w] for w in warnings) or 'brak')+'. '
+         'Zachowaj jeden temat i pe\u0142ne oryginalne polecenie. Napisz 400\u2013500 s\u0142\u00f3w ci\u0105g\u0142ego tekstu: '
+         'rozwi\u0144 wymagane aspekty przez konkretne dowody i zwi\u0105zki przyczynowo-skutkowe, bez wype\u0142niaczy i bez wymy\u015blania fakt\u00f3w. '
+         'Zweryfikuj poni\u017cszy omylny szkic na podstawie oryginalnych materia\u0142\u00f3w; nie traktuj go jako \u017ar\u00f3d\u0142a. '
+         'Zwr\u00f3\u0107 tylko gotowe wypracowanie, bez planu i licznika s\u0142\u00f3w.\n\nOMYLNY SZKIC:\n'+draft)
+
+def select_complete(state,event):
+ candidate=event.get('answer')
+ if candidate is None:return
+ if state.get('kind')=='essay' and state['answer'] is not None and essay_rank(candidate)>=essay_rank(state['answer']):return
+ state['answer']=candidate;state['selected_answer_attempt']=event['attempt'];state['warnings']=event.get('warnings',[])
+
 def load_state(out,cases,binding):
  p=out/'binding.json'
  if p.exists():
   if json.loads(p.read_text())!=binding:raise Fatal('Resume source/template/config binding changed')
  else:atomic(p,binding)
- states={x['id']:{'attempts':0,'answer':None,'history':[],'warnings':[],'partial_candidates':[]} for x in cases};pending={}
+ states={x['id']:{'kind':x.get('kind'),'attempts':0,'answer':None,'history':[],'warnings':[],'partial_candidates':[]} for x in cases};pending={}
  if (out/'events.jsonl').exists():
   for line in (out/'events.jsonl').read_text().splitlines():
    e=json.loads(line);s=states[e['id']]
@@ -109,7 +148,7 @@ def load_state(out,cases,binding):
     if (e['id'],e['attempt']) not in pending:raise Fatal('Unreserved completion')
     pending.pop((e['id'],e['attempt']));s['history'].append(e)
     if e.get('partial_candidate'):s['partial_candidates'].append(e['partial_candidate'])
-    if e.get('answer') is not None:s['answer']=e['answer'];s['selected_answer_attempt']=e['attempt'];s['warnings']=e.get('warnings',[])
+    select_complete(s,e)
  for (id,index),e in pending.items():states[id]['history'].append({'attempt':index,'error':'interrupted_after_reservation','raw':None})
  return states
 
@@ -119,6 +158,10 @@ def export(out,template,states,stop=None):
   s=states[row['id']];partial=max(s['partial_candidates'],key=len,default=None) if s['answer'] is None else None
   placeholder=s['answer'] is None and partial is None;row['answer']=s['answer'] if s['answer'] is not None else partial or PLACEHOLDER
   metadata[row['id']]={'placeholder':placeholder,'incomplete_partial':partial is not None,'selection':'complete_final' if s['answer'] is not None else 'longest_valid_partial' if partial else 'literal_placeholder','successful_recovery':s['answer'] is not None and s.get('selected_answer_attempt',0)>0,'attempts':s['attempts'],'warnings':s['warnings'],'partial_candidates_preserved':len(s['partial_candidates']),'errors':[h.get('error') for h in s['history'] if h.get('error')],'mandatory_attempts_unfulfilled':max(0,ATTEMPTS-s['attempts']) if s['answer'] is None else 0}
+  if s.get('kind')=='essay' and s['answer'] is not None:
+   metadata[row['id']].update(selected_answer_attempt=s['selected_answer_attempt'],mechanical_rank=list(essay_rank(s['answer'])),word_count=len(s['answer'].split()),selection_policy='essay_mechanical_v1')
+   prior=[e['answer'] for e in s['history'] if e.get('answer') is not None]
+   metadata[row['id']].update(successful_recovery=bool(s['history'] and s['history'][0].get('answer') is None and s['selected_answer_attempt']>0),mechanical_format_improved=bool(prior and essay_rank(s['answer'])<essay_rank(prior[0])),format_contract_satisfied=not s['warnings'])
  # Exact organizer schema and size; preserve oversized originals in checkpoint evidence.
  if set(answer)!={'exam_id','answers'} or not isinstance(answer['exam_id'],str) or any(set(row)!={'id','answer'} or not isinstance(row['id'],str) for row in answer['answers']):raise Fatal('Organizer schema')
  def size():return len(json.dumps(answer,ensure_ascii=False,separators=(',',':')).encode('utf8'))+1
@@ -153,7 +196,7 @@ def run(cases,template,out,c,runtime,deadline,clock=time.time,route=None,resume=
  if not 0<deadline-clock()<=c['minutes']*60:raise Fatal('Absolute deadline outside declared window')
  faults=faults or {}
  if not set(faults)<=set(ids) or any(v not in ('timeout','length') for v in faults.values()):raise Fatal('Fault declaration')
- binding={'cases':digest(cases),'template':digest(template),'config':digest(c),'deadline':deadline,'model':MODEL,'route':getattr(route,'provenance_sha256',None),'faults':faults}
+ binding={'cases':digest(cases),'template':digest(template),'config':digest(c),'deadline':deadline,'model':MODEL,'route':getattr(route,'provenance_sha256',None),'faults':faults,'selection_policy':'essay_mechanical_v1'}
  if route and not binding['route']:raise Fatal('Route hook must carry frozen provenance_sha256')
  states=load_state(out,cases,binding);export(out,template,states);stop=None
  try:
@@ -192,7 +235,7 @@ def run(cases,template,out,c,runtime,deadline,clock=time.time,route=None,resume=
    event={'partial_candidate':partial,'event':'completed','id':case['id'],'attempt':attempt,'raw':raw,'answer':text,'error':error,'warnings':diagnostics(text,case.get('kind')) if text else [],'time':clock()}
    append(out/'events.jsonl',event);s['history'].append(event)
    if partial:s['partial_candidates'].append(partial)
-   if text is not None:s['answer']=text;s['selected_answer_attempt']=attempt;s['warnings']=event['warnings']
+   select_complete(s,event)
    export(out,template,states,fatal)
    if fatal:raise Fatal(fatal)
  except Exception as exc:stop=type(exc).__name__+': '+str(exc)
