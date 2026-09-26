@@ -1,0 +1,116 @@
+{
+  "count": 6,
+  "status": "draft candidates only",
+  "independent_audit": "required before promotion",
+  "parent_head": "fd4bfaeb64c785d06940fb58a303649ffa5649ac",
+  "source_content_origin": "Existing cited claims only; no new source fetch or exam material",
+  "license": "CC BY-SA 4.0 derived claims; attribution via source IDs, pinned revision URLs and this manifest",
+  "sources": [
+    {
+      "source_id": "src-plwiki-konfederacja-barska",
+      "url": "https://pl.wikipedia.org/w/index.php?oldid=80595425",
+      "title": "Konfederacja barska",
+      "publisher": "Wikipedia (pl)",
+      "retrieved_at": "2026-09-26T01:16:55Z",
+      "revision_or_sha256": "oldid:80595425; extracted_text_sha256:313d64848c05ca68cf72769885f31e88dfebf01c8618fb7d43243aa1816473be",
+      "license": "CC BY-SA 4.0",
+      "allowed_use": [
+        "reference",
+        "train"
+      ],
+      "local_path": "cache/src-plwiki-konfederacja-barska.json",
+      "source_group_id": "grp-konfederacja-barska",
+      "notes": "era=early_modern; 16 sections; raw text kept locally, not committed."
+    },
+    {
+      "source_id": "src-plwiki-krolestwo-polskie-kongresowe",
+      "url": "https://pl.wikipedia.org/w/index.php?oldid=80728653",
+      "title": "Królestwo Polskie (kongresowe)",
+      "publisher": "Wikipedia (pl)",
+      "retrieved_at": "2026-09-26T01:17:08Z",
+      "revision_or_sha256": "oldid:80728653; extracted_text_sha256:5854b0ddc6d3764294c6b23d8aeb683d94c44941185949025cbeebd645873d50",
+      "license": "CC BY-SA 4.0",
+      "allowed_use": [
+        "reference",
+        "train"
+      ],
+      "local_path": "cache/src-plwiki-krolestwo-polskie-kongresowe.json",
+      "source_group_id": "grp-krolestwo-polskie-kongresowe",
+      "notes": "era=19th_century; 21 sections; raw text kept locally, not committed."
+    },
+    {
+      "source_id": "src-plwiki-liberum-veto",
+      "url": "https://pl.wikipedia.org/w/index.php?oldid=79646244",
+      "title": "Liberum veto",
+      "publisher": "Wikipedia (pl)",
+      "retrieved_at": "2026-09-26T01:16:49Z",
+      "revision_or_sha256": "oldid:79646244; extracted_text_sha256:6bd58c923b3f6cb6aa865ed1a0a0d4bf479bb08e4fe45e884cde6e1d067e8b91",
+      "license": "CC BY-SA 4.0",
+      "allowed_use": [
+        "reference",
+        "train"
+      ],
+      "local_path": "cache/src-plwiki-liberum-veto.json",
+      "source_group_id": "grp-liberum-veto",
+      "notes": "era=early_modern; 7 sections; raw text kept locally, not committed."
+    },
+    {
+      "source_id": "src-plwiki-potop-szwedzki",
+      "url": "https://pl.wikipedia.org/w/index.php?oldid=79761633",
+      "title": "Potop szwedzki",
+      "publisher": "Wikipedia (pl)",
+      "retrieved_at": "2026-09-26T01:16:46Z",
+      "revision_or_sha256": "oldid:79761633; extracted_text_sha256:ccf52b8d826c49b44e1faca9d59eeb9966855f98bc21f51148d74a040bb4545e",
+      "license": "CC BY-SA 4.0",
+      "allowed_use": [
+        "reference",
+        "train"
+      ],
+      "local_path": "cache/src-plwiki-potop-szwedzki.json",
+      "source_group_id": "grp-potop-szwedzki",
+      "notes": "era=early_modern; 14 sections; raw text kept locally, not committed."
+    },
+    {
+      "source_id": "src-plwiki-powstanie-warszawskie",
+      "url": "https://pl.wikipedia.org/w/index.php?oldid=80788930",
+      "title": "Powstanie warszawskie",
+      "publisher": "Wikipedia (pl)",
+      "retrieved_at": "2026-09-26T01:17:40Z",
+      "revision_or_sha256": "oldid:80788930; extracted_text_sha256:b279e32a965cd2ad01c8823d67687e6a762830036735e3628a9570ced2e83e03",
+      "license": "CC BY-SA 4.0",
+      "allowed_use": [
+        "reference",
+        "train"
+      ],
+      "local_path": "cache/src-plwiki-powstanie-warszawskie.json",
+      "source_group_id": "grp-powstanie-warszawskie",
+      "notes": "era=20th_century; 34 sections; raw text kept locally, not committed."
+    },
+    {
+      "source_id": "src-plwiki-unia-w-krewie",
+      "url": "https://pl.wikipedia.org/w/index.php?oldid=80354694",
+      "title": "Unia w Krewie",
+      "publisher": "Wikipedia (pl)",
+      "retrieved_at": "2026-09-26T01:16:26Z",
+      "revision_or_sha256": "oldid:80354694; extracted_text_sha256:9bf882aa22d762cd424d6ff0b78ce8d2dff9146a08e4ad9df0749c20fc27b16a",
+      "license": "CC BY-SA 4.0",
+      "allowed_use": [
+        "reference",
+        "train"
+      ],
+      "local_path": "cache/src-plwiki-unia-w-krewie.json",
+      "source_group_id": "grp-unia-w-krewie",
+      "notes": "era=medieval; 5 sections; raw text kept locally, not committed."
+    }
+  ],
+  "files": {
+    "candidates.jsonl": "5c04f1b9945b1d41b856936034ceb7280648026133f9627897c5b7fffe67bba7",
+    "author_audit.jsonl": "1ea2d8ffbd11bb095545b29a538dc8d26c46cad8ed97c2b95389301d8f8dbb55"
+  },
+  "hash_normalization": "UTF-8 LF",
+  "limits": [
+    "Author performed both rubric assessments; these are not independent model verdicts.",
+    "Source text was inherited from cited records, not fetched or reverified.",
+    "No record belongs in default or strict training without a separate independent review."
+  ]
+}
