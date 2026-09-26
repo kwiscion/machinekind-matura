@@ -273,15 +273,17 @@ def write_bundle(root: Path, manifest: dict, out: Path) -> dict:
 def unpack_bundle(bundle: Path, root: Path, manifest: dict) -> dict:
     """Verify the archive hash, extract to a temp dir, hash every member, then move raw/ and index/ into place."""
     expected = manifest.get("bundle", {}).get("sha256")
+    if not expected:
+        raise StageError("manifest carries no bundle SHA-256; refusing to unpack an unpinned archive")
     got = sha256_file(bundle)
-    if expected and got != expected:
+    if got != expected:
         raise StageError(f"bundle differs: expected {expected} actual {got} ({bundle})")
     with tempfile.TemporaryDirectory(prefix="stage-index-") as tmp:
         with tarfile.open(bundle, "r:gz") as tar:
-            names = tar.getnames()
-            bad = [n for n in names if not n.startswith(BUNDLE_PREFIX + "/") or ".." in n.split("/")]
+            members = tar.getmembers()
+            bad = [m.name for m in members if not m.isreg() or not m.name.startswith(BUNDLE_PREFIX + "/") or ".." in m.name.split("/")]
             if bad:
-                raise StageError(f"bundle has unexpected member names: {bad[:5]}")
+                raise StageError(f"bundle has non-regular or unexpected members: {bad[:5]}")
             tar.extractall(tmp, filter="data") if hasattr(tarfile, "data_filter") else tar.extractall(tmp)
         base = Path(tmp) / BUNDLE_PREFIX
         problems = []
@@ -303,7 +305,8 @@ def unpack_bundle(bundle: Path, root: Path, manifest: dict) -> dict:
             if dest.exists():
                 shutil.rmtree(dest)
             shutil.move(str(base / sub), str(dest))
-    return {"bundle": str(bundle), "bundle_sha256": got, "bundle_bytes": bundle.stat().st_size, "members": len(manifest["files"])}
+    return {"bundle": str(bundle), "bundle_sha256": got, "bundle_bytes": bundle.stat().st_size, "tar_members": len(members),
+            "hash_checked_files": len(manifest["files"])}
 
 
 # --------------------------------------------------------------------------------------
@@ -342,9 +345,12 @@ def fetch_pinned(retrieval, row: dict) -> dict:
 
 
 def rebuild_raw(root: Path, rows: list[dict], fetcher, sleep: float = 0.3, log=print) -> list[dict]:
-    """Fetch every pinned source into raw/. Returns the list of per-source differences (empty on success)."""
-    raw_dir = root / "raw"
-    raw_dir.mkdir(parents=True, exist_ok=True)
+    """Fetch every pinned source. raw/ is replaced only when all sources match; otherwise the fetched text
+    is left under private/rebuild-drift/ and the per-source differences are returned."""
+    work = root / "private" / "rebuild-tmp"
+    if work.exists():
+        shutil.rmtree(work)
+    (work / "raw").mkdir(parents=True)
     diffs = []
     for i, r in enumerate(rows, 1):
         try:
@@ -356,7 +362,7 @@ def rebuild_raw(root: Path, rows: list[dict], fetcher, sleep: float = 0.3, log=p
             continue
         data = got["text"].encode("utf-8")
         h = sha256_bytes(data)
-        (root / r["local_path"]).write_bytes(data)
+        (work / r["local_path"]).write_bytes(data)
         if got["revid"] != r["revision_id"] or h != r["sha256"]:
             reason = "revision drifted" if got["revid"] != r["revision_id"] else "same revision, normalized text differs"
             diffs.append({"source_id": r["source_id"], "reason": reason, "expected_revid": r["revision_id"], "actual_revid": got["revid"],
@@ -366,6 +372,19 @@ def rebuild_raw(root: Path, rows: list[dict], fetcher, sleep: float = 0.3, log=p
             log(f"ok   {i:3d}/{len(rows)} {r['source_id']} revid={got['revid']} bytes={len(data)}")
         if sleep:
             time.sleep(sleep)
+    if diffs:
+        drift_dir = root / "private" / "rebuild-drift"
+        if drift_dir.exists():
+            shutil.rmtree(drift_dir)
+        shutil.move(str(work / "raw"), str(drift_dir))
+        shutil.rmtree(work, ignore_errors=True)
+        log(f"fetched text kept for inspection under {drift_dir}; raw/ left untouched")
+        return diffs
+    raw_dir = root / "raw"
+    if raw_dir.exists():
+        shutil.rmtree(raw_dir)
+    shutil.move(str(work / "raw"), str(raw_dir))
+    shutil.rmtree(work, ignore_errors=True)
     return diffs
 
 
@@ -388,11 +407,14 @@ def install_socket_guard() -> None:
     def _blocked(*_a, **_k):
         raise RuntimeError("network disabled by stage_index socket guard")
 
-    class _GuardedSocket(socket.socket):  # type: ignore[misc]
-        def __init__(self, *a, **k):  # noqa: D401
-            _blocked()
+    # patch the class itself so aliases/subclasses (socket.SocketType, ssl.SSLSocket) are covered too;
+    # this is a best-effort in-process guard, hard isolation comes from `unshare -rn` on Linux
+    import _socket  # noqa: PLC0415
 
-    socket.socket = _GuardedSocket  # type: ignore[assignment]
+    socket.socket.__init__ = _blocked  # type: ignore[method-assign]
+    socket.SocketType = _blocked  # type: ignore[assignment]  # C base class, reachable only by name
+    _socket.socket = _blocked  # type: ignore[assignment]
+    _socket.SocketType = _blocked  # type: ignore[assignment]
     socket.create_connection = _blocked  # type: ignore[assignment]
     socket.getaddrinfo = _blocked  # type: ignore[assignment]
     socket.socketpair = _blocked  # type: ignore[assignment]
@@ -403,12 +425,14 @@ def cmd_offline_query(args) -> int:
     install_socket_guard()
     import socket  # noqa: PLC0415
 
-    try:
-        socket.create_connection(("127.0.0.1", 9), timeout=1)
-        print(json.dumps({"error": "socket guard self-test failed: connection attempt did not raise"}))
-        return 3
-    except RuntimeError:
-        pass
+    for probe in (lambda: socket.create_connection(("127.0.0.1", 9), timeout=1), lambda: socket.socket(),
+                  lambda: socket.SocketType(), lambda: socket.getaddrinfo("example.invalid", 80)):
+        try:
+            probe()
+            print(json.dumps({"error": "socket guard self-test failed: a socket operation did not raise"}))
+            return 3
+        except RuntimeError:
+            pass
     root = Path(args.root)
     retrieval = load_retrieval(root)
     t0 = time.perf_counter()
@@ -451,11 +475,14 @@ def run_offline_query(root: Path, query: str, mode: str, k: int, title_weight: f
     return out
 
 
-def compare_query_proof(actual: dict, expected: dict) -> None:
-    keys = ("chunk_id", "source_id", "locator", "score")
+def compare_query_proof(actual: dict, expected: dict, tol: float = 1e-3) -> None:
+    """Chunk order/ids/locators must be identical; scores may differ by float noise across architectures."""
+    keys = ("chunk_id", "source_id", "locator")
     got = [{k: r[k] for k in keys} for r in actual["results"]]
     want = [{k: r[k] for k in keys} for r in expected["results"]]
-    if got != want:
+    same_scores = len(actual["results"]) == len(expected["results"]) and all(
+        abs(float(a["score"]) - float(e["score"])) <= tol for a, e in zip(actual["results"], expected["results"]))
+    if got != want or not same_scores:
         raise StageError("offline query ranking differs from the committed proof:\n  expected " + json.dumps(want, ensure_ascii=False)
                          + "\n  actual   " + json.dumps(got, ensure_ascii=False))
 
@@ -488,8 +515,10 @@ def cmd_bundle(args) -> int:
     root = Path(args.root).resolve()
     retrieval_sha = sha256_file(root / "scripts" / "retrieval.py")
     manifest = build_manifest(root, None, retrieval_sha)
-    if manifest["index_sha256"] != PINNED_INDEX_SHA256:
-        raise StageError(f"local index is not the pinned one: {manifest['index_sha256']} != {PINNED_INDEX_SHA256}")
+    pinned = {"index_sha256": PINNED_INDEX_SHA256, "sources_sha256": PINNED_SOURCES_SHA256, "n_sources": PINNED_N_SOURCES, "n_chunks": PINNED_N_CHUNKS}
+    wrong = {k: manifest[k] for k, v in pinned.items() if manifest[k] != v}
+    if wrong:
+        raise StageError(f"local assets are not the pinned #44 index: {wrong} != {pinned}")
     verify_staged(root, manifest)
     q = pick_train_query(root, args.query_id)
     proof = run_offline_query(root, q["text"], **RETRIEVAL_CONFIG)
@@ -498,7 +527,6 @@ def cmd_bundle(args) -> int:
     out = Path(args.out) if args.out else root / "private" / BUNDLE_NAME
     info = write_bundle(root, manifest, out)
     manifest["bundle"] = {"name": out.name, "sha256": info["sha256"], "bytes": info["bytes"], "default_path": f"agentsLog/Bukareszt/private/{BUNDLE_NAME}"}
-    STAGING_DIR.mkdir(parents=True, exist_ok=True)
     (root / "staging").mkdir(parents=True, exist_ok=True)
     manifest_path = Path(args.manifest) if args.manifest else root / "staging" / "manifest.json"
     manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
@@ -525,10 +553,11 @@ def cmd_stage(args) -> int:
                     "python": platform.python_version(), "repo": str(REPO), "root": str(root), "status": "FAIL",
                     "pinned": {"index_sha256": manifest["index_sha256"], "sources_sha256": manifest["sources_sha256"],
                                "n_sources": manifest["n_sources"], "n_chunks": manifest["n_chunks"], **RETRIEVAL_CONFIG},
-                    "phases": {}, "path_used": None, "blocker": None}
+                    "phases": {}, "path_used": None, "blocker": None, "argv": sys.argv[1:]}
     report_path = Path(args.report) if args.report else root / "private" / "stage_report.json"
     retrieval = load_retrieval(root)
     report["retrieval_script_sha256"] = {"expected": manifest["retrieval_script_sha256"], "actual": sha256_file(root / "scripts" / "retrieval.py")}
+    report["sources_sha256"] = {"expected": manifest["sources_sha256"], "actual": sha256_file(root / "sources" / "sources.jsonl")}
 
     def phase(name, fn):
         t0 = time.perf_counter()
@@ -541,6 +570,11 @@ def cmd_stage(args) -> int:
             raise
 
     try:
+        # hard preconditions: the clone's pinned inputs must be the pinned ones before any path runs
+        for key in ("retrieval_script_sha256", "sources_sha256"):
+            if report[key]["expected"] != report[key]["actual"]:
+                raise StageError(f"{key} differs from the manifest: expected {report[key]['expected']} actual {report[key]['actual']}"
+                                 " (the clone's retriever/manifest is not the pinned one; never run `retrieval.py fetch` here)")
         staged = False
         if not args.rebuild and not args.force:
             try:
@@ -580,6 +614,8 @@ def cmd_stage(args) -> int:
         report["status"] = "PASS"
     except StageError as exc:
         report["blocker"] = str(exc)
+    except Exception as exc:  # noqa: BLE001 -- recorded as a blocker, never a silent traceback
+        report["blocker"] = f"{type(exc).__name__}: {exc}"
     finally:
         report["disk_bytes"] = {"raw": dir_bytes(root / "raw"), "index": dir_bytes(root / "index")}
         report["total_seconds"] = round(time.perf_counter() - t_start, 3)

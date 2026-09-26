@@ -1,6 +1,6 @@
 {
   "issue": 44,
-  "started_at": "2026-09-26T15:35:56+0200",
+  "started_at": "2026-09-26T15:44:24+0200",
   "host": "Mac",
   "platform": "macOS-15.6-arm64-arm-64bit-Mach-O",
   "python": "3.14.4",
@@ -19,17 +19,18 @@
   "phases": {
     "unpack_bundle": {
       "ok": true,
-      "seconds": 0.055,
+      "seconds": 0.057,
       "detail": {
         "bundle": "/Users/bukareszt/orca/workspaces/machinekind-matura/issue-44-Bukareszt-stage-index/agentsLog/Bukareszt/private/chrono_index_bundle_350800b1.tar.gz",
         "bundle_sha256": "da0d4ad772182d8537e81bdbfdeed267b8edf54ad2a85494fcaaed6f80dd091e",
         "bundle_bytes": 3942102,
-        "members": 110
+        "tar_members": 112,
+        "hash_checked_files": 110
       }
     },
     "verify_bundle_staged": {
       "ok": true,
-      "seconds": 0.092,
+      "seconds": 0.093,
       "detail": {
         "sources_sha256": {
           "expected": "8b77a63afd25317d783a3e511e3f1f99f09b6cec3c740bdf101a0d069aadfeed",
@@ -61,13 +62,13 @@
     },
     "offline_query": {
       "ok": true,
-      "seconds": 0.168,
+      "seconds": 0.171,
       "detail": {
         "query": "Kiedy i przez kogo został spisany Kodeks Hammurabiego?",
         "mode": "chrono",
         "k": 5,
         "title_weight": 1.0,
-        "load_seconds": 0.1,
+        "load_seconds": 0.103,
         "rank_seconds": 0.0006,
         "results": [
           {
@@ -138,15 +139,25 @@
   },
   "path_used": "bundle",
   "blocker": null,
+  "argv": [
+    "stage",
+    "--force",
+    "--report",
+    "agentsLog/Bukareszt/staging/stage_report_local_bundle_host.json"
+  ],
   "retrieval_script_sha256": {
     "expected": "5ce9918fcc0151c8e15391781ace98deaf4b786977a69e6e773ccc9d7b0a51a3",
     "actual": "5ce9918fcc0151c8e15391781ace98deaf4b786977a69e6e773ccc9d7b0a51a3"
+  },
+  "sources_sha256": {
+    "expected": "8b77a63afd25317d783a3e511e3f1f99f09b6cec3c740bdf101a0d069aadfeed",
+    "actual": "8b77a63afd25317d783a3e511e3f1f99f09b6cec3c740bdf101a0d069aadfeed"
   },
   "disk_bytes": {
     "raw": 4073637,
     "index": 8585725
   },
-  "total_seconds": 0.325,
-  "finished_at": "2026-09-26T15:35:56+0200",
+  "total_seconds": 0.332,
+  "finished_at": "2026-09-26T15:44:25+0200",
   "integration_command": "python scripts/prepare_rag.py --input <exam-input.jsonl> --output outputs/rag-input.jsonl --trace outputs/rag-trace.jsonl --corpus outputs/rag-corpus.jsonl   # defaults: --mode chrono --k 5, --index agentsLog/Bukareszt/index/bm25_index.json --graph agentsLog/Bukareszt/index/graph.json"
 }

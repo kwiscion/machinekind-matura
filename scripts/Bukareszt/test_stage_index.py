@@ -114,7 +114,6 @@ class StageIndexTests(unittest.TestCase):
         clone = self.c.fresh_clone()
         bad_manifest = json.loads(json.dumps(self.c.manifest))
         bad_manifest["files"]["raw/plwiki-beta.txt"]["sha256"] = "0" * 64
-        bad_manifest.pop("bundle")  # skip the archive-level check so the member check is exercised
         with self.assertRaises(si.StageError) as ctx:
             si.unpack_bundle(self.c.bundle, clone, bad_manifest)
         self.assertIn("raw/plwiki-beta.txt", str(ctx.exception))
@@ -154,6 +153,32 @@ class StageIndexTests(unittest.TestCase):
         self.assertEqual(diffs[0]["expected_revid"], 1)
         self.assertEqual(diffs[0]["actual_revid"], 2)
         self.assertEqual(si.sha256_file(clone / "sources" / "sources.jsonl"), before)
+        self.assertFalse((clone / "raw").exists(), "raw/ is not written when any source drifts")
+        self.assertTrue((clone / "private" / "rebuild-drift" / "plwiki-beta.txt").exists())
+
+    def test_unpinned_manifest_without_bundle_hash_is_refused(self):
+        clone = self.c.fresh_clone()
+        bad_manifest = json.loads(json.dumps(self.c.manifest))
+        bad_manifest.pop("bundle")
+        with self.assertRaisesRegex(si.StageError, "no bundle SHA-256"):
+            si.unpack_bundle(self.c.bundle, clone, bad_manifest)
+
+    def test_stage_refuses_modified_retriever_or_manifest(self):
+        clone = self.c.fresh_clone()
+        (clone / "scripts" / "retrieval.py").write_text((clone / "scripts" / "retrieval.py").read_text(encoding="utf-8") + "\n# edited\n", encoding="utf-8")
+        report = clone / "report.json"
+        rc = si.main(["stage", "--allow-unpinned", "--root", str(clone), "--bundle", str(self.c.bundle), "--report", str(report)])
+        self.assertEqual(rc, 1)
+        self.assertIn("retrieval_script_sha256", json.loads(report.read_text(encoding="utf-8"))["blocker"])
+        self.assertFalse((clone / "index").exists())
+
+    def test_score_tolerance_but_exact_order(self):
+        base = {"results": [{"chunk_id": "a", "source_id": "s", "locator": "l", "score": 1.0}, {"chunk_id": "b", "source_id": "s", "locator": "l", "score": 0.5}]}
+        near = json.loads(json.dumps(base)); near["results"][0]["score"] = 1.0004
+        si.compare_query_proof(near, base)
+        swapped = json.loads(json.dumps(base)); swapped["results"].reverse()
+        with self.assertRaisesRegex(si.StageError, "ranking differs"):
+            si.compare_query_proof(swapped, base)
 
     def test_rebuild_exact_reproduction_gives_pinned_index_hash(self):
         clone = self.c.fresh_clone()
@@ -175,10 +200,12 @@ class StageIndexTests(unittest.TestCase):
             si.compare_query_proof(actual, expected)
 
     def test_offline_child_blocks_sockets(self):
-        code = "import stage_index as si; si.install_socket_guard(); import urllib.request\n" \
-               "try:\n    urllib.request.urlopen('http://127.0.0.1:9/', timeout=1)\nexcept RuntimeError as e:\n    print('BLOCKED', e)\n"
+        code = "import stage_index as si; si.install_socket_guard(); import urllib.request, socket, ssl\n" \
+               "for f in (lambda: urllib.request.urlopen('http://127.0.0.1:9/', timeout=1), socket.SocketType, socket.socket):\n" \
+               "    try:\n        f(); print('OPEN')\n    except RuntimeError as e:\n        print('BLOCKED', e)\n"
         proc = subprocess.run([sys.executable, "-c", code], cwd=HERE, capture_output=True, text=True)
-        self.assertIn("BLOCKED", proc.stdout, proc.stderr)
+        self.assertEqual(proc.stdout.count("BLOCKED"), 3, proc.stdout + proc.stderr)
+        self.assertNotIn("OPEN", proc.stdout)
 
     def test_manifest_must_carry_pinned_values(self):
         with self.assertRaisesRegex(si.StageError, "pinned values"):
