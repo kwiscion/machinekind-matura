@@ -1,0 +1,63 @@
+{
+  "exam_id": "synthetic-fixture-v1",
+  "title": "Invented fixture — not an exam",
+  "language": "pl",
+  "input_format": "separate-text-and-images-v1",
+  "max_points": 7,
+  "instructions": "SYNTETYCZNY TEST. Odpowiadaj po polsku. Przykłady formatu pokazują tylko składnię.",
+  "items": [
+    {
+      "id": "1",
+      "group": 1,
+      "max_points": 1,
+      "question": "Wymyślone polecenie: podaj kolor kwadratu na obrazie.",
+      "source_text": "Opis testowy\n[Obraz: images/fixture-red.png]",
+      "images": [
+        {
+          "path": "images/fixture-red.png",
+          "source_page": 1,
+          "sha256": "b4467f0dd939cb7b8af870bf39e79c2433610e765485791c8524ca7a245577b8"
+        }
+      ],
+      "answer_format": "Jedno słowo, np. zielony."
+    },
+    {
+      "id": "2.1",
+      "group": 2,
+      "max_points": 1,
+      "question": "Wymyślone polecenie: porównaj dwa obrazy (zażółć gęślą jaźń).",
+      "source_text": "",
+      "images": [
+        {
+          "path": "images/fixture-red.png",
+          "source_page": 1,
+          "sha256": "b4467f0dd939cb7b8af870bf39e79c2433610e765485791c8524ca7a245577b8"
+        },
+        {
+          "path": "images/fixture-blue.png",
+          "source_page": 2,
+          "sha256": "aeb36207c70664c290b1eb7863f227a5631f501b4c117396a24b6cd652b3ef8f"
+        }
+      ],
+      "answer_format": "Tekst po polsku."
+    },
+    {
+      "id": "2.2",
+      "group": 2,
+      "max_points": 1,
+      "question": "Wymyślone polecenie prawda/fałsz.",
+      "source_text": "Zdanie testowe: „Kwadrat jest okrągły”.",
+      "images": [],
+      "answer_format": "P albo F, np. 1. P"
+    },
+    {
+      "id": "3",
+      "group": 3,
+      "max_points": 4,
+      "question": "Wymyślone polecenie wypracowania: napisz tekst na wybrany temat 1 albo 2.",
+      "source_text": "",
+      "images": [],
+      "answer_format": "Numer tematu i cały tekst."
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "file": "synthetic-invalid-answers.json",
+  "valid": false,
+  "bytes": 299,
+  "problems": [
+    "top-level fields must be exactly exam_id and answers, got ['answers', 'exam_id', 'usage']",
+    "answer '1': must be a string, got int",
+    "answers[1]: must have exactly id and answer",
+    "missing template ids ['2.2', '3']",
+    "ids not in template ['99']"
+  ]
+}
