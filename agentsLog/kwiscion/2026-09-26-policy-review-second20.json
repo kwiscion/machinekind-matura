@@ -1,0 +1,228 @@
+{
+  "status": "provisional independent agent review; requires Pawel adjudication",
+  "reviewer": "harness_sol",
+  "reviewed_at": "2026-09-26T16:38:19.063609+02:00",
+  "scope": "frozen rows21-40 only",
+  "answer_sha256": "21eb23231c43c4c202e33d890cba1c9ee78ff4270c8407e7abeda96402c9c219",
+  "eval_keys_sha256": "279abe703dc1af4119a35624d6db893e310fc7afaffbef2a00e678f423706486",
+  "official_rules_pdf_sha256": "95c275b9546611c1f8cd45b7973c436625fd0ee5643b778dcc8bb566db56cd4c",
+  "points": 20,
+  "max_points": 39,
+  "low": 17,
+  "high": 23,
+  "items": 20,
+  "complete": 20,
+  "errors": 0,
+  "essay_body_words": 366,
+  "essay_total_words": 371,
+  "essay_A_before_penalty": 5,
+  "essay_factual_penalty": 2,
+  "essay_A": 3,
+  "essay_B": 3,
+  "independence": "Scored before consulting prior Gemma35 or first-half grades; no old score comparison performed.",
+  "judgments": [
+    {
+      "id": "val2024-hist-z14.2",
+      "points": 0,
+      "max_points": 1,
+      "low": 0,
+      "high": 0,
+      "flags": [
+        "wrong_subtask"
+      ],
+      "complete": true
+    },
+    {
+      "id": "val2024-hist-z15.1",
+      "points": 1,
+      "max_points": 1,
+      "low": 1,
+      "high": 1,
+      "flags": [],
+      "complete": true
+    },
+    {
+      "id": "val2024-hist-z15.2",
+      "points": 1,
+      "max_points": 1,
+      "low": 1,
+      "high": 1,
+      "flags": [],
+      "complete": true
+    },
+    {
+      "id": "val2024-hist-z16.1",
+      "points": 1,
+      "max_points": 1,
+      "low": 1,
+      "high": 1,
+      "flags": [],
+      "complete": true
+    },
+    {
+      "id": "val2024-hist-z16.2",
+      "points": 1,
+      "max_points": 1,
+      "low": 1,
+      "high": 1,
+      "flags": [],
+      "complete": true
+    },
+    {
+      "id": "val2024-hist-z17.1",
+      "points": 0,
+      "max_points": 1,
+      "low": 0,
+      "high": 1,
+      "flags": [
+        "substantive_error",
+        "adjudication"
+      ],
+      "complete": true
+    },
+    {
+      "id": "val2024-hist-z17.2",
+      "points": 1,
+      "max_points": 1,
+      "low": 1,
+      "high": 1,
+      "flags": [],
+      "complete": true
+    },
+    {
+      "id": "val2024-hist-z18",
+      "points": 0,
+      "max_points": 1,
+      "low": 0,
+      "high": 0,
+      "flags": [
+        "invented_visual_detail"
+      ],
+      "complete": true
+    },
+    {
+      "id": "val2024-hist-z19.1",
+      "points": 1,
+      "max_points": 2,
+      "low": 1,
+      "high": 1,
+      "flags": [
+        "unrequested_false_rationale"
+      ],
+      "complete": true
+    },
+    {
+      "id": "val2024-hist-z19.2",
+      "points": 0,
+      "max_points": 1,
+      "low": 0,
+      "high": 0,
+      "flags": [
+        "wrong_identity"
+      ],
+      "complete": true
+    },
+    {
+      "id": "val2024-hist-z20.1",
+      "points": 1,
+      "max_points": 1,
+      "low": 1,
+      "high": 1,
+      "flags": [],
+      "complete": true
+    },
+    {
+      "id": "val2024-hist-z20.2",
+      "points": 2,
+      "max_points": 2,
+      "low": 0,
+      "high": 2,
+      "flags": [
+        "shifted_statement_labels",
+        "adjudication"
+      ],
+      "complete": true
+    },
+    {
+      "id": "val2024-hist-z21",
+      "points": 1,
+      "max_points": 1,
+      "low": 1,
+      "high": 1,
+      "flags": [],
+      "complete": true
+    },
+    {
+      "id": "val2024-hist-z22.1",
+      "points": 1,
+      "max_points": 1,
+      "low": 1,
+      "high": 1,
+      "flags": [],
+      "complete": true
+    },
+    {
+      "id": "val2024-hist-z22.2",
+      "points": 2,
+      "max_points": 2,
+      "low": 2,
+      "high": 2,
+      "flags": [],
+      "complete": true
+    },
+    {
+      "id": "val2024-hist-z23.1",
+      "points": 1,
+      "max_points": 1,
+      "low": 1,
+      "high": 1,
+      "flags": [],
+      "complete": true
+    },
+    {
+      "id": "val2024-hist-z23.2",
+      "points": 0,
+      "max_points": 1,
+      "low": 0,
+      "high": 0,
+      "flags": [
+        "source_misidentification"
+      ],
+      "complete": true
+    },
+    {
+      "id": "val2024-hist-z24",
+      "points": 0,
+      "max_points": 1,
+      "low": 0,
+      "high": 0,
+      "flags": [
+        "visual_misidentification"
+      ],
+      "complete": true
+    },
+    {
+      "id": "val2024-hist-z25",
+      "points": 0,
+      "max_points": 3,
+      "low": 0,
+      "high": 0,
+      "flags": [
+        "visual_and_context_misidentification"
+      ],
+      "complete": true
+    },
+    {
+      "id": "val2024-hist-z26",
+      "points": 6,
+      "max_points": 15,
+      "low": 5,
+      "high": 8,
+      "flags": [
+        "essay",
+        "adjudication"
+      ],
+      "complete": true
+    }
+  ]
+}
