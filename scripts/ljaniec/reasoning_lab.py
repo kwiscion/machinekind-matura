@@ -40,6 +40,27 @@ ASSETS = {
 PRIVATE_ROOT = ROOT / "agentsLog" / "ljaniec" / "private"
 FAMILIES = {"baseline", "thinking", "critic", "pf_statementwise"}
 DISPATCH_ORDER = ["baseline", "pf_statementwise", "critic", "thinking"]
+# Bounded per-arm override for the native thinking family only. A frozen wave may
+# declare a larger single-generation cap for thinking so that reasoning is not
+# capped by the short-answer budget (organizer audit #121). Every other family
+# keeps the uniform num_predict. Bounds are hard, there is no default value.
+THINKING_CAP_FLOOR = 2048
+THINKING_CAP_CEILING = 16384
+
+
+def effective_num_predict(manifest, family_name):
+    """Per-call generation cap for one family (request payload and accounting)."""
+    if family_name == "thinking" and manifest.get("thinking_num_predict") is not None:
+        return manifest["thinking_num_predict"]
+    return manifest["num_predict"]
+
+
+def plan_tokens(tasks, manifest):
+    """Total requested output+reasoning tokens for a planned task list."""
+    return sum(task["calls"] * effective_num_predict(manifest, task["family"]["name"])
+               for task in tasks)
+
+
 MAX_CALLS, MAX_TOKENS, MAX_SECONDS = 120, 240000, 5400
 
 
@@ -93,6 +114,14 @@ def load_manifest(path):
         raise ValueError("dispatch_order must freeze baseline, PF, critic, thinking in that order")
     if type(m.get("num_predict")) is not int or m["num_predict"] not in (1024, 2048):
         raise ValueError("num_predict must be 1024 or 2048, including thinking")
+    if m.get("thinking_num_predict") is not None:
+        t = m["thinking_num_predict"]
+        if type(t) is not int or not THINKING_CAP_FLOOR <= t <= THINKING_CAP_CEILING:
+            raise ValueError(f"thinking_num_predict must be an integer in {THINKING_CAP_FLOOR}..{THINKING_CAP_CEILING}")
+        if t < m["num_predict"]:
+            raise ValueError("thinking_num_predict must not be below num_predict")
+        if t + m["context_length"] > 2 * m["context_length"]:
+            raise ValueError("thinking_num_predict plus prompt must fit the pinned context")
     if type(m.get("readiness_calls")) is not int or not 0 <= m["readiness_calls"] <= 2:
         raise ValueError("readiness_calls must be 0..2, included in wave caps")
     if not m["deadline_utc"].endswith("Z"):
@@ -198,7 +227,7 @@ def load_panel(path, manifest):
         readiness += int(is_ready)
     if readiness != manifest["readiness_calls"]:
         raise ValueError("Panel readiness count differs from manifest")
-    if len(family_names) > 4 or calls > manifest["max_calls"] or calls * manifest["num_predict"] > manifest["max_requested_tokens"]:
+    if len(family_names) > 4 or calls > manifest["max_calls"] or plan_tokens(tasks, manifest) > manifest["max_requested_tokens"]:
         raise ValueError("Planned panel exceeds declared wave caps")
     if manifest.get("dispatch_order") != DISPATCH_ORDER:
         raise ValueError("Declared dispatch_order differs from frozen family order")
@@ -224,14 +253,14 @@ class Budget:
             raise StopWave("deadline")
         return left
 
-    def reserve(self, identity):
+    def reserve(self, identity, num_predict):
         self.remaining()
-        if self.calls >= self.m["max_calls"] or self.tokens + self.m["num_predict"] > self.m["max_requested_tokens"]:
+        if self.calls >= self.m["max_calls"] or self.tokens + num_predict > self.m["max_requested_tokens"]:
             raise StopWave("budget")
         self.calls += 1
-        self.tokens += self.m["num_predict"]
+        self.tokens += num_predict
         write_record(self.ledger, {"event": "reserved", **identity, "call": self.calls,
-                     "requested_tokens_including_thinking": self.m["num_predict"],
+                     "requested_tokens_including_thinking": num_predict,
                      "cumulative_requested_tokens": self.tokens, "utc": datetime.fromtimestamp(self.utc(), timezone.utc).isoformat()})
 
 
@@ -319,7 +348,8 @@ def payload_for(task, manifest, stage, previous=None):
         message["images"] = images
     return {"model": manifest["model"], "stream": False, "think": name == "thinking",
             "truncate": False, "shift": False, "messages": [message],
-            "options": {"num_ctx": manifest["context_length"], "num_predict": manifest["num_predict"]}}
+            "options": {"num_ctx": manifest["context_length"],
+                        "num_predict": effective_num_predict(manifest, name)}}
 
 
 def native_usage(response):
@@ -331,7 +361,10 @@ def native_usage(response):
     return counts
 
 
-def answer_and_usage(response, manifest, think=False):
+def answer_and_usage(response, manifest, think=False, num_predict=None):
+    # The per-call generation cap comes from the frozen payload plan, so a bounded
+    # thinking override is accounted against the same number the request asked for.
+    cap = manifest["num_predict"] if num_predict is None else num_predict
     if (response.get("error") is not None or response.get("truncated") is True
             or response.get("context_truncated") is True
             or response.get("model") != manifest["model"]):
@@ -352,9 +385,9 @@ def answer_and_usage(response, manifest, think=False):
     for value in (usage["prompt_eval_count"], usage["eval_count"]):
         if type(value) is not int or value < 0:
             raise StopWave("missing or invalid native usage")
-    if usage["prompt_eval_count"] + manifest["num_predict"] > manifest["context_length"]:
+    if usage["prompt_eval_count"] + cap > manifest["context_length"]:
         raise StopWave("reported prompt plus generation reserve exceeds context")
-    if usage["eval_count"] > manifest["num_predict"]:
+    if usage["eval_count"] > cap:
         raise StopWave("native generation exceeds requested cap")
     return message["content"], usage
 
@@ -422,7 +455,7 @@ def execute(manifest, tasks, run_dir, transport=request_json, clock=time.monoton
                         for stage in range(task["calls"]):
                             identity = {"id": case_id, "family": family, "stage": stage, "readiness": task["readiness"]}
                             payload = payload_for(task, manifest, stage, finals[-1] if finals else None)
-                            budget.reserve(identity)
+                            budget.reserve(identity, payload["options"]["num_predict"])
                             safe["stages"][stage]["status"] = "reserved"
                             payload_hash = hashlib.sha256(json.dumps(payload, ensure_ascii=False).encode("utf-8")).hexdigest()
                             write_record(raw, {"event": "request", **identity, "payload": payload, "request_sha256": payload_hash})
@@ -432,7 +465,8 @@ def execute(manifest, tasks, run_dir, transport=request_json, clock=time.monoton
                             safe["usage"].append(native_usage(response))
                             # Check identity after every call, including a response that will fail completeness checks.
                             write_record(raw, {"event": "postflight", **identity, "health": health(manifest, budget, transport, True)})
-                            final, usage = answer_and_usage(response, manifest, payload["think"])
+                            final, usage = answer_and_usage(response, manifest, payload["think"],
+                                                             payload["options"]["num_predict"])
                             if task["readiness"] and final.strip() != task["readiness_expected_answer"]:
                                 raise StopWave("synthetic readiness answer mismatch")
                             safe["stages"][stage]["status"] = "completed"
@@ -480,7 +514,8 @@ def main(argv=None):
         tasks = load_panel(args.panel, manifest)
         if not args.execute:
             print(json.dumps({"mode": "check", "families": len(tasks), "planned_calls": sum(t["calls"] for t in tasks),
-                              "requested_tokens_including_thinking": sum(t["calls"] for t in tasks) * manifest["num_predict"], "http_requests": 0,
+                              "requested_tokens_including_thinking": plan_tokens(tasks, manifest), "http_requests": 0,
+                              "num_predict": {name: effective_num_predict(manifest, name) for name in DISPATCH_ORDER},
                               "dispatch": [{"id": t["case"]["id"], "family": t["family"]["name"], "readiness": t["readiness"]} for t in tasks]}))
             return 0
         if args.run_dir is None:
