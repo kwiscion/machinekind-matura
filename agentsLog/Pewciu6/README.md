@@ -2,6 +2,8 @@
 
 **This is the final handoff index.** Everything below is a rollup of the individual timestamped notes in this directory; read a note for full detail. Short summary: `2026-09-26T0745-final-handoff.md`.
 
+> **Cleaner v2 (2026-09-26 20:50 Warsaw, #80):** heading markers are stripped but the prose is kept, and text outside the JSON must be a recognized wrapper. Lexical aspect/source checks are now advisory. 27 tests; 54/56 legacy outputs pass. See `2026-09-26T2050-cleaner-v2.md`.
+>
 > **Essay output contract (2026-09-26 20:30 Warsaw, issue #80 priority 1):** one frozen topic, a machine-checked `{topic_id, body}`, deterministic wrapper cleanup and ≤2 bounded repairs (`scripts/Pewciu6/essay_contract*.py`, 21 tests). The live probe used 3/4 remaining calls and produced a clean answer. The blind fidelity grader rated cleanup 17/17 faithful and found that the length-only repair did not help. See `2026-09-26T2030-essay-contract.md`.
 
 > **#96 H100 wave 1, blind grading (2026-09-26 19:50 Warsaw, issue #11):** Bukareszt's `2701ba0` answers (`c8bff4d6…`, 50 rows), graded blind to arm. W1: selective 2/5 vs bare 2/5 (Δ 0, bound [−2,+3]). W2 S10 (max 13): bare 6, verify 6, relquery 6, factcard **5** (Δ −1 on z20.2, an introduced error). No mechanism gained a point; evidence fixed recall in 2 justifications without changing any point. W*-bare matches the #53 bare grades on 15/15 items. See `2026-09-26T1950-grade-issue96-wave1.md` and `results/review_issue96-h100-wave1.json`.

@@ -8,11 +8,15 @@ Stdlib only, no model calls. The bounded live loop is scripts/Pewciu6/essay_cont
                    original task is kept separately for audit by the caller)
   parse_output     model text -> {topic_id, body}; strict JSON, unambiguous wrappers only
   clean_body       deterministic removal of unambiguous wrappers (preamble, plans, grader comments,
-                   word-count notes, headings). Whole lines/paragraphs only; never edits a sentence.
-                   A removal that would touch legitimate prose aborts cleanup (-> regenerate).
+                   word-count notes, structural headings). Whole lines/paragraphs only; never edits a
+                   sentence. v2: a Markdown heading marker ("# ", "**...**") is stripped and its prose
+                   KEPT; only a whitelist of structural labels is removed wholesale, and a short
+                   non-whitelisted heading is ambiguous (-> regenerate).
   count_words      body-only Polish word counter (headings/metadata/wrappers excluded)
-  validate         single topic, minimum length, 400-500 target, required aspects/sources.
-                   Length is a gate, never a quality score.
+  validate         hard gate: single topic and minimum length (topic identity and JSON/body shape are
+                   checked in parse_output/contract_check). 400-500 target is soft; the lexical
+                   aspect/source-marker checks are ADVISORY diagnostics only (v2). Length is a gate,
+                   never a quality score.
   render_answer    "Temat nr N" + clean prose: the only thing that reaches answers.json
 """
 
@@ -22,7 +26,7 @@ import hashlib
 import json
 import re
 
-CONTRACT_REVISION = "essay-contract-v1"
+CONTRACT_REVISION = "essay-contract-v2"  # v2: content-preserving cleaner, advisory lexical checks
 TARGET_MIN, TARGET_MAX = 400, 500
 DEFAULT_MIN_WORDS = 300
 MAX_REPAIRS = 2
@@ -61,10 +65,25 @@ TRAILING_META = re.compile(
 WORD_COUNT_NOTE = re.compile(
     r"^\s*[(\[]?\s*(?:[*_]+\s*)?(?:Liczba\s+(?:słów|wyrazów)|Słów|Wyrazów|Długość(?:\s+tekstu)?|Word count)\s*[:=]?\s*~?\d+[^\n]{0,30}$",
     re.I)
-MD_HEADING = re.compile(r"^\s*#{1,6}\s+\S")
-BOLD_ONLY = re.compile(r"^\s*(?:\*\*|__)[^*_\n]{1,80}(?:\*\*|__)\s*:?\s*$")
+MD_HEADING = re.compile(r"^\s*#{1,6}\s+(?=\S)")
+BOLD_ONLY = re.compile(r"^\s*(?:\*\*|__)([^*_\n]{1,200}?)(?:\*\*|__)\s*(:?)\s*$")
+# v2 whitelist: the ONLY heading texts removed wholesale (structural labels, never content). A year
+# or any sentence punctuation inside makes the line content, not a label.
+STRUCTURAL_LABEL = re.compile(
+    r"^(?:Wstęp|Wprowadzenie|Rozwinięcie|Zakończenie|Podsumowanie|Wnioski?|Teza|Argumentacja|Argumenty"
+    r"|(?:Aspekt|Argument)(?:\s+(?:\d{1,2}|[IVX]{1,4}))?(?:\s*[–—-]\s*|\s+)?(?:[a-ząćęłńóśźż]+(?:-[a-ząćęłńóśźż]+)?)?"
+    r"(?:\s+(?:i|oraz)\s+[a-ząćęłńóśźż]+(?:-[a-ząćęłńóśźż]+)?)?)\s*:?$", re.I)
 LABEL_ONLY = re.compile(r"^\s*(?:Wstęp|Wprowadzenie|Rozwinięcie|Zakończenie|Podsumowanie|Teza|Aspekt\s*\d*[^:\n]{0,60})\s*:\s*$", re.I)
+SENTENCE_END = re.compile(r"[.!?…]\s*$")
 OTHER_TOPIC_MARK = re.compile(r"(?mi)^\s*(?:[#*_]+\s*)?(?:WYPRACOWANIE\s+)?(?:na\s+)?Temat\s*(?:nr\.?|numer)?\s*[:.]?\s*(\d{1,2})\b")
+# v2: the ONLY text allowed outside the JSON object: a courtesy word, a one-sentence preamble announcing
+# the answer, a code-fence marker, a word-count note, or a closing offer. Anything else (a fact, a
+# sentence of the essay, a second essay) is substantive -> reject/regenerate, whatever its length.
+OUTSIDE_FENCE = re.compile(r"^\s*```[a-zA-Z]*\s*$")
+OUTSIDE_OFFER = re.compile(
+    r"^\s*(?:Mam nadzieję|Czy chcesz|Jeśli chcesz|Daj znać|Chętnie (?:rozwinę|poprawię|pomogę)|Mogę (?:też|również))\b"
+    r"[^.!?\n]{0,120}[.!?]?\s*$", re.I)
+COURTESY_PREFIX = re.compile(r"^\s*(?:Oczywiście|Jasne|Dobrze|Rozumiem|Świetnie|Z przyjemnością)\s*[!,.]?\s*", re.I)
 FENCE = re.compile(r"^\s*```[a-zA-Z]*\s*\n(.*)\n\s*```\s*$", re.S)
 
 
@@ -219,6 +238,24 @@ def _balanced_objects(text: str) -> list[str]:
     return out
 
 
+def outside_is_wrapper(outside: str) -> bool:
+    """True only if every non-empty line outside the JSON is a recognized non-substantive wrapper."""
+    for line in outside.splitlines():
+        s = line.strip()
+        if not s or OUTSIDE_FENCE.match(s) or COURTESY.match(s) or WORD_COUNT_NOTE.match(s):
+            continue
+        if YEAR.search(re.sub(r"~?\d+\s*(?:słów|wyrazów)", "", s)):
+            return False  # a date outside the JSON is content
+        if OUTSIDE_OFFER.match(s) and words(s) <= 25:
+            continue
+        rest = COURTESY_PREFIX.sub("", s, count=1)
+        # one announcing clause: "Oto wypracowanie w wymaganym formacie:" (no second sentence)
+        if PREAMBLE.match(rest) and words(rest) <= 15 and not re.search(r"[.!?…]", rest.rstrip(" :.!…")):
+            continue
+        return False
+    return True
+
+
 def parse_output(raw: str) -> dict:
     """-> {ok, topic_id, body, wrappers:[...], error}. Only unambiguous wrappers are peeled."""
     wrappers, text = [], (raw or "").strip()
@@ -241,9 +278,10 @@ def parse_output(raw: str) -> dict:
                 parsed.append((span, cand))
         if len(parsed) == 1:
             span, obj = parsed[0]
-            outside = text.replace(span, "").strip()
-            if len(outside.split()) > 40:  # an essay outside the JSON too: not a thin wrapper
-                return {"ok": False, "error": "ambiguous_text_outside_json", "wrappers": wrappers}
+            outside = text.replace(span, "\n").strip()
+            if outside and not outside_is_wrapper(outside):  # v2: no length allowance for unknown text
+                return {"ok": False, "error": "ambiguous_text_outside_json", "wrappers": wrappers,
+                        "outside": outside}
             if outside:
                 wrappers.append("text_around_json")
         elif len(parsed) > 1:
@@ -260,6 +298,10 @@ def parse_output(raw: str) -> dict:
     if not isinstance(body, str) or not body.strip():
         return {"ok": False, "error": "missing_body", "wrappers": wrappers, "topic_id": topic_id}
     extra = sorted(set(obj) - {"topic_id", "body"})
+    for key in extra:  # v2: an extra field may not carry discarded prose (a number/short label is fine)
+        val = obj[key]
+        if isinstance(val, (dict, list)) or (isinstance(val, str) and (words(val) > 12 or YEAR.search(val))):
+            return {"ok": False, "error": f"substantive_extra_key:{key}", "wrappers": wrappers}
     if extra:
         wrappers.append("extra_keys:" + ",".join(extra))
     return {"ok": True, "topic_id": topic_id, "body": body.replace("\r\n", "\n"), "wrappers": wrappers, "error": None}
@@ -275,10 +317,38 @@ def words(text: str) -> int:
     return sum(1 for tok in text.split() if WORD.search(tok))
 
 
-def is_heading_line(line: str) -> bool:
+def heading_text(line: str) -> tuple[str, str] | None:
+    """(marker-free text, marker kind) if the line is formatted as a heading, else None."""
     s = line.strip()
-    return bool(MD_HEADING.match(s) or BOLD_ONLY.match(s) or LABEL_ONLY.match(s) or WYPRACOWANIE_LINE.match(s)
-                or (TOPIC_HEADER.match(s) and words(s) <= 25))
+    m = MD_HEADING.match(s)
+    if m:
+        inner = s[m.end():].strip()
+        b = BOLD_ONLY.match(inner)
+        return ((b.group(1) + b.group(2)).strip() if b else inner.strip("*_ ").strip()), "md_heading"
+    b = BOLD_ONLY.match(s)
+    if b:
+        return (b.group(1) + b.group(2)).strip(), "bold_line"
+    if LABEL_ONLY.match(s):
+        return s, "label_line"
+    return None
+
+
+def is_structural_label(text: str) -> bool:
+    """Whitelisted structural label (removable wholesale). Never a year, never a sentence."""
+    t = text.strip().rstrip(":").strip()
+    if not t or YEAR.search(t) or re.search(r"[.!?…;]", t):
+        return False
+    return bool(STRUCTURAL_LABEL.match(t) or WYPRACOWANIE_LINE.match(t)
+                or (TOPIC_HEADER.match(t) and words(t) <= 25))
+
+
+def is_heading_line(line: str) -> bool:
+    """A purely structural line (whitelisted label or topic header): excluded from the body count."""
+    s = line.strip()
+    if WYPRACOWANIE_LINE.match(s) or (TOPIC_HEADER.match(s) and words(s) <= 25):
+        return True
+    h = heading_text(s)
+    return bool(h and is_structural_label(h[0]))
 
 
 def other_topics_marked(text: str, topic: int) -> list[int]:
@@ -361,16 +431,30 @@ def clean_body(body: str, topic: int) -> dict:
         for p in tail:
             drop("trailing_meta", p)
         paras = paras[:cut]
-    # standalone headings inside the essay (not prose); inline "Teza: ..." sentences stay
+    # headings inside the essay (v2): a whitelisted structural label is removed wholesale; any other
+    # heading-formatted line loses only its Markdown marker and its text is KEPT as prose when it is a
+    # sentence; a short non-whitelisted heading that is not a sentence is ambiguous (-> regenerate).
     kept = []
     for p in paras:
         lines = p.splitlines()
         body_lines = []
         for line in lines:
-            if is_heading_line(line):
+            if WYPRACOWANIE_LINE.match(line.strip()) or (TOPIC_HEADER.match(line.strip()) and words(line) <= 25):
+                n = TOPIC_HEADER.match(line.strip())
+                if n and int(n.group(1)) != topic:
+                    return {"ok": False, "text": None, "ops": ops, "error": f"wrong_topic_header:{n.group(1)}"}
                 drop("heading", line)
-            else:
+                continue
+            h = heading_text(line)
+            if h is None:
                 body_lines.append(line)
+            elif is_structural_label(h[0]):
+                drop("heading", line)
+            elif SENTENCE_END.search(h[0]) and words(h[0]) >= 4:
+                ops.append({"op": "heading_marker_stripped", "text": "", "marker": h[1], "kept": h[0]})
+                body_lines.append(h[0])
+            else:
+                return {"ok": False, "text": None, "ops": ops, "error": "ambiguous_heading"}
         if body_lines:
             kept.append("\n".join(body_lines).strip())
     text = "\n\n".join(re.sub(r"[ \t]*\n[ \t]*", " ", p) for p in kept).strip()
@@ -407,13 +491,18 @@ def validate(text: str, task: dict, topic: int) -> dict:
     paras = paragraphs(low)
     # an aspect must be named in the development, not only in the introduction or the conclusion
     middle = "\n".join(paras[1:-1]) if len(paras) >= 3 else low
+    # v2: lexical stems are ADVISORY diagnostics only. An argument can cover the political aspect
+    # without the stem "polit" or use a source without the word "źródło"; coverage belongs to the
+    # independent critic/grader, never to a hard gate that spends repairs or discards prose.
+    advisory = []
     missing = [a for a in task["aspects"].get(topic, []) if not all(s in middle for s in aspect_stems(a))]
     if missing:
-        hard.append("missing_aspects:" + ",".join(missing))
+        advisory.append("lexical_aspect_absent:" + ",".join(missing))
     if (task["sources"].get(topic) or task["global_sources"]) and not re.search(r"źródł", low):
-        hard.append("missing_source_reference")
-    return {"ok": not hard, "hard": hard, "soft": soft, "words": n, "missing_aspects": missing,
-            "note": "mechanical contract only; length never awards coherence/quality"}
+        advisory.append("lexical_source_marker_absent")
+    return {"ok": not hard, "hard": hard, "soft": soft, "advisory": advisory, "words": n,
+            "missing_aspects": missing,
+            "note": "mechanical contract only; length never awards coherence/quality; advisory never gates"}
 
 
 def check_body(body: str, task: dict, topic: int, result: dict | None = None) -> dict:
