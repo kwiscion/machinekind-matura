@@ -1,0 +1,289 @@
+{
+  "seed": 15,
+  "baseline": "baseline3",
+  "candidate": "candidate",
+  "queries_sha256": "b2e359bf2501469a216f178ad76511d45604e61ad42d4257fca34d15f82f024d",
+  "sample_sha256": "a992e3e6f08ccbb9f96cd8cbf0b5eca761f74d0dd2ac7ad5640d11c69ec4a958",
+  "pairs": [
+    {
+      "id": "ret-train-q01",
+      "A": "baseline3",
+      "B": "candidate",
+      "A_chars": 1551,
+      "B_chars": 2947
+    },
+    {
+      "id": "ret-train-q02",
+      "A": "candidate",
+      "B": "baseline3",
+      "A_chars": 2988,
+      "B_chars": 1267
+    },
+    {
+      "id": "ret-train-q03",
+      "A": "baseline3",
+      "B": "candidate",
+      "A_chars": 3828,
+      "B_chars": 2771
+    },
+    {
+      "id": "ret-train-q04",
+      "A": "candidate",
+      "B": "baseline3",
+      "A_chars": 2994,
+      "B_chars": 2941
+    },
+    {
+      "id": "ret-train-q05",
+      "A": "baseline3",
+      "B": "candidate",
+      "A_chars": 3732,
+      "B_chars": 2772
+    },
+    {
+      "id": "ret-train-q06",
+      "A": "candidate",
+      "B": "baseline3",
+      "A_chars": 2991,
+      "B_chars": 2669
+    },
+    {
+      "id": "ret-train-q07",
+      "A": "baseline3",
+      "B": "candidate",
+      "A_chars": 2487,
+      "B_chars": 2998
+    },
+    {
+      "id": "ret-train-q08",
+      "A": "baseline3",
+      "B": "candidate",
+      "A_chars": 2898,
+      "B_chars": 2869
+    },
+    {
+      "id": "ret-train-q09",
+      "A": "baseline3",
+      "B": "candidate",
+      "A_chars": 3348,
+      "B_chars": 2504
+    },
+    {
+      "id": "ret-train-q10",
+      "A": "baseline3",
+      "B": "candidate",
+      "A_chars": 3496,
+      "B_chars": 2740
+    },
+    {
+      "id": "ret-train-q11",
+      "A": "candidate",
+      "B": "baseline3",
+      "A_chars": 2849,
+      "B_chars": 2394
+    },
+    {
+      "id": "ret-train-q12",
+      "A": "candidate",
+      "B": "baseline3",
+      "A_chars": 2812,
+      "B_chars": 4343
+    },
+    {
+      "id": "ret-train-q13",
+      "A": "baseline3",
+      "B": "candidate",
+      "A_chars": 1927,
+      "B_chars": 2920
+    },
+    {
+      "id": "ret-train-q14",
+      "A": "candidate",
+      "B": "baseline3",
+      "A_chars": 2955,
+      "B_chars": 1103
+    },
+    {
+      "id": "ret-train-q15",
+      "A": "candidate",
+      "B": "baseline3",
+      "A_chars": 2785,
+      "B_chars": 2205
+    },
+    {
+      "id": "ret-train-q16",
+      "A": "candidate",
+      "B": "baseline3",
+      "A_chars": 2859,
+      "B_chars": 2488
+    },
+    {
+      "id": "ret-train-q17",
+      "A": "baseline3",
+      "B": "candidate",
+      "A_chars": 3096,
+      "B_chars": 2972
+    },
+    {
+      "id": "ret-train-q18",
+      "A": "baseline3",
+      "B": "candidate",
+      "A_chars": 3015,
+      "B_chars": 2983
+    },
+    {
+      "id": "ret-train-q19",
+      "A": "baseline3",
+      "B": "candidate",
+      "A_chars": 2196,
+      "B_chars": 2999
+    },
+    {
+      "id": "ret-train-q20",
+      "A": "candidate",
+      "B": "baseline3",
+      "A_chars": 2731,
+      "B_chars": 2228
+    },
+    {
+      "id": "ret-train-q21",
+      "A": "baseline3",
+      "B": "candidate",
+      "A_chars": 3595,
+      "B_chars": 2761
+    },
+    {
+      "id": "ret-train-q22",
+      "A": "baseline3",
+      "B": "candidate",
+      "A_chars": 3668,
+      "B_chars": 2854
+    },
+    {
+      "id": "ret-train-q23",
+      "A": "candidate",
+      "B": "baseline3",
+      "A_chars": 2862,
+      "B_chars": 3202
+    },
+    {
+      "id": "ret-train-q24",
+      "A": "candidate",
+      "B": "baseline3",
+      "A_chars": 2941,
+      "B_chars": 3575
+    },
+    {
+      "id": "ret-train-q25",
+      "A": "candidate",
+      "B": "baseline3",
+      "A_chars": 2854,
+      "B_chars": 3467
+    },
+    {
+      "id": "ret-train-q26",
+      "A": "candidate",
+      "B": "baseline3",
+      "A_chars": 2923,
+      "B_chars": 3941
+    },
+    {
+      "id": "ret-train-q27",
+      "A": "baseline3",
+      "B": "candidate",
+      "A_chars": 3153,
+      "B_chars": 2874
+    },
+    {
+      "id": "ret-train-q28",
+      "A": "candidate",
+      "B": "baseline3",
+      "A_chars": 2858,
+      "B_chars": 1765
+    },
+    {
+      "id": "ret-train-q29",
+      "A": "baseline3",
+      "B": "candidate",
+      "A_chars": 2552,
+      "B_chars": 2659
+    },
+    {
+      "id": "ret-train-q30",
+      "A": "baseline3",
+      "B": "candidate",
+      "A_chars": 3488,
+      "B_chars": 2768
+    },
+    {
+      "id": "ret-train-q31",
+      "A": "baseline3",
+      "B": "candidate",
+      "A_chars": 3080,
+      "B_chars": 2492
+    },
+    {
+      "id": "ret-train-q32",
+      "A": "candidate",
+      "B": "baseline3",
+      "A_chars": 2995,
+      "B_chars": 3274
+    },
+    {
+      "id": "ret-train-q33",
+      "A": "baseline3",
+      "B": "candidate",
+      "A_chars": 2396,
+      "B_chars": 2514
+    },
+    {
+      "id": "ret-train-q34",
+      "A": "baseline3",
+      "B": "candidate",
+      "A_chars": 3920,
+      "B_chars": 2980
+    },
+    {
+      "id": "ret-train-q35",
+      "A": "candidate",
+      "B": "baseline3",
+      "A_chars": 2978,
+      "B_chars": 3486
+    },
+    {
+      "id": "ret-train-q36",
+      "A": "baseline3",
+      "B": "candidate",
+      "A_chars": 3122,
+      "B_chars": 2930
+    },
+    {
+      "id": "ret-train-q37",
+      "A": "candidate",
+      "B": "baseline3",
+      "A_chars": 2962,
+      "B_chars": 2962
+    },
+    {
+      "id": "ret-train-q38",
+      "A": "candidate",
+      "B": "baseline3",
+      "A_chars": 2977,
+      "B_chars": 2715
+    },
+    {
+      "id": "ret-train-q39",
+      "A": "candidate",
+      "B": "baseline3",
+      "A_chars": 2924,
+      "B_chars": 3405
+    },
+    {
+      "id": "ret-train-q40",
+      "A": "baseline3",
+      "B": "candidate",
+      "A_chars": 2775,
+      "B_chars": 2888
+    }
+  ]
+}

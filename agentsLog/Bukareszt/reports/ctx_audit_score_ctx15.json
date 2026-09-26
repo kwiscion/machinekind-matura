@@ -1,0 +1,576 @@
+{
+  "status": "provisional",
+  "tag": "ctx15",
+  "n_queries": 40,
+  "auditor": "independent-subagent claude-fable-5-1 (fresh context, 2026-09-26, blind A/B, issue 15)",
+  "baseline": "baseline3",
+  "candidate": "candidate",
+  "complete": {
+    "baseline3": 14,
+    "candidate": 13
+  },
+  "complete_or_partial": {
+    "baseline3": 38,
+    "candidate": 39
+  },
+  "none": {
+    "baseline3": 2,
+    "candidate": 1
+  },
+  "counts": {
+    "baseline3": {
+      "complete": 14,
+      "none": 2,
+      "partial": 24
+    },
+    "candidate": {
+      "complete": 13,
+      "partial": 26,
+      "none": 1
+    }
+  },
+  "preferred": {
+    "tie": 26,
+    "candidate": 8,
+    "baseline3": 6
+  },
+  "wins": [
+    {
+      "id": "ret-train-q02",
+      "baseline": "none",
+      "candidate": "partial",
+      "note": "Only 'Wprowadzono ostracyzm (tzw. sad skorupkowy)' - names the institution and its potsherd nature, nothing on 10-year exile or its purpose."
+    }
+  ],
+  "regressions": [
+    {
+      "id": "ret-train-q39",
+      "baseline": "complete",
+      "candidate": "partial",
+      "note": "Soviet pressure and bloc-wide rejection are supported ('zmienił zdanie ... pod naciskiem Stalina', 'rządy kontrolowane przez Moskwę odrzuciły'), but the passage says this happened 'w 1948', contradicting 1947."
+    }
+  ],
+  "contradictions": [
+    {
+      "id": "ret-train-q39",
+      "variant": "candidate",
+      "note": "Soviet pressure and bloc-wide rejection are supported ('zmienił zdanie ... pod naciskiem Stalina', 'rządy kontrolowane przez Moskwę odrzuciły'), but the passage says this happened 'w 1948', contradicting 1947."
+    }
+  ],
+  "unsupported_claims": [
+    {
+      "id": "ret-train-q02",
+      "variant": "candidate",
+      "claim_element": "glosowanie/procedura"
+    },
+    {
+      "id": "ret-train-q02",
+      "variant": "candidate",
+      "claim_element": "wygnanie na 10 lat"
+    },
+    {
+      "id": "ret-train-q02",
+      "variant": "candidate",
+      "claim_element": "obywatel uznany za zagrozenie dla ustroju"
+    },
+    {
+      "id": "ret-train-q02",
+      "variant": "baseline3",
+      "claim_element": "glosowanie skorupkowe"
+    },
+    {
+      "id": "ret-train-q02",
+      "variant": "baseline3",
+      "claim_element": "wygnanie na 10 lat"
+    },
+    {
+      "id": "ret-train-q02",
+      "variant": "baseline3",
+      "claim_element": "obywatel uznany za zagrozenie dla ustroju"
+    },
+    {
+      "id": "ret-train-q03",
+      "variant": "baseline3",
+      "claim_element": "rok 800"
+    },
+    {
+      "id": "ret-train-q03",
+      "variant": "baseline3",
+      "claim_element": "papiez Leon III (imie)"
+    },
+    {
+      "id": "ret-train-q03",
+      "variant": "candidate",
+      "claim_element": "rok 800"
+    },
+    {
+      "id": "ret-train-q03",
+      "variant": "candidate",
+      "claim_element": "papiez Leon III (imie)"
+    },
+    {
+      "id": "ret-train-q08",
+      "variant": "baseline3",
+      "claim_element": "Wladyslaw Jagiello jako dowodca"
+    },
+    {
+      "id": "ret-train-q08",
+      "variant": "baseline3",
+      "claim_element": "Witold"
+    },
+    {
+      "id": "ret-train-q08",
+      "variant": "baseline3",
+      "claim_element": "Ulrich von Jungingen jako dowodca krzyzacki"
+    },
+    {
+      "id": "ret-train-q08",
+      "variant": "candidate",
+      "claim_element": "Witold"
+    },
+    {
+      "id": "ret-train-q08",
+      "variant": "candidate",
+      "claim_element": "Ulrich von Jungingen (imie wielkiego mistrza)"
+    },
+    {
+      "id": "ret-train-q08",
+      "variant": "candidate",
+      "claim_element": "data 15 lipca 1410"
+    },
+    {
+      "id": "ret-train-q09",
+      "variant": "baseline3",
+      "claim_element": "Malbork i Elblag"
+    },
+    {
+      "id": "ret-train-q09",
+      "variant": "baseline3",
+      "claim_element": "nazwa 'Prusy Krolewskie'"
+    },
+    {
+      "id": "ret-train-q09",
+      "variant": "baseline3",
+      "claim_element": "nazwa 'Prusy Zakonne'"
+    },
+    {
+      "id": "ret-train-q09",
+      "variant": "candidate",
+      "claim_element": "nazwa 'Prusy Krolewskie'"
+    },
+    {
+      "id": "ret-train-q13",
+      "variant": "baseline3",
+      "claim_element": "zgoda sejmu na podatki"
+    },
+    {
+      "id": "ret-train-q13",
+      "variant": "candidate",
+      "claim_element": "zgoda sejmu na podatki"
+    },
+    {
+      "id": "ret-train-q15",
+      "variant": "candidate",
+      "claim_element": "wzmocnienie wladzy wykonawczej (Straz Praw)"
+    },
+    {
+      "id": "ret-train-q15",
+      "variant": "baseline3",
+      "claim_element": "wzmocnienie wladzy wykonawczej (Straz Praw)"
+    },
+    {
+      "id": "ret-train-q16",
+      "variant": "candidate",
+      "claim_element": "II rozbior 1793 (Rosja, Prusy)"
+    },
+    {
+      "id": "ret-train-q16",
+      "variant": "candidate",
+      "claim_element": "III rozbior 1795 (Rosja, Prusy, Austria)"
+    },
+    {
+      "id": "ret-train-q16",
+      "variant": "baseline3",
+      "claim_element": "II rozbior 1793 (Rosja, Prusy)"
+    },
+    {
+      "id": "ret-train-q16",
+      "variant": "baseline3",
+      "claim_element": "1795 jako rok III rozbioru z udzialem trzech panstw"
+    },
+    {
+      "id": "ret-train-q17",
+      "variant": "baseline3",
+      "claim_element": "nieusuwalnosc z ziemi"
+    },
+    {
+      "id": "ret-train-q17",
+      "variant": "baseline3",
+      "claim_element": "zmniejszenie panszczyzny"
+    },
+    {
+      "id": "ret-train-q17",
+      "variant": "candidate",
+      "claim_element": "nieusuwalnosc z ziemi"
+    },
+    {
+      "id": "ret-train-q17",
+      "variant": "candidate",
+      "claim_element": "zmniejszenie panszczyzny"
+    },
+    {
+      "id": "ret-train-q18",
+      "variant": "baseline3",
+      "claim_element": "imie wladcy: Fryderyk August I"
+    },
+    {
+      "id": "ret-train-q18",
+      "variant": "candidate",
+      "claim_element": "imie wladcy: Fryderyk August I"
+    },
+    {
+      "id": "ret-train-q19",
+      "variant": "baseline3",
+      "claim_element": "Wielkie Ksiestwo Poznanskie pod Prusami"
+    },
+    {
+      "id": "ret-train-q19",
+      "variant": "baseline3",
+      "claim_element": "Wolne Miasto Krakow"
+    },
+    {
+      "id": "ret-train-q19",
+      "variant": "candidate",
+      "claim_element": "Wielkie Ksiestwo Poznanskie (nazwa)"
+    },
+    {
+      "id": "ret-train-q19",
+      "variant": "candidate",
+      "claim_element": "Wolne Miasto Krakow"
+    },
+    {
+      "id": "ret-train-q20",
+      "variant": "candidate",
+      "claim_element": "uderzenie podchorazych na koszary jazdy rosyjskiej"
+    },
+    {
+      "id": "ret-train-q20",
+      "variant": "baseline3",
+      "claim_element": "uderzenie podchorazych na koszary jazdy rosyjskiej"
+    },
+    {
+      "id": "ret-train-q21",
+      "variant": "baseline3",
+      "claim_element": "obozy 'czerwoni' i 'biali'"
+    },
+    {
+      "id": "ret-train-q21",
+      "variant": "candidate",
+      "claim_element": "obozy 'czerwoni' i 'biali'"
+    },
+    {
+      "id": "ret-train-q23",
+      "variant": "candidate",
+      "claim_element": "germanizacja szkół (only general 'akcje germanizacyjne')"
+    },
+    {
+      "id": "ret-train-q23",
+      "variant": "candidate",
+      "claim_element": "sprawa abp. Ledóchowskiego"
+    },
+    {
+      "id": "ret-train-q23",
+      "variant": "baseline3",
+      "claim_element": "germanizacja szkół (only general 'akcje germanizacyjne')"
+    },
+    {
+      "id": "ret-train-q23",
+      "variant": "baseline3",
+      "claim_element": "sprawa abp. Ledóchowskiego"
+    },
+    {
+      "id": "ret-train-q24",
+      "variant": "candidate",
+      "claim_element": "wydany przez cesarzy (passage: 'władze Cesarstwa Niemieckiego i Austro-Węgier' with signatures of governors-general)"
+    },
+    {
+      "id": "ret-train-q24",
+      "variant": "candidate",
+      "claim_element": "dziedziczna monarchia"
+    },
+    {
+      "id": "ret-train-q24",
+      "variant": "baseline3",
+      "claim_element": "wydany przez cesarzy (passage: 'władze Cesarstwa Niemieckiego i Austro-Węgier' with signatures of governors-general)"
+    },
+    {
+      "id": "ret-train-q24",
+      "variant": "baseline3",
+      "claim_element": "dziedziczna monarchia"
+    },
+    {
+      "id": "ret-train-q26",
+      "variant": "candidate",
+      "claim_element": "granica wzdłuż Zbrucza"
+    },
+    {
+      "id": "ret-train-q26",
+      "variant": "candidate",
+      "claim_element": "zachodnia Białoruś i zachodni Wołyń dla Polski"
+    },
+    {
+      "id": "ret-train-q26",
+      "variant": "candidate",
+      "claim_element": "status Wileńszczyzny"
+    },
+    {
+      "id": "ret-train-q26",
+      "variant": "baseline3",
+      "claim_element": "granica wzdłuż Zbrucza"
+    },
+    {
+      "id": "ret-train-q26",
+      "variant": "baseline3",
+      "claim_element": "zachodnia Białoruś i zachodni Wołyń dla Polski"
+    },
+    {
+      "id": "ret-train-q26",
+      "variant": "baseline3",
+      "claim_element": "status Wileńszczyzny"
+    },
+    {
+      "id": "ret-train-q28",
+      "variant": "candidate",
+      "claim_element": "inicjator: wicepremier Eugeniusz Kwiatkowski"
+    },
+    {
+      "id": "ret-train-q28",
+      "variant": "baseline3",
+      "claim_element": "inicjator: wicepremier Eugeniusz Kwiatkowski"
+    },
+    {
+      "id": "ret-train-q29",
+      "variant": "baseline3",
+      "claim_element": "linia podziału Polski wzdłuż Narwi, Wisły i Sanu"
+    },
+    {
+      "id": "ret-train-q29",
+      "variant": "candidate",
+      "claim_element": "linia podziału Polski wzdłuż Narwi, Wisły i Sanu"
+    },
+    {
+      "id": "ret-train-q30",
+      "variant": "baseline3",
+      "claim_element": "na wniosek Berii"
+    },
+    {
+      "id": "ret-train-q30",
+      "variant": "candidate",
+      "claim_element": "na wniosek Berii"
+    },
+    {
+      "id": "ret-train-q31",
+      "variant": "baseline3",
+      "claim_element": "1 sierpnia 1944"
+    },
+    {
+      "id": "ret-train-q31",
+      "variant": "baseline3",
+      "claim_element": "godz. 17 (godzina 'W')"
+    },
+    {
+      "id": "ret-train-q31",
+      "variant": "baseline3",
+      "claim_element": "63 dni (only 'dwumiesięcznych walk')"
+    },
+    {
+      "id": "ret-train-q31",
+      "variant": "baseline3",
+      "claim_element": "koniec 2/3 października 1944"
+    },
+    {
+      "id": "ret-train-q31",
+      "variant": "candidate",
+      "claim_element": "1 sierpnia 1944 (only inferable as before 3 August)"
+    },
+    {
+      "id": "ret-train-q31",
+      "variant": "candidate",
+      "claim_element": "godz. 17 (godzina 'W')"
+    },
+    {
+      "id": "ret-train-q31",
+      "variant": "candidate",
+      "claim_element": "63 dni (only 'dwumiesięcznych walk')"
+    },
+    {
+      "id": "ret-train-q31",
+      "variant": "candidate",
+      "claim_element": "koniec 2/3 października 1944"
+    },
+    {
+      "id": "ret-train-q32",
+      "variant": "candidate",
+      "claim_element": "rekompensata terytorialna na zachodzie"
+    },
+    {
+      "id": "ret-train-q32",
+      "variant": "candidate",
+      "claim_element": "Tymczasowy Rząd Jedności Narodowej"
+    },
+    {
+      "id": "ret-train-q32",
+      "variant": "baseline3",
+      "claim_element": "rekompensata terytorialna na zachodzie"
+    },
+    {
+      "id": "ret-train-q32",
+      "variant": "baseline3",
+      "claim_element": "Tymczasowy Rząd Jedności Narodowej"
+    },
+    {
+      "id": "ret-train-q32",
+      "variant": "baseline3",
+      "claim_element": "wolne wybory"
+    },
+    {
+      "id": "ret-train-q33",
+      "variant": "baseline3",
+      "claim_element": "PKWN jako legalna władza"
+    },
+    {
+      "id": "ret-train-q33",
+      "variant": "baseline3",
+      "claim_element": "odrzucenie konstytucji kwietniowej na rzecz marcowej"
+    },
+    {
+      "id": "ret-train-q33",
+      "variant": "baseline3",
+      "claim_element": "reforma rolna"
+    },
+    {
+      "id": "ret-train-q33",
+      "variant": "candidate",
+      "claim_element": "PKWN jako legalna władza"
+    },
+    {
+      "id": "ret-train-q33",
+      "variant": "candidate",
+      "claim_element": "odrzucenie konstytucji kwietniowej na rzecz marcowej"
+    },
+    {
+      "id": "ret-train-q33",
+      "variant": "candidate",
+      "claim_element": "reforma rolna"
+    },
+    {
+      "id": "ret-train-q34",
+      "variant": "baseline3",
+      "claim_element": "robotnicy Cegielskiego"
+    },
+    {
+      "id": "ret-train-q34",
+      "variant": "baseline3",
+      "claim_element": "żądania podwyżek i obniżki cen (only 'postulaty socjalne', leaflet '1500 złotych')"
+    },
+    {
+      "id": "ret-train-q34",
+      "variant": "candidate",
+      "claim_element": "robotnicy Cegielskiego"
+    },
+    {
+      "id": "ret-train-q34",
+      "variant": "candidate",
+      "claim_element": "żądania podwyżek i obniżki cen"
+    },
+    {
+      "id": "ret-train-q34",
+      "variant": "candidate",
+      "claim_element": "stłumienie wojskiem (only 'spacyfikowanych robotników')"
+    },
+    {
+      "id": "ret-train-q34",
+      "variant": "candidate",
+      "claim_element": "28 czerwca (only in later graffiti)"
+    },
+    {
+      "id": "ret-train-q36",
+      "variant": "baseline3",
+      "claim_element": "gen. Wojciech Jaruzelski na czele WRON"
+    },
+    {
+      "id": "ret-train-q36",
+      "variant": "candidate",
+      "claim_element": "dokładna data 13 grudnia (only 'w grudniu 1981')"
+    },
+    {
+      "id": "ret-train-q36",
+      "variant": "candidate",
+      "claim_element": "Jaruzelski jako szef WRON (only that he introduced martial law)"
+    },
+    {
+      "id": "ret-train-q37",
+      "variant": "candidate",
+      "claim_element": "legalizacja Solidarności"
+    },
+    {
+      "id": "ret-train-q37",
+      "variant": "candidate",
+      "claim_element": "utworzenie Senatu"
+    },
+    {
+      "id": "ret-train-q37",
+      "variant": "candidate",
+      "claim_element": "urząd prezydenta"
+    },
+    {
+      "id": "ret-train-q37",
+      "variant": "baseline3",
+      "claim_element": "legalizacja Solidarności"
+    },
+    {
+      "id": "ret-train-q37",
+      "variant": "baseline3",
+      "claim_element": "utworzenie Senatu"
+    },
+    {
+      "id": "ret-train-q37",
+      "variant": "baseline3",
+      "claim_element": "urząd prezydenta"
+    },
+    {
+      "id": "ret-train-q38",
+      "variant": "candidate",
+      "claim_element": "dzień 9 listopada (only inferable from opening 'o północy' before 10 November)"
+    },
+    {
+      "id": "ret-train-q38",
+      "variant": "baseline3",
+      "claim_element": "dzień 9 listopada (only inferable from opening 'o północy' before 10 November)"
+    },
+    {
+      "id": "ret-train-q39",
+      "variant": "candidate",
+      "claim_element": "rok 1947 (passage dates Cyrankiewicz's reversal to 1948)"
+    },
+    {
+      "id": "ret-train-q40",
+      "variant": "baseline3",
+      "claim_element": "zasada cuius regio, eius religio named explicitly (passage: 'Artykuły augsburskiego pokoju religijnego rozciągnięto na kalwinistów')"
+    },
+    {
+      "id": "ret-train-q40",
+      "variant": "baseline3",
+      "claim_element": "osłabienie cesarza (only indirect: sovereignty over Switzerland/Netherlands removed, Austria defeated in Germany)"
+    },
+    {
+      "id": "ret-train-q40",
+      "variant": "candidate",
+      "claim_element": "zasada cuius regio, eius religio named explicitly (passage: 'Artykuły augsburskiego pokoju religijnego rozciągnięto na kalwinistów')"
+    }
+  ],
+  "verdicts_file": "audit/ctx_audit_verdicts_ctx15.jsonl",
+  "verdicts_sha256": "72a496fb2e2ac91b9a81a8a2eb0c4b5c7174cdd06596a6ed9a6790b95155829e",
+  "sample_sha256": "a992e3e6f08ccbb9f96cd8cbf0b5eca761f74d0dd2ac7ad5640d11c69ec4a958",
+  "queries_sha256": "b2e359bf2501469a216f178ad76511d45604e61ad42d4257fca34d15f82f024d"
+}
