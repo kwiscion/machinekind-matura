@@ -14,7 +14,7 @@ No training/retrieval material derived from fixed 2023/2024/2025 exam questions,
 
 - Piotrek (@semberecki) has an RTX 5090 and an active issue watcher. The two Blackwells are **unavailable**. Confirm actual VRAM at claim; do not disturb other workloads.
 - The lead laptop completed the single Qwen 3.5 9B full baseline, thinking off and 1024 output tokens: 40 responses, 36 complete and four truncated. Its heuristic floor is 5/60 with substantial review unresolved; no independently reviewed full score is established. Preserve the run and do not duplicate it.
-- Gemma 4 12B Q4 is the next candidate. Spark has verified native weights but failed its load with CUDA out-of-memory; Piotrek owns the working GPU route now.
+- Gemma 4 12B Q4 is the next candidate. A local v1 run was discovered at 14:56, started at 14:53 by a separate process; its first 13 responses had nonempty final content and no errors. Preserve this single run. Piotrek prepares the RTX 5090 for the next measured arm and must not duplicate the laptop baseline. Spark's earlier failed load remains historical.
 - Runner, evaluator, pinned chrono retrieval and strict data exporter already exist. Reuse them. The local source-alias correction passes checks and produces 23 train / one holdout from 24 unchanged eligible examples; it still needs reviewed integration.
 - Organizer packages contain exam.json, PNGs and answers-template.json. The adapter must preserve package IDs and emit only valid answers.json. The published May 2023 mock is a format/DEV exercise, not the May 2024 target or the unreleased final exam.
 - No HF publication, specialist fleet, speculative large corpus, or new evaluation framework on the critical path. No purchases, reset credits, or unrelated-project credentials.
@@ -23,7 +23,7 @@ No training/retrieval material derived from fixed 2023/2024/2025 exam questions,
 
 | Owner | Primary responsibility | Immediate deliverable | Safe parallel work if blocked |
 | --- | --- | --- | --- |
-| @semberecki | GPU candidate execution, #33 | Working Gemma text+image load, then one full frozen validation arm; exact weights/runtime/context and public answer-only handoff | Resolve one bounded runtime blocker or validate local submission dry-run; no duplicate Qwen or speculative training |
+| @semberecki | GPU candidate execution, #33 | Prepare and verify Gemma on RTX 5090; execute the next lead-declared improvement after the now-running laptop baseline | Resolve one bounded runtime blocker or validate local submission dry-run; no duplicate Qwen/Gemma baseline or speculative training |
 | @Pewciu6 | Score and diagnose candidates, #11 | Score arriving Qwen/Gemma outputs on fixed denominators; independent rubric review and loss-by-cause table | Grade completed rows incrementally, define blind review packets, review Greg's output schema; do not wait for every row |
 | @Bukareszt | Organizer package adapter, #37 | Tested offline exam.json/images -> existing runner -> answers.json command | Stage the existing pinned chrono index on the chosen inference machine once the adapter slice is ready |
 | @przemeknowak781 | Data/split readiness, #4 | Review/integrate the existing source-alias fix, preserve all 24 records, report 23/1 and tiny-holdout limitation | Prepare a source-backed error-category data plan from the scorecard; no exam-derived examples or blind volume chase |
@@ -64,6 +64,8 @@ Use GPT-6 Sol for bounded local implementation/review and Luna for extraction/ch
 Checkpoint at 14:55: the key-free bootstrap and owner dispatch are merged (#40); the existing split repair is published as a patch for Przemek, and Greg has delivered his first tested adapter slice. Qwen is finished. Its answer-only handoff is `agentsLog/kwiscion/model-answers/qwen35-9b-val40-1024.jsonl`, preserving every final answer and all four failures. Paweł owns independent scoring; 5/60 is only the current automatic floor. Piotrek has not yet acknowledged a working GPU run. The 14:45 acknowledgment gate slipped; the lead re-pinged the unclaimed owners with concrete artifacts.
 
 The source-completeness audit found one omitted visual on one available point. Preserve v1 and its score; explicitly version the correction as v2 before the new Gemma arm. Root will predeclare a single affected-item Qwen correction and label the resulting reuse of 39 unchanged v1 answers. This repairs input fidelity; it is not a fresh independent full run or evidence that the broad score gap is solved. Output-budget changes remain a separate intervention. No additional full laptop baseline is authorized by this correction.
+
+At 15:00 the lead reconciled the unexpected local Gemma v1 process: preserve it and stop dispatch of a duplicate baseline on #33. Piotrek can prepare his runtime and synthetic smoke, but the next full RTX arm requires a declared intervention from the baseline score/error table. The lead's one-item Qwen repair remains pending until this local worker finishes. Latest local Gemma snapshot was 13/40 complete without errors, not a score.
 
 ## End-state checklist
 
