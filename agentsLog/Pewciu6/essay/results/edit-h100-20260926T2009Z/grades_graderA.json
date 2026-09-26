@@ -1,0 +1,271 @@
+[
+{"code": "E01",
+ "aspects": [
+  {"aspect": "polityczny", "passage": "Klęka ta bezpośrednio wpłynęła na politykę zaborcy, który w reakcji na opór Polaków wprowadził szereg reform mających na celu osłabienie pozycji polskiej szlachty. Najważniejszym z tych działań było uwłaszczenie chłopów w 1864 roku. [...] odebrała ziemiństwu monopol na władzę i wpływy na wsi. Ponadto, nasilenie polityki rusyfikacji po 1863 roku paradoksalnie umocniło poczucie wspólnoty", "claims": ["The uprising was the largest insurrection against Russia after the November Uprising", "Russia carried out the 1864 enfranchisement of peasants (uwłaszczenie) to weaken the gentry", "Russification intensified after 1863 and strengthened national solidarity"], "level": 3},
+  {"aspect": "społeczny", "passage": "Uwłaszczenie chłopów, będące bezpośrednim skutkiem powstania, zmieniło status społeczny chłopów, czyniąc ich istotnym składnikiem wspólnoty narodowej. [...] nowoczesna koncepcja narodu jako wspólnoty ludzi o wspólnej kulturze, religii i języku, a nie tylko grupy posiadaczy ziemskich. Powstanie przyczyniło się do narodzin „narodu ludowego”", "claims": ["Enfranchisement was a direct consequence of the uprising", "Peasants became part of the national community", "A modern ethnic-cultural concept of the nation replaced the gentry-based one"], "level": 3},
+  {"aspect": "kulturowy", "passage": "kult powstańców i ich poświęcenia stał się fundamentem polskiej kultury patriotycznej [...] klęska utrudniła dalszą walkę zbrojną, co skierowało uwagę intelektualistów na „pracę organiczną”. [...] Powstanie umocniło rolę Kościoła katolickiego jako strażnika tożsamości", "claims": ["The uprising gave rise to a patriotic cult in literature and art", "The defeat turned intellectuals to positivism and organic work", "The role of the Catholic Church and the Polish language as guardians of identity grew stronger"], "level": 3}
+ ],
+ "coherence": 3,
+ "coherence_reason": "The thesis, the three aspect paragraphs and the conclusion follow logically, with no contradictions or irrelevant branches.",
+ "error_deduction": 0,
+ "factual_errors": [
+  {"claim": "The 1864 enfranchisement is presented only as a Russian administrative decision", "correction": "The National Government's decrees of 22 January 1863 had already granted land to peasants; the tsar's 1864 ukase was partly a response to them. This is an omission, not a falsehood.", "type": "omission"}
+ ],
+ "notes": "Text is identical to E18. The political aspect is thin (it leans on uwłaszczenie, which it shares with the social aspect) but it does give a causal explanation."},
+{"code": "E02",
+ "aspects": [
+  {"aspect": "polityczny", "passage": "Po przejęciu tronu w 1335 roku, król zjednoczył ziemie polskie pod jedną koroną. [...] Poprzez traktat w Kaliszu (1343) oraz budowę systemu umocnień, ograniczył on ekspansję zakonną. [...] Ujednolicił prawo w różnych częściach królestwa, ograniczając samowolę możnowładców", "claims": ["Took the throne in 1335", "Unified the Polish lands", "The 1343 Treaty of Kalisz and fortifications limited the Teutonic Order", "Unified the law and built an administrative system"], "level": 3},
+  {"aspect": "gospodarczy", "passage": "Przeprowadził reformę monetarną, wprowadzając jednolitą walutę [...] wspieranie miast poprzez nadawanie im przywilejów lokacyjnych na prawie magdeburskim [...] stałe dochody z mennic i kopalń", "claims": ["Monetary reform introducing a single currency", "Town foundations under Magdeburg law", "Road and bridge building", "Crown revenue from mints and mines"], "level": 3},
+  {"aspect": "kulturalny", "passage": "Najważniejszym osiągnięciem w tym zakresie było założenie Akademii Krakowskiej w 1364 roku – pierwszej uczelni wyższej w Polsce. [...] promując styl gotycki i budując liczne kościoły oraz odnowiony zamek w Krakowie.", "claims": ["Founded the Kraków Academy in 1364", "Gothic sacred and secular architecture", "Rebuilt the Kraków castle"], "level": 3}
+ ],
+ "coherence": 3,
+ "coherence_reason": "The argument moves from the thesis through the aspects to a consistent conclusion without logical breaks.",
+ "error_deduction": 1,
+ "factual_errors": [
+  {"claim": "Po przejęciu tronu w 1335 roku", "correction": "Casimir III became king in March 1333 and was crowned in April 1333.", "type": "established_falsehood"},
+  {"claim": "król zjednoczył ziemie polskie pod jedną koroną", "correction": "The kingdom was reunited by Władysław Łokietek (1320). Casimir renounced Silesia (1335/1339) and Gdańsk Pomerania (Kalisz 1343), so he did not unite all Polish lands.", "type": "disputed_interpretation"},
+  {"claim": "Ujednolicił prawo w różnych częściach królestwa", "correction": "The Wiślica and Piotrków statutes were separate codifications for Lesser and Greater Poland, not one unified law.", "type": "imprecise_terminology"}
+ ],
+ "notes": "It overstates Kalisz 1343 as limiting the Order. The treaty regained Kuyavia and Dobrzyń but gave up Pomerania."},
+{"code": "E03",
+ "aspects": [
+  {"aspect": "wojskowy", "passage": "Armia Krajowa (AK), która jako największa konspiracyjna armia podziemna w Europie [...] wywodząca się m.in. z Związku Walki Zbrojnej, prowadziła działania dywersyjne, sabotażowe oraz walkę partyzancką [...] operacja „Burza”, mająca na celu opanowanie ziem polskich przez oddziały AK przed wkroczeniem Armii Czerwonej [...] zbierały istotne informacje wywiadowcze", "claims": ["The AK was the largest underground army in Europe", "The AK grew out of the ZWZ", "Diversion, sabotage and partisan warfare", "Operation Tempest (Burza)", "Intelligence gathering"], "level": 3},
+  {"aspect": "polityczny", "passage": "Współpracując z Rządem na Uchodźstwie w Londynie, struktury w kraju tworzyły podziemne administracje cywilne, system sądowniczy oraz służby policyjne. Istniało tajne sądownictwo [...] Dzięki tym działaniom państwo polskie zachowało swoją podmiotowość międzynarodową", "claims": ["Cooperation with the London government-in-exile", "Underground civil administration, courts and police", "Preserved Poland's international standing and training of cadres for after the war"], "level": 3},
+  {"aspect": "społeczny", "passage": "stworzenie rozległego systemu tajnego nauczania [...] Działalność wydawnicza, obejmująca podziemne gazety i czasopisma, skutecznie przeciwdziałała propagandzie [...] organizacje takie jak \"Harem\" (dla kobiet) czy \"Zawisz\" (dla młodzieży) [...] struktury opiekuńcze dla rodzin żołnierzy oraz ofiar represji", "claims": ["Clandestine teaching", "Underground press against propaganda", "Youth and women's organisations", "Welfare for families of soldiers and victims of repression"], "level": 3}
+ ],
+ "coherence": 3,
+ "coherence_reason": "The paragraphs support the thesis of effectiveness consistently and the conclusion follows from them.",
+ "error_deduction": 1,
+ "factual_errors": [
+  {"claim": "organizacje takie jak \"Harem\" (dla kobiet)", "correction": "No such organisation existed. Women served, for example, in the AK Women's Military Service (WSK). 'Zawisza' was the youngest branch of the Grey Ranks (Szare Szeregi), not 'Zawisz'.", "type": "established_falsehood"},
+  {"claim": "podmiotowość międzynarodowa [...] miało fundamentalne znaczenie dla ochrony suwerenności kraju po 1945 roku", "correction": "The Western Allies withdrew recognition from the London government in July 1945, and the Underground State's structures were dismantled under communist rule. They did not protect post-1945 sovereignty.", "type": "disputed_interpretation"},
+  {"claim": "konspiracyjnej Policji Państwowej", "correction": "The underground police formation was the State Security Corps (Państwowy Korpus Bezpieczeństwa).", "type": "imprecise_terminology"},
+  {"claim": "operacja „Burza”, mająca na celu opanowanie ziem polskich [...] przed wkroczeniem Armii Czerwonej", "correction": "Tempest aimed to fight the retreating Germans and act as the host authority as the Red Army entered. It was not about seizing territory before the Red Army arrived.", "type": "imprecise_terminology"}
+ ],
+ "notes": "Text is identical to E08. It omits the Government Delegation, the RJN and the Warsaw Uprising. The evaluation is one-sidedly positive."},
+{"code": "E04",
+ "aspects": [
+  {"aspect": "ustrojowy", "passage": "uchwalenie Konstytucji 3 maja 1791 roku. Dokument ten znosił destrukcyjną wolność szlachecką, wprowadzał monarchię dziedziczną oraz znosił sejmikową samowolę [...] próby modernizacji ustroju zostały brutalnie przerwane przez interwencję zbrojną Rosji i próbę wprowadzenia Konstytucji lubelskiej", "claims": ["The 3 May 1791 Constitution", "Hereditary monarchy", "Limited the sejmiki", "The Four-Year Sejm", "Russian armed intervention ended the reforms"], "level": 3},
+  {"aspect": "edukacyjny", "passage": "Powołanie Komisji Edukacji Narodowej w 1773 roku było pierwszą w Europie nowoczesną instytucją zarządzającą szkolnictwem. Zastąpienie zakonnych szkół szkolami świeckimi oraz reforma programu nauczania [...] Powstanie Szkoły Rycerskiej miało natomiast przygotować oficerów", "claims": ["The National Education Commission (KEN) in 1773", "Curriculum reform stressing the natural sciences", "The Knights' School (Szkoła Rycerska)", "Long-term effectiveness through intellectual elites"], "level": 3},
+  {"aspect": "międzynarodowy", "passage": "Król, często ulegający naciskom carycy Katarzyny II, próbował balansować [...] Próby budowania sojuszy i wzmacniania armii były systematycznie blokowane przez Rosję i Prusy [...] co doprowadziło do rozbiorów.", "claims": ["The king depended on Catherine II", "Russia and Prussia blocked alliances and army reform", "This led to the partitions"], "level": 1}
+ ],
+ "coherence": 3,
+ "coherence_reason": "The balanced thesis (internal success, international failure) runs consistently through the aspects and the conclusion.",
+ "error_deduction": 1,
+ "factual_errors": [
+  {"claim": "próbę wprowadzenia Konstytucji lubelskiej", "correction": "No 'Lublin constitution' existed. The reforms were overturned by the Targowica Confederation (1792), the Russian war and the Grodno Sejm (1793).", "type": "established_falsehood"},
+  {"claim": "Zastąpienie zakonnych szkół szkolami świeckimi", "correction": "Under the KEN many teachers were still clergy (ex-Jesuits, Piarists). Schools were placed under state supervision rather than fully secularised.", "type": "imprecise_terminology"},
+  {"claim": "Konstytucja znosiła destrukcyjną wolność szlachecką", "correction": "The Constitution abolished the liberum veto and confederations but confirmed the gentry's liberties and privileges.", "type": "imprecise_terminology"}
+ ],
+ "notes": "The international paragraph has no concrete events (no 1768, Targowica, 1772/1793 or the 1790 Prussian alliance)."},
+{"code": "E05",
+ "aspects": [
+  {"aspect": "wojskowy", "passage": "AK prowadziła regularne działania dywersyjne, niszcząc infrastrukturę kolejową, mosty oraz linie zaopatrzenia Wehrmachtu i SS. Szczególne znaczenie miało przygotowanie do „Akcji Burza” w 1944 roku [...] Wywiad AK dostarczał cennych informacji o ruchach wojsk niemieckich", "claims": ["The AK was the largest underground military organisation", "The AK absorbed the NSZ", "Railway and bridge sabotage", "Operation Tempest in 1944", "AK intelligence helped the Allies"], "level": 3},
+  {"aspect": "polityczny", "passage": "funkcjonowało jako „państwo w państwie”, posiadające własny rząd (Rząd RP na uchodźstwie) oraz struktury administracyjne w kraju. [...] Podziemne struktury polityczne, obejmujące różne ugrupowania (m.in. SDKPi, NZW, czy struktury Mocarstw Środkowych) [...] po wojnie, Polska dysponowała gotowym aparatem urzędniczym", "claims": ["Government-in-exile plus a civil apparatus at home", "Political groupings named SDKPi, NZW and 'Mocarstwa Środkowe'", "The state had a ready bureaucracy after the war"], "level": 1},
+  {"aspect": "społeczny", "passage": "Podziemne struktury edukacyjne organizowały tajne nauczanie [...] Działalność wydawnicza – publikowanie prasy, książek i ulotek – przeciwdziałała propagandzie [...] Akcja „Har-Har” [...] pomoc dla represjonowanych, wspieraniu rodzin więźniów", "claims": ["Clandestine teaching", "Underground press", "A so-called 'Har-Har' action", "Help for repressed people and prisoners' families"], "level": 3}
+ ],
+ "coherence": 3,
+ "coherence_reason": "The structure is logical and the conclusion matches the thesis. The problems are factual, not logical.",
+ "error_deduction": 2,
+ "factual_errors": [
+  {"claim": "ugrupowania (m.in. SDKPi, NZW, czy struktury Mocarstw Środkowych)", "correction": "The Underground State's political base was the parties of the PKP/RJN (SL, PPS-WRN, SN, SP). The SDKPiL ceased to exist in 1918, the NZW was founded only in 1944-45 outside the Underground State's structures, and 'Mocarstwa Środkowe' is a fabrication.", "type": "established_falsehood"},
+  {"claim": "zjednoczyła różne formacje, takie jak Narodowe Siły Zbrojne czy Frontii Narodowych", "correction": "Only part of the NSZ merged into the AK (1944); a large part stayed independent. 'Frontii Narodowych' is not a real formation.", "type": "established_falsehood"},
+  {"claim": "po wojnie, Polska dysponowała gotowym aparatem urzędniczym i strukturami samorządowymi", "correction": "The communist authorities dissolved and persecuted the Underground State's structures. The Council of National Unity (RJN) dissolved itself in July 1945.", "type": "established_falsehood"},
+  {"claim": "Akcja „Har-Har”", "correction": "No such action is known. This looks like a fabricated name (possibly a garbling of Operation N or the minor sabotage group Wawer).", "type": "established_falsehood"}
+ ],
+ "notes": "The political aspect is undermined by several fabricated organisation names."},
+{"code": "E06",
+ "aspects": [
+  {"aspect": "ustrojowy", "passage": "Kluczowym etapem były prace Sejmu Wielkiego oraz uchwalenie Konstytucji 3 Maja w 1791 roku. Dokument ten wprowadzał zmiany fundamentalne: zniesienie destrukcyjnego liberum veto oraz mechanizmu rokacji, ustanowienie stałej władzy wykonawczej, reformę systemu podatkowego oraz stworzenie stałej armii.", "claims": ["The Great Sejm", "The 3 May 1791 Constitution", "Abolished the liberum veto", "Permanent executive power", "Tax reform and a standing army", "Abolished by Russian intervention"], "level": 3},
+  {"aspect": "edukacyjny", "passage": "Powołanie Komisji Edukacji Narodowej w 1773 roku było przełomem w historii szkolnictwa. Komisja ta przeprowadziła kompleksową reformę szkolnictwa, znosząc dotychczasowe przywileje jezuickie [...] nowoczesne programy nauczania", "claims": ["The KEN in 1773", "Took over the Jesuit school system", "Modern curricula with sciences and languages", "Significance for surviving the partitions"], "level": 3},
+  {"aspect": "międzynarodowy", "passage": "Rzeczypospolita znajdowała się w kleszczach ekspansjonizmu Rosji i Prus. Stanisław August Poniatowski, próbując balansować między mocarstwami, często wpadał w pułapkę zależności od Rosji [...] co doprowadziło do ostatecznego upadku państwa w 1795 roku.", "claims": ["Pressure from Russia and Prussia", "The king depended on Russia", "Lack of alliances", "Fall of the state in 1795"], "level": 1}
+ ],
+ "coherence": 3,
+ "coherence_reason": "The thesis of internal success versus external failure is developed consistently and restated in the conclusion.",
+ "error_deduction": 0,
+ "factual_errors": [
+  {"claim": "zniesienie [...] mechanizmu rokacji", "correction": "The Constitution abolished confederations and rokosz (armed rebellion). 'Rokacja' is not a term.", "type": "imprecise_terminology"},
+  {"claim": "reformę systemu podatkowego oraz stworzenie stałej armii (as contents of the Constitution)", "correction": "The 100,000-man army and the 'ofiara dziesiątego grosza' tax were separate Great Sejm acts of 1789, not provisions of the 3 May Constitution.", "type": "imprecise_terminology"},
+  {"claim": "eliminując dotychczasowe przywileje szlacheckie", "correction": "The Constitution confirmed the gentry's cardinal privileges and only restricted the political rights of landless gentry.", "type": "disputed_interpretation"},
+  {"claim": "KEN [...] wprowadzając system szkolenia [...] oficerów", "correction": "Officer training was done by the Knights' School (1765), which was not a KEN institution.", "type": "imprecise_terminology"}
+ ],
+ "notes": "Text is identical to E15. The international aspect has no concrete events apart from 1795. The garbled phrase 'ojczyznoparkową' was not counted as a factual error."},
+{"code": "E07",
+ "aspects": [
+  {"aspect": "polityczny", "passage": "Po przejęciu Małopolski w 1335 roku, król zjednoczył ziemie polskie pod jedną koroną. [...] Poprzez traktat w Kaliszu (1343) oraz budowę systemu umocnień, ograniczył on ekspansję zakonną. [...] Ujednolicił prawo w różnych częściach królestwa", "claims": ["Took over Lesser Poland in 1335", "Unified the Polish lands", "Treaty of Kalisz 1343", "Unified the law and built an administration"], "level": 3},
+  {"aspect": "gospodarczy", "passage": "Przeprowadził reformę monetarną, wprowadzając jednolitą walutę [...] przywilejów lokacyjnych na prawie magdeburskim [...] stałe dochody z ceł i opłat", "claims": ["Monetary reform", "Town foundations under Magdeburg law", "Roads and bridges", "Customs revenue"], "level": 3},
+  {"aspect": "kulturalny", "passage": "założenie Akademii Krakowskiej w 1364 roku – pierwszej uczelni wyższej w Polsce. [...] promując styl gotycki i budując liczne kościoły oraz odnowiony zamek w Krakowie.", "claims": ["The Kraków Academy in 1364", "Gothic architecture", "The Kraków castle"], "level": 3}
+ ],
+ "coherence": 3,
+ "coherence_reason": "The paragraphs follow the thesis logically and the conclusion is consistent.",
+ "error_deduction": 1,
+ "factual_errors": [
+  {"claim": "Po przejęciu Małopolski w 1335 roku", "correction": "Lesser Poland was already part of the kingdom under Łokietek. Casimir inherited the whole kingdom in 1333. In 1335 he signed the Trenčín/Visegrád agreements renouncing Silesia.", "type": "established_falsehood"},
+  {"claim": "król zjednoczył ziemie polskie pod jedną koroną", "correction": "The reunification was Łokietek's work. Casimir gave up claims to Silesia and Gdańsk Pomerania.", "type": "disputed_interpretation"},
+  {"claim": "Ujednolicił prawo w różnych częściach królestwa", "correction": "There were separate statutes for Lesser Poland (Wiślica) and Greater Poland (Piotrków).", "type": "imprecise_terminology"}
+ ],
+ "notes": ""},
+{"code": "E08",
+ "aspects": [
+  {"aspect": "wojskowy", "passage": "Armia Krajowa (AK), która jako największa konspiracyjna armia podziemna w Europie [...] wywodząca się m.in. z Związku Walki Zbrojnej, prowadziła działania dywersyjne, sabotażowe oraz walkę partyzancką [...] operacja „Burza”, mająca na celu opanowanie ziem polskich przez oddziały AK przed wkroczeniem Armii Czerwonej [...] zbierały istotne informacje wywiadowcze", "claims": ["The AK was the largest underground army in Europe", "The AK grew out of the ZWZ", "Diversion, sabotage and partisan warfare", "Operation Tempest (Burza)", "Intelligence gathering"], "level": 3},
+  {"aspect": "polityczny", "passage": "Współpracując z Rządem na Uchodźstwie w Londynie, struktury w kraju tworzyły podziemne administracje cywilne, system sądowniczy oraz służby policyjne. Istniało tajne sądownictwo [...] Dzięki tym działaniom państwo polskie zachowało swoją podmiotowość międzynarodową", "claims": ["Cooperation with the London government-in-exile", "Underground civil administration, courts and police", "Preserved Poland's international standing and training of cadres for after the war"], "level": 3},
+  {"aspect": "społeczny", "passage": "stworzenie rozległego systemu tajnego nauczania [...] Działalność wydawnicza, obejmująca podziemne gazety i czasopisma, skutecznie przeciwdziałała propagandzie [...] organizacje takie jak \"Harem\" (dla kobiet) czy \"Zawisz\" (dla młodzieży) [...] struktury opiekuńcze dla rodzin żołnierzy oraz ofiar represji", "claims": ["Clandestine teaching", "Underground press against propaganda", "Youth and women's organisations", "Welfare for families of soldiers and victims of repression"], "level": 3}
+ ],
+ "coherence": 3,
+ "coherence_reason": "The paragraphs support the thesis of effectiveness consistently and the conclusion follows from them.",
+ "error_deduction": 1,
+ "factual_errors": [
+  {"claim": "organizacje takie jak \"Harem\" (dla kobiet)", "correction": "No such organisation existed. Women served, for example, in the AK Women's Military Service (WSK). 'Zawisza' was the youngest branch of the Grey Ranks (Szare Szeregi), not 'Zawisz'.", "type": "established_falsehood"},
+  {"claim": "podmiotowość międzynarodowa [...] miało fundamentalne znaczenie dla ochrony suwerenności kraju po 1945 roku", "correction": "The Western Allies withdrew recognition from the London government in July 1945, and the Underground State's structures were dismantled under communist rule. They did not protect post-1945 sovereignty.", "type": "disputed_interpretation"},
+  {"claim": "konspiracyjnej Policji Państwowej", "correction": "The underground police formation was the State Security Corps (Państwowy Korpus Bezpieczeństwa).", "type": "imprecise_terminology"},
+  {"claim": "operacja „Burza”, mająca na celu opanowanie ziem polskich [...] przed wkroczeniem Armii Czerwonej", "correction": "Tempest aimed to fight the retreating Germans and act as the host authority as the Red Army entered. It was not about seizing territory before the Red Army arrived.", "type": "imprecise_terminology"}
+ ],
+ "notes": "Text is identical to E03 and graded identically."},
+{"code": "E09",
+ "aspects": [
+  {"aspect": "ustrojowy", "passage": "Ruch egzekucyjny odniósł znaczący sukces w ograniczaniu tendencji absolutystycznych monarchii. Szlachta domagała się przestrzegania praw oraz egzekucji przywilejów, co doprowadziło do realnego osłabienia pozycji króla na rzecz sejmu oraz sądów ziemskich. Zygmunt II August [...] musiał ustąpić pod naciskiem magnatów i średniej szlachty.", "claims": ["The execution movement curbed absolutist tendencies", "The king was weakened in favour of the sejm and land courts", "The king yielded to magnates and middle gentry", "Golden liberty took shape"], "level": 1},
+  {"aspect": "skarbowy", "passage": "ruch egzekucyjny skupiał się na tzw. egzekucji dóbr królewszczyzn. Szlachta domagała się zwrotu ziemi [...] doprowadziło do odzyskania przez państwo kontroli nad niektórymi majątkami, choć jednocześnie osłabiło finanse króla, czyniąc go bardziej zależnym od sejmików.", "claims": ["Execution (recovery) of crown estates", "Some estates returned to state control", "The king's finances were weakened", "State finance came to rest on taxes voted by the gentry"], "level": 1},
+  {"aspect": "terytorialny", "passage": "akt unii lubelskiej z 1569 roku. Dzięki tej reformie Rzeczpospolita lubelska stała się jednym z największych państw w Europie, integrując rozległe obszary Korony i Litwy. Równolegle, ruch egzekucyjny odniósł sukces w sferze zarządzania ziemią, domagając się zwrotu dóbr królewszczyzn", "claims": ["The Union of Lublin 1569", "One of the largest states in Europe", "Recovery of crown estates presented as a territorial success"], "level": 1}
+ ],
+ "coherence": 2,
+ "coherence_reason": "The territorial paragraph recycles the recovery of crown estates (a fiscal issue) as a territorial achievement, and the fiscal paragraph calls the change 'effective' after saying it weakened the treasury, without explaining how.",
+ "error_deduction": 1,
+ "factual_errors": [
+  {"claim": "egzekucja dóbr [...] osłabiło finanse króla", "correction": "The 1562/63 Piotrków Sejm recovered unlawfully held crown estates and created the kwarta (a quarter of their revenue for the standing army). This strengthened the treasury and the crown.", "type": "established_falsehood"},
+  {"claim": "Zygmunt II August [...] musiał ustąpić pod naciskiem magnatów i średniej szlachty; ruch dążył do ograniczenia władzy króla", "correction": "The movement of the middle gentry was aimed mainly at the magnates. From 1562 Sigismund Augustus allied with the executionists, so the king and the movement were not simply opponents.", "type": "disputed_interpretation"},
+  {"claim": "Rzeczpospolita lubelska", "correction": "The state created in 1569 is called the Polish-Lithuanian Commonwealth (Rzeczpospolita Obojga Narodów).", "type": "imprecise_terminology"}
+ ],
+ "notes": "Text is identical to E13. It omits the 1562-63 sejm, the kwarta, the incorporation of Podlasie, Volhynia and Kyiv, Livonia (1561) and the incorporation of Royal Prussia (1569)."},
+{"code": "E10",
+ "aspects": [
+  {"aspect": "polityczny", "passage": "Najważniejszym osiągnięciem było zjednoczenie ziem polskich oraz przyłączenie ziem czeskich (zielińskich) i małopolskich [...] pokój kaliski z 1343 roku, który ustalił granice z Wielkim Księstwem Litewskim [...] reformę administracyjną i sądowniczej [...] reforma wojskowa, obejmująca budowę nowoczesnych zamków", "claims": ["Annexation of Czech and Lesser Poland lands", "The 1343 Peace of Kalisz with Lithuania", "Administrative and judicial reform and unified law", "Military reform and castles"], "level": 1},
+  {"aspect": "gospodarczy", "passage": "reforma monetarna oraz ujednolicenie systemu miar i wag [...] Kazimierz wspierał lokacje nowych miast na prawie magdeburskim i chełmińskim [...] budowę dróg i mostów, oraz rozwój handlu transgranicznego", "claims": ["Monetary reform", "Standardised weights and measures", "Town foundations under Magdeburg and Chełmno law", "Infrastructure and trade"], "level": 3},
+  {"aspect": "kulturalny", "passage": "Król dbał o rozwój edukacji i kultury duchowej, wspierając budowę kościołów i klasztorów [...] Budowa zamków i pałaców o wysokim stopniu zaawansowania architektonicznego stała się symbolem potęgi monarchii.", "claims": ["Churches and monasteries", "Castles and palaces", "Patronage building international prestige"], "level": 1}
+ ],
+ "coherence": 3,
+ "coherence_reason": "The essay follows its thesis consistently through the aspects to the conclusion. Its weaknesses are factual.",
+ "error_deduction": 2,
+ "factual_errors": [
+  {"claim": "przyłączenie ziem czeskich (zielińskich) i małopolskich", "correction": "Casimir annexed no Czech lands. He renounced Silesia to Bohemia (1335/1339), and Lesser Poland was already part of the kingdom. His annexations were Red Ruthenia (from 1340) and suzerainty over Masovia.", "type": "established_falsehood"},
+  {"claim": "pokój kaliski z 1343 roku, który ustalił granice z Wielkim Księstwem Litewskim", "correction": "The 1343 Peace of Kalisz was made with the Teutonic Order: Poland regained Kuyavia and Dobrzyń and gave up Gdańsk Pomerania.", "type": "established_falsehood"},
+  {"claim": "co zakończyło okres rozbicia dzielnicowego", "correction": "The end of fragmentation is dated to Łokietek's coronation in 1320.", "type": "imprecise_terminology"},
+  {"claim": "Cultural aspect omits the Kraków Academy", "correction": "Casimir founded the Kraków Academy in 1364, his key cultural achievement.", "type": "omission"}
+ ],
+ "notes": "The cultural paragraph is generic, with no specific foundations or events."},
+{"code": "E11",
+ "aspects": [
+  {"aspect": "ustrojowy", "passage": "Główne postulaty szlachty, takie jak walka z magnackimi przywilejami, ograniczenie wpływów możnowładców oraz walka o wolność osobistą, zostały częściowo zrealizowane. Zygmunt II August, wprowadzając m.in. przywileje dla szlachty (np. nietykalność osobistą) [...] Ustanowienie sejmów i wzmocnienie roli szlachty", "claims": ["The movement fought magnate privileges", "Sigismund Augustus granted personal inviolability", "Sejms were established", "The magnates were weakened and golden liberty took shape"], "level": 1},
+  {"aspect": "skarbowy", "passage": "Ruch egzekucyjny domagał się zwrotu dóbr królewskich (tzw. egzekucja dóbr) oraz uporządkowania systemu podatkowego. [...] skala utraconych przez koronę przywilejów finansowych oraz niechęć szlachty do opłacania stałych podatków [...] spowodowały trwałe osłabienie pozycji ekonomicznej monarchii.", "claims": ["Demand for the return of crown estates", "Tax system reform", "Gentry unwilling to pay permanent taxes", "Lasting weakening of the treasury"], "level": 1},
+  {"aspect": "terytorialny", "passage": "Król, wykorzystując koncepcję unii realnej, zdołał zintegrować Koronę i Litwę w jeden organizm polityczny. Kluczowym momentem było podpisanie unii lubelskiej w 1569 roku, która powołała Rzeczpospolitą Obojga Narodów. [...] wspólną walutę, sejm oraz monetę", "claims": ["A real union", "The Union of Lublin 1569 created the Commonwealth", "Common sejm and coinage", "One of Europe's great powers"], "level": 3}
+ ],
+ "coherence": 3,
+ "coherence_reason": "The thesis of mixed effectiveness (constitutional and territorial success, fiscal failure) is set out and kept consistently through to the conclusion.",
+ "error_deduction": 1,
+ "factual_errors": [
+  {"claim": "Zygmunt II August, wprowadzając m.in. przywileje dla szlachty (np. nietykalność osobistą)", "correction": "Personal inviolability (neminem captivabimus) was granted by Władysław Jagiełło in the privileges of Jedlnia (1430) and Kraków (1433).", "type": "established_falsehood"},
+  {"claim": "Ustanowienie sejmów", "correction": "The bicameral general sejm had existed since 1493 and the Nihil novi constitution of 1505, before Sigismund Augustus's reign.", "type": "established_falsehood"},
+  {"claim": "egzekucja [...] spowodowały trwałe osłabienie pozycji ekonomicznej monarchii", "correction": "The 1562/63 execution of estates recovered crown lands and created the kwarta for a standing army, which strengthened the treasury in the short term.", "type": "disputed_interpretation"}
+ ],
+ "notes": "It omits the 1562-63 sejm, the kwarta and the 1569 incorporation of lands into the Crown."},
+{"code": "E12",
+ "aspects": [
+  {"aspect": "polityczny", "passage": "Po upadku powstania Rosja dokonała brutalnej rewizji polityki wobec Polaków, m.in. poprzez konfiskaty majątków ziemskich i wprowadzenie przymusowych przesiedleń. Jednakże polityczne znaczenie zrywu objawiało się przede wszystkim w umocnieniu idei państwowości. [...] walka o niepodległość będzie wymagała długotrwałych strategii", "claims": ["Estate confiscations and forced resettlement after the uprising", "Strengthened the idea of statehood", "A reference point for diplomacy and later conspiracy", "Awareness that long-term strategies were needed"], "level": 1},
+  {"aspect": "społeczny", "passage": "Walka zbrojna wymusiła współpracę między szlachtą, inteligencją a mieszczaństwem, a nawet zaangażowanie chłopów [...] Choć mobilizacja chłopstwa nie była powszechna [...] tragiczne losy powstańców i represje [...] zbudowały poczucie wspólnoty losu", "claims": ["Cooperation between gentry, intelligentsia and townspeople", "Partial peasant involvement", "Repression built a sense of shared fate"], "level": 1},
+  {"aspect": "kulturowy", "passage": "Powstanie stało się mitem założycielskim polskiego romantyzmu i patriotyzmu. [...] Literatura, sztuka oraz muzyka czerpały z heroizmu powstańców [...] Polacy musieli jeszcze mocniej pielęgnować swoją kulturę", "claims": ["A founding myth of romanticism and patriotism", "Motifs of sacrifice in literature, art and music", "Cultivation of language and culture under Russian repression"], "level": 1}
+ ],
+ "coherence": 3,
+ "coherence_reason": "The thesis and conclusion match and the paragraphs follow in order. The weakness is generality, not logical breaks.",
+ "error_deduction": 0,
+ "factual_errors": [
+  {"claim": "Powstanie stało się mitem założycielskim polskiego romantyzmu", "correction": "Polish romanticism dates from the 1820s. After 1863 positivism dominated, though the uprising fed a late romantic and patriotic myth (e.g. Grottger).", "type": "imprecise_terminology"},
+  {"claim": "zmusiła Rosjan do wprowadzenia radykalnych reform", "correction": "This is vague. The concrete reform was the 1864 enfranchisement ukase, which is never named.", "type": "imprecise_terminology"},
+  {"claim": "The social aspect omits the enfranchisement of peasants", "correction": "The 1863 decrees of the National Government and the tsar's 1864 ukase were the key social consequence.", "type": "omission"}
+ ],
+ "notes": "All three aspects rest on generalities without concrete facts, names or examples."},
+{"code": "E13",
+ "aspects": [
+  {"aspect": "ustrojowy", "passage": "Ruch egzekucyjny odniósł znaczący sukces w ograniczaniu tendencji absolutystycznych monarchii. Szlachta domagała się przestrzegania praw oraz egzekucji przywilejów, co doprowadziło do realnego osłabienia pozycji króla na rzecz sejmu oraz sądów ziemskich. Zygmunt II August [...] musiał ustąpić pod naciskiem magnatów i średniej szlachty.", "claims": ["The execution movement curbed absolutist tendencies", "The king was weakened in favour of the sejm and land courts", "The king yielded to magnates and middle gentry", "Golden liberty took shape"], "level": 1},
+  {"aspect": "skarbowy", "passage": "ruch egzekucyjny skupiał się na tzw. egzekucji dóbr królewszczyzn. Szlachta domagała się zwrotu ziemi [...] doprowadziło do odzyskania przez państwo kontroli nad niektórymi majątkami, choć jednocześnie osłabiło finanse króla, czyniąc go bardziej zależnym od sejmików.", "claims": ["Execution (recovery) of crown estates", "Some estates returned to state control", "The king's finances were weakened", "State finance came to rest on taxes voted by the gentry"], "level": 1},
+  {"aspect": "terytorialny", "passage": "akt unii lubelskiej z 1569 roku. Dzięki tej reformie Rzeczpospolita lubelska stała się jednym z największych państw w Europie, integrując rozległe obszary Korony i Litwy. Równolegle, ruch egzekucyjny odniósł sukces w sferze zarządzania ziemią, domagając się zwrotu dóbr królewszczyzn", "claims": ["The Union of Lublin 1569", "One of the largest states in Europe", "Recovery of crown estates presented as a territorial success"], "level": 1}
+ ],
+ "coherence": 2,
+ "coherence_reason": "The territorial paragraph recycles the recovery of crown estates (a fiscal issue) as a territorial achievement, and the fiscal paragraph calls the change 'effective' after saying it weakened the treasury, without explaining how.",
+ "error_deduction": 1,
+ "factual_errors": [
+  {"claim": "egzekucja dóbr [...] osłabiło finanse króla", "correction": "The 1562/63 Piotrków Sejm recovered unlawfully held crown estates and created the kwarta (a quarter of their revenue for the standing army). This strengthened the treasury and the crown.", "type": "established_falsehood"},
+  {"claim": "Zygmunt II August [...] musiał ustąpić pod naciskiem magnatów i średniej szlachty; ruch dążył do ograniczenia władzy króla", "correction": "The movement of the middle gentry was aimed mainly at the magnates. From 1562 Sigismund Augustus allied with the executionists, so the king and the movement were not simply opponents.", "type": "disputed_interpretation"},
+  {"claim": "Rzeczpospolita lubelska", "correction": "The state created in 1569 is called the Polish-Lithuanian Commonwealth (Rzeczpospolita Obojga Narodów).", "type": "imprecise_terminology"}
+ ],
+ "notes": "Text is identical to E09 and graded identically."},
+{"code": "E14",
+ "aspects": [
+  {"aspect": "polityczny", "passage": "unia krewska była bezpośrednią odpowiedzią na kryzys suwerenności Litwy oraz potrzebę zabezpieczenia wschodnich granic Polski. Włączenie Litwy do unii z Koroną Polską pozwoliło na stworzenie potężnego bloku politycznego [...] fundament pod przyszłą Rzeczpospolitą Obojga Narodów", "claims": ["The union answered a crisis threatening Lithuania", "A powerful political bloc was created", "Jagiełło ruled both states", "Foundation of the later Commonwealth"], "level": 1},
+  {"aspect": "militarny", "passage": "Połączenie sił polskiego rycerstwa z litewskimi wojskami umożliwiło skuteczne stawienie czoła potędze militarnej Zakonu Krzyżackiego. Punktem zwrotnym tej strategii była bitwa pod Grunwaldem w 1410 roku, która złamała potęgę militarną Krzyżaków", "claims": ["Combined Polish and Lithuanian forces", "The Battle of Grunwald in 1410 broke the Order's military power", "The threat from the Order was eliminated"], "level": 3},
+  {"aspect": "religijny", "passage": "Przejęcie przez Jagiełłę chrztu oraz formalna chrystianizacja Litwy w 1387 roku były wymogiem politycznym, który zakończył uzasadnienia do krzyżackich wypraw misyjnych. Wprowadzenie Litwy do kręgu chrześcijaństwa umożliwiło integrację kulturową ziem litewskich z kulturą łacińską.", "claims": ["Jagiełło's baptism", "Christianisation of Lithuania in 1387", "Removed the justification for crusades", "Integration with Latin culture"], "level": 3}
+ ],
+ "coherence": 3,
+ "coherence_reason": "Each aspect paragraph supports the stated thesis and the conclusion summarises them consistently.",
+ "error_deduction": 0,
+ "factual_errors": [
+  {"claim": "Przejęcie przez Jagiełłę chrztu oraz formalna chrystianizacja Litwy w 1387 roku", "correction": "Jagiełło was baptised in Kraków in February 1386. The christianisation of Lithuania began in 1387 and the Wilno bishopric was founded that year.", "type": "imprecise_terminology"},
+  {"claim": "eliminacja zagrożenia ze strony Zakonu", "correction": "The Order stayed a threat after Grunwald. The First Peace of Toruń (1411) brought limited gains, wars followed in 1414, 1422 and 1431-35, and Pomerania was regained only in 1466.", "type": "disputed_interpretation"}
+ ],
+ "notes": "Text is identical to E16. The political aspect is generic: no Jadwiga, no Vytautas, no Ostrów (1392), Wilno-Radom (1401) or Horodło (1413)."},
+{"code": "E15",
+ "aspects": [
+  {"aspect": "ustrojowy", "passage": "Kluczowym etapem były prace Sejmu Wielkiego oraz uchwalenie Konstytucji 3 Maja w 1791 roku. Dokument ten wprowadzał zmiany fundamentalne: zniesienie destrukcyjnego liberum veto oraz mechanizmu rokacji, ustanowienie stałej władzy wykonawczej, reformę systemu podatkowego oraz stworzenie stałej armii.", "claims": ["The Great Sejm", "The 3 May 1791 Constitution", "Abolished the liberum veto", "Permanent executive power", "Tax reform and a standing army", "Abolished by Russian intervention"], "level": 3},
+  {"aspect": "edukacyjny", "passage": "Powołanie Komisji Edukacji Narodowej w 1773 roku było przełomem w historii szkolnictwa. Komisja ta przeprowadziła kompleksową reformę szkolnictwa, znosząc dotychczasowe przywileje jezuickie [...] nowoczesne programy nauczania", "claims": ["The KEN in 1773", "Took over the Jesuit school system", "Modern curricula with sciences and languages", "Significance for surviving the partitions"], "level": 3},
+  {"aspect": "międzynarodowy", "passage": "Rzeczypospolita znajdowała się w kleszczach ekspansjonizmu Rosji i Prus. Stanisław August Poniatowski, próbując balansować między mocarstwami, często wpadał w pułapkę zależności od Rosji [...] co doprowadziło do ostatecznego upadku państwa w 1795 roku.", "claims": ["Pressure from Russia and Prussia", "The king depended on Russia", "Lack of alliances", "Fall of the state in 1795"], "level": 1}
+ ],
+ "coherence": 3,
+ "coherence_reason": "The thesis of internal success versus external failure is developed consistently and restated in the conclusion.",
+ "error_deduction": 0,
+ "factual_errors": [
+  {"claim": "zniesienie [...] mechanizmu rokacji", "correction": "The Constitution abolished confederations and rokosz (armed rebellion). 'Rokacja' is not a term.", "type": "imprecise_terminology"},
+  {"claim": "reformę systemu podatkowego oraz stworzenie stałej armii (as contents of the Constitution)", "correction": "The 100,000-man army and the 'ofiara dziesiątego grosza' tax were separate Great Sejm acts of 1789, not provisions of the 3 May Constitution.", "type": "imprecise_terminology"},
+  {"claim": "eliminując dotychczasowe przywileje szlacheckie", "correction": "The Constitution confirmed the gentry's cardinal privileges and only restricted the political rights of landless gentry.", "type": "disputed_interpretation"},
+  {"claim": "KEN [...] wprowadzając system szkolenia [...] oficerów", "correction": "Officer training was done by the Knights' School (1765), which was not a KEN institution.", "type": "imprecise_terminology"}
+ ],
+ "notes": "Text is identical to E06 and graded identically."},
+{"code": "E16",
+ "aspects": [
+  {"aspect": "polityczny", "passage": "unia krewska była bezpośrednią odpowiedzią na kryzys suwerenności Litwy oraz potrzebę zabezpieczenia wschodnich granic Polski. Włączenie Litwy do unii z Koroną Polską pozwoliło na stworzenie potężnego bloku politycznego [...] fundament pod przyszłą Rzeczpospolitą Obojga Narodów", "claims": ["The union answered a crisis threatening Lithuania", "A powerful political bloc was created", "Jagiełło ruled both states", "Foundation of the later Commonwealth"], "level": 1},
+  {"aspect": "militarny", "passage": "Połączenie sił polskiego rycerstwa z litewskimi wojskami umożliwiło skuteczne stawienie czoła potędze militarnej Zakonu Krzyżackiego. Punktem zwrotnym tej strategii była bitwa pod Grunwaldem w 1410 roku, która złamała potęgę militarną Krzyżaków", "claims": ["Combined Polish and Lithuanian forces", "The Battle of Grunwald in 1410 broke the Order's military power", "The threat from the Order was eliminated"], "level": 3},
+  {"aspect": "religijny", "passage": "Przejęcie przez Jagiełłę chrztu oraz formalna chrystianizacja Litwy w 1387 roku były wymogiem politycznym, który zakończył uzasadnienia do krzyżackich wypraw misyjnych. Wprowadzenie Litwy do kręgu chrześcijaństwa umożliwiło integrację kulturową ziem litewskich z kulturą łacińską.", "claims": ["Jagiełło's baptism", "Christianisation of Lithuania in 1387", "Removed the justification for crusades", "Integration with Latin culture"], "level": 3}
+ ],
+ "coherence": 3,
+ "coherence_reason": "Each aspect paragraph supports the stated thesis and the conclusion summarises them consistently.",
+ "error_deduction": 0,
+ "factual_errors": [
+  {"claim": "Przejęcie przez Jagiełłę chrztu oraz formalna chrystianizacja Litwy w 1387 roku", "correction": "Jagiełło was baptised in Kraków in February 1386. The christianisation of Lithuania began in 1387 and the Wilno bishopric was founded that year.", "type": "imprecise_terminology"},
+  {"claim": "eliminacja zagrożenia ze strony Zakonu", "correction": "The Order stayed a threat after Grunwald. The First Peace of Toruń (1411) brought limited gains, wars followed in 1414, 1422 and 1431-35, and Pomerania was regained only in 1466.", "type": "disputed_interpretation"}
+ ],
+ "notes": "Text is identical to E14 and graded identically."},
+{"code": "E17",
+ "aspects": [
+  {"aspect": "polityczny", "passage": "unia krewska połączyła Koronę Królestwa Polskiego z Wielkim Księstwem Litewskim [...] Przyjęcie przez Jagiełłę polskiego prawa i integracja z polską elitą [...] Dzięki unii, Polska zyskała ogromne terytoria na wschodzie [...] silniejszą pozycję negocjacyjną w relacjach z Zakonem Krzyżackim", "claims": ["The union joined the Crown and the Grand Duchy of Lithuania", "Jagiełło adopted Polish law", "Poland gained vast eastern territories", "Stronger bargaining position against the Order"], "level": 1},
+  {"aspect": "militarny", "passage": "Najważniejszym punktem zwrotnym była Bitwa pod Grunwaldem w 1410 roku, która złamała potęgę militarną Zakonu Krzyżackiego [...] Wspólne działania wojskowe Polski i Litwy pozwoliły na skuteczne odparcie agresji zakonnej i zabezpieczenie dróg handlowych. [...] zmusiło Zakon do ustępstw terytorialnych i politycznych", "claims": ["The Battle of Grunwald in 1410", "Joint Polish-Lithuanian military action", "The Order was forced into territorial concessions", "Rivalry for influence in Belarus and Lithuania"], "level": 3},
+  {"aspect": "religijny", "passage": "Przyjęcie przez Litwę chrześcijaństwa w 1387 roku (na mocy unii) było krokiem milowym, który wyeliminował argumenty Zakonu Krzyżackiego o konieczności „chrystianizacji” pogan [...] ułatwiła asymilację elit litewskich.", "claims": ["Christianisation of Lithuania in 1387 under the union", "The Order's crusading pretext was removed", "Closer ties to the Latin West", "Assimilation of Lithuanian elites"], "level": 3}
+ ],
+ "coherence": 3,
+ "coherence_reason": "The argument is consistent: the thesis is developed across three aspects and summarised without contradiction.",
+ "error_deduction": 0,
+ "factual_errors": [
+  {"claim": "Dzięki unii, Polska zyskała ogromne terytoria na wschodzie", "correction": "The Union of Krewo created a personal (dynastic) union. Lithuania kept its own statehood, and after Ostrów (1392) Vytautas ruled it independently. Poland did not directly acquire its territory.", "type": "disputed_interpretation"},
+  {"claim": "Zwycięstwo to [...] zmusiło Zakon do ustępstw terytorialnych", "correction": "Under the First Peace of Toruń (1411) the gains were modest: Dobrzyń Land, and Samogitia only for the lifetimes of Jagiełło and Vytautas, plus an indemnity.", "type": "imprecise_terminology"}
+ ],
+ "notes": "The political aspect is generic and names no concrete agreements (Ostrów, Wilno-Radom, Horodło)."},
+{"code": "E18",
+ "aspects": [
+  {"aspect": "polityczny", "passage": "Klęka ta bezpośrednio wpłynęła na politykę zaborcy, który w reakcji na opór Polaków wprowadził szereg reform mających na celu osłabienie pozycji polskiej szlachty. Najważniejszym z tych działań było uwłaszczenie chłopów w 1864 roku. [...] odebrała ziemiństwu monopol na władzę i wpływy na wsi. Ponadto, nasilenie polityki rusyfikacji po 1863 roku paradoksalnie umocniło poczucie wspólnoty", "claims": ["The uprising was the largest insurrection against Russia after the November Uprising", "Russia carried out the 1864 enfranchisement of peasants (uwłaszczenie) to weaken the gentry", "Russification intensified after 1863 and strengthened national solidarity"], "level": 3},
+  {"aspect": "społeczny", "passage": "Uwłaszczenie chłopów, będące bezpośrednim skutkiem powstania, zmieniło status społeczny chłopów, czyniąc ich istotnym składnikiem wspólnoty narodowej. [...] nowoczesna koncepcja narodu jako wspólnoty ludzi o wspólnej kulturze, religii i języku, a nie tylko grupy posiadaczy ziemskich. Powstanie przyczyniło się do narodzin „narodu ludowego”", "claims": ["Enfranchisement was a direct consequence of the uprising", "Peasants became part of the national community", "A modern ethnic-cultural concept of the nation replaced the gentry-based one"], "level": 3},
+  {"aspect": "kulturowy", "passage": "kult powstańców i ich poświęcenia stał się fundamentem polskiej kultury patriotycznej [...] klęska utrudniła dalszą walkę zbrojną, co skierowało uwagę intelektualistów na „pracę organiczną”. [...] Powstanie umocniło rolę Kościoła katolickiego jako strażnika tożsamości", "claims": ["The uprising gave rise to a patriotic cult in literature and art", "The defeat turned intellectuals to positivism and organic work", "The role of the Catholic Church and the Polish language as guardians of identity grew stronger"], "level": 3}
+ ],
+ "coherence": 3,
+ "coherence_reason": "The thesis, the three aspect paragraphs and the conclusion follow logically, with no contradictions or irrelevant branches.",
+ "error_deduction": 0,
+ "factual_errors": [
+  {"claim": "The 1864 enfranchisement is presented only as a Russian administrative decision", "correction": "The National Government's decrees of 22 January 1863 had already granted land to peasants; the tsar's 1864 ukase was partly a response to them. This is an omission, not a falsehood.", "type": "omission"}
+ ],
+ "notes": "Text is identical to E01 and graded identically."}
+]

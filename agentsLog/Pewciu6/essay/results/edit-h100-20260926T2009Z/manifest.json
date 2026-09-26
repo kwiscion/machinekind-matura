@@ -1,0 +1,373 @@
+{
+ "revision": "essay-edit-v1",
+ "contract_revision": "essay-contract-v2",
+ "template_sha256": "3abac9a8ae64a548c67de6e6304b0ef6836ae346135da3ff08b46a3807b6cf04",
+ "fixtures_sha256": "617ca111cf54b824343aaa82baf913cac26fafbeb2e3d8280713aa11fff04657",
+ "fixture_ids": [
+  "dev-essay-001",
+  "dev-essay-003",
+  "dev-essay-004",
+  "dev-essay-005",
+  "dev-essay-009",
+  "dev-essay-010"
+ ],
+ "topic": 1,
+ "retriever": "agentsLog/Bukareszt/scripts/retrieval.py",
+ "retriever_sha256": "5ce9918fcc0151c8e15391781ace98deaf4b786977a69e6e773ccc9d7b0a51a3",
+ "index_sha256": "350800b1924b8f0094171fc5d68652da0f9260d03273a51ad6421c1a03e70429",
+ "arms": {
+  "T": {
+   "name": "K-think",
+   "think": true,
+   "cap": 20480
+  },
+  "N": {
+   "name": "K-nothink",
+   "think": false,
+   "cap": 4096
+  }
+ },
+ "verify_cap": 20480,
+ "verify_think": true,
+ "frozen_utc": "2026-09-26T20:09:09Z",
+ "items": [
+  {
+   "item": "dev-essay-001",
+   "topic": 1,
+   "full_task": "Wybierz jeden z podanych tematów i napisz wypracowanie. W wypracowaniu sformułuj stanowisko (tezę) i uzasadnij je, odwołując się do wiedzy historycznej. Wypracowanie powinno liczyć co najmniej 300 słów.\n\nTemat 1. Oceń znaczenie panowania Kazimierza III Wielkiego (1333–1370) dla rozwoju państwa polskiego. W pracy uwzględnij aspekty: polityczny, gospodarczy i kulturalny.\n\nTemat 2. Scharakteryzuj skutki unii lubelskiej zawartej w 1569 roku dla Korony Królestwa Polskiego i Wielkiego Księstwa Litewskiego. W pracy uwzględnij aspekty: ustrojowy i społeczny.",
+   "full_task_sha256": "b401de8fe91778fb639f3772600bedc307d8b7143d8ad0ab9cf445a938835cdc",
+   "draft_prompt_sha256": "aad4e96bb8d47b489a00f4abd8d2d9744fde2dc553a30a6d5157f8fe72b9eb06",
+   "evidence_sha256": "ca3281379b570b0ebb31a7c871010aaed2dde34458bb165418522a8578cb4749",
+   "evidence": [
+    {
+     "chunk_id": "plwiki-kazimierz-wielki#0507",
+     "source_id": "plwiki-kazimierz-wielki",
+     "title": "Kazimierz III Wielki",
+     "locator": "Wstęp [part 1]",
+     "score": 36.0826
+    },
+    {
+     "chunk_id": "plwiki-kazimierz-wielki#0516",
+     "source_id": "plwiki-kazimierz-wielki",
+     "title": "Kazimierz III Wielki",
+     "locator": "Królewicz Kazimierz > Koronacja [part 1]",
+     "score": 26.7715
+    },
+    {
+     "chunk_id": "plwiki-kazimierz-wielki#0612",
+     "source_id": "plwiki-kazimierz-wielki",
+     "title": "Kazimierz III Wielki",
+     "locator": "Bilans panowania [part 3]",
+     "score": 24.3324
+    },
+    {
+     "chunk_id": "plwiki-kazimierz-wielki#0610",
+     "source_id": "plwiki-kazimierz-wielki",
+     "title": "Kazimierz III Wielki",
+     "locator": "Bilans panowania [part 1]",
+     "score": 23.823
+    },
+    {
+     "chunk_id": "plwiki-kazimierz-wielki#0593",
+     "source_id": "plwiki-kazimierz-wielki",
+     "title": "Kazimierz III Wielki",
+     "locator": "Polityka wewnętrzna > Gospodarka i skarb państwa [part 1]",
+     "score": 27.0775
+    },
+    {
+     "chunk_id": "plwiki-kazimierz-wielki#0594",
+     "source_id": "plwiki-kazimierz-wielki",
+     "title": "Kazimierz III Wielki",
+     "locator": "Polityka wewnętrzna > Gospodarka i skarb państwa [part 2]",
+     "score": 26.9844
+    }
+   ]
+  },
+  {
+   "item": "dev-essay-003",
+   "topic": 1,
+   "full_task": "Wybierz jeden z podanych tematów i napisz wypracowanie. W wypracowaniu sformułuj stanowisko (tezę) i uzasadnij je, odwołując się do wiedzy historycznej. Wypracowanie powinno liczyć co najmniej 300 słów.\n\nTemat 1. Oceń skuteczność prób reformowania Rzeczypospolitej w czasach panowania Stanisława Augusta Poniatowskiego (1764–1795). W pracy uwzględnij aspekty: ustrojowy, edukacyjny i międzynarodowy.\n\nTemat 2. Porównaj politykę władz pruskich i rosyjskich wobec Polaków w drugiej połowie XIX wieku.",
+   "full_task_sha256": "c2ebe6b7810536eeb04ef886f98da9924fd0327259547c7cdfab4d5518992966",
+   "draft_prompt_sha256": "435d4ceecabdaf5e7d6693337f8a959a5823105c0c73a769bc04fd2734f66145",
+   "evidence_sha256": "04bf078da2118e7b7e1acf374757bcb5523649f839a1861e35e373ddb3fc77bc",
+   "evidence": [
+    {
+     "chunk_id": "plwiki-rozbiory-polski#1210",
+     "source_id": "plwiki-rozbiory-polski",
+     "title": "Rozbiory Polski",
+     "locator": "Geneza > Reakcja mocarstw na katastrofalne osłabienie Rzeczypospolitej w 2 poł. XVIII w. [part 1]",
+     "score": 31.1568
+    },
+    {
+     "chunk_id": "plwiki-rozbiory-polski#1211",
+     "source_id": "plwiki-rozbiory-polski",
+     "title": "Rozbiory Polski",
+     "locator": "Geneza > Reakcja mocarstw na katastrofalne osłabienie Rzeczypospolitej w 2 poł. XVIII w. [part 2]",
+     "score": 28.986
+    },
+    {
+     "chunk_id": "plwiki-konstytucja-3-maja#1180",
+     "source_id": "plwiki-konstytucja-3-maja",
+     "title": "Konstytucja 3 maja",
+     "locator": "Wstęp [part 2]",
+     "score": 21.4004
+    },
+    {
+     "chunk_id": "plwiki-cesarstwo-rzymskie#0126",
+     "source_id": "plwiki-cesarstwo-rzymskie",
+     "title": "Cesarstwo Rzymskie",
+     "locator": "Dzieje > Oktawian August [part 1]",
+     "score": 20.423
+    }
+   ]
+  },
+  {
+   "item": "dev-essay-004",
+   "topic": 1,
+   "full_task": "Zadanie zawiera dwa tematy wypracowania. Wybierz jeden z nich i napisz wypracowanie. Zajmij stanowisko wobec tezy zawartej w temacie i uzasadnij je. Praca powinna liczyć minimum 300 słów.\n\n1. Oceń znaczenie powstania styczniowego (1863–1864) dla społeczeństwa polskiego. W pracy uwzględnij aspekty: polityczny, społeczny i kulturowy.\n2. Przedstaw przemiany ustroju politycznego II Rzeczypospolitej w latach 1921–1935.\n\nWYPRACOWANIE\nna temat nr ....",
+   "full_task_sha256": "3a051c981399237351a50b78d28f7db9f552da3e02afde1543482772f994ddfe",
+   "draft_prompt_sha256": "89f4d1066ca0da2af67843eb1d2e34c6ac0101885d25167565d71dc250103e6b",
+   "evidence_sha256": "d9ffc45c51abdaff6b456a58cd92a4db6e9381355204c72e6097f635600f12ce",
+   "evidence": [
+    {
+     "chunk_id": "plwiki-powstanie-styczniowe#1466",
+     "source_id": "plwiki-powstanie-styczniowe",
+     "title": "Powstanie styczniowe",
+     "locator": "Weterani powstania > Towarzystwo Wzajemnej Pomocy Uczestników Powstania 1863/1864 [part 2]",
+     "score": 31.1233
+    },
+    {
+     "chunk_id": "plwiki-powstanie-styczniowe#1409",
+     "source_id": "plwiki-powstanie-styczniowe",
+     "title": "Powstanie styczniowe",
+     "locator": "Wstęp [part 1]",
+     "score": 29.3316
+    },
+    {
+     "chunk_id": "plwiki-powstanie-styczniowe#1444",
+     "source_id": "plwiki-powstanie-styczniowe",
+     "title": "Powstanie styczniowe",
+     "locator": "Przebieg powstania > Godło powstańcze z 1863 [part 1]",
+     "score": 27.1674
+    },
+    {
+     "chunk_id": "plwiki-powstanie-styczniowe#1455",
+     "source_id": "plwiki-powstanie-styczniowe",
+     "title": "Powstanie styczniowe",
+     "locator": "Upadek powstania i jego skutki [part 2]",
+     "score": 25.5706
+    }
+   ]
+  },
+  {
+   "item": "dev-essay-005",
+   "topic": 1,
+   "full_task": "Wybierz jeden z podanych tematów i napisz wypracowanie. W wypracowaniu sformułuj stanowisko (tezę) i uzasadnij je, odwołując się do wiedzy historycznej. Wypracowanie powinno liczyć co najmniej 300 słów.\n\nTemat 1. Oceń działalność Polskiego Państwa Podziemnego w latach 1939–1945. W pracy uwzględnij aspekty: wojskowy, polityczny i społeczny.\n\nTemat 2. Przedstaw drogę społeczeństwa polskiego od strajków z sierpnia 1980 roku do obrad Okrągłego Stołu w 1989 roku.",
+   "full_task_sha256": "036e8c5eff1039894ce86506eec4085ffbbf44cdb47c3d0b616594880f0ce992",
+   "draft_prompt_sha256": "73e50bb0d613e3651f5c01db492b241ce499ac19d22a178a4c197be84fc851c5",
+   "evidence_sha256": "9a64e99d401d837ed8a00f0b777ede3fc52ef939f8b926cc32f37196ac6454df",
+   "evidence": [
+    {
+     "chunk_id": "plwiki-polskie-panstwo-podziemne#2555",
+     "source_id": "plwiki-polskie-panstwo-podziemne",
+     "title": "Polskie Państwo Podziemne",
+     "locator": "Powstanie oraz działalność [part 7]",
+     "score": 35.4157
+    },
+    {
+     "chunk_id": "plwiki-polskie-panstwo-podziemne#2548",
+     "source_id": "plwiki-polskie-panstwo-podziemne",
+     "title": "Polskie Państwo Podziemne",
+     "locator": "Wstęp [part 1]",
+     "score": 33.5501
+    },
+    {
+     "chunk_id": "plwiki-polskie-panstwo-podziemne#2549",
+     "source_id": "plwiki-polskie-panstwo-podziemne",
+     "title": "Polskie Państwo Podziemne",
+     "locator": "Powstanie oraz działalność [part 1]",
+     "score": 28.4599
+    },
+    {
+     "chunk_id": "plwiki-polskie-panstwo-podziemne#2551",
+     "source_id": "plwiki-polskie-panstwo-podziemne",
+     "title": "Polskie Państwo Podziemne",
+     "locator": "Powstanie oraz działalność [part 3]",
+     "score": 25.7359
+    }
+   ]
+  },
+  {
+   "item": "dev-essay-009",
+   "topic": 1,
+   "full_task": "Wybierz jeden z podanych tematów i napisz wypracowanie. W wypracowaniu sformułuj stanowisko (tezę) i uzasadnij je, odwołując się do wiedzy historycznej. Wypracowanie powinno liczyć co najmniej 300 słów.\n\nTemat 1. Oceń znaczenie unii w Krewie (1385) i panowania Władysława II Jagiełły (1386–1434) dla państwa polskiego. W pracy uwzględnij aspekty: polityczny, militarny i religijny.\n\nTemat 2. Przedstaw rolę Jadwigi Andegaweńskiej w dziejach Polski.",
+   "full_task_sha256": "8a5a7bc7eba4b679d193578cf8eed0e0b0ecc27e811ffd04987466f85630b1de",
+   "draft_prompt_sha256": "552e5abfe73682c746a2068efe13037e97a4faa47a996d81b14441d4587e324a",
+   "evidence_sha256": "4e346826f79ed2d24644c87136cc40ec7ebbd39d0a8b11d8981d95a6d35d00d1",
+   "evidence": [
+    {
+     "chunk_id": "plwiki-unia-w-krewie#0615",
+     "source_id": "plwiki-unia-w-krewie",
+     "title": "Unia w Krewie",
+     "locator": "Wstęp [part 1]",
+     "score": 45.5064
+    },
+    {
+     "chunk_id": "plwiki-unia-lubelska#1046",
+     "source_id": "plwiki-unia-lubelska",
+     "title": "Unia lubelska",
+     "locator": "Lublin jako miejsce domniemanej pierwszej unii polsko-litewskiej [part 1]",
+     "score": 38.9917
+    },
+    {
+     "chunk_id": "plwiki-wojna-trzynastoletnia#0666",
+     "source_id": "plwiki-wojna-trzynastoletnia",
+     "title": "Wojna trzynastoletnia",
+     "locator": "Geneza wojny > Następstwa unii litewsko-polskiej [part 1]",
+     "score": 35.4646
+    },
+    {
+     "chunk_id": "plwiki-unia-lubelska#1047",
+     "source_id": "plwiki-unia-lubelska",
+     "title": "Unia lubelska",
+     "locator": "Tło [part 1]",
+     "score": 32.379
+    }
+   ]
+  },
+  {
+   "item": "dev-essay-010",
+   "topic": 1,
+   "full_task": "Zadanie zawiera dwa tematy wypracowania. Wybierz jeden z nich i napisz wypracowanie. Zajmij stanowisko wobec tezy zawartej w temacie i uzasadnij je. Praca powinna liczyć minimum 300 słów.\n\n1. Oceń skuteczność ruchu egzekucyjnego i reform czasów Zygmunta II Augusta (1548–1572). W pracy uwzględnij aspekty: ustrojowy, skarbowy i terytorialny.\n2. Scharakteryzuj zasady wolnej elekcji ustalone po 1572 roku.\n\nWYPRACOWANIE\nna temat nr ....",
+   "full_task_sha256": "c519c577e011744a3e9a3355d9bed181b37859b85849e64fa8a712c853f58ee8",
+   "draft_prompt_sha256": "f5a0d45c0b2cce012de056d6d430cfd3bfaef008e745aa74b51b6a223007a5c1",
+   "evidence_sha256": "827c2af6d4f86107e2931fba84d8fc597fd8de5de03d7f0ea335f094798dba03",
+   "evidence": [
+    {
+     "chunk_id": "plwiki-unia-lubelska#1047",
+     "source_id": "plwiki-unia-lubelska",
+     "title": "Unia lubelska",
+     "locator": "Tło [part 1]",
+     "score": 33.3238
+    },
+    {
+     "chunk_id": "plwiki-reformacja#0792",
+     "source_id": "plwiki-reformacja",
+     "title": "Reformacja",
+     "locator": "Geneza reformacji > Uwarunkowania społeczne i polityczne [part 5]",
+     "score": 25.3787
+    },
+    {
+     "chunk_id": "plwiki-reformacja#0798",
+     "source_id": "plwiki-reformacja",
+     "title": "Reformacja",
+     "locator": "Inni reformatorzy [part 1]",
+     "score": 19.6297
+    },
+    {
+     "chunk_id": "plwiki-unia-lubelska#1048",
+     "source_id": "plwiki-unia-lubelska",
+     "title": "Unia lubelska",
+     "locator": "Tło [part 2]",
+     "score": 18.206
+    }
+   ]
+  }
+ ],
+ "batch": {
+  "batch": "t1",
+  "bundle_sha256": "841697abd5632f7556bffa7920ac5c9eeaa35373cb9067a6065174c0e672417b",
+  "guard": {
+   "version": "0.34.4",
+   "digest": "4eb23ef187e2c5462566d6a1d3bbbc2f1346d0b4327cbb66d58fffbcc9b2b05c",
+   "capabilities": [
+    "completion",
+    "vision",
+    "audio",
+    "tools",
+    "thinking"
+   ],
+   "loaded": [],
+   "other_loaded_models": [],
+   "problems": []
+  },
+  "status": "complete",
+  "started": 1790453397.696815,
+  "order": [
+   [
+    "dev-essay-001",
+    "T"
+   ],
+   [
+    "dev-essay-001",
+    "N"
+   ],
+   [
+    "dev-essay-001",
+    "verify"
+   ],
+   [
+    "dev-essay-003",
+    "N"
+   ],
+   [
+    "dev-essay-003",
+    "T"
+   ],
+   [
+    "dev-essay-003",
+    "verify"
+   ],
+   [
+    "dev-essay-004",
+    "T"
+   ],
+   [
+    "dev-essay-004",
+    "N"
+   ],
+   [
+    "dev-essay-004",
+    "verify"
+   ],
+   [
+    "dev-essay-005",
+    "N"
+   ],
+   [
+    "dev-essay-005",
+    "T"
+   ],
+   [
+    "dev-essay-005",
+    "verify"
+   ],
+   [
+    "dev-essay-009",
+    "T"
+   ],
+   [
+    "dev-essay-009",
+    "N"
+   ],
+   [
+    "dev-essay-009",
+    "verify"
+   ],
+   [
+    "dev-essay-010",
+    "N"
+   ],
+   [
+    "dev-essay-010",
+    "T"
+   ],
+   [
+    "dev-essay-010",
+    "verify"
+   ]
+  ],
+  "stop_reason": null,
+  "finished": 1790454487.506484
+ }
+}

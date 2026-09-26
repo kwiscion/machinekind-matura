@@ -1,0 +1,309 @@
+{
+ "revision": "essay-edit-v1",
+ "contract_revision": "essay-contract-v2",
+ "template_sha256": "3abac9a8ae64a548c67de6e6304b0ef6836ae346135da3ff08b46a3807b6cf04",
+ "fixtures_sha256": "617ca111cf54b824343aaa82baf913cac26fafbeb2e3d8280713aa11fff04657",
+ "fixture_ids": [
+  "dev-essay-001",
+  "dev-essay-003",
+  "dev-essay-004",
+  "dev-essay-005",
+  "dev-essay-009",
+  "dev-essay-010"
+ ],
+ "topic": 1,
+ "retriever": "agentsLog/Bukareszt/scripts/retrieval.py",
+ "retriever_sha256": "5ce9918fcc0151c8e15391781ace98deaf4b786977a69e6e773ccc9d7b0a51a3",
+ "index_sha256": "350800b1924b8f0094171fc5d68652da0f9260d03273a51ad6421c1a03e70429",
+ "arms": {
+  "T": {
+   "name": "K-think",
+   "think": true,
+   "cap": 20480
+  },
+  "N": {
+   "name": "K-nothink",
+   "think": false,
+   "cap": 4096
+  }
+ },
+ "verify_cap": 20480,
+ "verify_think": true,
+ "items": [
+  {
+   "item": "dev-essay-001",
+   "topic": 1,
+   "full_task": "Wybierz jeden z podanych tematów i napisz wypracowanie. W wypracowaniu sformułuj stanowisko (tezę) i uzasadnij je, odwołując się do wiedzy historycznej. Wypracowanie powinno liczyć co najmniej 300 słów.\n\nTemat 1. Oceń znaczenie panowania Kazimierza III Wielkiego (1333–1370) dla rozwoju państwa polskiego. W pracy uwzględnij aspekty: polityczny, gospodarczy i kulturalny.\n\nTemat 2. Scharakteryzuj skutki unii lubelskiej zawartej w 1569 roku dla Korony Królestwa Polskiego i Wielkiego Księstwa Litewskiego. W pracy uwzględnij aspekty: ustrojowy i społeczny.",
+   "full_task_sha256": "b401de8fe91778fb639f3772600bedc307d8b7143d8ad0ab9cf445a938835cdc",
+   "draft_prompt": "Napisz wypracowanie maturalne z historii na JEDEN, już wybrany temat nr 1. Pozostałe tematy z arkusza nie są częścią zadania: nie pisz o nich i nie wspominaj ich.\n\nOdpowiedz WYŁĄCZNIE jednym obiektem JSON, bez żadnego tekstu przed nim ani po nim:\n{\"topic_id\": 1, \"body\": \"<treść wypracowania>\"}\n\nWymagania dotyczące pola \"body\":\n- Sama treść wypracowania: bez tytułu, bez nagłówków, bez numeru tematu, bez planu, bez komentarzy do oceniającego, bez podawania liczby słów, bez zwrotów typu „Oto moja odpowiedź”.\n- Długość: 400–500 słów (bezwzględne minimum: 300). Jeśli brakuje słów, rozwijaj argumenty konkretnymi faktami (rok, nazwa własna, związek z tezą), nigdy powtórzeniami ani ogólnikami.\n- Akapity oddzielaj pustą linią (w JSON: \\n\\n). Pierwszy akapit: krótkie wprowadzenie i wyraźne stanowisko (teza). Potem co najmniej jeden akapit na każdy wymagany aspekt. Ostatni akapit: wniosek, który wraca do tezy.\n- Podawaj tylko fakty, których jesteś pewien; nie wymyślaj nazw, terminów ani dat. Pisz po polsku.\n\nWYMAGANIA OGÓLNE Z POLECENIA:\nWybierz jeden z podanych tematów i napisz wypracowanie. W wypracowaniu sformułuj stanowisko (tezę) i uzasadnij je, odwołując się do wiedzy historycznej. Wypracowanie powinno liczyć co najmniej 300 słów.\n\nTEMAT nr 1:\nOceń znaczenie panowania Kazimierza III Wielkiego (1333–1370) dla rozwoju państwa polskiego. W pracy uwzględnij aspekty: polityczny, gospodarczy i kulturalny.\nWymagane aspekty (każdy musi zostać omówiony): polityczny, gospodarczy, kulturalny\nMinimalna długość z polecenia: 300 słów.\n",
+   "draft_prompt_sha256": "aad4e96bb8d47b489a00f4abd8d2d9744fde2dc553a30a6d5157f8fe72b9eb06",
+   "evidence": [
+    {
+     "chunk_id": "plwiki-kazimierz-wielki#0507",
+     "source_id": "plwiki-kazimierz-wielki",
+     "title": "Kazimierz III Wielki",
+     "locator": "Wstęp [part 1]",
+     "text": "Kazimierz III Wielki (ur. 30 kwietnia 1310 w Kowalu, zm. 5 listopada 1370 w Krakowie) – król Polski w latach 1333–1370, ostatni monarcha z dynastii Piastów na tronie polskim. W historiografii jest uważany za jednego z najwybitniejszych władców Polski, najmłodszy syn Władysława I Łokietka i Jadwigi Bolesławówny.\nKazimierz III Wielki unormował stosunki z Królestwem Czech i zakonem krzyżackim. W 1335 roku uzyskał od czeskiego króla Jana Luksemburskiego zrzeczenie się pretensji do polskiego tronu w zamian za 200 000 kop groszy praskich.\nW 1343 roku, na mocy pokoju kaliskiego, odzyskał zajęte wcześniej przez Krzyżaków Kujawy oraz ziemię dobrzyńską, w zamian czasowo zrzekając się praw do Pomorza Gdańskiego. W 1348 roku zawarł w Namysłowie pokój z Czechami, uwarunkowany na zasadzie status quo, nie rezygnując wówczas z praw do Śląska. Ostateczne zrzeczenie się praw do Śląska nastąpiło na mocy układu w Pradze w 1356 roku.\nNajważniejszym sojusznikiem Kazimierza Wielkiego na arenie międzynarodowej było Królestwo Węgier. Przy wsparciu węgierskim w latach 1340–1349 prowadził działania, których wynikiem było przyłączenie części Rusi Halicko-Włodzimierskiej do Królestwa Polskiego.\nW polityce wewnętrznej Kazimierz Wielki doprowadził do kodyfikacji prawa poprzez wydanie statutów wiślickiego i piotrkowskiego, rozbudowy systemu obronnego państwa oraz rozwoju miast. W 1364 roku ufundował Akademię Krakowską.\nKazimierz III Wielki był czterokrotnie żonaty, jednak nie pozostawił legalnego męskiego potomka, który mógłby odziedziczyć tron. Po śmierci Kazimierza w 1370 roku, na mocy wcześniejszych układów sukcesyjnych, tron polski przypadł jego siostrzeńcowi - Ludwikowi Węgierskiemu.",
+     "score": 36.0826
+    },
+    {
+     "chunk_id": "plwiki-kazimierz-wielki#0516",
+     "source_id": "plwiki-kazimierz-wielki",
+     "title": "Kazimierz III Wielki",
+     "locator": "Królewicz Kazimierz > Koronacja [part 1]",
+     "text": "Władysław Łokietek zmarł 2 marca (według najczęściej przyjmowanej wersji daty dziennej) 1333 roku. Przed śmiercią polecił synowi odzyskać utracone na rzecz Krzyżaków Kujawy wraz z ziemią dobrzyńską i prawdopodobnie Pomorze Gdańskie. Na zjeździe rycerstwa polskiego jednomyślnie okrzyknięto Kazimierza nowym władcą i wyznaczono termin koronacji. Niespodziewanie na przeszkodzie stanęła królowa Jadwiga. Sprzeciwiała się ona koronacji swej synowej – Anny Giedyminówny, uważając, że w kraju może być tylko jedna królowa. W końcu jednak dała się uprosić Kazimierzowi i ustąpiła, usuwając się ze sceny politycznej do klasztoru klarysek w Starym Sączu. 25 kwietnia 1333 roku w katedrze na Wawelu odbyła się jedna z najważniejszych koronacji w historii Polski. Arcybiskup Janisław włożył korony na głowy Kazimierza III Wielkiego oraz jego żony, Aldony Anny Giedyminówny.",
+     "score": 26.7715
+    },
+    {
+     "chunk_id": "plwiki-kazimierz-wielki#0612",
+     "source_id": "plwiki-kazimierz-wielki",
+     "title": "Kazimierz III Wielki",
+     "locator": "Bilans panowania [part 3]",
+     "text": "Opanowanie przez Kazimierza Wielkiego szlaku Kraków – Lwów – Morze Czarne oraz Kraków – Lwów – Kijów mogło po pewnym czasie skłonić wrocławian do zmiany frontu ponieważ w ich interesie było czerpanie profitów z ruchu handlowego na linii Wrocław – Kraków – Lwów – Morze Czarne oraz Wrocław – Kraków – Lwów – Kijów.\nOwego „ideologicznego zwrotu” na wschód dokonali dopiero Jagiellonowie. Dzieło polityczne Kazimierza Wielkiego na Rusi nie okazało się trwałe. Już w 1372 roku Ruś Halicka zaczęła ciążyć – za sprawą Władysława Opolczyka – ku Węgrom, by wreszcie w 1377 roku zostać częścią węgierskiej monarchii. Konsekwentnego złączenia ziem ruskich z Koroną Polską dokonali dopiero Jagiellonowie począwszy od 1387. Kazimierz Wielki do końca swego panowania pozostał wierny piastowskiej koncepcji państwa zwróconego ku zachodowi i władającego dorzeczem Odry oraz ujściem Wisły.\nUkłady z Luksemburgami i Krzyżakami są przykładem realizmu politycznego. Nic na nich nie stracił, a zyskał czas i siły na późniejsze działanie. „Królik krakowski” z początków panowania wyrósł na arbitra sporów międzynarodowych, partnera cesarza, cenionego sprzymierzeńca.",
+     "score": 24.3324
+    },
+    {
+     "chunk_id": "plwiki-kazimierz-wielki#0610",
+     "source_id": "plwiki-kazimierz-wielki",
+     "title": "Kazimierz III Wielki",
+     "locator": "Bilans panowania [part 1]",
+     "text": "W chwili objęcia przez niego władzy Polska zajmowała drugorzędną pozycję międzynarodową. Za jego panowania stopniowo przekształciła się w silny organizm polityczny. Terytorium państwa wzrosło niemal trzykrotnie. Do Polski przyłączono Ruś Halicką i Włodzimierską, Podole, częściowo Mazowsze, Człopę, Wałcz, Czaplinek. Nie udało się odzyskać Śląska i Pomorza Gdańskiego. Dawniejsza historiografia krytykowała rzekomą rezygnację króla z tych terytoriów, podobnie jak ekspansję w kierunku Rusi, którą krytycy rządów Kazimierza Wielkiego oceniają jako poważny błąd polityczny. Kazimierz Wielki do końca swego panowania nie zrezygnował ze Śląska, ziemi lubuskiej oraz Pomorza Szczecińskiego i do końca swego życia snuł plany ich rewindykacji. Dobitnym tego przykładem (choć nie jedynym) jest zażarta walka króla z biskupem kamieńskim Janem Saskim, który zmierzał do oderwania pomorskiego biskupstwa kamieńskiego od metropolii gnieźnieńskiej i podporządkowania jej Magdeburgowi.",
+     "score": 23.823
+    },
+    {
+     "chunk_id": "plwiki-kazimierz-wielki#0593",
+     "source_id": "plwiki-kazimierz-wielki",
+     "title": "Kazimierz III Wielki",
+     "locator": "Polityka wewnętrzna > Gospodarka i skarb państwa [part 1]",
+     "text": "Wielkie też są zasługi Kazimierza na polu gospodarczym. Przede wszystkim wspomagał energiczną kolonizację puszczy. Otaczał też opieką miasta, widząc w nich źródło pomnażania dobrobytu kraju. Nadał przywileje handlowe Krakowowi. Za panowania Kazimierza założono niemal 100 nowych miast. Fundowanie miast na prawie niemieckim powodowało, że ruszali do jego państwa bankierzy (po raz pierwszy z Włoch), kupcy i rzemieślnicy z zachodu. Ważną rolę odgrywała tu Hanza – związek handlowych miast niemieckich, także tych położonych nad Bałtykiem i nad Wisłą.\nSkarb państwa opierał się na dochodach z rozległych dóbr królewskich. Dzięki rewindykacji dóbr, które znalazły się nie zawsze zgodnie z prawem w rękach szlachty i Kościoła, skarb zwiększył swoje dochody. Lokacje zaś nowych wsi i „melioracje” starych wzmogły ich dochodowość. Zwiększeniu dochodów sprzyjała również zmiana nadzwyczajnego poradlnego na coroczny podatek. To samo spowodował rozwój handlu. Zachowane regalia stanowiły ważną część dochodu króla, szczególnie kopalnie i warzelnie w Bochni i w Wieliczce, czyli Żupy krakowskie. Żupy krakowskie były przedsiębiorstwem królewskim, które w XIV w.",
+     "score": 27.0775
+    },
+    {
+     "chunk_id": "plwiki-kazimierz-wielki#0594",
+     "source_id": "plwiki-kazimierz-wielki",
+     "title": "Kazimierz III Wielki",
+     "locator": "Polityka wewnętrzna > Gospodarka i skarb państwa [part 2]",
+     "text": "dostarczało aż 1/3 dochodów do skarbu państwa. W 1368 roku Kazimierz przeprowadził reorganizację administracji kopalni soli, wydając 21 kwietnia statut żupny.\nDochody wpływały również z mennic. Kazimierz przeprowadził reformę monetarną w 1338 roku. Jako pierwszy władca polski bił monetę groszową (grosz krakowski). Za czasów Kazimierza nastąpiło pogorszenie jakości monety, co także służyło doraźnemu zyskowi skarbu królewskiego.\nRozwój gospodarczy odzwierciedlał też wzrost demograficzny kraju, który w ostatnich latach panowania Kazimierza kształtował się na poziomie 4°/∞, co przy znacznej śmiertelności niemowląt, niskiej średniej wieku życia ludzkiego i powtarzaniu się wyniszczających epidemii należy uznać za wysoki. Królestwo liczyło już prawdopodobnie 1 800 000, a może nawet 1 900 000 mieszkańców.",
+     "score": 26.9844
+    }
+   ],
+   "evidence_sha256": "ca3281379b570b0ebb31a7c871010aaed2dde34458bb165418522a8578cb4749"
+  },
+  {
+   "item": "dev-essay-003",
+   "topic": 1,
+   "full_task": "Wybierz jeden z podanych tematów i napisz wypracowanie. W wypracowaniu sformułuj stanowisko (tezę) i uzasadnij je, odwołując się do wiedzy historycznej. Wypracowanie powinno liczyć co najmniej 300 słów.\n\nTemat 1. Oceń skuteczność prób reformowania Rzeczypospolitej w czasach panowania Stanisława Augusta Poniatowskiego (1764–1795). W pracy uwzględnij aspekty: ustrojowy, edukacyjny i międzynarodowy.\n\nTemat 2. Porównaj politykę władz pruskich i rosyjskich wobec Polaków w drugiej połowie XIX wieku.",
+   "full_task_sha256": "c2ebe6b7810536eeb04ef886f98da9924fd0327259547c7cdfab4d5518992966",
+   "draft_prompt": "Napisz wypracowanie maturalne z historii na JEDEN, już wybrany temat nr 1. Pozostałe tematy z arkusza nie są częścią zadania: nie pisz o nich i nie wspominaj ich.\n\nOdpowiedz WYŁĄCZNIE jednym obiektem JSON, bez żadnego tekstu przed nim ani po nim:\n{\"topic_id\": 1, \"body\": \"<treść wypracowania>\"}\n\nWymagania dotyczące pola \"body\":\n- Sama treść wypracowania: bez tytułu, bez nagłówków, bez numeru tematu, bez planu, bez komentarzy do oceniającego, bez podawania liczby słów, bez zwrotów typu „Oto moja odpowiedź”.\n- Długość: 400–500 słów (bezwzględne minimum: 300). Jeśli brakuje słów, rozwijaj argumenty konkretnymi faktami (rok, nazwa własna, związek z tezą), nigdy powtórzeniami ani ogólnikami.\n- Akapity oddzielaj pustą linią (w JSON: \\n\\n). Pierwszy akapit: krótkie wprowadzenie i wyraźne stanowisko (teza). Potem co najmniej jeden akapit na każdy wymagany aspekt. Ostatni akapit: wniosek, który wraca do tezy.\n- Podawaj tylko fakty, których jesteś pewien; nie wymyślaj nazw, terminów ani dat. Pisz po polsku.\n\nWYMAGANIA OGÓLNE Z POLECENIA:\nWybierz jeden z podanych tematów i napisz wypracowanie. W wypracowaniu sformułuj stanowisko (tezę) i uzasadnij je, odwołując się do wiedzy historycznej. Wypracowanie powinno liczyć co najmniej 300 słów.\n\nTEMAT nr 1:\nOceń skuteczność prób reformowania Rzeczypospolitej w czasach panowania Stanisława Augusta Poniatowskiego (1764–1795). W pracy uwzględnij aspekty: ustrojowy, edukacyjny i międzynarodowy.\nWymagane aspekty (każdy musi zostać omówiony): ustrojowy, edukacyjny, międzynarodowy\nMinimalna długość z polecenia: 300 słów.\n",
+   "draft_prompt_sha256": "435d4ceecabdaf5e7d6693337f8a959a5823105c0c73a769bc04fd2734f66145",
+   "evidence": [
+    {
+     "chunk_id": "plwiki-rozbiory-polski#1210",
+     "source_id": "plwiki-rozbiory-polski",
+     "title": "Rozbiory Polski",
+     "locator": "Geneza > Reakcja mocarstw na katastrofalne osłabienie Rzeczypospolitej w 2 poł. XVIII w. [part 1]",
+     "text": "Po śmierci króla Rzeczypospolitej Augusta III Sasa 5 października 1763 caryca Katarzyna II nie dopuściła do nowej elekcji w Polsce i, wprowadzając na jej teren silne wojska, wymusiła uznanie królem współpracownika Familii, krewnego Czartoryskich i swojego byłego kochanka, stolnika Stanisława Augusta Poniatowskiego. Zarówno próba przeprowadzenia przez nowego króla reform ustrojowych, jak i dalsze ograniczenie autonomii Rzeczypospolitej spotkało się z politycznym oporem przeciwnego Familii stronnictwa republikanów i ostatecznie zarówno Stanisław August Poniatowski, jak i obydwa najważniejsze stronnictwa zaczęły zabiegać o poparcie Rosji. Dążąc do objęcia pełnej kontroli nad Polską przedstawiciel carycy Katarzyny II, ambasador rosyjski Nikolaj Repnin wykorzystał zamęt polityczny do narzucenia polskiemu sejmowi rosyjskich postulatów ustrojowych i religijnych.",
+     "score": 31.1568
+    },
+    {
+     "chunk_id": "plwiki-rozbiory-polski#1211",
+     "source_id": "plwiki-rozbiory-polski",
+     "title": "Rozbiory Polski",
+     "locator": "Geneza > Reakcja mocarstw na katastrofalne osłabienie Rzeczypospolitej w 2 poł. XVIII w. [part 2]",
+     "text": "Słaby protest polityczny został rozbity przez porwanie i wywiezienie w głąb Rosji wybranych przywódców republikanów, co pozbawiło zebrany w Warszawie Sejm wszelkiej woli oporu wobec rosyjskich postulatów.\nPolityka Rosji ingerującej w wewnętrzne sprawy Rzeczypospolitej uniemożliwiła nowemu jej królowi Stanisławowi Augustowi Poniatowskiemu przeprowadzenie zamierzonych reform, a magnacka opozycja skutecznie blokowała podjęcie działań przeciwko naprawie finansów Rzeczypospolitej. Marazm ustrojowy spotkał się z aprobatą Prus, które aktywnie zwalczały plany króla Polski, wszczynając w 1765 r. wojnę celną na Pomorzu. 11 kwietnia 1764 mocarstwa „Systemu Północnego” podpisały tajny aneks do traktatu sojuszniczego, w którym zobowiązały się do wspólnego wystąpienia zbrojnego przeciwko Rzeczypospolitej, gdy strony uznają, że zagrożone są ich interesy w tym kraju.\nOstatecznie Rzeczpospolitą katastrofalnie osłabiła wojna domowa, będąca efektem zbrojnego protestu niektórych republikanów przeciwko ingerencjom Rosji, zapoczątkowanego w twierdzy Bar. Po nieudanych próbach politycznego spacyfikowania konfederacji barskiej stacjonujące w Rzeczypospolitej wojska rosyjskie i koronne wyparły Konfederatów z Ukrainy, jednakże chaotyczne działania trwającej cztery lata wojny partyzanckiej zrujnowały Polskę i wywołały turecką interwencję antyrosyjską. Turcja zażądała od Rosji zaprzestania ingerencji w sprawy Rzeczypospolitej, wycofania wojsk i w październiku 1768 r. wypowiedziała wojnę.",
+     "score": 28.986
+    },
+    {
+     "chunk_id": "plwiki-konstytucja-3-maja#1180",
+     "source_id": "plwiki-konstytucja-3-maja",
+     "title": "Konstytucja 3 maja",
+     "locator": "Wstęp [part 2]",
+     "text": "Konstytucja formalnie zniosła liberum veto.\nPrzyjęcie monarchicznej Konstytucji 3 maja spowodowało opozycję republikanów oraz sprowokowało wrogość Imperium Rosyjskiego, które od 1768 roku było protektorem Rzeczypospolitej i gwarantem nienaruszalności jej ustroju. W wojnie w obronie konstytucji Polska, zdradzona przez swojego pruskiego sprzymierzeńca Fryderyka Wilhelma II, została pokonana przez wojska rosyjskie Katarzyny Wielkiej, wspierające konfederację targowicką – spisek części polskich magnatów przeciwnych zmianie ustroju Rzeczypospolitej. Po utracie niepodległości w 1795 roku przez 123 lata rozbiorów przypominała o walce o niepodległość.\nKonstytucja przestała w praktyce obowiązywać (straciła znaczenie) 24 lipca 1792 roku (w momencie przystąpienia króla Stanisława Augusta Poniatowskiego do konfederacji targowickiej) – czyli po nieco ponad 14 miesiącach, w ciągu których Sejm Czteroletni uchwalił szereg ustaw szczegółowych, będących rozwinięciem jej postanowień. Przestała natomiast być obowiązującym aktem prawnym (została derogowana) 23 listopada 1793 roku. Sejm grodzieński uznał wtedy Sejm Czteroletni za niebyły i uchylił wszystkie ustanowione na nim akty prawne.\nGłównym autorem tekstu Konstytucji 3 maja był król Stanisław August Poniatowski, istotny wkład w jej spisanie mieli też Ignacy Potocki, Hugo Kołłątaj oraz sekretarz królewski Scipione Piattoli. Według Ignacego Potockiego i Hugo Kołłątaja Konstytucja 3 maja była „ostatnią wolą i testamentem gasnącej Ojczyzny”.",
+     "score": 21.4004
+    },
+    {
+     "chunk_id": "plwiki-cesarstwo-rzymskie#0126",
+     "source_id": "plwiki-cesarstwo-rzymskie",
+     "title": "Cesarstwo Rzymskie",
+     "locator": "Dzieje > Oktawian August [part 1]",
+     "text": "Panowanie Oktawiana Augusta (27 p.n.e.–14 n.e.) cechowało przywrócenie stabilności politycznej i społecznej. Ustrój republikański nie został formalnie zniesiony, a władza cesarza wywodziła się z połączenia kompetencji urzędów cywilnych oraz wojskowych, w szczególności władzy konsula (najwyższego urzędnika i dowódcy wojskowego), trybuna ludowego (protektora ludu z prawem weta i inicjatywą prawodawczą) i najwyższego kapłana (Pontifex Maximus). Cezara określano również jako zwycięskiego wodza (Imperator) oraz ojca ojczyzny (pater patriae). August zachował przywileje senatorów, podkreślając, że jest pierwszym wśród równych (princeps). Z tego powodu ten system rządzenia nazwano pryncypatem.\nAugust wprowadził szereg reform usprawniających administrację rzymską. Zastąpił skorumpowanych i ambitnych patrycjuszy sprawnymi administratorami ze stanu ekwitów (należał do nich m.in. Poncjusz Piłat), dając im kluczowe stanowiska w państwie, np. prefekta Egiptu (ważne źródło zaopatrzenia w zboże) czy prefekta pretorianów (gwardia cesarska w Rzymie). Zastąpił także skorumpowanych przedsiębiorców, dzierżawiących podatki, urzędnikami państwowymi.",
+     "score": 20.423
+    }
+   ],
+   "evidence_sha256": "04bf078da2118e7b7e1acf374757bcb5523649f839a1861e35e373ddb3fc77bc"
+  },
+  {
+   "item": "dev-essay-004",
+   "topic": 1,
+   "full_task": "Zadanie zawiera dwa tematy wypracowania. Wybierz jeden z nich i napisz wypracowanie. Zajmij stanowisko wobec tezy zawartej w temacie i uzasadnij je. Praca powinna liczyć minimum 300 słów.\n\n1. Oceń znaczenie powstania styczniowego (1863–1864) dla społeczeństwa polskiego. W pracy uwzględnij aspekty: polityczny, społeczny i kulturowy.\n2. Przedstaw przemiany ustroju politycznego II Rzeczypospolitej w latach 1921–1935.\n\nWYPRACOWANIE\nna temat nr ....",
+   "full_task_sha256": "3a051c981399237351a50b78d28f7db9f552da3e02afde1543482772f994ddfe",
+   "draft_prompt": "Napisz wypracowanie maturalne z historii na JEDEN, już wybrany temat nr 1. Pozostałe tematy z arkusza nie są częścią zadania: nie pisz o nich i nie wspominaj ich.\n\nOdpowiedz WYŁĄCZNIE jednym obiektem JSON, bez żadnego tekstu przed nim ani po nim:\n{\"topic_id\": 1, \"body\": \"<treść wypracowania>\"}\n\nWymagania dotyczące pola \"body\":\n- Sama treść wypracowania: bez tytułu, bez nagłówków, bez numeru tematu, bez planu, bez komentarzy do oceniającego, bez podawania liczby słów, bez zwrotów typu „Oto moja odpowiedź”.\n- Długość: 400–500 słów (bezwzględne minimum: 300). Jeśli brakuje słów, rozwijaj argumenty konkretnymi faktami (rok, nazwa własna, związek z tezą), nigdy powtórzeniami ani ogólnikami.\n- Akapity oddzielaj pustą linią (w JSON: \\n\\n). Pierwszy akapit: krótkie wprowadzenie i wyraźne stanowisko (teza). Potem co najmniej jeden akapit na każdy wymagany aspekt. Ostatni akapit: wniosek, który wraca do tezy.\n- Podawaj tylko fakty, których jesteś pewien; nie wymyślaj nazw, terminów ani dat. Pisz po polsku.\n\nWYMAGANIA OGÓLNE Z POLECENIA:\nZadanie zawiera dwa tematy wypracowania. Wybierz jeden z nich i napisz wypracowanie. Zajmij stanowisko wobec tezy zawartej w temacie i uzasadnij je. Praca powinna liczyć minimum 300 słów.\n\nTEMAT nr 1:\nOceń znaczenie powstania styczniowego (1863–1864) dla społeczeństwa polskiego. W pracy uwzględnij aspekty: polityczny, społeczny i kulturowy.\nWymagane aspekty (każdy musi zostać omówiony): polityczny, społeczny, kulturowy\nMinimalna długość z polecenia: 300 słów.\n",
+   "draft_prompt_sha256": "89f4d1066ca0da2af67843eb1d2e34c6ac0101885d25167565d71dc250103e6b",
+   "evidence": [
+    {
+     "chunk_id": "plwiki-powstanie-styczniowe#1466",
+     "source_id": "plwiki-powstanie-styczniowe",
+     "title": "Powstanie styczniowe",
+     "locator": "Weterani powstania > Towarzystwo Wzajemnej Pomocy Uczestników Powstania 1863/1864 [part 2]",
+     "text": "„Górkę powstańców”, gdzie przez lata chowano zmarłych weteranów. W roku 1893 utworzono też dzięki lwowianom m.in. krakowskie Przytulisko Uczestników Powstania z roku 1863/1864, które najpierw mieściło się w krakowskim schronisku Brata Alberta, a od r. 1895 w podkrakowskim Zwierzyńcu. W 1901 roku Towarzystwo zakupiło dom przy ul. Biskupiej 16 gdzie przeniesiono Przytulisko. Mieszkający w nim weterani oprócz utrzymania otrzymywali umundurowanie, bieliznę i opranie. Zdrowsi i silniejsi pracowali m.in. pilnując Muzeum Narodowego czy nadzorowali cmentarz. Za te prace Towarzystwo otrzymywało od Rady miasta i Muzeum Narodowego stałą subwencję.",
+     "score": 31.1233
+    },
+    {
+     "chunk_id": "plwiki-powstanie-styczniowe#1409",
+     "source_id": "plwiki-powstanie-styczniowe",
+     "title": "Powstanie styczniowe",
+     "locator": "Wstęp [part 1]",
+     "text": "Powstanie styczniowe – polskie powstanie przeciwko Imperium Rosyjskiemu, ogłoszone Manifestem 22 stycznia wydanym w Warszawie przez Tymczasowy Rząd Narodowy. Wybuchło 22 stycznia 1863 w Królestwie Polskim i 1 lutego 1863 na historycznej Litwie, trwało do jesieni 1864, zasięgiem objęło ziemie zaboru rosyjskiego, tj. Królestwo Polskie i ziemie zabrane, zyskując także szerokie poparcie wśród ludności litewskiej i częściowe pośród białoruskiej.\nByło największym i najdłużej trwającym polskim powstaniem narodowym, spotkało się z poparciem międzynarodowej opinii publicznej. Miało charakter wojny partyzanckiej, w której stoczono ok. 1200 bitew i potyczek. Przez oddziały powstania styczniowego przewinęło się około 200 tys. osób, zarówno z rodzin szlacheckich, jak też w mniejszym stopniu z chłopstwa i mieszczaństwa. Na Litwie właściwej, Żmudzi i zachodniej Białorusi zryw przybrał charakter masowy, angażując nie tylko Polaków, lecz również Litwinów i część Białorusinów.",
+     "score": 29.3316
+    },
+    {
+     "chunk_id": "plwiki-powstanie-styczniowe#1444",
+     "source_id": "plwiki-powstanie-styczniowe",
+     "title": "Powstanie styczniowe",
+     "locator": "Przebieg powstania > Godło powstańcze z 1863 [part 1]",
+     "text": "Początek istnienia godła powstańczego przyjmuje się połowę roku 1862 r. kiedy pojawia się ono po raz pierwszy na pieczęci utworzonego Komitetu Centralnego Narodowego. Było to oficjalne godło ruchu niepodległościowego składające się wtedy jeszcze z dwóch części: Orła polskiego i Pogoni litewskiej na dwupolowej tarczy francuskiej zwieńczonej koroną królewską. Rysunek tego godła, projektu Joachima Lelewela, był przyjęty przez sejm w okresie powstania listopadowego. Wizerunek wspólnego polsko-litewskiego godła występuje na licznych ulotkach i znakach z tamtego okresu.\nTuż przed wybuchem powstania, a mianowicie 18 stycznia 1863 r. Komitet Centralny Narodowy podjął uchwałę o ustanowieniu nowego godła państwowego, składającego się z trzech herbów: polskiego Orła, litewskiej Pogoni i rusińskiego Archanioła Michała. Formalnie przyjęcie wizerunku archanioła Michała, tłumaczono faktem, że był to herb guberni kijowskiej.\nWśród członków Komitetu Centralnego Narodowego dyskusję wywołała forma emblematu łączącego te trzy herby. Nie chcąc przesądzać formy rządów zdecydowano, aby herb nie był zwieńczony koroną królewską. Na posiedzeniu w dniu 19 stycznia 1863 r.",
+     "score": 27.1674
+    },
+    {
+     "chunk_id": "plwiki-powstanie-styczniowe#1455",
+     "source_id": "plwiki-powstanie-styczniowe",
+     "title": "Powstanie styczniowe",
+     "locator": "Upadek powstania i jego skutki [part 2]",
+     "text": "Traugutt starał się wciągnąć do walk ludność chłopską, głosząc hasło działania „z ludem i przez lud”. Faktycznie udział chłopów w oddziałach partyzanckich znacznie wtedy wzrósł, lecz opuścili je po ogłoszeniu 2 marca 1864 r. carskiego dekretu o uwłaszczeniu i przyznaniu chłopom na własność użytkowaną przez nich ziemię.\nPowstanie ze względu na znaczną dysproporcję sił stron walczących przybrało formę wojny partyzanckiej. Stoczono 1229 rozproszonych potyczek i mniejszych bitew, w tym 956 w Kongresówce, 236 na Litwie, pozostałe na Białorusi i Ukrainie (według oficjalnych źródeł rosyjskich miało miejsce 631 bitew i potyczek, w tym w 1863 r. – 547, a w 1864 r. – 84). Oddziały polskie unikały walnej bitwy, która mogła się zakończyć totalną porażką powstania. W wojskach powstańczych służyło łącznie ok. 200 tysięcy ludzi, jednak jednocześnie w walkach brało udział ok. 30 tysięcy żołnierzy.\nZa najmłodszego powstańca styczniowego uznaje się Ludwika Ruscha, a najmłodszego powstańca zesłanego na Syberię Feliksa Wiktora Riedla.\nStraty polskie wyniosły około 10–20 tys. powstańców (źródła rosyjskie mówią o liczbie do 30 tys.), jednak są to tylko liczby szacunkowe.",
+     "score": 25.5706
+    }
+   ],
+   "evidence_sha256": "d9ffc45c51abdaff6b456a58cd92a4db6e9381355204c72e6097f635600f12ce"
+  },
+  {
+   "item": "dev-essay-005",
+   "topic": 1,
+   "full_task": "Wybierz jeden z podanych tematów i napisz wypracowanie. W wypracowaniu sformułuj stanowisko (tezę) i uzasadnij je, odwołując się do wiedzy historycznej. Wypracowanie powinno liczyć co najmniej 300 słów.\n\nTemat 1. Oceń działalność Polskiego Państwa Podziemnego w latach 1939–1945. W pracy uwzględnij aspekty: wojskowy, polityczny i społeczny.\n\nTemat 2. Przedstaw drogę społeczeństwa polskiego od strajków z sierpnia 1980 roku do obrad Okrągłego Stołu w 1989 roku.",
+   "full_task_sha256": "036e8c5eff1039894ce86506eec4085ffbbf44cdb47c3d0b616594880f0ce992",
+   "draft_prompt": "Napisz wypracowanie maturalne z historii na JEDEN, już wybrany temat nr 1. Pozostałe tematy z arkusza nie są częścią zadania: nie pisz o nich i nie wspominaj ich.\n\nOdpowiedz WYŁĄCZNIE jednym obiektem JSON, bez żadnego tekstu przed nim ani po nim:\n{\"topic_id\": 1, \"body\": \"<treść wypracowania>\"}\n\nWymagania dotyczące pola \"body\":\n- Sama treść wypracowania: bez tytułu, bez nagłówków, bez numeru tematu, bez planu, bez komentarzy do oceniającego, bez podawania liczby słów, bez zwrotów typu „Oto moja odpowiedź”.\n- Długość: 400–500 słów (bezwzględne minimum: 300). Jeśli brakuje słów, rozwijaj argumenty konkretnymi faktami (rok, nazwa własna, związek z tezą), nigdy powtórzeniami ani ogólnikami.\n- Akapity oddzielaj pustą linią (w JSON: \\n\\n). Pierwszy akapit: krótkie wprowadzenie i wyraźne stanowisko (teza). Potem co najmniej jeden akapit na każdy wymagany aspekt. Ostatni akapit: wniosek, który wraca do tezy.\n- Podawaj tylko fakty, których jesteś pewien; nie wymyślaj nazw, terminów ani dat. Pisz po polsku.\n\nWYMAGANIA OGÓLNE Z POLECENIA:\nWybierz jeden z podanych tematów i napisz wypracowanie. W wypracowaniu sformułuj stanowisko (tezę) i uzasadnij je, odwołując się do wiedzy historycznej. Wypracowanie powinno liczyć co najmniej 300 słów.\n\nTEMAT nr 1:\nOceń działalność Polskiego Państwa Podziemnego w latach 1939–1945. W pracy uwzględnij aspekty: wojskowy, polityczny i społeczny.\nWymagane aspekty (każdy musi zostać omówiony): wojskowy, polityczny, społeczny\nMinimalna długość z polecenia: 300 słów.\n",
+   "draft_prompt_sha256": "73e50bb0d613e3651f5c01db492b241ce499ac19d22a178a4c197be84fc851c5",
+   "evidence": [
+    {
+     "chunk_id": "plwiki-polskie-panstwo-podziemne#2555",
+     "source_id": "plwiki-polskie-panstwo-podziemne",
+     "title": "Polskie Państwo Podziemne",
+     "locator": "Powstanie oraz działalność [part 7]",
+     "text": "Odbywały się też koncerty i wieczory poetyckie.\nRuch oporu w okupowanej Polsce obejmował prawie wszystkie dziedziny życia. Dlatego tajne struktury podporządkowane rządowi emigracyjnemu nazywano po wojnie Polskim Państwem Podziemnym.\nNajwiększymi działaniami wojskowymi podjętymi przez AK były powstanie warszawskie, które rozpoczęło się 1 sierpnia 1944 i akcja „Burza” podjęta na wschodnich obszarach Polski. Trwała od 4 stycznia 1944, kiedy wojska sowieckie przekroczyły na Wołyniu granicę polsko-sowiecką z 1939, do stycznia 1945. W początkowej fazie akcja „Burza” opierała się na współpracy wojskowej jednostek polskich i sowieckich. Po przełamaniu obrony niemieckiej w tych rejonach władze sowieckie złamały te porozumienia wojskowe i internowały tysiące żołnierzy AK. Po upadku powstania warszawskiego stolicą Polskiego Państwa Podziemnego została Częstochowa.",
+     "score": 35.4157
+    },
+    {
+     "chunk_id": "plwiki-polskie-panstwo-podziemne#2548",
+     "source_id": "plwiki-polskie-panstwo-podziemne",
+     "title": "Polskie Państwo Podziemne",
+     "locator": "Wstęp [part 1]",
+     "text": "Polskie Państwo Podziemne (PPP) – tajne struktury państwa polskiego, istniejące w czasie II wojny światowej podległe Rządowi RP na uchodźstwie. Były systemem władz państwowych, działających w imieniu Rzeczypospolitej, w czasie okupowania terytorium państwa polskiego przez III Rzeszę i ZSRR.\nIstniało od 27 września 1939 roku (utworzenie Służby Zwycięstwu Polski (SZP)) do 1 lipca 1945 (samorozwiązanie Rady Jedności Narodowej i Delegatury Rządu na Kraj w związku z wycofaniem uznania międzynarodowego dla Rządu RP na uchodźstwie).\nOkreślenie to po raz pierwszy w okupowanym kraju pojawiło się na łamach „Biuletynu Informacyjnego” 13 stycznia 1944 roku.",
+     "score": 33.5501
+    },
+    {
+     "chunk_id": "plwiki-polskie-panstwo-podziemne#2549",
+     "source_id": "plwiki-polskie-panstwo-podziemne",
+     "title": "Polskie Państwo Podziemne",
+     "locator": "Powstanie oraz działalność [part 1]",
+     "text": "Propozycje kontynuacji walki i oporu metodami konspiracyjnymi sformułowano na spotkaniach między władzami cywilnymi Warszawy (prezydentem Stefanem Starzyńskim, Radą Obrony stolicy i gen. Juliuszem Rómmlem (dowódca obrony Warszawy – 25 września). Brał w nich udział gen. Michał Tokarzewski-Karaszewicz. W nocy z 26 na 27 września 1939 roku powstała w oblężonej Warszawie Służba Zwycięstwu Polski – konspiracyjna organizacja wojskowa, mająca toczyć walkę przeciw okupantom. Gdy zapada decyzja o kapitulacji stolicy 29 września 1939 roku Tokarzewski przedstawił gen. Rómmlowi plan zorganizowania w okupowanym kraju podziemia zbrojnego i zaproponował, by udający się do niewoli gen. Rómmel przelał na niego pełnomocnictwo dowodzenia w całym kraju, otrzymane od Naczelnego Wodza w celu zorganizowania zakonspirowanych agentur bądź delegatur wojskowo-politycznych państwa polskiego. Tego samego dnia, do broniącej się jeszcze Warszawy przyleciał samolotem z Rumunii specjalny wysłannik Rydza-Śmigłego, mjr Edmund Galinat, który znał przedwojenne przygotowania do tego rodzaju działań na wypadek obcej okupacji i miał się zająć organizacją podziemia z ramienia internowanego Wodza Naczelnego. Gen. Rómmel zdecydował jednak przekazać dowództwo gen. Tokarzewskiemu, oddając Galinata do pomocy jako zastępcę. Efektem rozmów był rozkaz gen. Rómmla:",
+     "score": 28.4599
+    },
+    {
+     "chunk_id": "plwiki-polskie-panstwo-podziemne#2551",
+     "source_id": "plwiki-polskie-panstwo-podziemne",
+     "title": "Polskie Państwo Podziemne",
+     "locator": "Powstanie oraz działalność [part 3]",
+     "text": "Jej komendantem głównym został generał Stefan Rowecki, w kampanii wrześniowej dowódca Warszawskiej Brygady Pancerno-Motorowej, autor wojskowego podręcznika walk ulicznych. Utworzenie AK miało służyć scaleniu wszystkich grup wojskowych, podległych do tej pory różnym, podziemnym ugrupowaniom politycznym, w jedną organizację podległą Rządowi RP na uchodźstwie.\nJesienią 1941 roku do ZWZ należało 40 tysięcy żołnierzy, pod koniec 1942 roku AK liczyła ich już około 200 tysięcy. Była jedną z największych podziemnych armii w okupowanej Europie. Jednakże większość żołnierzy nie przeszła regularnego szkolenia, a w dodatku mieli oni zaledwie 53 tysiące sztuk broni (z czego tylko 6% broni maszynowej).\nPoczątki formowania struktur militarnych nie były łatwe, albowiem nastroje społeczne wobec kadry oficerskiej były niechętne (niektórzy ukrywali wręcz fakt, że są oficerami). Wojna obronna 1939 roku podważyła zaufanie społeczne wobec ich zdolności. Gen. Rowecki pisał w grudniu 1941 roku „Szybkość przegranej we wrześniu 1939 roku była poważnym ciosem dla samopoczucia wszystkich żołnierzy.",
+     "score": 25.7359
+    }
+   ],
+   "evidence_sha256": "9a64e99d401d837ed8a00f0b777ede3fc52ef939f8b926cc32f37196ac6454df"
+  },
+  {
+   "item": "dev-essay-009",
+   "topic": 1,
+   "full_task": "Wybierz jeden z podanych tematów i napisz wypracowanie. W wypracowaniu sformułuj stanowisko (tezę) i uzasadnij je, odwołując się do wiedzy historycznej. Wypracowanie powinno liczyć co najmniej 300 słów.\n\nTemat 1. Oceń znaczenie unii w Krewie (1385) i panowania Władysława II Jagiełły (1386–1434) dla państwa polskiego. W pracy uwzględnij aspekty: polityczny, militarny i religijny.\n\nTemat 2. Przedstaw rolę Jadwigi Andegaweńskiej w dziejach Polski.",
+   "full_task_sha256": "8a5a7bc7eba4b679d193578cf8eed0e0b0ecc27e811ffd04987466f85630b1de",
+   "draft_prompt": "Napisz wypracowanie maturalne z historii na JEDEN, już wybrany temat nr 1. Pozostałe tematy z arkusza nie są częścią zadania: nie pisz o nich i nie wspominaj ich.\n\nOdpowiedz WYŁĄCZNIE jednym obiektem JSON, bez żadnego tekstu przed nim ani po nim:\n{\"topic_id\": 1, \"body\": \"<treść wypracowania>\"}\n\nWymagania dotyczące pola \"body\":\n- Sama treść wypracowania: bez tytułu, bez nagłówków, bez numeru tematu, bez planu, bez komentarzy do oceniającego, bez podawania liczby słów, bez zwrotów typu „Oto moja odpowiedź”.\n- Długość: 400–500 słów (bezwzględne minimum: 300). Jeśli brakuje słów, rozwijaj argumenty konkretnymi faktami (rok, nazwa własna, związek z tezą), nigdy powtórzeniami ani ogólnikami.\n- Akapity oddzielaj pustą linią (w JSON: \\n\\n). Pierwszy akapit: krótkie wprowadzenie i wyraźne stanowisko (teza). Potem co najmniej jeden akapit na każdy wymagany aspekt. Ostatni akapit: wniosek, który wraca do tezy.\n- Podawaj tylko fakty, których jesteś pewien; nie wymyślaj nazw, terminów ani dat. Pisz po polsku.\n\nWYMAGANIA OGÓLNE Z POLECENIA:\nWybierz jeden z podanych tematów i napisz wypracowanie. W wypracowaniu sformułuj stanowisko (tezę) i uzasadnij je, odwołując się do wiedzy historycznej. Wypracowanie powinno liczyć co najmniej 300 słów.\n\nTEMAT nr 1:\nOceń znaczenie unii w Krewie (1385) i panowania Władysława II Jagiełły (1386–1434) dla państwa polskiego. W pracy uwzględnij aspekty: polityczny, militarny i religijny.\nWymagane aspekty (każdy musi zostać omówiony): polityczny, militarny, religijny\nMinimalna długość z polecenia: 300 słów.\n",
+   "draft_prompt_sha256": "552e5abfe73682c746a2068efe13037e97a4faa47a996d81b14441d4587e324a",
+   "evidence": [
+    {
+     "chunk_id": "plwiki-unia-w-krewie#0615",
+     "source_id": "plwiki-unia-w-krewie",
+     "title": "Unia w Krewie",
+     "locator": "Wstęp [part 1]",
+     "text": "Unia w Krewie lub układ w Krewie, rzadziej umowa krewsko-wołkowyska – akt wydany 14 sierpnia 1385 roku przez wielkiego księcia litewskiego Jagiełłę w Krewie, stanowiący jego zobowiązania przedślubne wobec Królestwa Polskiego. Wydanie aktu stanowiło wynik rozmów prowadzonych między księciem a panami małopolskimi na zamku w Krewie dotyczących małżeństwa króla Jadwigi z Jagiełłą. Poprzedziły je jednak długoletnie, prawdopodobnie co najmniej od koronacji Jadwigi, negocjacje między stroną litewską a polską, a także z królową Elżbietą Bośniaczką, matką wciąż niepełnoletniej Jadwigi.\nJagiełło zobowiązywał się przyjąć chrześcijaństwo w obrządku katolickim wraz z rodziną, dworem i możnymi oraz dać wolność Polakom wziętym w niewolę i przebywającym na Litwie. Obiecywał podjąć starania w celu odzyskania ziem utraconych przez Polskę i Litwę, a także zapłacić Wilhelmowi Habsburgowi 200 tysięcy florenów jako odszkodowanie, za zerwane zaręczyny z Jadwigą. \nPonadto Jagiełło przyrzekł przyłączyć do Królestwa Polskiego ziemie litewskie i ruskie. Przedmiotem sporu w historiografii jest to, czy akt ten oznaczał włączenie państwa litewskiego do Korony Królestwa Polskiego, czy był jedynie deklaracją woli Jagiełły, nie wprowadzającej nowego stanu prawnego. Część współczesnych historyków skłania się ku stwierdzeniu, że akt był obietnicą i miał formę umowy przedmałżeńskiej, a nie umowy międzypaństwowej czy międzydynastycznej oraz nie był aktem unijnym z prawnego punktu widzenia.",
+     "score": 45.5064
+    },
+    {
+     "chunk_id": "plwiki-unia-lubelska#1046",
+     "source_id": "plwiki-unia-lubelska",
+     "title": "Unia lubelska",
+     "locator": "Lublin jako miejsce domniemanej pierwszej unii polsko-litewskiej [part 1]",
+     "text": "2 lutego 1386 roku na jednym z pierwszych sejmów walnych w Lublinie Jagiełło został wybrany na króla Polski. Część badaczy uważa decyzje tego zjazdu za pierwszą unię polsko-litewską, bowiem w Krewie spisano jedynie wstępną umowę, zawierającą warunki, jakie miał spełnić Jagiełło, by mógł objąć polski tron.",
+     "score": 38.9917
+    },
+    {
+     "chunk_id": "plwiki-wojna-trzynastoletnia#0666",
+     "source_id": "plwiki-wojna-trzynastoletnia",
+     "title": "Wojna trzynastoletnia",
+     "locator": "Geneza wojny > Następstwa unii litewsko-polskiej [part 1]",
+     "text": "Konflikt polsko-krzyżacki odnowił się w wyniku zawarcia przez Królestwo Polskie i Wielkie Księstwo Litewskie unii personalnej w Krewie w 1385 r., która skutkowała chrztem Litwy i objęciem tronu w Krakowie przez litewskiego księcia Jagiełłę. Chrzest ostatniego pogańskiego państwa Europy Wschodniej zachwiał ideologiczną podstawą rozwoju państwa zakonu krzyżackiego, a wzmocnione sojuszem Polska i Litwa zaczęły dążyć do rewindykacji zajętych przez Krzyżaków ziem – Pomorza, ziemi chełmińskiej (Polska) i Żmudzi (Litwa). Ponadto od 1397 r. Zakon krzyżacki wraz z niemiecką Hanzą zmuszony był zmierzyć się z presją rewindykacyjną państw nordyckich, które po zwycięstwie Danii w wojnie Małgorzaty I z Albrechtem Meklemburskim zawarły antyniemiecką unię kalmarską. W 1408 r. po 10-letnim konflikcie Malbork musiał zwrócić Danii wyspę Gotlandię, zdobytą w 1402 r. w reakcji na unię kalmarską, aby w konflikcie z Polską i Litwą nie być zmuszonym do wojny na dwa fronty (przeciwko unii polsko-litewskiej i przeciwko unii kalmarskiej).",
+     "score": 35.4646
+    },
+    {
+     "chunk_id": "plwiki-unia-lubelska#1047",
+     "source_id": "plwiki-unia-lubelska",
+     "title": "Unia lubelska",
+     "locator": "Tło [part 1]",
+     "text": "Gdy w roku 1548 rządy w państwie objął koronowany jeszcze za życia ojca, Zygmunta I Starego, Zygmunt II August, wobec jego bezpotomności wyraźnie dało się zauważyć dążenie do bardziej ścisłego związku obu państw, związanych dotąd wyłącznie osobą panującego. Przywódcy ruchu egzekucyjnego, Mikołaj Sienicki i Rafał Leszczyński, na kolejnych sejmach w 1548 i 1550 roku podnosili postulaty wcielenia Wielkiego Księstwa Litewskiego do Korony Królestwa Polskiego (co zakładała jeszcze unia w Krewie z roku 1385), Prus Królewskich, Księstwa Oświęcimskiego i Księstwa Zatorskiego.\nNa przeszkodzie unifikacji monarchii jagiellońskiej stała jednak odrębność ustrojowa i administracyjno-prawna państwa litewskiego.",
+     "score": 32.379
+    }
+   ],
+   "evidence_sha256": "4e346826f79ed2d24644c87136cc40ec7ebbd39d0a8b11d8981d95a6d35d00d1"
+  },
+  {
+   "item": "dev-essay-010",
+   "topic": 1,
+   "full_task": "Zadanie zawiera dwa tematy wypracowania. Wybierz jeden z nich i napisz wypracowanie. Zajmij stanowisko wobec tezy zawartej w temacie i uzasadnij je. Praca powinna liczyć minimum 300 słów.\n\n1. Oceń skuteczność ruchu egzekucyjnego i reform czasów Zygmunta II Augusta (1548–1572). W pracy uwzględnij aspekty: ustrojowy, skarbowy i terytorialny.\n2. Scharakteryzuj zasady wolnej elekcji ustalone po 1572 roku.\n\nWYPRACOWANIE\nna temat nr ....",
+   "full_task_sha256": "c519c577e011744a3e9a3355d9bed181b37859b85849e64fa8a712c853f58ee8",
+   "draft_prompt": "Napisz wypracowanie maturalne z historii na JEDEN, już wybrany temat nr 1. Pozostałe tematy z arkusza nie są częścią zadania: nie pisz o nich i nie wspominaj ich.\n\nOdpowiedz WYŁĄCZNIE jednym obiektem JSON, bez żadnego tekstu przed nim ani po nim:\n{\"topic_id\": 1, \"body\": \"<treść wypracowania>\"}\n\nWymagania dotyczące pola \"body\":\n- Sama treść wypracowania: bez tytułu, bez nagłówków, bez numeru tematu, bez planu, bez komentarzy do oceniającego, bez podawania liczby słów, bez zwrotów typu „Oto moja odpowiedź”.\n- Długość: 400–500 słów (bezwzględne minimum: 300). Jeśli brakuje słów, rozwijaj argumenty konkretnymi faktami (rok, nazwa własna, związek z tezą), nigdy powtórzeniami ani ogólnikami.\n- Akapity oddzielaj pustą linią (w JSON: \\n\\n). Pierwszy akapit: krótkie wprowadzenie i wyraźne stanowisko (teza). Potem co najmniej jeden akapit na każdy wymagany aspekt. Ostatni akapit: wniosek, który wraca do tezy.\n- Podawaj tylko fakty, których jesteś pewien; nie wymyślaj nazw, terminów ani dat. Pisz po polsku.\n\nWYMAGANIA OGÓLNE Z POLECENIA:\nZadanie zawiera dwa tematy wypracowania. Wybierz jeden z nich i napisz wypracowanie. Zajmij stanowisko wobec tezy zawartej w temacie i uzasadnij je. Praca powinna liczyć minimum 300 słów.\n\nTEMAT nr 1:\nOceń skuteczność ruchu egzekucyjnego i reform czasów Zygmunta II Augusta (1548–1572). W pracy uwzględnij aspekty: ustrojowy, skarbowy i terytorialny.\nWymagane aspekty (każdy musi zostać omówiony): ustrojowy, skarbowy, terytorialny\nMinimalna długość z polecenia: 300 słów.\n",
+   "draft_prompt_sha256": "f5a0d45c0b2cce012de056d6d430cfd3bfaef008e745aa74b51b6a223007a5c1",
+   "evidence": [
+    {
+     "chunk_id": "plwiki-unia-lubelska#1047",
+     "source_id": "plwiki-unia-lubelska",
+     "title": "Unia lubelska",
+     "locator": "Tło [part 1]",
+     "text": "Gdy w roku 1548 rządy w państwie objął koronowany jeszcze za życia ojca, Zygmunta I Starego, Zygmunt II August, wobec jego bezpotomności wyraźnie dało się zauważyć dążenie do bardziej ścisłego związku obu państw, związanych dotąd wyłącznie osobą panującego. Przywódcy ruchu egzekucyjnego, Mikołaj Sienicki i Rafał Leszczyński, na kolejnych sejmach w 1548 i 1550 roku podnosili postulaty wcielenia Wielkiego Księstwa Litewskiego do Korony Królestwa Polskiego (co zakładała jeszcze unia w Krewie z roku 1385), Prus Królewskich, Księstwa Oświęcimskiego i Księstwa Zatorskiego.\nNa przeszkodzie unifikacji monarchii jagiellońskiej stała jednak odrębność ustrojowa i administracyjno-prawna państwa litewskiego.",
+     "score": 33.3238
+    },
+    {
+     "chunk_id": "plwiki-reformacja#0792",
+     "source_id": "plwiki-reformacja",
+     "title": "Reformacja",
+     "locator": "Geneza reformacji > Uwarunkowania społeczne i polityczne [part 5]",
+     "text": "Część jej zwolenników występowała przeciwko przywilejom majątkowym duchowieństwa oraz jego kompetencjom sądowym wobec osób świeckich.\nRozwojowi ruchów reformacyjnych sprzyjały gwarancje prawne zawarte w uchwałach sejmowych, w szczególności z 1555 oraz z lat 1562–1563, a następnie postanowienia konfederacji warszawskiej z 1573 roku. Reformacja wpłynęła również na rozwój polskiego piśmiennictwa i szkolnictwa. Istotną rolę odgrywały ośrodki związane z poszczególnymi wspólnotami wyznaniowymi, m.in. Raków, będący ważnym centrum działalności braci polskich, oraz Leszno, związane z braćmi czeskimi.\nNajwiększe znaczenie reformacja osiągnęła w Polsce w okresie panowania Zygmunta II Augusta. W późniejszym okresie jej wpływy stopniowo malały. Przyczyniły się do tego zarówno działania kontrreformacyjne, jak i zmniejszające się zainteresowanie części szlachty teologicznymi aspektami ruchu po osiągnięciu części jego postulatów dotyczących stosunków społecznych i politycznych.",
+     "score": 25.3787
+    },
+    {
+     "chunk_id": "plwiki-reformacja#0798",
+     "source_id": "plwiki-reformacja",
+     "title": "Reformacja",
+     "locator": "Inni reformatorzy [part 1]",
+     "text": "W ślady Marcina Lutra poszli inni reformatorzy, np. Jan Kalwin we Francji. Idee reformacji, ujęte w sposób najbardziej radykalny i uzupełnione programem rewolucji społecznej, szerzyli anabaptyści i przywódcy chłopscy, jak Thomas Müntzer. W dalszych etapach rozwój reformacji kształtowany był przez uroczysty protest – stąd zdaje się wywodzić nazwa ruchu – jak ten wyrażony przez protestancką mniejszość religijną na sejmie w Spirze w 1529, kiedy to postanowiono wstrzymać się od wykonania edyktu wormackiego aż do czasu zwołania soboru powszechnego. Jednak już trzy lata później na sejmie w tym samym mieście zabroniono nauk reformacyjnych. Istotne z punktu widzenia reformacji były sformułowanie przez Filipa Melanchtona – przyjaciela Lutra – pierwszego protestanckiego wyznania wiary, zwanego Confessio Augustana (Wyznanie augsburskie) w 1530 i zawarcie w 1555 pokoju religijnego w Augsburgu, uznającego prawnie podział wyznaniowy Niemiec według zasady Cuius regio, eius religio (czyja ziemia, tego religia). Zasada wyboru religii nie obejmowała zatem niższych grup społecznych, te musiały się podporządkować władcom. Z Niemiec ruch reformacyjny przeniknął do innych krajów Europy, m.in. do krajów skandynawskich, gdzie luteranizm stał się religią panującą, Francji, Czech, Polski i na Węgry. Kalwinizm, rozwijający się w Szwajcarii obok doktryny Zwingliego, oddziaływał w znacznej mierze na Francję – stronnictwo to nazywano hugenotami, a także miał znaczący wpływ na wskrzeszenie antytrynitaryzmu. Osobny nurt reformacji – anglikanizm – powstał w Anglii w 1534, gdy król Henryk VIII, na skutek nieuznania przez papieża jego kolejnego małżeństwa – tym razem z Anną Boleyn, uzyskawszy zgodę parlamentu, zerwał z Rzymem i stanął na czele niezależnego od papiestwa Kościoła w Anglii.",
+     "score": 19.6297
+    },
+    {
+     "chunk_id": "plwiki-unia-lubelska#1048",
+     "source_id": "plwiki-unia-lubelska",
+     "title": "Unia lubelska",
+     "locator": "Tło [part 2]",
+     "text": "W 1551 roku powołano specjalną komisję, która zajęła się nowelizacją I Statutu Litewskiego z 1529 pod kątem reformy ustrojowej zbliżającej Wielkie Księstwo Litewskie do Królestwa Polskiego.\nNa sejmie w Warszawie 13 marca 1564 roku król Zygmunt II August odstąpił Koronie Królestwa Polskiego swoje prawa sukcesyjne w Wielkim Księstwie Litewskim.\nW 1565 Zygmunt II August ustanowił sejmiki powiatowe, a w 1566 zatwierdził II Statut Litewski, w którym zrzekał się części swoich kompetencji na rzecz sejmu litewskiego, czym upodobnił go do sejmu koronnego.\nOba sejmy, począwszy od 1551 roku, wysyłały wzajemnie swoich delegatów. Zwołany w Warszawie w listopadzie 1563 sejm koronny, na którym obecnych było 28 delegatów Litwy, zajął się sprawą zawarcia nowej unii polsko-litewskiej. Na sejmie tym 12 lutego 1564 Zygmunt August scedował na Koronę Królestwa Polskiego dziedziczne prawo Jagiellonów do władania Wielkim Księstwem Litewskim. Miało to ułatwić przyszłą elekcję władcy połączonego już państwa. Rozpoczęto prace mieszanej komisji polsko-litewskiej, która zajęła się opracowaniem formy około unii.",
+     "score": 18.206
+    }
+   ],
+   "evidence_sha256": "827c2af6d4f86107e2931fba84d8fc597fd8de5de03d7f0ea335f094798dba03"
+  }
+ ],
+ "frozen_utc": "2026-09-26T20:09:09Z"
+}

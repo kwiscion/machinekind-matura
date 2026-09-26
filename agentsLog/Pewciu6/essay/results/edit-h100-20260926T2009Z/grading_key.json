@@ -1,0 +1,95 @@
+{
+ "key": [
+  {
+   "code": "E01",
+   "item": "dev-essay-004",
+   "family": "T-draft"
+  },
+  {
+   "code": "E02",
+   "item": "dev-essay-001",
+   "family": "T-patched"
+  },
+  {
+   "code": "E03",
+   "item": "dev-essay-005",
+   "family": "T-draft"
+  },
+  {
+   "code": "E04",
+   "item": "dev-essay-003",
+   "family": "N-draft"
+  },
+  {
+   "code": "E05",
+   "item": "dev-essay-005",
+   "family": "N-draft"
+  },
+  {
+   "code": "E06",
+   "item": "dev-essay-003",
+   "family": "T-draft"
+  },
+  {
+   "code": "E07",
+   "item": "dev-essay-001",
+   "family": "T-draft"
+  },
+  {
+   "code": "E08",
+   "item": "dev-essay-005",
+   "family": "T-patched"
+  },
+  {
+   "code": "E09",
+   "item": "dev-essay-010",
+   "family": "T-draft"
+  },
+  {
+   "code": "E10",
+   "item": "dev-essay-001",
+   "family": "N-draft"
+  },
+  {
+   "code": "E11",
+   "item": "dev-essay-010",
+   "family": "N-draft"
+  },
+  {
+   "code": "E12",
+   "item": "dev-essay-004",
+   "family": "N-draft"
+  },
+  {
+   "code": "E13",
+   "item": "dev-essay-010",
+   "family": "T-patched"
+  },
+  {
+   "code": "E14",
+   "item": "dev-essay-009",
+   "family": "T-patched"
+  },
+  {
+   "code": "E15",
+   "item": "dev-essay-003",
+   "family": "T-patched"
+  },
+  {
+   "code": "E16",
+   "item": "dev-essay-009",
+   "family": "T-draft"
+  },
+  {
+   "code": "E17",
+   "item": "dev-essay-009",
+   "family": "N-draft"
+  },
+  {
+   "code": "E18",
+   "item": "dev-essay-004",
+   "family": "T-patched"
+  }
+ ],
+ "not_gradable": []
+}
