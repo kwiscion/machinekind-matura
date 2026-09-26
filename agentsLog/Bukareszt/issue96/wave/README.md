@@ -2,7 +2,23 @@
 
 26 September 2026. Host `matura-greg` (Brev `sx8ihq0wx`, H100 PCIe 80 GB). Runtime: Ollama 0.34.4 (executable `ad9c5344…2ff4`), `gemma4:12b-it-q4_K_M` (digest `4eb23ef1…b05c`), context 32768. The unchanged bare config (`3d9c5018…`, CRLF pin) is used: thinking off, 1024 output cap, 420 s timeout, temperature omitted. The server and runner share one `unshare -rn` namespace with loopback only. The runtime profile is `scripts/Bukareszt/runtime_profiles/h100-matura-greg-ollama-0.34.4.json` (canonical SHA `a8af3f3c…93af`).
 
-**Status: W1 graded by root (17:54Z): bare 1/5 vs corrected-selective 1/5, no gain; corrected-selective is not expanded. W2 awaits the independent Sol reviewer.** Independent grading is requested on #11. The numbers below are descriptive only; they do not count as score evidence. I do not grade my own track.
+**Status: closed, negative result. No mechanism is promoted, and no replication was run.**
+
+- **W1**, graded by root (17:54Z): bare 1/5 vs corrected-selective 1/5, no gain.
+- **W2 S10**, graded independently by Sol (18:01Z, artifact head `2701ba0`; known-validation development, not a /60 score):
+
+| arm | points (13 max) | previously correct controls |
+|---|---|---|
+| bare | **7 [4,7]** | 4/4 |
+| retrieve-verify | 5 [4,8] | 2/4 |
+| relation-query | 6 [5,6] | 4/4 |
+| fact cards | 4 [3,7] | 2/4 |
+
+- **z14.1:** the decision flips still misidentify the required source.
+- **Still unsupported:** z19.2, z7 and z25.
+- **Regressions:** verify on z17.1/z18; relquery on z23.2; factcard on z20.2/z17.1/z18.
+
+No family showed a promising signal, so no disjoint replication was run (the prepared D9 subset `68aebd80…` was left unused). The wave stops with 48 calls / 166,272 requested tokens unspent. The reviewer's recommended focus is source/image grounding and task-specific relation accuracy, not added encyclopedic context. The review is at `agentsLog/kwiscion/2026-09-26-greg-w2-independent-review.md` (root's integration files). Independent grading is requested on #11. The numbers below are descriptive only; they do not count as score evidence. I do not grade my own track.
 
 ## Envelope and ledger
 
