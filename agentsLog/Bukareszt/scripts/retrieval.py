@@ -47,6 +47,7 @@ QUERIES_FILE = os.path.join(ROOT, "queries", "train_queries.jsonl")
 REPORTS_DIR = os.path.join(ROOT, "reports")
 AUDIT_DIR = os.path.join(ROOT, "audit")
 
+MODES = ["bm25", "hybrid", "chrono", "twostage"]
 USER_AGENT = "machinekind-matura-retrieval/0.1 (overnight hackathon; contact: piotrowskigrzegorz2000@gmail.com)"
 API = {
     "wikipedia_pl": "https://pl.wikipedia.org/w/api.php",
@@ -343,44 +344,68 @@ class BM25Index:
     def __init__(self, chunks: list[dict], k1: float = 1.5, b: float = 0.75):
         self.chunks = chunks
         self.k1, self.b = k1, b
+        # content field: chunk text only; title field: article title + section path (scored separately)
         self.postings: dict[str, dict[int, int]] = defaultdict(dict)
+        self.title_postings: dict[str, dict[int, int]] = defaultdict(dict)
         self.doc_len: list[int] = []
+        self.title_len: list[int] = []
         for i, ch in enumerate(chunks):
-            toks = tokenize(ch["title"] + " " + ch["section"] + " " + ch["text"])
+            toks = tokenize(ch["text"])
             self.doc_len.append(len(toks))
             for t, c in Counter(toks).items():
                 self.postings[t][i] = c
+            ttoks = tokenize(ch["title"] + " " + ch["section"])
+            self.title_len.append(len(ttoks))
+            for t, c in Counter(ttoks).items():
+                self.title_postings[t][i] = c
         self.n = len(chunks)
         self.avgdl = sum(self.doc_len) / max(1, self.n)
+        self.avgtl = sum(self.title_len) / max(1, self.n)
 
-    def idf(self, term: str) -> float:
-        df = len(self.postings.get(term, {}))
+    def idf(self, term: str, postings=None) -> float:
+        df = len((postings if postings is not None else self.postings).get(term, {}))
         return math.log(1 + (self.n - df + 0.5) / (df + 0.5))
 
-    def scores(self, query: str) -> dict[int, float]:
+    def _field_scores(self, qterms: Counter, postings, lens, avg) -> dict[int, float]:
         sc: dict[int, float] = defaultdict(float)
-        for term, qtf in Counter(tokenize(query)).items():
-            plist = self.postings.get(term)
+        for term in qterms:
+            plist = postings.get(term)
             if not plist:
                 continue
-            idf = self.idf(term)
+            idf = self.idf(term, postings)
             for i, tf in plist.items():
-                dl = self.doc_len[i]
-                sc[i] += idf * tf * (self.k1 + 1) / (tf + self.k1 * (1 - self.b + self.b * dl / self.avgdl))
+                sc[i] += idf * tf * (self.k1 + 1) / (tf + self.k1 * (1 - self.b + self.b * lens[i] / avg))
+        return sc
+
+    def scores(self, query: str, title_weight: float = 1.0) -> dict[int, float]:
+        """BM25 over chunk text plus `title_weight` x BM25 over the title/section field.
+
+        title_weight=1.0 approximates the audited v1 index (title tokens concatenated into every chunk);
+        lower weights stop an article's title from lifting all of its sections equally.
+        """
+        q = Counter(tokenize(query))
+        sc = self._field_scores(q, self.postings, self.doc_len, self.avgdl)
+        if title_weight:
+            for i, s in self._field_scores(q, self.title_postings, self.title_len, self.avgtl).items():
+                sc[i] += title_weight * s
         return sc
 
     def to_json(self) -> dict:
         return {
-            "k1": self.k1, "b": self.b, "avgdl": self.avgdl, "doc_len": self.doc_len,
+            "k1": self.k1, "b": self.b, "avgdl": self.avgdl, "avgtl": self.avgtl,
+            "doc_len": self.doc_len, "title_len": self.title_len,
             "postings": {t: list(p.items()) for t, p in self.postings.items()},
+            "title_postings": {t: list(p.items()) for t, p in self.title_postings.items()},
             "chunks": self.chunks,
         }
 
     @classmethod
     def from_json(cls, d: dict) -> "BM25Index":
         obj = cls.__new__(cls)
-        obj.chunks, obj.k1, obj.b, obj.avgdl, obj.doc_len = d["chunks"], d["k1"], d["b"], d["avgdl"], d["doc_len"]
+        obj.chunks, obj.k1, obj.b = d["chunks"], d["k1"], d["b"]
+        obj.avgdl, obj.avgtl, obj.doc_len, obj.title_len = d["avgdl"], d["avgtl"], d["doc_len"], d["title_len"]
         obj.postings = {t: {int(i): c for i, c in p} for t, p in d["postings"].items()}
+        obj.title_postings = {t: {int(i): c for i, c in p} for t, p in d["title_postings"].items()}
         obj.n = len(obj.chunks)
         return obj
 
@@ -391,14 +416,17 @@ def cmd_index(args) -> None:
     idx = BM25Index(chunks, k1=args.k1, b=args.b)
     os.makedirs(INDEX_DIR, exist_ok=True)
     payload = idx.to_json()
+    # deterministic payload: no timestamps inside the index file, so identical raw text => identical SHA-256
     payload["meta"] = {
-        "built_at": now_iso(), "n_sources": len({c["source_id"] for c in chunks}), "n_chunks": len(chunks),
+        "n_sources": len({c["source_id"] for c in chunks}), "n_chunks": len(chunks),
         "max_chars": args.max_chars, "sources_sha256": sha256_file(SOURCES_JSONL),
+        "raw_sha256": {r["source_id"]: r["sha256"] for r in manifest},
         "tokenizer": "NFKC lowercase, \\w+, stoplist, prefix-6 stem", "k1": args.k1, "b": args.b,
     }
     with open(INDEX_FILE, "w", encoding="utf-8") as f:
         json.dump(payload, f, ensure_ascii=False, sort_keys=True)
-    meta = dict(payload["meta"], index_sha256=sha256_file(INDEX_FILE), index_bytes=os.path.getsize(INDEX_FILE))
+    meta = {k: v for k, v in payload["meta"].items() if k != "raw_sha256"}
+    meta.update(built_at=now_iso(), index_sha256=sha256_file(INDEX_FILE), index_bytes=os.path.getsize(INDEX_FILE))
     json.dump(meta, open(os.path.join(REPORTS_DIR, "index_meta.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=2)
     print(json.dumps(meta, ensure_ascii=False, indent=2))
 
@@ -460,10 +488,31 @@ def _normalize(sc: dict[int, float]) -> dict[int, float]:
     return {i: s / m for i, s in sc.items()}
 
 
-def rank(idx: BM25Index, query: str, k: int, mode: str = "bm25", graph: dict | None = None) -> list[dict]:
-    bm = idx.scores(query)
+def rank(idx: BM25Index, query: str, k: int, mode: str = "bm25", graph: dict | None = None,
+         title_weight: float = 1.0) -> list[dict]:
+    bm = idx.scores(query, title_weight)
     if mode == "bm25":
         combined = bm
+    elif mode == "twostage":
+        # stage 1: article score = best chunk score (title-weighted); stage 2: re-rank chunks of the
+        # top articles by content-only BM25 so the section that actually answers wins.
+        by_src: dict[str, float] = defaultdict(float)
+        for i, s in bm.items():
+            sid = idx.chunks[i]["source_id"]
+            by_src[sid] = max(by_src[sid], s)
+        top_src = {sid for sid, _ in sorted(by_src.items(), key=lambda x: -x[1])[:3]}
+        # residual query: drop the query terms already satisfied by the article title, so the
+        # discriminative terms (ostracyzm, Ulrich, Wieprz) decide the section within the article
+        qtoks = Counter(tokenize(query))
+        title_toks = {sid: set(tokenize(t)) for sid, t in {c["source_id"]: c["title"] for c in idx.chunks}.items()}
+        combined = {}
+        for sid in top_src:
+            residual = Counter({t: c for t, c in qtoks.items() if t not in title_toks[sid]}) or qtoks
+            rs = idx._field_scores(residual, idx.postings, idx.doc_len, idx.avgdl)
+            # article-major ordering: stage-1 article score decides the article, residual decides the section
+            for i, s in bm.items():
+                if idx.chunks[i]["source_id"] == sid:
+                    combined[i] = 1000.0 * by_src[sid] + rs.get(i, 0.0) + 0.1 * s
     elif mode == "hybrid":
         a, b = _normalize(bm), _normalize(ngram_scores(idx, query))
         combined = {i: 0.6 * a.get(i, 0.0) + 0.4 * b.get(i, 0.0) for i in set(a) | set(b)}
@@ -498,7 +547,7 @@ def rank(idx: BM25Index, query: str, k: int, mode: str = "bm25", graph: dict | N
 
 def cmd_query(args) -> None:
     idx = load_index()
-    res = rank(idx, args.text, args.k, args.mode)
+    res = rank(idx, args.text, args.k, args.mode, title_weight=args.title_weight)
     if args.json:
         print(json.dumps(res, ensure_ascii=False, indent=2))
         return
@@ -559,7 +608,7 @@ def evidence_hit(r: dict, q: dict) -> bool:
     return loc_ok or text_ok
 
 
-def evaluate(idx: BM25Index, queries: list[dict], k: int, mode: str) -> dict:
+def evaluate(idx: BM25Index, queries: list[dict], k: int, mode: str, title_weight: float = 1.0) -> dict:
     graph = load_graph() if mode == "chrono" else None
     ks = [1, 3, 5, 10]
     src_hits = {kk: 0 for kk in ks}
@@ -567,7 +616,7 @@ def evaluate(idx: BM25Index, queries: list[dict], k: int, mode: str) -> dict:
     rr_src, rr_ev, per_query = 0.0, 0.0, []
     t0 = time.time()
     for q in queries:
-        res = rank(idx, q["prompt"], max(k, 10), mode, graph)
+        res = rank(idx, q["prompt"], max(k, 10), mode, graph, title_weight)
         first_src = next((r["rank"] for r in res if r["source_id"] in q["expected_source_ids"]), None)
         first_ev = next((r["rank"] for r in res if evidence_hit(r, q)), None)
         for kk in ks:
@@ -582,7 +631,7 @@ def evaluate(idx: BM25Index, queries: list[dict], k: int, mode: str) -> dict:
         })
     n = len(queries)
     return {
-        "mode": mode, "n_queries": n, "k_max": max(k, 10), "seconds": round(time.time() - t0, 2),
+        "mode": mode, "title_weight": title_weight, "n_queries": n, "k_max": max(k, 10), "seconds": round(time.time() - t0, 2),
         "source_hit_at_k": {str(kk): round(v / n, 3) for kk, v in src_hits.items()},
         "evidence_hit_at_k": {str(kk): round(v / n, 3) for kk, v in ev_hits.items()},
         "source_hit_counts": {str(kk): v for kk, v in src_hits.items()},
@@ -601,10 +650,10 @@ def cmd_eval(args) -> None:
                "queries_sha256": sha256_file(args.queries), "index_sha256": meta["index_sha256"],
                "n_chunks": meta["n_chunks"], "n_sources": meta["n_sources"], "results": {}}
     for mode in modes:
-        res = evaluate(idx, queries, args.k, mode)
+        res = evaluate(idx, queries, args.k, mode, args.title_weight)
         summary["results"][mode] = res
         write_jsonl(os.path.join(REPORTS_DIR, f"eval_per_query_{mode}.jsonl"), res["per_query"])
-        print(f"[{mode}] n={res['n_queries']} source_hit@1/3/5/10 = "
+        print(f"[{mode} tw={args.title_weight}] n={res['n_queries']} source_hit@1/3/5/10 = "
               f"{res['source_hit_at_k']['1']}/{res['source_hit_at_k']['3']}/{res['source_hit_at_k']['5']}/{res['source_hit_at_k']['10']}"
               f"  evidence_hit@1/3/5/10 = {res['evidence_hit_at_k']['1']}/{res['evidence_hit_at_k']['3']}/{res['evidence_hit_at_k']['5']}/{res['evidence_hit_at_k']['10']}"
               f"  MRR(src)={res['mrr_source']} MRR(ev)={res['mrr_evidence']}  {res['seconds']}s")
@@ -625,7 +674,7 @@ def cmd_audit_sample(args) -> None:
     queries = read_jsonl(args.queries)
     rows = []
     for q in queries:
-        res = rank(idx, q["prompt"], args.k, args.mode)
+        res = rank(idx, q["prompt"], args.k, args.mode, title_weight=args.title_weight)
         rows.append({
             "id": q["id"], "prompt": q["prompt"], "claim": q["answer"],
             "citations": [{"rank": r["rank"], "chunk_id": r["chunk_id"], "source_id": r["source_id"],
@@ -633,7 +682,7 @@ def cmd_audit_sample(args) -> None:
             "auditor_instructions": "For each citation decide: supported | partial | unsupported. Judge ONLY from the cited text; do not use your own knowledge to fill gaps.",
         })
     os.makedirs(AUDIT_DIR, exist_ok=True)
-    out = os.path.join(AUDIT_DIR, f"audit_sample_{args.mode}.jsonl")
+    out = os.path.join(AUDIT_DIR, f"audit_sample_{args.tag or args.mode}.jsonl")
     write_jsonl(out, rows)
     print(f"audit sample: {len(rows)} queries x top-{args.k} ({args.mode}) -> {out}")
 
@@ -661,7 +710,9 @@ def cmd_audit_score(args) -> None:
         "unsupported": [{"id": v["id"], "rank": c["rank"], "chunk_id": c["chunk_id"], "note": c.get("note", "")}
                         for v in verdicts for c in v["citations"] if c["verdict"] != "supported"],
     }
-    out = os.path.join(REPORTS_DIR, "audit_score.json")
+    report["verdicts_file"] = os.path.relpath(args.verdicts, ROOT)
+    report["verdicts_sha256"] = sha256_file(args.verdicts)
+    out = os.path.join(REPORTS_DIR, args.out)
     json.dump(report, open(out, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
     print(json.dumps({k: v for k, v in report.items() if k != "unsupported"}, ensure_ascii=False, indent=2))
     print(f"-> {out}")
@@ -680,18 +731,21 @@ def main(argv=None) -> None:
     p.add_argument("--k1", type=float, default=1.5); p.add_argument("--b", type=float, default=0.75); p.set_defaults(fn=cmd_index)
 
     p = sub.add_parser("query"); p.add_argument("text"); p.add_argument("--k", type=int, default=5)
-    p.add_argument("--mode", default="bm25", choices=["bm25", "hybrid", "chrono"]); p.add_argument("--json", action="store_true")
+    p.add_argument("--mode", default="bm25", choices=MODES); p.add_argument("--json", action="store_true")
+    p.add_argument("--title-weight", type=float, default=1.0)
     p.add_argument("--snippet", type=int, default=220); p.set_defaults(fn=cmd_query)
 
     p = sub.add_parser("graph"); p.set_defaults(fn=cmd_graph)
 
     p = sub.add_parser("eval"); p.add_argument("--queries", default=QUERIES_FILE); p.add_argument("--k", type=int, default=10)
-    p.add_argument("--modes", default="bm25"); p.set_defaults(fn=cmd_eval)
+    p.add_argument("--modes", default="bm25"); p.add_argument("--title-weight", type=float, default=1.0); p.set_defaults(fn=cmd_eval)
 
     p = sub.add_parser("audit-sample"); p.add_argument("--queries", default=QUERIES_FILE); p.add_argument("--k", type=int, default=3)
-    p.add_argument("--mode", default="bm25", choices=["bm25", "hybrid", "chrono"]); p.set_defaults(fn=cmd_audit_sample)
+    p.add_argument("--mode", default="bm25", choices=MODES); p.add_argument("--title-weight", type=float, default=1.0)
+    p.add_argument("--tag", default="", help="output name suffix (default: mode)"); p.set_defaults(fn=cmd_audit_sample)
 
-    p = sub.add_parser("audit-score"); p.add_argument("--verdicts", default=os.path.join(AUDIT_DIR, "audit_verdicts.jsonl")); p.set_defaults(fn=cmd_audit_score)
+    p = sub.add_parser("audit-score"); p.add_argument("--verdicts", default=os.path.join(AUDIT_DIR, "audit_verdicts.jsonl"))
+    p.add_argument("--out", default="audit_score.json", help="file name under reports/"); p.set_defaults(fn=cmd_audit_score)
 
     args = ap.parse_args(argv)
     args.fn(args)

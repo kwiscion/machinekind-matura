@@ -1,8 +1,8 @@
 {
-  "evaluated_at": "2026-09-26T00:25:13+00:00",
+  "evaluated_at": "2026-09-26T00:21:51+00:00",
   "queries_file": "queries/train_queries.jsonl",
-  "queries_sha256": "b2e359bf2501469a216f178ad76511d45604e61ad42d4257fca34d15f82f024d",
-  "index_sha256": "173c56f671bf55012d2b9607252aa09f74b972596824e956249cb409de1c1b4c",
+  "queries_sha256": "be45bd0e9ad4baabe4e2139d9b895b5eb44f408472a5c72aeecd4f129f1dd48f",
+  "index_sha256": "4bc41fb77be4970561d255659a038343bf10ac2663c4307d1dc4d9dddbcbcbb6",
   "n_chunks": 3481,
   "n_sources": 107,
   "results": {
@@ -532,12 +532,538 @@
         }
       ]
     },
+    "twostage": {
+      "mode": "twostage",
+      "title_weight": 1.0,
+      "n_queries": 40,
+      "k_max": 10,
+      "seconds": 0.03,
+      "source_hit_at_k": {
+        "1": 0.85,
+        "3": 1.0,
+        "5": 1.0,
+        "10": 1.0
+      },
+      "evidence_hit_at_k": {
+        "1": 0.675,
+        "3": 0.925,
+        "5": 1.0,
+        "10": 1.0
+      },
+      "source_hit_counts": {
+        "1": 34,
+        "3": 40,
+        "5": 40,
+        "10": 40
+      },
+      "evidence_hit_counts": {
+        "1": 27,
+        "3": 37,
+        "5": 40,
+        "10": 40
+      },
+      "mrr_source": 0.921,
+      "mrr_evidence": 0.804,
+      "per_query": [
+        {
+          "id": "ret-train-q01",
+          "first_source_rank": 1,
+          "first_evidence_rank": 1,
+          "top1": {
+            "source_id": "plwiki-kodeks-hammurabiego",
+            "locator": "Wstęp [part 1]"
+          },
+          "expected_source_ids": [
+            "plwiki-kodeks-hammurabiego"
+          ]
+        },
+        {
+          "id": "ret-train-q02",
+          "first_source_rank": 1,
+          "first_evidence_rank": 4,
+          "top1": {
+            "source_id": "plwiki-demokracja-atenska",
+            "locator": "Wstęp [part 1]"
+          },
+          "expected_source_ids": [
+            "plwiki-demokracja-atenska"
+          ]
+        },
+        {
+          "id": "ret-train-q03",
+          "first_source_rank": 1,
+          "first_evidence_rank": 1,
+          "top1": {
+            "source_id": "plwiki-karol-wielki",
+            "locator": "Imperium Karola Wielkiego > Rozkwit imperium [part 4]"
+          },
+          "expected_source_ids": [
+            "plwiki-karol-wielki"
+          ]
+        },
+        {
+          "id": "ret-train-q04",
+          "first_source_rank": 1,
+          "first_evidence_rank": 1,
+          "top1": {
+            "source_id": "plwiki-wielka-karta-swobod",
+            "locator": "Wstęp [part 1]"
+          },
+          "expected_source_ids": [
+            "plwiki-wielka-karta-swobod"
+          ]
+        },
+        {
+          "id": "ret-train-q05",
+          "first_source_rank": 1,
+          "first_evidence_rank": 1,
+          "top1": {
+            "source_id": "plwiki-mieszko-i",
+            "locator": "Panowanie Mieszka I > Chrzest Polski [part 2]"
+          },
+          "expected_source_ids": [
+            "plwiki-chrzest-polski",
+            "plwiki-mieszko-i"
+          ]
+        },
+        {
+          "id": "ret-train-q06",
+          "first_source_rank": 1,
+          "first_evidence_rank": 1,
+          "top1": {
+            "source_id": "plwiki-zjazd-gnieznienski",
+            "locator": "Wstęp [part 1]"
+          },
+          "expected_source_ids": [
+            "plwiki-zjazd-gnieznienski"
+          ]
+        },
+        {
+          "id": "ret-train-q07",
+          "first_source_rank": 2,
+          "first_evidence_rank": 2,
+          "top1": {
+            "source_id": "plwiki-unia-lubelska",
+            "locator": "Lublin jako miejsce domniemanej pierwszej unii polsko-litewskiej [part 1]"
+          },
+          "expected_source_ids": [
+            "plwiki-unia-w-krewie"
+          ]
+        },
+        {
+          "id": "ret-train-q08",
+          "first_source_rank": 2,
+          "first_evidence_rank": 3,
+          "top1": {
+            "source_id": "plwiki-wojna-trzynastoletnia",
+            "locator": "Geneza wojny > Osłabienie państwa zakonu krzyżackiego w początkach XV wieku [part 1]"
+          },
+          "expected_source_ids": [
+            "plwiki-bitwa-pod-grunwaldem"
+          ]
+        },
+        {
+          "id": "ret-train-q09",
+          "first_source_rank": 1,
+          "first_evidence_rank": 1,
+          "top1": {
+            "source_id": "plwiki-ii-pokoj-torunski",
+            "locator": "Wstęp [part 1]"
+          },
+          "expected_source_ids": [
+            "plwiki-ii-pokoj-torunski"
+          ]
+        },
+        {
+          "id": "ret-train-q10",
+          "first_source_rank": 1,
+          "first_evidence_rank": 1,
+          "top1": {
+            "source_id": "plwiki-marcin-luter",
+            "locator": "Życiorys > Spór o odpusty [part 3]"
+          },
+          "expected_source_ids": [
+            "plwiki-marcin-luter",
+            "plwiki-reformacja"
+          ]
+        },
+        {
+          "id": "ret-train-q11",
+          "first_source_rank": 1,
+          "first_evidence_rank": 1,
+          "top1": {
+            "source_id": "plwiki-unia-lubelska",
+            "locator": "Wstęp [part 1]"
+          },
+          "expected_source_ids": [
+            "plwiki-unia-lubelska"
+          ]
+        },
+        {
+          "id": "ret-train-q12",
+          "first_source_rank": 1,
+          "first_evidence_rank": 1,
+          "top1": {
+            "source_id": "plwiki-konfederacja-warszawska",
+            "locator": "Wstęp [part 1]"
+          },
+          "expected_source_ids": [
+            "plwiki-konfederacja-warszawska",
+            "plws-akt-konfederacji-warszawskiej-1573"
+          ]
+        },
+        {
+          "id": "ret-train-q13",
+          "first_source_rank": 2,
+          "first_evidence_rank": 3,
+          "top1": {
+            "source_id": "plwiki-konfederacja-warszawska",
+            "locator": "Geneza konfederacji warszawskiej > Od zgody sandomierskiej do konfederacji warszawskiej [part 3]"
+          },
+          "expected_source_ids": [
+            "plwiki-artykuly-henrykowskie"
+          ]
+        },
+        {
+          "id": "ret-train-q14",
+          "first_source_rank": 1,
+          "first_evidence_rank": 1,
+          "top1": {
+            "source_id": "plwiki-bitwa-pod-wiedniem",
+            "locator": "Wstęp [part 1]"
+          },
+          "expected_source_ids": [
+            "plwiki-bitwa-pod-wiedniem"
+          ]
+        },
+        {
+          "id": "ret-train-q15",
+          "first_source_rank": 1,
+          "first_evidence_rank": 1,
+          "top1": {
+            "source_id": "plwiki-sejm-wielki",
+            "locator": "Tło wewnętrzne > Konstytucja 3 maja [part 1]"
+          },
+          "expected_source_ids": [
+            "plwiki-konstytucja-3-maja",
+            "plws-konstytucja-3-maja-1791",
+            "plwiki-sejm-wielki"
+          ]
+        },
+        {
+          "id": "ret-train-q16",
+          "first_source_rank": 1,
+          "first_evidence_rank": 2,
+          "top1": {
+            "source_id": "plwiki-rozbiory-polski",
+            "locator": "Granice między zaborcami [part 1]"
+          },
+          "expected_source_ids": [
+            "plwiki-rozbiory-polski"
+          ]
+        },
+        {
+          "id": "ret-train-q17",
+          "first_source_rank": 2,
+          "first_evidence_rank": 2,
+          "top1": {
+            "source_id": "plwiki-konstytucja-3-maja",
+            "locator": "Historia > Obalenie konstytucji [part 4]"
+          },
+          "expected_source_ids": [
+            "plwiki-insurekcja-kosciuszkowska"
+          ]
+        },
+        {
+          "id": "ret-train-q18",
+          "first_source_rank": 1,
+          "first_evidence_rank": 2,
+          "top1": {
+            "source_id": "plwiki-ksiestwo-warszawskie",
+            "locator": "Epilog [part 1]"
+          },
+          "expected_source_ids": [
+            "plwiki-ksiestwo-warszawskie"
+          ]
+        },
+        {
+          "id": "ret-train-q19",
+          "first_source_rank": 1,
+          "first_evidence_rank": 1,
+          "top1": {
+            "source_id": "plwiki-krolestwo-polskie-kongresowe",
+            "locator": "Wstęp [part 1]"
+          },
+          "expected_source_ids": [
+            "plwiki-kongres-wiedenski",
+            "plwiki-krolestwo-polskie-kongresowe"
+          ]
+        },
+        {
+          "id": "ret-train-q20",
+          "first_source_rank": 1,
+          "first_evidence_rank": 1,
+          "top1": {
+            "source_id": "plwiki-powstanie-listopadowe",
+            "locator": "Wstęp [part 1]"
+          },
+          "expected_source_ids": [
+            "plwiki-powstanie-listopadowe"
+          ]
+        },
+        {
+          "id": "ret-train-q21",
+          "first_source_rank": 1,
+          "first_evidence_rank": 1,
+          "top1": {
+            "source_id": "plwiki-powstanie-styczniowe",
+            "locator": "Weterani powstania > Odznaczenia [part 3]"
+          },
+          "expected_source_ids": [
+            "plwiki-powstanie-styczniowe",
+            "plws-manifest-22-stycznia-1863"
+          ]
+        },
+        {
+          "id": "ret-train-q22",
+          "first_source_rank": 1,
+          "first_evidence_rank": 1,
+          "top1": {
+            "source_id": "plwiki-uwlaszczenie-chlopow",
+            "locator": "Wstęp [part 1]"
+          },
+          "expected_source_ids": [
+            "plwiki-uwlaszczenie-chlopow"
+          ]
+        },
+        {
+          "id": "ret-train-q23",
+          "first_source_rank": 3,
+          "first_evidence_rank": 3,
+          "top1": {
+            "source_id": "plwiki-uwlaszczenie-chlopow",
+            "locator": "Realizacja uwłaszczenia chłopów [part 1]"
+          },
+          "expected_source_ids": [
+            "plwiki-kulturkampf"
+          ]
+        },
+        {
+          "id": "ret-train-q24",
+          "first_source_rank": 1,
+          "first_evidence_rank": 1,
+          "top1": {
+            "source_id": "plwiki-akt-5-listopada",
+            "locator": "Reakcje państw Ententy i Stanów Zjednoczonych [part 1]"
+          },
+          "expected_source_ids": [
+            "plwiki-akt-5-listopada",
+            "plws-akt-5-listopada-1916"
+          ]
+        },
+        {
+          "id": "ret-train-q25",
+          "first_source_rank": 1,
+          "first_evidence_rank": 1,
+          "top1": {
+            "source_id": "plwiki-bitwa-warszawska",
+            "locator": "Wstęp [part 1]"
+          },
+          "expected_source_ids": [
+            "plwiki-bitwa-warszawska"
+          ]
+        },
+        {
+          "id": "ret-train-q26",
+          "first_source_rank": 2,
+          "first_evidence_rank": 2,
+          "top1": {
+            "source_id": "plwiki-traktat-wersalski",
+            "locator": "Wstęp [part 1]"
+          },
+          "expected_source_ids": [
+            "plwiki-traktat-ryski",
+            "plwiki-wojna-polsko-bolszewicka"
+          ]
+        },
+        {
+          "id": "ret-train-q27",
+          "first_source_rank": 1,
+          "first_evidence_rank": 1,
+          "top1": {
+            "source_id": "plwiki-przewrot-majowy",
+            "locator": "Przebieg > Preludium zamachu [part 1]"
+          },
+          "expected_source_ids": [
+            "plwiki-przewrot-majowy"
+          ]
+        },
+        {
+          "id": "ret-train-q28",
+          "first_source_rank": 1,
+          "first_evidence_rank": 1,
+          "top1": {
+            "source_id": "plwiki-centralny-okreg-przemyslowy",
+            "locator": "Wstęp [part 1]"
+          },
+          "expected_source_ids": [
+            "plwiki-centralny-okreg-przemyslowy"
+          ]
+        },
+        {
+          "id": "ret-train-q29",
+          "first_source_rank": 1,
+          "first_evidence_rank": 1,
+          "top1": {
+            "source_id": "plwiki-pakt-ribbentrop-molotow",
+            "locator": "Wstęp [part 1]"
+          },
+          "expected_source_ids": [
+            "plwiki-pakt-ribbentrop-molotow"
+          ]
+        },
+        {
+          "id": "ret-train-q30",
+          "first_source_rank": 1,
+          "first_evidence_rank": 1,
+          "top1": {
+            "source_id": "plwiki-zbrodnia-katynska",
+            "locator": "Wstęp [part 1]"
+          },
+          "expected_source_ids": [
+            "plwiki-zbrodnia-katynska"
+          ]
+        },
+        {
+          "id": "ret-train-q31",
+          "first_source_rank": 1,
+          "first_evidence_rank": 5,
+          "top1": {
+            "source_id": "plwiki-powstanie-warszawskie",
+            "locator": "Powstanie warszawskie w dyplomacji [part 1]"
+          },
+          "expected_source_ids": [
+            "plwiki-powstanie-warszawskie"
+          ]
+        },
+        {
+          "id": "ret-train-q32",
+          "first_source_rank": 1,
+          "first_evidence_rank": 1,
+          "top1": {
+            "source_id": "plwiki-konferencja-jaltanska",
+            "locator": "Wstęp [part 1]"
+          },
+          "expected_source_ids": [
+            "plwiki-konferencja-jaltanska"
+          ]
+        },
+        {
+          "id": "ret-train-q33",
+          "first_source_rank": 1,
+          "first_evidence_rank": 2,
+          "top1": {
+            "source_id": "plwiki-pkwn",
+            "locator": "Manifest PKWN [part 1]"
+          },
+          "expected_source_ids": [
+            "plwiki-pkwn",
+            "plws-manifest-pkwn-1944"
+          ]
+        },
+        {
+          "id": "ret-train-q34",
+          "first_source_rank": 1,
+          "first_evidence_rank": 1,
+          "top1": {
+            "source_id": "plwiki-poznanski-czerwiec",
+            "locator": "Po wydarzeniach > Nastroje społeczne po wydarzeniach poznańskiego Czerwca 1956 > Napisy i ulotki [part 1]"
+          },
+          "expected_source_ids": [
+            "plwiki-poznanski-czerwiec"
+          ]
+        },
+        {
+          "id": "ret-train-q35",
+          "first_source_rank": 1,
+          "first_evidence_rank": 1,
+          "top1": {
+            "source_id": "plwiki-porozumienia-sierpniowe",
+            "locator": "Wstęp [part 1]"
+          },
+          "expected_source_ids": [
+            "plwiki-porozumienia-sierpniowe"
+          ]
+        },
+        {
+          "id": "ret-train-q36",
+          "first_source_rank": 1,
+          "first_evidence_rank": 1,
+          "top1": {
+            "source_id": "plwiki-stan-wojenny",
+            "locator": "Kalendarium [part 1]"
+          },
+          "expected_source_ids": [
+            "plwiki-stan-wojenny"
+          ]
+        },
+        {
+          "id": "ret-train-q37",
+          "first_source_rank": 1,
+          "first_evidence_rank": 1,
+          "top1": {
+            "source_id": "plwiki-okragly-stol",
+            "locator": "Kontrowersje wokół „Okrągłego Stołu” [part 1]"
+          },
+          "expected_source_ids": [
+            "plwiki-okragly-stol",
+            "plwiki-wybory-1989"
+          ]
+        },
+        {
+          "id": "ret-train-q38",
+          "first_source_rank": 1,
+          "first_evidence_rank": 5,
+          "top1": {
+            "source_id": "plwiki-mur-berlinski",
+            "locator": "Ofiary i strażnicy muru > Ofiary muru [part 1]"
+          },
+          "expected_source_ids": [
+            "plwiki-mur-berlinski"
+          ]
+        },
+        {
+          "id": "ret-train-q39",
+          "first_source_rank": 1,
+          "first_evidence_rank": 2,
+          "top1": {
+            "source_id": "plwiki-plan-marshalla",
+            "locator": "Obszary nieobjęte planem Marshalla [part 1]"
+          },
+          "expected_source_ids": [
+            "plwiki-plan-marshalla"
+          ]
+        },
+        {
+          "id": "ret-train-q40",
+          "first_source_rank": 1,
+          "first_evidence_rank": 1,
+          "top1": {
+            "source_id": "plwiki-wojna-trzydziestoletnia",
+            "locator": "Europa po wojnie [part 1]"
+          },
+          "expected_source_ids": [
+            "plwiki-wojna-trzydziestoletnia"
+          ]
+        }
+      ]
+    },
     "hybrid": {
       "mode": "hybrid",
       "title_weight": 1.0,
       "n_queries": 40,
       "k_max": 10,
-      "seconds": 1.8,
+      "seconds": 1.81,
       "source_hit_at_k": {
         "1": 0.95,
         "3": 1.0,
@@ -1577,532 +2103,6 @@
           "top1": {
             "source_id": "plwiki-wojna-trzydziestoletnia",
             "locator": "Europa po wojnie [part 1]"
-          },
-          "expected_source_ids": [
-            "plwiki-wojna-trzydziestoletnia"
-          ]
-        }
-      ]
-    },
-    "twostage": {
-      "mode": "twostage",
-      "title_weight": 1.0,
-      "n_queries": 40,
-      "k_max": 10,
-      "seconds": 0.05,
-      "source_hit_at_k": {
-        "1": 0.925,
-        "3": 0.925,
-        "5": 0.925,
-        "10": 0.925
-      },
-      "evidence_hit_at_k": {
-        "1": 0.725,
-        "3": 0.875,
-        "5": 0.925,
-        "10": 0.925
-      },
-      "source_hit_counts": {
-        "1": 37,
-        "3": 37,
-        "5": 37,
-        "10": 37
-      },
-      "evidence_hit_counts": {
-        "1": 29,
-        "3": 35,
-        "5": 37,
-        "10": 37
-      },
-      "mrr_source": 0.925,
-      "mrr_evidence": 0.81,
-      "per_query": [
-        {
-          "id": "ret-train-q01",
-          "first_source_rank": 1,
-          "first_evidence_rank": 1,
-          "top1": {
-            "source_id": "plwiki-kodeks-hammurabiego",
-            "locator": "Wstęp [part 1]"
-          },
-          "expected_source_ids": [
-            "plwiki-kodeks-hammurabiego"
-          ]
-        },
-        {
-          "id": "ret-train-q02",
-          "first_source_rank": 1,
-          "first_evidence_rank": 1,
-          "top1": {
-            "source_id": "plwiki-demokracja-atenska",
-            "locator": "Powstanie demokracji ateńskiej > Zapoczątkowanie demokracji przez reformy Klejstenesa [part 1]"
-          },
-          "expected_source_ids": [
-            "plwiki-demokracja-atenska"
-          ]
-        },
-        {
-          "id": "ret-train-q03",
-          "first_source_rank": 1,
-          "first_evidence_rank": 2,
-          "top1": {
-            "source_id": "plwiki-karol-wielki",
-            "locator": "Ocena panowania [part 2]"
-          },
-          "expected_source_ids": [
-            "plwiki-karol-wielki"
-          ]
-        },
-        {
-          "id": "ret-train-q04",
-          "first_source_rank": 1,
-          "first_evidence_rank": 1,
-          "top1": {
-            "source_id": "plwiki-wielka-karta-swobod",
-            "locator": "Wstęp [part 1]"
-          },
-          "expected_source_ids": [
-            "plwiki-wielka-karta-swobod"
-          ]
-        },
-        {
-          "id": "ret-train-q05",
-          "first_source_rank": 1,
-          "first_evidence_rank": 1,
-          "top1": {
-            "source_id": "plwiki-mieszko-i",
-            "locator": "Panowanie Mieszka I > Chrzest Polski [part 2]"
-          },
-          "expected_source_ids": [
-            "plwiki-chrzest-polski",
-            "plwiki-mieszko-i"
-          ]
-        },
-        {
-          "id": "ret-train-q06",
-          "first_source_rank": 1,
-          "first_evidence_rank": 1,
-          "top1": {
-            "source_id": "plwiki-zjazd-gnieznienski",
-            "locator": "Wstęp [part 1]"
-          },
-          "expected_source_ids": [
-            "plwiki-zjazd-gnieznienski"
-          ]
-        },
-        {
-          "id": "ret-train-q07",
-          "first_source_rank": 1,
-          "first_evidence_rank": 1,
-          "top1": {
-            "source_id": "plwiki-unia-w-krewie",
-            "locator": "Wstęp [part 1]"
-          },
-          "expected_source_ids": [
-            "plwiki-unia-w-krewie"
-          ]
-        },
-        {
-          "id": "ret-train-q08",
-          "first_source_rank": 1,
-          "first_evidence_rank": 1,
-          "top1": {
-            "source_id": "plwiki-bitwa-pod-grunwaldem",
-            "locator": "Przebieg bitwy [part 4]"
-          },
-          "expected_source_ids": [
-            "plwiki-bitwa-pod-grunwaldem"
-          ]
-        },
-        {
-          "id": "ret-train-q09",
-          "first_source_rank": 1,
-          "first_evidence_rank": 1,
-          "top1": {
-            "source_id": "plwiki-ii-pokoj-torunski",
-            "locator": "Wstęp [part 1]"
-          },
-          "expected_source_ids": [
-            "plwiki-ii-pokoj-torunski"
-          ]
-        },
-        {
-          "id": "ret-train-q10",
-          "first_source_rank": 1,
-          "first_evidence_rank": 1,
-          "top1": {
-            "source_id": "plwiki-marcin-luter",
-            "locator": "Życiorys > Spór o odpusty [part 3]"
-          },
-          "expected_source_ids": [
-            "plwiki-marcin-luter",
-            "plwiki-reformacja"
-          ]
-        },
-        {
-          "id": "ret-train-q11",
-          "first_source_rank": 1,
-          "first_evidence_rank": 2,
-          "top1": {
-            "source_id": "plwiki-unia-lubelska",
-            "locator": "Tło [part 2]"
-          },
-          "expected_source_ids": [
-            "plwiki-unia-lubelska"
-          ]
-        },
-        {
-          "id": "ret-train-q12",
-          "first_source_rank": 1,
-          "first_evidence_rank": 1,
-          "top1": {
-            "source_id": "plwiki-konfederacja-warszawska",
-            "locator": "Wstęp [part 1]"
-          },
-          "expected_source_ids": [
-            "plwiki-konfederacja-warszawska",
-            "plws-akt-konfederacji-warszawskiej-1573"
-          ]
-        },
-        {
-          "id": "ret-train-q13",
-          "first_source_rank": 1,
-          "first_evidence_rank": 2,
-          "top1": {
-            "source_id": "plwiki-artykuly-henrykowskie",
-            "locator": "Znaczenie [part 1]"
-          },
-          "expected_source_ids": [
-            "plwiki-artykuly-henrykowskie"
-          ]
-        },
-        {
-          "id": "ret-train-q14",
-          "first_source_rank": 1,
-          "first_evidence_rank": 1,
-          "top1": {
-            "source_id": "plwiki-bitwa-pod-wiedniem",
-            "locator": "Wstęp [part 1]"
-          },
-          "expected_source_ids": [
-            "plwiki-bitwa-pod-wiedniem"
-          ]
-        },
-        {
-          "id": "ret-train-q15",
-          "first_source_rank": null,
-          "first_evidence_rank": null,
-          "top1": {
-            "source_id": "plwiki-konstytucja-marcowa",
-            "locator": "Ogólna charakterystyka > Naczelne zasady ustrojowe [part 1]"
-          },
-          "expected_source_ids": [
-            "plwiki-konstytucja-3-maja",
-            "plws-konstytucja-3-maja-1791",
-            "plwiki-sejm-wielki"
-          ]
-        },
-        {
-          "id": "ret-train-q16",
-          "first_source_rank": 1,
-          "first_evidence_rank": 2,
-          "top1": {
-            "source_id": "plwiki-rozbiory-polski",
-            "locator": "Granice między zaborcami [part 1]"
-          },
-          "expected_source_ids": [
-            "plwiki-rozbiory-polski"
-          ]
-        },
-        {
-          "id": "ret-train-q17",
-          "first_source_rank": 1,
-          "first_evidence_rank": 1,
-          "top1": {
-            "source_id": "plwiki-insurekcja-kosciuszkowska",
-            "locator": "Kalendarium powstania [part 4]"
-          },
-          "expected_source_ids": [
-            "plwiki-insurekcja-kosciuszkowska"
-          ]
-        },
-        {
-          "id": "ret-train-q18",
-          "first_source_rank": 1,
-          "first_evidence_rank": 1,
-          "top1": {
-            "source_id": "plwiki-ksiestwo-warszawskie",
-            "locator": "Wstęp [part 1]"
-          },
-          "expected_source_ids": [
-            "plwiki-ksiestwo-warszawskie"
-          ]
-        },
-        {
-          "id": "ret-train-q19",
-          "first_source_rank": 1,
-          "first_evidence_rank": 1,
-          "top1": {
-            "source_id": "plwiki-kongres-wiedenski",
-            "locator": "Kwestia polsko-saska [part 1]"
-          },
-          "expected_source_ids": [
-            "plwiki-kongres-wiedenski",
-            "plwiki-krolestwo-polskie-kongresowe"
-          ]
-        },
-        {
-          "id": "ret-train-q20",
-          "first_source_rank": 1,
-          "first_evidence_rank": 1,
-          "top1": {
-            "source_id": "plwiki-powstanie-listopadowe",
-            "locator": "Wstęp [part 1]"
-          },
-          "expected_source_ids": [
-            "plwiki-powstanie-listopadowe"
-          ]
-        },
-        {
-          "id": "ret-train-q21",
-          "first_source_rank": 1,
-          "first_evidence_rank": 5,
-          "top1": {
-            "source_id": "plwiki-powstanie-styczniowe",
-            "locator": "Upadek powstania i jego skutki [part 5]"
-          },
-          "expected_source_ids": [
-            "plwiki-powstanie-styczniowe",
-            "plws-manifest-22-stycznia-1863"
-          ]
-        },
-        {
-          "id": "ret-train-q22",
-          "first_source_rank": 1,
-          "first_evidence_rank": 1,
-          "top1": {
-            "source_id": "plwiki-uwlaszczenie-chlopow",
-            "locator": "Wstęp [part 1]"
-          },
-          "expected_source_ids": [
-            "plwiki-uwlaszczenie-chlopow"
-          ]
-        },
-        {
-          "id": "ret-train-q23",
-          "first_source_rank": null,
-          "first_evidence_rank": null,
-          "top1": {
-            "source_id": "plwiki-uwlaszczenie-chlopow",
-            "locator": "Realizacja uwłaszczenia chłopów [part 1]"
-          },
-          "expected_source_ids": [
-            "plwiki-kulturkampf"
-          ]
-        },
-        {
-          "id": "ret-train-q24",
-          "first_source_rank": 1,
-          "first_evidence_rank": 1,
-          "top1": {
-            "source_id": "plws-akt-5-listopada-1916",
-            "locator": "document [part 1]"
-          },
-          "expected_source_ids": [
-            "plwiki-akt-5-listopada",
-            "plws-akt-5-listopada-1916"
-          ]
-        },
-        {
-          "id": "ret-train-q25",
-          "first_source_rank": 1,
-          "first_evidence_rank": 1,
-          "top1": {
-            "source_id": "plwiki-bitwa-warszawska",
-            "locator": "Przebieg bitwy > Kontruderzenie znad Wieprza [part 1]"
-          },
-          "expected_source_ids": [
-            "plwiki-bitwa-warszawska"
-          ]
-        },
-        {
-          "id": "ret-train-q26",
-          "first_source_rank": null,
-          "first_evidence_rank": null,
-          "top1": {
-            "source_id": "plwiki-traktat-wersalski",
-            "locator": "Wstęp [part 1]"
-          },
-          "expected_source_ids": [
-            "plwiki-traktat-ryski",
-            "plwiki-wojna-polsko-bolszewicka"
-          ]
-        },
-        {
-          "id": "ret-train-q27",
-          "first_source_rank": 1,
-          "first_evidence_rank": 1,
-          "top1": {
-            "source_id": "plwiki-przewrot-majowy",
-            "locator": "Przebieg > Preludium zamachu [part 1]"
-          },
-          "expected_source_ids": [
-            "plwiki-przewrot-majowy"
-          ]
-        },
-        {
-          "id": "ret-train-q28",
-          "first_source_rank": 1,
-          "first_evidence_rank": 1,
-          "top1": {
-            "source_id": "plwiki-centralny-okreg-przemyslowy",
-            "locator": "Wstęp [part 1]"
-          },
-          "expected_source_ids": [
-            "plwiki-centralny-okreg-przemyslowy"
-          ]
-        },
-        {
-          "id": "ret-train-q29",
-          "first_source_rank": 1,
-          "first_evidence_rank": 1,
-          "top1": {
-            "source_id": "plwiki-pakt-ribbentrop-molotow",
-            "locator": "Wstęp [part 1]"
-          },
-          "expected_source_ids": [
-            "plwiki-pakt-ribbentrop-molotow"
-          ]
-        },
-        {
-          "id": "ret-train-q30",
-          "first_source_rank": 1,
-          "first_evidence_rank": 1,
-          "top1": {
-            "source_id": "plwiki-zbrodnia-katynska",
-            "locator": "Wstęp [part 1]"
-          },
-          "expected_source_ids": [
-            "plwiki-zbrodnia-katynska"
-          ]
-        },
-        {
-          "id": "ret-train-q31",
-          "first_source_rank": 1,
-          "first_evidence_rank": 5,
-          "top1": {
-            "source_id": "plwiki-powstanie-warszawskie",
-            "locator": "Powstanie warszawskie w dyplomacji [part 1]"
-          },
-          "expected_source_ids": [
-            "plwiki-powstanie-warszawskie"
-          ]
-        },
-        {
-          "id": "ret-train-q32",
-          "first_source_rank": 1,
-          "first_evidence_rank": 1,
-          "top1": {
-            "source_id": "plwiki-konferencja-jaltanska",
-            "locator": "Wstęp [part 1]"
-          },
-          "expected_source_ids": [
-            "plwiki-konferencja-jaltanska"
-          ]
-        },
-        {
-          "id": "ret-train-q33",
-          "first_source_rank": 1,
-          "first_evidence_rank": 2,
-          "top1": {
-            "source_id": "plwiki-pkwn",
-            "locator": "Manifest PKWN [part 1]"
-          },
-          "expected_source_ids": [
-            "plwiki-pkwn",
-            "plws-manifest-pkwn-1944"
-          ]
-        },
-        {
-          "id": "ret-train-q34",
-          "first_source_rank": 1,
-          "first_evidence_rank": 1,
-          "top1": {
-            "source_id": "plwiki-poznanski-czerwiec",
-            "locator": "Po wydarzeniach > Nastroje społeczne po wydarzeniach poznańskiego Czerwca 1956 > Napisy i ulotki [part 1]"
-          },
-          "expected_source_ids": [
-            "plwiki-poznanski-czerwiec"
-          ]
-        },
-        {
-          "id": "ret-train-q35",
-          "first_source_rank": 1,
-          "first_evidence_rank": 1,
-          "top1": {
-            "source_id": "plwiki-porozumienia-sierpniowe",
-            "locator": "Wstęp [part 1]"
-          },
-          "expected_source_ids": [
-            "plwiki-porozumienia-sierpniowe"
-          ]
-        },
-        {
-          "id": "ret-train-q36",
-          "first_source_rank": 1,
-          "first_evidence_rank": 2,
-          "top1": {
-            "source_id": "plwiki-stan-wojenny",
-            "locator": "Reakcja w kraju na wprowadzenie stanu wojennego [part 5]"
-          },
-          "expected_source_ids": [
-            "plwiki-stan-wojenny"
-          ]
-        },
-        {
-          "id": "ret-train-q37",
-          "first_source_rank": 1,
-          "first_evidence_rank": 1,
-          "top1": {
-            "source_id": "plwiki-okragly-stol",
-            "locator": "Kontrowersje wokół „Okrągłego Stołu” [part 1]"
-          },
-          "expected_source_ids": [
-            "plwiki-okragly-stol",
-            "plwiki-wybory-1989"
-          ]
-        },
-        {
-          "id": "ret-train-q38",
-          "first_source_rank": 1,
-          "first_evidence_rank": 1,
-          "top1": {
-            "source_id": "plwiki-mur-berlinski",
-            "locator": "Historia > Upadek Muru Berlińskiego [part 6]"
-          },
-          "expected_source_ids": [
-            "plwiki-mur-berlinski"
-          ]
-        },
-        {
-          "id": "ret-train-q39",
-          "first_source_rank": 1,
-          "first_evidence_rank": 1,
-          "top1": {
-            "source_id": "plwiki-plan-marshalla",
-            "locator": "Odmowa ZSRR > Przymusowa odmowa bloku wschodniego [part 2]"
-          },
-          "expected_source_ids": [
-            "plwiki-plan-marshalla"
-          ]
-        },
-        {
-          "id": "ret-train-q40",
-          "first_source_rank": 1,
-          "first_evidence_rank": 1,
-          "top1": {
-            "source_id": "plwiki-wojna-trzydziestoletnia",
-            "locator": "Wstęp [part 2]"
           },
           "expected_source_ids": [
             "plwiki-wojna-trzydziestoletnia"
