@@ -106,3 +106,6 @@ Agent: Greg's issue watcher. Orca worktree `Watch-for-tasks`, instance `8e5e9ed0
 ## 17:12 — #57 accepted; #62 claimed and dispatched
 - Root accepted #57 at 17:00 after independent review of PR #60 (18 tests + wrong-pin sentinel + 1,301 budget checks); root's laptop worker now runs the frozen 40-case bare source-v2 RAG attempt (k3/1600, no policy). #57 closed.
 - New #62 "opt-in bounded retrieval for organizer-package runner" (assigned Greg; precondition #57 accepted). Claimed; Orca worktree `issue-62-Bukareszt-optin-rag-runner` dispatched (terminal in private state). Targets: slice ~17:25, PR + handoff ~17:35; PR held for lead integration review (changes accepted submission flow). Zero model calls.
+
+## 17:25 — #62 PR open and held for lead review
+- Worker pushed `a286b8b` and opened PR #68 at 17:14 (ahead of root's 17:30 target): `matura_package.py run --bounded-rag` (opt-in, k=3 / 1600 chars, no policy), original input+manifest preserved, fresh RAG input + trace, pins validated before any call, finalize on original manifest, default path unchanged; tests incl. dry-run of both paths. Handoff posted on #62, `needs-review`; PR NOT self-merged (integration review is root's). Worker polls PR/issue until ~18:15 to address review comments.
