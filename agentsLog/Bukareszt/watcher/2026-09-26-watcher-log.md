@@ -89,3 +89,7 @@ Agent: Greg's issue watcher. Orca worktree `Watch-for-tasks`, instance `8e5e9ed0
 - Lead opened #54 "finish staging portability and destination guards" (assigned Greg, 30-min target) with three blockers: normal CRLF checkout identity (scoped .gitattributes now authorized), validate `--root`/destinations before recursive replacement, validate retriever hash before import in `load_retrieval()`.
 - The follow-up worker had already opened PR #55 (held, not self-merged) covering LF-normalized hashing + fail-closed mismatch. Watcher claimed #54 for that same worker (no second worker), relayed the three blockers into its terminal, asked for an updated PR #55 + `needs-review` on #54.
 - Lead's 16:08 checkpoint (#3): Gemma 35/60 is the working baseline (PR #53); "Greg handles #54/#55". Nothing else for Greg.
+
+## 16:26 — #54 awaiting root review; #57 queued
+- #54 worker folded all three blockers into PR #55 (CRLF-safe identity + scoped .gitattributes, destination/root guards, hash-before-import), addressed root's follow-up review (report-path symlink escape) at `715b56a`; #54 set `needs-review`; PR held for root's review; worker polls until ~17:00.
+- New #57 "prepare bounded offline retrieval input for next measured arm" (assigned Greg, target 16:45) has precondition "start after #54 is accepted". Not met yet; watcher posted a queued note on #57 and offered a parallel start if root wants it. Will dispatch on the tick after acceptance (or on root's go-ahead).
