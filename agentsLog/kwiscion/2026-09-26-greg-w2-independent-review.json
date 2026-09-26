@@ -1,0 +1,601 @@
+{
+  "review_status": "provisional_independent_sol",
+  "scope": "Greg W2 S10, 4 arms x 10 items; W1 excluded",
+  "known_validation": true,
+  "blinded": false,
+  "blinding_note": "Arm names and owner descriptive observations were visible; no owner grades were used. Fresh manual official-rubric scoring preceded cross-arm comparison.",
+  "artifact_commit": "2701ba00baabd3a8adeaaf9796c99ba4d3873774",
+  "subset_max_points": 13,
+  "global_exam_max_points": 60,
+  "global_exam_score": null,
+  "selection": "Six previously below-maximum items plus four previously correct controls from the router pool; development selection, not an unbiased exam sample.",
+  "source_sha256": "6615fea2e6fd1d6f9db5b781fa84a883899d1c2fb83a28b914638089e6b015a4",
+  "subset_sha256": "c250d92b32d6e3b7759c4a4ae90d54dbf42288e7b1c203ec977a24bbba73a5c0",
+  "files": {
+    "agentsLog/Bukareszt/issue96/wave/answers.jsonl": {
+      "sha256_committed_lf": "c8bff4d601cf8f5c9c1835a0c22ee30e0dffc5d9f31516c44254710c39497eb4",
+      "sha256_snapshot_bytes": "a8195356085a06c4c16510cc5eeed6410e8b00ea6cded89efe8736eadf980041"
+    },
+    "agentsLog/Bukareszt/issue96/wave/aux_outputs.jsonl": {
+      "sha256_committed_lf": "5b1083d317ff195b293b959ec9640304f2fff0010bac11e8f01de936d32bf2d6",
+      "sha256_snapshot_bytes": "5033c1373b127da70360e9e070576e9cc69f9f20222e240534b560a73b04191f"
+    },
+    "agentsLog/Bukareszt/issue96/wave/evidence.jsonl": {
+      "sha256_committed_lf": "650c4e5fc6bf813d697cac92e5859fc7843d4b88455a0a136ecedd75e38a2b9e",
+      "sha256_snapshot_bytes": "bc6c014a920da6172ac938f6363406c30657aa24fc7a2e6a2aa251d75dd033c5"
+    },
+    "agentsLog/Bukareszt/issue96/wave/ledger.jsonl": {
+      "sha256_committed_lf": "8f62cca05e2318202313a675f515c92abb8c3c5159f1306e30ebabd50f7cc26a",
+      "sha256_snapshot_bytes": "2be4d660efafdaed51444c2d9450716115f6de61acb8ef6e5eae5ca49232017b"
+    },
+    "agentsLog/Bukareszt/issue96/wave/README.md": {
+      "sha256_committed_lf": "d15ea54c9ea8219cb93062cfa97600ab4cd5a0fbfb80153c2c990e4a3ad4152b",
+      "sha256_snapshot_bytes": "a0e7b7fe26db6f089e51ab64e2e7c57c0cbbd35df8e213c24bb5487ff82838e1"
+    },
+    "agentsLog/Bukareszt/issue96/wave/w1-plan.json": {
+      "sha256_committed_lf": "207d4f2cccb62e24d6692dbb72a00a30322f7fc925c1f8df0b488311628cad54",
+      "sha256_snapshot_bytes": "3153eb80db4beade1b24a286a716a69f3a4a84a288f5a53425924a6ce4bf2930"
+    },
+    "agentsLog/Bukareszt/issue96/wave/w2-plan.json": {
+      "sha256_committed_lf": "436b2ff9a9f5e6e0cda0f640829cbe8f2d04e3477ba6b3884d86f909e40829e6",
+      "sha256_snapshot_bytes": "eecd1c71fd13a27c49c81bf6b28f7805e66521fe34612dcc8017f4e602e95199"
+    },
+    "scripts/Bukareszt/wave_run.py": {
+      "sha256_committed_lf": "92950ee9d6d47ca65454997fc6957d65d2f0bcc39dbbadf0449724558a403cc2",
+      "sha256_snapshot_bytes": "f9c1bf11ffd6652f0b8976d7ff265205f55e0a1633aef3c750cfc8aff7de2cdc"
+    },
+    "scripts/Bukareszt/wave_mechanisms.py": {
+      "sha256_committed_lf": "93e095baa4feb3ff8b779860c6d826da962f3beb4708fd1cdced35b8f193118a",
+      "sha256_snapshot_bytes": "994ebb107a810d2f3cec1ba6e04cd7839f3745e8e789a7f8e4cf489f04590e0d"
+    },
+    "reviewed_runtime_profile_path_omitted": {
+      "sha256_committed_lf": "c1a32a1acd7f58918fec20a36926ec341ba9b1d54829194d2742925b77a0b37a",
+      "sha256_snapshot_bytes": "b17b1bf3bac29c2b7680ec618b3d0e9450116b4de92a9779753ad21c64b6647b"
+    }
+  },
+  "integrity": {
+    "final_answers": 40,
+    "unique_arm_id_pairs": 40,
+    "missing": 0,
+    "errors": 0,
+    "prompt_replays": 40,
+    "ledger_calls": 60,
+    "auxiliary_calls": 20,
+    "final_ledger_usage_matches": 40,
+    "images": "Code attaches the original image list unchanged; final-answer handoff does not contain raw image payloads, so host transmission is not independently reverified."
+  },
+  "uncertainty_note": "Low/high are examiner-judgment bounds, not statistical confidence intervals. No extrapolation to 60 points.",
+  "arms": {
+    "W2-bare": {
+      "items": [
+        {
+          "id": "val2024-hist-z20.2",
+          "max_points": 2,
+          "points": 2,
+          "low": 2,
+          "high": 2,
+          "reason": "All three required judgments are correct; the accompanying explanations disambiguate the shifted numbering.",
+          "error_category": "format_numbering_nonfatal",
+          "previously_correct_control": false
+        },
+        {
+          "id": "val2024-hist-z23.2",
+          "max_points": 1,
+          "points": 1,
+          "low": 0,
+          "high": 1,
+          "reason": "The final explicitly corrected decision and source comparison are correct, but the opening contradictory decision remains.",
+          "error_category": "contradictory_self_correction",
+          "previously_correct_control": false
+        },
+        {
+          "id": "val2024-hist-z14.1",
+          "max_points": 1,
+          "points": 0,
+          "low": 0,
+          "high": 0,
+          "reason": "Incorrect decision and incompatible identifications of both source contexts.",
+          "error_category": "source_identification_chronology",
+          "previously_correct_control": false
+        },
+        {
+          "id": "val2024-hist-z19.2",
+          "max_points": 1,
+          "points": 0,
+          "low": 0,
+          "high": 0,
+          "reason": "The named person does not satisfy the requested identification.",
+          "error_category": "factual_identity",
+          "previously_correct_control": false
+        },
+        {
+          "id": "val2024-hist-z25",
+          "max_points": 3,
+          "points": 0,
+          "low": 0,
+          "high": 0,
+          "reason": "The message and supposed graphic details concern a different issue; the required interpretation is not established.",
+          "error_category": "visual_hallucination_context",
+          "previously_correct_control": false
+        },
+        {
+          "id": "val2024-hist-z7",
+          "max_points": 1,
+          "points": 0,
+          "low": 0,
+          "high": 0,
+          "reason": "Both extracts are forced into the wrong chronology; the selected order is incorrect.",
+          "error_category": "chronology",
+          "previously_correct_control": false
+        },
+        {
+          "id": "val2024-hist-z17.1",
+          "max_points": 1,
+          "points": 1,
+          "low": 1,
+          "high": 1,
+          "reason": "Correct causal relationship, with relevant references to both sources.",
+          "error_category": "none",
+          "previously_correct_control": true
+        },
+        {
+          "id": "val2024-hist-z8.2",
+          "max_points": 1,
+          "points": 1,
+          "low": 0,
+          "high": 1,
+          "reason": "The relevant institutional comparison is correct; an unnecessary document attribution is false.",
+          "error_category": "extraneous_factual_error",
+          "previously_correct_control": true
+        },
+        {
+          "id": "val2024-hist-z18",
+          "max_points": 1,
+          "points": 1,
+          "low": 0,
+          "high": 1,
+          "reason": "The hostile beast and opposing uniforms support the correct side; the headgear description is inaccurate.",
+          "error_category": "visual_detail_error",
+          "previously_correct_control": true
+        },
+        {
+          "id": "val2024-hist-z12.3",
+          "max_points": 1,
+          "points": 1,
+          "low": 1,
+          "high": 1,
+          "reason": "Correct classification supported by a visible stylistic feature.",
+          "error_category": "none",
+          "previously_correct_control": true
+        }
+      ],
+      "max_points": 13,
+      "total": 7,
+      "low": 4,
+      "high": 7,
+      "targeted": {
+        "points": 3,
+        "max_points": 9
+      },
+      "controls": {
+        "points": 4,
+        "max_points": 4
+      },
+      "usage": {
+        "calls": 10,
+        "final_calls": 10,
+        "prompt_tokens": 10524,
+        "completion_tokens": 1904,
+        "requested_tokens": 10240,
+        "latency_seconds": 32.554
+      },
+      "central_delta_vs_bare": 0,
+      "central_changed_items": []
+    },
+    "W2-verify": {
+      "items": [
+        {
+          "id": "val2024-hist-z20.2",
+          "max_points": 2,
+          "points": 2,
+          "low": 2,
+          "high": 2,
+          "reason": "All three required judgments are correct and identifiable despite shifted numbering; additional chronology is unreliable.",
+          "error_category": "format_numbering_extra_error",
+          "previously_correct_control": false
+        },
+        {
+          "id": "val2024-hist-z23.2",
+          "max_points": 1,
+          "points": 1,
+          "low": 0,
+          "high": 1,
+          "reason": "A final preferred version gives the correct comparison, but an initial incompatible decision and alternative reading remain.",
+          "error_category": "contradictory_self_correction",
+          "previously_correct_control": false
+        },
+        {
+          "id": "val2024-hist-z14.1",
+          "max_points": 1,
+          "points": 0,
+          "low": 0,
+          "high": 0,
+          "reason": "The required comparison fails because the mapped conflict is misidentified; a correct decision alone earns no point.",
+          "error_category": "source_identification_chronology",
+          "previously_correct_control": false
+        },
+        {
+          "id": "val2024-hist-z19.2",
+          "max_points": 1,
+          "points": 0,
+          "low": 0,
+          "high": 0,
+          "reason": "The named person does not satisfy the requested identification.",
+          "error_category": "factual_identity",
+          "previously_correct_control": false
+        },
+        {
+          "id": "val2024-hist-z25",
+          "max_points": 3,
+          "points": 0,
+          "low": 0,
+          "high": 1,
+          "reason": "A generic concealment interpretation uses one visible action, but central lettering and historical setting are misidentified.",
+          "error_category": "visual_hallucination_context",
+          "previously_correct_control": false
+        },
+        {
+          "id": "val2024-hist-z7",
+          "max_points": 1,
+          "points": 0,
+          "low": 0,
+          "high": 0,
+          "reason": "Both extracts are forced into the wrong chronology; the selected order is incorrect.",
+          "error_category": "chronology",
+          "previously_correct_control": false
+        },
+        {
+          "id": "val2024-hist-z17.1",
+          "max_points": 1,
+          "points": 0,
+          "low": 0,
+          "high": 1,
+          "reason": "The required causal core appears, but incompatible regime-change claims and an incorrect event date corrupt the explanation.",
+          "error_category": "factual_contradiction",
+          "previously_correct_control": true
+        },
+        {
+          "id": "val2024-hist-z8.2",
+          "max_points": 1,
+          "points": 1,
+          "low": 1,
+          "high": 1,
+          "reason": "Correct decision and comparison of the relevant groups in both sources.",
+          "error_category": "none",
+          "previously_correct_control": true
+        },
+        {
+          "id": "val2024-hist-z18",
+          "max_points": 1,
+          "points": 0,
+          "low": 0,
+          "high": 1,
+          "reason": "Correct side, but invented visual attributes do not provide the required reliable two-element justification.",
+          "error_category": "visual_hallucination",
+          "previously_correct_control": true
+        },
+        {
+          "id": "val2024-hist-z12.3",
+          "max_points": 1,
+          "points": 1,
+          "low": 1,
+          "high": 1,
+          "reason": "Correct classification supported by a visible stylistic feature.",
+          "error_category": "none",
+          "previously_correct_control": true
+        }
+      ],
+      "max_points": 13,
+      "total": 5,
+      "low": 4,
+      "high": 8,
+      "targeted": {
+        "points": 3,
+        "max_points": 9
+      },
+      "controls": {
+        "points": 2,
+        "max_points": 4
+      },
+      "usage": {
+        "calls": 20,
+        "final_calls": 10,
+        "prompt_tokens": 17874,
+        "completion_tokens": 2405,
+        "requested_tokens": 20480,
+        "latency_seconds": 39.168
+      },
+      "central_delta_vs_bare": -2,
+      "central_changed_items": [
+        {
+          "id": "val2024-hist-z17.1",
+          "delta": -1
+        },
+        {
+          "id": "val2024-hist-z18",
+          "delta": -1
+        }
+      ]
+    },
+    "W2-relquery": {
+      "items": [
+        {
+          "id": "val2024-hist-z20.2",
+          "max_points": 2,
+          "points": 2,
+          "low": 2,
+          "high": 2,
+          "reason": "All required judgments are correct and unambiguous despite shifted numbering; the optional chronology explanation is false.",
+          "error_category": "format_numbering_extra_error",
+          "previously_correct_control": false
+        },
+        {
+          "id": "val2024-hist-z23.2",
+          "max_points": 1,
+          "points": 0,
+          "low": 0,
+          "high": 0,
+          "reason": "The source is matched to the wrong entry, producing the wrong decision.",
+          "error_category": "source_relation_error",
+          "previously_correct_control": false
+        },
+        {
+          "id": "val2024-hist-z14.1",
+          "max_points": 1,
+          "points": 0,
+          "low": 0,
+          "high": 0,
+          "reason": "The required comparison fails because the mapped conflict is misidentified; a correct decision alone earns no point.",
+          "error_category": "source_identification_chronology",
+          "previously_correct_control": false
+        },
+        {
+          "id": "val2024-hist-z19.2",
+          "max_points": 1,
+          "points": 0,
+          "low": 0,
+          "high": 0,
+          "reason": "The named person does not satisfy the requested identification.",
+          "error_category": "factual_identity",
+          "previously_correct_control": false
+        },
+        {
+          "id": "val2024-hist-z25",
+          "max_points": 3,
+          "points": 0,
+          "low": 0,
+          "high": 0,
+          "reason": "The proposed message, industry, objects and period are unsupported by the graphic.",
+          "error_category": "visual_hallucination_context",
+          "previously_correct_control": false
+        },
+        {
+          "id": "val2024-hist-z7",
+          "max_points": 1,
+          "points": 0,
+          "low": 0,
+          "high": 0,
+          "reason": "Both extracts are forced into the wrong chronology; the selected order is incorrect.",
+          "error_category": "chronology",
+          "previously_correct_control": false
+        },
+        {
+          "id": "val2024-hist-z17.1",
+          "max_points": 1,
+          "points": 1,
+          "low": 1,
+          "high": 1,
+          "reason": "The relevant causal relationship connects both sources correctly.",
+          "error_category": "none",
+          "previously_correct_control": true
+        },
+        {
+          "id": "val2024-hist-z8.2",
+          "max_points": 1,
+          "points": 1,
+          "low": 1,
+          "high": 1,
+          "reason": "Correct structural comparison supported by both sources.",
+          "error_category": "none",
+          "previously_correct_control": true
+        },
+        {
+          "id": "val2024-hist-z18",
+          "max_points": 1,
+          "points": 1,
+          "low": 0,
+          "high": 1,
+          "reason": "Correct side supported by the hostile creature and opposing soldiers; inaccurate headgear weakens the identification.",
+          "error_category": "visual_detail_error",
+          "previously_correct_control": true
+        },
+        {
+          "id": "val2024-hist-z12.3",
+          "max_points": 1,
+          "points": 1,
+          "low": 1,
+          "high": 1,
+          "reason": "Correct classification supported by a visible stylistic feature.",
+          "error_category": "none",
+          "previously_correct_control": true
+        }
+      ],
+      "max_points": 13,
+      "total": 6,
+      "low": 5,
+      "high": 6,
+      "targeted": {
+        "points": 2,
+        "max_points": 9
+      },
+      "controls": {
+        "points": 4,
+        "max_points": 4
+      },
+      "usage": {
+        "calls": 20,
+        "final_calls": 10,
+        "prompt_tokens": 16520,
+        "completion_tokens": 1792,
+        "requested_tokens": 20480,
+        "latency_seconds": 32.689
+      },
+      "central_delta_vs_bare": -1,
+      "central_changed_items": [
+        {
+          "id": "val2024-hist-z23.2",
+          "delta": -1
+        }
+      ]
+    },
+    "W2-factcard": {
+      "items": [
+        {
+          "id": "val2024-hist-z20.2",
+          "max_points": 2,
+          "points": 1,
+          "low": 1,
+          "high": 1,
+          "reason": "Two of the three required judgments are correct; the third introduces a factual regression.",
+          "error_category": "factual_judgment",
+          "previously_correct_control": false
+        },
+        {
+          "id": "val2024-hist-z23.2",
+          "max_points": 1,
+          "points": 1,
+          "low": 0,
+          "high": 1,
+          "reason": "The explicit final correction and comparison are correct, but the original contradictory decision remains.",
+          "error_category": "contradictory_self_correction",
+          "previously_correct_control": false
+        },
+        {
+          "id": "val2024-hist-z14.1",
+          "max_points": 1,
+          "points": 0,
+          "low": 0,
+          "high": 0,
+          "reason": "The required comparison fails because the mapped conflict is misidentified; a correct decision alone earns no point.",
+          "error_category": "source_identification_chronology",
+          "previously_correct_control": false
+        },
+        {
+          "id": "val2024-hist-z19.2",
+          "max_points": 1,
+          "points": 0,
+          "low": 0,
+          "high": 0,
+          "reason": "The named person does not satisfy the requested identification.",
+          "error_category": "factual_identity",
+          "previously_correct_control": false
+        },
+        {
+          "id": "val2024-hist-z25",
+          "max_points": 3,
+          "points": 0,
+          "low": 0,
+          "high": 1,
+          "reason": "One visible action supports a generic concealment reading, but lettering, setting and contextual explanation are wrong.",
+          "error_category": "visual_hallucination_context",
+          "previously_correct_control": false
+        },
+        {
+          "id": "val2024-hist-z7",
+          "max_points": 1,
+          "points": 0,
+          "low": 0,
+          "high": 0,
+          "reason": "Both extracts are forced into the wrong chronology; the selected order is incorrect.",
+          "error_category": "chronology",
+          "previously_correct_control": false
+        },
+        {
+          "id": "val2024-hist-z17.1",
+          "max_points": 1,
+          "points": 0,
+          "low": 0,
+          "high": 1,
+          "reason": "The causal core is present, but the stated location of the culminating ceremony misreads the source.",
+          "error_category": "source_misreading",
+          "previously_correct_control": true
+        },
+        {
+          "id": "val2024-hist-z8.2",
+          "max_points": 1,
+          "points": 1,
+          "low": 1,
+          "high": 1,
+          "reason": "Correct decision and concrete mapping between the groups in the two sources.",
+          "error_category": "none",
+          "previously_correct_control": true
+        },
+        {
+          "id": "val2024-hist-z18",
+          "max_points": 1,
+          "points": 0,
+          "low": 0,
+          "high": 1,
+          "reason": "Correct side, but specific headgear claimed for both opponents and soldiers is not visible.",
+          "error_category": "visual_hallucination",
+          "previously_correct_control": true
+        },
+        {
+          "id": "val2024-hist-z12.3",
+          "max_points": 1,
+          "points": 1,
+          "low": 1,
+          "high": 1,
+          "reason": "Correct classification supported by a visible stylistic feature.",
+          "error_category": "none",
+          "previously_correct_control": true
+        }
+      ],
+      "max_points": 13,
+      "total": 4,
+      "low": 3,
+      "high": 7,
+      "targeted": {
+        "points": 2,
+        "max_points": 9
+      },
+      "controls": {
+        "points": 2,
+        "max_points": 4
+      },
+      "usage": {
+        "calls": 10,
+        "final_calls": 10,
+        "prompt_tokens": 12866,
+        "completion_tokens": 2012,
+        "requested_tokens": 10240,
+        "latency_seconds": 32.778
+      },
+      "central_delta_vs_bare": -3,
+      "central_changed_items": [
+        {
+          "id": "val2024-hist-z20.2",
+          "delta": -1
+        },
+        {
+          "id": "val2024-hist-z17.1",
+          "delta": -1
+        },
+        {
+          "id": "val2024-hist-z18",
+          "delta": -1
+        }
+      ]
+    }
+  }
+}
