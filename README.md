@@ -16,11 +16,11 @@ The handoff package is in [docs/overnight/PLAN.md](docs/overnight/PLAN.md). Star
 | Active track | Owner | Task |
 | --- | --- | --- |
 | Integration, controls and freeze | @kwiscion | [#3](https://github.com/kwiscion/machinekind-matura/issues/3), [H100 #81](https://github.com/kwiscion/machinekind-matura/issues/81) |
-| Source-first visual comparison | @semberecki | [#95](https://github.com/kwiscion/machinekind-matura/issues/95) |
-| Grounded essay SFT corpus and format-repair pairs | @Bukareszt | [#117](https://github.com/kwiscion/machinekind-matura/issues/117) |
-| Essay route and essay-only LoRA feasibility | @Pewciu6 | [#80](https://github.com/kwiscion/machinekind-matura/issues/80) |
-| Alternative model on factual/text subsets | @przemeknowak781 | [#97](https://github.com/kwiscion/machinekind-matura/issues/97) |
-| Reasoning/closed-decision GPU lab and runtime review | @ljaniec | [#38](https://github.com/kwiscion/machinekind-matura/issues/38) |
+| Standalone Qwen native-thinking challenger | @semberecki | [#95](https://github.com/kwiscion/machinekind-matura/issues/95) |
+| Bounded single-model essay LoRA pilot | @Bukareszt | [#117](https://github.com/kwiscion/machinekind-matura/issues/117) |
+| Argument planning versus strong thinking essays | @Pewciu6 | [#80](https://github.com/kwiscion/machinekind-matura/issues/80) |
+| Standby; proxy experiment completed | @przemeknowak781 | [Closed #97](https://github.com/kwiscion/machinekind-matura/issues/97) |
+| Independent second full-exam grading | @ljaniec | [#38](https://github.com/kwiscion/machinekind-matura/issues/38) |
 | Independent score ledger | Root-assigned reviewers | [#11](https://github.com/kwiscion/machinekind-matura/issues/11) |
 Current allocation at 15:15: **the lead laptop runs the single Gemma baseline**, after completing Qwen's 40 responses. **Piotrek prepares his RTX 5090 for the next declared improvement** (#33; Blackwells unavailable), without duplicating the baseline. **Greg's organizer adapter is merged** ([#42](https://github.com/kwiscion/machinekind-matura/pull/42)); his next task is pinned-index deployment #44. Two disjoint Sol reviewers provide Qwen's provisional first pass; Paweł independently adjudicates on #11. Przemek integrates the existing split patch; Łukasz claimed offline runtime #38. Each owner must claim and post an ETA; assignment is not execution evidence.
 
