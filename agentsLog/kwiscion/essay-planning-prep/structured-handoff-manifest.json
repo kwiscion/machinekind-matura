@@ -1,0 +1,47 @@
+{
+  "status": "CPU_READY_FOR_INDEPENDENT_SHARED_RUNTIME_INTEGRATION",
+  "scope": "new semantic orchestration only; no runtime modifications",
+  "model_calls": 0,
+  "remote_operations": 0,
+  "git_mutations": 0,
+  "windows": {
+    "route_tests": 22,
+    "route_seconds": 0.013,
+    "driver_tests": 2,
+    "driver_seconds": 0.007
+  },
+  "linux": {
+    "route_tests": 20,
+    "route_seconds": 0.027,
+    "driver_tests": 2,
+    "driver_seconds": 0.01,
+    "scope": "Earlier20-route/2-driver version passed; latest2 added tests verified Windows only pending reviewer."
+  },
+  "actual_panel_cpu_check": "PASS; exact4source prompts/fullimages,8arm slots,16primarylogicalstages",
+  "original_six_topic1_manifest_unchanged": "79b7487fa7e7f127f138b20f651eb0248ee383b6bad7b4e2b58681d1a29aea1f",
+  "files": {
+    "SHARED_RUNTIME_INTEGRATION.md": "2045383915f7f43f0e197bd96578e1706740af8461d30416f51fd1dd154369d2",
+    "STRUCTURED_HANDOFF.md": "27d5417692ffd85c41b04945859effe1adfeeebc45d96d282658d51ec8729d32",
+    "deps/Pewciu6/essay_contract.py": "2eab5f49b218af177cb88496c2f66a7918de281e320ec077ef562008e02a0a24",
+    "deps/Pewciu6/essay_route.py": "590d025edc88a7f6b4d33297505c1fdff4607cc759e600980e982290715c1702",
+    "deps/Pewciu6/essay_think_run.py": "8fc905db2b1165efa3bea95872d5ae6d13feabe85a8e55b1f858a634d8ed7cbb",
+    "deps/Pewciu6/essay_wave_run.py": "d9a8aa881f2a269b596dbcf5324e222d125ac735020a81d597c9d37b8ff9c2fd",
+    "deps/normalize_outputs.py": "40e3ed5e66a2a75d8d8c57515db9174c8cab9945e94ce9941641598c4f8268c6",
+    "planning_wave.py": "86ba00baca2311c4dab12484690a5dfc821860e2c536510c025182acab38e383",
+    "prepared-v1/inputs.json": "1923faa5a158979bd427ab6181f73c30cbd30b15f83bed96af1158d20b936bad",
+    "prompt-study-budget-v2.json": "f09bbfc7da51fa671f2411e0cacc0a155893d1b0b22d22709198bc22ea8c2b5a",
+    "prompt-study-panel.json": "299268977512dc9d08df197027a9192c6531097aa38b4f86316877a5f2cdbe41",
+    "prompt-study-proposal.md": "0123c207040b11ce46fe2bec9b179d9f5b6db914f2573fd86fe208da8f12660c",
+    "route-study-prompts.json": "9d1ea1b1eaa07a264842af5643e8968c3c47be1735dac596ffb49106cd50fa36",
+    "structured_routes.py": "44340c0572e82999ac074f47fb8e5810d777cdea37e855298d55e5c11ef3bb18",
+    "study_driver.py": "493df23c67c426323537ecbcb1e03231d842c8ca921a8b51186081558a447346",
+    "test_structured_routes.py": "bd8060ef4d5f7c6bf2c5b8c379c036e239972ed7ef54d8618d4e8757636ec1a5",
+    "test_study_driver.py": "06fcd24469bdd74095217aba04304ad2bae1b56af307c1cc3da557a0d465fcca"
+  },
+  "launch_blockers": [
+    "shared bounded invoke implementation must wire typed result validation and durable emit",
+    "independent integrated CPU review",
+    "runtime ownership/deadline/cleanup qualification",
+    "fresh root declaration; no launch authorization here"
+  ]
+}
