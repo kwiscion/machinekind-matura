@@ -1,0 +1,67 @@
+{"id": "c-plain", "expected_status": "correct", "expected_points": 1, "expected_error_categories": []}
+{"id": "c-paren", "expected_status": "correct", "expected_points": 1, "expected_error_categories": []}
+{"id": "c-dot", "expected_status": "correct", "expected_points": 1, "expected_error_categories": []}
+{"id": "c-lower", "expected_status": "correct", "expected_points": 1, "expected_error_categories": []}
+{"id": "c-odp", "expected_status": "correct", "expected_points": 1, "expected_error_categories": []}
+{"id": "c-odp-lower", "expected_status": "correct", "expected_points": 1, "expected_error_categories": []}
+{"id": "c-sentence", "expected_status": "correct", "expected_points": 1, "expected_error_categories": []}
+{"id": "c-conj-a", "expected_status": "correct", "expected_points": 1, "expected_error_categories": []}
+{"id": "c-rejects-others", "expected_status": "correct", "expected_points": 1, "expected_error_categories": []}
+{"id": "c-md", "expected_status": "correct", "expected_points": 1, "expected_error_categories": []}
+{"id": "c-repeat", "expected_status": "correct", "expected_points": 1, "expected_error_categories": []}
+{"id": "c-english", "expected_status": "correct", "expected_points": 1, "expected_error_categories": []}
+{"id": "c-json-str", "expected_status": "correct", "expected_points": 1, "expected_error_categories": []}
+{"id": "c-json-fenced", "expected_status": "correct", "expected_points": 1, "expected_error_categories": []}
+{"id": "c-json-obj", "expected_status": "correct", "expected_points": 1, "expected_error_categories": []}
+{"id": "c-openai-shape", "expected_status": "correct", "expected_points": 1, "expected_error_categories": []}
+{"id": "c-think", "expected_status": "correct", "expected_points": 1, "expected_error_categories": []}
+{"id": "c-overlong", "expected_status": "correct", "expected_points": 1, "expected_error_categories": []}
+{"id": "c-hedge-lub", "expected_status": "incorrect", "expected_points": 0, "expected_error_categories": ["content_incorrect"]}
+{"id": "c-hedge-slash", "expected_status": "incorrect", "expected_points": 0, "expected_error_categories": ["content_incorrect"]}
+{"id": "c-hedge-marker", "expected_status": "incorrect", "expected_points": 0, "expected_error_categories": ["content_incorrect"]}
+{"id": "c-two-markers", "expected_status": "incorrect", "expected_points": 0, "expected_error_categories": ["content_incorrect"]}
+{"id": "c-wrong", "expected_status": "incorrect", "expected_points": 0, "expected_error_categories": ["content_incorrect"]}
+{"id": "c-empty", "expected_status": "incorrect", "expected_points": 0, "expected_error_categories": ["abstention"]}
+{"id": "c-null", "expected_status": "incorrect", "expected_points": 0, "expected_error_categories": ["abstention"]}
+{"id": "c-whitespace", "expected_status": "incorrect", "expected_points": 0, "expected_error_categories": ["abstention"]}
+{"id": "c-unsure", "expected_status": "incorrect", "expected_points": 0, "expected_error_categories": ["abstention"], "why": "policy: an explicit 'nie wiem' counts as abstention even with a guess"}
+{"id": "a-letter", "expected_status": "correct", "expected_points": 1, "expected_error_categories": []}
+{"id": "a-sentence", "expected_status": "correct", "expected_points": 1, "expected_error_categories": []}
+{"id": "a-marker", "expected_status": "correct", "expected_points": 1, "expected_error_categories": []}
+{"id": "m-ok", "expected_status": "correct", "expected_points": 1, "expected_error_categories": []}
+{"id": "m-and", "expected_status": "correct", "expected_points": 1, "expected_error_categories": []}
+{"id": "m-partial", "expected_status": "incorrect", "expected_points": 0, "expected_error_categories": ["content_incorrect"]}
+{"id": "m-extra", "expected_status": "incorrect", "expected_points": 0, "expected_error_categories": ["content_incorrect"]}
+{"id": "e-diac", "expected_status": "correct", "expected_points": 1, "expected_error_categories": []}
+{"id": "e-nodiac", "expected_status": "correct", "expected_points": 1, "expected_error_categories": []}
+{"id": "e-upper", "expected_status": "correct", "expected_points": 1, "expected_error_categories": []}
+{"id": "e-nfd", "expected_status": "correct", "expected_points": 1, "expected_error_categories": []}
+{"id": "e-sentence", "expected_status": "correct", "expected_points": 1, "expected_error_categories": []}
+{"id": "e-distractor", "expected_status": "incorrect", "expected_points": 0, "expected_error_categories": ["entity_confusion"]}
+{"id": "e-hedge", "expected_status": "needs_review", "expected_points": 0, "expected_error_categories": [], "why": "entity plus a key distractor -> routed to review, 0 auto points"}
+{"id": "e-inflected", "expected_status": "incorrect", "expected_points": 0, "expected_error_categories": ["content_incorrect"], "why": "known limitation: inflected form not in key variants"}
+{"id": "y-ok", "expected_status": "correct", "expected_points": 1, "expected_error_categories": []}
+{"id": "y-wrong", "expected_status": "incorrect", "expected_points": 0, "expected_error_categories": ["chronology"]}
+{"id": "y-hedge", "expected_status": "needs_review", "expected_points": 0, "expected_error_categories": [], "why": "expected year plus another year -> routed to review, 0 auto points"}
+{"id": "d-ok", "expected_status": "correct", "expected_points": 1, "expected_error_categories": []}
+{"id": "d-nodiac", "expected_status": "correct", "expected_points": 1, "expected_error_categories": []}
+{"id": "d-lead", "expected_status": "correct", "expected_points": 1, "expected_error_categories": []}
+{"id": "d-hedge", "expected_status": "incorrect", "expected_points": 0, "expected_error_categories": ["content_incorrect"]}
+{"id": "d-wrong", "expected_status": "incorrect", "expected_points": 0, "expected_error_categories": ["content_incorrect"]}
+{"id": "d-json", "expected_status": "correct", "expected_points": 1, "expected_error_categories": []}
+{"id": "o-ok", "expected_status": "correct", "expected_points": 1, "expected_error_categories": []}
+{"id": "o-arrow", "expected_status": "correct", "expected_points": 1, "expected_error_categories": []}
+{"id": "o-json", "expected_status": "correct", "expected_points": 1, "expected_error_categories": []}
+{"id": "o-wrong", "expected_status": "incorrect", "expected_points": 0, "expected_error_categories": ["chronology"]}
+{"id": "o-enumerated", "expected_status": "incorrect", "expected_points": 0, "expected_error_categories": ["chronology"], "why": "known limitation: list enumerators read as order labels"}
+{"id": "r-timeout", "expected_exclusion": "inference_error"}
+{"id": "r-error-obj", "expected_exclusion": "inference_error"}
+{"id": "r-error-empty-string", "expected_status": "correct", "expected_points": 1, "expected_error_categories": []}
+{"id": "r-missing-output", "expected_exclusion": "missing_output"}
+{"id": "900", "expected_status": "correct", "expected_points": 1, "expected_error_categories": []}
+{"id": "r-truncated-empty", "expected_status": "incorrect", "expected_points": 0, "expected_error_categories": [], "why": "hit max_tokens with no answer: 0 points, flagged truncated_output, not counted as abstention"}
+{"id": "r-truncated-openai", "expected_status": "correct", "expected_points": 1, "expected_error_categories": []}
+{"id": "r-ws-id", "expected_status": "correct", "expected_points": 1, "expected_error_categories": []}
+{"id": "r-retry", "expected_status": "correct", "expected_points": 1, "expected_error_categories": []}
+{"id": "r-dup-conflict", "expected_status": "correct", "expected_points": 1, "expected_error_categories": [], "why": "first success kept; second logged as duplicate_output"}
+{"id": "r-dup-same", "expected_status": "correct", "expected_points": 1, "expected_error_categories": []}

@@ -150,16 +150,108 @@ def machine_info():
     }
 
 
+def _dict_text(v):
+    """Text inside a structured response: OpenAI-style choices/message, or content/text keys."""
+    ch = v.get("choices")
+    if isinstance(ch, list) and ch and isinstance(ch[0], dict):
+        msg = ch[0].get("message") or {}
+        if isinstance(msg, dict) and isinstance(msg.get("content"), str):
+            return msg["content"]
+        if isinstance(ch[0].get("text"), str):
+            return ch[0]["text"]
+    msg = v.get("message")
+    if isinstance(msg, dict) and isinstance(msg.get("content"), str):
+        return msg["content"]
+    for kk in ("content", "text"):
+        if isinstance(v.get(kk), str):
+            return v[kk]
+    return None
+
+
 def response_text(out):
+    """Raw response text as the model produced it (used for citations and audit sheets)."""
     for k in ("raw_response", "response", "output", "text"):
         v = out.get(k)
         if isinstance(v, str):
             return v
         if isinstance(v, dict):
-            for kk in ("content", "text"):
-                if isinstance(v.get(kk), str):
-                    return v[kk]
+            t = _dict_text(v)
+            if t is not None:
+                return t
+            # a structured answer object, e.g. {"answer": "B"}
+            return json.dumps(v, ensure_ascii=False)
     return ""
+
+
+THINK_RE = re.compile(r"<(think|thinking|reasoning)>.*?</\1>", re.S | re.I)
+FENCE_RE = re.compile(r"^\s*```[\w-]*\s*\n?(.*?)\n?```\s*$", re.S)
+ANSWER_FIELDS = ("answer", "odpowiedz", "odpowiedź", "final_answer", "choice", "choices",
+                 "order", "kolejnosc", "kolejność", "decision", "rozstrzygniecie",
+                 "rozstrzygnięcie", "response", "content", "text")
+
+
+def _flatten(v):
+    if isinstance(v, (list, tuple)):
+        return ", ".join(_flatten(x) for x in v)
+    return "" if v is None else str(v)
+
+
+def grading_text(out):
+    """Response text normalised for grading.
+
+    * drops <think>/<reasoning> blocks (reasoning models otherwise "hedge" every option);
+    * unwraps a ```fenced``` block that is the whole response;
+    * unwraps a JSON object/array response to its answer field(s), so explanations inside
+      the JSON ("A i C odpadają") are not read as extra choices.
+    The raw text is still used for citation extraction and audit sheets.
+    """
+    t = THINK_RE.sub(" ", response_text(out))
+    t = re.sub(r"^\s*<(think|thinking|reasoning)>.*$", " ", t, flags=re.S | re.I) \
+        if re.match(r"^\s*<(think|thinking|reasoning)>", t, re.I) and "</" not in t else t
+    m = FENCE_RE.match(t)
+    if m:
+        t = m.group(1)
+    s = t.strip()
+    if s[:1] in "{[":
+        try:
+            obj = json.loads(s)
+        except ValueError:
+            obj = None
+        if isinstance(obj, dict):
+            low = {str(k).casefold(): v for k, v in obj.items()}
+            for f in ANSWER_FIELDS:
+                if f in low:
+                    return _flatten(low[f])
+        elif isinstance(obj, list):
+            return _flatten(obj)
+    return t
+
+
+def finish_reason(out):
+    """finish_reason from the record or from an OpenAI-shaped raw_response."""
+    fr = out.get("finish_reason") or out.get("stop_reason")
+    raw = out.get("raw_response")
+    if not fr and isinstance(raw, dict):
+        ch = raw.get("choices")
+        if isinstance(ch, list) and ch and isinstance(ch[0], dict):
+            fr = ch[0].get("finish_reason")
+    return fr
+
+
+def latency_seconds(out):
+    for k, scale in (("latency_s", 1.0), ("latency", 1.0), ("latency_ms", 0.001)):
+        v = out.get(k)
+        if isinstance(v, (int, float)) and not isinstance(v, bool):
+            return round(v * scale, 6)
+    return None
+
+
+def normalize_id(x):
+    """Ids compare as stripped strings (outputs sometimes carry int ids or stray spaces)."""
+    if x is None:
+        return None
+    s = str(x).strip()
+    return s or None
 
 
 def model_revision(out):
@@ -253,10 +345,49 @@ def extract_order(text, labels):
     return seen
 
 
+ANSWER_MARKER_RE = re.compile(
+    r"(?<!\w)(?:odp|odpowiedz|odpowiedzia|answer(?:\s+is)?)(?!\w)\W{0,4}(?:to\s+|jest\s+|is\s+)?"
+    r"\W{0,3}([a-f](?:(?:\s*[,/&]\s*|\s+(?:i|oraz|and|lub|albo|or)\s+)[a-f]"
+    r"(?=\s*(?:$|[,.;:)!?\n/&*]|(?:i|oraz|and|lub|albo|or)\s)))*)(?![^\W\d_])")
+
+
+def _fold_keep_punct(text):
+    text = str(text).replace("ł", "l").replace("Ł", "L")
+    text = unicodedata.normalize("NFKD", text)
+    return "".join(ch for ch in text if not unicodedata.combining(ch)).casefold()
+
+
+def extract_choices(text):
+    """Letters A-F the response commits to, as a sorted list.
+
+    1. explicit answer markers ("Odpowiedź: B", "odp. b", "answer is C", "Odpowiedź: A i C");
+       all marker letters are pooled, so two markers with different letters is a hedge;
+    2. otherwise standalone capital letters, ignoring a sentence-initial Polish conjunction
+       "A" followed by a lowercase word ("A zatem ...");
+    3. otherwise a response that is a single lowercase letter ("b", "b)").
+    """
+    marked = set()
+    for m in ANSWER_MARKER_RE.finditer(_fold_keep_punct(text)):
+        marked.update(x.upper() for x in re.findall(r"[a-f]", m.group(1)))
+    if marked:
+        return sorted(marked)
+    got = set()
+    for m in re.finditer(r"(?<![^\W\d_])([A-F])(?![^\W\d_])", text):
+        if m.group(1) == "A":
+            before = text[:m.start()].rstrip()
+            if (not before or before[-1] in ".!?\n:") and re.match(r"\s+[a-ząćęłńóśźż]", text[m.end():]):
+                continue
+        got.add(m.group(1))
+    if got:
+        return sorted(got)
+    m = re.match(r"^\W*([a-f])\W*$", text.strip())
+    return [m.group(1).upper()] if m else []
+
+
 DECISION_RE = re.compile(r"rozstrzygni\w*\W{0,5}([^\n.;,]{1,40})")
 
 
-def eval_criterion(crit, text, f):
+def eval_criterion(crit, text, f, distractors=None):
     """Return True / False, or None when the heuristic cannot judge (manual review)."""
     if crit.get("manual_only"):
         return None
@@ -294,15 +425,22 @@ def eval_criterion(crit, text, f):
         return False
     any_of = crit.get("any_of") or []
     all_of = crit.get("all_of") or []
-    return ((not any_of) or any(contains_phrase(f, a) for a in any_of)) and \
+    met = ((not any_of) or any(contains_phrase(f, a) for a in any_of)) and \
         all(contains_phrase(f, a) for a in all_of)
+    if met and kind == "entity" and any(contains_phrase(f, d) for d in distractors or []):
+        return None  # right name listed next to a known distractor: a hedge, route to review
+    if met and kind == "date":
+        accepted = set(y for a in any_of + all_of for y in YEAR_RE.findall(a))
+        if accepted and set(YEAR_RE.findall(f)) - accepted:
+            return None  # "1234 lub 1243": extra years besides the accepted one -> review
+    return met
 
 
 def grade_item(key, out, corpus):
     """Grade one joined (key, output) pair. Returns an item result without key content."""
     rub = key.get("rubric") or {}
     max_points = float(rub.get("max_points", key.get("max_points", 1)))
-    text = response_text(out)
+    text = grading_text(out)
     f = fold(text)
     errors = []
     points = 0.0
@@ -322,8 +460,7 @@ def grade_item(key, out, corpus):
         mode = rub.get("mode", "criteria")
         if mode == "choice":
             exp = sorted(set(c.upper() for c in rub.get("expected_choice", [])))
-            # standalone capital letters A-F in the original (not upper-cased) text
-            got = sorted(set(re.findall(r"(?<![^\W\d_])([A-F])(?![^\W\d_])", text)))
+            got = extract_choices(text)
             ok = got == exp
             points = max_points if ok else 0.0
             criteria_results.append({"criterion_id": "choice", "met": ok})
@@ -341,7 +478,7 @@ def grade_item(key, out, corpus):
             true_pts, unknown_pts, n_unknown = 0.0, 0.0, 0
             all_known_true = True
             crits = rub.get("criteria", [])
-            mets = [eval_criterion(c, text, f) for c in crits]
+            mets = [eval_criterion(c, text, f, key.get("distractors")) for c in crits]
             # lexical miss on a criterion marked review_on_fail -> route to review, not a hard fail
             mets = [None if (m is False and c.get("review_on_fail")) else m for c, m in zip(crits, mets)]
             # a failed criterion may zero out others (e.g. essay < 300 words -> coherence 0 pts)
@@ -436,6 +573,14 @@ def grade_item(key, out, corpus):
         errs.remove("content_incorrect")
 
     review_flags = []
+    truncated = finish_reason(out) in ("length", "max_tokens")
+    if truncated:
+        # generation hit the token limit (e.g. reasoning ate the budget): an empty answer is a
+        # truncation, not a genuine abstention; the item still scores 0 but is flagged
+        review_flags.append("truncated_output")
+        if abstained and not text.strip():
+            errs = [e for e in errs if e != "abstention"]
+            abstained = False
     if key.get("modality") == "image" and (points < max_points or needs_review):
         review_flags.append("possible_image_ocr")
     if key.get("task_type") in ("essay", "essay_plan"):
@@ -464,7 +609,7 @@ def grade_item(key, out, corpus):
         "task_type": key.get("task_type"),
         "era": key.get("era"),
         "topic": key.get("topic"),
-        "latency_s": out.get("latency_s", out.get("latency")),
+        "latency_s": latency_seconds(out),
         "grader": GRADER_VERSION,
         "provisional": True,
     }
@@ -507,17 +652,29 @@ def score(args):
 
     key_by_id = OrderedDict()
     for k in keys:
-        if k["id"] in key_by_id:
-            raise SystemExit("duplicate key id: %s" % k["id"])
-        key_by_id[k["id"]] = k
+        kid = normalize_id(k.get("id"))
+        if kid is None:
+            raise SystemExit("key record without id")
+        if kid in key_by_id:
+            raise SystemExit("duplicate key id: %s" % kid)
+        k = dict(k, id=kid)
+        key_by_id[kid] = k
 
-    out_by_id, exclusions, orphans = {}, [], []
+    out_by_id, exclusions, orphans, no_id = {}, [], [], 0
     for o in outputs:
-        oid = o.get("id")
-        if oid not in key_by_id:
+        oid = normalize_id(o.get("id"))
+        if oid is None:
+            no_id += 1
+        elif oid not in key_by_id:
             orphans.append(oid)
         elif oid in out_by_id:
-            exclusions.append({"id": oid, "reason": "duplicate_output", "note": "first record kept"})
+            if out_by_id[oid].get("error") and not o.get("error"):
+                # append-only log: a successful retry supersedes an earlier error record
+                exclusions.append({"id": oid, "reason": "duplicate_output",
+                                   "note": "earlier error record superseded by successful retry"})
+                out_by_id[oid] = o
+            else:
+                exclusions.append({"id": oid, "reason": "duplicate_output", "note": "first record kept"})
         else:
             out_by_id[oid] = o
 
@@ -581,6 +738,8 @@ def score(args):
             "scored_items": overall["n"],
             "excluded_items": len(counted_excl),
             "orphan_outputs_ignored": len(orphans),
+            "records_without_id": no_id,
+            "duplicate_records": sum(1 for e in exclusions if e["reason"] == "duplicate_output"),
             "policy": "lenient = scored items only; strict = exclusions count as 0 points",
         }),
         ("overall", _finalize(overall)),
@@ -592,6 +751,7 @@ def score(args):
         ("review_flag_counts", dict(Counter(fl for it in items for fl in it.get("review_flags", [])))),
         ("error_category_counts", {c: err_counts.get(c, 0) for c in ERROR_CATEGORIES}),
         ("abstentions", sum(1 for it in items if it["abstained"])),
+        ("truncated_outputs", sum(1 for it in items if "truncated_output" in it.get("review_flags", []))),
         ("citation_audit_counts", dict(cit_counts)),
         ("latency_s", {
             "n": len(latencies),
@@ -639,31 +799,62 @@ def blind_pack(args):
     mapping.jsonl -> RESTRICTED: blind_id -> output file hash, model, revision. Keep private.
     """
     import random
-    keys = {k["id"]: k for k in read_jsonl(args.keys)}
+    keys = {normalize_id(k.get("id")): k for k in read_jsonl(args.keys)}
     types = set(args.task_types.split(","))
     rows, mapping = [], []
     for path in args.outputs:
         fh = sha256_file(path)
         for o in read_jsonl(path):
-            k = keys.get(o.get("id"))
+            k = keys.get(normalize_id(o.get("id")))
             if not k or k.get("task_type") not in types or o.get("error"):
                 continue
-            bid = "blind-" + hashlib.sha256(("%s|%s|%s" % (args.seed, fh, o["id"])).encode()).hexdigest()[:10]
-            rows.append({"blind_id": bid, "item_id": o["id"],
+            oid = normalize_id(o.get("id"))
+            bid = "blind-" + hashlib.sha256(("%s|%s|%s" % (args.seed, fh, oid)).encode()).hexdigest()[:10]
+            rows.append({"blind_id": bid, "item_id": oid,
                          "rubric_id": (k.get("rubric") or {}).get("rubric_id"),
                          "max_points": float((k.get("rubric") or {}).get("max_points", 1)),
-                         "response": response_text(o),
-                         "word_count": len(re.findall(r"\w+", response_text(o))),
+                         "response": grading_text(o),
+                         "word_count": len(re.findall(r"\w+", grading_text(o))),
                          "review": {"reviewer": None, "points": None, "criterion_points": {},
                                     "notes": ""}})
             mv = model_revision(o)
-            mapping.append({"blind_id": bid, "outputs_sha256": fh, "id": o["id"], **mv})
+            mapping.append({"blind_id": bid, "outputs_sha256": fh, "id": oid, **mv})
     random.Random(args.seed).shuffle(rows)
     os.makedirs(args.out_dir, exist_ok=True)
     write_jsonl(os.path.join(args.out_dir, "packet.jsonl"), rows)
     write_jsonl(os.path.join(args.out_dir, "mapping.jsonl"), mapping)
     print(json.dumps({"packet_items": len(rows), "out_dir": args.out_dir}, indent=2))
     return rows, mapping
+
+
+def cohen_kappa(a, b, weights=None):
+    """Cohen's kappa for two raters' paired labels; weights None | "linear" | "quadratic".
+
+    Integer point scores are the categories. Weighted variants need numeric labels.
+    Returns None when undefined (fewer than 2 pairs or no expected disagreement).
+    """
+    if len(a) != len(b) or len(a) < 2:
+        return None
+    cats = sorted(set(a) | set(b))
+    n = float(len(a))
+    idx = {c: i for i, c in enumerate(cats)}
+    k = len(cats)
+    obs = [[0.0] * k for _ in range(k)]
+    for x, y in zip(a, b):
+        obs[idx[x]][idx[y]] += 1
+    ra = [sum(r) for r in obs]
+    rb = [sum(obs[i][j] for i in range(k)) for j in range(k)]
+    if weights is None:
+        w = [[0.0 if i == j else 1.0 for j in range(k)] for i in range(k)]
+    else:
+        span = float(max(cats) - min(cats)) or 1.0
+        p = 1 if weights == "linear" else 2
+        w = [[(abs(cats[i] - cats[j]) / span) ** p for j in range(k)] for i in range(k)]
+    o = sum(w[i][j] * obs[i][j] for i in range(k) for j in range(k)) / n
+    e = sum(w[i][j] * ra[i] * rb[j] for i in range(k) for j in range(k)) / (n * n)
+    if e == 0:
+        return None
+    return round(1.0 - o / e, 4)
 
 
 def blind_merge(args):
@@ -698,12 +889,28 @@ def blind_merge(args):
                        "model_revision": m.get("model_revision"),
                        "reviews": [{"reviewer": a, "points": b} for a, b, _ in revs],
                        "mean_points": round(mean, 3), "disagreement": round(max(pts) - min(pts), 3)})
+    # pairwise stats on the first two raters of each multi-rated item
+    pairs = [(r["reviews"][0]["points"], r["reviews"][1]["points"]) for r in merged if len(r["reviews"]) > 1]
+    pa, pb = [x for x, _ in pairs], [y for _, y in pairs]
+    args.third_rater_range = getattr(args, "third_rater_range", 3.0)
+    third = [r["blind_id"] for r in merged if r["disagreement"] >= args.third_rater_range]
+    for r in merged:
+        r["needs_third_rater"] = r["disagreement"] >= args.third_rater_range
     summary = {
         "provisional": True,
         "reviewed_items": len(merged),
         "multi_rater_items": multi,
         "exact_agreement": round(exact / multi, 4) if multi else None,
+        "within_1_agreement": round(sum(1 for x, y in pairs if abs(x - y) <= 1) / len(pairs), 4)
+        if pairs else None,
         "mean_abs_range": round(sum(diffs) / len(diffs), 3) if diffs else None,
+        "cohen_kappa": cohen_kappa(pa, pb),
+        "cohen_kappa_linear": cohen_kappa(pa, pb, "linear"),
+        "cohen_kappa_quadratic": cohen_kappa(pa, pb, "quadratic"),
+        "third_rater_range": args.third_rater_range,
+        "needs_third_rater": third,
+        "disagreement_policy": "all ratings kept; merged score = mean of raters; range >= "
+                               "third_rater_range -> third blind rater, then median of three",
         "per_model": {k: dict(v, points=round(v["points"], 3)) for k, v in per_model.items()},
     }
     if args.out:
@@ -722,7 +929,7 @@ def audit_sample(args):
     import random
     rng = random.Random(args.seed)
     keys = {k["id"]: k for k in read_jsonl(args.keys)}
-    outs = {o["id"]: o for o in read_jsonl(args.outputs)} if args.outputs else {}
+    outs = {normalize_id(o.get("id")): o for o in read_jsonl(args.outputs)} if args.outputs else {}
     items = read_jsonl(args.items)
     rng.shuffle(items)
     pri = [it for it in items if it["status"] == "needs_review" or it.get("modality") == "image"]
@@ -889,6 +1096,7 @@ def main(argv=None):
     bm.add_argument("--reviewed", action="append", required=True, help="reviewed packet(s), one per rater")
     bm.add_argument("--mapping", required=True)
     bm.add_argument("--out")
+    bm.add_argument("--third-rater-range", type=float, default=3.0)
 
     asp = sub.add_parser("audit-sample")
     asp.add_argument("--items", required=True, help="item-level results from `score --items-out`")
