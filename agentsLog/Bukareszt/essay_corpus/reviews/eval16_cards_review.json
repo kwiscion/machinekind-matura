@@ -1,0 +1,135 @@
+{
+ "per_item": {
+  "bk117-eval-01": {
+   "checked": 10,
+   "bad_cards": [
+    {
+     "fact_id": "ev-01-f03",
+     "severity": "moderate",
+     "problem": "Misleading out of context: the source immediately qualifies Herodotus' revenge motive ('są jednak powody, by tezę tę uznać za element ateńskiej propagandy'). Card presents it without that caveat; a grader could reward an unhedged claim.",
+     "fix": "Extend the quote to include the propaganda caveat, or add it to the fact sentence."
+    }
+   ],
+   "coverage_ok": true,
+   "notes": "Causes (Lydia 546, Ionian revolt 499, Herodotus vs expansion), military (Marathon, Thermopylae, Salamis, Plataea/Mykale) and political effects (Hellenic League, Delian League, Persian acceptance of losses) are covered."
+  },
+  "bk117-eval-02": {
+   "checked": 10,
+   "bad_cards": [],
+   "coverage_ok": true,
+   "notes": "Ustrój (consuls, assemblies, tribunes, senate) and social aspect (patrician–plebeian struggle, XII Tables, debt bondage, lex Hortensia, latifundia) covered; effectiveness via 700k reserves and senate foreign policy. ev-02-f08 fact adds 'W okresie wielkich podbojów' (context is 2nd-c. BC treaty practice) – acceptable."
+  },
+  "bk117-eval-03": {
+   "checked": 10,
+   "bad_cards": [],
+   "coverage_ok": true,
+   "notes": "Religious and political causes (source headers 'Przyczyny polityczne/religijne' confirm labels in ev-03-f04/f05), effects incl. economic (Levant trade, Italian cities, shipping) and political (Byzantium weakened, French kings). Quotes of this item match the source only after whitespace normalisation (bullet-list items joined); content is verbatim."
+  },
+  "bk117-eval-04": {
+   "checked": 10,
+   "bad_cards": [
+    {
+     "fact_id": "ev-04-f04",
+     "severity": "minor",
+     "problem": "Fact adds 'co osłabiało odporność ludności', which is not in the quote (it is in the next source sentence via livestock shortage → malnutrition).",
+     "fix": "Extend quote with 'Deficyty pszenicy, owsa i jęczmienia ... niedożywienie, obniżające odporność.' or drop the clause from the fact."
+    }
+   ],
+   "coverage_ok": false,
+   "notes": "Causes/course and demographic (30–60%, world population) plus social (structure, Church) covered, but ECONOMIC effects are thin: only the drop in German settlements (ev-04-f10); nothing on labour shortage, wages or prices after the plague. ev-04-f04 is a pre-plague cause, not an effect. Add 1–2 economic-effect cards from the source if available."
+  },
+  "bk117-eval-05": {
+   "checked": 10,
+   "bad_cards": [
+    {
+     "fact_id": "ev-05-f09",
+     "severity": "minor",
+     "problem": "Fact adds 'i Płowcami'; quote covers only the morning encounter near Radziejów. The battle of Płowce is supported by the next source paragraph, not by this quote.",
+     "fix": "Quote the Płowce sentence ('Po południu doszło do kolejnego starcia pod wsią Płowce...') or drop 'i Płowcami'."
+    }
+   ],
+   "coverage_ok": true,
+   "notes": "Political (1306 Kraków and Pomorze, 1311 revolt, 1320 coronation, Hungarian alliance, hostile neighbours, final assessment) and military (1312 suppression, Płowce 1331) covered."
+  },
+  "bk117-eval-06": {
+   "checked": 10,
+   "bad_cards": [],
+   "coverage_ok": true,
+   "notes": "Ustrojowy (definition, centralism, bureaucracy, standing taxes, army, Louis XIV) and social (burghers, magnates, nobility, feudal base, practical limits) covered; ev-06-f10 is about practical limits of classical absolutism in general (checked context) – fine. Quotes of this item match the source only after whitespace normalisation (bullet-list items joined); content is verbatim."
+  },
+  "bk117-eval-07": {
+   "checked": 10,
+   "bad_cards": [],
+   "coverage_ok": true,
+   "notes": "Political (election with Anna, armed opposition, Gdańsk war and settlement, Trybunał Koronny) and military (piechota wybraniecka, 1579 war, Połock, Jam Zapolski) covered."
+  },
+  "bk117-eval-08": {
+   "checked": 10,
+   "bad_cards": [],
+   "coverage_ok": true,
+   "notes": "Political (taxes without representation, Declaration, Paris 1783, republican government) and international (Saratoga→France, Yorktown) covered. Economic aspect only via causes (taxation, Tea Act/Boston Tea Party context verified: 'kupcy bostońscy', 1773) – adequate for 'przyczyny', no economic effects card."
+  },
+  "bk117-eval-09": {
+   "checked": 10,
+   "bad_cards": [],
+   "coverage_ok": true,
+   "notes": "Political (absolutism, National Assembly, execution), social (third estate, famine, abolition of privileges and tithe) and ideological (Declaration, Enlightenment, Code civil) covered. ev-09-f09 lacks the year (1793) in both quote and fact – minor for grading."
+  },
+  "bk117-eval-10": {
+   "checked": 10,
+   "bad_cards": [],
+   "coverage_ok": true,
+   "notes": "Ustrój (Tilsit, 1807 constitution, personal freedom, equality), social (peasants' actual position, modernization) and military (2/3 budget, 1809 defence, 1809 enlargement, 1812 campaign losses) covered."
+  },
+  "bk117-eval-11": {
+   "checked": 10,
+   "bad_cards": [],
+   "coverage_ok": true,
+   "notes": "German path (Bismarck, army reform, Sadowa 1866, Sedan/Metz, 1871 without Austria) and Italian path (Cavour–France, 1859, Garibaldi 1860, 1861 kingdom, Venetia 1866, Rome 1870) support a political+military comparison. No card on the 1864 Danish war – acceptable."
+  },
+  "bk117-eval-12": {
+   "checked": 10,
+   "bad_cards": [],
+   "coverage_ok": true,
+   "notes": "Causes (Wall Street crash, margin buying, US capital in Europe, gold standard) and economic/social/political effects (production −50%, unemployment, food shortage, Polish GDP −52%, Hitler, New Deal) covered."
+  },
+  "bk117-eval-13": {
+   "checked": 10,
+   "bad_cards": [],
+   "coverage_ok": true,
+   "notes": "Political (Act of 5 November, Regency Council handover), military (Poles in all partitioning armies, Kadrówka, Blue Army) and international (Entente pressure on Russia, Russian Provisional Government declaration verified in context, Wilson's 13th point, KNP recognition) covered. No explicit card on the collapse/defeat of all three partitioning powers – a gap but not blocking."
+  },
+  "bk117-eval-14": {
+   "checked": 10,
+   "bad_cards": [],
+   "coverage_ok": true,
+   "notes": "International (pact, secret protocol, UK/France declaration without effective French relief) and military (German concentration, air superiority and mobile units, Soviet attack 17 Sept, end at Kock) covered."
+  },
+  "bk117-eval-15": {
+   "checked": 10,
+   "bad_cards": [],
+   "coverage_ok": true,
+   "notes": "Political (inheritance from Philip, conquest of Persia, 5,000 km empire, epoch boundary), military (phalanx, hetairoi, Gaugamela, retreat from India) and cultural (Alexandria, Hellenistic culture) covered."
+  },
+  "bk117-eval-16": {
+   "checked": 10,
+   "bad_cards": [],
+   "coverage_ok": true,
+   "notes": "Causes (XX Congress, worsening living conditions, unreformed planned economy, tax grievance at Cegielski – context verified) and effects: political (Gomułka 21 Oct, partial liberalisation, short thaw), social (strike, 10k soldiers/400 tanks, official 'agentura' narrative), economic (collectivisation abandoned) covered. No casualty figure for Poznań – minor."
+  }
+ },
+ "summary": {
+  "cards_checked": 160,
+  "quotes_verbatim": 153,
+  "quotes_verbatim_after_whitespace_normalisation": 7,
+  "bad_cards": 3,
+  "items_coverage_not_ok": [
+   "bk117-eval-04"
+  ]
+ },
+ "reviewer": {
+  "agent": "claude subagent (independent reviewer, issue #117)",
+  "model": "claude-opus-5-5"
+ },
+ "reviewed_at": "2026-09-26T19:27:43Z"
+}

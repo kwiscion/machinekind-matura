@@ -1,0 +1,50 @@
+{
+  "essays": "agentsLog/Bukareszt/essay_corpus/drafts/b1r_essays.jsonl",
+  "essays_sha256": "e9dcaf5d31e4a48f62c32eec2b654b44e8c45b6988a00046d2d60393c4f93eea",
+  "factcards": [
+    "agentsLog/Bukareszt/essay_corpus/drafts/b1_factcards.jsonl",
+    "agentsLog/Bukareszt/essay_corpus/drafts/b1r_factcards.jsonl"
+  ],
+  "factcards_sha256": [
+    "419ddc7ee1c4ea0e93290a12ac138158033753406148a31a67a5fea11940ff52",
+    "3d8fe376465854bebd06fda3f6afea8e60c083137f977d72c19ddc1c5c56e672"
+  ],
+  "factcards_total": 138,
+  "factcards_failing": {},
+  "results": [
+    {
+      "id": "bk117-b1-piast",
+      "cluster_id": "C-piast-origins",
+      "words": 427,
+      "essay_sha256": "eefdd9346f073f6aa9d223b2b9f27317aba394d8a9f76b078c247168e3aff920",
+      "pass": true,
+      "errors": []
+    },
+    {
+      "id": "bk117-b1-charlemagne",
+      "cluster_id": "C-charlemagne",
+      "words": 457,
+      "essay_sha256": "af5891f5cc6130d54df92f1a924da11d18d6af47ffbfc405da8086ce5370e931",
+      "pass": true,
+      "errors": []
+    },
+    {
+      "id": "bk117-b1-versailles",
+      "cluster_id": "C-versailles",
+      "words": 434,
+      "essay_sha256": "949e4d07b345c548f3613159a05aafd0554debf3d51b1f2c14cea14459279e26",
+      "pass": true,
+      "errors": []
+    },
+    {
+      "id": "bk117-b1-1970",
+      "cluster_id": "C-1970",
+      "words": 432,
+      "essay_sha256": "ffc046a9ac6c0aaad5bb9c0add96fea9b7e10f67e1baddf42d0ead01bd59aa92",
+      "pass": true,
+      "errors": []
+    }
+  ],
+  "passed": 4,
+  "total": 4
+}

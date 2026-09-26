@@ -1,0 +1,618 @@
+{
+  "version": "essay-clusters-v2",
+  "description": "Canonical topic clusters for issue #117. A source is canonicalized to a normalized plwiki/wikisource title key (aliases below), then mapped to exactly one cluster. The cluster is the split/leakage unit: every essay, repair pair, fact card and eval topic drawing on any member belongs to that cluster, and a cluster may appear in at most one partition.",
+  "aliases": {
+    "grunwald": "bitwa-pod-grunwaldem",
+    "rozbicie-dzielnicowe-w-polsce": "polska-w-okresie-rozbicia-dzielnicowego",
+    "testament-boleslawa-krzywoustego": "ustawa-sukcesyjna-boleslawa-krzywoustego",
+    "akademia-krakowska": "uniwersytet-jagiellonski",
+    "pierwszy-pokoj-torunski": "pokoj-torunski-1411",
+    "konfederacja-warszawska-1573": "konfederacja-warszawska-1573",
+    "bitwa-pod-wiedniem-1683": "bitwa-pod-wiedniem",
+    "rozbiory": "rozbiory-polski",
+    "powstanie-kosciuszkowskie": "insurekcja-kosciuszkowska",
+    "legiony-polskie-19141918": "legiony-polskie-1914-1918",
+    "rewolucja-1905-roku-w-krolestwie-polskim": "rewolucja-1905-roku-w-krolestwie-polskim",
+    "polski-pazdziernik-1956": "polski-pazdziernik-1956",
+    "stan-wojenny-w-polsce-19811983": "stan-wojenny-w-polsce-1981-1983",
+    "okragly-stol-polska": "okragly-stol-polska",
+    "sierpien-1980": "sierpien-1980",
+    "traktat-ryski-1921": "traktat-ryski-1921",
+    "polski-komitet-wyzwolenia-narodowego": "polski-komitet-wyzwolenia-narodowego",
+    "pkwn": "polski-komitet-wyzwolenia-narodowego",
+    "wyprawy-krzyzowe": "krucjata",
+    "holokaust": "zaglada-zydow"
+  },
+  "clusters": {
+    "C-athens": {
+      "era": "antiquity",
+      "members": [
+        "demokracja-atenska"
+      ]
+    },
+    "C-persian-wars": {
+      "era": "antiquity",
+      "members": [
+        "wojny-perskie"
+      ]
+    },
+    "C-alexander": {
+      "era": "antiquity",
+      "members": [
+        "aleksander-macedonski"
+      ]
+    },
+    "C-rome-republic": {
+      "era": "antiquity",
+      "members": [
+        "republika-rzymska"
+      ]
+    },
+    "C-rome-empire": {
+      "era": "antiquity",
+      "members": [
+        "cesarstwo-rzymskie"
+      ]
+    },
+    "C-hammurabi": {
+      "era": "antiquity",
+      "members": [
+        "kodeks-hammurabiego"
+      ]
+    },
+    "C-charlemagne": {
+      "era": "medieval",
+      "members": [
+        "karol-wielki"
+      ]
+    },
+    "C-crusades": {
+      "era": "medieval",
+      "members": [
+        "krucjata"
+      ]
+    },
+    "C-church-conflicts": {
+      "era": "medieval",
+      "members": [
+        "wielka-schizma-wschodnia",
+        "spor-o-inwestyture"
+      ]
+    },
+    "C-magna-carta": {
+      "era": "medieval",
+      "members": [
+        "magna-charta-libertatum"
+      ]
+    },
+    "C-black-death": {
+      "era": "medieval",
+      "members": [
+        "czarna-smierc"
+      ]
+    },
+    "C-hundred-years": {
+      "era": "medieval",
+      "members": [
+        "wojna-stuletnia"
+      ]
+    },
+    "C-piast-origins": {
+      "era": "medieval",
+      "members": [
+        "chrzest-polski",
+        "mieszko-i"
+      ]
+    },
+    "C-chrobry": {
+      "era": "medieval",
+      "members": [
+        "boleslaw-i-chrobry",
+        "zjazd-gnieznienski"
+      ]
+    },
+    "C-odnowiciel": {
+      "era": "medieval",
+      "members": [
+        "kazimierz-i-odnowiciel"
+      ]
+    },
+    "C-fragmentation": {
+      "era": "medieval",
+      "members": [
+        "boleslaw-iii-krzywousty",
+        "ustawa-sukcesyjna-boleslawa-krzywoustego",
+        "polska-w-okresie-rozbicia-dzielnicowego",
+        "bitwa-pod-legnica"
+      ]
+    },
+    "C-lokietek": {
+      "era": "medieval",
+      "members": [
+        "wladyslaw-i-lokietek"
+      ]
+    },
+    "C-casimir3": {
+      "era": "medieval",
+      "members": [
+        "kazimierz-iii-wielki",
+        "uniwersytet-jagiellonski"
+      ]
+    },
+    "C-krewo-jagiello": {
+      "era": "medieval",
+      "members": [
+        "unia-w-krewie",
+        "jadwiga-andegawenska",
+        "wladyslaw-ii-jagiello"
+      ]
+    },
+    "C-teutonic": {
+      "era": "medieval",
+      "members": [
+        "wielka-wojna-z-zakonem-krzyzackim",
+        "bitwa-pod-grunwaldem",
+        "pokoj-torunski-1411",
+        "wojna-trzynastoletnia",
+        "drugi-pokoj-torunski",
+        "kazimierz-iv-jagiellonczyk"
+      ]
+    },
+    "C-nobility-privileges": {
+      "era": "early_modern",
+      "members": [
+        "nihil-novi",
+        "ruch-egzekucyjny"
+      ]
+    },
+    "C-discoveries": {
+      "era": "early_modern",
+      "members": [
+        "wielkie-odkrycia-geograficzne"
+      ]
+    },
+    "C-reformation": {
+      "era": "early_modern",
+      "members": [
+        "reformacja",
+        "marcin-luter",
+        "sobor-trydencki"
+      ]
+    },
+    "C-thirty-years": {
+      "era": "early_modern",
+      "members": [
+        "wojna-trzydziestoletnia"
+      ]
+    },
+    "C-absolutism": {
+      "era": "early_modern",
+      "members": [
+        "monarchia-absolutna"
+      ]
+    },
+    "C-french-rev": {
+      "era": "early_modern",
+      "members": [
+        "rewolucja-francuska"
+      ]
+    },
+    "C-us-independence": {
+      "era": "early_modern",
+      "members": [
+        "wojna-o-niepodleglosc-stanow-zjednoczonych"
+      ]
+    },
+    "C-lublin": {
+      "era": "early_modern",
+      "members": [
+        "unia-lubelska",
+        "zygmunt-ii-august",
+        "zygmunt-i-stary"
+      ]
+    },
+    "C-election": {
+      "era": "early_modern",
+      "members": [
+        "konfederacja-warszawska-1573",
+        "akt-konfederacji-warszawskiej",
+        "artykuly-henrykowskie",
+        "pacta-conventa",
+        "wolna-elekcja"
+      ]
+    },
+    "C-batory": {
+      "era": "early_modern",
+      "members": [
+        "stefan-batory"
+      ]
+    },
+    "C-vasa-wars": {
+      "era": "early_modern",
+      "members": [
+        "zygmunt-iii-waza",
+        "bitwa-pod-kircholmem",
+        "bitwa-pod-kluszynem"
+      ]
+    },
+    "C-deluge": {
+      "era": "early_modern",
+      "members": [
+        "potop-szwedzki",
+        "pokoj-oliwski",
+        "traktaty-welawsko-bydgoskie",
+        "powstanie-chmielnickiego",
+        "rokosz-lubomirskiego"
+      ]
+    },
+    "C-sobieski": {
+      "era": "early_modern",
+      "members": [
+        "jan-iii-sobieski",
+        "bitwa-pod-wiedniem"
+      ]
+    },
+    "C-saxon-decline": {
+      "era": "early_modern",
+      "members": [
+        "august-ii-mocny",
+        "sejm-niemy",
+        "liberum-veto",
+        "konfederacja-barska"
+      ]
+    },
+    "C-stanislaw-reforms": {
+      "era": "early_modern",
+      "members": [
+        "stanislaw-august-poniatowski",
+        "komisja-edukacji-narodowej",
+        "sejm-czteroletni",
+        "konstytucja-3-maja",
+        "ustawa-rzadowa-czyli-konstytucya-3-maja-1791"
+      ]
+    },
+    "C-partitions-fall": {
+      "era": "early_modern",
+      "members": [
+        "konfederacja-targowicka",
+        "akt-zalozenia-konfederacji-targowickiej",
+        "wojna-polsko-rosyjska-1792",
+        "rozbiory-polski",
+        "insurekcja-kosciuszkowska",
+        "tadeusz-kosciuszko"
+      ]
+    },
+    "C-napoleonic": {
+      "era": "19th_century",
+      "members": [
+        "legiony-polskie-we-wloszech",
+        "ksiestwo-warszawskie"
+      ]
+    },
+    "C-vienna": {
+      "era": "19th_century",
+      "members": [
+        "kongres-wiedenski",
+        "krolestwo-polskie-kongresowe"
+      ]
+    },
+    "C-november": {
+      "era": "19th_century",
+      "members": [
+        "powstanie-listopadowe",
+        "wielka-emigracja"
+      ]
+    },
+    "C-1846-1848": {
+      "era": "19th_century",
+      "members": [
+        "powstanie-krakowskie",
+        "rabacja-galicyjska",
+        "wiosna-ludow"
+      ]
+    },
+    "C-january": {
+      "era": "19th_century",
+      "members": [
+        "powstanie-styczniowe",
+        "romuald-traugutt",
+        "manifest-tymczasowego-rzadu-narodowego-1863",
+        "uwlaszczenie-chlopow-na-ziemiach-polskich"
+      ]
+    },
+    "C-partition-policies": {
+      "era": "19th_century",
+      "members": [
+        "kulturkampf",
+        "rusyfikacja",
+        "autonomia-galicyjska",
+        "pozytywizm-warszawski",
+        "praca-organiczna"
+      ]
+    },
+    "C-1905": {
+      "era": "19th_century",
+      "members": [
+        "rewolucja-1905-roku-w-krolestwie-polskim",
+        "polska-partia-socjalistyczna"
+      ]
+    },
+    "C-unifications": {
+      "era": "19th_century",
+      "members": [
+        "zjednoczenie-niemiec-1866-1871",
+        "zjednoczenie-wloch"
+      ]
+    },
+    "C-industrial": {
+      "era": "19th_century",
+      "members": [
+        "rewolucja-przemyslowa"
+      ]
+    },
+    "C-ww1-independence": {
+      "era": "20th_century",
+      "members": [
+        "i-wojna-swiatowa",
+        "akt-5-listopada",
+        "akt-5-listopada-1916",
+        "legiony-polskie-1914-1918",
+        "jozef-pilsudski",
+        "roman-dmowski"
+      ]
+    },
+    "C-versailles": {
+      "era": "20th_century",
+      "members": [
+        "traktat-wersalski"
+      ]
+    },
+    "C-borders-uprisings": {
+      "era": "20th_century",
+      "members": [
+        "powstanie-wielkopolskie",
+        "powstania-slaskie"
+      ]
+    },
+    "C-bolshevik": {
+      "era": "20th_century",
+      "members": [
+        "wojna-polsko-bolszewicka",
+        "bitwa-warszawska",
+        "traktat-ryski-1921"
+      ]
+    },
+    "C-2rp-system": {
+      "era": "20th_century",
+      "members": [
+        "konstytucja-marcowa",
+        "konstytucja-marcowa-1921",
+        "przewrot-majowy",
+        "konstytucja-kwietniowa"
+      ]
+    },
+    "C-cop": {
+      "era": "20th_century",
+      "members": [
+        "centralny-okreg-przemyslowy"
+      ]
+    },
+    "C-great-depression": {
+      "era": "20th_century",
+      "members": [
+        "wielki-kryzys"
+      ]
+    },
+    "C-1939": {
+      "era": "20th_century",
+      "members": [
+        "pakt-ribbentrop-molotow",
+        "kampania-wrzesniowa"
+      ]
+    },
+    "C-katyn": {
+      "era": "20th_century",
+      "members": [
+        "zbrodnia-katynska"
+      ]
+    },
+    "C-underground": {
+      "era": "20th_century",
+      "members": [
+        "polskie-panstwo-podziemne",
+        "armia-krajowa",
+        "powstanie-warszawskie"
+      ]
+    },
+    "C-holocaust": {
+      "era": "20th_century",
+      "members": [
+        "zaglada-zydow",
+        "powstanie-w-getcie-warszawskim"
+      ]
+    },
+    "C-monte-cassino": {
+      "era": "20th_century",
+      "members": [
+        "bitwa-o-monte-cassino"
+      ]
+    },
+    "C-allied-conferences": {
+      "era": "20th_century",
+      "members": [
+        "konferencja-jaltanska",
+        "konferencja-poczdamska"
+      ]
+    },
+    "C-communist-takeover": {
+      "era": "20th_century",
+      "members": [
+        "polski-komitet-wyzwolenia-narodowego",
+        "manifest-polskiego-komitetu-wyzwolenia-narodowego",
+        "referendum-w-polsce-w-1946-roku"
+      ]
+    },
+    "C-1956": {
+      "era": "20th_century",
+      "members": [
+        "poznanski-czerwiec",
+        "polski-pazdziernik-1956"
+      ]
+    },
+    "C-1968": {
+      "era": "20th_century",
+      "members": [
+        "marzec-1968"
+      ]
+    },
+    "C-1970": {
+      "era": "20th_century",
+      "members": [
+        "grudzien-1970"
+      ]
+    },
+    "C-solidarity-transition": {
+      "era": "20th_century",
+      "members": [
+        "sierpien-1980",
+        "porozumienia-sierpniowe",
+        "niezalezny-samorzadny-zwiazek-zawodowy-solidarnosc",
+        "stan-wojenny-w-polsce-1981-1983",
+        "okragly-stol-polska",
+        "wybory-parlamentarne-w-polsce-w-1989-roku"
+      ]
+    },
+    "C-cold-war": {
+      "era": "20th_century",
+      "members": [
+        "zimna-wojna",
+        "plan-marshalla",
+        "mur-berlinski"
+      ]
+    },
+    "C-ussr-collapse": {
+      "era": "20th_century",
+      "members": [
+        "rozpad-zsrr"
+      ]
+    },
+    "C-euro-atlantic": {
+      "era": "20th_century",
+      "members": [
+        "nato",
+        "polska-w-unii-europejskiej"
+      ]
+    },
+    "C-meiji": {
+      "era": "19th_century",
+      "members": [
+        "restauracja-meiji"
+      ]
+    },
+    "C-league": {
+      "era": "20th_century",
+      "members": [
+        "liga-narodow"
+      ]
+    }
+  },
+  "partitions": {
+    "eval_bukareszt_16": [
+      "C-persian-wars",
+      "C-rome-republic",
+      "C-crusades",
+      "C-lokietek",
+      "C-batory",
+      "C-us-independence",
+      "C-french-rev",
+      "C-napoleonic",
+      "C-unifications",
+      "C-great-depression",
+      "C-ww1-independence",
+      "C-1939",
+      "C-1956",
+      "C-alexander",
+      "C-black-death",
+      "C-absolutism"
+    ],
+    "reserved_root_seed_train": [
+      "C-athens",
+      "C-casimir3",
+      "C-lublin",
+      "C-january"
+    ],
+    "train_bukareszt_batch1": [
+      "C-piast-origins",
+      "C-charlemagne",
+      "C-thirty-years",
+      "C-versailles",
+      "C-communist-takeover",
+      "C-1970"
+    ],
+    "train_bukareszt_planned": [
+      "C-vasa-wars",
+      "C-borders-uprisings"
+    ],
+    "train_bukareszt_batch2": [
+      "C-hundred-years",
+      "C-discoveries",
+      "C-cop",
+      "C-katyn",
+      "C-allied-conferences",
+      "C-1968",
+      "C-ussr-collapse",
+      "C-holocaust"
+    ],
+    "reserved_root_sol_train": [
+      "C-rome-empire",
+      "C-church-conflicts",
+      "C-reformation",
+      "C-vienna",
+      "C-industrial",
+      "C-meiji",
+      "C-league",
+      "C-cold-war"
+    ],
+    "train_bukareszt_batch3": [
+      "C-magna-carta",
+      "C-odnowiciel",
+      "C-euro-atlantic",
+      "C-hammurabi"
+    ]
+  },
+  "notes": "Paweł's #80 DEV essay fixtures are loaded from agentsLog/Pewciu6/essay/dev_fixtures.jsonl at check time and mapped to clusters (partition dev_pewciu6). Root's Astra seed and Sol batch are loaded from agentsLog/kwiscion/essay-teacher-seed/ and agentsLog/kwiscion/essay-corpus-sol/ when present. v2 (21:05 CEST): root Sol's eight fixed topics reserved; eval items 04/06/15 moved off Sol clusters; declared cross-cluster dependencies are merged into connected components before any partition check.",
+  "dependencies": [
+    {
+      "clusters": [
+        "C-reformation",
+        "C-vienna"
+      ],
+      "reason": "Root Sol Augsburg multi-topic negative input contains original Vienna prose (root #117 comment 18:56Z)"
+    },
+    {
+      "clusters": [
+        "C-league",
+        "C-cold-war"
+      ],
+      "reason": "Root Sol League of Nations repair input contains original Marshall Plan prose (root #117 comment 18:56Z)"
+    }
+  ],
+  "withdrawn_essays": {
+    "bk117-b1-vienna": "cluster C-vienna claimed by root Sol (Congress of Vienna); kept as draft/ledger only, never exported",
+    "bk117-b1-industrial": "cluster C-industrial claimed by root Sol (British Industrial Revolution); kept as draft/ledger only, never exported"
+  },
+  "external_group_map": {
+    "history-solon-reforms": "C-athens",
+    "history-casimir-iii-statebuilding": "C-casimir3",
+    "history-lublin-union-1569": "C-lublin",
+    "history-january-uprising-peasant-policy": "C-january",
+    "history-augustan-principate": "C-rome-empire",
+    "history-investiture-controversy": "C-church-conflicts",
+    "history-augsburg-confessional-settlement": "C-reformation",
+    "history-vienna-settlement": "C-vienna",
+    "history-industrial-revolution-britain": "C-industrial",
+    "history-meiji-restoration": "C-meiji",
+    "history-league-collective-security": "C-league",
+    "history-marshall-plan": "C-cold-war"
+  }
+}
