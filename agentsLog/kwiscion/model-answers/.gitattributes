@@ -1,0 +1,2 @@
+# Keep new RAG handoff byte hashes stable across Windows and Linux checkouts.
+bounded-rag-*.jsonl text eol=lf
