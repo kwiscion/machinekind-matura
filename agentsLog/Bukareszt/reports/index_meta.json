@@ -1,0 +1,12 @@
+{
+  "built_at": "2026-09-26T00:15:29+00:00",
+  "n_sources": 107,
+  "n_chunks": 3481,
+  "max_chars": 1200,
+  "sources_sha256": "8b77a63afd25317d783a3e511e3f1f99f09b6cec3c740bdf101a0d069aadfeed",
+  "tokenizer": "NFKC lowercase, \\w+, stoplist, prefix-6 stem",
+  "k1": 1.5,
+  "b": 0.75,
+  "index_sha256": "f18b12fa19081b4f0439e7bb1e8dd62e538a01bb01cd81a35328f421d59a084c",
+  "index_bytes": 8378360
+}
