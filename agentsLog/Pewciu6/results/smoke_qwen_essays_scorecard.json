@@ -11,8 +11,8 @@
     }
   ],
   "model_manifest": null,
-  "command": "python3 harness/matura_harness.py score --outputs smoke/smoke_outputs_qwen_essays.jsonl --keys fixtures/blind_essay_keys.jsonl --split DEV --run-id smoke-qwen-essays-20260926 --scorecard results/smoke_qwen_essays_scorecard.json --items-out results/smoke_qwen_essays_items.jsonl --quiet",
-  "timestamp_utc": "2026-09-26T01:06:16Z",
+  "command": "python3 agentsLog/Pewciu6/harness/matura_harness.py score --outputs agentsLog/Pewciu6/smoke/smoke_outputs_qwen_essays.jsonl --keys agentsLog/Pewciu6/fixtures/blind_essay_keys.jsonl --split DEV --run-id smoke-qwen-essays-20260926 --scorecard agentsLog/Pewciu6/results/smoke_qwen_essays_scorecard.json --items-out agentsLog/Pewciu6/results/smoke_qwen_essays_items.jsonl --quiet",
+  "timestamp_utc": "2026-09-26T01:10:20Z",
   "machine": {
     "system": "Darwin",
     "release": "25.6.0",
@@ -33,6 +33,7 @@
     "excluded_items": 0,
     "orphan_outputs_ignored": 0,
     "records_without_id": 0,
+    "exclusion_counts": {},
     "duplicate_records": 0,
     "policy": "lenient = scored items only; strict = exclusions count as 0 points"
   },

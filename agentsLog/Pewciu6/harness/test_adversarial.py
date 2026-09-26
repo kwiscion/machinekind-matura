@@ -142,3 +142,75 @@ class TestCohenKappa(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+REPO = os.path.dirname(os.path.dirname(os.path.dirname(HERE)))
+NORMALIZER = os.path.join(REPO, "scripts", "normalize_outputs.py")
+
+
+def _infer_keys(d):
+    keys = [{"id": "inf-%d" % i, "split": "DEV", "task_type": "multiple_choice",
+             "rubric": {"max_points": 1, "mode": "choice", "expected_choice": ["B"]}} for i in range(1, 8)]
+    keys[2] = {"id": "inf-3", "split": "DEV", "task_type": "short_answer",
+               "rubric": {"max_points": 1, "mode": "criteria", "criteria": [
+                   {"criterion_id": "city", "kind": "entity", "points": 1, "any_of": ["Źródłogród"]}]}}
+    kp, cp = os.path.join(d, "keys.jsonl"), os.path.join(d, "corpus.jsonl")
+    mh.write_jsonl(kp, keys)
+    mh.write_jsonl(cp, [{"source_id": "ref-syn", "locator": "p1", "text": "Źródłogród był stolicą Ardenii."}])
+    return kp, cp
+
+
+class TestInferNormalizerIngestion(unittest.TestCase):
+    """The lead's real shapes: infer.py raw records and scripts/normalize_outputs.py output.
+
+    fixtures/infer_raw_sample.jsonl is synthetic infer.py output; fixtures/infer_normalized_sample.jsonl
+    is that file passed through the real normalizer (origin/main 985aaf0).
+    """
+
+    def _score(self, name):
+        with tempfile.TemporaryDirectory() as d:
+            kp, cp = _infer_keys(d)
+            sc, items = mh.score(Args(outputs=fx(name), keys=kp, corpus=[cp], split="DEV"))
+        return sc, {i["id"]: i for i in items}
+
+    def test_normalized_shape(self):
+        self.assertEqual(mh.validate(Args(kind="outputs", path=fx("infer_normalized_sample.jsonl"))), 0)
+        sc, by = self._score("infer_normalized_sample.jsonl")
+        self.assertEqual({k: v["status"] for k, v in by.items()},
+                         {"inf-1": "correct", "inf-2": "correct", "inf-3": "correct"})
+        self.assertEqual(by["inf-3"]["citations"][0]["status"], "supported")
+        excl = {e["id"]: e["reason"] for e in sc["exclusions"]}
+        self.assertEqual(excl, {"inf-4": "incomplete_output", "inf-5": "incomplete_output",
+                                "inf-6": "inference_error", "inf-7": "inference_error"})
+        self.assertEqual(sc["denominator"]["exclusion_counts"], {"incomplete_output": 2, "inference_error": 2})
+        self.assertAlmostEqual(by["inf-1"]["latency_s"], 1.234)
+        self.assertIn("sha256:0000synthetic", {r["model_revision"] for r in sc["model_revisions"]})
+
+    def test_raw_infer_shape(self):
+        sc, by = self._score("infer_raw_sample.jsonl")
+        self.assertEqual(sorted(by), ["inf-1", "inf-2", "inf-3"])
+        self.assertTrue(all(v["status"] == "correct" for v in by.values()))
+        self.assertEqual({r["backend"] for r in sc["model_revisions"]}, {"local-synthetic"})
+        self.assertEqual(by["inf-1"]["latency_s"], 1.234)
+
+    def test_prepare_rag_marker_resolves_against_rag_corpus(self):
+        # prepare_rag.py prompts cite [[source_id#chunk_id]] with chunk_id "ref-1#0000", and
+        # its corpus rows use locator "ref-1#0000"
+        out = {"raw_response": "Zdarzenie miało miejsce w 1410 roku [[ref-1#ref-1#0000]]."}
+        cits = mh.extract_citations(out)
+        self.assertEqual((cits[0]["source_id"], cits[0]["locator"]), ("ref-1", "ref-1#0000"))
+        corpus = {"ref-1": {"ref-1#0000": "The synthetic event (zdarzenie) occurred in 1410, miało miejsce."}}
+        self.assertEqual(mh.audit_citation(cits[0], corpus)["status"], "supported")
+        # retrieval_evidence is never credited as a model citation
+        self.assertEqual(mh.extract_citations({"raw_response": "1410", "retrieval_evidence": [
+            {"source_id": "ref-1", "chunk_id": "ref-1#0000"}]}), [])
+
+    @unittest.skipUnless(os.path.exists(NORMALIZER), "scripts/normalize_outputs.py not in this checkout")
+    def test_committed_sample_matches_current_normalizer(self):
+        import importlib.util
+        spec = importlib.util.spec_from_file_location("normalize_outputs", NORMALIZER)
+        norm = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(norm)
+        fresh = [norm.normalize(r) for r in mh.read_jsonl(fx("infer_raw_sample.jsonl"))]
+        self.assertEqual(fresh, mh.read_jsonl(fx("infer_normalized_sample.jsonl")),
+                         "normalizer output shape drifted; regenerate the sample and re-check ingestion")

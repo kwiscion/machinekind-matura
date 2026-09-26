@@ -42,7 +42,10 @@ ERROR_CATEGORIES = [
     "image_ocr",
     "content_incorrect",
 ]
-EXCLUSION_REASONS = ["inference_error", "missing_output", "duplicate_output"]
+EXCLUSION_REASONS = ["inference_error", "incomplete_output", "missing_output", "duplicate_output"]
+# infer.py marks empty / length-cut answers as {"type": "incomplete"}; normalize_outputs.py
+# serialises that to a string or writes "No final answer text"
+INCOMPLETE_ERROR_RE = re.compile(r'"type"\s*:\s*"incomplete"|no final answer text|no complete choice', re.I)
 TASK_TYPES = [
     "short_answer",
     "multiple_choice",
@@ -239,7 +242,7 @@ def finish_reason(out):
 
 
 def latency_seconds(out):
-    for k, scale in (("latency_s", 1.0), ("latency", 1.0), ("latency_ms", 0.001)):
+    for k, scale in (("latency_s", 1.0), ("latency_seconds", 1.0), ("latency", 1.0), ("latency_ms", 0.001)):
         v = out.get(k)
         if isinstance(v, (int, float)) and not isinstance(v, bool):
             return round(v * scale, 6)
@@ -255,11 +258,21 @@ def normalize_id(x):
 
 
 def model_revision(out):
+    b = out.get("backend")
+    if isinstance(b, dict):  # raw infer.py record: backend {name, model, model_revision, response_model}
+        return {"backend": b.get("name"),
+                "model": out.get("model") or b.get("response_model") or b.get("model"),
+                "model_revision": out.get("model_revision") or b.get("model_revision")}
     return {
-        "backend": out.get("backend"),
+        "backend": b,
         "model": out.get("model") or out.get("model_id"),
         "model_revision": out.get("model_revision") or out.get("revision"),
     }
+
+
+def exclusion_reason(err):
+    text = err if isinstance(err, str) else json.dumps(err, ensure_ascii=False)
+    return "incomplete_output" if INCOMPLETE_ERROR_RE.search(text) else "inference_error"
 
 
 # ------------------------------------------------------------------ citation audit
@@ -684,7 +697,8 @@ def score(args):
         if o is None:
             exclusions.append({"id": kid, "reason": "missing_output"})
         elif o.get("error"):
-            exclusions.append({"id": kid, "reason": "inference_error", "error": str(o["error"])[:200]})
+            err = o["error"] if isinstance(o["error"], str) else json.dumps(o["error"], ensure_ascii=False)
+            exclusions.append({"id": kid, "reason": exclusion_reason(o["error"]), "error": err[:200]})
         else:
             items.append(grade_item(key, o, corpus))
 
@@ -739,6 +753,7 @@ def score(args):
             "excluded_items": len(counted_excl),
             "orphan_outputs_ignored": len(orphans),
             "records_without_id": no_id,
+            "exclusion_counts": dict(Counter(e["reason"] for e in counted_excl)),
             "duplicate_records": sum(1 for e in exclusions if e["reason"] == "duplicate_output"),
             "policy": "lenient = scored items only; strict = exclusions count as 0 points",
         }),

@@ -146,6 +146,6 @@ Anyone who rebuilds from the same PDFs should get the same hashes.
 Report: `2026-09-26T0310-sanity-11.md`. Everything is synthetic; no model is scored and every grade stays provisional.
 
 - `harness/build_adversarial_fixtures.py` builds `fixtures/adversarial_*.jsonl`: 67 invented items with labels covering format variants, diacritics, hedges, JSON/markdown/think wrapping, empty/overlong answers, errors/timeouts/truncation, duplicate/missing/unknown/int ids. It also builds `fixtures/blind_essay_*.jsonl`.
-- `harness/test_adversarial.py`: adversarial labels, extractors, adapter-shape ingestion (`fixtures/adapter_contract_sample.jsonl`), and Cohen's kappa. The full suite runs 22 tests.
-- Harness fixes: 16 of 67 cases were mis-graded before the fixes. `blind-merge` now reports Cohen's kappa (unweighted, linear, quadratic), within-1 agreement, and a third-rater list.
+- `harness/test_adversarial.py`: adversarial labels, extractors, adapter-shape ingestion (`fixtures/adapter_contract_sample.jsonl`), and Cohen's kappa. The full suite runs 26 tests. `TestInferNormalizerIngestion` pins the real `infer.py` + `scripts/normalize_outputs.py` shape via `fixtures/infer_*_sample.jsonl`, and a drift test covers it.
+- Harness fixes (14 listed in the report): 16 of 67 cases were mis-graded before the fixes. `blind-merge` now reports Cohen's kappa (unweighted, linear, quadratic), within-1 agreement, and a third-rater list.
 - `harness/smoke_lmstudio.py` plus `smoke/`: a JSONL-path smoke test with the local LM Studio Qwen. It is a **non-candidate smoke model**, run on synthetic prompts only.
