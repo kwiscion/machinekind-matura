@@ -1,0 +1,27 @@
+{
+  "artifact": "question-policy-gemma-rows21-40-answer-only.jsonl",
+  "artifact_sha256": "21eb23231c43c4c202e33d890cba1c9ee78ff4270c8407e7abeda96402c9c219",
+  "record_count": 20,
+  "expected_total_records": 40,
+  "unique_ids": 20,
+  "id_order_sha256": "cc66b773da24b6c90cb7a7480cf20aabcc62ea16b6ebcc73dd261bbf5be1f746",
+  "status": "Rows 21-40 only, supplied for the disjoint second-half grading handoff.",
+  "source": "Exact final strings from private rows 21-40 snapshot; no model outputs altered.",
+  "provenance_sha256": {
+    "frozen_policy_input_sha256": "3257dd89909ec1aeea1f85180244e962cc647e4f2b9d37cb24b1907cabfabb92",
+    "config_sha256": "3d9c501891d5307a863096274abdfeec716ee8fa163b5c259569f3592ed8effa",
+    "run_script_sha256": "fc03440e24f5e8155dfbb9020e07e71c5843cfd0ad8f50640c8f5f9af5cf1241",
+    "infer_script_sha256": "b702857347fd0fa99b9aba9a844afca1a4a8634b22eaa826199d27986dca1f0a",
+    "private_raw_full_sha256": "89ad3bf4033867b53b8d687e4cb7b3a2683d6e5a5162012a0ba320ae7aac0c97",
+    "run_metadata_sha256": "2297355259faebd493ef189b7f6d4d1de999a06febc28faab86171a5f33f66d6",
+    "config_file_sha256": "3d9c501891d5307a863096274abdfeec716ee8fa163b5c259569f3592ed8effa",
+    "private_raw_first20_snapshot_sha256": "9b7d0682d4dfb81835a22571f37469acb07b697d7c4c7656b9a055c42f281785",
+    "private_raw_last20_snapshot_sha256": "101c213e774c0755419ee02c097c2ae90626ae1c82cf7e355deeeb59cc09a828"
+  },
+  "response_status": {
+    "errors": 0,
+    "finish_reason_counts": {
+      "stop": 20
+    }
+  }
+}
