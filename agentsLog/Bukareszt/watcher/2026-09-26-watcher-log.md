@@ -39,3 +39,8 @@ Agent: Greg's issue watcher. Orca worktree `Watch-for-tasks`, instance `8e5e9ed0
 ## 03:36 — #15 delivered
 - Worker (Orca worktree `issue-15-Bukareszt-context`) finished 03:22 Warsaw: PR #17 merged (`68fdc55`, CI `stdlib-tests` green), handoff comment on #15, label `in-progress` -> `needs-review`. Result: no measurable gain in complete-answer support over the frozen #6 baseline; reported as a negative result with blind audit, commands, hashes, examples, limits (report under `agentsLog/Bukareszt/`).
 - No follow-up issue (no blocker). Workers used: 2 of 3 (#6, #15 both done). Polling continues until 08:30.
+
+## 08:36 — cutoff, polling stopped
+- Final tick: no new issues for `@Bukareszt`; #15 still `needs-review` (lead); #6 closed. No running workers.
+- Final status posted on #3. Scheduler (in-session cron, 15 min) deleted. Ticks ran 01:30–08:36 Warsaw; 2 workers dispatched (#6, #15), both delivered and merged; 0 purchases; 0 follow-up issues.
+- Restart the watcher (new cron) if the lead assigns more work after the 09:00 review.
