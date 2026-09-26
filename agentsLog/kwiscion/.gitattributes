@@ -1,0 +1,5 @@
+# Preserve bytes of the frozen source-observation handoff across platforms.
+model-answers/source-observation-* -text whitespace=cr-at-eol
+2026-09-26-source-observation-launch.json -text whitespace=cr-at-eol
+run_source_observation.py -text whitespace=cr-at-eol
+test_source_observation.py -text whitespace=cr-at-eol
