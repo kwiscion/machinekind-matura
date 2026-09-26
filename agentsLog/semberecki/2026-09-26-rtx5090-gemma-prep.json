@@ -1,0 +1,103 @@
+{
+  "task": "RTX 5090 Gemma readiness prep (claim #33)",
+  "owner": "semberecki",
+  "session_id": "01a0de3f-e03d-75ba-8a97-eb400acb36a2",
+  "agent": "pi",
+  "window": "17:05-17:35 CEST 2026-09-26",
+  "claim_comment": "https://github.com/kwiscion/machinekind-matura/issues/33#issuecomment-5847357936",
+  "host": {
+    "gpu": "NVIDIA GeForce RTX 5090 Laptop GPU",
+    "vram_total_mib": 24463,
+    "vram_available_at_claim_mib": 21000,
+    "ram_total_gb": 62,
+    "disk_free_gb": 112,
+    "other_gpu_processes": ["gnome-remote-desktop-daemon (~258 MiB)"],
+    "project_inference_worker_at_claim": false
+  },
+  "runtime": {
+    "ollama_version": "0.34.4",
+    "install": "user-local ~/.local/ollama (official ollama-linux-amd64.tar.zst v0.34.4)",
+    "installer_sha256": "c238986e61d40c0cc5f4a9b9e40b9eea104350b77efa34741fc134e105cb9533",
+    "archive_filename": "ollama-linux-amd64.tar.zst",
+    "archive_version": "v0.34.4",
+    "executable_path": "~/.local/ollama/bin/ollama",
+    "executable_sha256": "ad9c53441752620a2314a65a798a888d98df3636c8815ca044de591f82892ff4",
+    "models_dir": "~/.ollama/models",
+    "server": "http://127.0.0.1:11434",
+    "gpu_discovery": "CUDA0 RTX 5090 Laptop GPU, total 23.4 GiB, available 21.0 GiB; integrated GPU dropped (Vulkan)",
+    "driver": "NVIDIA driver 13.2 (serve.log driver=13.2)",
+    "backend": "library=CUDA, libdirs=ollama,cuda_v13"
+  },
+  "model": {
+    "tag": "gemma4:12b-it-q4_K_M",
+    "served_id": "4eb23ef187e2",
+    "manifest_digest": "4eb23ef187e2c5462566d6a1d3bbbc2f1346d0b4327cbb66d58fffbcc9b2b05c",
+    "matches_pinned_recipe": true,
+    "model_layer_digest": "sha256:1278394b693672ac2799eadc9a83fd98259a6a88a40acfb1dcaa6c6fc895a606",
+    "model_layer_bytes": 7381382048,
+    "projector_digest": "sha256:675ad6e68101ca9413ec806855c452362f0213f2dfc5800996b086fdb8119842",
+    "projector_bytes": 175115584,
+    "model_plus_projector_bytes": 7556497632,
+    "matches_spark_handoff_bytes": true,
+    "size_gb": 7.6,
+    "under_8gb_limit": true,
+    "architecture": "gemma4",
+    "parameters": "11.9B",
+    "quantization": "Q4_K_M",
+    "capabilities": ["completion", "vision", "audio", "tools", "thinking"],
+    "thinking_default": true,
+    "loaded_context": 32768,
+    "processor": "100% GPU",
+    "llama_server_vram_mib": 9184
+  },
+  "smoke_calls": {
+    "budget": "max 4, thinking off, 1024 output tokens, $0 (local)",
+    "used": 3,
+    "reserved": 1,
+    "calls": [
+      {
+        "n": 1,
+        "kind": "text-only synthetic (general reference fact, no exam material)",
+        "prompt_sha256_16": "n/a (generic one-liner: chrztu Polski date)",
+        "response_nonempty": true,
+        "done_reason": "stop",
+        "thinking": null,
+        "prompt_eval_count": 26,
+        "eval_count": 14,
+        "total_duration_s": 57.7,
+        "note": "includes first model load; answer correct (966)"
+      },
+      {
+        "n": 2,
+        "kind": "synthetic image (stdlib-generated 128x128 PNG, sha256 b33a595becfa50d7, no exam material)",
+        "image_file_sha256_16": "b33a595becfa50d7",
+        "response_nonempty": true,
+        "done_reason": "stop",
+        "thinking": null,
+        "prompt_eval_count": 116,
+        "eval_count": 17,
+        "total_duration_s": 3.3,
+        "note": "vision path works; correct description (red circle on white); actual image input verified via prompt token count"
+      },
+      {
+        "n": 3,
+        "kind": "longer synthetic text generation (~120 words, generic content, no exam material)",
+        "response_nonempty": true,
+        "done_reason": "stop",
+        "thinking": null,
+        "prompt_eval_count": 51,
+        "eval_count": 233,
+        "eval_tokens_per_s": 54.0,
+        "total_duration_s": 4.5,
+        "note": "sustained warm throughput 54.0 tok/s over 233 tok / 4.32 s; model kept warm (keep_alive); vs laptop reference mean 37.4 s per completed answer (partial CPU offload)"
+      }
+    ]
+  },
+  "readiness_verdict": "READY: pinned Gemma 4 12B Q4 loads and serves text+image on RTX 5090 with thinking off; awaiting the lead's frozen handoff for any full arm",
+  "boundaries": "no purchases; no full arm; no duplicate baseline; no exam/validation material used in smoke calls; $0",
+  "limitations": [
+    "smoke calls are synthetic readiness checks, not exam success",
+    "loaded context 32768 (default); full-arm context 4096 fits easily",
+    "no score; scoring owned by @Pewciu6 on #11"
+  ]
+}

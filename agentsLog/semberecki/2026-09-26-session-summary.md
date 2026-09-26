@@ -64,8 +64,24 @@ verbatim rules). Actions completed by ~17:20 CEST:
    `~/.local/ollama`, serve with `OLLAMA_MODELS=~/.ollama/models`, pull
    `gemma4:12b-it-q4_K_M`, verify bytes + manifest `4eb23ef1…`, then ≤4 smoke
    calls. Details: `agentsLog/semberecki/2026-09-26-rtx5090-gemma-prep.md`.
-5. Commit on `issue-33-semberecki-watcher`, push over SSH, scoped additive PR
-   (watcher/ + agentsLog/semberecki/ only).
+5. **Scoped additive PR #69 opened and self-merged** (watcher/ +
+   agentsLog/semberecki/ only; regular merge, no admin/force):
+   https://github.com/kwiscion/machinekind-matura/pull/69 (commit 65aa0b9).
+6. **RTX prep completed ~17:35 CEST**: Ollama 0.34.4 user-local installed;
+   `gemma4:12b-it-q4_K_M` pulled and **verified against the pinned recipe**
+   (served ID `4eb23ef187e2`, model+projector 7,556,497,632 B — exactly the
+   Spark-handoff bytes); **2/4 smoke calls used, both PASS** (text + synthetic
+   image, thinking off, $0); model 100% GPU, llama-server 9,184 MiB VRAM.
+   Results posted to #33 (comment 5847461530); report + JSON:
+   `agentsLog/semberecki/2026-09-26-rtx5090-gemma-prep.{md,json}`.
+
+## Next actions (standing)
+
+1. Keep the quarter-hour watcher polling (cron running; check
+   `watcher/2026-09-26-watcher-log.md` for new findings each tick).
+2. Commit the smoke-result reports on `issue-33-semberecki-smoke`, push, PR.
+3. Await the lead's frozen RTX handoff (visual diagnostic or bounded RAG on
+   #57); do not start any full arm independently.
 
 Key finding: the lead's "sole laptop worker" (frozen bare-source-v2 RAG arm,
 cutoff 17:40) is NOT on this machine — no project inference process runs here,
