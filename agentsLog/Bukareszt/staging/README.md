@@ -59,7 +59,7 @@ It contains only CC BY-SA 4.0 Wikipedia text, public-domain Wikisource text, the
 `sources.jsonl`, `MANIFEST.json` and `ATTRIBUTION.md` (same as [ATTRIBUTION.md](ATTRIBUTION.md) here). No exam
 questions, answers, keys, source packs or model outputs. If the copy is not practical, path B gives the identical
 result as long as no pinned Wikipedia page has been edited since 26 Sep 2026 00:10 UTC; at 15:34 and again at
-15:56 CEST all 107 still matched.
+15:44 CEST all 107 still matched.
 
 ## Integration with the existing runner (unchanged shared code)
 
