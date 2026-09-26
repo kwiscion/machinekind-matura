@@ -1,3 +1,5 @@
 # #44/#54: the two Git-tracked files whose SHA-256 is pinned by scripts/Bukareszt/stage_index.py stay LF in every checkout
 sources/sources.jsonl text eol=lf
 scripts/retrieval.py text eol=lf
+# #117: byte-exact export artifacts and the inputs their manifests pin by SHA-256 (no CRLF conversion on Windows)
+essay_corpus/** -text

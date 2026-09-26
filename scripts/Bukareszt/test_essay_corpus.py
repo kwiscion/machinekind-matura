@@ -1,5 +1,7 @@
 import hashlib
 import json
+import shutil
+import subprocess
 import tempfile
 import unittest
 from pathlib import Path
@@ -84,6 +86,54 @@ class DependencyTest(unittest.TestCase):
         finally:
             ec.load_clusters = orig
             ec.cmd_groups(None)  # restore committed report
+
+
+class CrlfCheckoutTest(unittest.TestCase):
+    """Frozen export bytes must survive a core.autocrlf=true (Windows-style) checkout."""
+    EXPORTS = ["export_pilot_v1", "export_v1"]
+
+    def git(self, *a, cwd):
+        return subprocess.run(["git", *a], cwd=cwd, check=True, capture_output=True, text=True).stdout
+
+    @unittest.skipUnless(shutil.which("git"), "git not installed")
+    def test_attributes_unset_text_for_exports(self):
+        paths = [str((ec.CORPUS / d / "train_sft.jsonl").relative_to(ec.ROOT)) for d in self.EXPORTS]
+        out = self.git("check-attr", "text", "--", *paths, cwd=ec.ROOT)
+        self.assertEqual(out.count(": text: unset"), len(paths), out)
+
+    @unittest.skipUnless(shutil.which("git"), "git not installed")
+    def test_autocrlf_checkout_keeps_manifest_hashes(self):
+        with tempfile.TemporaryDirectory() as d:
+            repo = Path(d)
+            self.git("init", "-q", cwd=repo)
+            self.git("config", "core.autocrlf", "true", cwd=repo)
+            dst = repo / "agentsLog" / "Bukareszt"
+            dst.mkdir(parents=True)
+            shutil.copy(ec.ROOT / "agentsLog" / "Bukareszt" / ".gitattributes", dst / ".gitattributes")
+            files = []
+            for exp in self.EXPORTS:
+                for f in ("train_sft.jsonl", "eval16_input.jsonl"):
+                    rel = Path("agentsLog/Bukareszt/essay_corpus") / exp / f
+                    (repo / rel).parent.mkdir(parents=True, exist_ok=True)
+                    shutil.copy(ec.ROOT / rel, repo / rel)
+                    files.append(rel)
+            control = repo / "control.txt"          # no attribute: must be converted
+            control.write_bytes(b"a\nb\n")
+            self.git("add", "-A", cwd=repo)
+            self.git("-c", "user.name=t", "-c", "user.email=t@t", "commit", "-qm", "t", cwd=repo)
+            for rel in files + [Path("control.txt")]:
+                (repo / rel).unlink()
+            self.git("checkout", "--", ".", cwd=repo)
+            self.assertEqual(control.read_bytes(), b"a\r\nb\r\n")  # proves conversion is active
+            for exp in self.EXPORTS:
+                man = json.loads((ec.CORPUS / exp / "export_manifest.json").read_text(encoding="utf-8"))
+                for f, key in (("train_sft.jsonl", "train_sha256"), ("eval16_input.jsonl", "eval_sha256")):
+                    rel = Path("agentsLog/Bukareszt/essay_corpus") / exp / f
+                    disk = hashlib.sha256((repo / rel).read_bytes()).hexdigest()
+                    blob = hashlib.sha256(subprocess.run(["git", "cat-file", "blob", f"HEAD:{rel.as_posix()}"], cwd=repo,
+                                                         check=True, capture_output=True).stdout).hexdigest()
+                    self.assertEqual(disk, blob, rel)
+                    self.assertEqual(disk, man[key], rel)
 
 
 if __name__ == "__main__":

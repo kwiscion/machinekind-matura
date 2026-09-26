@@ -1,0 +1,30 @@
+{
+  "export_pilot_v1": {
+    "train_rows": 81,
+    "train_source_groups": 29,
+    "train_connected_components": 27,
+    "merged": {
+      "C-league": "C-cold-war",
+      "C-vienna": "C-reformation"
+    },
+    "eval_items": 16,
+    "eval_components": 16,
+    "shared_components": [],
+    "train_sha256": "046a866c189c82dc479b91f175ac7f342a174d97c5257a53ac1a341d318cdaad",
+    "eval_sha256": "5979ee0b8e0e4f084cf6070f42d31892ee53c1f5485409b4fc5dac1266055a28"
+  },
+  "export_v1": {
+    "train_rows": 90,
+    "train_source_groups": 30,
+    "train_connected_components": 28,
+    "merged": {
+      "C-league": "C-cold-war",
+      "C-vienna": "C-reformation"
+    },
+    "eval_items": 16,
+    "eval_components": 16,
+    "shared_components": [],
+    "train_sha256": "83153814da8251210f2b9d225dc713ad245c273bdc5d46dd1216b0e4b97178f5",
+    "eval_sha256": "5979ee0b8e0e4f084cf6070f42d31892ee53c1f5485409b4fc5dac1266055a28"
+  }
+}
