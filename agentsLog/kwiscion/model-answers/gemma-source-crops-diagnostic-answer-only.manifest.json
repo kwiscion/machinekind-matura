@@ -1,0 +1,33 @@
+{
+  "status": "answer-only diagnostic handoff, not a score",
+  "record_count": 3,
+  "errors": 0,
+  "all_finish_reason_stop": true,
+  "raw_sha256": "29b4da2f3bb642fdc7c209bdff620d2c30f9c6f3b6056ac6dd14eeaf6957f353",
+  "answer_only_sha256": "dd5dc6740cd11803723954c379b5f56eced85537d9cbc5ab3cdfec33c0b3aa3e",
+  "input_sha256": "59f0d90e0d41255625b6b63530c5f728cdf880e361070f8f6c93cfd4685dc839",
+  "config_sha256": "3d9c501891d5307a863096274abdfeec716ee8fa163b5c259569f3592ed8effa",
+  "model_digest": "4eb23ef187e2c5462566d6a1d3bbbc2f1346d0b4327cbb66d58fffbcc9b2b05c",
+  "context_length": 4096,
+  "quote_audit": "Exact final strings retained; longest normalized prompt overlaps4,3,2words. Manual inspection found only short incidental labels, no long copied source passages. No reasoning/provider envelopes included.",
+  "no_silent_edits": true,
+  "usage": [
+    {
+      "prompt_tokens": 711,
+      "completion_tokens": 178,
+      "total_tokens": 889
+    },
+    {
+      "prompt_tokens": 545,
+      "completion_tokens": 274,
+      "total_tokens": 819
+    },
+    {
+      "prompt_tokens": 498,
+      "completion_tokens": 444,
+      "total_tokens": 942
+    }
+  ],
+  "requested_output_budget": 3072,
+  "paid_api_cost_usd": 0
+}
