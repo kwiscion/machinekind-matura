@@ -2,6 +2,8 @@
 
 **This is the final handoff index.** Everything below is a rollup of the individual timestamped notes in this directory; read a note for full detail. Short summary: `2026-09-26T0745-final-handoff.md`.
 
+> **RTX multiscale/crops diagnostic, blind first pass (2026-09-26 21:04 Warsaw, issue #11):** semberecki's #95 run (`b3072b4e…`, 6 items × control/observation/final) is a **diagnostic, not a score**. Control 4/8 (2–6), final **4/8** (3–5), paired Δ **0** (−3 to +3). Failed-source slice (z5.1, z14.1, z25): 1 → 1, with z5.1 fixed but z25 lost. Controls z2, z4, z13 stay at 3/3 (not broken). On the same items #53 bare and #89 both score 3/8. The z14.1 observation routed the wrong page. See `2026-09-26T2104-grade-rtx-multiscale.md` and `results/review_gemma-rtx-multiscale-diag6.json`.
+>
 > **Cleaner v2 (2026-09-26 20:50 Warsaw, #80):** heading markers are stripped but the prose is kept, and text outside the JSON must be a recognized wrapper. Lexical aspect/source checks are now advisory. 27 tests; 54/56 legacy outputs pass. See `2026-09-26T2050-cleaner-v2.md`.
 >
 > **Essay output contract (2026-09-26 20:30 Warsaw, issue #80 priority 1):** one frozen topic, a machine-checked `{topic_id, body}`, deterministic wrapper cleanup and ≤2 bounded repairs (`scripts/Pewciu6/essay_contract*.py`, 21 tests). The live probe used 3/4 remaining calls and produced a clean answer. The blind fidelity grader rated cleanup 17/17 faithful and found that the length-only repair did not help. See `2026-09-26T2030-essay-contract.md`.

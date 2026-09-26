@@ -1,0 +1,277 @@
+{
+ "run_id": "gemma4-12b-val6panel-multiscale-diag",
+ "label": "6-item known-validation DIAGNOSTIC, not a score",
+ "provisional": true,
+ "grader": "Pewciu6 agent (Claude Opus 5.5), single rater, blind to pass label (shuffled per item); observation passes identifiable by format",
+ "basis": "official CKE 2024 rules + page renders, #53/#58 basis",
+ "split": "VALIDATION",
+ "inputs": {
+  "answers": "agentsLog/semberecki/model-answers/gemma4-12b-val6panel-multiscale-diag.jsonl",
+  "answers_sha256": "b3072b4e466904a26b8c95c1cba83d69a708c8e70a9441acdc1323ae885f4512",
+  "rows": 18,
+  "errors": 0,
+  "finish_reason": "stop x18",
+  "keys_sha256": "f66e387793c5dfad2bac8723a73716e434a9d6ecab40c544f8b529723f512123",
+  "run_record": "agentsLog/semberecki/2026-09-26-rtx-multiscale-diag-manifest.md"
+ },
+ "totals": {
+  "max": 8,
+  "control": {
+   "points": 4,
+   "low": 2,
+   "high": 6
+  },
+  "final": {
+   "points": 4,
+   "low": 3,
+   "high": 5
+  },
+  "delta_final_minus_control": 0,
+  "delta_range": [
+   -3,
+   3
+  ],
+  "failed_source_max5": {
+   "control": 1,
+   "final": 1,
+   "bare53": 0
+  },
+  "correct_controls_max3": {
+   "control": 3,
+   "final": 3,
+   "bare53": 3
+  },
+  "bare53_same_items": 3,
+  "rtx89_same_items": 3
+ },
+ "items": [
+  {
+   "id": "val2024-hist-z5.1",
+   "max_points": 1,
+   "group": "failed_source",
+   "bare53_reviewed": 0,
+   "rtx89_reviewed": 0,
+   "passes": {
+    "control": {
+     "points": 0,
+     "low": 0,
+     "high": 1,
+     "blind_code": "A",
+     "public_note": "correct decision and papal call linked to crusades, but the map is misread as a different era, so the both-source justification is wrong",
+     "counted": true
+    },
+    "observation": {
+     "points": 0,
+     "low": 0,
+     "high": 0,
+     "blind_code": "B",
+     "public_note": "no decision or justification: a source description only, not an answer",
+     "counted": false
+    },
+    "final": {
+     "points": 1,
+     "low": 1,
+     "high": 1,
+     "blind_code": "C",
+     "public_note": "correct decision; the call is tied to crusades and the map is now correctly identified, so both sources are used",
+     "counted": true
+    }
+   },
+   "delta_final_minus_control": 1,
+   "delta_range": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "val2024-hist-z14.1",
+   "max_points": 1,
+   "group": "failed_source",
+   "bare53_reviewed": 0,
+   "rtx89_reviewed": 0,
+   "passes": {
+    "control": {
+     "points": 0,
+     "low": 0,
+     "high": 0,
+     "blind_code": "C",
+     "public_note": "wrong decision (gate fails); the map is treated as the same campaign",
+     "counted": true
+    },
+    "observation": {
+     "points": 0,
+     "low": 0,
+     "high": 0,
+     "blind_code": "B",
+     "public_note": "no decision or justification: a source description (partly of the neighbouring item's figure), not an answer",
+     "counted": false
+    },
+    "final": {
+     "points": 0,
+     "low": 0,
+     "high": 1,
+     "blind_code": "A",
+     "public_note": "correct decision and the order is correctly identified, but the map is placed in a different war, so the map half of the justification is wrong",
+     "counted": true
+    }
+   },
+   "delta_final_minus_control": 0,
+   "delta_range": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "val2024-hist-z25",
+   "max_points": 3,
+   "group": "failed_source",
+   "bare53_reviewed": 0,
+   "rtx89_reviewed": 0,
+   "passes": {
+    "control": {
+     "points": 1,
+     "low": 0,
+     "high": 2,
+     "blind_code": "C",
+     "public_note": "message and one graphic element are roughly right; the context is hedged across two decades with no concrete event, the figure is unidentified and the scene is partly misread",
+     "counted": true
+    },
+    "observation": {
+     "points": 0,
+     "low": 0,
+     "high": 0,
+     "blind_code": "A",
+     "public_note": "no message or context: a scene description with misread lettering, not an answer",
+     "counted": false
+    },
+    "final": {
+     "points": 0,
+     "low": 0,
+     "high": 0,
+     "blind_code": "B",
+     "public_note": "wrong era and wrong subject; the lettering is misread, so the message and context are wrong",
+     "counted": true
+    }
+   },
+   "delta_final_minus_control": -1,
+   "delta_range": [
+    -2,
+    0
+   ]
+  },
+  {
+   "id": "val2024-hist-z2",
+   "max_points": 1,
+   "group": "correct_control",
+   "bare53_reviewed": 1,
+   "rtx89_reviewed": 1,
+   "passes": {
+    "control": {
+     "points": 1,
+     "low": 1,
+     "high": 1,
+     "blind_code": "A",
+     "public_note": "correct decision; both sources correctly dated against each other",
+     "counted": true
+    },
+    "observation": {
+     "points": 0,
+     "low": 0,
+     "high": 0,
+     "blind_code": "C",
+     "public_note": "no decision or justification: a map description only, not an answer",
+     "counted": false
+    },
+    "final": {
+     "points": 1,
+     "low": 1,
+     "high": 1,
+     "blind_code": "B",
+     "public_note": "correct decision; both sources correctly dated against each other",
+     "counted": true
+    }
+   },
+   "delta_final_minus_control": 0,
+   "delta_range": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": "val2024-hist-z4",
+   "max_points": 1,
+   "group": "correct_control",
+   "bare53_reviewed": 1,
+   "rtx89_reviewed": 1,
+   "passes": {
+    "control": {
+     "points": 1,
+     "low": 1,
+     "high": 1,
+     "blind_code": "A",
+     "public_note": "a valid argument from the image",
+     "counted": true
+    },
+    "observation": {
+     "points": 0,
+     "low": 0,
+     "high": 0,
+     "blind_code": "B",
+     "public_note": "no argument: a photo description only, not an answer",
+     "counted": false
+    },
+    "final": {
+     "points": 1,
+     "low": 1,
+     "high": 1,
+     "blind_code": "C",
+     "public_note": "a valid argument from the image",
+     "counted": true
+    }
+   },
+   "delta_final_minus_control": 0,
+   "delta_range": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": "val2024-hist-z13",
+   "max_points": 1,
+   "group": "correct_control",
+   "bare53_reviewed": 1,
+   "rtx89_reviewed": 1,
+   "passes": {
+    "control": {
+     "points": 1,
+     "low": 0,
+     "high": 1,
+     "blind_code": "C",
+     "public_note": "correct event; justified by the date, but the scene description is invented",
+     "counted": true
+    },
+    "observation": {
+     "points": 0,
+     "low": 0,
+     "high": 0,
+     "blind_code": "B",
+     "public_note": "no event named: a print description only, not an answer",
+     "counted": false
+    },
+    "final": {
+     "points": 1,
+     "low": 0,
+     "high": 1,
+     "blind_code": "A",
+     "public_note": "correct event; justified by the date and symbolism in the print, with a hedged and partly invented description of the scene",
+     "counted": true
+    }
+   },
+   "delta_final_minus_control": 0,
+   "delta_range": [
+    -1,
+    1
+   ]
+  }
+ ]
+}
