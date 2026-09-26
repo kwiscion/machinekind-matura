@@ -2,6 +2,8 @@
 
 **This is the final handoff index.** Everything below is a rollup of the individual timestamped notes in this directory; read a note for full detail. Short summary: `2026-09-26T0745-final-handoff.md`.
 
+> **Afternoon update (2026-09-26, issue #11): real model outputs scored.** Qwen 3.5 9B VALIDATION v1: independent review **26/60** (range 17–29; automatic floor 5.0). See `2026-09-26T1540-score-qwen.md` and `results/review_qwen35-9b-val40-1024.json`. Gemma 4 12B review follows in a separate note. All grades are provisional agent review.
+
 - **Owner:** @Pewciu6 (eval worker, `overnight:eval`).
 - **Issues:** [#7](https://github.com/kwiscion/machinekind-matura/issues/7) (main, still open — CPU harness + VALIDATION audit), [#11](https://github.com/kwiscion/machinekind-matura/issues/11) (open, **waiting** for real model outputs), [#13](https://github.com/kwiscion/machinekind-matura/issues/13) (closed, contamination audit of the #6 corpus).
 - **Branches:** `issue-7-Pewciu6-eval` (PR #8), `issue-7-Pewciu6-eval-stretch` (PR #10), `issue-13-Pewciu6-contam` (PR #14), `issue-11-Pewciu6-sanity` (PR #16), `issue-13-Pewciu6-contam-pr18` (PR #19), `issue-13-Pewciu6-contam-pr18-r2` (PR #20), `Pewciu6-final-handoff` (this PR).
