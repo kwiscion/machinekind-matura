@@ -184,3 +184,8 @@ Agent: Greg's issue watcher. Orca worktree `Watch-for-tasks`, instance `8e5e9ed0
 ## 22:05 — #117 verification follow-ups merged (PR #131)
 - Worker merged PR #131 at ~21:58 (`38e5beb`, CI green on exact head), frozen exports unchanged (blobs `83153814…78f5` export_v1, `046a866c…cdaad` pilot_v1): corrected counts (export_v1 90 rows / 30 groups / 28 components; pilot_v1 81 / 29 / 27), scoped `-text` gitattributes + CRLF byte-exact test, source-error audit with authoritative references for the four corrected facts, eval-card fixes incl. Black Death coverage, Astra no-copy check, independent follow-up verification. Handoff posted on #117 (19:58Z). No expansion/training/GPU/HF.
 - #117 remains `needs-review` for root. Worker idle, standing by.
+
+## 22:22 — organizer size rule; #117 readiness phase claimed and dispatched
+- Organizer rule (root, 20:11Z on #3/#117): ALL submitted models together ≤ 8 GB + 10% (conservative cap 8,800,000,000 B incl. adapters/projectors). Pinned Gemma+projector 7,556,497,632 B leaves 1,243,502,368 B. Final bundle = one merged model or one base + small adapter; no second full model.
+- Root cleared PR #131 (90-row train SHA `83153814…78f5`), stopped corpus expansion, and assigned #117's next phase: single-model LoRA/export READINESS on Greg's idle H100 `matura-greg` per PR #132 RUNBOOK (pinned HF base rev `707f0a3b…d0f7`, CPU probe first, tokenizer/export controls), no training/inference until a root launch declaration. This is root's explicit authorization to use the H100 for setup.
+- Claimed; dispatched Orca worktree `issue-117-Bukareszt-lora-readiness` (terminal in private state). ETA posted: manifest ~22:40, readiness handoff ~23:30. Corpus worker (#117 phase 1) done.
