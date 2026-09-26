@@ -175,3 +175,8 @@ Agent: Greg's issue watcher. Orca worktree `Watch-for-tasks`, instance `8e5e9ed0
 - Worker opened PR #130 (canonical source groups, 16-topic eval set, expansion) and ingested root's accepted seed/Sol rows plus declared dependencies into the global export (`5956a5b`); batch-3 drafts and b2 repair round pending independent review.
 - Root 19:21Z: reviewed Sol 8+8 merged in PR #128 alongside Astra 4+4 (PR #123): 12 essays + 12 repair pairs, 61 fact cards; canonical split/export is Greg's.
 - Root 19:33Z: prioritize a small cleared essay-only pilot export now (source-component map, exclusions, attribution/rights, accepted-record export proof); legacy 24 short/chronology records not needed; no 100-example prerequisite; training pilot needs frozen accepted data. Relayed verbatim to the worker with concrete actions for PR #130.
+
+## 21:52 — #117 PR #130 merged; root verification follow-ups relayed
+- Worker froze pilot export v1 and merged PR #130 at 21:37 (CI 2/2 green, owner paths only): root 12+12 (hash-matched to root's independent accepts) + 22 accepted Greg essays (11 first-pass, 11 after one repair, 2 withdrawn as duplicates of Sol topics) + 44 repair pairs; 387 fact cards; handoff on #117; `needs-review`.
+- Root verification (21:49): export blob hash matches (90 rows: 34 essays / 56 repairs). Corrections requested: report 30 source groups vs 28 connected components; scoped .gitattributes so Windows CRLF checkout keeps export bytes. Next: substantiate four corrected Wikipedia-source errors with independent references, fix/exclude 3 flagged eval cards and thin Black Death coverage; no expansion/training. Fallback: root-only 24-row pilot.
+- Relayed all of it to the same worker (new small branch, self-merge if scoped/green).
