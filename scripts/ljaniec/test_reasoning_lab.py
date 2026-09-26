@@ -186,10 +186,10 @@ class Tests(unittest.TestCase):
         ledger_path = self.path / "ledger"
         with ledger_path.open("w") as handle:
             budget = lab.Budget({**self.m, "max_calls": 1}, handle)
-            budget.reserve({"id": "a"})
+            budget.reserve({"id": "a"}, self.m["num_predict"])
             self.assertEqual(len(ledger_path.read_text().splitlines()), 1)
             with self.assertRaises(lab.StopWave):
-                budget.reserve({"id": "b"})
+                budget.reserve({"id": "b"}, self.m["num_predict"])
             self.assertEqual(budget.tokens, 1024)
 
     def test_deadline_and_monotonic_wall_before_reservation(self):
@@ -198,7 +198,7 @@ class Tests(unittest.TestCase):
                 ticks = iter([0, mono])
                 budget = lab.Budget({**self.m, **changes}, handle, clock=lambda: next(ticks), utc=lambda: utc)
                 with self.assertRaises(lab.StopWave):
-                    budget.reserve({"id": "a"})
+                    budget.reserve({"id": "a"}, self.m["num_predict"])
                 self.assertEqual(budget.calls, 0)
 
     def test_critic_two_calls_original_source_and_final_only_handoff(self):
@@ -388,6 +388,67 @@ class Tests(unittest.TestCase):
                     lab.request_json(self.m["base_url"], "/api/chat", {}, budget)
                 self.assertEqual(run.call_count, 1)
                 self.assertLessEqual(run.call_args.kwargs["timeout"], self.m["timeout_seconds"])
+
+    def test_thinking_num_predict_bounds_rejected(self):
+        self.assertEqual(self.manifest({"thinking_num_predict": 4096})["thinking_num_predict"], 4096)
+        self.assertEqual(self.manifest({"thinking_num_predict": lab.THINKING_CAP_CEILING})["num_predict"], 1024)
+        for invalid in (2047, lab.THINKING_CAP_CEILING + 1, 1023, "2048", 4096.5):
+            with self.subTest(invalid=invalid), self.assertRaises(ValueError):
+                self.manifest({"thinking_num_predict": invalid})
+
+    def test_thinking_override_only_widens_the_thinking_arm(self):
+        self.assertEqual(lab.effective_num_predict(self.manifest(), "thinking"), self.m["num_predict"])
+        widened = self.manifest({"thinking_num_predict": 4096})
+        self.assertEqual(lab.effective_num_predict(widened, "thinking"), 4096)
+        for name in ("baseline", "critic", "pf_statementwise"):
+            self.assertEqual(lab.effective_num_predict(widened, name), self.m["num_predict"])
+        task = self.task("thinking")
+        self.assertEqual(lab.payload_for(task, widened, 0)["options"]["num_predict"], 4096)
+        self.assertEqual(lab.payload_for(self.task("baseline"), widened, 0)["options"]["num_predict"], 1024)
+
+    def test_widened_thinking_wave_accounts_payload_and_ledger_consistently(self):
+        changes = {"thinking_num_predict": 4096}
+        fake = FakeTransport()
+        result, answers, ledger, _ = self.run_tasks([self.task("thinking")], fake, changes)
+        request = [payload for route, payload in fake.calls if route == "/api/chat"][0]
+        self.assertEqual(request["options"]["num_predict"], 4096)
+        reserved = [row for row in ledger if row["event"] == "reserved"][0]
+        self.assertEqual(reserved["requested_tokens_including_thinking"], 4096)
+        self.assertEqual(reserved["cumulative_requested_tokens"], 4096)
+        self.assertEqual(result["requested_tokens_including_thinking"], 4096)
+        self.assertEqual(answers[0]["status"], "completed")
+
+    def test_per_arm_generation_cap_is_enforced_for_the_widened_arm(self):
+        widened = self.manifest({"thinking_num_predict": 4096})
+        big = response_ok("answer", thinking="x" * 10)
+        big["eval_count"] = 3000
+        # The same response is legal under the widened arm but illegal under the
+        # uniform short cap: the check must follow the frozen per-arm number.
+        lab.answer_and_usage(big, widened, True, 4096)
+        with self.assertRaises(lab.StopWave):
+            lab.answer_and_usage(big, widened, True, self.m["num_predict"])
+        over = response_ok("answer", thinking="x" * 10)
+        over["eval_count"] = lab.THINKING_CAP_CEILING + 1
+        with self.assertRaises(lab.StopWave):
+            lab.answer_and_usage(over, widened, True, widened["thinking_num_predict"])
+
+    def test_planned_panel_ceiling_counts_the_widened_thinking_arm(self):
+        # One thinking call reserved at 4096 cannot fit a plan capped at 2048 tokens:
+        # the panel must refuse it instead of letting the wave start underfunded.
+        with self.assertRaises(ValueError):
+            self.m["thinking_num_predict"] = 4096
+            self.m["max_requested_tokens"] = 2048
+            self.panel([{"id": "t", "prompt": "source", "families": [{"name": "thinking"}]}])
+
+    def test_plan_tokens_uses_per_arm_caps(self):
+        widened = {**self.m, "thinking_num_predict": 4096}
+        tasks = [{"case": {}, "family": {"name": "baseline"}, "readiness": False,
+                  "readiness_expected_answer": None, "calls": 1},
+                 {"case": {}, "family": {"name": "critic"}, "readiness": False,
+                  "readiness_expected_answer": None, "calls": 2},
+                 {"case": {}, "family": {"name": "thinking"}, "readiness": False,
+                  "readiness_expected_answer": None, "calls": 1}]
+        self.assertEqual(lab.plan_tokens(tasks, widened), 1024 + 2 * 1024 + 4096)
 
 
 if __name__ == "__main__":

@@ -1,0 +1,28 @@
+{
+  "scope": "SYNTHETIC untrained adapter; converter support and bytes only; no load/inference",
+  "modules": 88,
+  "lora_parameters": 5193728,
+  "bf16_tensor_bytes": 10387456,
+  "peft_safetensors_bytes": 10413488,
+  "gguf": {
+    "bf16": {
+      "returncode": 0,
+      "log_tail": "to-gguf:blk.7.attn_v.weight.lora_b,        torch.bfloat16 --> BF16, shape = {8, 2048}\nINFO:hf-to-gguf:blk.8.attn_q.weight.lora_a,        torch.bfloat16 --> BF16, shape = {3840, 8}\nINFO:hf-to-gguf:blk.8.attn_q.weight.lora_b,        torch.bfloat16 --> BF16, shape = {8, 4096}\nINFO:hf-to-gguf:blk.8.attn_v.weight.lora_a,        torch.bfloat16 --> BF16, shape = {3840, 8}\nINFO:hf-to-gguf:blk.8.attn_v.weight.lora_b,        torch.bfloat16 --> BF16, shape = {8, 2048}\nINFO:hf-to-gguf:blk.9.attn_q.weight.lora_a,        torch.bfloat16 --> BF16, shape = {3840, 8}\nINFO:hf-to-gguf:blk.9.attn_q.weight.lora_b,        torch.bfloat16 --> BF16, shape = {8, 4096}\nINFO:hf-to-gguf:blk.9.attn_v.weight.lora_a,        torch.bfloat16 --> BF16, shape = {3840, 8}\nINFO:hf-to-gguf:blk.9.attn_v.weight.lora_b,        torch.bfloat16 --> BF16, shape = {8, 2048}\nINFO:hf-to-gguf:Set meta model\nINFO:hf-to-gguf:Set model parameters\nINFO:hf-to-gguf:Set model quantization version\nINFO:hf-to-gguf:Set model tokenizer\nINFO:gguf.gguf_writer:Writing the following files:\nINFO:gguf.gguf_writer:control/adapter-probe/synthetic-adapter-bf16.gguf: n_tensors = 176, total_size = 10.4M\n\nWriting:   0%|          | 0.00/10.4M [00:00<?, ?byte/s]\nWriting:  35%|\u2588\u2588\u2588\u258c      | 3.67M/10.4M [00:00<00:00, 36.0Mbyte/s]\nWriting:  73%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258e  | 7.60M/10.4M [00:00<00:00, 37.6Mbyte/s]\nWriting: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 10.4M/10.4M [00:00<00:00, 36.8Mbyte/s]\nINFO:lora-to-gguf:Model successfully exported to control/adapter-probe/synthetic-adapter-bf16.gguf\n",
+      "bytes": 10399488,
+      "sha256": "fbe7225245eb3e9e146c1db737caf476696a21573c13aca5f7c1c105c6bb23a5"
+    },
+    "f16": {
+      "returncode": 0,
+      "log_tail": "orch.bfloat16 --> F16, shape = {8, 4096}\nINFO:hf-to-gguf:blk.7.attn_v.weight.lora_a,        torch.bfloat16 --> F16, shape = {3840, 8}\nINFO:hf-to-gguf:blk.7.attn_v.weight.lora_b,        torch.bfloat16 --> F16, shape = {8, 2048}\nINFO:hf-to-gguf:blk.8.attn_q.weight.lora_a,        torch.bfloat16 --> F16, shape = {3840, 8}\nINFO:hf-to-gguf:blk.8.attn_q.weight.lora_b,        torch.bfloat16 --> F16, shape = {8, 4096}\nINFO:hf-to-gguf:blk.8.attn_v.weight.lora_a,        torch.bfloat16 --> F16, shape = {3840, 8}\nINFO:hf-to-gguf:blk.8.attn_v.weight.lora_b,        torch.bfloat16 --> F16, shape = {8, 2048}\nINFO:hf-to-gguf:blk.9.attn_q.weight.lora_a,        torch.bfloat16 --> F16, shape = {3840, 8}\nINFO:hf-to-gguf:blk.9.attn_q.weight.lora_b,        torch.bfloat16 --> F16, shape = {8, 4096}\nINFO:hf-to-gguf:blk.9.attn_v.weight.lora_a,        torch.bfloat16 --> F16, shape = {3840, 8}\nINFO:hf-to-gguf:blk.9.attn_v.weight.lora_b,        torch.bfloat16 --> F16, shape = {8, 2048}\nINFO:hf-to-gguf:Set meta model\nINFO:hf-to-gguf:Set model parameters\nINFO:hf-to-gguf:Set model quantization version\nINFO:hf-to-gguf:Set model tokenizer\nINFO:gguf.gguf_writer:Writing the following files:\nINFO:gguf.gguf_writer:control/adapter-probe/synthetic-adapter-f16.gguf: n_tensors = 176, total_size = 10.4M\n\nWriting:   0%|          | 0.00/10.4M [00:00<?, ?byte/s]\nWriting: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 10.4M/10.4M [00:00<00:00, 274Mbyte/s]\nINFO:lora-to-gguf:Model successfully exported to control/adapter-probe/synthetic-adapter-f16.gguf\n",
+      "bytes": 10399488,
+      "sha256": "599f7e4d6dbb517ba60a69daf845727ea4331379952f1ed66071c84f1800e81b"
+    },
+    "q8_0": {
+      "returncode": 0,
+      "log_tail": "ape (4096, 8) to Q8_0, falling back to F16\nINFO:hf-to-gguf:blk.8.attn_q.weight.lora_b,        torch.bfloat16 --> F16, shape = {8, 4096}\nINFO:hf-to-gguf:blk.8.attn_v.weight.lora_a,        torch.bfloat16 --> Q8_0, shape = {3840, 8}\nWARNING:hf-to-gguf:Can't quantize tensor with shape (2048, 8) to Q8_0, falling back to F16\nINFO:hf-to-gguf:blk.8.attn_v.weight.lora_b,        torch.bfloat16 --> F16, shape = {8, 2048}\nINFO:hf-to-gguf:blk.9.attn_q.weight.lora_a,        torch.bfloat16 --> Q8_0, shape = {3840, 8}\nWARNING:hf-to-gguf:Can't quantize tensor with shape (4096, 8) to Q8_0, falling back to F16\nINFO:hf-to-gguf:blk.9.attn_q.weight.lora_b,        torch.bfloat16 --> F16, shape = {8, 4096}\nINFO:hf-to-gguf:blk.9.attn_v.weight.lora_a,        torch.bfloat16 --> Q8_0, shape = {3840, 8}\nWARNING:hf-to-gguf:Can't quantize tensor with shape (2048, 8) to Q8_0, falling back to F16\nINFO:hf-to-gguf:blk.9.attn_v.weight.lora_b,        torch.bfloat16 --> F16, shape = {8, 2048}\nINFO:hf-to-gguf:Set meta model\nINFO:hf-to-gguf:Set model parameters\nINFO:hf-to-gguf:Set model quantization version\nINFO:hf-to-gguf:Set model tokenizer\nINFO:gguf.gguf_writer:Writing the following files:\nINFO:gguf.gguf_writer:control/adapter-probe/synthetic-adapter-q8_0.gguf: n_tensors = 176, total_size = 7.9M\n\nWriting:   0%|          | 0.00/7.85M [00:00<?, ?byte/s]\nWriting: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 7.85M/7.85M [00:00<00:00, 178Mbyte/s]\nINFO:lora-to-gguf:Model successfully exported to control/adapter-probe/synthetic-adapter-q8_0.gguf\n",
+      "bytes": 7865088,
+      "sha256": "bf73f02ca66f35c3152d8097b852d9805a9cf47cf8799ce97f29a760e7dac336"
+    }
+  },
+  "status": "PASS"
+}

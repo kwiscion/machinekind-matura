@@ -1,0 +1,134 @@
+{
+  "status": "INDEPENDENT_CALIBRATED_COMPARISON_NOT_ADJUDICATED",
+  "reviewed_at_utc": "2026-09-26T20:35:26.122739+00:00",
+  "reviewer": "Sol /root/essay_corpus_sol",
+  "blinding": "Not blinded: identities, prior organizer aggregate29 and current essay8 were exposed; earlier inherited project context also mentioned a historical control essay5. No prior per-item scorecard or adjudication file opened for this task. Control scored from exact answer and same rubric; both the3-versus1 military threshold and its effect are explicit.",
+  "provenance": {
+    "control_handoff_sha256": "0286692a89f2fdbfca2d87364c3e6eb0d827eafbb6f2a6d7a939fd17d79f0536",
+    "control_manifest_sha256": "5897a9b129167e5acd0f4ae0c8684e6653aa1d1c0007d9ca516e48dcae286666",
+    "control_original_template_answers_sha256": "b52e8981f967d3e1310ca8c53a11f7c80185ac724a81790708671145b02d97d9",
+    "control_backup_sha256": "7060b2b6d3a67693807efc6d76071eab09c585a77c872695d974ad91341ba7bb",
+    "control_exact_final_matches_recovered_original_template": true,
+    "control_run": "actual locally constructed organizer-schema source-v2 control,40calls/40complete/0errors; not laptop or another H100 arm",
+    "control_settings": {
+      "model": "gemma4:12b-it-q4_K_M",
+      "endpoint_type": "OpenAI-compatible",
+      "reasoning_effort": "none",
+      "max_output_tokens": 1024
+    },
+    "thinking_last20_sha256": "880ea14b275920443d1412ff14f3971705bca1447dca849df0cbd87d3262ad8c",
+    "thinking_full_handoff_sha256": "fdbf288a3deb276d9600a353403ac8c1aa10fc37df11ec6f0524c0d76a12bde9",
+    "rubric_pdf_sha256": "95c275b9546611c1f8cd45b7973c436625fd0ee5643b778dcc8bb566db56cd4c"
+  },
+  "control": {
+    "answer_sha256": "8b4b29d7e8604537d0fb7e1613eb1712838bb18f366de570bf20674c4a58f916",
+    "submitted_words": 329,
+    "body_words": 324,
+    "excluded_header": "WYPRACOWANIE / na temat nr3: five whitespace tokens",
+    "selected_topic": 3,
+    "aspects": [
+      {
+        "aspect": "military",
+        "central": 3,
+        "low": 1,
+        "high": 3,
+        "level": "satisfactory, borderline",
+        "evidence_excerpt": "Piłsudski potrafił przekuć organizacje paramilitarne w siłę zdolną do walki",
+        "reason": "The paragraph links organization of a concrete military formation to capacity to obtain and defend sovereignty in1918. That is a causal historical argument, not only a named event. Central3 preserves the same threshold used for the thinking essay and handles the front error separately. Low1 reflects the genuine threshold dispute: remaining correct support is thin and the paragraph lacks a concrete battle or specified transfer of authority. Neither omitted example is a mandatory checklist item."
+      },
+      {
+        "aspect": "diplomatic",
+        "central": 1,
+        "low": 1,
+        "high": 1,
+        "level": "superficial",
+        "evidence_excerpt": "jego wizja \"Polski między morzami\" oraz zdolność do budowania sojuszy",
+        "reason": "Generic prestige/alliances/peace-conference acceptance without a specified initiative or causal demonstration. The phrase does not explain which partners, decision or consequence establish the thesis."
+      },
+      {
+        "aspect": "political_system",
+        "central": 1,
+        "low": 1,
+        "high": 1,
+        "level": "superficial",
+        "evidence_excerpt": "jego przywództwo zapewniało stabilność wewnętrzną",
+        "reason": "Claims cohesion and authority but supplies no specific institutional act and its operation. An attempted argument exists; evidence remains generic."
+      }
+    ],
+    "narrative_central": 5,
+    "established_distinct_errors": [
+      {
+        "span": "ich walka na trzech frontach (rosyjskim, niemieckim i austriackim)",
+        "classification": "false characterization of the Legion campaign under Pilsudski",
+        "correction": "The formation fought Russia alongside the Central Powers; it was not a regular three-front campaign against all three partitioning powers. Subsequent oath crisis and conflict involving former Legion elements must not be conflated with that claim.",
+        "sources": [
+          "https://biblioteka.sejm.gov.pl/file/czas_przelomu/m_pl.html",
+          "https://muzeumwp.pl/timeline/kryzys-przysiegowy-w-legionach-polskich/"
+        ],
+        "deduction_count": 1
+      }
+    ],
+    "factual_deduction": 1,
+    "other_claims": "Generic credit for initiation, alliances and prestige is imprecise/under-evidenced; no additional established false event is counted. Even counting a second attribution error would remain in the same official1–2 error deduction band. No triple penalty for three named fronts.",
+    "coherence": 3,
+    "coherence_reason": "Five body paragraphs maintain one thesis and the same three dimensions; conclusion acknowledges other actors without contradicting the primacy thesis. No concrete discontinuity justifies reducing coherence. Header itself receives no deduction; body clears300.",
+    "score": {
+      "central": 7,
+      "low": 5,
+      "high": 7
+    }
+  },
+  "thinking": {
+    "answer_sha256": "3f7561add3016ff2dbe830f24bdbb92d5bcfb74148d9bbdf5eb6e8261a678688",
+    "body_words": 384,
+    "selected_topic": 3,
+    "aspects": {
+      "military": 3,
+      "diplomatic": 1,
+      "political_system": 1
+    },
+    "narrative_central": 5,
+    "factual_deduction_central": 0,
+    "coherence": 3,
+    "score": {
+      "central": 8,
+      "low": 7,
+      "high": 8
+    },
+    "unchanged_from": "2026-09-26-full-thinking-last20-review.json",
+    "improvements": [
+      "Replaces false three-front claim with a relevant1920 war/Warsaw example and explicit consequence for preservation of sovereignty.",
+      "Adds60 body words and removes the task heading.",
+      "Diplomacy names Versailles, but still does not demonstrate an actor-action-result chain."
+    ],
+    "persistent_limits": [
+      "Diplomacy and political-system remain1/1 under the same threshold.",
+      "No basis for coherence gain: both are orderly and above300 body words.",
+      "Current384 words remains below the requested400–500, despite satisfying the official minimum."
+    ]
+  },
+  "comparison": {
+    "central_delta": 1,
+    "interval_envelope": [
+      0,
+      3
+    ],
+    "interval_note": "Judgment envelope, not a confidence interval. Lower0 permits the current attribution deduction with control military3. Upper3 permits control military1 and current military3.",
+    "grade_drift": "A historical5 to current8 subtraction overstates what this same-threshold central comparison demonstrates. Regraded control7 means2 points of that apparent3-point difference can arise from the military1-versus3 threshold; the remaining central1 comes from the removed factual deduction. Earlier attributed scores are preserved, not overwritten.",
+    "causal_limit": "One known-validation pair; thinking, native transport, output budget and appended structural prompt differ. Do not attribute the change solely to thinking or claim a general gain."
+  },
+  "one_generic_mechanism": {
+    "name": "Aspect evidence-to-mechanism check before final prose",
+    "scope": "Prompt-only candidate using the exact chosen topic/aspects from original input; no benchmark fact list, key facts, examples, gold target or training use.",
+    "polish_prompt_append": "Opracuj dokładnie jeden wybrany temat. Przed napisaniem odpowiedzi sprawdź każdy aspekt wymagany w poleceniu: dobierz konkretny fakt, działanie osoby lub instytucji, które znasz dostatecznie pewnie; wyjaśnij mechanizm łączący ten przykład z ocenianym problemem; pokaż, dlaczego wspiera on Twoje stanowisko. Nie zastępuj przykładu ogólną pochwałą ani samym wymienieniem daty lub nazwy. Sprawdź, czy nie przypisujesz jednej osobie działań innych i czy przyczyna rzeczywiście poprzedza skutek. Jeśli nie jesteś pewien szczegółu, pomiń go lub zawęź twierdzenie zamiast go dopowiadać. Oddaj wyłącznie spójne wypracowanie liczące 400–500 słów: bez planu, tabeli kontrolnej, nagłówków aspektów i komentarza o wykonywaniu zadania.",
+    "test_after_current_frozen_wave": "Paweł can compare unchanged native-thinking baseline against this one append on a fixed small panel of existing original DEV topics, with identical runtime/model/caps/temperature/source inputs. One generation per arm/topic; no extra rewrite chain or retries. Freeze topic IDs, call/token/wall limits and output hashes before dispatch.",
+    "evaluation": [
+      "Blind labels and preserve independent graders/aspect passages and1/3 threshold disputes.",
+      "Primary: supported development in required aspects; guard against new factual errors.",
+      "Also record one-topic compliance, body length, coherence and actual runtime/tokens.",
+      "Use existing original DEV only, not this May2024 prompt, answer or correction facts."
+    ],
+    "safety_of_inference": "This prompt encourages checking but is not external factual verification; uncertain facts must be omitted/narrowed. No claimed gain until tested."
+  },
+  "no_model_calls_training_writes_or_git_mutations": true
+}

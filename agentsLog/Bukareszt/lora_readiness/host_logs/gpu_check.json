@@ -1,0 +1,1 @@
+{"torch": "2.8.0+cu128", "cuda": "12.8", "cudnn": 91002, "device": "NVIDIA H100 PCIe", "total_mem": 85028372480, "cc": [9, 0], "bf16": true, "bf16_matmul_finite": true}

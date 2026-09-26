@@ -1,0 +1,14 @@
+{
+ "label": "projector",
+ "tensors": [
+  11,
+  11
+ ],
+ "identical_tensor_data": 11,
+ "differing": 0,
+ "differing_first20": [],
+ "tensor_set_sha256": [
+  "b5074d0d80ed0e5298f16161236a048f002f10c2daef349f77b72e0d1fe8b699",
+  "b5074d0d80ed0e5298f16161236a048f002f10c2daef349f77b72e0d1fe8b699"
+ ]
+}

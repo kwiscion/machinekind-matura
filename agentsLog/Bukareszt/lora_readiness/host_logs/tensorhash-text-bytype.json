@@ -1,0 +1,11 @@
+{
+ "by_type": {
+  "F32:same": 338,
+  "Q6_K:diff": 45,
+  "Q4_K:diff": 284
+ },
+ "token_embd.weight": {
+  "type": "Q6_K",
+  "same": false
+ }
+}

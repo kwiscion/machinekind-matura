@@ -1,0 +1,37 @@
+{
+ "label": "projector: control vs registry",
+ "kv_counts": [
+  39,
+  36
+ ],
+ "tensor_counts": [
+  11,
+  11
+ ],
+ "kv_diffs": {
+  "general.basename": [
+   "gemma-4",
+   "<absent>"
+  ],
+  "general.finetune": [
+   "12b-it@707f0a3b",
+   "<absent>"
+  ],
+  "general.name": [
+   "Gemma 4 12B It@707F0A3B",
+   "<absent>"
+  ]
+ },
+ "tensor_meta_diff_count": 0,
+ "tensor_meta_diff_first10": {},
+ "tensor_types": [
+  [
+   "BF16",
+   "F32"
+  ],
+  [
+   "BF16",
+   "F32"
+  ]
+ ]
+}
