@@ -9,6 +9,8 @@ import hashlib
 import importlib.util
 import json
 import os
+import re
+import shutil
 from pathlib import Path
 import signal
 import socket
@@ -30,6 +32,124 @@ PORT = 11435
 ENDPOINT = f'http://127.0.0.1:{PORT}'
 SELF = Path(__file__).resolve()
 IDS = ['offline-text', 'offline-image']
+
+# Frozen runtime profile (#83). The built-in laptop default reproduces the qualified WSL recipe exactly;
+# any other runtime must be declared as a complete JSON profile. Nothing here is relaxed per profile:
+# model/projector/manifest pins are fixed above and a profile may only restate them.
+PROFILE_KEYS = {'profile_id','platform','ollama_version','ollama_binary','ollama_binary_sha256','server_path_env',
+    'nvidia_smi','model_cache','model','manifest_digest','assets','context_length','namespace_method',
+    'host_endpoint_check','block_foreign_ollama'}
+LAPTOP_PROFILE = {
+    'profile_id':'laptop-wsl2-ollama-0.30.7-ctx4096',
+    'platform':'wsl2',
+    'ollama_version':'0.30.7',
+    'ollama_binary':'/usr/local/bin/ollama',
+    'ollama_binary_sha256':None,  # the qualified laptop run never pinned its binary; only allowed for wsl2
+    'server_path_env':'/usr/local/bin:/usr/bin:/bin:/usr/sbin:/usr/lib/wsl/lib',
+    'nvidia_smi':'/usr/lib/wsl/lib/nvidia-smi',
+    'model_cache':str(CACHE),
+    'model':MODEL,
+    'manifest_digest':DIGEST,
+    'assets':dict(ASSETS),
+    'context_length':4096,
+    'namespace_method':'unshare-rn',
+    'host_endpoint_check':{'port':11434,'require_reachable':True},
+    'block_foreign_ollama':False,
+}
+
+def placeholders(value, where='profile'):
+    if isinstance(value, dict):
+        return [x for k,v in value.items() for x in placeholders(v, where+'.'+str(k))]
+    if isinstance(value, list):
+        return [x for i,v in enumerate(value) for x in placeholders(v, f'{where}[{i}]')]
+    return [where] if isinstance(value, str) and 'PLACEHOLDER' in value else []
+
+def profile_sha(profile):
+    return hashlib.sha256(json.dumps(profile, sort_keys=True, separators=(',',':')).encode()).hexdigest()
+
+def validate_profile(profile):
+    """Hard failure on any incomplete, placeholder or differently pinned profile."""
+    require(isinstance(profile, dict), 'Runtime profile must be a JSON object')
+    missing, extra = PROFILE_KEYS-set(profile), set(profile)-PROFILE_KEYS
+    require(not missing and not extra, f'Runtime profile keys differ: missing {sorted(missing)}, unknown {sorted(extra)}')
+    holes = placeholders(profile)
+    require(not holes, 'Runtime profile has unfilled PLACEHOLDER field(s): '+', '.join(holes))
+    require(profile['platform'] in ('wsl2','native-linux'), 'Runtime profile platform must be wsl2 or native-linux')
+    require(profile['namespace_method'] == 'unshare-rn', 'Only unshare-rn network isolation is supported')
+    require(profile['model'] == MODEL and profile['manifest_digest'] == DIGEST and profile['assets'] == ASSETS,
+            'Runtime profile model/manifest/projector pins differ from the launcher pins')
+    require(type(profile['context_length']) is int and profile['context_length'] >= 4096,
+            'Runtime profile context_length must be an explicit integer >= 4096')
+    require(isinstance(profile['ollama_version'], str) and re.fullmatch(r'\d+\.\d+\.\d+', profile['ollama_version']),
+            'Runtime profile ollama_version must be an exact x.y.z version')
+    for key in ('ollama_binary','nvidia_smi','model_cache'):
+        require(isinstance(profile[key], str) and profile[key].startswith('/'), f'Runtime profile {key} must be an absolute path')
+    require(isinstance(profile['server_path_env'], str) and all(x.startswith('/') for x in profile['server_path_env'].split(':')),
+            'Runtime profile server_path_env must list absolute directories')
+    digest = profile['ollama_binary_sha256']
+    if digest is None:
+        require(profile['platform'] == 'wsl2', 'native-linux profile must pin ollama_binary_sha256')
+    else:
+        require(isinstance(digest, str) and re.fullmatch(r'[0-9a-f]{64}', digest), 'ollama_binary_sha256 must be 64 lowercase hex')
+    check = profile['host_endpoint_check']
+    require(isinstance(check, dict) and set(check) == {'port','require_reachable'} and type(check['port']) is int
+            and 0 < check['port'] < 65536 and check['port'] != PORT and type(check['require_reachable']) is bool,
+            'Runtime profile host_endpoint_check must be {port, require_reachable} and not the isolated port')
+    require(type(profile['block_foreign_ollama']) is bool, 'Runtime profile block_foreign_ollama must be boolean')
+    return profile
+
+def load_profile(path=None):
+    """Return (profile, sha256 of canonical JSON, source file sha256 or None)."""
+    if path is None:
+        profile = json.loads(json.dumps(LAPTOP_PROFILE))
+        return validate_profile(profile), profile_sha(profile), None
+    path = Path(path).resolve()
+    profile = json.loads(path.read_text(encoding='utf-8'))
+    return validate_profile(profile), profile_sha(profile), sha(path)
+
+def check_platform(profile):
+    """Native profiles must not run under WSL; the laptop default keeps its historical check (linux only)."""
+    require(sys.platform == 'linux', 'Execute only under WSL/Linux')
+    if profile['platform'] == 'native-linux':
+        version = Path('/proc/version').read_text(errors='replace').lower()
+        require('microsoft' not in version and not Path('/proc/sys/fs/binfmt_misc/WSLInterop').exists(),
+                'native-linux profile selected but this kernel is WSL')
+
+def verify_binary(profile):
+    binary = Path(profile['ollama_binary'])
+    require(binary.is_file(), 'Profile Ollama binary missing: '+str(binary))
+    if profile['ollama_binary_sha256'] is not None:
+        require(sha(binary) == profile['ollama_binary_sha256'], 'Ollama binary hash mismatch against runtime profile')
+
+def isolation_probe():
+    """Fail with a concrete error when this environment denies an isolated network namespace."""
+    for tool in ('unshare','ip'):
+        require(shutil.which(tool), f'Network isolation unavailable: `{tool}` not found on PATH')
+    host = os.readlink('/proc/self/ns/net')
+    probe = subprocess.run(['unshare','-rn','--',sys.executable,'-c','import os;print(os.readlink("/proc/self/ns/net"))'],
+                           capture_output=True, text=True, timeout=30)
+    require(probe.returncode == 0, f'Network isolation denied: unshare -rn exited {probe.returncode}: '+probe.stderr.strip()[:300])
+    require(probe.stdout.strip() and probe.stdout.strip() != host, 'Network isolation denied: probe stayed in host namespace')
+    return {'host_namespace':host, 'probe_namespace':probe.stdout.strip()}
+
+def server_env(profile, home):
+    return {'PATH':profile['server_path_env'], 'HOME':str(home),
+        'OLLAMA_HOST':f'127.0.0.1:{PORT}','OLLAMA_MODELS':profile['model_cache'],'OLLAMA_CONTEXT_LENGTH':str(profile['context_length']),
+        'OLLAMA_NUM_PARALLEL':'1','OLLAMA_MAX_LOADED_MODELS':'1','OLLAMA_NO_CLOUD':'1','OLLAMA_KEEP_ALIVE':'5m'}
+
+def host_idle(profile):
+    """Host endpoint must have no resident model; refused connection passes only if the profile says so."""
+    check = profile['host_endpoint_check']
+    try:
+        models = api('ps', check['port'])['models']
+    except OSError:
+        if check['require_reachable']:
+            raise
+        return
+    require(not models, 'Lead must first unload their own host model')
+
+def foreign_ollama(args):
+    return Path(args[0]).name == 'ollama' and len(args) > 1 and args[1] in ('serve','runner')
 
 def require(ok, message):
     if not ok:
@@ -94,7 +214,7 @@ def api(path, port=PORT):
     with opener.open(f'http://127.0.0.1:{port}/api/{path}', timeout=3) as response:
         return json.load(response)
 
-def process_snapshot(own_group=None):
+def process_snapshot(own_group=None, profile=LAPTOP_PROFILE):
     blockers=[]
     names=('infer.py','run_question_policy.py','run_bounded_gemma.py','run_visual_crops.py',
            'run_crop_diagnostic.py','run_source_correction.py','run_local_smoke.py','run_smoke.py')
@@ -104,13 +224,13 @@ def process_snapshot(own_group=None):
         try:
             args=(p/'cmdline').read_bytes().decode(errors='replace').split('\0')
             exe=Path(args[0]).name if args else ''
-            known_backend=exe in ('llama-server','ollama_llama_server') or 'vllm' in exe
+            known_backend=exe in ('llama-server','ollama_llama_server') or 'vllm' in exe or (profile['block_foreign_ollama'] and foreign_ollama(args))
             known_runner=exe.startswith('python') and any(Path(a).name in names or Path(a).name.startswith(('run_gemma','run_qwen','run_rag')) for a in args[1:])
             if (known_backend or known_runner) and (own_group is None or os.getpgid(int(p.name))!=own_group):
                 blockers.append({'pid':int(p.name),'kind':'model backend' if known_backend else 'inference runner'})
         except (FileNotFoundError, ProcessLookupError):
             pass
-    smi=subprocess.run(['/usr/lib/wsl/lib/nvidia-smi','--query-compute-apps=pid','--format=csv,noheader,nounits'],capture_output=True,text=True,check=True)
+    smi=subprocess.run([profile['nvidia_smi'],'--query-compute-apps=pid','--format=csv,noheader,nounits'],capture_output=True,text=True,check=True)
     for line in smi.stdout.splitlines():
         require(line.strip().isdigit(), 'Unrecognized GPU process listing; cannot prove exclusive ownership')
         pid=int(line.strip())
@@ -121,13 +241,14 @@ def process_snapshot(own_group=None):
             pass
     require(not blockers, 'Competing/resident model worker(s): '+json.dumps(blockers))
 
-def verify_assets():
-    manifest=CACHE/'manifests/registry.ollama.ai/library/gemma4/12b-it-q4_K_M'
+def verify_assets(profile=LAPTOP_PROFILE):
+    cache=Path(profile['model_cache'])
+    manifest=cache/'manifests/registry.ollama.ai/library/gemma4/12b-it-q4_K_M'
     require(sha(manifest)==DIGEST,'Installed model manifest digest mismatch')
     layers=json.loads(manifest.read_text())['layers']
     for digest,size in ASSETS.items():
         require(any(x['digest']=='sha256:'+digest and x['size']==size for x in layers),'Manifest asset mismatch')
-        p=CACHE/'blobs'/('sha256-'+digest)
+        p=cache/'blobs'/('sha256-'+digest)
         require(p.stat().st_size==size and sha(p)==digest,'Model/projector bytes mismatch')
     require(sum(ASSETS.values())<=8000000000,'Weight limit exceeded')
 
@@ -153,12 +274,12 @@ def network_proof(host_net):
                 raise RuntimeError('External connection unexpectedly succeeded')
     return {'host_namespace':host_net,'isolated_namespace':net,'interfaces':['lo'],'external_connect_failures':failures}
 
-def verify_model(resident=False):
+def verify_model(resident=False, context=4096):
     tags=api('tags')['models']
     require(any(m.get('name')==MODEL and m.get('digest')==DIGEST for m in tags),'Namespace model tag mismatch')
     if resident:
         models=api('ps')['models']
-        require(len(models)==1 and models[0].get('digest')==DIGEST and models[0].get('context_length')==4096,'Resident digest/context mismatch')
+        require(len(models)==1 and models[0].get('digest')==DIGEST and models[0].get('context_length')==context,'Resident digest/context mismatch')
 
 def inside(args):
     out=Path(args.output).resolve()
