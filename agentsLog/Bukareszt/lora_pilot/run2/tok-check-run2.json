@@ -1,0 +1,18 @@
+{
+ "driver_sha256": "586acd0b48f0c7aa51b5cba6da5be9ccb5913c03a9d908a8500f800b9d1e0229",
+ "prefix_type": "list",
+ "prefix_len": 30,
+ "equal_BatchEncoding_input_ids": true,
+ "equal_prepare_py_path": true,
+ "answer_ids": [
+  10825,
+  11416,
+  106
+ ],
+ "answer_ends_turn_106": true,
+ "row_len": 33,
+ "labels_len_equal": true,
+ "masked_prefix_positions": 30,
+ "answer_only_labels": true,
+ "prefix_ends_nonthinking": "model\n<|channel>thought\n<channel|>"
+}
