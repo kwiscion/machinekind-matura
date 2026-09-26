@@ -29,3 +29,7 @@ model-answers/answer-recovery-* -text whitespace=cr-at-eol
 2026-09-26-rtx-thinking-*.json -text whitespace=cr-at-eol
 2026-09-26-essay-edit-independent-review.json -text whitespace=cr-at-eol
 final-package-prep/** -text whitespace=cr-at-eol
+2026-09-26-final-package-stage.json -text whitespace=cr-at-eol
+2026-09-26-full-thinking-second40-review.md -text whitespace=cr-at-eol
+2026-09-26-full-thinking-review-reconciliation.md -text whitespace=cr-at-eol
+2026-09-26-readme-history.md whitespace=-blank-at-eof
