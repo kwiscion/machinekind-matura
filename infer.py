@@ -31,7 +31,23 @@ class NoRedirect(urllib.request.HTTPRedirectHandler):
         raise ValueError(f"HTTP redirect refused ({code}); configure the final endpoint URL")
 
 
-OPENER = urllib.request.build_opener(NoRedirect)
+def is_loopback_host(host: str) -> bool:
+    try:
+        return ipaddress.ip_address(host).is_loopback
+    except ValueError:
+        return host.lower() == "localhost"
+
+
+class LoopbackDirectProxyHandler(urllib.request.ProxyHandler):
+    def proxy_open(self, request, proxy, type):
+        # Never send an explicitly local model request through inherited proxies.
+        host = urllib.parse.urlsplit(request.full_url).hostname or ""
+        if is_loopback_host(host):
+            return None
+        return super().proxy_open(request, proxy, type)
+
+
+OPENER = urllib.request.build_opener(LoopbackDirectProxyHandler, NoRedirect)
 
 
 def endpoint_url(base_url: str, allow_remote: bool) -> str:
@@ -40,11 +56,7 @@ def endpoint_url(base_url: str, allow_remote: bool) -> str:
         raise ValueError("base_url must be an http(s) URL with a host")
     if parsed.username or parsed.password or parsed.query or parsed.fragment:
         raise ValueError("base_url cannot contain credentials, query, or fragment")
-    host = parsed.hostname
-    try:
-        loopback = ipaddress.ip_address(host).is_loopback
-    except ValueError:
-        loopback = host.lower() == "localhost"
+    loopback = is_loopback_host(parsed.hostname)
     if not loopback and not allow_remote:
         raise ValueError("Remote endpoint refused; pass --allow-remote explicitly")
     if not loopback and parsed.scheme != "https":
