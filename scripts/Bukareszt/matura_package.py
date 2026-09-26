@@ -10,6 +10,9 @@ Subcommands:
   finalize    infer.py output JSONL -> answers.json (template order, exact IDs) plus a local failure report
   validate    check a final answers.json against the package template (nonzero exit when invalid)
   run         prepare -> infer.py (subprocess, loopback endpoint only) -> finalize -> validate
+              opt-in `--bounded-rag` (issue #62): prepare -> separate bounded-RAG input + trace via
+              prepare_bounded_rag.py (pinned index, top-k 3, 1600 chars, no policy) -> infer.py -> finalize
+              with the ORIGINAL prepared manifest. Without the flag the bare path is unchanged.
   synthetic-outputs  write clearly SYNTHETIC infer.py-shaped records for format tests (never a model result)
 
 Exit codes: 0 ok; 1 answers.json written and valid but some answers are empty because model output
@@ -38,6 +41,9 @@ MAX_ANSWER_CHARS = 100_000
 PNG_MAGIC = b"\x89PNG\r\n\x1a\n"
 INFER_MAX_CALLS = 100
 REPO_ROOT = Path(__file__).resolve().parents[2]
+BOUNDED_RAG_SCRIPT = Path(__file__).resolve().parent / "prepare_bounded_rag.py"
+RAG_TOP_K = 3
+RAG_BUDGET_CHARS = 1600
 
 MOCK_BASE = "https://matura-json-guide.ania-olchowik.chatgpt.site/"
 MOCK_ZIP_NAME = "history-2023-mock-v1.zip"
@@ -702,6 +708,9 @@ def fetch_mock(out_dir: Path, manifest_path: Path | None, allow_hash_change: boo
 
 def run_pipeline(args) -> int:
     workdir = args.workdir.resolve()
+    if not args.bounded_rag and (args.rag_top_k != RAG_TOP_K or args.rag_budget_chars != RAG_BUDGET_CHARS
+                                 or args.rag_root or args.rag_manifest or args.rag_allow_unpinned):
+        raise PackageError("--rag-* options need --bounded-rag; the default run is the bare path")
     if workdir.exists() and any(workdir.iterdir()):
         raise PackageError(f"Work folder must be new or empty: {workdir}")
     package = load_package(args.exam_dir)
@@ -717,13 +726,18 @@ def run_pipeline(args) -> int:
     ids = manifest["ids"]
     if len(ids) > args.max_calls_total:
         raise PackageError(f"{len(ids)} items exceed --max-calls-total {args.max_calls_total}; no requests sent")
-    lines = [line for line in jsonl_lines(prepared.read_text(encoding="utf-8")) if line.strip()]
+    source = prepared
+    rag = None
+    if args.bounded_rag:  # opt-in; the bare input and its manifest stay untouched
+        rag = build_bounded_rag(args, prepared, manifest, workdir)
+        source = Path(rag["input"])
+    lines = [line for line in jsonl_lines(source.read_text(encoding="utf-8")) if line.strip()]
     chunks = []
     for start in range(0, len(ids), INFER_MAX_CALLS):
         number = start // INFER_MAX_CALLS + 1
-        chunk_input = prepared
+        chunk_input = source
         if len(ids) > INFER_MAX_CALLS:  # infer.py accepts at most 100 cases per call
-            chunk_input = workdir / f"input.part{number}.jsonl"
+            chunk_input = workdir / f"{source.stem}.part{number}.jsonl"
             chunk_input.write_text("\n".join(lines[start:start + INFER_MAX_CALLS]) + "\n", encoding="utf-8")
         chunks.append((chunk_input, workdir / f"raw.part{number}.jsonl", len(lines[start:start + INFER_MAX_CALLS])))
 
@@ -737,7 +751,8 @@ def run_pipeline(args) -> int:
         if infer(*chunk, dry_run=True) != 0:
             raise PackageError("infer.py rejected config/input in dry run; no requests sent")
     if args.dry_run:
-        print(json.dumps({"dry_run": True, "prepared": str(prepared), **{k: manifest[k] for k in ("exam_id", "items", "points", "unique_image_files")}}))
+        summary = {"dry_run": True, "prepared": str(prepared), **{k: manifest[k] for k in ("exam_id", "items", "points", "unique_image_files")}}
+        print(json.dumps(summary | ({"bounded_rag": rag} if rag else {})))
         return 0
     raw_paths = []
     for chunk in chunks:
@@ -747,8 +762,59 @@ def run_pipeline(args) -> int:
         raw_paths.append(chunk[1])
     report = finalize(package, raw_paths, workdir / "answers.json", workdir / "failures.json",
                       prepared.with_name(prepared.name + ".manifest.json"))
-    print(json.dumps({k: v for k, v in report.items() if k != "failures"} | {"failures": len(report["failures"])}, ensure_ascii=False))
+    summary = {k: v for k, v in report.items() if k != "failures"} | {"failures": len(report["failures"])}
+    print(json.dumps(summary | ({"bounded_rag": rag} if rag else {}), ensure_ascii=False))
     return 1 if report["failures"] else 0
+
+
+def build_bounded_rag(args, prepared: Path, manifest: dict, workdir: Path) -> dict:
+    """Issue #62: a SEPARATE fresh RAG input + trace from the prepared bare input, via the unchanged
+    prepare_bounded_rag.py CLI (child process: it installs a process-wide socket guard and checks the index,
+    source and retriever pins before retrieving). Called before any infer.py invocation, so a pin mismatch or
+    any refusal means no request is sent. Returns a small provenance summary."""
+    rag_input = workdir / "input.bounded-rag.jsonl"
+    trace = workdir / "input.bounded-rag.jsonl.trace.json"
+    check_new_outputs([rag_input, trace], [prepared, prepared.with_name(prepared.name + ".manifest.json")])
+    command = [sys.executable, str(BOUNDED_RAG_SCRIPT), "--input", str(prepared), "--output", str(rag_input),
+               "--trace", str(trace), "--top-k", str(args.rag_top_k), "--budget-chars", str(args.rag_budget_chars)]
+    if args.rag_root:
+        command += ["--root", str(args.rag_root)]
+    if args.rag_manifest:
+        command += ["--manifest", str(args.rag_manifest)]
+    if args.rag_allow_unpinned:  # synthetic test roots only
+        command.append("--allow-unpinned")
+    print("+ " + " ".join(command), file=sys.stderr)
+    child = subprocess.run(command, capture_output=True, text=True)  # keep stdout a single JSON summary
+    print((child.stdout + child.stderr).rstrip(), file=sys.stderr)
+    if child.returncode != 0:
+        raise PackageError("prepare_bounded_rag.py refused (index/source/retriever pin, path or input); no requests sent")
+    # Independent re-check: same IDs/order, bare prompt as verbatim suffix, every other field unchanged.
+    bare = read_prepared(prepared)
+    augmented = read_prepared(rag_input)
+    if [r.get("id") for r in augmented] != manifest["ids"] or [r["id"] for r in bare] != manifest["ids"]:
+        raise PackageError("Bounded-RAG input IDs differ from the prepared manifest; no requests sent")
+    for before, after in zip(bare, augmented):
+        if set(before) != set(after) or any(before[k] != after[k] for k in before if k != "prompt") \
+                or not isinstance(after["prompt"], str) or not after["prompt"].endswith(before["prompt"]):
+            raise PackageError(f"Bounded-RAG input changed item {before['id']!r} beyond a prompt prefix; no requests sent")
+    report = load_json_strict(trace)
+    settings = report.get("settings", {})
+    if (report.get("input", {}).get("sha256") != manifest["prepared_sha256"]
+            or report.get("output", {}).get("sha256") != sha256_file(rag_input)
+            or report.get("policy") is not None or report.get("model_calls") != 0
+            or settings.get("top_k") != args.rag_top_k or settings.get("budget_chars") != args.rag_budget_chars):
+        raise PackageError("Bounded-RAG trace does not bind the prepared input/settings; no requests sent")
+    if sha256_file(prepared) != manifest["prepared_sha256"]:
+        raise PackageError("Prepared bare input changed during RAG preparation; no requests sent")
+    return {"input": str(rag_input), "input_sha256": report["output"]["sha256"], "trace": str(trace),
+            "trace_sha256": sha256_file(trace), "top_k": settings["top_k"], "budget_chars": settings["budget_chars"],
+            "index_sha256": report["index"]["index_sha256"], "pinned": report["index"]["pinned"],
+            "cases_with_evidence": report["summary"]["cases_with_evidence"],
+            "evidence_chars_max": report["summary"]["evidence_chars_max"]}
+
+
+def read_prepared(path: Path) -> list[dict]:
+    return [json.loads(line) for line in jsonl_lines(path.read_text(encoding="utf-8")) if line.strip()]
 
 
 # ---------------------------------------------------------------- synthetic fixture outputs
@@ -837,6 +903,15 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--infer", type=Path, default=REPO_ROOT / "infer.py")
     p.add_argument("--dry-run", action="store_true", help="validate package + config only; no model calls")
     p.add_argument("--max-calls-total", type=int, default=200, help="refuse packages with more items (default 200)")
+    p.add_argument("--bounded-rag", action="store_true",
+                   help="opt-in (issue #62): send a separate bounded-RAG input built from the prepared input "
+                        "(pinned chrono index, no policy); finalize still uses the original manifest")
+    p.add_argument("--rag-top-k", type=int, default=RAG_TOP_K, help=f"with --bounded-rag (default {RAG_TOP_K})")
+    p.add_argument("--rag-budget-chars", type=int, default=RAG_BUDGET_CHARS,
+                   help=f"with --bounded-rag: whole evidence block characters (default {RAG_BUDGET_CHARS})")
+    p.add_argument("--rag-root", type=Path, help="with --bounded-rag: retrieval root (default agentsLog/Bukareszt)")
+    p.add_argument("--rag-manifest", type=Path, help="with --bounded-rag: pinned manifest (default <root>/staging/manifest.json)")
+    p.add_argument("--rag-allow-unpinned", action="store_true", help=argparse.SUPPRESS)  # synthetic test roots only
 
     p = sub.add_parser("synthetic-outputs", help="write SYNTHETIC infer.py-format records for format tests only")
     p.add_argument("--exam-dir", required=True, type=Path)
