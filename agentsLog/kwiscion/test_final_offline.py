@@ -11,6 +11,7 @@ import run_gemma_package as f
 
 class FinalOffline(unittest.TestCase):
     def setUp(self):
+        (f.r.OWN/'private').mkdir(parents=True, exist_ok=True)
         self.tmp = tempfile.TemporaryDirectory(dir=f.r.OWN/'private', prefix='final-launch-test-')
         self.root = Path(self.tmp.name)
         self.inf, self.adapter = f.r.modules()
@@ -161,7 +162,7 @@ class FinalOffline(unittest.TestCase):
 
     def test_opt_in_uncertain_or_unsafe_failures_still_stop(self):
         kinds=('http','timeout','provider','parse','missing_usage','malformed_usage','excess_prompt','excess_output','bool_usage',
-               'truncated','runtime','unknown_finish','missing_finish','refusal','tools','multiple_choices','malformed_content')
+               'truncated','context_truncated','runtime','unknown_finish','missing_finish','refusal','tools','multiple_choices','malformed_content')
         for kind in kinds:
             with self.subTest(kind=kind):
                 self.args.output=self.root/kind
@@ -175,7 +176,7 @@ class FinalOffline(unittest.TestCase):
                 if kind=='excess_prompt': row['usage']['prompt_tokens']=2817
                 if kind=='excess_output': row['usage']['completion_tokens']=1025
                 if kind=='bool_usage': row['usage']['completion_tokens']=True
-                if kind=='truncated': raw['truncated']=True
+                if kind in ('truncated','context_truncated'): raw[kind]=True
                 if kind=='unknown_finish': raw['choices'][0]['finish_reason']='unknown'
                 if kind=='missing_finish': raw['choices'][0].pop('finish_reason')
                 if kind=='refusal': msg['refusal']='Refused'

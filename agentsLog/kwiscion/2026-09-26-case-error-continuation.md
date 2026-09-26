@@ -19,3 +19,5 @@ python3 -m unittest discover -s agentsLog/kwiscion -p test_offline_rehearsal.py 
 Results: 14 launcher tests, 15 runtime-profile tests and 6 rehearsal-helper tests pass. Synthetic cases cover length/empty/reasoning-only finals followed by a good essay, all original IDs exactly once, unchanged raw envelopes, blank failed output, no extra reservation/retry, unchanged default, frozen opt-in, strict malformed/transport/provider/runtime/context/usage stops, and call/deadline/worker/pin gates.
 
 The Windows-native suite encounters the existing Linux model-cache path assumption in runtime-profile validation; verification was performed in WSL, the launcher's supported environment. All transport, server and GPU interactions in these tests are mocked. Exact-head independent review remains required before merge or operational use. Completed experiments remain immutable.
+
+Independent-review follow-up: both explicit top-level `truncated` and `context_truncated` response flags stop dispatch, including otherwise eligible length errors. Both are covered by the strict-stop regression. The launcher tests create their private temporary parent in a fresh checkout.

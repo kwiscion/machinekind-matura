@@ -134,7 +134,8 @@ def request_loop(cases, config, out, max_calls, deadline, guard, verify, inf, co
                     r.require(isinstance(usage, dict), 'Malformed usage')
                     r.require(type(usage.get('prompt_tokens')) is int and 0 <= usage['prompt_tokens'] <= 2816, 'Missing/excess prompt usage')
                     r.require(type(usage.get('completion_tokens')) is int and 0 <= usage['completion_tokens'] <= 1024, 'Missing/excess completion usage')
-                    r.require(not (result.get('raw_response') or {}).get('truncated', False), 'Context truncation reported')
+                    r.require(not any((result.get('raw_response') or {}).get(flag, False)
+                                      for flag in ('truncated', 'context_truncated')), 'Context truncation reported')
                     verify()
                     if case_error:
                         # Preserve the raw envelope and the runner's error; never rescue partial text.
