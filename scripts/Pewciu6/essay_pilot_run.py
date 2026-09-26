@@ -13,6 +13,16 @@ It enforces the whole envelope in one process instead of trusting separate infer
   - a run manifest (run_manifest.json) is written on every exit, complete or stopped, with
     calls sent, tokens reserved, per-call timeouts/latencies/errors and all unsent ids
 
+Requests (the orchestrator's own HTTP backend; infer.py is not modified):
+  --api ollama (default): POST <root>/api/chat with stream=false, think=false and
+      options {num_predict: stage cap, num_ctx: --num-ctx (32768), temperature: --temperature}
+  --api openai: POST <base_url>/chat/completions with max_tokens, reasoning_effort from the
+      config, plus think=false and options {num_ctx, temperature} for Ollama's compat layer
+  --base-url overrides the configs' base_url (e.g. http://127.0.0.1:11434 via an SSH tunnel);
+  it goes through infer.endpoint_url, so non-loopback hosts still need --allow-remote + HTTPS.
+Without think=false, Gemma on Ollama 0.34.4 spends the budget on hidden thinking and returns
+an empty answer with done_reason=length (host smoke on matura-pawel, #80).
+
 The run directory must be the fresh, git-ignored private dir built by `essay_route.py build`.
 Raw provider output and the plan-bearing write input stay there. The answer-only handoffs
 (answers.single.jsonl / answers.write.jsonl: id, stage, answer, error type; no plans, no raw
@@ -28,6 +38,8 @@ import os
 import sys
 import threading
 import time
+import urllib.error
+import urllib.request
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -42,6 +54,7 @@ MAX_CALLS = 6
 MAX_REQUESTED_TOKENS = 7168
 MAX_WALL_SECONDS = 30 * 60
 PER_CALL_TIMEOUT = 420
+DEFAULT_NUM_CTX = 32768
 MIN_CALL_SECONDS = 10  # do not start a call with less time than this left
 OVERRUN_GRACE = 5  # extra seconds before an overrunning call thread is abandoned
 STAGE_ORDER = ("single", "plan", "write")
@@ -57,10 +70,90 @@ def sha256_file(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def default_backend(case: dict, config: dict) -> dict:
-    import infer  # imported lazily so tests never touch the network code path
+def case_text_and_images(case: dict) -> tuple[str, list[str]]:
+    """infer.load_cases content -> (text, base64 images) for the native Ollama API."""
+    content = case["content"]
+    if isinstance(content, str):
+        return content, []
+    text = "".join(part["text"] for part in content if part.get("type") == "text")
+    images = [part["image_url"]["url"].split(",", 1)[1] for part in content if part.get("type") == "image_url"]
+    return text, images
 
-    return infer.run_case(case, config)
+
+def build_request(case: dict, config: dict, options: dict) -> tuple[str, dict]:
+    """Return (url, JSON body) for one call. Pure: tested without any network."""
+    sampling = {"num_ctx": options["num_ctx"]}
+    if options.get("temperature") is not None:
+        sampling["temperature"] = options["temperature"]
+    if options["api"] == "ollama":
+        root = config["base_url"].rstrip("/")
+        if root.endswith("/v1"):
+            root = root[:-3]
+        text, images = case_text_and_images(case)
+        message = {"role": "user", "content": text}
+        if images:
+            message["images"] = images
+        body = {"model": config["model"], "messages": [message], "stream": False, "think": False,
+                "options": dict(sampling, num_predict=config["max_output_tokens"])}
+        return root + "/api/chat", body
+    body = {"model": config["model"], "messages": [{"role": "user", "content": case["content"]}],
+            "max_tokens": config["max_output_tokens"], "think": False, "options": sampling}
+    if config.get("reasoning_effort") is not None:
+        body["reasoning_effort"] = config["reasoning_effort"]
+    if options.get("temperature") is not None:
+        body["temperature"] = options["temperature"]
+    return config["endpoint"], body
+
+
+def as_openai_shape(answer: dict) -> dict:
+    """Wrap a native Ollama /api/chat reply so final_text and infer.response_error apply unchanged."""
+    message = answer.get("message") if isinstance(answer.get("message"), dict) else {}
+    return {
+        "id": None,
+        "model": answer.get("model"),
+        "choices": [{"index": 0, "message": {"role": "assistant", "content": message.get("content") or ""},
+                     "finish_reason": answer.get("done_reason")}],
+        "usage": {"prompt_tokens": answer.get("prompt_eval_count"), "completion_tokens": answer.get("eval_count")},
+        "ollama_native": {k: v for k, v in answer.items() if k != "message"},
+        "ollama_thinking_chars": len(message.get("thinking") or ""),
+    }
+
+
+def make_http_backend(options: dict):
+    import infer
+
+    def backend(case: dict, config: dict) -> dict:
+        url, body = build_request(case, config, options)
+        result = {"id": case["id"],
+                  "backend": {"name": config["name"], "base_url": config["base_url"], "model": config["model"],
+                              "model_revision": config.get("model_revision"), "response_model": None,
+                              "response_id": None, "system_fingerprint": None, "api": options["api"]},
+                  "raw_response": None, "usage": None, "latency_seconds": None, "error": None}
+        request = urllib.request.Request(url, data=json.dumps(body, ensure_ascii=False).encode("utf-8"),
+                                         headers={"Content-Type": "application/json"}, method="POST")
+        start = time.monotonic()
+        try:
+            with infer.OPENER.open(request, timeout=config["timeout_seconds"]) as response:
+                answer = json.loads(response.read().decode("utf-8", errors="replace"))
+            if options["api"] == "ollama" and isinstance(answer, dict) and "message" in answer:
+                answer = as_openai_shape(answer)
+            result["raw_response"] = answer
+            if isinstance(answer, dict):
+                result["usage"] = answer.get("usage")
+                result["backend"]["response_model"] = answer.get("model")
+                result["backend"]["response_id"] = answer.get("id")
+            result["error"] = infer.response_error(answer)
+        except urllib.error.HTTPError as exc:
+            detail = exc.read(2048).decode("utf-8", errors="replace")
+            result["raw_response"] = detail
+            result["error"] = {"type": "http", "status": exc.code, "message": detail}
+        except (urllib.error.URLError, ValueError, TimeoutError, OSError) as exc:
+            result["error"] = {"type": type(exc).__name__, "message": str(exc)}
+        finally:
+            result["latency_seconds"] = round(time.monotonic() - start, 3)
+        return result
+
+    return backend
 
 
 def load_stage_config(path: Path, allow_remote: bool) -> dict:
@@ -97,12 +190,14 @@ def call_with_timeout(backend, case: dict, config: dict, timeout: float) -> dict
 
 
 class Run:
-    def __init__(self, manifest_path: Path, source: Path, backend=default_backend, clock=time.monotonic,
-                 allow_remote: bool = False, config_loader=None, case_loader=None):
+    def __init__(self, manifest_path: Path, source: Path, backend=None, clock=time.monotonic,
+                 allow_remote: bool = False, config_loader=None, case_loader=None, options=None, base_url=None):
         self.manifest_path = manifest_path
         self.run_dir = manifest_path.parent
         self.source = source
-        self.backend = backend
+        self.options = options or {"api": "ollama", "num_ctx": DEFAULT_NUM_CTX, "temperature": None}
+        self.base_url = base_url
+        self.backend = backend or make_http_backend(self.options)
         self.clock = clock
         self.allow_remote = allow_remote
         self.config_loader = config_loader or load_stage_config
@@ -140,6 +235,11 @@ class Run:
         self.configs = {}
         for stage in stages:
             config = self.config_loader(self.run_dir / STAGE_CONFIG[stage], self.allow_remote)
+            if self.base_url:
+                import infer
+
+                config["base_url"] = self.base_url
+                config["endpoint"] = infer.endpoint_url(self.base_url, self.allow_remote)
             if config["max_output_tokens"] != stages[stage]["max_output_tokens"]:
                 raise ValueError(f"{stage}: config cap {config['max_output_tokens']} != manifest cap")
             self.configs[stage] = config
@@ -261,6 +361,7 @@ class Run:
             "bounds": {"max_calls": MAX_CALLS, "max_requested_tokens": MAX_REQUESTED_TOKENS,
                        "max_wall_seconds": MAX_WALL_SECONDS, "per_call_timeout": PER_CALL_TIMEOUT,
                        "min_call_seconds": MIN_CALL_SECONDS, "retries": 0},
+            "request_options": dict(self.options, think=False, base_url=self.configs["single" if "single" in self.configs else "plan"]["base_url"]),
             "manifest_sha256": sha256_file(self.manifest_path),
             "source_sha256": sha256_file(self.source),
             "calls_sent": len(self.calls),
@@ -279,14 +380,25 @@ class Run:
         return 0 if self.status == "complete" else 1
 
 
-def main(argv: list[str] | None = None, backend=default_backend, clock=time.monotonic, **loaders) -> int:
+def main(argv: list[str] | None = None, backend=None, clock=time.monotonic, **loaders) -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--manifest", required=True, type=Path, help="manifest.json in the private run dir")
     parser.add_argument("--source", required=True, type=Path, help="the input JSONL given to build")
     parser.add_argument("--allow-remote", action="store_true", help="passed to infer.load_config (HTTPS only)")
+    parser.add_argument("--base-url", help="override the configs' base_url, e.g. http://127.0.0.1:11434")
+    parser.add_argument("--api", choices=["ollama", "openai"], default="ollama",
+                        help="ollama: native /api/chat (default); openai: /chat/completions")
+    parser.add_argument("--num-ctx", type=int, default=DEFAULT_NUM_CTX, help="Ollama num_ctx (default 32768)")
+    parser.add_argument("--temperature", type=float, help="declared sampling temperature (omit = server default)")
     parser.add_argument("--check", action="store_true", help="validate the run dir and bounds only; send nothing")
     args = parser.parse_args(argv)
-    run = Run(args.manifest, args.source, backend=backend, clock=clock, allow_remote=args.allow_remote, **loaders)
+    if not 2048 <= args.num_ctx <= 131072:
+        parser.error("--num-ctx must be 2048-131072")
+    if args.temperature is not None and not 0.0 <= args.temperature <= 2.0:
+        parser.error("--temperature must be 0-2")
+    options = {"api": args.api, "num_ctx": args.num_ctx, "temperature": args.temperature}
+    run = Run(args.manifest, args.source, backend=backend, clock=clock, allow_remote=args.allow_remote,
+              options=options, base_url=args.base_url, **loaders)
     try:
         run.validate()
     except (OSError, ValueError, KeyError, json.JSONDecodeError) as exc:
@@ -294,6 +406,9 @@ def main(argv: list[str] | None = None, backend=default_backend, clock=time.mono
         return 2
     if args.check:
         print(json.dumps({"ok": True, "stages": list(run.manifest["stages"]), "max_calls": MAX_CALLS,
+                          "request_options": dict(options, think=False),
+                          "endpoints": {s: build_request({"id": "x", "content": "x"}, c, options)[0]
+                                        for s, c in run.configs.items()},
                           "max_requested_tokens": MAX_REQUESTED_TOKENS, "max_wall_seconds": MAX_WALL_SECONDS}))
         return 0
     return run.execute()

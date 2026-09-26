@@ -1,6 +1,7 @@
 """Tests for the bounded essay pilot launcher. Fake backends and clocks only: no model calls."""
 
 import contextlib
+import http.server
 import io
 import json
 import sys
@@ -53,7 +54,9 @@ class FakeBackend:
         return completion(case["id"], essay_text(100))
 
 
-class RunnerTests(unittest.TestCase):
+class RunDirCase(unittest.TestCase):
+    """A fresh private run dir built from two synthetic essays."""
+
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory()
         self.root = Path(self.tmp.name)
@@ -87,6 +90,8 @@ class RunnerTests(unittest.TestCase):
     def rows(self, name):
         return [json.loads(line) for line in (self.run_dir / name).read_text().splitlines()]
 
+
+class RunnerTests(RunDirCase):
     def test_complete_run_within_bounds(self):
         clock = FakeClock()
         backend = FakeBackend(clock, seconds_per_call=60)
@@ -233,6 +238,90 @@ class RunnerTests(unittest.TestCase):
                                backend=backend)
         self.assertEqual(code, 2)
         self.assertEqual(backend.calls, [])
+
+
+class StubServer:
+    """Loopback stub that records request bodies and replies like Ollama /api/chat. Not a model."""
+
+    def __init__(self, text):
+        bodies = self.bodies = []
+        paths = self.paths = []
+
+        class Handler(http.server.BaseHTTPRequestHandler):
+            def do_POST(self):
+                paths.append(self.path)
+                bodies.append(json.loads(self.rfile.read(int(self.headers["Content-Length"]))))
+                reply = json.dumps({"model": "stub", "message": {"role": "assistant", "content": text},
+                                    "done": True, "done_reason": "stop", "eval_count": 7}).encode()
+                self.send_response(200)
+                self.send_header("Content-Type", "application/json")
+                self.send_header("Content-Length", str(len(reply)))
+                self.end_headers()
+                self.wfile.write(reply)
+
+            def log_message(self, *args):
+                pass
+
+        self.server = http.server.HTTPServer(("127.0.0.1", 0), Handler)
+        self.url = f"http://127.0.0.1:{self.server.server_port}"
+        threading.Thread(target=self.server.serve_forever, daemon=True).start()
+
+    def close(self):
+        self.server.shutdown()
+        self.server.server_close()
+
+
+class RequestTests(unittest.TestCase):
+    CONFIG = {"name": "t", "base_url": "http://127.0.0.1:11434/v1", "endpoint": "http://127.0.0.1:11434/v1/chat/completions",
+              "model": "gemma4:12b-it-q4_K_M", "max_output_tokens": 512, "reasoning_effort": "none", "timeout_seconds": 5}
+
+    def test_ollama_body_disables_thinking_and_sets_context(self):
+        options = {"api": "ollama", "num_ctx": 32768, "temperature": 0.0}
+        url, body = runner.build_request({"id": "a", "content": "Napisz."}, self.CONFIG, options)
+        self.assertEqual(url, "http://127.0.0.1:11434/api/chat")
+        self.assertIs(body["think"], False)
+        self.assertIs(body["stream"], False)
+        self.assertEqual(body["options"], {"num_ctx": 32768, "temperature": 0.0, "num_predict": 512})
+        self.assertEqual(body["messages"], [{"role": "user", "content": "Napisz."}])
+
+    def test_openai_body_also_carries_think_false(self):
+        options = {"api": "openai", "num_ctx": 32768, "temperature": 0.2}
+        url, body = runner.build_request({"id": "a", "content": "Napisz."}, self.CONFIG, options)
+        self.assertEqual(url, self.CONFIG["endpoint"])
+        self.assertIs(body["think"], False)
+        self.assertEqual(body["options"], {"num_ctx": 32768, "temperature": 0.2})
+        self.assertEqual((body["max_tokens"], body["temperature"], body["reasoning_effort"]), (512, 0.2, "none"))
+        _, body = runner.build_request({"id": "a", "content": "x"}, self.CONFIG, dict(options, temperature=None))
+        self.assertNotIn("temperature", body)
+        self.assertNotIn("temperature", body["options"])
+
+    def test_native_length_reply_is_an_error(self):
+        raw = runner.as_openai_shape({"message": {"content": "", "thinking": "hmm"}, "done_reason": "length"})
+        import infer
+        self.assertEqual(infer.response_error(raw)["type"], "incomplete")
+        self.assertEqual(raw["ollama_thinking_chars"], 3)
+
+
+class StubEndToEndTests(RunDirCase):
+    def test_full_run_against_loopback_stub_with_base_url_flag(self):
+        stub = StubServer(essay_text(100))
+        try:
+            with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
+                code = runner.main(["--manifest", str(self.manifest), "--source", str(self.source),
+                                    "--base-url", stub.url, "--temperature", "0"])
+        finally:
+            stub.close()
+        self.assertEqual(code, 0)
+        self.assertEqual(stub.paths, ["/api/chat"] * 6)
+        self.assertEqual([b["options"]["num_predict"] for b in stub.bodies], [1536, 1536, 512, 512, 1536, 1536])
+        for body in stub.bodies:
+            self.assertIs(body["think"], False)
+            self.assertEqual((body["options"]["num_ctx"], body["options"]["temperature"]), (32768, 0.0))
+        record = self.record()
+        self.assertEqual(record["status"], "complete")
+        self.assertEqual(record["request_options"],
+                         {"api": "ollama", "num_ctx": 32768, "temperature": 0.0, "think": False, "base_url": stub.url})
+        self.assertTrue(all(a["answer"] for a in self.rows("answers.write.jsonl")))
 
 
 if __name__ == "__main__":
