@@ -1,6 +1,6 @@
 # Winning plan
 
-**Goal:** highest Sunday history-matura score; target 48/60. Best complete known-validation result: **38/60, independently reviewed**. Preserved fallback: 35/60. Final offline qualification is unfinished. Freeze: **27 September, 11:00 Europe/Warsaw**. Updated 27 September, 00:17. Consult this page before dispatch or promotion; issues own tasks and claims.
+**Goal:** highest Sunday history-matura score; target 48/60. Best complete known-validation result: **38/60, independently reviewed**. Preserved fallback: 35/60. Final offline qualification is unfinished. Freeze: **27 September, 11:00 Europe/Warsaw**. Updated 27 September, 00:37. Consult this page before dispatch or promotion; issues own tasks and claims.
 
 ## One model, better answers
 
@@ -10,14 +10,14 @@ The **entire submitted weight set** must fit 8 GB + 10%; our conservative cap is
 
 1. **Finish the executable submission.** Qualify isolated text/image inference, integrate the complete organizer path, and preserve the 35-point fallback. The 38-point result loses 6 points to empty finals; a separate retry recovered only 1/6, and reasoning-note recovery 0/6. Neither is promoted.
 2. **Improve essay arguments.** One topic, 400-500 body words, clean prose. Native thinking helped an independent panel 52/90 to 62/90; factual span editing showed no aggregate gain. Test explicit evidence-and-causality planning before writing. The full-exam essay is 8/15, losing 7 argument points.
-3. **Test training, without multiplying models.** 90 cleared rows and 16 separate evaluation inputs are ready. The runtime is built and the failed probe's tokenizer call fixed; Greg owns the fresh bounded pilot. Deploy one merged model with nonessay regression checks, or a proven adapter on one shared base; compare against the same export pipeline.
+3. **Test training, without multiplying models.** 90 cleared rows and 16 separate evaluation inputs are ready. A real gradient update and control text/image serving worked; Greg owns the history-training continuation. Deploy one merged model with nonessay regression checks, or a proven adapter on one shared base; compare against the same export pipeline.
 
 ## Owners
 
 | Owner | Live responsibility |
 |---|---|
 | @kwiscion + Sol | Integration, package qualification and freeze [#3](https://github.com/kwiscion/machinekind-matura/issues/3) |
-| @Pewciu6 | Argument planning versus thinking essays [#80](https://github.com/kwiscion/machinekind-matura/issues/80) |
+| Root Sol proxy; @Pewciu6 grading standby | Argument planning versus thinking essays [#80](https://github.com/kwiscion/machinekind-matura/issues/80) |
 | @Bukareszt | Bounded single-model LoRA pilot [#117](https://github.com/kwiscion/machinekind-matura/issues/117) |
 | @ljaniec | Source-grounded essay evaluation checklist [#143](https://github.com/kwiscion/machinekind-matura/issues/143) |
 | Root Sol proxy; @semberecki standby | Standalone Qwen thinking challenger [#95](https://github.com/kwiscion/machinekind-matura/issues/95) |
