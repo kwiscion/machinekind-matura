@@ -1,5 +1,6 @@
 import json
 import io
+import os
 import tempfile
 import unittest
 import urllib.error
@@ -134,6 +135,41 @@ class InferenceTests(unittest.TestCase):
             config_path.write_text(json.dumps({**self.config, "max_output_tokens": 5000}), encoding="utf-8")
             with self.assertRaisesRegex(ValueError, "max_output_tokens"):
                 infer.load_config(config_path, False)
+
+    def test_inherited_proxies_cannot_route_loopback_requests(self):
+        invented = {
+            "HTTP_PROXY": "http://proxy.invalid:8888",
+            "HTTPS_PROXY": "http://proxy.invalid:8888",
+            "ALL_PROXY": "http://proxy.invalid:8888",
+            "NO_PROXY": "",
+        }
+        endpoints = [
+            "http://127.0.0.1:11434/v1", "https://127.0.0.2:11434/v1",
+            "http://localhost:11434/v1", "https://LOCALHOST:11434/v1",
+            "http://[::1]:11434/v1", "https://[::1]:11434/v1",
+        ]
+        # Exercise urllib's actual handler chain; stop before any socket operation.
+        with patch.dict(os.environ, invented, clear=True):
+            opener = infer.urllib.request.build_opener(infer.LoopbackDirectProxyHandler, infer.NoRedirect)
+            for base in endpoints:
+                with self.subTest(base=base):
+                    request = infer.urllib.request.Request(infer.endpoint_url(base, False))
+                    expected_host = request.host
+                    with patch.object(infer.urllib.request.AbstractHTTPHandler, "do_open", side_effect=RuntimeError("transport stopped")) as transport:
+                        with self.assertRaisesRegex(RuntimeError, "transport stopped"):
+                            opener.open(request)
+                    self.assertEqual(transport.call_args.args[1].host, expected_host)
+                    self.assertIsNone(request._tunnel_host)
+                    self.assertFalse(request.has_proxy())
+
+            with self.assertRaisesRegex(ValueError, "Remote endpoint refused"):
+                infer.endpoint_url("https://hosted.invalid/v1", False)
+            request = infer.urllib.request.Request(infer.endpoint_url("https://hosted.invalid/v1", True))
+            with patch.object(infer.urllib.request.AbstractHTTPHandler, "do_open", side_effect=RuntimeError("transport stopped")):
+                with self.assertRaisesRegex(RuntimeError, "transport stopped"):
+                    opener.open(request)
+            self.assertEqual(request.host, "proxy.invalid:8888")
+            self.assertEqual(request._tunnel_host, "hosted.invalid")
 
     def test_preflight_rejects_excess_calls(self):
         with tempfile.TemporaryDirectory() as directory:

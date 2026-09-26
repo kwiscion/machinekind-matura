@@ -448,5 +448,103 @@ class RunWrapper(Base):
         self.assertEqual(code, 2)
 
 
+class Issue45Acceptance(Base):
+    """Issue #45 (independent review of #37): explicit completion, any non-null error, mandatory source fields."""
+
+    def answers(self, name="answers.json"):
+        return json.loads((self.tmp / name).read_text(encoding="utf-8"))["answers"]
+
+    def test_issue_repro_snippet_all_rejected(self):
+        r = mp.synthetic_record("invented-review", "INVENTED ANSWER")
+        r["raw_response"]["choices"][0].pop("finish_reason")
+        self.assertIsNotNone(mp.extract_answer(r)[1], "missing finish_reason accepted")
+        r["raw_response"]["choices"][0]["finish_reason"] = None
+        self.assertIsNotNone(mp.extract_answer(r)[1], "null finish_reason accepted")
+        r["raw_response"]["choices"][0]["finish_reason"] = "stop"
+        self.assertIsNone(mp.extract_answer(r)[1], "explicit stop must still be complete")
+        r["error"] = ""
+        self.assertIsNotNone(mp.extract_answer(r)[1], "non-null empty error accepted")
+
+    def test_missing_null_and_unknown_finish_reason_stay_blank_with_report(self):
+        missing = mp.synthetic_record("1", "INVENTED A")
+        missing["raw_response"]["choices"][0].pop("finish_reason")
+        null = mp.synthetic_record("2.1", "INVENTED B", finish_reason=None)
+        unknown = mp.synthetic_record("2.2", "INVENTED C", finish_reason="invented_reason")
+        ok = mp.synthetic_record("3", "INVENTED D")
+        code, _, _ = self.finalize(write_jsonl(self.tmp / "raw.jsonl", [ok, unknown, null, missing]))
+        self.assertEqual(code, 1)
+        self.assertEqual([a["id"] for a in self.answers()], IDS)  # template order and exact IDs preserved
+        self.assertEqual([a["answer"] for a in self.answers()], ["", "", "", "INVENTED D"])
+        self.assertNotIn("INVENTED A", (self.tmp / "answers.json").read_text(encoding="utf-8"))
+        failures = {f["id"]: f for f in self.report()["failures"]}
+        self.assertEqual({i: f["type"] for i, f in failures.items()}, {"1": "incomplete", "2.1": "incomplete", "2.2": "incomplete"})
+        self.assertIn("missing", failures["1"]["message"])
+        self.assertIn("None", failures["2.1"]["message"])
+        self.assertIn("invented_reason", failures["2.2"]["message"])
+        self.assertEqual(cli("validate", self.tmp / "answers.json", "--exam-dir", self.pkg)[0], 0)
+
+    def test_every_supported_finish_reason_completes(self):
+        for reason in sorted(mp.COMPLETE_FINISH):
+            self.assertIsNone(mp.extract_answer(mp.synthetic_record("1", "x", finish_reason=reason))[1], reason)
+        self.assertNotIn(None, mp.COMPLETE_FINISH)
+
+    def test_null_error_is_not_a_failure_but_any_other_error_is(self):
+        rows = [
+            mp.synthetic_record("1", "INVENTED OK"),  # error: None -> accepted
+            mp.synthetic_record("2.1", "INVENTED X", error=""),
+            mp.synthetic_record("2.2", "INVENTED Y", error={}),
+            mp.synthetic_record("3", "INVENTED Z", error={"type": "", "message": "   "}),
+        ]
+        self.assertEqual(rows[0]["error"], None)
+        code, _, _ = self.finalize(write_jsonl(self.tmp / "raw.jsonl", rows))
+        self.assertEqual(code, 1)
+        self.assertEqual([a["answer"] for a in self.answers()], ["INVENTED OK", "", "", ""])
+        failures = {f["id"]: f for f in self.report()["failures"]}
+        self.assertEqual(sorted(failures), ["2.1", "2.2", "3"])
+        for failure in failures.values():
+            self.assertEqual(failure["type"], "infer_error")
+            self.assertTrue(failure["message"].strip())
+        for text in ("INVENTED X", "INVENTED Y", "INVENTED Z"):
+            self.assertNotIn(text, (self.tmp / "answers.json").read_text(encoding="utf-8"))
+
+    def test_error_false_or_zero_is_still_a_failure(self):
+        for error in (False, 0, [], "0"):
+            row = mp.synthetic_record("1", "INVENTED", error=error)
+            self.assertIsNotNone(mp.extract_answer(row)[1], repr(error))
+
+    def test_absent_instructions_rejected_empty_allowed(self):
+        self.assertEqual(cli("check", "--exam-dir", self.pkg)[0], 0)  # unchanged fixture still valid
+        self.edit_exam(lambda e: e.update(instructions=""))
+        self.assertEqual(cli("check", "--exam-dir", self.pkg)[0], 0)
+        self.assertEqual(cli("prepare", "--exam-dir", self.pkg, "--output", self.tmp / "w" / "in.jsonl")[0], 0)
+        self.edit_exam(lambda e: e.pop("instructions"))
+        code, _, err = cli("check", "--exam-dir", self.pkg)
+        self.assertEqual(code, 2)
+        self.assertIn("instructions is required", err)
+        self.assertEqual(cli("prepare", "--exam-dir", self.pkg, "--output", self.tmp / "w2" / "in.jsonl")[0], 2)
+        self.edit_exam(lambda e: e.update(instructions=None))
+        self.assertIn("instructions must be a string", cli("check", "--exam-dir", self.pkg)[2])
+
+    def test_absent_source_text_rejected_empty_allowed(self):
+        exam = json.loads((self.pkg / "exam.json").read_text(encoding="utf-8"))
+        self.assertEqual(exam["items"][1]["source_text"], "")  # the fixture already carries an explicit empty source
+        self.assertEqual(cli("check", "--exam-dir", self.pkg)[0], 0)
+        self.edit_exam(lambda e: e["items"][3].pop("source_text"))
+        code, _, err = cli("check", "--exam-dir", self.pkg)
+        self.assertEqual(code, 2)
+        self.assertIn("item '3': source_text is required", err)
+        self.assertEqual(cli("prepare", "--exam-dir", self.pkg, "--output", self.tmp / "w" / "in.jsonl")[0], 2)
+        self.assertFalse((self.tmp / "w" / "in.jsonl").exists())
+        self.edit_exam(lambda e: e["items"][3].update(source_text=None))
+        self.assertIn("source_text must be a string", cli("check", "--exam-dir", self.pkg)[2])
+
+    def test_finalize_also_requires_source_fields(self):
+        self.edit_exam(lambda e: e.pop("instructions"))
+        code, _, err = self.finalize(self.raw({"1": "a"}))
+        self.assertEqual(code, 2)
+        self.assertIn("instructions is required", err)
+        self.assertFalse((self.tmp / "answers.json").exists())
+
+
 if __name__ == "__main__":
     unittest.main()
