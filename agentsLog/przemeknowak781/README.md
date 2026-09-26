@@ -5,7 +5,23 @@
 - Work window: 2026-09-26 00:05–01:45 UTC (02:05–03:45 Europe/Warsaw)
 - Split used: TRAIN only. No 2023/2024/2025 exam questions, keys, rubrics or source packs were opened or used.
 
-## Result
+## Current export eligibility (lead repair)
+
+`data/przemeknowak781/train_strict.jsonl` is the only default training input: **24 records** reconstructed from the existing committed round-1 S and Q verdicts, with no new model judgment. Both lenses must be explicitly true. The set is provisional, not human-verified, and does **not** meet the requested 200 verified minimum. The default source-group split is 22 train / 2 internal holdout records. This is a partial data handoff, not a completed training-data target or model-quality result.
+
+`strict_provenance.json` pins the original `train.jsonl`, both verdict files and rubric by SHA-256 of UTF-8/LF-normalized text, tied to commit `c5009a5e4cddfb35b11a75b74bfe61a669ea44bb`. The strict artifact retains each legacy audit separately. Changing the underlying text/verdicts requires independent re-review; the exporter checks full record equality and refuses legacy or modified inputs. Missing strict data fails before any output is written. All legacy/generated/draft files below are preserved for recovery and research, **not export-eligible on their old labels**.
+
+Grounded distractors are sampled only from the destination source-group partition. Exports include `context_source_group_ids`; tests check actual source groups and foreign-only claims in both partitions, including the original 197-record regression case. General historical facts can appear independently in both groups; this is source-group isolation, not a promise that every historical fact is unique across splits.
+
+```bash
+python scripts/przemeknowak781/strict_eligibility.py --check
+python -m unittest discover -s scripts/przemeknowak781 -p 'test_*.py' -v
+python scripts/przemeknowak781/export_sft.py --output-dir data/przemeknowak781/cache/sft-reviewed
+```
+
+The last command requires a fresh output directory and produces 22 train / 2 holdout rows per variant. Regenerate the strict artifact from the pinned evidence with `python scripts/przemeknowak781/strict_eligibility.py` only if necessary. No source fetch is needed for these checks; the earlier verbatim-source gate remains inherited evidence, not a newly repeated source audit. CI runs the six focused tests and strict-artifact reconstruction check.
+
+## Legacy result (preserved, superseded for training eligibility)
 `data/przemeknowak781/train.jsonl`: 231 TRAIN records, all passing the deterministic gate against pinned revisions.
 
 | audit.status | n | Meaning |
@@ -18,13 +34,13 @@ Verified by era: medieval 40, early_modern 74, 19th_century 28, 20th_century 55.
 
 **Read the audit before training on this set.** In a strict provisional audit ([audit_sample.md](audit_sample.md)), 12/20 random Haiku-verified items met the strict standard; the rest add context or interpretation beyond the cited claims, or have poorly formed prompts. The 20 hand-grounded items (`pn781-train-*`) passed 20/20. Recommended next step: a stricter second verification (e.g. Sonnet) before any training use.
 
-## Strict re-verification (in progress, 2026-09-26 ~02:00–03:00 UTC)
+## Historical strict re-verification state at the reviewed head (2026-09-26 ~02:00–03:00 UTC)
 Rubric `prompts/verify_strict_v2.md`: two independent judges per record (`claude-opus-5-5`), Lens S (every fact in the claims, no added interpretation) and Lens Q (standalone prompt, complete fluent answer, correct task type). Failures go to one repair pass (`prompts/repair_v2.md`, prompt and answer only, claims fixed), are re-gated with `validate.py`, and are re-judged by fresh judges. Orchestrated with `strict_rounds.py`; raw verdicts and repairs are in `strict/`.
 
 - Round 1, all 231 records: 24 passed both lenses (Lens S 63/230, Lens Q 65/231). 169 were repaired and passed the gate, 1 repair failed the gate, 37 were dropped. Calibration: the 20 hand-grounded items passed Lens S 7/20 and Lens Q 18/20. Several Lens S failures were real (facts from the article but not in the cited claim); others only objected that a claim fragment did not name its subject. Amendment 2.1 therefore lets the cited article title establish the subject, and nothing else, from round B on.
 - New: 60 essay plans (`prompts/essay_gen_v1.md`, 2 per source over the 30 largest articles balanced by era), all passing the gate; raw output is in `generated/essay-*.jsonl`.
-- Round B: 229 candidates (169 repaired + 60 essays) are being judged.
-- `export_sft.py` writes chat-format LoRA files (closed-book and grounded with distractor passages, topic-disjoint holdout); it runs after the strict set is final.
+- Round B: 229 candidates (169 repaired + 60 essays) were reported as being judged; no final round-B verdicts are present at the reviewed head. They are not accepted by this repair.
+- `export_sft.py` now writes only reviewed strict records, with source-group-disjoint context. The original legacy default was unsafe and is replaced by the eligibility gate above.
 
 ## Pipeline
 1. `fetch_sources.py` — 100 plwiki articles (medieval → 1989) fetched by pinned `oldid` through the MediaWiki API, split into sections into git-ignored `cache/`. Reruns reuse oldids from `sources.jsonl` (checked: 98/98 re-extracted texts had identical SHA-256). Disambiguation pages are skipped.

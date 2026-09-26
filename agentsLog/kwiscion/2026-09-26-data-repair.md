@@ -1,0 +1,9 @@
+# PR #18 bounded lead repair
+
+Scope: repair the two reviewed blockers under the user's extension to 10:47 Warsaw. Base: `c5009a5e4cddfb35b11a75b74bfe61a669ea44bb`; isolated checkout, no original record/verdict modifications and no new generation, source downloads, paid calls, or sealed-test access.
+
+- Reconstructed 24 eligible records from the already-committed round-1 dual-pass verdicts. `strict_provenance.json` pins the original inputs/rubric by SHA-256 of UTF-8/LF-normalized text. The strict artifact retains prior audit labels as history; all failed and draft records remain outside export eligibility. The 200-verified target remains unmet.
+- Export defaults to `train_strict.jsonl`, fails on missing strict data, rejects legacy/altered record payloads, and requires unchanged evidence hashes. Export files must be new. Current split: 22 train / 2 internal holdout per variant.
+- Distractors now come only from the destination partition; grounded outputs record every context source group. Six focused tests cover strict reconstruction, modified evidence/answer rejection, missing/default/legacy failure, actual strict split, and the legacy 197-record regression case. General facts shared independently across source groups are not treated as source leakage.
+- Validation: `python scripts/przemeknowak781/strict_eligibility.py --check`; `python -m unittest discover -s scripts/przemeknowak781 -p 'test_*.py' -v` (6 passed); actual isolated export (24 strict, 22/2 split). CI adds the same checks. No claim of new semantic or source verification; this is eligibility reconstruction and export correctness only.
+- Independent review of the new exact head is required before merge. Earlier PR #20 contamination evidence applies to all underlying records, which are unchanged; the strict set is a subset with audit metadata added. No new question/answer/evidence content was generated.

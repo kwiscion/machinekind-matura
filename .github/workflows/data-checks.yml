@@ -1,0 +1,17 @@
+name: Strict data checks
+on:
+  pull_request:
+  push:
+    branches: [main, issue-4-przemeknowak781-data]
+permissions:
+  contents: read
+jobs:
+  strict-data:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/przemeknowak781/strict_eligibility.py --check
+      - run: python -m unittest discover -s scripts/przemeknowak781 -p 'test_*.py' -v

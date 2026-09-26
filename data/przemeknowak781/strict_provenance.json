@@ -1,0 +1,18 @@
+{
+  "source_commit": "c5009a5e4cddfb35b11a75b74bfe61a669ea44bb",
+  "round": "r1",
+  "rubric": "verify_strict_v2 before amendment 2.1",
+  "reviewer": "claude-opus-5-5 dual-lens, existing committed verdicts; provisional",
+  "files": {
+    "data/przemeknowak781/train.jsonl": "52df361cefca4d20a99b0795c766740e7df9f5fb935b6c7911d70914a3acbd7f",
+    "agentsLog/przemeknowak781/strict/r1_S.jsonl": "83279cd88d0dc14db28609c0da52637d1bd695f251252ea2cd8832dd5049c91b",
+    "agentsLog/przemeknowak781/strict/r1_Q.jsonl": "f97a4276e6507e9c2c2cb67a19456de44c1e38d6be9e08337b0b29b555857ea4",
+    "scripts/przemeknowak781/prompts/verify_strict_v2.md": "7525e1958ff04e8750de471cde1144b8574149cb1c5f823e0cdd3c7eae3162b7"
+  },
+  "limitations": [
+    "No new semantic verification or source fetch in this repair.",
+    "Strict membership reconstructs the recorded round-1 decisions, not human verification.",
+    "Legacy train.jsonl and generated files remain historical drafts, not export-eligible by themselves."
+  ],
+  "hash_normalization": "UTF-8 text with CRLF/CR normalized to LF (portable Git checkout)"
+}
