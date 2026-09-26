@@ -1,0 +1,618 @@
+[
+ {
+  "code": "E01",
+  "topic_elements": [
+   "terytorialny",
+   "polityczny",
+   "gospodarczy"
+  ],
+  "elements": [
+   {
+    "element": "terytorialny",
+    "level": "superficial",
+    "note": "Toruń 1466 gains largely wrong (Żmudź, Mazury); Pomorze Gdańskie, ziemia chełmińska, Malbork, Elbląg never named."
+   },
+   {
+    "element": "polityczny",
+    "level": "superficial",
+    "note": "Generic 'mocarstwo regionalne'; lenno relationship muddled; no Kazimierz Jagiellończyk, Związek Pruski, wojna trzynastoletnia."
+   },
+   {
+    "element": "gospodarczy",
+    "level": "superficial",
+    "note": "Vague 'polskie porty'; no Gdańsk, Wisła, access to the Baltic stated concretely."
+   }
+  ],
+  "functional_knowledge": "none",
+  "claims": [
+   {
+    "claim": "Grunwald 1410 broke Order's military power",
+    "verdict": "correct",
+    "note": "Battle 15 July 1410."
+   },
+   {
+    "claim": "Battle of 'Pereśwaga' as a culmination of the wars",
+    "verdict": "incorrect",
+    "note": "No such battle; likely confusion (Świecino 1462 / Puck)."
+   },
+   {
+    "claim": "Peace of Toruń 1466",
+    "verdict": "correct",
+    "note": "Second Peace of Toruń, 19 Oct 1466."
+   },
+   {
+    "claim": "Toruń 1466 gave Poland Żmudź",
+    "verdict": "incorrect",
+    "note": "Żmudź went to Lithuania (Toruń 1411 for Witold's life, Melno 1422)."
+   },
+   {
+    "claim": "Toruń 1466 gave fragments of Warmia and Mazury",
+    "verdict": "incorrect",
+    "note": "Poland got Pomorze Gdańskie, ziemia chełmińska and michałowska, Malbork, Elbląg and all Warmia; Mazury stayed with the Order."
+   },
+   {
+    "claim": "Poland gained 'right of care over Prussia'",
+    "verdict": "incorrect",
+    "note": "The Order's remaining state became a Polish fief (lenno), grand master owed homage."
+   },
+   {
+    "claim": "Peace created a new 'państwo Zakonu Pruskiego'",
+    "verdict": "incorrect",
+    "note": "Monastic state continued as Polish fief; secular Duchy of Prussia only 1525."
+   },
+   {
+    "claim": "Ended era of Teutonic expansion; stabilised Baltic relations for centuries",
+    "verdict": "unverifiable-or-invented",
+    "note": "Overstated; wars 1519–1521, Prussian homage 1525."
+   },
+   {
+    "claim": "Grain and timber trade grew via Baltic",
+    "verdict": "correct",
+    "note": "True but not tied to Gdańsk/Wisła."
+   },
+   {
+    "claim": "Poland became regional power",
+    "verdict": "correct",
+    "note": "Defensible generalisation."
+   }
+  ],
+  "A_before_deduction": 3,
+  "factual_errors": [
+   {
+    "claim": "bitwa pod Pereśwagą",
+    "correction": "No such battle; the decisive battle of the Thirteen Years' War was Świecino 1462."
+   },
+   {
+    "claim": "Toruń 1466: Polska uzyskała Żmudź",
+    "correction": "Żmudź was settled in favour of Lithuania in 1411/1422, not 1466."
+   },
+   {
+    "claim": "Toruń 1466: fragmenty Warmii i Mazur",
+    "correction": "Poland gained Prusy Królewskie: Pomorze Gdańskie, ziemia chełmińska/michałowska, Malbork, Elbląg, Warmia; not Mazury."
+   },
+   {
+    "claim": "powstanie państwa Zakonu Pruskiego / 'prawo do opieki'",
+    "correction": "The rump Teutonic state became a Polish fief; no new state founded in 1466."
+   }
+  ],
+  "A_deduction": 2,
+  "A": 1,
+  "B": 2,
+  "total": 3,
+  "format_score": 2,
+  "format_issues": [
+   "'Temat nr 1' line mirrors the answer-sheet field; not counted as a wrapper",
+   "typo 'Polerze'"
+  ],
+  "comment": "Right structure, but the core territorial facts about Toruń 1466 are wrong and it invents a battle. The political and economic parts are generic, with no Gdańsk or Prusy Królewskie."
+ },
+ {
+  "code": "E04",
+  "topic_elements": [
+   "ustrojowy",
+   "wewnątrzpolityczny",
+   "międzynarodowy"
+  ],
+  "elements": [
+   {
+    "element": "ustrojowy",
+    "level": "satisfying",
+    "note": "Liberum veto, lack of taxes and standing army, mechanism explained; but no concrete facts (Sejm niemy 1717, zerwane sejmy)."
+   },
+   {
+    "element": "wewnątrzpolityczny",
+    "level": "superficial",
+    "note": "Magnate oligarchy and clientelism, generic; no Familia, Targowica, Radom, bar confederations."
+   },
+   {
+    "element": "międzynarodowy",
+    "level": "superficial",
+    "note": "Catherine II, Frederick II, partition dates; little detail (no guarantee 1768, Repnin, Sejm niemy)."
+   }
+  ],
+  "functional_knowledge": "full-1",
+  "claims": [
+   {
+    "claim": "liberum veto allowed a single envoy to break sejms",
+    "verdict": "correct",
+    "note": "Practice from 1652."
+   },
+   {
+    "claim": "lack of permanent taxes and modern army",
+    "verdict": "correct",
+    "note": "Army limited to 24k in 1717."
+   },
+   {
+    "claim": "'karczma zajezdna' metaphor",
+    "verdict": "correct",
+    "note": "Contemporary saying."
+   },
+   {
+    "claim": "magnate dominance and foreign clientelism",
+    "verdict": "correct",
+    "note": "Generalisation, correct."
+   },
+   {
+    "claim": "Prussia under Frederick II and Russia under Catherine II treated Poland as sphere of influence",
+    "verdict": "correct",
+    "note": ""
+   },
+   {
+    "claim": "Three partitions 1772, 1793, 1795",
+    "verdict": "correct",
+    "note": "Austria not in 1793, not stated otherwise."
+   },
+   {
+    "claim": "Neighbours interfered in royal elections",
+    "verdict": "correct",
+    "note": "E.g. 1733, 1764."
+   }
+  ],
+  "A_before_deduction": 5,
+  "factual_errors": [],
+  "A_deduction": 0,
+  "A": 5,
+  "B": 2,
+  "total": 7,
+  "format_score": 2,
+  "format_issues": [
+   "'Temat nr 1' line mirrors the answer-sheet field; not counted as a wrapper",
+   "typo 'klientelizny'"
+  ],
+  "comment": "Factually safe but mostly generic, and it names almost no events from 1717–1795 apart from partition dates. It ignores reform attempts, and the repetition weakens coherence."
+ },
+ {
+  "code": "E07",
+  "topic_elements": [
+   "ustrojowy",
+   "wewnątrzpolityczny",
+   "międzynarodowy"
+  ],
+  "elements": [
+   {
+    "element": "ustrojowy",
+    "level": "satisfying",
+    "note": "Liberum veto and blocked reforms, Konstytucja 3 maja as failed repair; still general."
+   },
+   {
+    "element": "wewnątrzpolityczny",
+    "level": "satisfying",
+    "note": "Targowica worked as a concrete example with reflection, one factual slip on place."
+   },
+   {
+    "element": "międzynarodowy",
+    "level": "superficial",
+    "note": "Partition dates only; generic claims about absolutist powers."
+   }
+  ],
+  "functional_knowledge": "full-2",
+  "claims": [
+   {
+    "claim": "liberum veto paralysed sejms and blocked fiscal/military reform",
+    "verdict": "correct",
+    "note": ""
+   },
+   {
+    "claim": "Konstytucja 3 maja met opposition from part of the magnates",
+    "verdict": "correct",
+    "note": ""
+   },
+   {
+    "claim": "Targowica confederation 1792",
+    "verdict": "correct",
+    "note": "Act dated 27 Apr 1792, proclaimed 14 May 1792."
+   },
+   {
+    "claim": "Targowica formed in Brześć nad Bugiem",
+    "verdict": "incorrect",
+    "note": "Signed in St Petersburg, proclaimed in Targowica (Ukraine)."
+   },
+   {
+    "claim": "Targowica relied on Russian troops, backed by Catherine II",
+    "verdict": "correct",
+    "note": ""
+   },
+   {
+    "claim": "Three partitions 1772, 1793, 1795",
+    "verdict": "correct",
+    "note": ""
+   },
+   {
+    "claim": "State erased from map in 1795",
+    "verdict": "correct",
+    "note": ""
+   }
+  ],
+  "A_before_deduction": 7,
+  "factual_errors": [
+   {
+    "claim": "konfederacja targowicka zawiązana w Brześciu nad Bugiem",
+    "correction": "Act drawn up in St Petersburg and proclaimed in Targowica."
+   }
+  ],
+  "A_deduction": 1,
+  "A": 6,
+  "B": 3,
+  "total": 9,
+  "format_score": 2,
+  "format_issues": [
+   "'Temat nr 1' line mirrors the answer-sheet field; not counted as a wrapper"
+  ],
+  "comment": "A coherent essay with one well-used example (Targowica), though it misplaces where the confederation was formed. The international aspect is thin, and 1717–1768 is not covered."
+ },
+ {
+  "code": "E10",
+  "topic_elements": [
+   "polityczny",
+   "kulturowy",
+   "społeczny"
+  ],
+  "elements": [
+   {
+    "element": "polityczny",
+    "level": "superficial",
+    "note": "No concrete parties, people or Galician autonomy; vague 'restrictive law'."
+   },
+   {
+    "element": "kulturowy",
+    "level": "superficial",
+    "note": "Secret schools, press and literature named only generically; no authors, Września, Kulturkampf or Uniwersytet Latający."
+   },
+   {
+    "element": "społeczny",
+    "level": "superficial",
+    "note": "Cooperatives and kółka rolnicze generic; no Marcinkowski, Wawrzyniak, Poznań positivism."
+   }
+  ],
+  "functional_knowledge": "none",
+  "claims": [
+   {
+    "claim": "After 1864 Russia imposed repression",
+    "verdict": "correct",
+    "note": "Generic."
+   },
+   {
+    "claim": "A specific post-1864 law banning independence organisations and closing legal clubs",
+    "verdict": "unverifiable-or-invented",
+    "note": "Not identified; vague."
+   },
+   {
+    "claim": "Praca organiczna as a strategy",
+    "verdict": "correct",
+    "note": ""
+   },
+   {
+    "claim": "Secret schooling, reading circles",
+    "verdict": "correct",
+    "note": "Generic."
+   },
+   {
+    "claim": "Cooperatives and kółka rolnicze",
+    "verdict": "correct",
+    "note": "Generic; mainly Prussian partition."
+   },
+   {
+    "claim": "Political activity drastically limited in all partitions",
+    "verdict": "unverifiable-or-invented",
+    "note": "Ignores Galician autonomy (Sejm Krajowy, polonised schools and administration)."
+   },
+   {
+    "claim": "Independence regained in 1918",
+    "verdict": "correct",
+    "note": ""
+   }
+  ],
+  "A_before_deduction": 3,
+  "factual_errors": [],
+  "A_deduction": 0,
+  "A": 3,
+  "B": 2,
+  "total": 5,
+  "format_score": 1,
+  "format_issues": [
+   "'Temat nr 1' line mirrors the answer-sheet field; not counted as a wrapper",
+   "literal '\\n' escape sequence left in the essay text",
+   "garbled sentence ('zamiłowanie do walki bezpośrednio')"
+  ],
+  "comment": "Almost no factual material: there is no named person, event, organisation or partition-specific policy, and Galicia is missing entirely. The essay is filler with a correct shape."
+ },
+ {
+  "code": "E13",
+  "topic_elements": [
+   "polityczny",
+   "kościelny",
+   "militarny"
+  ],
+  "elements": [
+   {
+    "element": "polityczny",
+    "level": "satisfying",
+    "note": "Coronation 1025, wars with Henry II, Budziszyn 1018; misses zjazd gnieźnieński and gains of Łużyce/Milsko."
+   },
+   {
+    "element": "kościelny",
+    "level": "rich",
+    "note": "Metropolis 1000, bishoprics Kraków/Wrocław/Kołobrzeg, canonisation 999, independence from German metropolises."
+   },
+   {
+    "element": "militarny",
+    "level": "satisfying",
+    "note": "Morawy, Kijów 1018 and Świętopełk, Grody Czerwieńskie; Czech episode and Łużyce missing."
+   }
+  ],
+  "functional_knowledge": "full-3",
+  "claims": [
+   {
+    "claim": "Reign 992–1025",
+    "verdict": "correct",
+    "note": ""
+   },
+   {
+    "claim": "Coronation 1025",
+    "verdict": "correct",
+    "note": "Easter 1025."
+   },
+   {
+    "claim": "Wars with Henry II 1002–1018",
+    "verdict": "correct",
+    "note": ""
+   },
+   {
+    "claim": "Peace of Budziszyn 1018",
+    "verdict": "correct",
+    "note": "30 Jan 1018; kept Łużyce and Milsko."
+   },
+   {
+    "claim": "Wars over 'Połabie'",
+    "verdict": "unverifiable-or-invented",
+    "note": "Imprecise; the contested lands were Łużyce and Milsko."
+   },
+   {
+    "claim": "Metropolis of Gniezno 1000 with bishoprics Kraków, Wrocław, Kołobrzeg",
+    "verdict": "correct",
+    "note": ""
+   },
+   {
+    "claim": "Canonisation of Wojciech in 999",
+    "verdict": "correct",
+    "note": ""
+   },
+   {
+    "claim": "Church independence from German metropolises",
+    "verdict": "correct",
+    "note": "Magdeburg."
+   },
+   {
+    "claim": "Stone churches in Gniezno and Poznań",
+    "verdict": "correct",
+    "note": ""
+   },
+   {
+    "claim": "Annexed Moravia c.1003",
+    "verdict": "correct",
+    "note": "Moravia held c.1003–1019/1031 (dating debated)."
+   },
+   {
+    "claim": "1018 expedition to Kiev, installed Świętopełk I",
+    "verdict": "correct",
+    "note": ""
+   },
+   {
+    "claim": "Took Grody Czerwieńskie on the way back",
+    "verdict": "correct",
+    "note": ""
+   }
+  ],
+  "A_before_deduction": 10,
+  "factual_errors": [],
+  "A_deduction": 0,
+  "A": 10,
+  "B": 3,
+  "total": 13,
+  "format_score": 1,
+  "format_issues": [
+   "'Temat nr 1' line mirrors the answer-sheet field; not counted as a wrapper",
+   "corrupted token 'zaow1cwłoło'"
+  ],
+  "comment": "The strongest essay in the part: accurate, specific facts across all three aspects and a clear thesis. The political aspect could add the Congress of Gniezno and the Łużyce/Milsko gains; there is one corrupted word."
+ },
+ {
+  "code": "E16",
+  "topic_elements": [
+   "militarny",
+   "polityczny",
+   "terytorialny"
+  ],
+  "elements": [
+   {
+    "element": "militarny",
+    "level": "satisfying",
+    "note": "Warsaw, Wieprz counter-attack, Komarów, Niemen; no commanders."
+   },
+   {
+    "element": "polityczny",
+    "level": "superficial",
+    "note": "Riga 1921 and recognition; generic, no Piłsudski/federation, Spa, Western reaction."
+   },
+   {
+    "element": "terytorialny",
+    "level": "superficial",
+    "note": "Generic; wrongly credits Wilno to the war outcome."
+   }
+  ],
+  "functional_knowledge": "full-1",
+  "claims": [
+   {
+    "claim": "War 1919–1921",
+    "verdict": "correct",
+    "note": ""
+   },
+   {
+    "claim": "Battle of Warsaw August 1920",
+    "verdict": "correct",
+    "note": ""
+   },
+   {
+    "claim": "Counter-offensive from the Wieprz",
+    "verdict": "correct",
+    "note": "16 Aug 1920."
+   },
+   {
+    "claim": "Battle of Komarów",
+    "verdict": "correct",
+    "note": "31 Aug 1920, cavalry battle."
+   },
+   {
+    "claim": "Battle of the Niemen",
+    "verdict": "correct",
+    "note": "Sept 1920."
+   },
+   {
+    "claim": "Success due to Polish artillery tactics",
+    "verdict": "unverifiable-or-invented",
+    "note": "Not a standard explanation; Komarów was a cavalry battle."
+   },
+   {
+    "claim": "Bolshevism as 'rewolucja z zewnątrz'",
+    "verdict": "unverifiable-or-invented",
+    "note": "Invented label."
+   },
+   {
+    "claim": "Treaty of Riga 1921 negotiated with RSFSR",
+    "verdict": "correct",
+    "note": "Also with Soviet Ukraine; 18 Mar 1921."
+   },
+   {
+    "claim": "War secured Wilno and Lwów",
+    "verdict": "incorrect",
+    "note": "Wilno taken by Żeligowski's staged mutiny Oct 1920, incorporated 1922; not a result of the war or the treaty."
+   },
+   {
+    "claim": "Border lasted two decades",
+    "verdict": "correct",
+    "note": "Until 1939."
+   }
+  ],
+  "A_before_deduction": 5,
+  "factual_errors": [
+   {
+    "claim": "Wojna/traktat zabezpieczyły Wilno",
+    "correction": "Wilno came via Żeligowski's action (Oct 1920) and incorporation of Central Lithuania (1922)."
+   }
+  ],
+  "A_deduction": 1,
+  "A": 4,
+  "B": 3,
+  "total": 7,
+  "format_score": 2,
+  "format_issues": [
+   "'Temat nr 1' line mirrors the answer-sheet field; not counted as a wrapper"
+  ],
+  "comment": "The military part is reasonably concrete. The political and territorial parts are generic, and the Wilno attribution is wrong."
+ },
+ {
+  "code": "E19",
+  "topic_elements": [
+   "militarny",
+   "polityczny",
+   "terytorialny"
+  ],
+  "elements": [
+   {
+    "element": "militarny",
+    "level": "satisfying",
+    "note": "Battle of Warsaw and flanking manoeuvre, Piłsudski; imprecise on where the manoeuvre came from."
+   },
+   {
+    "element": "polityczny",
+    "level": "superficial",
+    "note": "Riga March 1921; wrongly assigns the federation concept to the Bolsheviks."
+   },
+   {
+    "element": "terytorialny",
+    "level": "superficial",
+    "note": "Generic statement of eastern border gains."
+   }
+  ],
+  "functional_knowledge": "full-1",
+  "claims": [
+   {
+    "claim": "War 1919–1921",
+    "verdict": "correct",
+    "note": ""
+   },
+   {
+    "claim": "Battle of Warsaw August 1920 stopped the Red Army",
+    "verdict": "correct",
+    "note": ""
+   },
+   {
+    "claim": "Flanking manoeuvre coordinated by 'gen.' Józef Piłsudski",
+    "verdict": "correct",
+    "note": "He was Naczelny Wódz (marshal from 1920); the manoeuvre came from the Wieprz, not the Warsaw foreground. Imprecise."
+   },
+   {
+    "claim": "Bolshevik march toward Berlin and Paris",
+    "verdict": "correct",
+    "note": "Rhetoric consistent with Soviet aims."
+   },
+   {
+    "claim": "Treaty of Riga March 1921",
+    "verdict": "correct",
+    "note": "18 Mar 1921."
+   },
+   {
+    "claim": "Rejection of a federation concept proposed by the Bolsheviks",
+    "verdict": "incorrect",
+    "note": "The federation concept was Piłsudski's own plan; Riga marked its failure."
+   },
+   {
+    "claim": "Border included parts of today's Belarus and Ukraine",
+    "verdict": "correct",
+    "note": ""
+   },
+   {
+    "claim": "Territories held until September 1939",
+    "verdict": "correct",
+    "note": ""
+   }
+  ],
+  "A_before_deduction": 5,
+  "factual_errors": [
+   {
+    "claim": "koncepcja federacyjna zaproponowana przez bolszewików",
+    "correction": "The federation idea was Piłsudski's; the Riga treaty ended it."
+   }
+  ],
+  "A_deduction": 1,
+  "A": 4,
+  "B": 3,
+  "total": 7,
+  "format_score": 2,
+  "format_issues": [
+   "'Temat nr 1' line mirrors the answer-sheet field; not counted as a wrapper",
+   "minor grammar ('Kluczowym momentem był Bitwa Warszawska')"
+  ],
+  "comment": "Coherent, but thin beyond the Battle of Warsaw. It contains a clear causal/attribution error about the federation concept."
+ }
+]

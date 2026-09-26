@@ -242,6 +242,27 @@ class Tests(unittest.TestCase):
                 if not isinstance(response, Exception):
                     self.assertEqual(answers[0]["usage"][0]["eval_count"], 20)
 
+    def test_context_truncated_alias_stops_wave_preserving_observed_usage(self):
+        response = {**response_ok("must not be accepted"), "truncated": False, "context_truncated": True}
+        fake = FakeTransport([response])
+        tasks = [self.task("critic", "first"), self.task("baseline", "later-baseline"),
+                 self.task("pf_statementwise", "later-pf"), self.task("thinking", "later-thinking")]
+        result, answers, ledger, run = self.run_tasks(tasks, fake)
+        self.assertEqual([a["status"] for a in answers], ["failed", "unsent", "unsent", "unsent"])
+        self.assertTrue(all(a["answer"] is None for a in answers))
+        self.assertEqual([s["status"] for s in answers[0]["stages"]], ["failed", "unsent"])
+        self.assertTrue(all(s["status"] == "unsent" for a in answers[1:] for s in a["stages"]))
+        self.assertEqual(len(answers[0]["usage"]), 1)
+        self.assertEqual(answers[0]["usage"][0]["prompt_eval_count"], 50)
+        self.assertEqual(answers[0]["usage"][0]["eval_count"], 20)
+        self.assertEqual(fake.generated, 1)
+        self.assertEqual(result["reserved_calls"], 1)
+        self.assertEqual(result["requested_tokens_including_thinking"], self.m["num_predict"])
+        self.assertEqual(sum(row["event"] == "reserved" for row in ledger), 1)
+        self.assertFalse(any(row["event"] == "completed" for row in ledger))
+        raw = [json.loads(row) for row in (run / "private-envelopes.jsonl").read_text().splitlines()]
+        self.assertEqual([row["response"] for row in raw if row.get("event") == "response"], [response])
+
     def test_health_no_warmup_and_preflight_failure_preserves_unsent(self):
         fake = FakeTransport()
         fake.change_after = True
@@ -268,7 +289,9 @@ class Tests(unittest.TestCase):
 
     def test_thinking_actual_behavior_and_error_truncation_context_guards(self):
         for response in ({**response_ok(), "error": ""}, {**response_ok(), "error": {}},
-                         {**response_ok(), "truncated": True}, {**response_ok(), "prompt_eval_count": 32700},
+                         {**response_ok(), "truncated": True},
+                         {**response_ok(), "truncated": False, "context_truncated": True},
+                         {**response_ok(), "prompt_eval_count": 32700},
                          response_ok(thinking="unexpected")):
             with self.subTest(response=response), self.assertRaises(lab.StopWave):
                 lab.answer_and_usage(response, self.m, False)

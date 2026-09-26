@@ -1,0 +1,2 @@
+# Preserve independently reviewed artifacts and SHA manifests byte-for-byte.
+* -text whitespace=cr-at-eol
