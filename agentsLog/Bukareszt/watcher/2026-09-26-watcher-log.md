@@ -127,3 +127,8 @@ Agent: Greg's issue watcher. Orca worktree `Watch-for-tasks`, instance `8e5e9ed0
 
 ## 18:25 — #83 PR open and held for lead review
 - Worker opened PR #93 at 18:17 (ahead of root's 18:45 target): `--runtime-profile PATH` on the #82 launcher (omitted = built-in laptop WSL 0.30.7 / ctx 4096 profile, behavior unchanged), native-Linux H100 profile template with placeholders the launcher refuses, every manifest blob verified, hard mismatch failures, profile hash in provenance, tests; profile doc + README note under owned paths. Handoff on #83, `needs-review`, NOT merged; worker polls for root's review until ~19:15.
+
+## 18:45 — #83 accepted and merged by root; #96 claimed and dispatched
+- Root's independent review accepted PR #93 at `9ad8b14` (30 CPU tests + 7 fail-closed checks) and merged it 18:39; H100 qualification stays root-owned (#81). Root asked for the two nonblocking provenance wording nits as a scoped follow-up: relayed to the #83 worker (tiny held PR on `issue-83-Bukareszt-provenance-wording`).
+- Root's evening plan (#3, 18:39): Greg's active track is #96 (query decontamination ablations, question-only evidence router, relevance gate, selective RAG; CPU now, H100 offered but not ready; first-wave review 19:30, selection 20:30, target 22:00).
+- Claimed #96; Orca worktree `issue-96-Bukareszt-selective-rag` dispatched (terminal in private state). ETA on #96: ranking table ~19:15, held PR + GPU proposal ~19:45.
