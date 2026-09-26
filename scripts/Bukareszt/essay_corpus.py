@@ -708,6 +708,7 @@ def cmd_export(args):
            "repair_pairs": sum(r["task_type"] == "essay_repair" for r in train),
            "by_origin": {o: sum(r["origin"] == o for r in train) for o in sorted({r["origin"] for r in train})},
            "root_rows_rejected": root_rejected,
+           "train_source_groups": len(tg), "train_connected_components": len({comp[g] for g in tg}),
            "component_of_group": {g: comp[g] for g in sorted(tg | eg) if comp[g] != g},
            "train_groups_overlapping_pewciu6_dev": sorted(g for g in tg if g in dev_pewciu6_clusters()),
            "train_groups": sorted(tg), "eval_groups": sorted(eg), "shared_groups": leak,
@@ -723,11 +724,35 @@ def cmd_export(args):
     return 0
 
 
+def cmd_counts(args):
+    """Source groups vs connected components of an existing (possibly frozen) export; read-only."""
+    cfg, _, _ = load_clusters()
+    comp = components(cfg)
+    out = {}
+    for d in args.export_dirs:
+        d = Path(d)
+        tr = load_jsonl(d / "train_sft.jsonl")
+        ev = load_jsonl(d / "eval16_input.jsonl")
+        tg = {r["source_group_id"] for r in tr}
+        tc, ecs = {comp[g] for g in tg}, {comp[r["source_group_id"]] for r in ev}
+        out[d.name] = {"train_rows": len(tr), "train_source_groups": len(tg), "train_connected_components": len(tc),
+                       "merged": {g: comp[g] for g in sorted(tg) if comp[g] != g},
+                       "eval_items": len(ev), "eval_components": len(ecs), "shared_components": sorted(tc & ecs),
+                       "train_sha256": sha256_file(d / "train_sft.jsonl"), "eval_sha256": sha256_file(d / "eval16_input.jsonl")}
+    print(json.dumps(out, ensure_ascii=False, indent=1))
+    if args.out:
+        Path(args.out).write_text(json.dumps(out, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    return 1 if any(v["shared_components"] for v in out.values()) else 0
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = ap.add_subparsers(dest="cmd", required=True)
     sub.add_parser("groups")
     sub.add_parser("evalcards")
+    ct = sub.add_parser("counts")
+    ct.add_argument("export_dirs", nargs="+")
+    ct.add_argument("--out")
     lg = sub.add_parser("ledger")
     lg.add_argument("--essays", nargs="+", required=True)
     lg.add_argument("--reviews", nargs="+", required=True)
@@ -748,7 +773,7 @@ def main(argv=None):
     e.add_argument("--repairs")
     e.add_argument("--out-dir", required=True)
     a = ap.parse_args(argv)
-    return {"groups": cmd_groups, "evalcards": cmd_evalcards, "ledger": cmd_ledger, "check": cmd_check, "repairs": cmd_repairs, "export": cmd_export}[a.cmd](a)
+    return {"groups": cmd_groups, "evalcards": cmd_evalcards, "counts": cmd_counts, "ledger": cmd_ledger, "check": cmd_check, "repairs": cmd_repairs, "export": cmd_export}[a.cmd](a)
 
 
 if __name__ == "__main__":

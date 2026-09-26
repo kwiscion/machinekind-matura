@@ -1,3 +1,4 @@
 # Local-only build products of the retrieval slice (rebuild with scripts/retrieval.py)
 raw/
 index/
+essay_corpus/export_rebuild/

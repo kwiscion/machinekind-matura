@@ -21,5 +21,10 @@ $PY groups >/dev/null
 $PY evalcards >/dev/null
 $PY ledger --essays "${ESS[@]}" --reviews "${REV[@]}" --checks "${CHK[@]}" --out "$E/ledger.jsonl"
 $PY repairs --essays "${ESS[@]}" --reviews "${REV[@]}" --out "$E/repairs_v1.jsonl"
-rm -rf "$E/export_v1"
-$PY export --essays "${ESS[@]}" --reviews "${REV[@]}" --repairs "$E/repairs_v1.jsonl" --out-dir "$E/export_v1"
+# Committed exports (export_pilot_v1, export_v1) are frozen; rebuild into an ignored dir and compare.
+rm -rf "$E/export_rebuild"
+$PY export --essays "${ESS[@]}" --reviews "${REV[@]}" --repairs "$E/repairs_v1.jsonl" --out-dir "$E/export_rebuild" >/dev/null
+for f in train_sft.jsonl eval16_input.jsonl attribution.jsonl; do
+  if cmp -s "$E/export_rebuild/$f" "$E/export_v1/$f"; then echo "rebuild matches export_v1/$f"; else echo "rebuild DIFFERS from export_v1/$f"; fi
+done
+$PY counts "$E/export_pilot_v1" "$E/export_v1" --out "$E/export_counts_correction.json" >/dev/null

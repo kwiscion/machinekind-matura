@@ -1,0 +1,57 @@
+{
+ "eval_cards": {
+  "ev-01-f03": {
+   "verdict": "ok",
+   "note": "Quote verbatim (incl. the 'ateńskiej propagandy' caveat; source typo 'tezę te' preserved); fact faithful and now hedged."
+  },
+  "ev-04-f04": {
+   "verdict": "ok",
+   "note": "Quote verbatim, extended with the malnutrition sentence; fact faithful. Card remains a pre-plague cause, not an effect."
+  },
+  "ev-05-f09": {
+   "verdict": "problem",
+   "note": "Minor: quote is verbatim but only says the Polish units 'napotkały' the rearguard; the fact's 'rozbiło' comes from the NEXT source sentence ('Korzystając z zaskoczenia, Polacy rozbili wrogi oddział, biorąc do niewoli rannego dowódcę wyprawy Dietricha von Altenburga'). Content is true per source; extend the quote with that sentence or change 'rozbiło' to 'napotkało'."
+  },
+  "ev-05-f11": {
+   "verdict": "ok",
+   "note": "Quote verbatim; 'tego samego dnia' is justified by the preceding sentence (rankiem 27 września → Po południu). Faithful."
+  },
+  "ev-04-f11": {
+   "verdict": "ok",
+   "note": "Quote verbatim; 'drugiej połowie stulecia' is the 14th century in context. Faithful."
+  },
+  "ev-04-f12": {
+   "verdict": "ok",
+   "note": "Quote verbatim; the source links the same phenomena in Poland and Western Europe to the population collapse (food surplus → lower prices; labour shortage → higher wages). Fact slightly narrows the mechanism to Western Europe but is faithful."
+  }
+ },
+ "eval04_economic_coverage_ok": true,
+ "eval04_note": "With ev-04-f11/f12 (wages up, grain prices down, labour shortage, food surplus, forest expansion) plus ev-04-f10 (fewer settlements), the economic aspect of Temat 1 is now adequately supported.",
+ "audit": {
+  "verden-date": {
+   "verdict": "ok",
+   "note": "sha256 matches. Excerpt found except a transcription difference: file reads 'ad occidendun IIIID' (audit wrote 'occidendum'). The passage lies between '[782] DCCLXXXII' and '[783] DCCLXXXIII', so IIIID (=4500) is under 782 — supports the correction. Attribution verified: exported b1r charlemagne uses b1r-charlemagne-f04 (no date), not b1-charlemagne-f06; '799/800' occurs 0 times in both exports. Fix the excerpt spelling to 'occidendun'."
+  },
+  "yalta-lands": {
+   "verdict": "ok",
+   "note": "Both sha256 match. Yalta excerpt verbatim. Potsdam excerpt: file (OCR) reads 'territories cast of a line' where the audit wrote 'east'; otherwise present. Both references support the stated correction. Attribution verified: b2r conferences uses b2-conferences-f04/f14 and not f05; 'ziemię lubuską' occurs 0 times in exports; corrected sentence 'jednak ich zakresu w Jałcie nie ustalono' is exported. Note the transcription difference in the excerpt."
+  },
+  "lithuania-independence": {
+   "verdict": "ok",
+   "note": "sha256 matches. Excerpt fragments present but stitched: 'I-12 Dėl Lietuvos nepriklausomos valstybės atstatymo' and 'Rūšis: Aktas Priėmimo data: 1990-03-11 ... Dokumento Nr.: I-12' occur in different places of the page (the title before 'Rūšis' appears without the 'I-12' prefix). Supports 11 March 1990. Attribution verified: b2-ussr-f14 is used only in the ussr off_topic_fact_ids; essay uses b2-ussr-f10; the ussr off-topic paragraph and the string 'Litwa, Łotwa, Estonia i Ukraina' occur 0 times in exports."
+  },
+  "reparations-2010": {
+   "verdict": "ok",
+   "note": "sha256 matches; both excerpt fragments verbatim. Reference supports 'final reparations-related payment ... on bonds issued 1924–1930', i.e. not settlement of the original bill. Attribution verified: b1r versailles uses b1-versailles-f08 and b1r-versailles-f01; wrong phrasing ('Ostatecznie reparacje spłacono', 'spłacone zostały dopiero') occurs 0 times in exports; corrected sentence exported. Limitation correctly stated (secondary library blog)."
+  },
+  "export_hashes": {
+   "verdict": "ok",
+   "note": "export_v1/train_sft.jsonl and export_pilot_v1/train_sft.jsonl sha256 match the recorded values; the three astra_* reference-file hashes also match. N-gram overlap claims were not re-run."
+  }
+ },
+ "reviewer": {
+  "agent": "claude subagent (independent reviewer, issue #117)",
+  "model": "claude-opus-5-5"
+ },
+ "reviewed_at": "2026-09-26T19:56:43Z"
+}
