@@ -6,6 +6,7 @@ import argparse
 import base64
 import ipaddress
 import json
+import math
 import os
 import sys
 import time
@@ -17,6 +18,8 @@ from pathlib import Path
 
 MAX_CALLS = 100
 MAX_OUTPUT_TOKENS = 4096
+# OpenAI chat-completions documents temperature as 0-2; Ollama 0.30.7 forwards it unchanged.
+TEMPERATURE_RANGE = (0.0, 2.0)
 MAX_IMAGE_BYTES = 20 * 1024 * 1024
 IMAGE_TYPES = {
     b"\x89PNG\r\n\x1a\n": "image/png",
@@ -83,6 +86,11 @@ def load_config(path: Path, allow_remote: bool) -> dict:
     effort = config.get("reasoning_effort")
     if effort is not None and effort not in ("none", "low", "medium", "high"):
         raise ValueError("reasoning_effort must be none, low, medium, or high")
+    if "temperature" in config:
+        temperature = config["temperature"]
+        low, high = TEMPERATURE_RANGE
+        if type(temperature) not in (int, float) or not low <= temperature <= high or not math.isfinite(temperature):
+            raise ValueError(f"temperature must be a finite number from {low:g} to {high:g} when provided")
     if "model_revision" in config and not isinstance(config["model_revision"], str):
         raise ValueError("model_revision must be a string when provided")
     key_name = config.get("api_key_env")
@@ -169,6 +177,8 @@ def run_case(case: dict, config: dict) -> dict:
     }
     if config.get("reasoning_effort") is not None:
         payload["reasoning_effort"] = config["reasoning_effort"]
+    if "temperature" in config:
+        payload["temperature"] = config["temperature"]
     headers = {"Content-Type": "application/json"}
     if config.get("api_key_env"):
         headers["Authorization"] = "Bearer " + os.environ[config["api_key_env"]]

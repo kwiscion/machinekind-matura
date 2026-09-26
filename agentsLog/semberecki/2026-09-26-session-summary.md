@@ -79,9 +79,58 @@ verbatim rules). Actions completed by ~17:20 CEST:
 
 1. Keep the quarter-hour watcher polling (cron running; check
    `watcher/2026-09-26-watcher-log.md` for new findings each tick).
-2. Commit the smoke-result reports on `issue-33-semberecki-smoke`, push, PR.
-3. Await the lead's frozen RTX handoff (visual diagnostic or bounded RAG on
+2. Await the lead's frozen RTX handoff (visual diagnostic or bounded RAG on
    #57); do not start any full arm independently.
+
+## Manifest v2 + throughput — 17:50 CEST
+
+The 17:22 cron tick caught reviewer feedback predating the 17:35 artifact:
+@ljaniec (independent #38 review of PR #69) asked to fix the stale `tgz`
+filename and complete the provenance manifest; @kwiscion asked for RTX
+throughput evidence vs the few-minutes-per-answer rule concern. Completed by
+~17:50 CEST:
+
+- **Smoke 3/4 used** (longer synthetic generation, generic content): 233 tok in
+  4.32 s = **54.0 tok/s sustained warm**; smoke 4 reserved. Envelope: 3/4, all
+  PASS, $0, no exam material.
+- **Provenance complete** (source metadata kept separate from load evidence):
+  archive `ollama-linux-amd64.tar.zst` v0.34.4 sha256 `c238986e…b9533`;
+  executable sha256 `ad9c5344…92ff4`; driver NVIDIA 13.2, backend CUDA
+  (`ollama,cuda_v13`); full local manifest layer digests; effective context
+  32768 from actual `/api/ps`; stale `tgz` corrected.
+- **Throughput vs rules concern**: laptop reference mean 37.4 s per completed
+  answer (partial CPU offload); RTX warm ~4–5 s per 116-word answer — roughly
+  **8× faster per answer**; a full 40-call arm fits the rule with margin. Cold
+  load ≈ 58 s incl. model load.
+- Manifest posted to #33 (comment 5847487636) + pointer on #38 (comment
+  5847489914). Committed on `issue-33-semberecki-smoke`, merged as **PR #73**
+  (3ca2a54). Artifacts:
+  `agentsLog/semberecki/2026-09-26-rtx5090-gemma-prep.{md,json}`.
+
+Owner question "should I install ollama?" answered ~17:40: no — user-local
+0.34.4 install already done and verified; system-wide install unnecessary;
+no-systemd caveat documented (relaunch via `OLLAMA_MODELS=$HOME/.ollama/models
+~/.local/ollama/bin/ollama serve` after a reboot).
+
+## Manifest v3 + control check — 17:45 CEST
+
+Continuation tick at 15:37:04Z (17:37 CEST) caught @ljaniec's independent
+acceptance checklist (predating v2) and @kwiscion's image-token control
+request. Completed ~17:45 CEST, zero model calls, smoke 4 still reserved:
+
+- Full synthetic-image SHA-256 `b33a595b…f5566d`; per-smoke load/prefill/decode
+  split in the JSON; per-call context note (no override, 32768); memory
+  reading qualified as a single nvidia-smi sample.
+- Image-token control on 0.34.4: `--image-min-tokens`/`--image-max-tokens`
+  exist in the bundled llama-server; `ollama serve` reads `LLAMA_ARG_*` env;
+  serve process holds 72 inherited env vars; direct backend-env capture
+  pending a runtime probe (llama-server unloads on keep_alive expiry).
+- Posted to #33 (5847573297) and #38 (5847573439); merged as **PR #76**
+  (ec06de5).
+- WINNING_PLAN.md updated to a 17:12 decision record: lead's frozen bounded-RAG
+  arm on the laptop (cutoff 17:40, in-flight 420 s requests to 17:47); 18:00
+  gate = honest score vs 48/60; Sunday decision memo after 18:00. My RTX stays
+  readiness-only until the lead declares a GPU job.
 
 Key finding: the lead's "sole laptop worker" (frozen bare-source-v2 RAG arm,
 cutoff 17:40) is NOT on this machine — no project inference process runs here,
