@@ -1,0 +1,79 @@
+{
+  "status": "PASS",
+  "files": [
+    {
+      "path": "blobs/sha256-0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+      "purpose": "metadata",
+      "bytes": 10174,
+      "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594"
+    },
+    {
+      "path": "blobs/sha256-1278394b693672ac2799eadc9a83fd98259a6a88a40acfb1dcaa6c6fc895a606",
+      "purpose": "model",
+      "bytes": 7381382048,
+      "sha256": "1278394b693672ac2799eadc9a83fd98259a6a88a40acfb1dcaa6c6fc895a606"
+    },
+    {
+      "path": "blobs/sha256-56380ca2ab89f1f68c283f4d50863c0bcab52ae3f1b9a88e4ab5617b176f71a3",
+      "purpose": "metadata",
+      "bytes": 42,
+      "sha256": "56380ca2ab89f1f68c283f4d50863c0bcab52ae3f1b9a88e4ab5617b176f71a3"
+    },
+    {
+      "path": "blobs/sha256-675ad6e68101ca9413ec806855c452362f0213f2dfc5800996b086fdb8119842",
+      "purpose": "projector",
+      "bytes": 175115584,
+      "sha256": "675ad6e68101ca9413ec806855c452362f0213f2dfc5800996b086fdb8119842"
+    },
+    {
+      "path": "blobs/sha256-c805f5b265d8e695c44f4065dfc368206cd8026447604925fef8db57ee32ee23",
+      "purpose": "metadata",
+      "bytes": 548,
+      "sha256": "c805f5b265d8e695c44f4065dfc368206cd8026447604925fef8db57ee32ee23"
+    },
+    {
+      "path": "manifests/registry.ollama.ai/library/gemma4/12b-it-q4_K_M",
+      "purpose": "metadata",
+      "bytes": 905,
+      "sha256": "4eb23ef187e2c5462566d6a1d3bbbc2f1346d0b4327cbb66d58fffbcc9b2b05c"
+    }
+  ],
+  "counted_bytes": 7556509301,
+  "limit_bytes": 8800000000,
+  "remaining_bytes": 1243490699,
+  "sidecars_preserved": [
+    {
+      "path": "metadata/sha256-1278394b693672ac2799eadc9a83fd98259a6a88a40acfb1dcaa6c6fc895a606.json",
+      "bytes": 20485,
+      "sha256": "8f954544d97dc699e9207d9cf6adaf218ad85cacb79e80658773f67055b9d201"
+    },
+    {
+      "path": "metadata/sha256-675ad6e68101ca9413ec806855c452362f0213f2dfc5800996b086fdb8119842.json",
+      "bytes": 1313,
+      "sha256": "967b9b4e16f77cbe5e84fd4dc0d987c67887af16e741aa7408ff0233b200d968"
+    }
+  ],
+  "methods": {
+    "manifests/registry.ollama.ai/library/gemma4/12b-it-q4_K_M": "hardlink",
+    "blobs/sha256-c805f5b265d8e695c44f4065dfc368206cd8026447604925fef8db57ee32ee23": "hardlink",
+    "blobs/sha256-1278394b693672ac2799eadc9a83fd98259a6a88a40acfb1dcaa6c6fc895a606": "hardlink",
+    "blobs/sha256-675ad6e68101ca9413ec806855c452362f0213f2dfc5800996b086fdb8119842": "hardlink",
+    "blobs/sha256-0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594": "hardlink",
+    "blobs/sha256-56380ca2ab89f1f68c283f4d50863c0bcab52ae3f1b9a88e4ab5617b176f71a3": "hardlink"
+  },
+  "stage": "/home/shadeform/machinekind-matura-h100-readiness-20260926/native-clean-stage-20260926T2227",
+  "completed_utc": "2026-09-26T22:25:43.256006+00:00",
+  "elapsed_seconds": 7.970190370997443,
+  "model_calls": 0,
+  "services_started": 0,
+  "authorization": "root CPU-only <=5min restage after attempt1; no execution",
+  "guard_sha256": "8ec6a7cf2f75615c2713c9db9e1cae408087be251b9b0e11437fe31e4c230473",
+  "prepared_manifest_sha256": "2e53c8580eb3356366eccccc1a9e580b6307eb3271992554d37b2a71e6957b30",
+  "package_archive_sha256": "98f66c21eb6dd979be417138d35271f487d792fb9d9b2e9470ab1c2dea719a5a",
+  "stage_evidence_archive_sha256": "a3ecaa39f66f6c37b6d8f79fc4b339e13e209904ad436a6af1c8e04d4250e2f3",
+  "package_status": "PREPARED",
+  "declared_utc": null,
+  "deadline_utc": null,
+  "cpu_package_preflight": "PASS",
+  "all_code_source_pins_unchanged": true
+}

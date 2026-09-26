@@ -1,0 +1,76 @@
+{
+  "status": "FAIL_PRE_SERVER_ZERO_CALLS",
+  "attempt": "native-qualification-20260926T2215",
+  "authorization": {
+    "owner": "root",
+    "reference": "Root explicit two-synthetic-item H100 generic-runner declaration; https://github.com/kwiscion/machinekind-matura/issues/3",
+    "max_calls": 2,
+    "max_requested_tokens": 20480,
+    "max_seconds": 1200
+  },
+  "declared_utc": "2026-09-26T22:20:58.002975+00:00",
+  "deadline_utc": "2026-09-26T22:40:58.002975+00:00",
+  "started_utc": "2026-09-26T22:22:08.845998+00:00",
+  "finished_utc": "2026-09-26T22:22:09.353995+00:00",
+  "operator_exit_code": 2,
+  "transport_exit_code": 0,
+  "actual_calls": 0,
+  "actual_requested_tokens": 0,
+  "actual_output_tokens": 0,
+  "call_limit": 2,
+  "requested_token_limit": 20480,
+  "retries": 0,
+  "no_essay": true,
+  "error": "STOP: Missing/unlisted staged files: ['metadata/sha256-1278394b693672ac2799eadc9a83fd98259a6a88a40acfb1dcaa6c6fc895a606.json', 'metadata/sha256-675ad6e68101ca9413ec806855c452362f0213f2dfc5800996b086fdb8119842.json']",
+  "results_directory_created": false,
+  "semantic_checks": "NOT_REACHED",
+  "original_exam_template_image_exact": true,
+  "dependency_pins_verified": true,
+  "postcheck": {
+    "utc": "2026-09-26T22:22:09.345493+00:00",
+    "workers": [],
+    "gpu_pids": [],
+    "resident_models": [],
+    "unchanged_host_server_pid": 41324,
+    "unchanged_host_server_start_ticks": "1492297"
+  },
+  "elapsed_declaration_to_terminal_seconds": 71.35102,
+  "cost_proxy": {
+    "hourly_usd": 3.28,
+    "declaration_to_terminal_usd": 0.065009,
+    "authorized_ceiling_usd": 1.1,
+    "actual_provider_billing": "not measured; proxy is not marginal/billed cost"
+  },
+  "hashes": {
+    "prepared_launch": "e3dcd14655ffd0a060209defc2ac59d7d22ef13a815d8a7c766aa87dbd796ca4",
+    "declared_launch": "b7b823369174a6da22f81f0fe4ef9933fb1f90657eb9bf59e31a7d8822a02b1d",
+    "evidence_archive": "eb640320e92b04089db3702b4a6b777217455c566f345b502956c24f5a0b8b92",
+    "terminal_operator_receipt": "6b7de2ddb0821815a6494f6f05038deefcc35353e17a725269ddf50acbb9f265",
+    "operator_stderr": "8d7deca2e83b298255265d89b8b92361541da929270170b29c11754e11c7933a",
+    "host_precheck": "c3ea088fb6f45a45e400c1e31980071c65b0dd20b7fc28afae4fb3ae19713c15",
+    "host_postcheck": "7960f6d222393893a0be4414ca536f566c7aed66ad3bcf83a34a1435c12e0866",
+    "fixture": "b4467f0dd939cb7b8af870bf39e79c2433610e765485791c8524ca7a245577b8"
+  },
+  "code_pins": {
+    "guard.py": "8ec6a7cf2f75615c2713c9db9e1cae408087be251b9b0e11437fe31e4c230473",
+    "infer.py": "d307356518aa8b35534525ceff39b9f3478366204ef5c3c81dd1299b3aacd782",
+    "input.jsonl": "424c624290fb5305447eb01aa3ca690c04a3741c6e95246b17a9c174a6db1b0a",
+    "input.original.jsonl": "9ce689314941b37d2cb85c6ddebcc7adb29af92926ed3e6f76992a5279513715",
+    "input.original.jsonl.manifest.json": "17d6d5597cc056f9960caabce67126870e5132f6d71797db499f3d44ad2fd6e2",
+    "offline_rehearsal.py": "376298ea5a17c603521b66ed9922485ea76f0033eacb0f53642fa0827986f7a5",
+    "operator_native.sh": "9954a491ffb2f276d3b0d8354bd4fa0e25efc74116a3466b15fd54792d8ba80d",
+    "prepare_native_package.py": "94c5cec3fd8d166543374c499c6fa60ca9ecbad41a6ff21bf03dd0e6a3979ad3",
+    "routes.json": "65f20712eeda4d1d05f250aed99b7ba176c7e74bd8ea424d37e9e2251c0dd33f",
+    "run_gemma_offline.py": "d4f26d319b88d479ad3eaa0a7afe2d4ce68706e4dd75324e5d4d4d83fa1c036b",
+    "run_native_package.py": "1bca2caef1f49ea83aa77c5970db2b9a00e26c02f28ee60a3c45af6663bd12f2",
+    "exam/answers-template.json": "07dece40c46a3cae9f344f7b4d4ec34bb72fbcd47b9a3b5fbd785d4e66eca6ff",
+    "exam/exam.json": "432e2476b07972f6c97ab94c49a6dbd2bbdb9d9801107d40cb21d5bf8618f350",
+    "exam/images/fixture.png": "b4467f0dd939cb7b8af870bf39e79c2433610e765485791c8524ca7a245577b8",
+    "scripts/Bukareszt/matura_package.py": "bec8b33731e24ff1ea845e7c7b0908d3227121986125cef8967fc384a1d8af74"
+  },
+  "limitations": [
+    "No model generation, isolated server, namespace proof, finalizer or cleanup path reached; generic runtime remains unqualified.",
+    "Cache inventory failed before its complete weight hash verification; pinned staged byte total was a declaration, not reverified by this attempt.",
+    "No retry, modification of cache or host service, or extra model call followed. Original failed package-v4 attempt preserved."
+  ]
+}

@@ -1,0 +1,1032 @@
+[
+  {
+    "id": "bk117-eval-05",
+    "source_group_id": "C-lokietek",
+    "prompt_sha256": "1b5d789c226dc825d0f08aac9fd2d5e776f57bb8788f0b678eb8486f44bf5a87",
+    "status": "ready_for_independent_review",
+    "topics": [
+      {
+        "number": 1,
+        "requirements": [
+          "Evaluate Łokietek’s contribution to unification; support a position with historical reasoning.",
+          "Cover political and military aspects; distinguish restoration of kingship from complete territorial reunification."
+        ],
+        "aspects": [
+          {
+            "name": "political",
+            "facts": [
+              {
+                "claim": "Łokietek consolidated Lesser Poland and incorporated Greater Poland in 1314; he was crowned in Kraków on 20 January 1320.",
+                "source_id": "e05-beginnings",
+                "locator": "Sections Spełnia się przepowiednia o jedności and Bilans panowania"
+              },
+              {
+                "claim": "The restored kingdom did not encompass all former Piast territories: Mazovia and Silesia remained outside direct royal rule, while Pomerelia was held by the Order.",
+                "source_id": "e05-fragmentation",
+                "locator": "Paragraph beginning Dopiero po zgonie Przemyślidy: restored kingdom’s listed regions; compare conflict page, final territorial balance"
+              }
+            ],
+            "causal_explanation": "Bringing the two major regions under one ruler and restoring royal status supplied a durable political center. Territorial exclusions limit claims of complete unification."
+          },
+          {
+            "name": "military",
+            "facts": [
+              {
+                "claim": "Royal forces suppressed Albert’s revolt in Kraków in 1311–1312, with Hungarian support.",
+                "source_id": "e05-beginnings",
+                "locator": "Bilans panowania"
+              },
+              {
+                "claim": "Płowce in 1331 brought a local success; Kujawy was nevertheless lost in 1332.",
+                "source_id": "e05-conflict",
+                "locator": "Ciąg dalszy nastąpi, paragraphs on 1331–1332"
+              }
+            ],
+            "causal_explanation": "Suppressing internal opposition secured the political base; resistance to stronger external enemies helped preserve the kingdom but did not recover every disputed region."
+          }
+        ],
+        "traps": [
+          {
+            "claim_or_issue": "Łokietek reunited every Polish/Piast land in 1320.",
+            "classification": "factual_error",
+            "correction_or_caveat": "Coronation restored kingship, not control over all Mazovia, Silesia or Pomerelia.",
+            "source_ids": [
+              "e05-fragmentation"
+            ]
+          },
+          {
+            "claim_or_issue": "Płowce ended the war or recovered Pomerelia permanently.",
+            "classification": "factual_error",
+            "correction_or_caveat": "Płowce did not recover Pomerelia; territorial losses followed and the conflict remained unresolved in 1333.",
+            "source_ids": [
+              "e05-conflict"
+            ]
+          },
+          {
+            "claim_or_issue": "Unification was good because Poland became strong, without an event or mechanism.",
+            "classification": "argument_weakness",
+            "correction_or_caveat": "Connect consolidation or coronation to royal authority, and an actual military action to securing or losing territory.",
+            "source_ids": [
+              "e05-beginnings",
+              "e05-conflict"
+            ]
+          }
+        ],
+        "interpretive_flexibility": "Positive, negative or mixed assessments are permissible if they weigh institutional restoration and durable consolidation against territorial losses and incomplete control. Płowce can be valued for military or symbolic significance without being presented as a decisive strategic victory."
+      },
+      {
+        "number": 2,
+        "requirements": [
+          "Explain relations with the Teutonic Order through concrete developments, methods and results.",
+          "Distinguish initial assistance, occupation, legal proceedings, alliances and war; provide a reasoned position within the common essay instructions."
+        ],
+        "aspects": [
+          {
+            "name": "assistance becoming territorial conflict",
+            "facts": [
+              {
+                "claim": "During the Brandenburg attack in 1308, Gdańsk’s defenders sought Teutonic help with Łokietek’s approval; the Order then seized Gdańsk and completed occupation of Pomerelia in 1309.",
+                "source_id": "e05-beginnings",
+                "locator": "Krzyżacy i utrata Pomorza Gdańskiego"
+              }
+            ],
+            "causal_explanation": "A requested intervention became occupation, turning a prospective helper into a rival over territory and the lower Vistula."
+          },
+          {
+            "name": "legal and diplomatic response",
+            "facts": [
+              {
+                "claim": "Papal judges ordered Pomerelia’s restitution and compensation in February 1321; the Order did not comply.",
+                "source_id": "e05-conflict",
+                "locator": "Fiasko dyplomacji"
+              },
+              {
+                "claim": "Dynastic marriages supported Hungarian and Lithuanian alliances in 1320 and 1325.",
+                "source_id": "e05-conflict",
+                "locator": "Fiasko dyplomacji, final paragraph"
+              }
+            ],
+            "causal_explanation": "Legal vindication could strengthen the claim without enforcing recovery; alliances sought external support against a militarily powerful Order."
+          },
+          {
+            "name": "war and its limits",
+            "facts": [
+              {
+                "claim": "The Order cooperated with John of Luxembourg; the 1332 truce left Pomerelia unrecovered and Kujawy lost.",
+                "source_id": "e05-conflict",
+                "locator": "Wróg mojego wroga and Ciąg dalszy nastąpi"
+              }
+            ],
+            "causal_explanation": "The opposing coalition constrained Polish options; fighting preserved resistance while failing to resolve the territorial dispute."
+          }
+        ],
+        "traps": [
+          {
+            "claim_or_issue": "Łokietek invited the Order to Poland in 1226.",
+            "classification": "factual_error",
+            "correction_or_caveat": "Konrad of Mazovia issued the earlier invitation; Łokietek requested help in 1308.",
+            "source_ids": [
+              "e05-conflict"
+            ]
+          },
+          {
+            "claim_or_issue": "A papal judgment meant Pomerelia was actually returned in 1321.",
+            "classification": "factual_error",
+            "correction_or_caveat": "The favorable judgment was not implemented.",
+            "source_ids": [
+              "e05-conflict"
+            ]
+          },
+          {
+            "claim_or_issue": "An exact total of 10,000 Gdańsk victims is securely known.",
+            "classification": "unsupported_precision",
+            "correction_or_caveat": "The killings are part of the account, but casualty totals are disputed and reliable enumeration is unavailable.",
+            "source_ids": [
+              "e05-beginnings"
+            ]
+          }
+        ],
+        "interpretive_flexibility": "An essay can emphasize legal persistence, military weakness, coalition constraints or the consequences of requesting outside assistance. Different judgments of policy are acceptable when facts and outcomes remain distinct."
+      }
+    ],
+    "sources": [
+      {
+        "source_id": "e05-beginnings",
+        "url": "https://zpe.gov.pl/a/przeczytaj/Dc5f68Xoa",
+        "title": "Przeczytaj – Początki rządów Władysława Łokietka",
+        "publisher": "Zintegrowana Platforma Edukacyjna",
+        "retrieved_at": "2026-09-26",
+        "locator": "Krzyżacy i utrata Pomorza Gdańskiego; Spełnia się przepowiednia o jedności; Bilans panowania",
+        "verification_status": "verified: cited text read independently through web browsing",
+        "rights_note": "Original short factual paraphrases and source pointers only. Page text/images are not copied; third-party redistribution license not assumed. Evaluation only; excluded from training and RAG.",
+        "revision_or_sha256": "Live page accessed 2026-09-26; no local snapshot retained",
+        "license": "Third-party text license not established; only original factual notes retained",
+        "allowed_use": "Independent evaluation evidence only; no training or retrieval ingestion",
+        "local_path": null
+      },
+      {
+        "source_id": "e05-conflict",
+        "url": "https://zpe.gov.pl/a/przeczytaj/D110wXKJn",
+        "title": "Przeczytaj – W uścisku dwóch wrogów. Konflikt z Krzyżakami i Czechami",
+        "publisher": "Zintegrowana Platforma Edukacyjna",
+        "retrieved_at": "2026-09-26",
+        "locator": "Pierwszy cios; Fiasko dyplomacji; Wróg mojego wroga; Ciąg dalszy nastąpi",
+        "verification_status": "verified: cited text read independently through web browsing",
+        "rights_note": "Original short factual paraphrases and source pointers only. Page text/images are not copied; third-party redistribution license not assumed. Evaluation only; excluded from training and RAG.",
+        "revision_or_sha256": "Live page accessed 2026-09-26; no local snapshot retained",
+        "license": "Third-party text license not established; only original factual notes retained",
+        "allowed_use": "Independent evaluation evidence only; no training or retrieval ingestion",
+        "local_path": null
+      },
+      {
+        "source_id": "e05-fragmentation",
+        "url": "https://zpe.gov.pl/a/przeczytaj/DqUXmepMP",
+        "title": "Przeczytaj – Rozbicie dzielnicowe w Polsce na tle dziejów Europy – podsumowanie",
+        "publisher": "Zintegrowana Platforma Edukacyjna",
+        "retrieved_at": "2026-09-26",
+        "locator": "Paragraph beginning Dopiero po zgonie Przemyślidy; restoration and listed territories (web lines 109–110)",
+        "verification_status": "verified: cited text read independently through web browsing",
+        "rights_note": "Original short factual paraphrases and source pointers only. Page text/images are not copied; third-party redistribution license not assumed. Evaluation only; excluded from training and RAG.",
+        "revision_or_sha256": "Live page accessed 2026-09-26; no local snapshot retained",
+        "license": "Third-party text license not established; only original factual notes retained",
+        "allowed_use": "Independent evaluation evidence only; no training or retrieval ingestion",
+        "local_path": null
+      }
+    ],
+    "limits": [
+      "Independent research from the frozen input prompt only. No candidate/model answers or existing evaluation cards inspected; no GPU or model API calls.",
+      "Evidence examples are non-exhaustive. Equivalent accurate examples can satisfy an aspect. Topic 2 coverage dimensions organize the research and do not add mandatory rubric aspects.",
+      "Original English evaluator notes, not a gold essay or prescribed thesis. Causal explanations are evaluator inferences from the cited facts; conclusions remain open to supported argument.",
+      "No May 2025 sealed material, official exam keys, training or RAG use. Input JSONL SHA256: 5979ee0b8e0e4f084cf6070f42d31892ee53c1f5485409b4fc5dac1266055a28.",
+      "ZPE’s beginnings page contains a stray 1920 date in a quoted summary; the explicit narrative gives 20 January 1320. The erroneous date is excluded. Map alternative text is not used as precise geographic evidence.",
+      "No single numerical casualty estimate or unqualified total-victory reading of Płowce is required."
+    ]
+  },
+  {
+    "id": "bk117-eval-06",
+    "source_group_id": "C-absolutism",
+    "prompt_sha256": "a395c1471eef3109c035eac727b4625e40e73ca4abed6013e417e13e00e019c3",
+    "status": "ready_for_independent_review",
+    "topics": [
+      {
+        "number": 1,
+        "requirements": [
+          "Characterize early modern European absolute monarchy and assess its effects on state functioning.",
+          "Cover constitutional/institutional and social aspects; specify periods and examples rather than treating all European monarchies as identical."
+        ],
+        "aspects": [
+          {
+            "name": "constitutional and institutional",
+            "facts": [
+              {
+                "claim": "After Mazarin’s death in 1661, Louis XIV governed without replacing the first minister, using royal councils for policy, administration and finance.",
+                "source_id": "e06-councils",
+                "locator": "The King’s Council; The High Council; The Financial Council"
+              },
+              {
+                "claim": "With Colbert, the crown reorganized administration and finance and promoted trade and manufacture.",
+                "source_id": "e06-court",
+                "locator": "Introductory account of centralized rule and Colbert"
+              }
+            ],
+            "causal_explanation": "Concentrating decisions under the monarch and specialized councils could coordinate administration and mobilize resources; effectiveness still depended on officials and fiscal capacity."
+          },
+          {
+            "name": "social",
+            "facts": [
+              {
+                "claim": "Versailles became the seat of the court in 1682; court service, access and ritual tied nobles to royal patronage.",
+                "source_id": "e06-louis",
+                "locator": "Versailles and royal court sections"
+              },
+              {
+                "claim": "Louis XIV revoked the Edict of Nantes in 1685, exposing Protestants to persecution and emigration.",
+                "source_id": "e06-louis",
+                "locator": "Louis XIV and religion"
+              },
+              {
+                "claim": "Long wars left France exhausted and close to bankruptcy by the end of the reign.",
+                "source_id": "e06-court",
+                "locator": "Final account of the War of the Spanish Succession"
+              }
+            ],
+            "causal_explanation": "Patronage helped manage elites; compulsory religious conformity damaged minorities. The costs of sustained war show how concentrated power could impose burdens and weaken state finances."
+          }
+        ],
+        "traps": [
+          {
+            "claim_or_issue": "Absolute monarchy meant the king had no laws, institutions or practical constraints.",
+            "classification": "factual_error",
+            "correction_or_caveat": "French royal government used councils and operated within fundamental succession and territorial laws; absolutism describes a claim to supreme authority, not unlimited implementation.",
+            "source_ids": [
+              "e06-councils"
+            ]
+          },
+          {
+            "claim_or_issue": "Every early modern European monarchy was absolutist.",
+            "classification": "factual_error",
+            "correction_or_caveat": "England’s 1689 Bill of Rights required parliamentary agreement to taxation, demonstrating a contrasting constitutional trajectory.",
+            "source_ids": [
+              "e06-bill-rights"
+            ]
+          },
+          {
+            "claim_or_issue": "Versailles eliminated the nobility or all estate privileges.",
+            "classification": "factual_error",
+            "correction_or_caveat": "It reorganized elite access and service around royal authority; nobles remained courtiers and army officers.",
+            "source_ids": [
+              "e06-louis"
+            ]
+          },
+          {
+            "claim_or_issue": "Centralization necessarily produced prosperity.",
+            "classification": "interpretation_requires_support",
+            "correction_or_caveat": "Administrative capacity and commercial policy may be credited, but evaluate them alongside war costs and coercion.",
+            "source_ids": [
+              "e06-court",
+              "e06-louis"
+            ]
+          }
+        ],
+        "interpretive_flexibility": "A favorable efficiency assessment, a critical assessment of coercion and fiscal burdens, or a mixed assessment can be justified. France is a strong example, not a compulsory sole case; accurate alternatives such as Russia or Prussia may also support the argument."
+      },
+      {
+        "number": 2,
+        "requirements": [
+          "Present ideological justifications of absolute power and their criticism.",
+          "Explain the reasoning behind a justification and a critique; naming thinkers alone is insufficient."
+        ],
+        "aspects": [
+          {
+            "name": "divine-right justification and moral obligations",
+            "facts": [
+              {
+                "claim": "Bossuet grounded royal authority in scripture, describing it as sacred, paternal, absolute and subject to reason; he also assigned rulers duties to the public good and accountability to God.",
+                "source_id": "e06-bossuet",
+                "locator": "Book III, Articles 1–3; Article 2 proposition 4"
+              }
+            ],
+            "causal_explanation": "Religious legitimacy supported obedience independent of subjects’ approval, while paternal duty supplied moral limits distinct from parliamentary enforcement."
+          },
+          {
+            "name": "security and consent as a contrasting justification",
+            "facts": [
+              {
+                "claim": "Hobbes’s Leviathan (1651), chapters 13–14, links absence of a common power to insecurity and argues for reciprocal restraint of natural rights to obtain peace.",
+                "source_id": "e06-hobbes",
+                "locator": "Chapters XIII–XIV"
+              }
+            ],
+            "causal_explanation": "The fear of civil conflict offers a security-based reason for strong common authority. It should not be reduced to Bossuet’s scriptural argument."
+          },
+          {
+            "name": "criticism through rights and legal accountability",
+            "facts": [
+              {
+                "claim": "Locke’s Second Treatise rejects absolute monarchy as civil government where the ruler cannot be judged by an impartial authority; government should protect life, liberty and estate.",
+                "source_id": "e06-locke",
+                "locator": "Sections 87–94, especially 90–94"
+              },
+              {
+                "claim": "The English Bill of Rights (1689) placed taxation under parliamentary agreement and protected parliamentary speech and elections.",
+                "source_id": "e06-bill-rights",
+                "locator": "Bill of Rights Page 4, description and catalogue entry"
+              }
+            ],
+            "causal_explanation": "Critics asked who can remedy abuses by the ruler. Impartial law and representative institutions supplied alternatives to relying solely on royal virtue."
+          }
+        ],
+        "traps": [
+          {
+            "claim_or_issue": "Bossuet’s account authorizes arbitrary wishes with no obligations.",
+            "classification": "factual_error",
+            "correction_or_caveat": "His divine-right argument also makes authority rational and oriented to public good.",
+            "source_ids": [
+              "e06-bossuet"
+            ]
+          },
+          {
+            "claim_or_issue": "Hobbes’s peace argument is simply divine right.",
+            "classification": "factual_error",
+            "correction_or_caveat": "The cited chapters reason from insecurity and reciprocal restraint; distinguish that rationale from scriptural legitimacy.",
+            "source_ids": [
+              "e06-hobbes",
+              "e06-bossuet"
+            ]
+          },
+          {
+            "claim_or_issue": "Locke’s criticism requires abolition of all monarchy.",
+            "classification": "factual_error",
+            "correction_or_caveat": "The cited objection concerns unchecked power without impartial appeal, not the impossibility of every limited monarchy.",
+            "source_ids": [
+              "e06-locke"
+            ]
+          },
+          {
+            "claim_or_issue": "These ideologies directly describe how all rulers actually governed.",
+            "classification": "argument_weakness",
+            "correction_or_caveat": "Distinguish normative justification from institutional practice; compare a claim of authority with councils or parliamentary limits.",
+            "source_ids": [
+              "e06-councils",
+              "e06-bill-rights"
+            ]
+          }
+        ],
+        "interpretive_flexibility": "Different intellectual selections are permissible if historically accurate and causally explained. Religious, contractual and institutional arguments can be compared without assuming that all advocates shared one rationale or every critic demanded modern democracy."
+      }
+    ],
+    "sources": [
+      {
+        "source_id": "e06-councils",
+        "url": "https://en.chateauversailles.fr/discover/history/key-dates/places-power",
+        "title": "Places of power – Councils",
+        "publisher": "Public Establishment of the Palace, Museum and National Estate of Versailles",
+        "retrieved_at": "2026-09-26",
+        "locator": "Opening paragraph on fundamental laws; The King’s Council; High and Financial Councils",
+        "verification_status": "verified: cited text read independently through web browsing",
+        "rights_note": "Original short factual paraphrases and source pointers only. Page text/images are not copied; third-party redistribution license not assumed. Evaluation only; excluded from training and RAG.",
+        "revision_or_sha256": "Live page accessed 2026-09-26; no local snapshot retained",
+        "license": "Third-party text license not established; only original factual notes retained",
+        "allowed_use": "Independent evaluation evidence only; no training or retrieval ingestion",
+        "local_path": null
+      },
+      {
+        "source_id": "e06-court",
+        "url": "https://en.chateauversailles.fr/discover/resources/versailles-and-royal-court",
+        "title": "Versailles and the Royal Court",
+        "publisher": "Palace of Versailles",
+        "retrieved_at": "2026-09-26",
+        "locator": "Centralized rule, Colbert, nobility and the concluding war-cost discussion",
+        "verification_status": "verified: cited text read independently through web browsing",
+        "rights_note": "Original short factual paraphrases and source pointers only. Page text/images are not copied; third-party redistribution license not assumed. Evaluation only; excluded from training and RAG.",
+        "revision_or_sha256": "Live page accessed 2026-09-26; no local snapshot retained",
+        "license": "Third-party text license not established; only original factual notes retained",
+        "allowed_use": "Independent evaluation evidence only; no training or retrieval ingestion",
+        "local_path": null
+      },
+      {
+        "source_id": "e06-louis",
+        "url": "https://en.chateauversailles.fr/discover/history/great-characters/louis-xiv",
+        "title": "Louis XIV 1638–1715",
+        "publisher": "Palace of Versailles",
+        "retrieved_at": "2026-09-26",
+        "locator": "Court relocation and nobles; religious policy and 1685 revocation",
+        "verification_status": "verified: cited text read independently through web browsing",
+        "rights_note": "Original short factual paraphrases and source pointers only. Page text/images are not copied; third-party redistribution license not assumed. Evaluation only; excluded from training and RAG.",
+        "revision_or_sha256": "Live page accessed 2026-09-26; no local snapshot retained",
+        "license": "Third-party text license not established; only original factual notes retained",
+        "allowed_use": "Independent evaluation evidence only; no training or retrieval ingestion",
+        "local_path": null
+      },
+      {
+        "source_id": "e06-bossuet",
+        "url": "https://revolution.chnm.org/d/234/",
+        "title": "Bossuet, The Nature and Properties of Royal Authority",
+        "publisher": "Roy Rosenzweig Center for History and New Media, George Mason University",
+        "retrieved_at": "2026-09-26",
+        "locator": "Politics Drawn from the Very Words of Holy Scripture, Book III, Articles 1–3",
+        "verification_status": "verified: cited text read independently through web browsing",
+        "rights_note": "Modern translated excerpt may remain copyrighted; no quotation or copied translation retained, only original short factual summary and pointer.",
+        "revision_or_sha256": "Live page accessed 2026-09-26; no local snapshot retained",
+        "license": "Third-party text license not established; only original factual notes retained",
+        "allowed_use": "Independent evaluation evidence only; no training or retrieval ingestion",
+        "local_path": null
+      },
+      {
+        "source_id": "e06-hobbes",
+        "url": "https://sourcebooks.web.fordham.edu/mod/hobbes-lev13.asp",
+        "title": "Thomas Hobbes: Leviathan, chapters 13–14 (1651)",
+        "publisher": "Fordham University Internet History Sourcebooks Project",
+        "retrieved_at": "2026-09-26",
+        "locator": "Chapters XIII–XIV",
+        "verification_status": "verified: cited text read independently through web browsing",
+        "rights_note": "Sourcebook permits educational/personal use subject to its notice; document form may be copyrighted. Only original concise paraphrases retained.",
+        "revision_or_sha256": "Live page accessed 2026-09-26; no local snapshot retained",
+        "license": "Third-party text license not established; only original factual notes retained",
+        "allowed_use": "Independent evaluation evidence only; no training or retrieval ingestion",
+        "local_path": null
+      },
+      {
+        "source_id": "e06-locke",
+        "url": "https://sourcebooks.web.fordham.edu/mod/1690locke-sel.asp",
+        "title": "John Locke: Second Treatise of Government (1690)",
+        "publisher": "Fordham University Internet History Sourcebooks Project",
+        "retrieved_at": "2026-09-26",
+        "locator": "Sections 87–94",
+        "verification_status": "verified: cited text read independently through web browsing",
+        "rights_note": "Sourcebook educational/personal-use notice; no copied transcription, only original factual paraphrases.",
+        "revision_or_sha256": "Live page accessed 2026-09-26; no local snapshot retained",
+        "license": "Third-party text license not established; only original factual notes retained",
+        "allowed_use": "Independent evaluation evidence only; no training or retrieval ingestion",
+        "local_path": null
+      },
+      {
+        "source_id": "e06-bill-rights",
+        "url": "https://www.parliament.uk/about/living-heritage/evolutionofparliament/parliamentaryauthority/revolution/collections1/collections-glorious-revolution/billofrights/image-3/",
+        "title": "Bill of Rights Page 4",
+        "publisher": "UK Parliament / Parliamentary Archives",
+        "retrieved_at": "2026-09-26",
+        "locator": "Description; December 1689; catalogue HL/PO/PU/1/1688/1W&Ms2n2",
+        "verification_status": "verified: cited text read independently through web browsing",
+        "rights_note": "Original short factual paraphrases and source pointers only. Page text/images are not copied; third-party redistribution license not assumed. Evaluation only; excluded from training and RAG.",
+        "revision_or_sha256": "Live page accessed 2026-09-26; no local snapshot retained",
+        "license": "Third-party text license not established; only original factual notes retained",
+        "allowed_use": "Independent evaluation evidence only; no training or retrieval ingestion",
+        "local_path": null
+      }
+    ],
+    "limits": [
+      "Independent research from the frozen input prompt only. No candidate/model answers or existing evaluation cards inspected; no GPU or model API calls.",
+      "Evidence examples are non-exhaustive. Equivalent accurate examples can satisfy an aspect. Topic 2 coverage dimensions organize the research and do not add mandatory rubric aspects.",
+      "Original English evaluator notes, not a gold essay or prescribed thesis. Causal explanations are evaluator inferences from the cited facts; conclusions remain open to supported argument.",
+      "No May 2025 sealed material, official exam keys, training or RAG use. Input JSONL SHA256: 5979ee0b8e0e4f084cf6070f42d31892ee53c1f5485409b4fc5dac1266055a28.",
+      "Examples concentrate on seventeenth-century France and contrasting English thought/institutions; they are not an exhaustive European typology.",
+      "Hobbes evidence here is chapters 13–14; it verifies his security rationale, not every sovereignty claim in later chapters. No requirement to quote a thinker or use an exact royal slogan."
+    ]
+  },
+  {
+    "id": "bk117-eval-07",
+    "source_group_id": "C-batory",
+    "prompt_sha256": "361a45af44797278c57fc54ea38adc6dedced4849ea0c7375eede980a8622247",
+    "status": "ready_for_independent_review",
+    "topics": [
+      {
+        "number": 1,
+        "requirements": [
+          "Evaluate Batory’s reign in the Commonwealth, supporting a position.",
+          "Cover political and military aspects; distinguish negotiated institutions, battlefield gains and settlement limits."
+        ],
+        "aspects": [
+          {
+            "name": "political",
+            "facts": [
+              {
+                "claim": "The Crown Tribunal was created in 1578 and the Lithuanian Tribunal in 1581; noble deputies chosen through local assemblies heard noble appeals.",
+                "source_id": "e07-zpe",
+                "locator": "Sprawy krajowe"
+              },
+              {
+                "claim": "Batory’s 1577 settlement with Gdańsk secured homage and a war indemnity while lifting economic sanctions.",
+                "source_id": "e07-archive",
+                "locator": "Paragraph on the Gdańsk conflict"
+              }
+            ],
+            "causal_explanation": "Judicial concessions helped obtain noble financing for war, while negotiated recognition in Gdańsk consolidated a contested monarchy."
+          },
+          {
+            "name": "military",
+            "facts": [
+              {
+                "claim": "The campaigns took Połock in 1579 and Velikiye Luki in 1580; Pskov was besieged in 1581 but not captured.",
+                "source_id": "e07-archive",
+                "locator": "Paragraph on three campaigns against Muscovy"
+              },
+              {
+                "claim": "The 1582 ten-year Jam Zapolski truce restored Livonian and Połock territory; Velikiye Luki was returned.",
+                "source_id": "e07-psb",
+                "locator": "Paragraph on 15 January 1582 settlement"
+              }
+            ],
+            "causal_explanation": "A sequence of offensives increased negotiating pressure and recovered important territory; siege failure and returned conquests qualify a claim of unlimited military success."
+          }
+        ],
+        "traps": [
+          {
+            "claim_or_issue": "Batory captured Pskov or conquered Moscow.",
+            "classification": "factual_error",
+            "correction_or_caveat": "Pskov resisted; Jam Zapolski was a limited truce, not conquest of Muscovy.",
+            "source_ids": [
+              "e07-archive",
+              "e07-psb"
+            ]
+          },
+          {
+            "claim_or_issue": "All wartime conquests remained permanently in the Commonwealth.",
+            "classification": "factual_error",
+            "correction_or_caveat": "Velikiye Luki was returned in 1582.",
+            "source_ids": [
+              "e07-psb"
+            ]
+          },
+          {
+            "claim_or_issue": "Creating noble tribunals established royal absolutism.",
+            "classification": "factual_error",
+            "correction_or_caveat": "The tribunals strengthened noble judicial participation and limited the king’s appellate role.",
+            "source_ids": [
+              "e07-zpe"
+            ]
+          },
+          {
+            "claim_or_issue": "Winning campaigns proves good government without a political mechanism.",
+            "classification": "argument_weakness",
+            "correction_or_caveat": "Explain how taxes, judicial concessions or negotiated recognition sustained the reign.",
+            "source_ids": [
+              "e07-zpe",
+              "e07-archive"
+            ]
+          }
+        ],
+        "interpretive_flexibility": "A largely positive military evaluation may coexist with criticism of financial dependence or internal tensions. A mixed assessment is equally valid; accurate evidence beyond these examples is admissible."
+      },
+      {
+        "number": 2,
+        "requirements": [
+          "Explain the circumstances of Batory’s election and his position in relation to the nobility.",
+          "Connect election legitimacy and obligations to subsequent negotiation with noble institutions."
+        ],
+        "aspects": [
+          {
+            "name": "contested election and dynastic arrangement",
+            "facts": [
+              {
+                "claim": "The 1575 election split: the primate proclaimed Maximilian II; the competing noble assembly chose Anna Jagiellon with Batory as husband and king, after Henry of Valois’s departure.",
+                "source_id": "e07-psb",
+                "locator": "1574–1576 account; paragraphs on 12–15 December 1575"
+              },
+              {
+                "claim": "Batory swore noble liberties and pacta conventa in February 1576.",
+                "source_id": "e07-psb",
+                "locator": "Paragraphs on 8 February and 1 May 1576"
+              },
+              {
+                "claim": "Marriage to Anna and coronation occurred on 1 May 1576.",
+                "source_id": "e07-archive",
+                "locator": "Paragraph on the 1575 election and 1 May 1576 marriage/coronation"
+              }
+            ],
+            "causal_explanation": "Marriage supplied dynastic legitimacy; divided election and sworn obligations made recognition and consent central to authority."
+          },
+          {
+            "name": "constitutional bargaining and noble power",
+            "facts": [
+              {
+                "claim": "Nobles obtained the Crown Tribunal in 1578 and the Lithuanian Tribunal in 1581; the reform was connected with approval of war finance.",
+                "source_id": "e07-zpe",
+                "locator": "Sprawy krajowe"
+              },
+              {
+                "claim": "The Toruń Sejm of 1576 refused royal requests for taxes against Gdańsk.",
+                "source_id": "e07-psb",
+                "locator": "Paragraphs on the Toruń Sejm of 1576"
+              }
+            ],
+            "causal_explanation": "Noble tax votes and judicial demands constrained royal implementation, despite the king’s initiative."
+          }
+        ],
+        "traps": [
+          {
+            "claim_or_issue": "Batory inherited the crown automatically as Anna’s husband.",
+            "classification": "factual_error",
+            "correction_or_caveat": "A contested election, not marriage alone, established the crown.",
+            "source_ids": [
+              "e07-psb"
+            ]
+          },
+          {
+            "claim_or_issue": "Batory’s election was unanimous across all competing political groups.",
+            "classification": "factual_error",
+            "correction_or_caveat": "Maximilian’s rival proclamation demonstrates a divided succession.",
+            "source_ids": [
+              "e07-psb"
+            ]
+          },
+          {
+            "claim_or_issue": "The king could finance campaigns without negotiating with nobles.",
+            "classification": "factual_error",
+            "correction_or_caveat": "Tax votes and judicial bargaining demonstrate dependence.",
+            "source_ids": [
+              "e07-zpe",
+              "e07-psb"
+            ]
+          },
+          {
+            "claim_or_issue": "Strong personal leadership and constitutional limits cannot coexist.",
+            "classification": "defensible_interpretation",
+            "correction_or_caveat": "Royal initiative and noble institutional checks could coexist.",
+            "source_ids": [
+              "e07-zpe"
+            ]
+          }
+        ],
+        "interpretive_flexibility": "Batory can be described as an energetic elected ruler, a pragmatic negotiator, or a ruler whose ambitions strained noble cooperation. Such interpretations require the election and institutional evidence, not an assumption of unrestricted kingship."
+      }
+    ],
+    "sources": [
+      {
+        "source_id": "e07-psb",
+        "url": "https://www.ipsb.nina.gov.pl/a/biografia/stefan-batory-bathory-istvan-1533-1586-krol-polski-etc",
+        "title": "Stefan (Batory, Báthory István), (1533–1586), Król Polski etc.",
+        "publisher": "Polski Słownik Biograficzny / Institute of History, Polish Academy of Sciences; digital iPSB",
+        "retrieved_at": "2026-09-26",
+        "locator": "Election 1574–1576; Toruń Sejm 1576; settlement 15 January 1582",
+        "verification_status": "verified: cited text read independently through web browsing",
+        "rights_note": "Original short factual paraphrases and source pointers only. Page text/images are not copied; third-party redistribution license not assumed. Evaluation only; excluded from training and RAG.",
+        "revision_or_sha256": "Live page accessed 2026-09-26; no local snapshot retained",
+        "license": "Third-party text license not established; only original factual notes retained",
+        "allowed_use": "Independent evaluation evidence only; no training or retrieval ingestion",
+        "local_path": null
+      },
+      {
+        "source_id": "e07-archive",
+        "url": "https://www.lodz.ap.gov.pl/co-robimy/stefan-batory",
+        "title": "Stefan Batory",
+        "publisher": "Archiwum Państwowe w Łodzi",
+        "retrieved_at": "2026-09-26",
+        "locator": "Gdańsk settlement and three Muscovite campaigns",
+        "verification_status": "verified: cited text read independently through web browsing",
+        "rights_note": "Original short factual paraphrases and source pointers only. Page text/images are not copied; third-party redistribution license not assumed. Evaluation only; excluded from training and RAG.",
+        "revision_or_sha256": "Live page accessed 2026-09-26; no local snapshot retained",
+        "license": "Third-party text license not established; only original factual notes retained",
+        "allowed_use": "Independent evaluation evidence only; no training or retrieval ingestion",
+        "local_path": null
+      },
+      {
+        "source_id": "e07-zpe",
+        "url": "https://zpe.gov.pl/a/przeczytaj/DgZFSlQkp",
+        "title": "Przeczytaj – Z Siedmiogrodu do Rzeczypospolitej. Panowanie Stefana Batorego",
+        "publisher": "Zintegrowana Platforma Edukacyjna",
+        "retrieved_at": "2026-09-26",
+        "locator": "Sprawy krajowe, Crown and Lithuanian tribunals",
+        "verification_status": "verified: cited text read independently through web browsing",
+        "rights_note": "Original short factual paraphrases and source pointers only. Page text/images are not copied; third-party redistribution license not assumed. Evaluation only; excluded from training and RAG.",
+        "revision_or_sha256": "Live page accessed 2026-09-26; no local snapshot retained",
+        "license": "Third-party text license not established; only original factual notes retained",
+        "allowed_use": "Independent evaluation evidence only; no training or retrieval ingestion",
+        "local_path": null
+      }
+    ],
+    "limits": [
+      "Independent research from the frozen input prompt only. No candidate/model answers or existing evaluation cards inspected; no GPU or model API calls.",
+      "Evidence examples are non-exhaustive. Equivalent accurate examples can satisfy an aspect. Topic 2 coverage dimensions organize the research and do not add mandatory rubric aspects.",
+      "Original English evaluator notes, not a gold essay or prescribed thesis. Causal explanations are evaluator inferences from the cited facts; conclusions remain open to supported argument.",
+      "No May 2025 sealed material, official exam keys, training or RAG use. Input JSONL SHA256: 5979ee0b8e0e4f084cf6070f42d31892ee53c1f5485409b4fc5dac1266055a28.",
+      "The iPSB account explicitly places marriage/coronation on 1 May 1576; a separate ZPE introductory overview gives April and is not used for that date.",
+      "Noble tribunals concerned noble appeals; the notes do not claim that Batory lost every judicial power or that peasants gained equal political rights."
+    ]
+  },
+  {
+    "id": "bk117-eval-08",
+    "source_group_id": "C-us-independence",
+    "prompt_sha256": "c8762fafcc90553100cbf10b8dd9704c6db391cd7c83a5989b9a27f64b40ddf6",
+    "status": "ready_for_independent_review",
+    "topics": [
+      {
+        "number": 1,
+        "requirements": [
+          "Explain causes of the American War of Independence and evaluate consequences.",
+          "Cover political, economic and international aspects; distinguish causes, war developments and subsequent outcomes."
+        ],
+        "aspects": [
+          {
+            "name": "political",
+            "facts": [
+              {
+                "claim": "The Stamp Act (1765) was imposed by Parliament rather than colonial assemblies, provoking a dispute over consent to taxation.",
+                "source_id": "e08-tna",
+                "locator": "Printed page 10, Historical background; printed page 4, critique of consent"
+              },
+              {
+                "claim": "The Declaration of 4 July 1776 asserted separation and listed grievances including taxation without consent and obstruction of legislatures.",
+                "source_id": "e08-declaration",
+                "locator": "Opening argument, grievances and concluding declaration"
+              },
+              {
+                "claim": "The Articles of Confederation retained state sovereignty while assigning common foreign affairs to Congress.",
+                "source_id": "e08-articles",
+                "locator": "Articles II and IX"
+              }
+            ],
+            "causal_explanation": "A dispute over imperial authority developed into separation and republican institutions. The initial union retained substantial state power rather than immediately creating the later federal system."
+          },
+          {
+            "name": "economic",
+            "facts": [
+              {
+                "claim": "Britain sought colonial revenue after the costly Seven Years’ War; the Stamp Act taxed paper goods and was repealed in 1766 after resistance.",
+                "source_id": "e08-tna",
+                "locator": "Printed page 10, Historical background"
+              },
+              {
+                "claim": "The 1783 peace secured fishing rights and recovery of bona fide debts, alongside political independence.",
+                "source_id": "e08-paris",
+                "locator": "Articles III–IV"
+              }
+            ],
+            "causal_explanation": "Imperial fiscal demands sharpened the consent dispute. Independence and peace changed legal conditions for commerce but did not erase debts or guarantee immediate prosperity."
+          },
+          {
+            "name": "international",
+            "facts": [
+              {
+                "claim": "France and the United States signed an alliance on 6 February 1778; its object included maintaining American independence.",
+                "source_id": "e08-alliance",
+                "locator": "Heading, Articles I–II and signature block"
+              },
+              {
+                "claim": "British recognition of independence and western boundaries were established in the Treaty of Paris of 3 September 1783.",
+                "source_id": "e08-paris",
+                "locator": "Articles I–II and concluding date"
+              }
+            ],
+            "causal_explanation": "European intervention expanded the conflict and improved American capacity to prevail. The peace converted a contested claim of independence into British recognition and a territorial settlement."
+          }
+        ],
+        "traps": [
+          {
+            "claim_or_issue": "The war began with the Declaration in 1776.",
+            "classification": "factual_error",
+            "correction_or_caveat": "Fighting at Lexington and Concord began in April 1775, before the Declaration.",
+            "source_ids": [
+              "e08-siege",
+              "e08-declaration"
+            ]
+          },
+          {
+            "claim_or_issue": "1776 independence immediately created the 1787 constitutional system.",
+            "classification": "factual_error",
+            "correction_or_caveat": "Separate declaration, the confederation and the later Constitution.",
+            "source_ids": [
+              "e08-declaration",
+              "e08-articles",
+              "e08-constitution"
+            ]
+          },
+          {
+            "claim_or_issue": "The revolution abolished slavery throughout the United States.",
+            "classification": "factual_error",
+            "correction_or_caveat": "The 1787 Constitution still included provisions for enslaved persons and protected importation until 1808.",
+            "source_ids": [
+              "e08-constitution"
+            ]
+          },
+          {
+            "claim_or_issue": "Only the amount of taxation caused the war.",
+            "classification": "argument_weakness",
+            "correction_or_caveat": "Explain the authority and consent dispute and connect fiscal measures to escalating resistance.",
+            "source_ids": [
+              "e08-tna"
+            ]
+          },
+          {
+            "claim_or_issue": "Yorktown in 1781 itself was the final peace treaty.",
+            "classification": "factual_error",
+            "correction_or_caveat": "The surrender was a major military turning point; the definitive treaty was signed in 1783.",
+            "source_ids": [
+              "e08-siege",
+              "e08-paris"
+            ]
+          }
+        ],
+        "interpretive_flexibility": "The consequences can be assessed favorably for republican independence while critically noting exclusion or institutional weakness. Economic opportunity and war costs can both matter; no single ranking of causes is prescribed."
+      },
+      {
+        "number": 2,
+        "requirements": [
+          "Explain how foreign support contributed to the colonies’ victory.",
+          "Connect specific assistance to wartime capacity and outcomes; distinguish a formal state alliance from other assistance."
+        ],
+        "aspects": [
+          {
+            "name": "diplomatic commitment and supplies",
+            "facts": [
+              {
+                "claim": "The French alliance of 6 February 1778 committed both parties to independence; Article VIII required mutual consent before separate truce or peace.",
+                "source_id": "e08-alliance",
+                "locator": "Articles II and VIII"
+              },
+              {
+                "claim": "Gálvez sent arms, medicines and cloth through the Mississippi route in 1777 before Spain’s open war with Britain.",
+                "source_id": "e08-galvez",
+                "locator": "Gálvez Assists the American Colonies"
+              }
+            ],
+            "causal_explanation": "Supplies sustained an under-resourced war effort; a binding alliance strengthened diplomatic commitment and reduced the risk of unilateral abandonment."
+          },
+          {
+            "name": "French land and naval operations",
+            "facts": [
+              {
+                "claim": "Rochambeau’s French army arrived in 1780; in 1781 it joined Washington while de Grasse’s fleet blocked the Chesapeake, culminating in Cornwallis’s surrender at Yorktown.",
+                "source_id": "e08-siege",
+                "locator": "Opening paragraphs and account of blockade and 19 October surrender"
+              }
+            ],
+            "causal_explanation": "Combined siege forces and naval control prevented reinforcement or escape, converting allied resources into a decisive operational advantage."
+          },
+          {
+            "name": "Spanish operations beyond the main American theater",
+            "facts": [
+              {
+                "claim": "Gálvez’s forces captured British positions at Baton Rouge and Mobile and took Pensacola in May 1781.",
+                "source_id": "e08-galvez",
+                "locator": "Gálvez Assists the American Colonies; On to Pensacola"
+              }
+            ],
+            "causal_explanation": "A second front attacked British positions and stretched their resources; Spanish assistance should not be collapsed into French participation at Yorktown."
+          }
+        ],
+        "traps": [
+          {
+            "claim_or_issue": "The colonies defeated Britain without material foreign support.",
+            "classification": "factual_error",
+            "correction_or_caveat": "Identify French land/naval forces and Spanish supplies or Gulf operations.",
+            "source_ids": [
+              "e08-siege",
+              "e08-galvez"
+            ]
+          },
+          {
+            "claim_or_issue": "De Grasse commanded the allied land army, or Rochambeau the blocking fleet.",
+            "classification": "factual_error",
+            "correction_or_caveat": "Rochambeau commanded French land forces; de Grasse commanded the French fleet.",
+            "source_ids": [
+              "e08-siege"
+            ]
+          },
+          {
+            "claim_or_issue": "Every overseas contributor held the same formal treaty relationship.",
+            "classification": "argument_weakness",
+            "correction_or_caveat": "The cited alliance document binds France and the United States. Describe Spanish aid and operations on their own terms; do not infer identical treaty status from shared opposition to Britain.",
+            "source_ids": [
+              "e08-alliance",
+              "e08-galvez"
+            ]
+          },
+          {
+            "claim_or_issue": "Foreign intervention alone explains victory.",
+            "classification": "interpretation_requires_support",
+            "correction_or_caveat": "A strong claim about its importance is defensible if it identifies mechanisms and acknowledges Continental forces and coordination.",
+            "source_ids": [
+              "e08-siege"
+            ]
+          }
+        ],
+        "interpretive_flexibility": "An essay may prioritize France’s decisive naval and land aid or emphasize the broader international war, including Spain. Additional accurately sourced financial aid, Dutch involvement or foreign volunteers are admissible; naming a volunteer alone is weaker than explaining their contribution."
+      }
+    ],
+    "sources": [
+      {
+        "source_id": "e08-tna",
+        "url": "https://cdn.nationalarchives.gov.uk/documents/education/american-revolution.pdf",
+        "title": "American Revolution – What political ideas in the colonies influenced the American Revolution?",
+        "publisher": "The National Archives, United Kingdom",
+        "retrieved_at": "2026-09-26",
+        "locator": "Printed pages 4 and 10 (PDF pages 4 and 10); consent critique and Historical background",
+        "verification_status": "verified: cited text read independently through web browsing",
+        "rights_note": "Original factual notes only. General historical educational source, not a held-out exam pack; no document images or transcriptions retained. Evaluation only, no training/RAG.",
+        "revision_or_sha256": "Live page accessed 2026-09-26; no local snapshot retained",
+        "license": "Third-party text license not established; only original factual notes retained",
+        "allowed_use": "Independent evaluation evidence only; no training or retrieval ingestion",
+        "local_path": null
+      },
+      {
+        "source_id": "e08-declaration",
+        "url": "https://www.archives.gov/founding-docs/declaration-transcript",
+        "title": "Declaration of Independence: A Transcription",
+        "publisher": "U.S. National Archives and Records Administration",
+        "retrieved_at": "2026-09-26",
+        "locator": "Opening justification; grievances; closing declaration",
+        "verification_status": "verified: cited text read independently through web browsing",
+        "rights_note": "Historical U.S. government primary document; only original factual summary retained, no copied page material.",
+        "revision_or_sha256": "Live page accessed 2026-09-26; no local snapshot retained",
+        "license": "Third-party text license not established; only original factual notes retained",
+        "allowed_use": "Independent evaluation evidence only; no training or retrieval ingestion",
+        "local_path": null
+      },
+      {
+        "source_id": "e08-articles",
+        "url": "https://www.archives.gov/milestone-documents/articles-of-confederation",
+        "title": "Articles of Confederation (1777)",
+        "publisher": "U.S. National Archives and Records Administration",
+        "retrieved_at": "2026-09-26",
+        "locator": "Articles II and IX; ratification context",
+        "verification_status": "verified: cited text read independently through web browsing",
+        "rights_note": "Historical U.S. government primary document; original factual notes only.",
+        "revision_or_sha256": "Live page accessed 2026-09-26; no local snapshot retained",
+        "license": "Third-party text license not established; only original factual notes retained",
+        "allowed_use": "Independent evaluation evidence only; no training or retrieval ingestion",
+        "local_path": null
+      },
+      {
+        "source_id": "e08-paris",
+        "url": "https://www.archives.gov/milestone-documents/treaty-of-paris",
+        "title": "Treaty of Paris (1783)",
+        "publisher": "U.S. National Archives and Records Administration",
+        "retrieved_at": "2026-09-26",
+        "locator": "Articles I–IV; final date and contextual introduction",
+        "verification_status": "verified: cited text read independently through web browsing",
+        "rights_note": "Historical U.S. government primary document; no copied transcription or images retained.",
+        "revision_or_sha256": "Page last reviewed 6 March 2025; treaty dated 3 September 1783; live access 26 September 2026",
+        "license": "Third-party text license not established; only original factual notes retained",
+        "allowed_use": "Independent evaluation evidence only; no training or retrieval ingestion",
+        "local_path": null
+      },
+      {
+        "source_id": "e08-alliance",
+        "url": "https://www.archives.gov/milestone-documents/treaty-of-alliance-with-france",
+        "title": "Treaty of Alliance with France (1778)",
+        "publisher": "U.S. National Archives and Records Administration",
+        "retrieved_at": "2026-09-26",
+        "locator": "Articles I–II and VIII; 6 February 1778 signature block",
+        "verification_status": "verified: cited text read independently through web browsing",
+        "rights_note": "Historical U.S. government primary document; original short factual paraphrases only.",
+        "revision_or_sha256": "Page last reviewed 10 May 2022; treaty dated 6 February 1778; live access 26 September 2026",
+        "license": "Third-party text license not established; only original factual notes retained",
+        "allowed_use": "Independent evaluation evidence only; no training or retrieval ingestion",
+        "local_path": null
+      },
+      {
+        "source_id": "e08-siege",
+        "url": "https://home.nps.gov/york/learn/historyculture/history-of-the-siege.htm",
+        "title": "History of the Siege",
+        "publisher": "U.S. National Park Service, Yorktown Battlefield",
+        "retrieved_at": "2026-09-26",
+        "locator": "Opening chronology; Rochambeau arrival; Chesapeake blockade and Yorktown surrender",
+        "verification_status": "verified: cited text read independently through web browsing",
+        "rights_note": "U.S. government historical account; original short factual notes only, no photographs reproduced.",
+        "revision_or_sha256": "Live page accessed 2026-09-26; no local snapshot retained",
+        "license": "Third-party text license not established; only original factual notes retained",
+        "allowed_use": "Independent evaluation evidence only; no training or retrieval ingestion",
+        "local_path": null
+      },
+      {
+        "source_id": "e08-galvez",
+        "url": "https://www.nps.gov/foma/learn/historyculture/galvez.htm",
+        "title": "Bernardo de Gálvez",
+        "publisher": "U.S. National Park Service, Fort Matanzas National Monument",
+        "retrieved_at": "2026-09-26",
+        "locator": "Gálvez Assists the American Colonies; On to Pensacola",
+        "verification_status": "verified: cited text read independently through web browsing",
+        "rights_note": "U.S. government historical account; original notes only. Precise declaration-of-war month on this page is not used.",
+        "revision_or_sha256": "Page last updated 12 February 2025; live access 26 September 2026",
+        "license": "Third-party text license not established; only original factual notes retained",
+        "allowed_use": "Independent evaluation evidence only; no training or retrieval ingestion",
+        "local_path": null
+      },
+      {
+        "source_id": "e08-constitution",
+        "url": "https://www.archives.gov/founding-docs/constitution-transcript",
+        "title": "The Constitution of the United States: A Transcription",
+        "publisher": "U.S. National Archives and Records Administration",
+        "retrieved_at": "2026-09-26",
+        "locator": "Article I, sections 2 and 9; Article IV, section 2",
+        "verification_status": "verified: cited text read independently through web browsing",
+        "rights_note": "Historical U.S. government primary document; original factual summary only, no copied transcription.",
+        "revision_or_sha256": "Live page accessed 2026-09-26; no local snapshot retained",
+        "license": "Third-party text license not established; only original factual notes retained",
+        "allowed_use": "Independent evaluation evidence only; no training or retrieval ingestion",
+        "local_path": null
+      }
+    ],
+    "limits": [
+      "Independent research from the frozen input prompt only. No candidate/model answers or existing evaluation cards inspected; no GPU or model API calls.",
+      "Evidence examples are non-exhaustive. Equivalent accurate examples can satisfy an aspect. Topic 2 coverage dimensions organize the research and do not add mandatory rubric aspects.",
+      "Original English evaluator notes, not a gold essay or prescribed thesis. Causal explanations are evaluator inferences from the cited facts; conclusions remain open to supported argument.",
+      "No May 2025 sealed material, official exam keys, training or RAG use. Input JSONL SHA256: 5979ee0b8e0e4f084cf6070f42d31892ee53c1f5485409b4fc5dac1266055a28.",
+      "The National Archives UK PDF has printed page numbers equal to one-based PDF pages for the cited sections; the browser’s zero-based page indices are 3 and 9.",
+      "The NPS Gálvez page gives August 1779 for Spain’s declaration; other authoritative indexed accounts give June. No month is required or asserted in these notes.",
+      "The cited NPS account supports Spanish supplies and Gulf operations, but is not a source for every detail of Spain’s treaty status. No claim that Spain signed the Franco-American treaty is made.",
+      "No quantitative claim that foreign aid was the sole cause of victory or that independence immediately produced universal equality is established by these sources."
+    ]
+  }
+]
