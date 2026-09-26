@@ -1,0 +1,21 @@
+name: Python checks
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  stdlib-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Core inference tests
+        run: python -m unittest -v test_infer.py
+      - name: Adapter tests
+        run: python -m unittest -v scripts.test_adapters
+      - name: Evaluator tests
+        run: python -m unittest discover -s agentsLog/Pewciu6/harness -v
