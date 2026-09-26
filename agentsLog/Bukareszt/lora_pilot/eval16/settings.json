@@ -1,0 +1,15 @@
+{
+ "schema": "bukareszt_eval16_settings_v1",
+ "temperature": 0.0,
+ "top_k": 1,
+ "seed": 42,
+ "ctx_size": 24576,
+ "run_arms": ["A", "B"],
+ "max_wave_calls": 32,
+ "arms": {
+  "A": {"artifact": "unchanged export control", "server_reasoning": "off", "enable_thinking": false, "max_tokens": 1536, "request_timeout_s": 90},
+  "B": {"artifact": "run3 merged candidate", "server_reasoning": "off", "enable_thinking": false, "max_tokens": 1536, "request_timeout_s": 90},
+  "C": {"artifact": "unchanged export, native thinking (OPTIONAL, separate declaration)", "server_reasoning": "on", "enable_thinking": true, "max_tokens": 20480, "request_timeout_s": 300}
+ },
+ "notes": "Same sampling as the pilot (greedy temp 0/top_k 1/seed 42). max_tokens 1536 not 1024: cleared training targets (400-500 words) tokenize to 889-1065 completion tokens, so 1024 would truncate some essays. Arm C is not run by eval-stages.sh unless run_arms includes it under a separate declaration."
+}
