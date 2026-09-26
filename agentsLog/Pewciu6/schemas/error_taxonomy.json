@@ -1,0 +1,50 @@
+{
+  "version": "matura-harness-heuristic-v1",
+  "status": "provisional; automatic labels are heuristics for triage, not final grades",
+  "categories": {
+    "chronology": {
+      "definition": "Wrong date, century, period, or ordering of events.",
+      "automatic_trigger": "order-mode mismatch; failed criterion of kind=date; or a stated year not in expected_years",
+      "review_hint": "Check off-by-one century and old/new-style calendar issues before confirming."
+    },
+    "entity_confusion": {
+      "definition": "Correct type of answer but the wrong person, state, treaty, institution, or place.",
+      "automatic_trigger": "failed criterion of kind=entity AND response names one of the key's distractors",
+      "review_hint": "Failed entity criteria without a known distractor fall back to content_incorrect."
+    },
+    "essay_structure": {
+      "definition": "Essay or plan missing required structural elements (thesis, argument sections, chronology frame, conclusion).",
+      "automatic_trigger": "failed criterion of kind=structure",
+      "review_hint": "Structure markers are lexical; a blind human/independent rubric review should confirm."
+    },
+    "abstention": {
+      "definition": "Model declined to answer an answerable item (or empty response).",
+      "automatic_trigger": "abstention pattern match and expect_abstention is false",
+      "review_hint": "Hedged but substantive answers can match patterns; review abstentions individually."
+    },
+    "citation_unsupported": {
+      "definition": "Citation missing where required, unresolvable, or the cited passage does not support the claim.",
+      "automatic_trigger": "citation audit status != supported (source_missing, locator_missing, unsupported), or required citation absent",
+      "review_hint": "Lexical overlap + year check only; recognising a title is not support. Verify against source text."
+    },
+    "image_ocr": {
+      "definition": "Error attributable to reading an image/map/poster/scan (vision or OCR).",
+      "automatic_trigger": "task_type=vision_ocr and item not fully credited",
+      "review_hint": "Separate perception errors from knowledge errors during review."
+    },
+    "content_incorrect": {
+      "definition": "Fallback: answer wrong or incomplete with no more specific category.",
+      "automatic_trigger": "failed content/entity criterion or wrong choice, only when no other category applies"
+    }
+  },
+  "exclusions": {
+    "inference_error": "output record has non-null error; excluded from lenient denominator, zero in strict",
+    "missing_output": "key has no output record; excluded from lenient denominator, zero in strict",
+    "duplicate_output": "second record for the same id; first kept, not counted as an exclusion from the denominator"
+  },
+  "statuses": {
+    "correct": "full points and no error category",
+    "partial": "0 < points (may still be max points with an error category, e.g. unsupported optional citation)",
+    "incorrect": "zero points"
+  }
+}
