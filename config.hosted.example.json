@@ -1,0 +1,8 @@
+{
+  "name": "hosted-development",
+  "base_url": "https://YOUR_PROVIDER_HOST/v1",
+  "model": "YOUR_PROVIDER_MODEL_ID",
+  "api_key_env": "HOSTED_MODEL_API_KEY",
+  "max_output_tokens": 512,
+  "timeout_seconds": 120
+}

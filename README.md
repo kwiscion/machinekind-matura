@@ -6,13 +6,14 @@ The handoff package is in [docs/overnight/PLAN.md](docs/overnight/PLAN.md). Star
 
 | Issue | Owner | Local brief | GitHub lookup |
 | --- | --- | --- | --- |
-| Lead, integration and freeze | @kwiscion | [Lead](docs/overnight/issues/lead.md) | [Search](https://github.com/kwiscion/machinekind-matura/issues/3) |
-| Grounded training data | @przemeknowak781 | [Data](docs/overnight/issues/data.md) | [Search](https://github.com/kwiscion/machinekind-matura/issues/4) |
-| Compact model experiments | @ljaniec | [Spark](docs/overnight/issues/spark.md) | [Search](https://github.com/kwiscion/machinekind-matura/issues/5) |
-| Historical retrieval | @Bukareszt | [Retrieval](docs/overnight/issues/retrieval.md) | [Search](https://github.com/kwiscion/machinekind-matura/issues/6) |
-| Evaluation and rubric audit | @Pewciu6 | [Evaluation](docs/overnight/issues/eval.md) | [Search](https://github.com/kwiscion/machinekind-matura/issues/7) |
+| Lead, integration and freeze | @kwiscion | [Lead](docs/overnight/issues/lead.md) | [Issue](https://github.com/kwiscion/machinekind-matura/issues/3) |
+| Grounded training data | @przemeknowak781 | [Data](docs/overnight/issues/data.md) | [Issue](https://github.com/kwiscion/machinekind-matura/issues/4) |
+| Compact model experiments | @ljaniec | [Spark](docs/overnight/issues/spark.md) | [Issue](https://github.com/kwiscion/machinekind-matura/issues/5) |
+| Historical retrieval | @Bukareszt | [Retrieval](docs/overnight/issues/retrieval.md) | [Issue](https://github.com/kwiscion/machinekind-matura/issues/6) |
+| Evaluation and rubric audit | @Pewciu6 | [Evaluation](docs/overnight/issues/eval.md) | [Issue](https://github.com/kwiscion/machinekind-matura/issues/7) |
 
-The canonical input is JSONL with `{ "id", "prompt", "images"? }`; each task supplies its own standalone script or adapter. A small `infer.py` prototype exists locally but is not yet published or required on a fresh clone. Hosted development endpoints need explicit configuration; keep credentials out of Git.
+The canonical input is JSONL with `{ "id", "prompt", "images"? }`; each task supplies its own standalone script or adapter. The portable Python [inference runner](docs/inference.md) supports local Ollama and hosted OpenAI-compatible endpoints, saves raw responses, timing, usage, and model identity, and excludes answer/rubric fields from requests. Start with `python infer.py --config config.local.example.json --input fixtures/smoke.jsonl --output outputs/smoke.jsonl --dry-run`. Hosted development endpoints need explicit configuration and a project-scoped API key; keep credentials out of Git.
+
+The lead has an hourly coordination heartbeat through the proposed 09:00 morning review. Workers still need to start their own session using [WORKER_PROMPT.md](docs/overnight/WORKER_PROMPT.md); an issue assignment alone does not execute work.
 
 No repository-wide code or dataset license has been selected. Original code could later use MIT if the owner approves; each third-party dataset subset needs its own source/license review.
-

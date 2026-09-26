@@ -1,0 +1,7 @@
+{
+  "name": "ollama-local",
+  "base_url": "http://127.0.0.1:11434/v1",
+  "model": "gemma2:9b",
+  "max_output_tokens": 512,
+  "timeout_seconds": 120
+}
