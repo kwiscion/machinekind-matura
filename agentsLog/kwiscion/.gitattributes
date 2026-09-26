@@ -1,0 +1,5 @@
+# Preserve bytes of the frozen source-observation handoff across platforms.
+model-answers/source-observation-* -text
+2026-09-26-source-observation-launch.json -text
+run_source_observation.py -text
+test_source_observation.py -text
