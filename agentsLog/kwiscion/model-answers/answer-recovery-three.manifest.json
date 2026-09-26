@@ -1,0 +1,61 @@
+{
+  "status": "complete",
+  "calls": 6,
+  "requested_tokens": 12288,
+  "records": 6,
+  "unsent": [],
+  "elapsed_seconds": 33.98545801900036,
+  "manifest_sha256": "d51e724ea2dedab5b4da921edc9b4546f7d4979805bd966d471bf902fd767825",
+  "declared_utc": "2026-09-26T20:38:16.711526+00:00",
+  "deadline_utc": "2026-09-26T20:58:16.711526+00:00",
+  "first_dispatch": "2026-09-26T20:38:53.427685+00:00",
+  "last_response_created_at": "2026-09-26T20:39:18.943936949Z",
+  "archive_sha256": "b79503545d7690750fbb3fb3145eadabb28f7e247aefdcadd6b802385856c91d",
+  "raw_sha256": "f9562485c6b36652623cca56358cc35a4601209005fcc026fc11423a70e0d67e",
+  "parent_answer_handoff": "agentsLog/kwiscion/model-answers/full-thinking-gemma-val40.jsonl",
+  "parent_answer_sha256": "fdbf288a3deb276d9600a353403ac8c1aa10fc37df11ec6f0524c0d76a12bde9",
+  "parent_raw_sha256": "8b814e4f0cd9d35a7b0635d0b62c81ef16d2694b3743373cc68af8d504e4ab78",
+  "parent_launch_sha256": "2c17a930e89d0f7eb0e4f18b068aa0faf5167e72893116807869d6c8bcf0e4d5",
+  "arms": {
+    "A": {
+      "description": "fresh nonthinking final",
+      "ids": [
+        "val2024-hist-z12.1",
+        "val2024-hist-z19.1",
+        "val2024-hist-z25"
+      ],
+      "planned_items": 3,
+      "complete": 3,
+      "sha256": "ad93976a5361179d209e67e4ed6573849bfaf0e6b829b1c13549727ae0e7b56c",
+      "usage": {
+        "prompt_eval_count": 4011,
+        "eval_count": 401
+      },
+      "actual_adapter_answers_sha256": "caa4e8e32c89c7b880621f41e01835a49dd3a6c935db1ef49da0d8fa34291fa4"
+    },
+    "B": {
+      "description": "full sources plus fallible interrupted thinking to final",
+      "ids": [
+        "val2024-hist-z12.1",
+        "val2024-hist-z19.1",
+        "val2024-hist-z25"
+      ],
+      "planned_items": 3,
+      "complete": 3,
+      "sha256": "fcc745275a65969ec04e54a0c4ed649d97c7da8c20e31ba3db7eeb96b2e31f5a",
+      "usage": {
+        "prompt_eval_count": 35873,
+        "eval_count": 545
+      },
+      "actual_adapter_answers_sha256": "482a6eb496b6c407b10127bf694c4659e658cae39a6fb020cf3c893a44cad9b0"
+    }
+  },
+  "overlap_screen": [],
+  "actual_billing": "unverified",
+  "execution_cost_estimate_usd": 0.03096452841731144,
+  "submission_weight_bytes": 7556497632,
+  "assumed_aggregate_limit_bytes": 8800000000,
+  "namespace_isolation_claim": false,
+  "score_claim": null,
+  "full40_composition": false
+}

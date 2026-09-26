@@ -1,6 +1,6 @@
 # Winning plan
 
-**Goal:** the highest Sunday history-matura score. Target 48/60. Leading experiment:38/60, pending second review and final packaging; preserved fallback:35/60. Final freeze: **27 September, 11:00 Europe/Warsaw**. Updated 26 September, 22:35. Read this before dispatch or promotion; GitHub issues own tasks and claims.
+**Goal:** the highest Sunday history-matura score. Target 48/60. Leading experiment:38/60, pending second review and final packaging; preserved fallback:35/60. Final freeze: **27 September, 11:00 Europe/Warsaw**. Updated 26 September, 23:05. Read this before dispatch or promotion; GitHub issues own tasks and claims.
 
 ## One model, better answers
 
@@ -10,9 +10,9 @@ Keep one multimodal Gemma as the leading architecture. Vary prompts, thinking bu
 
 ## Three priorities
 
-1. **Recover missing answers, then integrate.** The full40 thinking run scored38/60 provisionally, with three token-limit failures costing up to six points. Test a generic same-model failure fallback; retain every failed answer. Obtain a second review and a fresh complete organizer-path result before promotion.
+1. **Integrate the strongest tested routes.** Full40 thinking scored38/60 provisionally. Fresh failure retry recovered only1/6; reasoning-note recovery0/6 and is parked. Obtain second full grading, use new paired evidence to choose routes, then run the complete organizer path before promotion.
 2. **Make essays reliable.** One topic, 400–500 body words, clean prose, conservative factual edits with unchanged-draft fallback. Independent thinking review improved 52/90→62/90 across six original topics. Paweł replicates on six different topics; whole rewrites remain unreliable.
-3. **Test training without blocking the base route.** 90 rows (34 essays and 56 repairs) and 16 separate evaluation inputs now pass independent data review. Runtime/export are unqualified. Deploy either ONE merged model with nonessay regression checks or a proven small adapter on ONE shared base; two full copies are ineligible.
+3. **Run a small, controlled training pilot.** 90 cleared rows (34 essays, 56 repairs), 16 separate evaluation inputs, tiny CPU backward and base export are ready. Full-model backward and serving remain unqualified. Deploy ONE merged model with nonessay regression checks or a proven adapter on ONE shared base; compare against the same export pipeline.
 
 ## Owners
 
@@ -22,7 +22,7 @@ Keep one multimodal Gemma as the leading architecture. Vary prompts, thinking bu
 | @Pewciu6 | Essay thinking and exact-span edits [#80](https://github.com/kwiscion/machinekind-matura/issues/80) |
 | @Bukareszt | Cleared data and single-model training preparation [#117](https://github.com/kwiscion/machinekind-matura/issues/117) |
 | @ljaniec | Independent full-exam grading and aggregate package check [#38](https://github.com/kwiscion/machinekind-matura/issues/38) |
-| @semberecki | Single-Gemma source-heavy thinking comparison [#95](https://github.com/kwiscion/machinekind-matura/issues/95) |
+| @semberecki | Standalone Qwen thinking challenger after Gemma panel tied [#95](https://github.com/kwiscion/machinekind-matura/issues/95) |
 | @przemeknowak781 | Standby; root proxy's Bielik comparison is terminal [#97](https://github.com/kwiscion/machinekind-matura/issues/97) |
 
 ## Decisions and guardrails
