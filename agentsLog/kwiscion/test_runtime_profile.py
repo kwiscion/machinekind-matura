@@ -64,7 +64,7 @@ class RuntimeProfile(unittest.TestCase):
         self.assertEqual((p['nvidia_smi'], p['server_path_env'], p['model_cache']),
                          (LEGACY_SMI[0], LEGACY_PATH, '/usr/share/ollama/.ollama/models'))
         self.assertEqual(p['host_endpoint_check'], {'port':11434,'require_reachable':True})
-        self.assertFalse(p['block_foreign_ollama'])
+        self.assertFalse(p['block_foreign_ollama'] or p['verify_all_manifest_blobs'])
         self.assertIsNone(file_digest)
         committed, committed_digest, _ = r.load_profile(PROFILES/'laptop-wsl2-ollama-0.30.7.json')
         self.assertEqual((committed, committed_digest), (p, digest))
@@ -166,6 +166,9 @@ class RuntimeProfile(unittest.TestCase):
                                 ({'ollama_binary_sha256':None}, 'must pin ollama_binary_sha256'),
                                 ({'model_cache':'relative/models'}, 'absolute path'),
                                 ({'namespace_method':'none'}, 'unshare-rn'),
+                                ({'block_foreign_ollama':False}, 'every manifest blob'),
+                                ({'verify_all_manifest_blobs':False}, 'every manifest blob'),
+                                ({'platform':'darwin'}, 'wsl2 or native-linux'),
                                 ({'host_endpoint_check':{'port':11435,'require_reachable':False}}, 'isolated port')]:
             with self.subTest(change=change):
                 path, _ = filled_h100(self.root, **change)
@@ -207,6 +210,28 @@ class RuntimeProfile(unittest.TestCase):
         self.assertEqual(record['runtime_profile'], r.LAPTOP_PROFILE)
         self.assertEqual(record['runtime_profile_sha256'], r.profile_sha(r.LAPTOP_PROFILE))
         self.assertIsNone(record['runtime_profile_file'])
+
+    def test_native_profile_verifies_every_manifest_blob(self):
+        cache = self.root/'store'; (cache/'blobs').mkdir(parents=True)
+        def blob(data):
+            p = cache/'blobs'/'tmp'; p.write_bytes(data); d = r.sha(p)
+            p.rename(cache/'blobs'/('sha256-'+d)); return {'digest':'sha256:'+d,'size':len(data)}
+        model, proj, cfg, lic = blob(b'model'), blob(b'projector'), blob(b'{}'), blob(b'license')
+        manifest = cache/'manifests/registry.ollama.ai/library/gemma4/12b-it-q4_K_M'
+        manifest.parent.mkdir(parents=True)
+        manifest.write_text(json.dumps({'config':cfg,'layers':[model,proj,lic]}))
+        assets = {x['digest'][7:]:x['size'] for x in (model, proj)}
+        _, native = filled_h100(self.root, model_cache=str(cache))
+        laptop = dict(r.LAPTOP_PROFILE, model_cache=str(cache))
+        with patch.object(r,'DIGEST',r.sha(manifest)), patch.object(r,'ASSETS',assets):
+            r.verify_assets(native); r.verify_assets(laptop)
+            (cache/'blobs'/('sha256-'+lic['digest'][7:])).write_bytes(b'LICENSE')
+            with self.assertRaisesRegex(RuntimeError, 'blob missing or mismatched'):
+                r.verify_assets(native)
+            r.verify_assets(laptop)  # legacy laptop scope unchanged: manifest + model/projector only
+            (cache/'blobs'/('sha256-'+model['digest'][7:])).write_bytes(b'MODEL')
+            with self.assertRaisesRegex(RuntimeError, 'mismatch'):
+                r.verify_assets(laptop)
 
     # --- isolation / platform / host / guard ------------------------------------------------------
     def test_isolation_denied_is_concrete(self):

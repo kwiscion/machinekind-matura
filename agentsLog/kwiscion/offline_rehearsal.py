@@ -38,7 +38,7 @@ IDS = ['offline-text', 'offline-image']
 # model/projector/manifest pins are fixed above and a profile may only restate them.
 PROFILE_KEYS = {'profile_id','platform','ollama_version','ollama_binary','ollama_binary_sha256','server_path_env',
     'nvidia_smi','model_cache','model','manifest_digest','assets','context_length','namespace_method',
-    'host_endpoint_check','block_foreign_ollama'}
+    'host_endpoint_check','block_foreign_ollama','verify_all_manifest_blobs'}
 LAPTOP_PROFILE = {
     'profile_id':'laptop-wsl2-ollama-0.30.7-ctx4096',
     'platform':'wsl2',
@@ -55,6 +55,7 @@ LAPTOP_PROFILE = {
     'namespace_method':'unshare-rn',
     'host_endpoint_check':{'port':11434,'require_reachable':True},
     'block_foreign_ollama':False,
+    'verify_all_manifest_blobs':False,  # qualified laptop run verified manifest + model/projector only
 }
 
 def placeholders(value, where='profile'):
@@ -95,7 +96,11 @@ def validate_profile(profile):
     require(isinstance(check, dict) and set(check) == {'port','require_reachable'} and type(check['port']) is int
             and 0 < check['port'] < 65536 and check['port'] != PORT and type(check['require_reachable']) is bool,
             'Runtime profile host_endpoint_check must be {port, require_reachable} and not the isolated port')
-    require(type(profile['block_foreign_ollama']) is bool, 'Runtime profile block_foreign_ollama must be boolean')
+    require(type(profile['block_foreign_ollama']) is bool and type(profile['verify_all_manifest_blobs']) is bool,
+            'Runtime profile block_foreign_ollama/verify_all_manifest_blobs must be boolean')
+    if profile['platform'] == 'native-linux':
+        require(profile['block_foreign_ollama'] and profile['verify_all_manifest_blobs'],
+                'native-linux profile must block foreign Ollama servers and verify every manifest blob')
     return profile
 
 def load_profile(path=None):
@@ -245,7 +250,13 @@ def verify_assets(profile=LAPTOP_PROFILE):
     cache=Path(profile['model_cache'])
     manifest=cache/'manifests/registry.ollama.ai/library/gemma4/12b-it-q4_K_M'
     require(sha(manifest)==DIGEST,'Installed model manifest digest mismatch')
-    layers=json.loads(manifest.read_text())['layers']
+    doc=json.loads(manifest.read_text())
+    layers=doc['layers']
+    if profile['verify_all_manifest_blobs']:
+        for x in [doc['config'],*layers]:
+            p=cache/'blobs'/x['digest'].replace(':','-')
+            require(p.is_file() and p.stat().st_size==x['size'] and 'sha256:'+sha(p)==x['digest'],
+                    'Manifest-referenced blob missing or mismatched: '+x['digest'])
     for digest,size in ASSETS.items():
         require(any(x['digest']=='sha256:'+digest and x['size']==size for x in layers),'Manifest asset mismatch')
         p=cache/'blobs'/('sha256-'+digest)

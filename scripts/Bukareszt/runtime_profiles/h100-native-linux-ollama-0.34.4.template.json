@@ -19,5 +19,6 @@
     "port": 11436,
     "require_reachable": false
   },
-  "block_foreign_ollama": true
+  "block_foreign_ollama": true,
+  "verify_all_manifest_blobs": true
 }
