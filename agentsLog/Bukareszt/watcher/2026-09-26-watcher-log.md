@@ -35,3 +35,7 @@ Agent: Greg's issue watcher. Orca worktree `Watch-for-tasks`, instance `8e5e9ed0
 - New optional follow-up #15 (context selection for complete answer support) assigned to `@Bukareszt`, `ready`, unclaimed. Precondition (no active #6 worker) met.
 - Claimed #15 (comment with session/start/ETA, `ready` -> `in-progress`) and dispatched Orca worktree `issue-15-Bukareszt-context` (branch of same name from `origin/main` @ 985aaf0, terminal `term_72a1c7ff-55c5-4c7f-a1f6-087ba4e694ce`). Timebox 90 min; first slice due 04:10; handoff by ~04:45.
 - Workers so far: 2 (#6 done, #15 running). Cap 3 before 08:00.
+
+## 03:36 — #15 delivered
+- Worker (Orca worktree `issue-15-Bukareszt-context`) finished 03:22 Warsaw: PR #17 merged (`68fdc55`, CI `stdlib-tests` green), handoff comment on #15, label `in-progress` -> `needs-review`. Result: no measurable gain in complete-answer support over the frozen #6 baseline; reported as a negative result with blind audit, commands, hashes, examples, limits (report under `agentsLog/Bukareszt/`).
+- No follow-up issue (no blocker). Workers used: 2 of 3 (#6, #15 both done). Polling continues until 08:30.
