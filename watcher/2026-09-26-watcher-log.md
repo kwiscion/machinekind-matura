@@ -928,3 +928,7 @@ Acceptance: a runnable public path and corrected link; CPU-only controlled failu
 
   ```
 - NEW issue #88 [open] RTX handoff: repair public reproduction path and declared runtime guards — https://github.com/kwiscion/machinekind-matura/issues/88
+
+## Tick @ 2026-09-26T18:37:11Z — 1 new finding(s)
+
+- NEW issue #120 [closed] Piotr: #88 fail-closed context + unambiguous model match (lead review) — https://github.com/kwiscion/machinekind-matura/pull/120

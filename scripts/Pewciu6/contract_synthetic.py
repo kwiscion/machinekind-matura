@@ -36,6 +36,10 @@ def as_json(body: str, topic: int = TOPIC) -> str:
     return json.dumps({"topic_id": topic, "body": body}, ensure_ascii=False)
 
 
+KONST = ("W 1791 roku uchwalono Konstytucję trzeciego maja, która ograniczała liberum veto i wzmacniała "
+         "władzę wykonawczą.")  # the lead's regression sentence (content, not a heading)
+UNIA = "Unia lubelska została zawarta w 1569 roku."  # the lead's regression sentence
+
 LEGIT_OTO = ("Oto jeden z najważniejszych okresów w dziejach średniowiecznej Polski: panowanie Kazimierza III "
              "Wielkiego w latach 1333–1370 przyniosło scalenie Królestwa. " + INTRO)
 
@@ -70,6 +74,26 @@ CASES = {
     "labelled_conclusion": as_json(essay(3) + "\n\nOcena: panowanie z lat 1333–1370 wzmocniło Królestwo."),
     # two JSON objects (two answers)
     "two_json": as_json(essay(3)) + "\n" + as_json(essay(3), topic=2),
+    # v2 regressions from the root review of PR119 (issue #80 comment 5848806894):
+    # a complete factual sentence formatted as a Markdown heading must be KEPT (marker stripped)
+    "heading_sentence": as_json("\n\n".join([INTRO, POL * 3, "# " + KONST, GOS * 3, KUL * 3, END])),
+    # a substantive sentence after valid JSON is not a wrapper, whatever its length
+    "fact_after_json": as_json(essay(3)) + "\n" + UNIA,
+    # the same without a date: still unrecognized text -> reject
+    "prose_after_json": as_json(essay(3)) + "\nTo była epoka, która trwale zmieniła państwo.",
+    # structural headings (whitelisted labels) are removed, the prose stays
+    "structural_headings": as_json("\n\n".join(["## Wstęp", INTRO, "**Aspekt 1 – polityczny**", POL * 3,
+                                                 "### Aspekt gospodarczy", GOS * 3, "Aspekt kulturalny:", KUL * 3,
+                                                 "## Zakończenie", END])),
+    # a short non-whitelisted title is neither a label nor a sentence -> ambiguous, regenerate
+    "title_heading": as_json("# Kazimierz Wielki budowniczy państwa\n\n" + essay(3)),
+    # a heading-shaped label that carries a date is content, not a label -> ambiguous
+    "dated_heading": as_json("\n\n".join([INTRO, "## Aspekt polityczny 1343", POL * 3, GOS * 3, KUL * 3, END])),
+    # an extra JSON field carrying prose would be silently discarded -> reject
+    "extra_key_prose": json.dumps({"topic_id": TOPIC, "body": essay(3), "uwagi": UNIA}, ensure_ascii=False),
+    "extra_key_count": json.dumps({"topic_id": TOPIC, "body": essay(3), "word_count": 480}, ensure_ascii=False),
+    # fenced JSON with a one-clause preamble and a closing offer: all recognized wrappers
+    "fenced_with_wrappers": "Jasne! Oto odpowiedź:\n```json\n" + as_json(essay(3)) + "\n```\nMam nadzieję, że to pomoże!",
 }
 
 # what the contract must do with each case
@@ -85,7 +109,17 @@ EXPECT = {
     "plan_first": {"ok": True, "ops": {"plan"}},
     "extra_essay": {"ok": False, "trigger": "multi_topic"},
     "wrong_topic_id": {"ok": False, "trigger": "wrong_topic_id"},
-    "missing_aspect": {"ok": False, "trigger": "missing_aspects"},
+    # v2: lexical aspect presence is advisory only; the hard gate is topic/shape/length
+    "missing_aspect": {"ok": True, "advisory": "lexical_aspect_absent"},
     "labelled_conclusion": {"ok": False, "trigger": "ambiguous_trailing_block"},
     "two_json": {"ok": False, "trigger": "multiple_json_objects"},
+    "heading_sentence": {"ok": True, "ops": {"heading_marker_stripped"}},
+    "fact_after_json": {"ok": False, "trigger": "ambiguous_text_outside_json"},
+    "prose_after_json": {"ok": False, "trigger": "ambiguous_text_outside_json"},
+    "structural_headings": {"ok": True, "ops": {"heading"}},
+    "title_heading": {"ok": False, "trigger": "ambiguous_heading"},
+    "dated_heading": {"ok": False, "trigger": "ambiguous_heading"},
+    "extra_key_prose": {"ok": False, "trigger": "substantive_extra_key"},
+    "extra_key_count": {"ok": True, "wrapper": "extra_keys:word_count"},
+    "fenced_with_wrappers": {"ok": True, "wrapper": "text_around_json"},
 }
