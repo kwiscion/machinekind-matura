@@ -112,8 +112,12 @@ def case_local_generation_error(result, inf):
         choice.get('finish_reason') == 'stop' and not (content or '').strip())
 
 
-def request_loop(cases, config, out, max_calls, deadline, guard, verify, inf, continue_case_errors=False):
+def request_loop(cases, config, out, max_calls, deadline, guard, verify, inf, continue_case_errors=False,
+                 *, context_length=4096):
     """No retries. Opt-in skips only verified case-local generation errors, retaining blanks."""
+    r.require(type(context_length) is int and context_length >= 4096,
+              'Verified context_length must be an integer >= 4096')
+    prompt_token_limit = context_length - 1024 - 256  # Fixed output budget and context headroom.
     rows, stop, case_errors = [], 'complete', []
     _, adapter = r.modules()
     with (out/'raw.jsonl').open('x', encoding='utf-8') as raw, (out/'calls.jsonl').open('x', encoding='utf-8') as calls:
@@ -132,7 +136,7 @@ def request_loop(cases, config, out, max_calls, deadline, guard, verify, inf, co
                     r.require(failure is None or case_error, 'Incomplete/failed response: '+str(failure))
                     usage = result.get('usage') or {}
                     r.require(isinstance(usage, dict), 'Malformed usage')
-                    r.require(type(usage.get('prompt_tokens')) is int and 0 <= usage['prompt_tokens'] <= 2816, 'Missing/excess prompt usage')
+                    r.require(type(usage.get('prompt_tokens')) is int and 0 <= usage['prompt_tokens'] <= prompt_token_limit, 'Missing/excess prompt usage')
                     r.require(type(usage.get('completion_tokens')) is int and 0 <= usage['completion_tokens'] <= 1024, 'Missing/excess completion usage')
                     r.require(not any((result.get('raw_response') or {}).get(flag, False)
                                       for flag in ('truncated', 'context_truncated')), 'Context truncation reported')
@@ -225,7 +229,7 @@ def inside(a):
             verify_pins(record['frozen_files'])
             worker_guard(server.pid, record['parent_pid'], profile)
         result = request_loop(cases, config, out, record['max_calls'], deadline,
-                              before_request, loaded_runtime, inf,
+                              before_request, loaded_runtime, inf, context_length=context,
                               **({'continue_case_errors': True} if record.get('continue_case_errors', False) else {}))
         r.write(out/'execution.json', result)
         return 0 if result['stop_reason'] == 'complete' else 1

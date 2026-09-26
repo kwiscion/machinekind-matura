@@ -88,8 +88,10 @@ class RuntimeProfile(unittest.TestCase):
             if path == 'version': return {'version':version}
             return {'models':[{'digest':r.DIGEST,'context_length':context}]}
         proc = self.root/('proc-'+name); proc.mkdir()
-        loop = loop or (lambda cases, config, out, n, deadline, guard, verify, inf:
-                        (guard(), verify(), {'stop_reason':'complete','completed_records':0})[2])
+        def checked_loop(cases, config, out, n, deadline, guard, verify, inf, *, context_length):
+            self.assertEqual(context_length, record['runtime_profile']['context_length'])
+            return (guard(), verify(), {'stop_reason':'complete','completed_records':0})[2]
+        loop = loop or checked_loop
         with patch.object(f.os,'getppid',return_value=777), \
              patch.object(r,'network_proof',return_value={'isolated_namespace':'net:[iso]'}), \
              patch.object(f.os,'readlink',return_value='net:[iso]'), \
@@ -150,9 +152,9 @@ class RuntimeProfile(unittest.TestCase):
         row = {'id':'x','error':None,'usage':{'prompt_tokens':10,'completion_tokens':2},
                'raw_response':{'choices':[{'finish_reason':'stop','message':{'content':'ok'}}]}}
         calls = []
-        def loop(cases, config, out, n, deadline, guard, verify, _inf):
+        def loop(cases, config, out, n, deadline, guard, verify, _inf, *, context_length):
             with patch.object(_inf,'run_case',side_effect=lambda *a: (calls.append(1), dict(row, id=a[0]['id']))[1]):
-                return REAL_LOOP(cases, config, out, n, deadline, guard, verify, _inf)
+                return REAL_LOOP(cases, config, out, n, deadline, guard, verify, _inf, context_length=context_length)
         status, out, _ = self.launch('ctx', path, version='0.34.4', context=4096, loop=loop)
         self.assertEqual((status, len(calls)), (1, 1))
         result = json.loads((out/'execution.json').read_text())
