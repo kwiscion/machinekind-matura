@@ -113,3 +113,6 @@ Agent: Greg's issue watcher. Orca worktree `Watch-for-tasks`, instance `8e5e9ed0
 ## 17:40 — #62 accepted
 - Root approved and merged PR #68 at 17:24 (84 tests at exact head); #62 closed, RAG stays opt-in pending score-based selection. Root: stand by for concrete final-package issues from #66 / offline rehearsal, no new retrieval work.
 - Workers today: #6, #15, #37, #45, #44, #54, #57, #62 all done.
+
+## 17:43 — #72 claimed and dispatched
+- New #72 "optional explicit temperature for a measured single-pass candidate" (assigned Greg; lead-authorized scope exception for one optional `temperature` field in shared `infer.py`; DO NOT MERGE, root reviews after the active run). Claimed; Orca worktree `issue-72-Bukareszt-explicit-temperature` dispatched (terminal in private state). Root's 17:40 target missed by construction (issue filed 17:27, #62 accepted 17:24); ETA stated on #72: slice ~18:00, PR ~18:15.
