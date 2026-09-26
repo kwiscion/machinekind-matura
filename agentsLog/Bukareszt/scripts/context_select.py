@@ -59,6 +59,10 @@ VARIANTS: dict[str, dict] = {
     # same selection, sentence compression that keeps query-term / year sentences (+ chunk lead sentence)
     "candidate_c": {"kind": "candidate", "pool": 40, "wa": 0.6, "wr": 0.5, "wc": 0.3, "anchor": True,
                     "budget": 3000, "per_article": 3, "max_chunks": 8, "compress": True},
+    # UNAUDITED (added after the blind audit sample was frozen): same as candidate, but a chunk is only added
+    # when its article prior is >= min_article (drops "filler" chunks from distant articles)
+    "candidate_t": {"kind": "candidate", "pool": 40, "wa": 0.6, "wr": 0.5, "wc": 0.3, "anchor": True,
+                    "budget": 3000, "per_article": 3, "max_chunks": 6, "compress": False, "min_article": 0.5},
 }
 
 _SENT_RE = re.compile(r"(?<=[.!?])\s+(?=[A-ZĄĆĘŁŃÓŚŹŻ0-9„(])")
@@ -152,6 +156,8 @@ def select(idx: rt.BM25Index, graph: dict, query: str, variant: str = "candidate
                 if len(hits) >= cfg["max_chunks"]:
                     break
                 if per_art[h["source_id"]] >= cfg["per_article"]:
+                    continue
+                if hits and a < cfg.get("min_article", 0.0):
                     continue
                 text = compress_chunk(h["text"], qtoks) if cfg["compress"] else h["text"]
                 if hits and used + len(text) > cfg["budget"]:
