@@ -1099,4 +1099,3 @@ Interpretation: Revolt, uprising and workers’ protest may be defensible labels
 - [Łódzki Październik1956r.](https://lodz.ipn.gov.pl/pl6/aktualnosci/153047,Lodzki-Pazdziernik-1956-r.html), Instytut Pamięci Narodowej; retrieved 2026-09-26; paragraphs on VIIIPlenum 19–21 October and Gomułka’s response. Full relevant page text opened and checked through web research. Reference fact checking only; original concise notes, no source text/images exported; no redistribution license asserted
 
 Limits: No exact casualty total is prescribed. Institutional articles were checked; precise economic outcome magnitudes and every reform date require separate verification.
-

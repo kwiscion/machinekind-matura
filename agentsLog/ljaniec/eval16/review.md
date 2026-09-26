@@ -17,6 +17,6 @@ These are provisional agent research reviews, not official historical or organiz
 
 ## Reproducible checks and scope
 
-`python3 agentsLog/ljaniec/eval16/verify.py` reports PASS: 16 inputs, 32 alternatives, 88 evidence dimensions, 64 reference records; frozen bytes and references match. `git diff --check` passed. Required PR CI and exact-head publication review are recorded on the PR before merge.
+`python3 agentsLog/ljaniec/eval16/verify.py` reports PASS: 16 inputs, 32 alternatives, 88 evidence dimensions, 64 reference records; frozen bytes and references match. The staged diff check initially found one extra blank line at the readable file’s EOF; this was removed and its manifest hash refreshed. The final `git diff --check` passed. Required PR CI and exact-head publication review are recorded on the PR before merge.
 
 Zero GPU calls, model API calls and purchases. No candidate grading, model promotion, training/retrieval/model-input modification, fixed exam acquisition or May 2025 access. No source images or long passages redistributed. Original web response bytes were not archived; reference revisions and reuse rights are explicitly unknown. The lead owns subsequent candidate evaluation and final integration.
