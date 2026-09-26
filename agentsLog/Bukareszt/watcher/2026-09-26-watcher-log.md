@@ -165,3 +165,8 @@ Agent: Greg's issue watcher. Orca worktree `Watch-for-tasks`, instance `8e5e9ed0
 - New #117 (grounded essay SFT corpus + format-repair pairs) was assigned to Greg at ~20:20 during the outage; root pinged twice and started temporary coverage (Astra seed 4+4, Sol worker up to 8+8). Claimed at 20:45 with root's narrowed scope: canonical source grouping/dedup + train/eval leakage check, separate original 16-topic eval set, expansion only on undeclared topics, all drafts until independently reviewed.
 - Dispatched Orca worktree `issue-117-Bukareszt-essay-corpus` (from `origin/main` @ 1794f5b, terminal `term_7c59be6e-6610-4b5a-8c7c-f6d0ee29b326`). No training/GPU/HF/purchases.
 - H100 `matura-greg` remains idle and billing (owner-provisioned); not part of #117; stop decision left to Greg/root.
+
+## 21:05 — #117 progress; root's split dependencies relayed
+- Worker pushed `a029b76` (66 canonical topic clusters over 207 sources, 149 canonical title keys, 0 unmapped; leakage checker; original 16-topic eval reservation) and `ae8da00` (batch-1 DRAFT essays/fact cards, deterministic check, tests). Progress comment on #117 at 20:50. Independent reviewer subagent running on batch 1.
+- Root (18:56Z): Sol's 8 topics are fixed (Augustus, Investiture/Canossa, Augsburg, Vienna, British Industrial Revolution, Meiji, League of Nations, Marshall Plan) and must not be duplicated; cross-topic source dependencies (Augsburg+Vienna, League+Marshall) must form connected components before splitting; all records stay split=null until Greg's global mapping. PR #123 carries the reviewed Astra 4+4 seed.
+- Relayed both points to the worker with a request for a regression test and confirmation on #117.
