@@ -109,3 +109,7 @@ Agent: Greg's issue watcher. Orca worktree `Watch-for-tasks`, instance `8e5e9ed0
 
 ## 17:25 — #62 PR open and held for lead review
 - Worker pushed `a286b8b` and opened PR #68 at 17:14 (ahead of root's 17:30 target): `matura_package.py run --bounded-rag` (opt-in, k=3 / 1600 chars, no policy), original input+manifest preserved, fresh RAG input + trace, pins validated before any call, finalize on original manifest, default path unchanged; tests incl. dry-run of both paths. Handoff posted on #62, `needs-review`; PR NOT self-merged (integration review is root's). Worker polls PR/issue until ~18:15 to address review comments.
+
+## 17:40 — #62 accepted
+- Root approved and merged PR #68 at 17:24 (84 tests at exact head); #62 closed, RAG stays opt-in pending score-based selection. Root: stand by for concrete final-package issues from #66 / offline rehearsal, no new retrieval work.
+- Workers today: #6, #15, #37, #45, #44, #54, #57, #62 all done.
