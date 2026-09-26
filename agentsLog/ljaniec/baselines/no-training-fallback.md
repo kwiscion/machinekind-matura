@@ -1,5 +1,15 @@
 # No-training fallback recipe — lead's Blackwell machines
 
+**Evidence correction (issue #27):** this is the original recipe, retained for
+history. The Spark raw artifact contains 16 empty answers out of 20; its timing
+does not verify 20 usable answers. The 64-character value below is the weight
+file SHA-256, not an HF repository commit. Exact runtime/template and Spark
+served-weight verification were not retained for independent audit. The older
+"Spark run pending" statement below is stale. Use the reviewed runner and
+commands in [../smoke-harness.md](../smoke-harness.md) for new diagnostics, and
+read [the aggregate audit](../2026-09-26-synthetic-smoke-audit.md). No new model
+call, download or environment repair is authorized by this correction.
+
 Status: READY TO USE. No purchases. Everything below runs offline once the
 model file (SHA-256 verified) is copied to the target machine.
 
