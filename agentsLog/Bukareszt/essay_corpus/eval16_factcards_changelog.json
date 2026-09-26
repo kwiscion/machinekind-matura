@@ -2,7 +2,7 @@
   "changed_at": "2026-09-26T21:54:20+02:00",
   "by": "Greg #117 worker (parent session), per independent review reviews/eval16_cards_review.json and root 19:49Z",
   "before_sha256": "1264509cbbf17f6c247e67b0839db013fc7885348ebed04a52f3346d6538a07e",
-  "after_sha256": "3dc416bc44eca3405caab01d9ca176fd5be027ed9e23db4e5205fc9bddee52fb",
+  "after_sha256": "260e07097dc3a144e57a9fa90388adf6662f3e51db101edece82e97ee02e2124",
   "changes": [
     {
       "fact_id": "ev-01-f03",
@@ -98,6 +98,26 @@
         "source_id": "plwiki-czarna-smierc",
         "quote": "Takie same zjawiska miały miejsce w krajach Europy Zachodniej i były wyraźnie powiązane z epidemią i gwałtownym zmniejszeniem się populacji, które doprowadziło do nadwyżki żywności (a więc spadku cen) i niedoboru wykwalifikowanej siły roboczej (i w konsekwencji wzrostu płac).",
         "fact": "W Europie Zachodniej gwałtowny spadek liczby ludności po epidemii doprowadził do nadwyżki żywności i spadku cen oraz do niedoboru wykwalifikowanej siły roboczej i wzrostu płac."
+      }
+    },
+    {
+      "fact_id": "ev-05-f09",
+      "action": "corrected (second pass, per reviews/followup_verification.json: 'rozbiło' not in quote)",
+      "before": {
+        "fact_id": "ev-05-f09",
+        "eval_id": "bk117-eval-05",
+        "cluster_id": "C-lokietek",
+        "source_id": "plwiki-wladyslaw-lokietek",
+        "quote": "Trzy dni później, rankiem 27 września 1331, oddziały polskie liczące około 5000 ludzi, dowodzone osobiście przez króla Władysława Łokietka i jego syna królewicza Kazimierza napotkały w rejonie Radziejowa tylną straż krzyżacką, korpus Altenburga.",
+        "fact": "27 września 1331 roku około 5000 Polaków pod wodzą Łokietka i królewicza Kazimierza rozbiło w rejonie Radziejowa tylną straż krzyżacką (korpus Altenburga)."
+      },
+      "after": {
+        "fact_id": "ev-05-f09",
+        "eval_id": "bk117-eval-05",
+        "cluster_id": "C-lokietek",
+        "source_id": "plwiki-wladyslaw-lokietek",
+        "quote": "Trzy dni później, rankiem 27 września 1331, oddziały polskie liczące około 5000 ludzi, dowodzone osobiście przez króla Władysława Łokietka i jego syna królewicza Kazimierza napotkały w rejonie Radziejowa tylną straż krzyżacką, korpus Altenburga.",
+        "fact": "27 września 1331 roku około 5000 Polaków pod wodzą Łokietka i królewicza Kazimierza napotkało w rejonie Radziejowa tylną straż krzyżacką (korpus Altenburga)."
       }
     }
   ]

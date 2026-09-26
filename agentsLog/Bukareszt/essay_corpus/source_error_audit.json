@@ -15,7 +15,7 @@
         "title": "Annales regni Francorum, entry [782] DCCLXXXII (Latin, primary source)",
         "url": "https://www.thelatinlibrary.com/annalesregnifrancorum.html",
         "sha256": "d3cb557e112a4ea6dd942e305cfe870e8d06da6d6f70c1c4dc8157f578400135",
-        "excerpt": "[782] DCCLXXXII. ... reddiderunt omnes malefactores illos, qui ipsud rebellium maxime terminaverunt, ad occidendum IIIID; quod ita et factum est ... [783] DCCLXXXIII"
+        "excerpt": "[782] DCCLXXXII. ... reddiderunt omnes malefactores illos, qui ipsud rebellium maxime terminaverunt, ad occidendun IIIID; quod ita et factum est ... [783] DCCLXXXIII"
       },
       "cards": {
         "b1-charlemagne-f06": "quote contains the wrong date; NOT used by the exported essay version",
@@ -43,7 +43,7 @@
           "title": "Potsdam Conference protocol, Avalon Project, Yale Law School, section on Poland",
           "url": "https://avalon.law.yale.edu/20th_century/decade17.asp",
           "sha256": "893d6cfc5a7ad0a9a7d24fe7f29333af2b299ddb1316bb86e0259f90c7bf1063",
-          "excerpt": "The three Heads of Government agree that, pending the final determination of Poland's western frontier, the former German territories east of a line running from the Baltic Sea immediately west of Swinamunde, and thence along the Oder River to the confluence of the western Neisse River ... shall be under the administration of the Polish State"
+          "excerpt": "The three Heads of Government agree that, pending the final determination of Poland's western frontier, the former German territories cast [sic, OCR for east] of a line running from the Baltic Sea immediately west of Swinamunde, and thence along the Oder River to the confluence of the western Neisse River ... shall be under the administration of the Polish State"
         }
       ],
       "cards": {
@@ -65,7 +65,11 @@
         "title": "Seimas of the Republic of Lithuania, official legal register e-seimas: Act No. I-12 'Dėl Lietuvos nepriklausomos valstybės atstatymo'",
         "url": "https://e-seimas.lrs.lt/portal/legalAct/lt/TAD/TAIS.24",
         "sha256": "99f1677fbf68fe36ed80b8b93fc6f935f05bd5e24039a53e57578c0c41352154",
-        "excerpt": "I-12 Dėl Lietuvos nepriklausomos valstybės atstatymo Rūšis: Aktas Priėmimo data: 1990-03-11 ... Dokumento Nr.: I-12"
+        "excerpt": [
+          "I-12 Dėl Lietuvos nepriklausomos valstybės atstatymo",
+          "Priėmimo data: 1990-03-11",
+          "Dokumento Nr.: I-12"
+        ]
       },
       "cards": {
         "b2-ussr-f14": "wrong; used ONLY by the ussr off_topic_paragraph",
@@ -119,5 +123,6 @@
     },
     "conclusion": "no copied source passages exported"
   },
-  "limitations": "Four errors audited are those the reviewer caught; other pinned-source errors may remain undetected. References are fetched web pages (bytes hashed, not redistributed). The Peace Palace Library item is a library blog summarizing Die Welt/official budget reporting; no German Finance Ministry primary document was fetched."
+  "limitations": "Four errors audited are those the reviewer caught; other pinned-source errors may remain undetected. References are fetched web pages (bytes hashed, not redistributed). The Peace Palace Library item is a library blog summarizing Die Welt/official budget reporting; no German Finance Ministry primary document was fetched.",
+  "independent_verification": "reviews/followup_verification.json (all four ok; excerpt spelling fixed to match fetched bytes)"
 }
