@@ -2,93 +2,134 @@
 
 - **Issue:** [#7](https://github.com/kwiscion/machinekind-matura/issues/7) (`overnight:eval`)
 - **Branch:** `issue-7-Pewciu6-eval`
-- **Started:** 2026-09-26 01:58 Europe/Warsaw (23:58 UTC, 2026-09-25)
-- **First slice:** 2026-09-26 02:06 Warsaw (00:06 UTC)
-- **Split used:** synthetic fixtures (labelled `DEV` for the split guard) plus a VALIDATION (May 2024) acquisition manifest. SEALED_TEST (May 2025) was not opened.
+- **PRs:** [#8](https://github.com/kwiscion/machinekind-matura/pull/8) (first slice, merged) and a follow-up stretch PR
+- **Started:** 2026-09-26 01:58 Europe/Warsaw (23:58 UTC on 09-25)
+- **First slice:** 02:06 Warsaw
+- **Stretch:** about 02:30 Warsaw
+- **Splits used:**
+  - synthetic fixtures (tagged `DEV` for the split guard);
+  - May 2024 **VALIDATION** keys, in an isolated process under `private/` only.
+  - SEALED_TEST (May 2025) was **not** opened.
+- **Model outputs:** **none existed**, so no model is scored. Every VALIDATION number below is a rubric sanity check (oracle, shotgun, null), not a model result.
 
 ## Artifact inventory
 
 | Path | What it is |
 | --- | --- |
-| `harness/matura_harness.py` | Stdlib-only, CPU-only CLI. Subcommands are `score`, `audit-citations`, `leakcheck`, and `validate`. |
-| `harness/test_matura_harness.py` | unittest checks against the synthetic fixtures (7 tests). |
-| `harness/fetch_validation_2024.py` | Re-downloads or verifies the May 2024 PDFs into the git-ignored `private/` path and checks their SHA-256. |
-| `schemas/eval_key_rubric.schema.json` | JSON Schema for one restricted `eval_keys.jsonl` record with an item-level rubric (`criteria`, `choice`, and `order` modes). |
-| `schemas/model_output.schema.json` | JSON Schema for one raw output record: `id`, `backend`, `model`, `model_revision`, `raw_response`, `usage`, `latency_s`, `error`, optional `citations`. |
-| `schemas/error_taxonomy.json` | Error categories, their automatic triggers, and review hints. |
-| `sources/validation_2024_sources.jsonl` | May 2024 history, formula 2023, VALIDATION acquisition manifest: 1 index page and 3 PDFs. |
-| `fixtures/synthetic_*.jsonl` | Synthetic keys (11), outputs (10 plus 1 orphan), labels (9 classified, 2 exclusions), a citation corpus (4 passages), and runner input (4). |
-| `results/fixture_scorecard.json`, `results/fixture_items.jsonl` | Scorecard and item-level results from the fixture run. |
-| `private/` (git-ignored) | Downloaded CKE PDFs. Never committed. |
+| `harness/matura_harness.py` | Stdlib-only CPU CLI. Subcommands: `score`, `audit-citations`, `audit-sample`, `audit-summary`, `blind-pack`, `blind-merge`, `leakcheck`, `validate`. |
+| `harness/test_matura_harness.py` | 12 unittest checks on synthetic fixtures. |
+| `harness/fetch_validation_2024.py` | Downloads or verifies the CKE PDFs into `private/` against the manifest's SHA-256. |
+| `harness/build_validation_2024.py` | Builds restricted `eval_keys.jsonl` (40 items, 60 points), `runner_input.jsonl`, and page PNGs under `private/`. Publishes aggregate stats only. |
+| `harness/sanity_validation_2024.py` | Oracle, wrapped-oracle, shotgun, and null rubric checks on the VALIDATION keys. Aggregates only. |
+| `schemas/eval_key_rubric.schema.json` | Item-level rubric/key schema. Criteria kinds: content, entity, date, structure, decision (gate); plus P/F pairs, graded counts, all-or-nothing, min_words/zeroes, manual_only, review_on_fail. |
+| `schemas/model_output.schema.json` | Schema for raw output records. |
+| `schemas/error_taxonomy.json` | Error categories: chronology, entity_confusion, essay_structure, abstention, citation_unsupported, image_ocr, content_incorrect. Also exclusions, review flags, and statuses. |
+| `sources/validation_2024_sources.jsonl` | May 2024 acquisition manifest: CKE index page plus 3 PDFs, with URLs, retrieved_at, SHA-256, bytes, ETag, and rights. |
+| `fixtures/synthetic_*.jsonl` | 15 synthetic keys and 14 outputs plus 1 orphan. Labels: 13 classified items and 2 exclusions. Also a citation corpus (4 passages) and runner input (4). |
+| `results/fixture_scorecard.json`, `results/fixture_items.jsonl` | Fixture run. |
+| `results/validation_2024_build_stats.json` | VALIDATION item counts by type, modality, era, and scoring mode, plus hashes of the restricted files. |
+| `results/validation_2024_sanity.json` | Rubric sanity aggregates. |
+| `2026-09-26T0225-audit-procedures.md` | Procedures for the citation-support audit, the 15–20 item independent audit, blind essay review, and the vision/OCR slice. |
+| `private/` (git-ignored) | PDFs, `eval_keys.jsonl`, `runner_input.jsonl`, `pages/`, sanity outputs, dry-run audit sheet. **Never commit.** |
 
-## Commands (all run on CPU, Python 3.9.6, macOS arm64)
+## Commands (CPU, Python 3.9.6 stdlib, poppler 24 for build only; macOS arm64)
 
 ```bash
-# checks
-python3 -m unittest discover -s agentsLog/Pewciu6/harness -v          # Ran 7 tests ... OK
-# score synthetic fixtures
-python3 agentsLog/Pewciu6/harness/matura_harness.py score \
-  --outputs agentsLog/Pewciu6/fixtures/synthetic_outputs.jsonl \
-  --keys    agentsLog/Pewciu6/fixtures/synthetic_eval_keys.jsonl \
-  --corpus  agentsLog/Pewciu6/fixtures/synthetic_corpus.jsonl \
-  --split DEV --run-id fixture-20260926 \
-  --scorecard agentsLog/Pewciu6/results/fixture_scorecard.json \
+H=agentsLog/Pewciu6/harness; P=agentsLog/Pewciu6/private/validation_2024
+python3 -m unittest discover -s $H -v                  # Ran 12 tests ... OK
+python3 $H/matura_harness.py score --outputs agentsLog/Pewciu6/fixtures/synthetic_outputs.jsonl \
+  --keys agentsLog/Pewciu6/fixtures/synthetic_eval_keys.jsonl --corpus agentsLog/Pewciu6/fixtures/synthetic_corpus.jsonl \
+  --split DEV --run-id fixture-20260926 --scorecard agentsLog/Pewciu6/results/fixture_scorecard.json \
   --items-out agentsLog/Pewciu6/results/fixture_items.jsonl
-# guard: model-facing input must not carry key fields or answer strings
-python3 agentsLog/Pewciu6/harness/matura_harness.py leakcheck --inputs <runner_input.jsonl> --keys <eval_keys.jsonl>
-# verify validation PDFs (downloads to private/ if missing)
-python3 agentsLog/Pewciu6/harness/fetch_validation_2024.py
-python3 agentsLog/Pewciu6/harness/matura_harness.py validate sources agentsLog/Pewciu6/sources/validation_2024_sources.jsonl
+python3 $H/fetch_validation_2024.py                    # 3/3 sha256 OK
+python3 $H/build_validation_2024.py                    # 40 items, 60 pts, 21 pages rendered
+python3 $H/matura_harness.py leakcheck --inputs $P/runner_input.jsonl --keys $P/eval_keys.jsonl   # errors 0
+python3 $H/sanity_validation_2024.py                   # oracle auto 18/18
 ```
 
-Ready-to-run command for real VALIDATION outputs, once someone has written the keys (restricted, under `private/`):
+Ready to run on real outputs (see the procedures note):
 
 ```bash
-python3 agentsLog/Pewciu6/harness/matura_harness.py score --split VALIDATION \
-  --outputs <model_outputs.jsonl> --keys agentsLog/Pewciu6/private/validation_2024/eval_keys.jsonl \
-  --corpus <licensed_retrieval_corpus.jsonl> --run-id <run> --model-manifest <candidate manifest> \
-  --scorecard agentsLog/Pewciu6/results/<run>_scorecard.json \
-  --items-out agentsLog/Pewciu6/private/<run>_items.jsonl
+python3 $H/matura_harness.py score --split VALIDATION --outputs <run>_outputs.jsonl --keys $P/eval_keys.jsonl \
+  --run-id <run> --model-manifest <candidate manifest> \
+  --scorecard agentsLog/Pewciu6/results/<run>_scorecard.json --items-out $P/<run>_items.jsonl
+python3 $H/matura_harness.py audit-sample --items $P/<run>_items.jsonl --keys $P/eval_keys.jsonl \
+  --outputs <run>_outputs.jsonl --n 20 --out $P/<run>_audit_sheet.jsonl
 ```
 
-## Measurements (synthetic fixtures only; these are not model scores)
+Runner input image paths are relative to `$P`, per the contract.
 
-Fixture run `fixture-20260926`: 9 scored items and 2 exclusions (`inference_error` for syn-010, `missing_output` for syn-011). One orphan output (syn-999) was ignored.
+## Measurements
 
-| Metric | Value |
-| --- | --- |
-| correct / partial / incorrect | 3 / 2 / 4 |
-| points | 8 / 14 (0.5714 lenient) |
-| strict (exclusions scored as 0) | 8 / 16 = 0.5 |
-| errors | chronology 2, entity_confusion 1, essay_structure 1, abstention 1, citation_unsupported 1, image_ocr 1 |
+### Fixtures (synthetic; not model scores)
 
-All 9 labelled fixture classifications match the expected status, points, and categories.
+- 13 items scored, 2 excluded (`inference_error`, `missing_output`), 1 orphan ignored.
+- correct / partial / incorrect / needs_review: 3 / 3 / 5 / 2.
+- Points: 9 of 33 (0.273). The upper bound is 22 of 33. The strict rate, with exclusions scored as 0, is 0.257.
+- Errors: chronology 2, entity_confusion 1, essay_structure 2, abstention 1, citation_unsupported 1, image_ocr 1, content_incorrect 2.
+- All 13 labelled classifications match: status, points, upper bound, categories, and flags.
 
-## Source hashes (May 2024 history, formula 2023: VALIDATION)
+### VALIDATION structure (aggregate only)
 
-| File | SHA-256 | Bytes |
+- 40 items, 60 points, matching the official sheet.
+- Task types: source_analysis 14, short_answer 20, multiple_choice 5, essay 1.
+- Modality: image 29, text 11.
+- Scoring mode:
+
+  | Mode | Items | Points |
+  | --- | --- | --- |
+  | auto | 16 | 18 |
+  | gate+manual (decision auto, justification manual) | 14 | 14 |
+  | manual (open answers and the essay) | 10 | 28 |
+
+- **The heuristic can fully decide only 18 of 60 points.** The rest needs independent or human review. The harness reports a lower and an upper bound.
+
+### Rubric sanity (no model)
+
+| Run | Auto points | Decision gates |
 | --- | --- | --- |
-| MHIP-R0-100-A-2405-arkusz.pdf | `ad66a7c4f212ee1248661141971afae21060a28586086cc57460247a64463d21` | 3767602 |
-| MHIP-R0-100-A-2405-karta.pdf | `12f9bc044132d0754f4f1f423781435d9d9aa6697e30d2b5188c273be7d9bb5e` | 1406273 |
-| MHIP-R0-100-2405-zasady.pdf (answer key) | `95c275b9546611c1f8cd45b7973c436625fd0ee5643b778dcc8bb566db56cd4c` | 423212 |
+| Oracle (official answers) | 18/18 | 14/14 |
+| Oracle wrapped in a sentence | 18/18 | 14/14 |
+| Shotgun (hedges every option) | 0/18 | 0/14 |
+| Null (empty) | 0 | 0 |
 
-Publisher: CKE. Retrieved 2026-09-25T23:58Z from cke.gov.pl. HTTP Last-Modified is 14 Apr 2026. License is `unknown`, so these files are for reference only and are not redistributed. The sheet includes third-party source excerpts.
+The oracle runs use 39 items; the essay is excluded because it has no example answer. The shotgun and null runs use all 40. Two rubric bugs were found by these runs and fixed (see the procedures note).
+
+### Independent 15–20 item audit
+
+**Not run.** There are no model outputs. `audit-sample` was dry-run on the oracle to prove the sheet (20 items: 10 correct, 10 needs_review). All grades remain provisional.
+
+## Hashes
+
+| File | SHA-256 |
+| --- | --- |
+| MHIP-R0-100-A-2405-arkusz.pdf (3767602 B) | `ad66a7c4f212ee1248661141971afae21060a28586086cc57460247a64463d21` |
+| MHIP-R0-100-A-2405-karta.pdf (1406273 B) | `12f9bc044132d0754f4f1f423781435d9d9aa6697e30d2b5188c273be7d9bb5e` |
+| MHIP-R0-100-2405-zasady.pdf (423212 B, **restricted key**) | `95c275b9546611c1f8cd45b7973c436625fd0ee5643b778dcc8bb566db56cd4c` |
+| private `eval_keys.jsonl` (builder v1) | `f66e387793c5dfad2bac8723a73716e434a9d6ecab40c544f8b529723f512123` |
+| private `runner_input.jsonl` (prompt v1) | `f4df6bcb9c1152d42e3650e820dfee1b4d182a5ad065eea41c9c0be85a0003c7` |
+
+Anyone who rebuilds from the same PDFs should get the same hashes.
 
 ## Rights
 
-- Code and schemas are original work. No license file has been added, because that needs the owner's approval.
-- The fixtures are synthetic text written for this harness. They contain general historical facts, no exam content, and no third-party passages.
-- CKE PDFs stay in the git-ignored `private/` path. The marking rules (`zasady`) are a restricted key and are used only in isolated scoring.
+- **CKE PDFs.** Publisher: Centralna Komisja Egzaminacyjna. Retrieved 2026-09-25T23:58Z. HTTP Last-Modified is 14 Apr 2026. License `unknown`, so reference use only and not redistributed. The sheet contains third-party excerpts and images.
+- **Derived files.** Keys, prompts, and page images stay in `private/`.
+- **Code and fixtures.** Original work; no license file added (that needs owner approval). The fixture texts were written for this harness and contain general facts only.
 
 ## Failures and limits
 
-- **Heuristic grading.** Grades come from lexical rubric matching and are provisional. Essay, source-analysis, and open answers need a blind human or independent review.
-- **Citation audit.** It checks prefix-stem token overlap of at least 0.5, and that every year in the claim appears in the cited passage. It can miss paraphrase and negation.
-- **No real outputs yet.** No real model outputs were available at the first slice, so no model scores are claimed.
-- **Environment workaround.** The sandbox guard refuses shell commands that contain the token `eval` as a path component, so the harness directory is named `harness/`.
+- **Lexical heuristics.**
+  - Closed short answers use exact phrase variants; a miss routes to review rather than failing.
+  - Decision parsing expects `Rozstrzygnięcie:` or a leading decision word; the runner prompt asks for that format.
+  - Listing many candidate names can still pass short-answer criteria. Shotgun hedging of decisions and P/F is blocked.
+- **Era mapping.** Era is approximated from the curriculum section number and should be confirmed.
+- **Modality.** The image label is a caption-keyword heuristic.
+- **Citation audit.** Lexical plus year check only; it can miss negation and paraphrase.
+- **No independent model run.** No independent Sol/other-model audit ran, because nothing existed to audit. The local LM Studio model was not used.
+- **Environment workaround.** The sandbox guard rejects shell commands containing the token `eval` as a path, hence the `harness/` name. An empty, untracked leftover directory may exist locally.
 
 ## Next action
 
-1. Write the VALIDATION `eval_keys.jsonl` from `zasady` into `private/` (restricted).
-2. Add the essay and vision slices.
-3. Audit real model outputs if any appear in other owners' PRs or issues.
+1. Once #5 or another owner produces outputs for `runner_input.jsonl`, run `score`, then `audit-sample` (20 items), then an independent reviewer, then `audit-summary`. Post the aggregates to #7.
+2. Blind-pack the essays for two raters.

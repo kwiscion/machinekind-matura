@@ -91,7 +91,7 @@ def fold(text):
     text = unicodedata.normalize("NFKD", text)
     text = "".join(ch for ch in text if not unicodedata.combining(ch))
     text = text.casefold()
-    text = re.sub(r"[^\w\s#:\-\[\]]", " ", text)
+    text = re.sub(r"[^\w\s#:\-]", " ", text)
     return re.sub(r"\s+", " ", text).strip()
 
 
@@ -253,6 +253,51 @@ def extract_order(text, labels):
     return seen
 
 
+DECISION_RE = re.compile(r"rozstrzygni\w*\W{0,5}([^\n.;,]{1,40})")
+
+
+def eval_criterion(crit, text, f):
+    """Return True / False, or None when the heuristic cannot judge (manual review)."""
+    if crit.get("manual_only"):
+        return None
+    if crit.get("min_words"):
+        return len(re.findall(r"\w+", text)) >= int(crit["min_words"])
+    kind = crit.get("kind", "content")
+    if kind == "decision":
+        values = [fold(v) for v in (crit.get("any_of") or [])]
+        options = [fold(o) for o in (crit.get("options") or [])]
+        m = DECISION_RE.search(f)
+        head = m.group(1).strip() if m else f[:40]
+        # hedged decisions ("tak / nie", "A lub B") are wrong, not lucky
+        named = set(o for o in options if re.search(r"(?<!\w)" + re.escape(o) + r"(?!\w)", head))
+        if len(named) >= 2:
+            return False
+        for v in values:
+            if re.match(r"(?:\w+ )?" + re.escape(v) + r"(?!\w)", head):
+                return True
+        if m:
+            return False
+        for o in options:
+            if re.match(re.escape(o) + r"(?!\w)", head):
+                return False
+        return None
+    if crit.get("pair"):
+        left, right = fold(crit["pair"][0]), fold(crit["pair"][1])
+        opts = set(fold(o) for o in (crit.get("options") or ["P", "F"]))
+        syn = {"prawda": "p", "falsz": "f", "true": "p", "false": "f"}
+        for m in re.finditer(r"(?<!\w)" + re.escape(left) + r"\W{0,6}(\w+)(?:\W{0,3}(\w+))?", f):
+            g1 = syn.get(m.group(1), m.group(1))
+            g2 = syn.get(m.group(2), m.group(2))
+            if g1 == right:
+                # "1 P F" (hedged) is wrong
+                return not (g2 in opts and g2 != right)
+        return False
+    any_of = crit.get("any_of") or []
+    all_of = crit.get("all_of") or []
+    return ((not any_of) or any(contains_phrase(f, a) for a in any_of)) and \
+        all(contains_phrase(f, a) for a in all_of)
+
+
 def grade_item(key, out, corpus):
     """Grade one joined (key, output) pair. Returns an item result without key content."""
     rub = key.get("rubric") or {}
@@ -263,6 +308,8 @@ def grade_item(key, out, corpus):
     points = 0.0
     criteria_results = []
     abstained = detect_abstention(text)
+    needs_review = False
+    upper_bound = None
 
     if abstained:
         if key.get("expect_abstention"):
@@ -290,27 +337,62 @@ def grade_item(key, out, corpus):
             if not ok:
                 errors.append("chronology")
         else:  # criteria
-            for crit in rub.get("criteria", []):
-                any_of = crit.get("any_of") or []
-                all_of = crit.get("all_of") or []
-                met = ((not any_of) or any(contains_phrase(f, a) for a in any_of)) and \
-                    all(contains_phrase(f, a) for a in all_of)
+            n_true, gate_failed = 0, False
+            true_pts, unknown_pts, n_unknown = 0.0, 0.0, 0
+            all_known_true = True
+            crits = rub.get("criteria", [])
+            mets = [eval_criterion(c, text, f) for c in crits]
+            # lexical miss on a criterion marked review_on_fail -> route to review, not a hard fail
+            mets = [None if (m is False and c.get("review_on_fail")) else m for c, m in zip(crits, mets)]
+            # a failed criterion may zero out others (e.g. essay < 300 words -> coherence 0 pts)
+            zeroed = set()
+            for c, m in zip(crits, mets):
+                if m is False:
+                    zeroed.update(c.get("zeroes") or [])
+            mets = [False if (c.get("criterion_id") in zeroed and m is None) else m
+                    for c, m in zip(crits, mets)]
+            for crit, met in zip(crits, mets):
                 kind = crit.get("kind", "content")
-                if met:
-                    points += float(crit.get("points", 1))
+                pts = float(crit.get("points", 1))
                 criteria_results.append({"criterion_id": crit.get("criterion_id"),
                                          "kind": kind, "met": met})
-                if not met:
-                    if kind == "structure":
-                        errors.append("essay_structure")
-                    elif kind == "date":
-                        errors.append("chronology")
-                    elif kind == "entity" and any(contains_phrase(f, d)
-                                                  for d in key.get("distractors") or []):
-                        errors.append("entity_confusion")
-                    else:
-                        errors.append("content_incorrect")
+                if met is None:
+                    n_unknown += 1
+                    unknown_pts += pts
+                    all_known_true = False
+                    continue
+                if met:
+                    n_true += 1
+                    true_pts += pts
+                    continue
+                all_known_true = False
+                if crit.get("gate"):
+                    gate_failed = True
+                if kind == "structure":
+                    errors.append("essay_structure")
+                elif kind == "date":
+                    errors.append("chronology")
+                elif kind == "entity" and any(contains_phrase(f, d)
+                                              for d in key.get("distractors") or []):
+                    errors.append("entity_confusion")
+                else:
+                    errors.append("content_incorrect")
+            table = rub.get("points_by_met_count")
+            if gate_failed:
+                points, upper = 0.0, 0.0
+            elif table:
+                points = float(table.get(str(n_true), 0))
+                upper = float(table.get(str(n_true + n_unknown), points))
+            elif rub.get("all_or_nothing"):
+                none_false = all(c["met"] is not False for c in criteria_results)
+                points = max_points if (all_known_true and n_unknown == 0) else 0.0
+                upper = max_points if none_false else 0.0
+            else:
+                points = true_pts
+                upper = true_pts + unknown_pts
             points = min(points, max_points)
+            upper_bound = min(max(upper, points), max_points)
+            needs_review = n_unknown > 0 and upper_bound > points
         # wrong-year check (chronology) for any mode
         exp_years = set(str(y) for y in (key.get("expected_years") or []))
         if exp_years:
@@ -335,10 +417,17 @@ def grade_item(key, out, corpus):
             cap = rub.get("citation_fail_max_points")
             if cap is not None:
                 points = min(points, float(cap))
+                if upper_bound is not None:
+                    upper_bound = min(upper_bound, float(cap))
     elif any_bad_cit:
         errors.append("citation_unsupported")
 
-    if key.get("task_type") == "vision_ocr" and points < max_points and not abstained:
+    if upper_bound is None:
+        upper_bound = points
+    needs_review = needs_review and upper_bound > points
+
+    if key.get("task_type") == "vision_ocr" and points < max_points and not abstained \
+            and not needs_review:
         errors.append("image_ocr")
 
     # dedupe in taxonomy order; content_incorrect only when nothing more specific applies
@@ -346,7 +435,15 @@ def grade_item(key, out, corpus):
     if len(errs) > 1 and "content_incorrect" in errs:
         errs.remove("content_incorrect")
 
-    if points >= max_points and not errs:
+    review_flags = []
+    if key.get("modality") == "image" and (points < max_points or needs_review):
+        review_flags.append("possible_image_ocr")
+    if key.get("task_type") in ("essay", "essay_plan"):
+        review_flags.append("blind_essay_review")
+
+    if needs_review:
+        status = "needs_review"
+    elif points >= max_points and not errs:
         status = "correct"
     elif points > 0:
         status = "partial"
@@ -356,9 +453,12 @@ def grade_item(key, out, corpus):
         "id": key["id"],
         "status": status,
         "points": round(points, 3),
+        "points_upper_bound": round(upper_bound, 3),
         "max_points": max_points,
         "abstained": abstained,
         "error_categories": errs,
+        "review_flags": review_flags,
+        "modality": key.get("modality", "text"),
         "criteria": criteria_results,
         "citations": cit_results,
         "task_type": key.get("task_type"),
@@ -371,22 +471,26 @@ def grade_item(key, out, corpus):
 
 
 def _bucket():
-    return {"n": 0, "correct": 0, "partial": 0, "incorrect": 0, "points": 0.0, "max_points": 0.0}
+    return {"n": 0, "correct": 0, "partial": 0, "incorrect": 0, "needs_review": 0,
+            "points": 0.0, "points_upper_bound": 0.0, "max_points": 0.0}
 
 
 def _add(b, it):
     b["n"] += 1
     b[it["status"]] += 1
     b["points"] += it["points"]
+    b["points_upper_bound"] += it.get("points_upper_bound", it["points"])
     b["max_points"] += it["max_points"]
 
 
 def _finalize(b):
     b = dict(b)
-    b["points"] = round(b["points"], 3)
-    b["max_points"] = round(b["max_points"], 3)
+    for k in ("points", "points_upper_bound", "max_points"):
+        b[k] = round(b[k], 3)
     b["accuracy"] = round(b["correct"] / b["n"], 4) if b["n"] else None
     b["points_rate"] = round(b["points"] / b["max_points"], 4) if b["max_points"] else None
+    b["points_rate_upper_bound"] = round(b["points_upper_bound"] / b["max_points"], 4) \
+        if b["max_points"] else None
     return b
 
 
@@ -430,7 +534,8 @@ def score(args):
     revisions = [json.loads(r) for r in
                  sorted(set(json.dumps(model_revision(o), sort_keys=True) for o in out_by_id.values()))]
 
-    by = {"task_type": defaultdict(_bucket), "era": defaultdict(_bucket), "topic": defaultdict(_bucket)}
+    by = {"task_type": defaultdict(_bucket), "era": defaultdict(_bucket), "topic": defaultdict(_bucket),
+          "modality": defaultdict(_bucket)}
     overall = _bucket()
     err_counts, cit_counts = Counter(), Counter()
     for it in items:
@@ -483,6 +588,8 @@ def score(args):
         ("by_task_type", {k: _finalize(v) for k, v in sorted(by["task_type"].items())}),
         ("by_era", {k: _finalize(v) for k, v in sorted(by["era"].items())}),
         ("by_topic", {k: _finalize(v) for k, v in sorted(by["topic"].items())}),
+        ("by_modality", {k: _finalize(v) for k, v in sorted(by["modality"].items())}),
+        ("review_flag_counts", dict(Counter(fl for it in items for fl in it.get("review_flags", [])))),
         ("error_category_counts", {c: err_counts.get(c, 0) for c in ERROR_CATEGORIES}),
         ("abstentions", sum(1 for it in items if it["abstained"])),
         ("citation_audit_counts", dict(cit_counts)),
@@ -524,32 +631,187 @@ def audit_citations_cmd(args):
     return rows
 
 
+def blind_pack(args):
+    """Anonymise essay-type responses from one or more output files for blind review.
+
+    packet.jsonl  -> for reviewers: blind_id, item_id, rubric_id, response, empty review form.
+                     No model/backend/revision, no latency/usage (these leak identity).
+    mapping.jsonl -> RESTRICTED: blind_id -> output file hash, model, revision. Keep private.
+    """
+    import random
+    keys = {k["id"]: k for k in read_jsonl(args.keys)}
+    types = set(args.task_types.split(","))
+    rows, mapping = [], []
+    for path in args.outputs:
+        fh = sha256_file(path)
+        for o in read_jsonl(path):
+            k = keys.get(o.get("id"))
+            if not k or k.get("task_type") not in types or o.get("error"):
+                continue
+            bid = "blind-" + hashlib.sha256(("%s|%s|%s" % (args.seed, fh, o["id"])).encode()).hexdigest()[:10]
+            rows.append({"blind_id": bid, "item_id": o["id"],
+                         "rubric_id": (k.get("rubric") or {}).get("rubric_id"),
+                         "max_points": float((k.get("rubric") or {}).get("max_points", 1)),
+                         "response": response_text(o),
+                         "word_count": len(re.findall(r"\w+", response_text(o))),
+                         "review": {"reviewer": None, "points": None, "criterion_points": {},
+                                    "notes": ""}})
+            mv = model_revision(o)
+            mapping.append({"blind_id": bid, "outputs_sha256": fh, "id": o["id"], **mv})
+    random.Random(args.seed).shuffle(rows)
+    os.makedirs(args.out_dir, exist_ok=True)
+    write_jsonl(os.path.join(args.out_dir, "packet.jsonl"), rows)
+    write_jsonl(os.path.join(args.out_dir, "mapping.jsonl"), mapping)
+    print(json.dumps({"packet_items": len(rows), "out_dir": args.out_dir}, indent=2))
+    return rows, mapping
+
+
+def blind_merge(args):
+    """Merge one or more reviewed packets back to models; report inter-rater agreement."""
+    mapping = {m["blind_id"]: m for m in read_jsonl(args.mapping)}
+    by_blind = defaultdict(list)
+    for p in args.reviewed:
+        for r in read_jsonl(p):
+            rv = r.get("review") or {}
+            if rv.get("points") is None:
+                continue
+            by_blind[r["blind_id"]].append((rv.get("reviewer") or os.path.basename(p),
+                                            float(rv["points"]), float(r.get("max_points", 1))))
+    per_model = defaultdict(lambda: {"items": 0, "points": 0.0, "max_points": 0.0})
+    diffs, exact, multi = [], 0, 0
+    merged = []
+    for bid, revs in sorted(by_blind.items()):
+        m = mapping.get(bid)
+        if m is None:
+            continue
+        pts = [x[1] for x in revs]
+        mean = sum(pts) / len(pts)
+        if len(pts) > 1:
+            multi += 1
+            diffs.append(max(pts) - min(pts))
+            exact += int(max(pts) == min(pts))
+        key = "%s@%s" % (m.get("model"), m.get("model_revision"))
+        per_model[key]["items"] += 1
+        per_model[key]["points"] += mean
+        per_model[key]["max_points"] += revs[0][2]
+        merged.append({"blind_id": bid, "id": m["id"], "model": m.get("model"),
+                       "model_revision": m.get("model_revision"),
+                       "reviews": [{"reviewer": a, "points": b} for a, b, _ in revs],
+                       "mean_points": round(mean, 3), "disagreement": round(max(pts) - min(pts), 3)})
+    summary = {
+        "provisional": True,
+        "reviewed_items": len(merged),
+        "multi_rater_items": multi,
+        "exact_agreement": round(exact / multi, 4) if multi else None,
+        "mean_abs_range": round(sum(diffs) / len(diffs), 3) if diffs else None,
+        "per_model": {k: dict(v, points=round(v["points"], 3)) for k, v in per_model.items()},
+    }
+    if args.out:
+        write_jsonl(args.out, merged)
+    print(json.dumps(summary, indent=2))
+    return summary, merged
+
+
+def audit_sample(args):
+    """Stratified audit sheet (default 20 items) for an independent, source-grounded review.
+
+    Strata: every needs_review and every image item are prioritised, then the remainder is
+    filled round-robin across (task_type, status). Output contains the official reference
+    answer, so it is RESTRICTED: write it under private/. Reviewer fills `audit` fields.
+    """
+    import random
+    rng = random.Random(args.seed)
+    keys = {k["id"]: k for k in read_jsonl(args.keys)}
+    outs = {o["id"]: o for o in read_jsonl(args.outputs)} if args.outputs else {}
+    items = read_jsonl(args.items)
+    rng.shuffle(items)
+    pri = [it for it in items if it["status"] == "needs_review" or it.get("modality") == "image"]
+    rest = [it for it in items if it not in pri]
+    strata = defaultdict(list)
+    for it in pri + rest:
+        strata[(it.get("task_type"), it["status"])].append(it)
+    chosen, order = [], sorted(strata)
+    while len(chosen) < min(args.n, len(items)):
+        for s in order:
+            if strata[s] and len(chosen) < args.n:
+                chosen.append(strata[s].pop(0))
+    rows = []
+    for it in chosen:
+        k = keys.get(it["id"], {})
+        rows.append({"id": it["id"], "task_type": it.get("task_type"), "modality": it.get("modality"),
+                     "auto": {"status": it["status"], "points": it["points"],
+                              "points_upper_bound": it.get("points_upper_bound"),
+                              "error_categories": it["error_categories"]},
+                     "max_points": it["max_points"],
+                     "official_points_ref": k.get("official_points_ref"),
+                     "official_rules": k.get("official_rules"),
+                     "reference_answer": k.get("reference_answer"),
+                     "response": response_text(outs[it["id"]]) if it["id"] in outs else None,
+                     "audit": {"reviewer": None, "points": None, "agrees_with_auto": None,
+                               "error_categories": [], "evidence_checked": [], "notes": ""}})
+    if "/private/" not in os.path.abspath(args.out).replace(os.sep, "/") and not args.allow_public:
+        raise SystemExit("audit sheet contains key material; write it under private/ (or --allow-public for fixtures)")
+    write_jsonl(args.out, rows)
+    print(json.dumps({"audit_items": len(rows), "by_status": dict(Counter(r["auto"]["status"] for r in rows))},
+                     indent=2))
+    return rows
+
+
+def audit_summary(args):
+    """Summarise a completed audit sheet: agreement with automatic grades, disagreements kept."""
+    rows = [r for r in read_jsonl(args.sheet) if (r.get("audit") or {}).get("points") is not None]
+    agree = sum(1 for r in rows if float(r["audit"]["points"]) == float(r["auto"]["points"]))
+    within = sum(1 for r in rows if float(r["auto"]["points"]) <= float(r["audit"]["points"])
+                 <= float(r["auto"].get("points_upper_bound") or r["auto"]["points"]))
+    dis = [{"id": r["id"], "auto_points": r["auto"]["points"], "audit_points": r["audit"]["points"],
+            "auto_errors": r["auto"]["error_categories"], "audit_errors": r["audit"].get("error_categories"),
+            "notes": (r["audit"].get("notes") or "")[:300]}
+           for r in rows if float(r["audit"]["points"]) != float(r["auto"]["points"])]
+    res = {"provisional": True, "audited": len(rows),
+           "exact_agreement_with_auto_lower_bound": agree,
+           "audit_within_auto_bounds": within,
+           "audited_points": sum(float(r["audit"]["points"]) for r in rows),
+           "max_points": sum(float(r["max_points"]) for r in rows),
+           "disagreements": dis}
+    print(json.dumps(res, indent=2, ensure_ascii=False))
+    if args.out:
+        write_json(args.out, res)
+    return res
+
+
 def leakcheck(args):
     keys = read_jsonl(args.keys)
     inputs = read_jsonl(args.inputs)
     problems = []
-    answer_strings = set()
+    per_item = defaultdict(set)      # short accepted answers, checked against the same item's prompt
+    ref_sentences = set()            # long reference-answer sentences, checked against every prompt
     for k in keys:
         for crit in (k.get("rubric") or {}).get("criteria", []):
             for a in (crit.get("any_of") or []) + (crit.get("all_of") or []):
                 if len(fold(a)) >= args.min_len:
-                    answer_strings.add(fold(a))
+                    per_item[k["id"]].add(fold(a))
         ref = k.get("reference_answer")
         for a in (ref if isinstance(ref, list) else [ref]):
-            if a and len(fold(a)) >= args.min_len:
-                answer_strings.add(fold(a))
+            for sent in re.split(r"(?<=[.!?])\s+|\n", a or ""):
+                if len(fold(sent)) >= 40:
+                    ref_sentences.add(fold(sent))
     for rec in inputs:
+        p = fold(rec.get("prompt", ""))
+        leaked = sum(1 for s in ref_sentences if s in p)
+        if leaked:
+            problems.append({"id": rec.get("id"), "severity": "error", "reference_sentence_hits": leaked})
+        hits_same = [a for a in per_item.get(rec.get("id"), ()) if a in p]
+        if hits_same:
+            problems.append({"id": rec.get("id"), "severity": "warning",
+                             "own_answer_string_in_prompt": len(hits_same),
+                             "note": "may be legitimate (term in source text); review"})
         bad = sorted(set(rec) & KEY_ONLY_FIELDS)
         if bad:
             problems.append({"id": rec.get("id"), "severity": "error", "key_fields": bad})
         extra = sorted(set(rec) - {"id", "prompt", "images", "system", "meta"} - KEY_ONLY_FIELDS)
         if extra:
             problems.append({"id": rec.get("id"), "severity": "warning", "unexpected_fields": extra})
-        p = fold(rec.get("prompt", ""))
-        hits = [a for a in answer_strings if a in p]
-        if hits:
-            # count only; never print the key strings themselves
-            problems.append({"id": rec.get("id"), "severity": "warning", "answer_string_hits": len(hits)})
+    # counts only; never print the key strings themselves
     n_err = sum(1 for p in problems if p["severity"] == "error")
     print(json.dumps({"inputs": len(inputs), "problems": problems, "errors": n_err}, indent=2))
     return 1 if n_err else 0
@@ -616,7 +878,44 @@ def main(argv=None):
     v.add_argument("kind", choices=["keys", "outputs", "sources"])
     v.add_argument("path")
 
+    bp = sub.add_parser("blind-pack")
+    bp.add_argument("--outputs", action="append", required=True)
+    bp.add_argument("--keys", required=True)
+    bp.add_argument("--task-types", default="essay,essay_plan")
+    bp.add_argument("--seed", default="matura-blind-v1")
+    bp.add_argument("--out-dir", required=True)
+
+    bm = sub.add_parser("blind-merge")
+    bm.add_argument("--reviewed", action="append", required=True, help="reviewed packet(s), one per rater")
+    bm.add_argument("--mapping", required=True)
+    bm.add_argument("--out")
+
+    asp = sub.add_parser("audit-sample")
+    asp.add_argument("--items", required=True, help="item-level results from `score --items-out`")
+    asp.add_argument("--keys", required=True)
+    asp.add_argument("--outputs", help="raw outputs (to include the response text)")
+    asp.add_argument("--n", type=int, default=20)
+    asp.add_argument("--seed", default="matura-audit-v1")
+    asp.add_argument("--out", required=True)
+    asp.add_argument("--allow-public", action="store_true", help="only for synthetic fixtures")
+
+    asu = sub.add_parser("audit-summary")
+    asu.add_argument("--sheet", required=True)
+    asu.add_argument("--out")
+
     args = ap.parse_args(argv)
+    if args.cmd == "audit-sample":
+        audit_sample(args)
+        return 0
+    if args.cmd == "audit-summary":
+        audit_summary(args)
+        return 0
+    if args.cmd == "blind-pack":
+        blind_pack(args)
+        return 0
+    if args.cmd == "blind-merge":
+        blind_merge(args)
+        return 0
     if args.cmd == "score":
         score(args)
         return 0

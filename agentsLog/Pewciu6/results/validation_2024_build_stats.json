@@ -1,0 +1,45 @@
+{
+  "builder": "build-validation-2024-v1",
+  "prompt_revision": "val2024-prompt-v1",
+  "split": "VALIDATION",
+  "exam": "May 2024 history, extended level, formula 2023 (MHIP-R0-100-2405)",
+  "items": 40,
+  "total_points": 60,
+  "by_task_type": {
+    "source_analysis": 14,
+    "short_answer": 20,
+    "multiple_choice": 5,
+    "essay": 1
+  },
+  "by_modality": {
+    "image": 29,
+    "text": 11
+  },
+  "by_era_approx": {
+    "ancient": 5,
+    "medieval": 4,
+    "early_modern": 10,
+    "19th_century": 9,
+    "1914_1939": 5,
+    "ww2": 3,
+    "1945_1989": 3,
+    "multi": 1
+  },
+  "by_scoring_mode": {
+    "gate+manual": 14,
+    "auto": 16,
+    "manual": 10
+  },
+  "points_by_scoring_mode": {
+    "gate+manual": 14,
+    "auto": 18,
+    "manual": 28
+  },
+  "items_missing_prompt": [],
+  "rendered_pages": 21,
+  "restricted_outputs_sha256": {
+    "private/validation_2024/eval_keys.jsonl": "f66e387793c5dfad2bac8723a73716e434a9d6ecab40c544f8b529723f512123",
+    "private/validation_2024/runner_input.jsonl": "f4df6bcb9c1152d42e3650e820dfee1b4d182a5ad065eea41c9c0be85a0003c7"
+  },
+  "note": "Aggregate counts only. Keys, rules, and question text stay in git-ignored private/."
+}

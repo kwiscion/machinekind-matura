@@ -48,15 +48,25 @@ class TestScoring(unittest.TestCase):
             self.assertAlmostEqual(it["points"], lab["expected_points"], msg=lab["id"])
             self.assertEqual(sorted(it["error_categories"]),
                              sorted(lab["expected_error_categories"]), lab["id"])
+            if "expected_upper" in lab:
+                self.assertAlmostEqual(it["points_upper_bound"], lab["expected_upper"], msg=lab["id"])
+            if "expected_review_flags" in lab:
+                self.assertEqual(sorted(it["review_flags"]), sorted(lab["expected_review_flags"]), lab["id"])
             n += 1
         self.assertGreaterEqual(n, 5)
+
+    def test_needs_review_bounds_in_scorecard(self):
+        ov = self.sc["overall"]
+        self.assertEqual(ov["needs_review"], 2)
+        self.assertGreater(ov["points_upper_bound"], ov["points"])
+        self.assertIn("image", self.sc["by_modality"])
 
     def test_exclusions_and_denominator(self):
         excl = {e["id"]: e["reason"] for e in self.sc["exclusions"]}
         for lab in self.labels:
             if "expected_exclusion" in lab:
                 self.assertEqual(excl.get(lab["id"]), lab["expected_exclusion"])
-        self.assertEqual(self.sc["denominator"]["scored_items"], 9)
+        self.assertEqual(self.sc["denominator"]["scored_items"], 13)
         self.assertEqual(self.sc["denominator"]["excluded_items"], 2)
         self.assertEqual(self.sc["orphan_output_ids"], ["syn-999"])
         self.assertLess(self.sc["strict_points_rate"], self.sc["overall"]["points_rate"])
@@ -79,6 +89,27 @@ class TestScoring(unittest.TestCase):
                                      "rubric": {"max_points": 1, "criteria": []}}) + "\n")
             with self.assertRaises(SystemExit):
                 mh.score(Args(outputs=fx("synthetic_outputs.jsonl"), keys=p))
+
+
+class TestDecisionGate(unittest.TestCase):
+    CRIT = {"criterion_id": "d", "kind": "decision", "gate": True, "points": 0,
+            "any_of": ["Tak"], "options": ["Tak", "Nie"]}
+
+    def check(self, text):
+        return mh.eval_criterion(self.CRIT, text, mh.fold(text))
+
+    def test_decision_variants(self):
+        self.assertTrue(self.check("Rozstrzygnięcie: Tak. Uzasadnienie: ..."))
+        self.assertTrue(self.check("Tak, ponieważ oba źródła ..."))
+        self.assertFalse(self.check("Rozstrzygnięcie: Nie"))
+        self.assertFalse(self.check("Rozstrzygnięcie: Tak / Nie"))   # hedged -> wrong
+        self.assertIsNone(self.check("Oba źródła opisują ..."))       # no decision found -> review
+
+    def test_true_false_pairs(self):
+        c = {"criterion_id": "s1", "points": 0, "pair": ["1", "F"]}
+        for text, want in (("1. F\n2. P", True), ("1 – F", True), ("1) fałsz", True), ("1 prawda", False),
+                           ("1 P F 2 P F", False), ("1. P", False)):
+            self.assertEqual(mh.eval_criterion(c, text, mh.fold(text)), want, text)
 
 
 class TestCitationAudit(unittest.TestCase):
@@ -110,6 +141,56 @@ class TestLeakcheck(unittest.TestCase):
                                     "--keys", fx("synthetic_eval_keys.jsonl")],
                                    stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             self.assertEqual(leaky.returncode, 1)
+
+
+class TestBlindEssayReview(unittest.TestCase):
+    def test_pack_hides_model_identity_and_merge_reports_agreement(self):
+        with tempfile.TemporaryDirectory() as d:
+            mh.main(["blind-pack", "--outputs", fx("synthetic_outputs.jsonl"),
+                     "--keys", fx("synthetic_eval_keys.jsonl"), "--out-dir", d])
+            packet = mh.read_jsonl(os.path.join(d, "packet.jsonl"))
+            self.assertEqual(sorted(p["item_id"] for p in packet), ["syn-007", "syn-015"])
+            blob = json.dumps(packet)
+            for leak in ("synthetic-fixture-model", "backend", "latency", "model_revision"):
+                self.assertNotIn(leak, blob)
+            # two synthetic raters
+            for rater, delta in (("r1", 0), ("r2", 1)):
+                rows = []
+                for p in packet:
+                    p = json.loads(json.dumps(p))
+                    p["review"].update(reviewer=rater, points=min(p["max_points"], 2 + delta))
+                    rows.append(p)
+                mh.write_jsonl(os.path.join(d, rater + ".jsonl"), rows)
+            summary, merged = mh.blind_merge(Args(reviewed=[os.path.join(d, "r1.jsonl"),
+                                                            os.path.join(d, "r2.jsonl")],
+                                                  mapping=os.path.join(d, "mapping.jsonl"), out=None))
+            self.assertEqual(summary["multi_rater_items"], 2)
+            self.assertEqual(summary["exact_agreement"], 0.0)
+            self.assertEqual(summary["mean_abs_range"], 1.0)
+
+
+class TestAuditSample(unittest.TestCase):
+    def test_sample_refuses_public_path_and_summarises(self):
+        with tempfile.TemporaryDirectory() as d:
+            items = os.path.join(d, "items.jsonl")
+            mh.score(Args(outputs=fx("synthetic_outputs.jsonl"), keys=fx("synthetic_eval_keys.jsonl"),
+                          corpus=[fx("synthetic_corpus.jsonl")], items_out=items))
+            base = ["audit-sample", "--items", items, "--keys", fx("synthetic_eval_keys.jsonl"),
+                    "--outputs", fx("synthetic_outputs.jsonl"), "--n", "6"]
+            with self.assertRaises(SystemExit):
+                mh.main(base + ["--out", os.path.join(d, "sheet.jsonl")])
+            sheet = os.path.join(d, "sheet.jsonl")
+            mh.main(base + ["--out", sheet, "--allow-public"])
+            rows = mh.read_jsonl(sheet)
+            self.assertEqual(len(rows), 6)
+            self.assertTrue(any(r["auto"]["status"] == "needs_review" for r in rows))
+            for r in rows:   # synthetic reviewer: agrees except +1 on the first row
+                r["audit"].update(reviewer="synthetic", points=r["auto"]["points"])
+            rows[0]["audit"]["points"] = rows[0]["auto"]["points"] + 1
+            mh.write_jsonl(sheet, rows)
+            res = mh.audit_summary(Args(sheet=sheet, out=None))
+            self.assertEqual(res["audited"], 6)
+            self.assertEqual(len(res["disagreements"]), 1)
 
 
 class TestValidate(unittest.TestCase):
