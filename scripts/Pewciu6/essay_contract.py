@@ -256,8 +256,12 @@ def outside_is_wrapper(outside: str) -> bool:
     return True
 
 
-def parse_output(raw: str) -> dict:
-    """-> {ok, topic_id, body, wrappers:[...], error}. Only unambiguous wrappers are peeled."""
+def parse_output(raw: str, allow_keys: tuple = ()) -> dict:
+    """-> {ok, topic_id, body, wrappers:[...], extras, error}. Only unambiguous wrappers are peeled.
+
+    allow_keys: extra JSON fields a caller declared in its prompt (e.g. a review note); they are
+    returned in `extras`, never merged into the body, and exempt from the substantive-key rule.
+    """
     wrappers, text = [], (raw or "").strip()
     if not text:
         return {"ok": False, "error": "empty", "wrappers": wrappers}
@@ -297,14 +301,15 @@ def parse_output(raw: str) -> dict:
         return {"ok": False, "error": "missing_topic_id", "wrappers": wrappers}
     if not isinstance(body, str) or not body.strip():
         return {"ok": False, "error": "missing_body", "wrappers": wrappers, "topic_id": topic_id}
-    extra = sorted(set(obj) - {"topic_id", "body"})
+    extras = {k: obj[k] for k in allow_keys if k in obj}
+    extra = sorted(set(obj) - {"topic_id", "body"} - set(allow_keys))
     for key in extra:  # v2: an extra field may not carry discarded prose (a number/short label is fine)
         val = obj[key]
         if isinstance(val, (dict, list)) or (isinstance(val, str) and (words(val) > 12 or YEAR.search(val))):
             return {"ok": False, "error": f"substantive_extra_key:{key}", "wrappers": wrappers}
     if extra:
         wrappers.append("extra_keys:" + ",".join(extra))
-    return {"ok": True, "topic_id": topic_id, "body": body.replace("\r\n", "\n"), "wrappers": wrappers, "error": None}
+    return {"ok": True, "topic_id": topic_id, "body": body.replace("\r\n", "\n"), "wrappers": wrappers, "extras": extras, "error": None}
 
 
 # ---------------------------------------------------------------- cleanup
@@ -518,9 +523,9 @@ def check_body(body: str, task: dict, topic: int, result: dict | None = None) ->
             "ops": cleaned["ops"], "body_words_before_cleanup": count_words(body)}
 
 
-def contract_check(raw: str, task: dict, topic: int) -> dict:
+def contract_check(raw: str, task: dict, topic: int, allow_keys: tuple = ()) -> dict:
     """Full mechanical check of one model output. Never rewrites historical claims."""
-    parsed = parse_output(raw)
+    parsed = parse_output(raw, allow_keys)
     result = {"raw_words": words(raw or ""), "parse": {k: parsed.get(k) for k in ("ok", "error", "wrappers", "topic_id")}}
     if not parsed["ok"]:
         return {**result, "ok": False, "triggers": [parsed["error"]], "clean": None, "validation": None, "ops": []}
