@@ -11,10 +11,11 @@ Corrections over the historical wrapper:
 - stops on the FIRST declared failure: any result error (infrastructure,
   provider HTTP 4xx/5xx, incomplete/other) — was 2-consecutive-infra only,
   with ordinary HTTP 4xx permitted
-- after the first success, /api/ps is ASSERTED: served digest must equal the
-  expected model digest and served context_length must equal the expected
-  context (32768) — was sampled once without assertions; context_preserved
-  was hardcoded
+- after the first success, /api/ps is ASSERTED: the expected loaded model must
+  be unambiguously present (arbitrary models[0] is not accepted) and its
+  context_length must be a real integer equal to the expected context (32768);
+  missing/null/non-integer context FAILS CLOSED — was sampled once without
+  assertions; context_preserved was hardcoded
 - records the real pre-request timestamp (request_started_utc) plus the
   post-response completion observation (response_completed_utc) — the old
   dispatch_utc was written after the response
@@ -76,20 +77,26 @@ def assert_served_identity(ps: dict, expected_digest: str = EXPECTED_MODEL_DIGES
                            expected_context: int = CONTEXT_LIMIT) -> dict:
     """Assert the served model digest and context length; return actual values.
 
-    Raises GuardFailure on mismatch. A missing context_length field is recorded
-    as unvalidated (context None) rather than silently passing.
+    Raises GuardFailure on mismatch. Fails closed: a missing/null/non-integer/
+    bool context_length is a guard failure, and the expected loaded model must
+    be unambiguously present (arbitrary models[0] is not accepted).
     """
     models = ps.get("models") or []
     if not models:
         raise GuardFailure("served_identity_mismatch: /api/ps returned no loaded model")
-    actual_digest = models[0].get("digest")
-    if actual_digest != expected_digest:
+    matches = [m for m in models if m.get("digest") == expected_digest]
+    if len(matches) != 1:
         raise GuardFailure(
-            f"served_identity_mismatch: digest {actual_digest} != expected {expected_digest}")
-    actual_context = models[0].get("context_length")
-    if actual_context is None:
-        return {"digest": actual_digest, "context_length": None,
-                "context_validated": False}
+            f"served_identity_mismatch: expected loaded model unambiguous "
+            f"(found {len(matches)} of {len(models)} loaded with digest {expected_digest})")
+    actual_digest = matches[0].get("digest")
+    actual_context = matches[0].get("context_length")
+    # Fail closed: context must be a real integer (bool is excluded), never
+    # missing/null/str — dispatching with an unqualified runtime is refused.
+    if not isinstance(actual_context, int) or isinstance(actual_context, bool):
+        raise GuardFailure(
+            f"served_identity_mismatch: context_length missing or non-integer "
+            f"({actual_context!r}); refusing to dispatch with unqualified runtime")
     if actual_context != expected_context:
         raise GuardFailure(
             f"served_identity_mismatch: context_length {actual_context} != expected {expected_context}")
