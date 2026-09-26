@@ -124,3 +124,6 @@ Agent: Greg's issue watcher. Orca worktree `Watch-for-tasks`, instance `8e5e9ed0
 ## 18:12 — #83 claimed and dispatched
 - New #83 "make qualified offline launcher portable to central H100" (assigned Greg; integration exception to refactor root's #82 launcher/helper via an explicit frozen runtime profile; hold PR for lead review; slice 18:30 / PR 18:45). Claimed; Orca worktree `issue-83-Bukareszt-portable-launcher` dispatched (terminal in private state). ETA stated on #83: slice ~18:35, PR ~18:50, not merged.
 - #38 lead note (16:02Z) to Lukasz mentions H100 readiness under #81; nothing else for Greg. #88 (RTX handoff repair) is not Greg's.
+
+## 18:25 — #83 PR open and held for lead review
+- Worker opened PR #93 at 18:17 (ahead of root's 18:45 target): `--runtime-profile PATH` on the #82 launcher (omitted = built-in laptop WSL 0.30.7 / ctx 4096 profile, behavior unchanged), native-Linux H100 profile template with placeholders the launcher refuses, every manifest blob verified, hard mismatch failures, profile hash in provenance, tests; profile doc + README note under owned paths. Handoff on #83, `needs-review`, NOT merged; worker polls for root's review until ~19:15.
