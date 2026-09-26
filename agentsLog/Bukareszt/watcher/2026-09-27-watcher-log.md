@@ -19,3 +19,7 @@ Continuation of 2026-09-26-watcher-log.md. Same watcher instance 8e5e9ed0-1189-4
 ## 00:52 — owner priority reset
 - Owner (#3, 22:47Z): WINNING_PLAN centers on one reusable final harness (root Sol) and useful test-time compute; overrides historical no-retry/double-grading/per-candidate-rehearsal rules. "Greg continues LoRA." Requesting final questions freezes every project: no final access during development. One fast grading pass per experiment.
 - Relayed to the #117 worker. Added the never-request-final-access rule to `AGENT_BRIEF.md` so every future Greg worker inherits it.
+
+## 00:50 — #117 new run3 window
+- Root (22:49Z = 00:49): resume after the narrow CPU normalization check; run3 latest start 01:30, latest finish 02:30, ≤60 min from actual start; bounds unchanged (reuse probe/control, ≤36 fresh history steps, 2 new candidate calls × 512 tokens, no new synthetic/control calls); no further approval round. After a viable adapter/merged export, evaluate argument improvement first; no new framework or long documentation.
+- Worker has pushed the run3 continuation code (`68e7557`, template criterion only, history-start operator, requalification builder, not launched) and its independent agent is verifying the llama.cpp source vs the tarball. Relayed the new window verbatim.
