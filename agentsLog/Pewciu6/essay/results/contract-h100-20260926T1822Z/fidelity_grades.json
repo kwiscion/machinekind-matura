@@ -1,0 +1,323 @@
+{
+  "pairs": [
+    {
+      "pair": "P01",
+      "invented": [],
+      "deleted_prose": [],
+      "deleted_wrappers": [
+        "Conversational preamble 'Oczywiście! Oto wypracowanie w wymaganym formacie:'",
+        "JSON syntax {\"topic_id\": 1, \"body\": \"...\"}",
+        "Literal escaped \\n\\n sequences turned into paragraph breaks"
+      ],
+      "essential_content_lost": false,
+      "verdict": "faithful",
+      "notes": "Body reproduced verbatim."
+    },
+    {
+      "pair": "P02",
+      "invented": [],
+      "deleted_prose": [],
+      "deleted_wrappers": [
+        "Preamble inside JSON body 'Oto moja odpowiedź na temat nr 1:'",
+        "Topic header 'Temat nr 1'",
+        "JSON syntax"
+      ],
+      "essential_content_lost": false,
+      "verdict": "faithful",
+      "notes": "Body reproduced verbatim."
+    },
+    {
+      "pair": "P03",
+      "invented": [],
+      "deleted_prose": [],
+      "deleted_wrappers": [
+        "'Temat nr 1'",
+        "'Aspekt 1 – polityczny:'",
+        "'Aspekt 2 – społeczny:'",
+        "'Aspekt 3 – kulturowy:'",
+        "'Zakończenie:' (standalone line)"
+      ],
+      "essential_content_lost": false,
+      "verdict": "faithful",
+      "notes": "Standalone aspect heading(s) removed; aspect is still identifiable from the paragraph's opening sentence and named again in the conclusion, so the heading was not the only place it was named. Inline 'Teza:' label left in intro (harmless, not removed)."
+    },
+    {
+      "pair": "P04",
+      "invented": [],
+      "deleted_prose": [],
+      "deleted_wrappers": [
+        "'Temat nr 1'",
+        "'Aspekt wojskowy:'",
+        "'Aspekt polityczny:'",
+        "'Aspekt społeczny:'",
+        "'Zakończenie:' (standalone line)"
+      ],
+      "essential_content_lost": false,
+      "verdict": "faithful",
+      "notes": "Standalone aspect heading(s) removed; aspect is still identifiable from the paragraph's opening sentence and named again in the conclusion, so the heading was not the only place it was named. Political paragraph does not say 'polityczny' literally (opens 'Polskie Państwo Podziemne funkcjonowało jako alternatywna struktura państwowa'), but the conclusion names 'aspektów wojskowego, politycznego oraz społecznego'. Inline 'Teza:' retained."
+    },
+    {
+      "pair": "P05",
+      "invented": [],
+      "deleted_prose": [],
+      "deleted_wrappers": [
+        "Plan block 'Plan: - Wstęp i teza - Aspekt polityczny - Aspekt gospodarczy - Aspekt kulturalny - Zakończenie'",
+        "JSON syntax"
+      ],
+      "essential_content_lost": false,
+      "verdict": "faithful",
+      "notes": "Body verbatim."
+    },
+    {
+      "pair": "P06",
+      "invented": [],
+      "deleted_prose": [],
+      "deleted_wrappers": [
+        "'Temat nr 1'",
+        "'Aspekt 1 – polityczny:'",
+        "'Aspekt 2 – gospodarczy:'",
+        "'Aspekt 3 – społeczny:'"
+      ],
+      "essential_content_lost": false,
+      "verdict": "faithful",
+      "notes": "Standalone aspect heading(s) removed; aspect is still identifiable from the paragraph's opening sentence and named again in the conclusion, so the heading was not the only place it was named. Incomplete cleanup (not a fidelity error): inline label 'Zakończenie:' at start of the conclusion paragraph was left in place."
+    },
+    {
+      "pair": "P07",
+      "invented": [],
+      "deleted_prose": [],
+      "deleted_wrappers": [
+        "'Temat nr 1'",
+        "'Aspekt 1 – terytorialny:'",
+        "'Aspekt 2 – polityczny:'",
+        "'Aspekt 3 – gospodarczy:'"
+      ],
+      "essential_content_lost": false,
+      "verdict": "faithful",
+      "notes": "Standalone aspect heading(s) removed; aspect is still identifiable from the paragraph's opening sentence and named again in the conclusion, so the heading was not the only place it was named. Territorial and political paragraphs name the aspect only implicitly ('rozszerzenie granic', 'pozycji lidera w regionie'); conclusion names 'zyski terytorialne', 'wzrost znaczenia politycznego'. Inline 'Zakończenie:' label left in place (incomplete cleanup)."
+    },
+    {
+      "pair": "P08",
+      "invented": [],
+      "deleted_prose": [],
+      "deleted_wrappers": [
+        "'Temat nr 1'",
+        "'Aspekt 1 – polityczny:'",
+        "'Aspekt 2 – kościelny:'",
+        "'Aspekt 3 – militarny:'",
+        "'Zakończenie:' (standalone line)"
+      ],
+      "essential_content_lost": false,
+      "verdict": "faithful",
+      "notes": "Standalone aspect heading(s) removed; aspect is still identifiable from the paragraph's opening sentence and named again in the conclusion, so the heading was not the only place it was named."
+    },
+    {
+      "pair": "P09",
+      "invented": [],
+      "deleted_prose": [],
+      "deleted_wrappers": [
+        "JSON syntax",
+        "Trailing spaces before paragraph breaks"
+      ],
+      "essential_content_lost": false,
+      "verdict": "faithful",
+      "notes": "Opening 'Oto jeden z najważniejszych okresów w dziejach średniowiecznej Polski: ...' is essay prose (rhetorical opening), correctly retained, not a preamble."
+    },
+    {
+      "pair": "P10",
+      "invented": [],
+      "deleted_prose": [],
+      "deleted_wrappers": [
+        "'Temat nr 1'",
+        "'Aspekt 1 – ustrojowy:'",
+        "'Aspekt 2 – edukacyjny:'",
+        "'Aspekt 3 – międzynarodowy:'"
+      ],
+      "essential_content_lost": false,
+      "verdict": "faithful",
+      "notes": "Standalone aspect heading(s) removed; aspect is still identifiable from the paragraph's opening sentence and named again in the conclusion, so the heading was not the only place it was named. Educational paragraph names the aspect implicitly ('Modernizacja intelektualna narodu', KEN); conclusion names 'zmiany ustrojowe, edukacyjne oraz ... pozycji międzynarodowej'. Inline 'Zakończenie:' label left in place (incomplete cleanup)."
+    },
+    {
+      "pair": "P11",
+      "invented": [],
+      "deleted_prose": [],
+      "deleted_wrappers": [
+        "JSON syntax",
+        "Trailing spaces before paragraph breaks"
+      ],
+      "essential_content_lost": false,
+      "verdict": "faithful",
+      "notes": "Verbatim. (Source essay itself lacks a cultural paragraph although the conclusion claims 'kultura'; not caused by cleanup.)"
+    },
+    {
+      "pair": "P12",
+      "invented": [],
+      "deleted_prose": [],
+      "deleted_wrappers": [],
+      "essential_content_lost": false,
+      "verdict": "faithful",
+      "notes": "Cleaned is byte-identical to original; nothing to remove."
+    },
+    {
+      "pair": "P13",
+      "invented": [],
+      "deleted_prose": [],
+      "deleted_wrappers": [
+        "One trailing space before a paragraph break"
+      ],
+      "essential_content_lost": false,
+      "verdict": "faithful",
+      "notes": "Otherwise identical."
+    },
+    {
+      "pair": "P14",
+      "invented": [],
+      "deleted_prose": [],
+      "deleted_wrappers": [
+        "'Temat nr 1'",
+        "'Aspekt 1 – polityczny:'",
+        "'Aspekt 2 – militarny:'",
+        "'Aspekt 3 – religijny:'",
+        "'Zakończenie:' (standalone line)"
+      ],
+      "essential_content_lost": false,
+      "verdict": "faithful",
+      "notes": "Standalone aspect heading(s) removed; aspect is still identifiable from the paragraph's opening sentence and named again in the conclusion, so the heading was not the only place it was named."
+    },
+    {
+      "pair": "P15",
+      "invented": [],
+      "deleted_prose": [],
+      "deleted_wrappers": [
+        "Word-count note 'Liczba słów: 468'",
+        "Grader comment 'Komentarz dla egzaminatora: praca spełnia wszystkie wymagania formalne.'",
+        "Offer 'Mam nadzieję, że to pomoże!'",
+        "JSON syntax"
+      ],
+      "essential_content_lost": false,
+      "verdict": "faithful",
+      "notes": "Body verbatim."
+    },
+    {
+      "pair": "P16",
+      "invented": [],
+      "deleted_prose": [],
+      "deleted_wrappers": [
+        "JSON syntax",
+        "Trailing space before paragraph break"
+      ],
+      "essential_content_lost": false,
+      "verdict": "faithful",
+      "notes": "Verbatim. (Source is a short truncated essay: no economic/cultural paragraphs although the conclusion claims them; not caused by cleanup.)"
+    },
+    {
+      "pair": "P17",
+      "invented": [],
+      "deleted_prose": [],
+      "deleted_wrappers": [
+        "'Temat nr 1'",
+        "'Aspekt 1 – polityczny:'",
+        "'Aspekt 2 – kulturowy:'",
+        "'Aspekt 3 – społeczny:'",
+        "'Zakończenie:' (standalone line)"
+      ],
+      "essential_content_lost": false,
+      "verdict": "faithful",
+      "notes": "Standalone aspect heading(s) removed; aspect is still identifiable from the paragraph's opening sentence and named again in the conclusion, so the heading was not the only place it was named."
+    }
+  ],
+  "repair_delta": {
+    "a_dropped_or_changed_from_A": [
+      {
+        "A": "Przejęcie tronu przez Jagiełłę, wielkiego księcia litewskiego, połączyło siły dwóch państw, tworząc unikalny organizm polityczny.",
+        "B": "Przejęcie tronu przez Jagiełłę, wielkiego księcia litewskiego, połączonych z aktem unii, stworzyło unikalny organizm polityczny.",
+        "effect": "Explicit claim 'połączyło siły dwóch państw' dropped; B's sentence is ungrammatical ('połączonych' has no antecedent). Regression in language."
+      },
+      {
+        "A": "zakonu krzyżacki",
+        "B": "zakonu krzyżackiego",
+        "effect": "Typo fixed."
+      },
+      {
+        "A": "bitwa podGrunwaldem",
+        "B": "bitwa pod Grunwaldem",
+        "effect": "Typo fixed."
+      },
+      {
+        "A": "Zjednoczenie tych organizmów / Litwa zyskała / przez kolejne wieki",
+        "B": "Zjednoczenie tych struktur / Litwa uzyskała / przez kolejne stulecia",
+        "effect": "Cosmetic synonym swaps, no content change."
+      },
+      {
+        "note": "All other A sentences are kept verbatim, including all of A's factual errors (see c). Thesis unchanged."
+      }
+    ],
+    "b_new_claims": [
+      {
+        "claim": "Ekspansja dynastyczna Jagiellonów ... obejmująca m.in. Czechy ięści",
+        "status": "unverifiable-vague",
+        "comment": "Contains a garbled non-word 'ięści' (probably a corrupted 'i Węgry'). Jagiellonian thrones in Bohemia (1471) and Hungary (1440, 1490) are real, but they came decades after Jagiełło and are not a consequence discussed within 1385–1434; as written the text is corrupted and would be penalised."
+      },
+      {
+        "claim": "Unia ta zapewniła stabilność tronu i umożliwiła Polsce rolę lidera regionalnego, co trwało przez kolejne wieki.",
+        "status": "unverifiable-vague",
+        "comment": "Generic assertion without a fact; 'stabilność tronu' is doubtful for the period (Jagiełło's succession was secured only via privileges of Jedlnia 1430/Kraków 1433, and the Vytautas rivalry forced the Ostrów 1392 and Wilno–Radom 1401 settlements)."
+      },
+      {
+        "claim": "Złamanie potęgi Zakonu pozwoliło również na odzyskanie wpływów na Pomorzu i kontrolę nad szlakami handlowymi",
+        "status": "incorrect",
+        "comment": "Under Jagiełło, Pomerania was not regained: the First Peace of Toruń (1411) returned only the Dobrzyń Land and Samogitia (for the lifetimes of Jagiełło and Vytautas), and the Treaty of Melno (1422) settled the border without Pomerania. Gdańsk Pomerania returned only with the Second Peace of Toruń (1466), under Kazimierz Jagiellończyk."
+      },
+      {
+        "claim": "... budując silną tożsamość kulturową opartą na tradycji zachodniej.",
+        "status": "unverifiable-vague",
+        "comment": "Filler clause, no fact."
+      },
+      {
+        "claim": "Unia ta stworzyła fundamenty pod potęgę Jagiellonów i zapewniła Polsce bezpieczne miejsce w strukturach zachodniego chrześcijaństwa.",
+        "status": "unverifiable-vague",
+        "comment": "Repeats the intro. The second half is misleading: Poland had belonged to Latin Christendom since 966; Krewo brought Lithuania, not Poland, into it."
+      }
+    ],
+    "c_errors_in_both": [
+      {
+        "text": "Dzięki tej unii Polska zyskała ogromne terytoria na wschodzie",
+        "correction": "Overstated/incorrect. Krewo created a personal union and Lithuania stayed a separate state (the 'applicare' clause is disputed; Wilno–Radom 1401 and Horodło 1413 confirmed a separate Grand Duchy under Vytautas). Poland did not annex Lithuanian lands."
+      },
+      {
+        "text": "Po bitwie, państwo polsko-litewskie zyskało dominację w basenie Morza Bałtyckiego",
+        "correction": "Incorrect. After Grunwald the Order kept Prussia and Gdańsk Pomerania (Toruń 1411), and Poland had no significant Baltic coastline until 1466."
+      },
+      {
+        "text": "co pozwoliło na stabilizację granic i zapewnienie bezpieczeństwa wewnętrznego na wiele dekad",
+        "correction": "Overstated. War with the Order resumed in 1414 (Hunger War), 1422 (Melno) and 1431–1435 (ending with Brześć Kujawski 1435). There was also the Świdrygiełło conflict in Lithuania after 1430."
+      },
+      {
+        "text": "Przyjęcie przez Jagiełłę chrztu łacińskiego oraz akt unii z Krewy były warunkiem koniecznym do wejścia Polski w krąg chrześcijańskich państw Zachodu",
+        "correction": "Incorrect. Poland had been Latin-Christian since 966. It was Lithuania that was Christianized (1386–1387, bishopric of Wilno 1387; Samogitia 1413/1417). 'Unii z Krewy' is also a wrong form ('unia w Krewie', 'akt krewski')."
+      },
+      {
+        "text": "co uchroniło ją przed krucjatami",
+        "correction": "Overstated. The Order kept attacking Lithuania (e.g. the sieges of Wilno in 1390 and 1394) and contested Lithuania's conversion. Its crusade claims were only rebutted diplomatically at the Council of Constance (Paweł Włodkowic, 1414–1418)."
+      },
+      {
+        "text": "trwale wpisały Polskę w krąg cywilizacji zachodniej (thesis)",
+        "correction": "Misframed. Poland was already part of the Latin West. The real point is that Lithuania joined it and a Polish-Lithuanian union formed."
+      },
+      {
+        "text": "nowoczesnej taktyki; genialnym posunięciem strategicznym; bezprecedensowy wzrost siły zbrojnej",
+        "correction": "Evaluative claims with no factual support."
+      },
+      {
+        "text": "Omissions",
+        "correction": "Neither version uses the key concrete facts: Jadwiga and the marriage/coronation of 1386, Ostrów 1392, Wilno–Radom 1401, Horodło 1413, Toruń 1411, Melno 1422, Constance/Włodkowic, the 1400 renewal of the Kraków Academy, or the privileges of Jedlnia and Kraków."
+      }
+    ],
+    "d_added_length_assessment": "Filler, not concrete argument. The repair was asked to add concrete facts but added about 67 words and no correct, specific dated fact. Additions: (1) a garbled phrase 'obejmująca m.in. Czechy ięści'; (2) generic sentences such as 'Unia ta zapewniła stabilność tronu i umożliwiła Polsce rolę lidera regionalnego, co trwało przez kolejne wieki.', ', budując silną tożsamość kulturową opartą na tradycji zachodniej' and 'Unia ta stworzyła fundamenty pod potęgę Jagiellonów i zapewniła Polsce bezpieczne miejsce w strukturach zachodniego chrześcijaństwa.' (the last repeats the intro); (3) one new factual claim, and it is wrong: 'odzyskanie wpływów na Pomorzu'. No error from A was corrected, and one sentence became ungrammatical. Net effect: B meets the 400-word length (423 words) but is factually no better and slightly worse than A (one new error plus a corrupted token).",
+    "word_counts": {
+      "A": 356,
+      "B": 423
+    }
+  },
+  "summary": "Pairs: 17/17 faithful, 0 lost_content, 0 invented_content. No invented text and no deleted essay prose in any pair; removals were only preambles, 'Temat nr 1' headers, standalone aspect headings, a plan block, a word-count note, a grader comment, an offer, JSON syntax and whitespace. In every heading-removal pair the aspect is still identifiable from its paragraph and named in the conclusion. For P04 (political), P07 (territorial/political) and P10 (educational) the paragraph names it only implicitly. Minor incomplete cleanup: an inline 'Zakończenie:' label stays in P06, P07 and P10, and inline 'Teza:' stays in P03 and P04. P09's 'Oto jeden z najważniejszych okresów...' is prose and was correctly kept. Repair delta: B adds about 67 words of mostly filler with no correct concrete fact. New errors: a false claim that Pomerania was regained under Jagiełło (it returned in 1466) and a garbled token 'Czechy ięści'. One sentence became ungrammatical ('połączonych z aktem unii'), and only two typos were fixed. A's errors all remain: Baltic 'dominance' after Grunwald, annexation of 'ogromne terytoria', Poland 'entering' Latin Christendom through Krewo, 'protection from crusades', and 'stabilised borders for decades'."
+}

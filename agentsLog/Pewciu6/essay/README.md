@@ -100,3 +100,9 @@ Every arm sits just above the 300-word threshold, cites only 1–3 distinct year
 ## Wave 2026-09-26 (H100, 90 min): results
 
 See `results/wave-h100-20260926T172925Z/README.md`. The retrieval-grounded critic → rewrite route (C3; runner `scripts/Pewciu6/essay_wave_run.py`, family `C3`) scored 7.42/15 vs 4.00 for single pass across 12 DEV topics, and was ≥ single pass on all 12 items, with 14 vs 34 factual errors. This is DEVELOPMENT grading only (blind agent graders, CKE criteria). New tools: `essay_wave_run.py` (enforced wave ledger/deadline), `essay_wave_grade.py` (blind packets + aggregation), `essay_wave_export.py` (publishable export). Fixtures 006–012 were added (premise check: `premise_check_wave.md`).
+
+## Output contract (#80 priority 1), 2026-09-26 20:30 Warsaw
+
+`scripts/Pewciu6/essay_contract.py` handles one frozen topic, a machine-checked `{topic_id, body}`, deterministic wrapper cleanup, a body-only word counter and the validators. `essay_contract_run.py` is the bounded loop: ≤2 repairs, optional grounded critic, the ledger. The synthetic malformed cases are in `contract_synthetic.py` and the tests (21) in `test_essay_contract.py`.
+
+Live probe: 3 calls on `dev-essay-009`; the final answer is clean `Temat nr 1` plus 423 words. The blind fidelity grader found cleanup faithful on 17/17 pairs. The length-only repair added filler and one new error, so soft repair is now opt-in. On the 56 real wave outputs, 49 pass the hard contract after cleanup. Details: `../2026-09-26T2030-essay-contract.md`; data in `results/contract-h100-20260926T1822Z/`.

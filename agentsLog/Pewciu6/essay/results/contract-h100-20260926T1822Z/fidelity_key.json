@@ -1,0 +1,70 @@
+[
+ {
+  "pair": "P01",
+  "origin": "synthetic:preamble_outside_json"
+ },
+ {
+  "pair": "P02",
+  "origin": "synthetic:preamble"
+ },
+ {
+  "pair": "P03",
+  "origin": "wave:dev-essay-004__C"
+ },
+ {
+  "pair": "P04",
+  "origin": "wave:dev-essay-005__B3"
+ },
+ {
+  "pair": "P05",
+  "origin": "synthetic:plan_first"
+ },
+ {
+  "pair": "P06",
+  "origin": "wave:dev-essay-002__C3"
+ },
+ {
+  "pair": "P07",
+  "origin": "wave:dev-essay-007__C"
+ },
+ {
+  "pair": "P08",
+  "origin": "wave:dev-essay-006__C"
+ },
+ {
+  "pair": "P09",
+  "origin": "synthetic:legit_oto"
+ },
+ {
+  "pair": "P10",
+  "origin": "wave:dev-essay-003__C3"
+ },
+ {
+  "pair": "P11",
+  "origin": "synthetic:missing_aspect"
+ },
+ {
+  "pair": "P12",
+  "origin": "probe:repair1"
+ },
+ {
+  "pair": "P13",
+  "origin": "probe:draft"
+ },
+ {
+  "pair": "P14",
+  "origin": "wave:dev-essay-009__C3"
+ },
+ {
+  "pair": "P15",
+  "origin": "synthetic:grader_comments"
+ },
+ {
+  "pair": "P16",
+  "origin": "synthetic:underlength"
+ },
+ {
+  "pair": "P17",
+  "origin": "wave:dev-essay-008__C3"
+ }
+]
