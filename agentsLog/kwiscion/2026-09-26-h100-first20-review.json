@@ -1,0 +1,400 @@
+{
+  "scope": "first20",
+  "known_validation": true,
+  "review_status": "provisional_independent_sol",
+  "global_items": 40,
+  "global_max_points": 60,
+  "slice_items": 20,
+  "slice_max_points": 21,
+  "masking": "A/B aliases only; reviewer knew project hypotheses and historical findings. Not fully blind.",
+  "method": "Fresh rubric-based first pass of exact answers; official PDF guidance and source-v2 images inspected. Low/high are descriptive adjudication ranges, not confidence intervals. No old item scores consulted before first pass.",
+  "arms": {
+    "A": {
+      "input_sha256": "4f4345a65bc4658ec574f0ace411a40d35c1118ac47617b2337743bbf0d6e380",
+      "manifest_sha256": "9e3eea23499f9979918bb441abe773e47797794bd627aeaf2695e01638e74225",
+      "verified_unique_ids": 40,
+      "global_error_rows": 0,
+      "global_nonempty_error_free_rows": 40,
+      "items": [
+        {
+          "id": "val2024-hist-z1",
+          "max_points": 1,
+          "points": 0,
+          "low": 0,
+          "high": 0,
+          "reason": "Incorrect selection and invented visual interpretation.",
+          "error_category": "visual_misidentification"
+        },
+        {
+          "id": "val2024-hist-z2",
+          "max_points": 1,
+          "points": 1,
+          "low": 0,
+          "high": 1,
+          "reason": "Correct comparison using both sources; an added chronological error needs adjudication.",
+          "error_category": "extraneous_factual_error"
+        },
+        {
+          "id": "val2024-hist-z3.1",
+          "max_points": 1,
+          "points": 1,
+          "low": 0,
+          "high": 1,
+          "reason": "Required identification is recognizable, but an incorrect parenthetical addition creates ambiguity.",
+          "error_category": "ambiguous_added_identification"
+        },
+        {
+          "id": "val2024-hist-z3.2",
+          "max_points": 1,
+          "points": 0,
+          "low": 0,
+          "high": 0,
+          "reason": "One member of the required pair is incorrect; no partial credit.",
+          "error_category": "factual_identification"
+        },
+        {
+          "id": "val2024-hist-z4",
+          "max_points": 1,
+          "points": 1,
+          "low": 1,
+          "high": 1,
+          "reason": "Both required architectural traditions are supported by visible features.",
+          "error_category": "none"
+        },
+        {
+          "id": "val2024-hist-z5.1",
+          "max_points": 1,
+          "points": 0,
+          "low": 0,
+          "high": 0,
+          "reason": "Correct decision but the second source is misidentified; required comparison fails.",
+          "error_category": "source_comparison"
+        },
+        {
+          "id": "val2024-hist-z5.2",
+          "max_points": 1,
+          "points": 1,
+          "low": 1,
+          "high": 1,
+          "reason": "Required state identification is correct.",
+          "error_category": "none"
+        },
+        {
+          "id": "val2024-hist-z6",
+          "max_points": 2,
+          "points": 2,
+          "low": 1,
+          "high": 2,
+          "reason": "Identifies social roles and religious hierarchy with image references; imprecise merging of two groups merits review.",
+          "error_category": "imprecise_visual_grounding"
+        },
+        {
+          "id": "val2024-hist-z7",
+          "max_points": 1,
+          "points": 0,
+          "low": 0,
+          "high": 0,
+          "reason": "Incorrect decision with unrelated chronology and invented historical identifications.",
+          "error_category": "chronology_and_entities"
+        },
+        {
+          "id": "val2024-hist-z8.1",
+          "max_points": 1,
+          "points": 0,
+          "low": 0,
+          "high": 0,
+          "reason": "Requested document identification is incorrect.",
+          "error_category": "factual_identification"
+        },
+        {
+          "id": "val2024-hist-z8.2",
+          "max_points": 1,
+          "points": 1,
+          "low": 0,
+          "high": 1,
+          "reason": "Required institutional comparison is supported by both sources; incorrect added document identification merits review.",
+          "error_category": "extraneous_factual_error"
+        },
+        {
+          "id": "val2024-hist-z9",
+          "max_points": 1,
+          "points": 0,
+          "low": 0,
+          "high": 1,
+          "reason": "Inscription-based contrast is relevant, but the graphical link is unsupported and an added religious classification is incorrect.",
+          "error_category": "visual_grounding_and_fact"
+        },
+        {
+          "id": "val2024-hist-z10",
+          "max_points": 1,
+          "points": 0,
+          "low": 0,
+          "high": 0,
+          "reason": "Incorrect selected option.",
+          "error_category": "closed_choice"
+        },
+        {
+          "id": "val2024-hist-z11.1",
+          "max_points": 1,
+          "points": 0,
+          "low": 0,
+          "high": 0,
+          "reason": "One of two required assignments is incorrect; all-or-nothing item.",
+          "error_category": "factual_identification"
+        },
+        {
+          "id": "val2024-hist-z11.2",
+          "max_points": 1,
+          "points": 1,
+          "low": 1,
+          "high": 1,
+          "reason": "Explains the religious change and its political purpose.",
+          "error_category": "none"
+        },
+        {
+          "id": "val2024-hist-z12.1",
+          "max_points": 1,
+          "points": 0,
+          "low": 0,
+          "high": 0,
+          "reason": "Required ruler identification is incorrect.",
+          "error_category": "factual_identification"
+        },
+        {
+          "id": "val2024-hist-z12.2",
+          "max_points": 1,
+          "points": 1,
+          "low": 1,
+          "high": 1,
+          "reason": "Required historical concept is correct.",
+          "error_category": "none"
+        },
+        {
+          "id": "val2024-hist-z12.3",
+          "max_points": 1,
+          "points": 1,
+          "low": 1,
+          "high": 1,
+          "reason": "Correct style with relevant visible compositional characteristics.",
+          "error_category": "none"
+        },
+        {
+          "id": "val2024-hist-z13",
+          "max_points": 1,
+          "points": 1,
+          "low": 0,
+          "high": 1,
+          "reason": "Correct event tied to a visible inscription; invented additional imagery requires adjudication.",
+          "error_category": "invented_visual_detail"
+        },
+        {
+          "id": "val2024-hist-z14.1",
+          "max_points": 1,
+          "points": 0,
+          "low": 0,
+          "high": 0,
+          "reason": "Incorrect decision caused by assigning the map to the wrong campaign.",
+          "error_category": "source_comparison"
+        }
+      ],
+      "total": 11,
+      "low": 6,
+      "high": 12,
+      "max_points": 21
+    },
+    "B": {
+      "input_sha256": "030dc23e9f44e2f9e07cb76e484eeb6ee317b9aa7a4f93efc2dcb67ae4f8bda7",
+      "manifest_sha256": "fa9e061a881e744af226955b63e43a429c09ebebb6fa3f077bc355f1bbf82201",
+      "verified_unique_ids": 40,
+      "global_error_rows": 2,
+      "global_nonempty_error_free_rows": 38,
+      "items": [
+        {
+          "id": "val2024-hist-z1",
+          "max_points": 1,
+          "points": 0,
+          "low": 0,
+          "high": 0,
+          "reason": "Incorrect selection with invented visible features.",
+          "error_category": "visual_misidentification"
+        },
+        {
+          "id": "val2024-hist-z2",
+          "max_points": 1,
+          "points": 1,
+          "low": 1,
+          "high": 1,
+          "reason": "Correct political-period comparison supported by both sources.",
+          "error_category": "none"
+        },
+        {
+          "id": "val2024-hist-z3.1",
+          "max_points": 1,
+          "points": 1,
+          "low": 1,
+          "high": 1,
+          "reason": "Required identification is recognizable despite spelling variation.",
+          "error_category": "none"
+        },
+        {
+          "id": "val2024-hist-z3.2",
+          "max_points": 1,
+          "points": 0,
+          "low": 0,
+          "high": 0,
+          "reason": "One of the two required offices is incorrect; no partial credit.",
+          "error_category": "factual_identification"
+        },
+        {
+          "id": "val2024-hist-z4",
+          "max_points": 1,
+          "points": 1,
+          "low": 1,
+          "high": 1,
+          "reason": "Correctly links each architectural tradition to a visible feature.",
+          "error_category": "none"
+        },
+        {
+          "id": "val2024-hist-z5.1",
+          "max_points": 1,
+          "points": 0,
+          "low": 0,
+          "high": 0,
+          "reason": "Correct decision but substantially erroneous dating and mixed identification fail the source comparison.",
+          "error_category": "source_comparison"
+        },
+        {
+          "id": "val2024-hist-z5.2",
+          "max_points": 1,
+          "points": 1,
+          "low": 1,
+          "high": 1,
+          "reason": "Required state identification is correct.",
+          "error_category": "none"
+        },
+        {
+          "id": "val2024-hist-z6",
+          "max_points": 2,
+          "points": 0,
+          "low": 0,
+          "high": 2,
+          "reason": "Explains three social functions and divine order using captions, without three concrete graphical references; acceptance of captions as visual references needs adjudication.",
+          "error_category": "missing_graphical_support"
+        },
+        {
+          "id": "val2024-hist-z7",
+          "max_points": 1,
+          "points": 0,
+          "low": 0,
+          "high": 0,
+          "reason": "Incorrect decision and invented chronological identifications.",
+          "error_category": "chronology_and_entities"
+        },
+        {
+          "id": "val2024-hist-z8.1",
+          "max_points": 1,
+          "points": 0,
+          "low": 0,
+          "high": 0,
+          "reason": "Requested document identification is incorrect.",
+          "error_category": "factual_identification"
+        },
+        {
+          "id": "val2024-hist-z8.2",
+          "max_points": 1,
+          "points": 1,
+          "low": 0,
+          "high": 1,
+          "reason": "Core institutional comparison uses both sources correctly; competing added document labels merit adjudication.",
+          "error_category": "ambiguous_added_identification"
+        },
+        {
+          "id": "val2024-hist-z9",
+          "max_points": 1,
+          "points": 1,
+          "low": 0,
+          "high": 1,
+          "reason": "Correct decision with inscription and relevant graphic support; incorrect added religious classification merits adjudication.",
+          "error_category": "extraneous_factual_error"
+        },
+        {
+          "id": "val2024-hist-z10",
+          "max_points": 1,
+          "points": 0,
+          "low": 0,
+          "high": 0,
+          "reason": "Incorrect selected option.",
+          "error_category": "closed_choice"
+        },
+        {
+          "id": "val2024-hist-z11.1",
+          "max_points": 1,
+          "points": 0,
+          "low": 0,
+          "high": 0,
+          "reason": "One required ruler assignment is incorrect; all-or-nothing item.",
+          "error_category": "factual_identification"
+        },
+        {
+          "id": "val2024-hist-z11.2",
+          "max_points": 1,
+          "points": 0,
+          "low": 0,
+          "high": 0,
+          "reason": "Replaces the required religious conversion with attendance at a ceremony and gives contradictory identity claims.",
+          "error_category": "causal_explanation"
+        },
+        {
+          "id": "val2024-hist-z12.1",
+          "max_points": 1,
+          "points": 0,
+          "low": 0,
+          "high": 0,
+          "reason": "Required ruler identification is incorrect.",
+          "error_category": "factual_identification"
+        },
+        {
+          "id": "val2024-hist-z12.2",
+          "max_points": 1,
+          "points": 1,
+          "low": 1,
+          "high": 1,
+          "reason": "Required historical concept is correct.",
+          "error_category": "none"
+        },
+        {
+          "id": "val2024-hist-z12.3",
+          "max_points": 1,
+          "points": 1,
+          "low": 1,
+          "high": 1,
+          "reason": "Correct style with visible decorative and compositional evidence.",
+          "error_category": "none"
+        },
+        {
+          "id": "val2024-hist-z13",
+          "max_points": 1,
+          "points": 1,
+          "low": 0,
+          "high": 1,
+          "reason": "Identifies the event and links its date to the image; substantial invented graphic details and a malformed name merit adjudication.",
+          "error_category": "invented_visual_detail"
+        },
+        {
+          "id": "val2024-hist-z14.1",
+          "max_points": 1,
+          "points": 0,
+          "low": 0,
+          "high": 0,
+          "reason": "Correct decision but map evidence and campaign identification are incorrect.",
+          "error_category": "source_comparison"
+        }
+      ],
+      "total": 9,
+      "low": 6,
+      "high": 11,
+      "max_points": 21
+    }
+  },
+  "pending": []
+}
