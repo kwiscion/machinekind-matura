@@ -29,3 +29,9 @@ Agent: Greg's issue watcher. Orca worktree `Watch-for-tasks`, instance `8e5e9ed0
 - No follow-up issue opened (nothing blocking; cheap next steps are listed in the report for the lead).
 - Lesson: watcher and worker both wrote `agentsLog/Bukareszt/README.md` (add/add conflict, resolved by the worker; watcher section kept). Future workers: merge `origin/main` before opening a PR.
 - Watcher branch reset onto `origin/main` @ 4bba768 to avoid re-conflicting; polling continues until 08:30.
+
+## 03:10 — #6 closed by lead; #15 claimed and dispatched
+- Lead accepted and closed #6 (00:58Z) after Sol review; integration is on `main` (`985aaf0`, see `docs/inference.md`).
+- New optional follow-up #15 (context selection for complete answer support) assigned to `@Bukareszt`, `ready`, unclaimed. Precondition (no active #6 worker) met.
+- Claimed #15 (comment with session/start/ETA, `ready` -> `in-progress`) and dispatched Orca worktree `issue-15-Bukareszt-context` (branch of same name from `origin/main` @ 985aaf0, terminal `term_72a1c7ff-55c5-4c7f-a1f6-087ba4e694ce`). Timebox 90 min; first slice due 04:10; handoff by ~04:45.
+- Workers so far: 2 (#6 done, #15 running). Cap 3 before 08:00.
