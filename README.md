@@ -12,7 +12,11 @@ The handoff package is in [docs/overnight/PLAN.md](docs/overnight/PLAN.md). Star
 | Historical retrieval | @Bukareszt | [Retrieval](docs/overnight/issues/retrieval.md) | [Issue](https://github.com/kwiscion/machinekind-matura/issues/6) |
 | Evaluation and rubric audit | @Pewciu6 | [Evaluation](docs/overnight/issues/eval.md) | [Issue](https://github.com/kwiscion/machinekind-matura/issues/7) |
 
+Retrieval #6 and evaluator #7 are accepted implementation handoffs; model quality has not been promoted. Active follow-ups are [real-output validation #11](https://github.com/kwiscion/machinekind-matura/issues/11) for @Pewciu6 and [optional evidence selection #15](https://github.com/kwiscion/machinekind-matura/issues/15) for @Bukareszt. Training data #4 and Spark experiments #5 remain assigned to their original owners. Claim the issue before starting; do not duplicate an active worker.
+
 The canonical input is JSONL with `{ "id", "prompt", "images"? }`; each task supplies its own standalone script or adapter. The portable Python [inference runner](docs/inference.md) supports local Ollama and hosted OpenAI-compatible endpoints, saves raw responses, timing, usage, and model identity, and excludes answer/rubric fields from requests. Start with `python infer.py --config config.local.example.json --input fixtures/smoke.jsonl --output outputs/smoke.jsonl --dry-run`. Hosted development endpoints need explicit configuration and a project-scoped API key; keep credentials out of Git.
+
+For the lead's 8 GB GPU, `config.qwen.local.example.json` selects the installed Qwen 3.5 4B model with thinking disabled. A text transport smoke returned a final answer with full GPU placement; this is not an exam score. See the [local inference log](agentsLog/kwiscion/local-inference-2026-09-26.md) for settings and limitations.
 
 The lead has an hourly coordination heartbeat through the proposed 09:00 morning review. Workers still need to start their own session using [WORKER_PROMPT.md](docs/overnight/WORKER_PROMPT.md); an issue assignment alone does not execute work.
 

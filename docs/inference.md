@@ -4,7 +4,7 @@
 
 ## Local run
 
-The example points to Ollama on `127.0.0.1:11434/v1` with the installed `gemma2:9b` tag. This text-only fallback passed one local smoke prompt through the harness; see the [local inference log](../agentsLog/kwiscion/local-inference-2026-09-26.md) for the measured run. It is not an exam result. `qwen3.5:4b` remains a candidate pending download and validation. Change the tag only after confirming the model is available. The script installs or downloads nothing.
+The default example points to Ollama on `127.0.0.1:11434/v1` with the installed `gemma2:9b` tag. This text-only fallback passed one local smoke prompt through the harness; see the [local inference log](../agentsLog/kwiscion/local-inference-2026-09-26.md) for the measured run. The installed `qwen3.5:4b` has a separate [local config](../config.qwen.local.example.json) with `reasoning_effort: "none"`. Luna verified a nonempty final answer with thinking disabled through both Ollama's native API and its OpenAI-compatible chat endpoint; the OpenAI transport probe took 12.630 seconds and used 3.0 GB GPU memory. The probe answer differed from the requested word, so this verifies transport and final-answer output only, not answer accuracy. Neither smoke run is an exam result. The script installs or downloads nothing.
 
 ```powershell
 python infer.py --config config.local.example.json --input fixtures/smoke.jsonl --output outputs/smoke.jsonl --dry-run
@@ -31,6 +31,7 @@ python infer.py --config config.hosted.example.json --input fixtures/smoke.jsonl
 ```
 
 `api_key_env` names the variable; no key is stored in config or output. Do not reuse credentials from another project. Remote HTTP and redirects are refused.
+`reasoning_effort` is optional (`none`, `low`, `medium`, or `high`) and is passed through only when set; endpoint support varies.
 
 ## Result and limits
 

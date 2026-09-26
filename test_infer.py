@@ -83,6 +83,25 @@ class InferenceTests(unittest.TestCase):
         self.assertIn("too many requests", result["error"]["message"])
         self.assertEqual(result["raw_response"], "too many requests")
 
+    def test_reasoning_effort_is_optional_and_passed_through(self):
+        case = {"id": "q", "content": "Reply OK"}
+        captured = []
+
+        def respond(request, timeout):
+            captured.append(json.loads(request.data))
+            return FakeResponse(b'{"choices":[{"message":{"content":"OK"}}]}')
+
+        with patch.object(infer.OPENER, "open", side_effect=respond):
+            infer.run_case(case, self.config)
+            infer.run_case(case, {**self.config, "reasoning_effort": "none"})
+        self.assertNotIn("reasoning_effort", captured[0])
+        self.assertEqual(captured[1]["reasoning_effort"], "none")
+        with tempfile.TemporaryDirectory() as directory:
+            config_path = Path(directory) / "config.json"
+            config_path.write_text(json.dumps({**self.config, "reasoning_effort": "invalid"}), encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "reasoning_effort"):
+                infer.load_config(config_path, False)
+
     def test_unusable_200_responses_are_errors_with_raw_body(self):
         bodies = [
             ({"error": {"message": "model not available"}}, "provider"),

@@ -68,6 +68,9 @@ def load_config(path: Path, allow_remote: bool) -> dict:
         raise ValueError("timeout_seconds must be a number from 1 to 600")
     config["max_output_tokens"] = tokens
     config["timeout_seconds"] = timeout
+    effort = config.get("reasoning_effort")
+    if effort is not None and effort not in ("none", "low", "medium", "high"):
+        raise ValueError("reasoning_effort must be none, low, medium, or high")
     if "model_revision" in config and not isinstance(config["model_revision"], str):
         raise ValueError("model_revision must be a string when provided")
     key_name = config.get("api_key_env")
@@ -152,6 +155,8 @@ def run_case(case: dict, config: dict) -> dict:
         "messages": [{"role": "user", "content": case["content"]}],
         "max_tokens": config["max_output_tokens"],
     }
+    if config.get("reasoning_effort") is not None:
+        payload["reasoning_effort"] = config["reasoning_effort"]
     headers = {"Content-Type": "application/json"}
     if config.get("api_key_env"):
         headers["Authorization"] = "Bearer " + os.environ[config["api_key_env"]]
