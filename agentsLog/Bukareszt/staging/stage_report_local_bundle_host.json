@@ -1,0 +1,152 @@
+{
+  "issue": 44,
+  "started_at": "2026-09-26T15:35:56+0200",
+  "host": "Mac",
+  "platform": "macOS-15.6-arm64-arm-64bit-Mach-O",
+  "python": "3.14.4",
+  "repo": "/Users/bukareszt/orca/workspaces/machinekind-matura/issue-44-Bukareszt-stage-index",
+  "root": "/Users/bukareszt/orca/workspaces/machinekind-matura/issue-44-Bukareszt-stage-index/agentsLog/Bukareszt",
+  "status": "PASS",
+  "pinned": {
+    "index_sha256": "350800b1924b8f0094171fc5d68652da0f9260d03273a51ad6421c1a03e70429",
+    "sources_sha256": "8b77a63afd25317d783a3e511e3f1f99f09b6cec3c740bdf101a0d069aadfeed",
+    "n_sources": 107,
+    "n_chunks": 3481,
+    "mode": "chrono",
+    "k": 5,
+    "title_weight": 1.0
+  },
+  "phases": {
+    "unpack_bundle": {
+      "ok": true,
+      "seconds": 0.055,
+      "detail": {
+        "bundle": "/Users/bukareszt/orca/workspaces/machinekind-matura/issue-44-Bukareszt-stage-index/agentsLog/Bukareszt/private/chrono_index_bundle_350800b1.tar.gz",
+        "bundle_sha256": "da0d4ad772182d8537e81bdbfdeed267b8edf54ad2a85494fcaaed6f80dd091e",
+        "bundle_bytes": 3942102,
+        "members": 110
+      }
+    },
+    "verify_bundle_staged": {
+      "ok": true,
+      "seconds": 0.092,
+      "detail": {
+        "sources_sha256": {
+          "expected": "8b77a63afd25317d783a3e511e3f1f99f09b6cec3c740bdf101a0d069aadfeed",
+          "actual": "8b77a63afd25317d783a3e511e3f1f99f09b6cec3c740bdf101a0d069aadfeed"
+        },
+        "raw_files": {
+          "checked": 107,
+          "problems": []
+        },
+        "index_sha256": {
+          "expected": "350800b1924b8f0094171fc5d68652da0f9260d03273a51ad6421c1a03e70429",
+          "actual": "350800b1924b8f0094171fc5d68652da0f9260d03273a51ad6421c1a03e70429",
+          "bytes": 8514642
+        },
+        "index_meta": {
+          "n_sources": 107,
+          "n_chunks": 3481
+        },
+        "graph_content_sha256": {
+          "expected": "9ed53bb99bf0599fa67535ec1a0b14d0869e6c62c210d81193fa9fd0093a004b",
+          "actual": "9ed53bb99bf0599fa67535ec1a0b14d0869e6c62c210d81193fa9fd0093a004b",
+          "bytes": 71083
+        },
+        "disk_bytes": {
+          "raw": 4073637,
+          "index": 8585725
+        }
+      }
+    },
+    "offline_query": {
+      "ok": true,
+      "seconds": 0.168,
+      "detail": {
+        "query": "Kiedy i przez kogo został spisany Kodeks Hammurabiego?",
+        "mode": "chrono",
+        "k": 5,
+        "title_weight": 1.0,
+        "load_seconds": 0.1,
+        "rank_seconds": 0.0006,
+        "results": [
+          {
+            "rank": 1,
+            "chunk_id": "plwiki-kodeks-hammurabiego#0145",
+            "source_id": "plwiki-kodeks-hammurabiego",
+            "locator": "Wstęp [part 1]",
+            "score": 52.0181
+          },
+          {
+            "rank": 2,
+            "chunk_id": "plwiki-kodeks-hammurabiego#0147",
+            "source_id": "plwiki-kodeks-hammurabiego",
+            "locator": "Źródła poznania [part 1]",
+            "score": 49.521
+          },
+          {
+            "rank": 3,
+            "chunk_id": "plwiki-kodeks-hammurabiego#0151",
+            "source_id": "plwiki-kodeks-hammurabiego",
+            "locator": "Znajomość Prawa Hammurabiego w Polsce [part 1]",
+            "score": 42.4778
+          },
+          {
+            "rank": 4,
+            "chunk_id": "plwiki-kodeks-hammurabiego#0148",
+            "source_id": "plwiki-kodeks-hammurabiego",
+            "locator": "Charakter praw Hammurabiego [part 1]",
+            "score": 41.1652
+          },
+          {
+            "rank": 5,
+            "chunk_id": "plwiki-kodeks-hammurabiego#0150",
+            "source_id": "plwiki-kodeks-hammurabiego",
+            "locator": "Wartość praw Hammurabiego [part 1]",
+            "score": 41.1078
+          }
+        ],
+        "guard": "socket-guard",
+        "python": "3.14.4",
+        "guards": [
+          "socket-guard",
+          "proxy-env-stripped"
+        ],
+        "command": [
+          "/opt/homebrew/opt/python@3.14/bin/python3.14",
+          "-I",
+          "/Users/bukareszt/orca/workspaces/machinekind-matura/issue-44-Bukareszt-stage-index/scripts/Bukareszt/stage_index.py",
+          "_offline-query",
+          "--root",
+          "/Users/bukareszt/orca/workspaces/machinekind-matura/issue-44-Bukareszt-stage-index/agentsLog/Bukareszt",
+          "--query",
+          "Kiedy i przez kogo został spisany Kodeks Hammurabiego?",
+          "--mode",
+          "chrono",
+          "--k",
+          "5",
+          "--title-weight",
+          "1.0"
+        ]
+      }
+    },
+    "compare_query_proof": {
+      "ok": true,
+      "seconds": 0.0,
+      "detail": null
+    }
+  },
+  "path_used": "bundle",
+  "blocker": null,
+  "retrieval_script_sha256": {
+    "expected": "5ce9918fcc0151c8e15391781ace98deaf4b786977a69e6e773ccc9d7b0a51a3",
+    "actual": "5ce9918fcc0151c8e15391781ace98deaf4b786977a69e6e773ccc9d7b0a51a3"
+  },
+  "disk_bytes": {
+    "raw": 4073637,
+    "index": 8585725
+  },
+  "total_seconds": 0.325,
+  "finished_at": "2026-09-26T15:35:56+0200",
+  "integration_command": "python scripts/prepare_rag.py --input <exam-input.jsonl> --output outputs/rag-input.jsonl --trace outputs/rag-trace.jsonl --corpus outputs/rag-corpus.jsonl   # defaults: --mode chrono --k 5, --index agentsLog/Bukareszt/index/bm25_index.json --graph agentsLog/Bukareszt/index/graph.json"
+}
