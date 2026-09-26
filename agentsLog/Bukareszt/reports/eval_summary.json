@@ -1,8 +1,8 @@
 {
-  "evaluated_at": "2026-09-26T00:25:13+00:00",
+  "evaluated_at": "2026-09-26T00:28:23+00:00",
   "queries_file": "queries/train_queries.jsonl",
   "queries_sha256": "b2e359bf2501469a216f178ad76511d45604e61ad42d4257fca34d15f82f024d",
-  "index_sha256": "173c56f671bf55012d2b9607252aa09f74b972596824e956249cb409de1c1b4c",
+  "index_sha256": "350800b1924b8f0094171fc5d68652da0f9260d03273a51ad6421c1a03e70429",
   "n_chunks": 3481,
   "n_sources": 107,
   "results": {
@@ -537,7 +537,7 @@
       "title_weight": 1.0,
       "n_queries": 40,
       "k_max": 10,
-      "seconds": 1.8,
+      "seconds": 1.81,
       "source_hit_at_k": {
         "1": 0.95,
         "3": 1.0,

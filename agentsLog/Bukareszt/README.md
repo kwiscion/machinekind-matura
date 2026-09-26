@@ -46,7 +46,7 @@ Recommended configuration for integration: `--mode chrono --title-weight 1.0 --k
 ## Revisions and hashes
 
 - Sources: 107 rows, every row has `revision_id` and `sha256` of the fetched UTF-8 text; `sources.jsonl` SHA-256 `8b77a63afd25317d783a3e511e3f1f99f09b6cec3c740bdf101a0d069aadfeed`.
-- Index (v2, split title/content fields): 3481 chunks, SHA-256 `173c56f671bf55012d2b9607252aa09f74b972596824e956249cb409de1c1b4c` (deterministic: identical raw text ⇒ identical hash; the per-source raw hashes are embedded in the index).
+- Index (v2, split title/content fields): 3481 chunks, SHA-256 `350800b1924b8f0094171fc5d68652da0f9260d03273a51ad6421c1a03e70429` (deterministic: identical raw text ⇒ identical hash, verified from a fresh clone at 03:55 with zero revision drift; per-source content hashes are embedded in the index, timestamps are not).
 - Audited v1 index (title concatenated into chunk text): SHA-256 `f18b12fa19081b4f0439e7bb1e8dd62e538a01bb01cd81a35328f421d59a084c` (first commit `6197fbc`).
 - Queries: `train_queries.jsonl` SHA-256 in `reports/eval_summary.json` (`queries_sha256`).
 - Wikipedia revisions are the ones current on 2026-09-26 00:10–00:13 UTC; re-running `fetch --refresh` later will fetch newer revisions and change hashes, which is why the manifest and index hash are committed.
@@ -93,3 +93,4 @@ Lead decides whether to wire `retrieval.py` (mode `chrono`, k=5) into the answer
 - 03:25 residual-query `twostage` re-rank: negative result (ev@1 0.725 vs chrono 0.75, caps at 3 articles). Stopped iterating.
 - 03:30 v2 audit scored: top-1 strict 0.25→0.40, lenient 0.625→0.725. Auditors caught claim errors in q26 (Wileńszczyzna) and q09 (Warmia); corrected.
 - 03:45 REPORT.md, README, rights scan re-run (exit 0); commit + PR.
+- 03:55 fresh-clone reproduction in a scratch directory: fetch → 0 revision drift, identical metrics, identical index SHA-256 after removing the manifest-file hash (timestamps) from the index payload. `fetch` now reports revision drift vs the committed manifest in `sources/fetch_failures.json`.

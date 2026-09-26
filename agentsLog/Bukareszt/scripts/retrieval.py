@@ -256,10 +256,18 @@ def cmd_fetch(args) -> None:
         manifest.append(rec)
         print(f"ok   {source_id} rev={got['revid']} bytes={len(data)}")
         time.sleep(args.sleep)
+    # revision drift: live fetch vs the previously committed manifest (Wikipedia pages keep changing;
+    # the committed manifest + index hash are the reference, drift is reported, not hidden)
+    drift = []
+    for rec in manifest:
+        prev = existing.get(rec["source_id"])
+        if prev and (prev.get("revision_id") != rec.get("revision_id") or prev.get("sha256") != rec.get("sha256")):
+            drift.append({"source_id": rec["source_id"], "manifest_revid": prev.get("revision_id"), "fetched_revid": rec.get("revision_id"),
+                          "manifest_sha256": prev.get("sha256"), "fetched_sha256": rec.get("sha256")})
     write_jsonl(SOURCES_JSONL, manifest)
     fail_path = os.path.join(ROOT, "sources", "fetch_failures.json")
-    json.dump({"fetched_at": now_iso(), "failures": failures}, open(fail_path, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
-    print(f"manifest: {len(manifest)} sources -> {SOURCES_JSONL}; failures: {len(failures)} -> {fail_path}")
+    json.dump({"fetched_at": now_iso(), "failures": failures, "revision_drift": drift}, open(fail_path, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
+    print(f"manifest: {len(manifest)} sources -> {SOURCES_JSONL}; failures: {len(failures)}; revision drift vs previous manifest: {len(drift)} -> {fail_path}")
 
 
 # --------------------------------------------------------------------------------------
@@ -419,14 +427,15 @@ def cmd_index(args) -> None:
     # deterministic payload: no timestamps inside the index file, so identical raw text => identical SHA-256
     payload["meta"] = {
         "n_sources": len({c["source_id"] for c in chunks}), "n_chunks": len(chunks),
-        "max_chars": args.max_chars, "sources_sha256": sha256_file(SOURCES_JSONL),
-        "raw_sha256": {r["source_id"]: r["sha256"] for r in manifest},
+        "max_chars": args.max_chars,
+        "raw_sha256": {r["source_id"]: r["sha256"] for r in manifest},  # content hashes only (no timestamps)
         "tokenizer": "NFKC lowercase, \\w+, stoplist, prefix-6 stem", "k1": args.k1, "b": args.b,
     }
     with open(INDEX_FILE, "w", encoding="utf-8") as f:
         json.dump(payload, f, ensure_ascii=False, sort_keys=True)
     meta = {k: v for k, v in payload["meta"].items() if k != "raw_sha256"}
-    meta.update(built_at=now_iso(), index_sha256=sha256_file(INDEX_FILE), index_bytes=os.path.getsize(INDEX_FILE))
+    meta.update(built_at=now_iso(), sources_sha256=sha256_file(SOURCES_JSONL),
+                index_sha256=sha256_file(INDEX_FILE), index_bytes=os.path.getsize(INDEX_FILE))
     json.dump(meta, open(os.path.join(REPORTS_DIR, "index_meta.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=2)
     print(json.dumps(meta, ensure_ascii=False, indent=2))
 
