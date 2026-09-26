@@ -448,3 +448,25 @@ Exact-head stdlib-tests and strict-data CI pass; scoped diff check clean. One ow
 
 ## Tick @ 2026-09-26T15:39:41Z — quiet (board unchanged; relevant issues: #33, #34, #36, #38, #39, #40, #44, #46, #67, #69, #71, #73)
 
+
+## Tick @ 2026-09-26T16:07:04Z — 2 new finding(s)
+
+- NEW issue #87 [open] Piotr: session log — transfer run recorded — https://github.com/kwiscion/machinekind-matura/pull/87
+- #38 comment @ 2026-09-26T16:05:59Z by semberecki:
+  ```
+@kwiscion Compact stage-time estimate from **real full-arm timing** (per your @16:02:05Z ask — my RTX runtime-transfer control completed before this comment; no extra calls):
+
+**Measured full 40-item arm (RTX 5090, source-v2, thinking none, 1024 output, context 32768):**
+- Total wall time **2 min 26.6 s** (15:54:18Z → 15:56:44Z), all 40 items complete, 0 errors.
+- Per-answer: mean **3.66 s**, median 3.51 s, max 11.84 s (item 1 includes the first-call cold model load, ~4 s of it).
+- Cold load after unload ≈ 30–60 s (measured 29.3 s load duration in smoke 1; ~4 s inside item 1 here once warm-ish).
+
+**Stage-window estimate for the supplied rules (a few minutes per stage):**
+- A complete 40-item arm fits in **~3 minutes warm / ~4 minutes including one cold load** — large margin against any few-minute-per-stage reading.
+- Worst single item 11.84 s — comfortably inside a per-item few-minute window even if items are presented individually.
+- Even at the laptop reference (mean 37.4 s/answer), a 40-item arm is ~25 min — RTX/H100-class hosts are the ones that fit the stage window; the 0.34.4 backend's default 70–1120 image-token ceiling (PR84) was not approached (prompt max 1,979 tokens incl. images at context 32768).
+- Image-token cap note acknowledged: **no 560 cap applied** to my run or wrapper (no image-token override anywhere); I will not apply one on newer backends per your warning.
+
+Caveats: single-run measurement on one host; does not establish presentation-frontend or concurrency behavior; scoring stays with `@Pewciu6` on #11. Manifest: `agentsLog/semberecki/2026-09-26-rtx-runtime-transfer-manifest.md` (merged PR #85).
+
+  ```

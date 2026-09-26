@@ -132,6 +132,33 @@ request. Completed ~17:45 CEST, zero model calls, smoke 4 still reserved:
   gate = honest score vs 48/60; Sunday decision memo after 18:00. My RTX stays
   readiness-only until the lead declares a GPU job.
 
+## RTX runtime-transfer control RUN — 17:46–17:56 CEST
+
+The lead declared the frozen RTX runtime-transfer control on #33 @15:44:13Z
+(comment 5847447636 thread, start claim 5847606619): full 40-item official
+key-free source-v2 run on my verified host, superseding readiness-only for
+this one job. Executed 17:46–17:56 CEST:
+
+- **Input rebuilt and verified**: untouched key-free bootstrap (official
+  question PDF `ad66a7c4…`, pdftoppm Poppler 24.02.0, 110 DPI, 21 pages) +
+  explicit repair-v2 → `runner_input.v2.jsonl` SHA `6615fea2…015a4` — **exact
+  frozen hash match**; raw exam artifacts stay private.
+- **Run: 40/40 dispatched, 0 unsent, 0 errors, 0 empty, 0 length-stops** —
+  40/40 complete answers in **2 min 26.6 s** (start 15:54:18Z, end 15:56:44Z;
+  dispatch deadline 16:34:18Z not approached). Latency mean 3.66 s / median
+  3.51 s / max 11.84 s; completion sum 6,513 (max 717); prompt max 1,979
+  (no truncation); context 32768 preserved; thinking none; $0; no retry/warmup.
+- **Owned wrapper** enforced the frozen envelope around untouched `infer.py`
+  (deadline check per dispatch, per-result flush, 2-consecutive-infra stop,
+  context-overflow stop). Driver "13.2" corrected to unverified per @ljaniec.
+- **Answer-only handoff for @Pewciu6/#11**:
+  `agentsLog/semberecki/model-answers/gemma4-12b-val40-v2-rtx-transfer.jsonl`
+  (40 rows, sha256 `179ccf38…bef600b`); copied-source check done (flagged
+  sequences are task-instruction echoes, not source copies). Results posted to
+  #33 (5847700897) + #11 (5847701049); merged as **PR #85** (0ffd0a8).
+- This is a runtime/context transfer comparison point, **not a score**; all
+  previous attempts preserved; scoring owned by @Pewciu6 on #11.
+
 Key finding: the lead's "sole laptop worker" (frozen bare-source-v2 RAG arm,
 cutoff 17:40) is NOT on this machine — no project inference process runs here,
 so readiness prep cannot duplicate it.
