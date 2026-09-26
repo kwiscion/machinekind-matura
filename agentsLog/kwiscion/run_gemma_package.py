@@ -1,5 +1,7 @@
 """Bare organizer-package launcher. Default is CPU preflight; --execute needs exclusive GPU ownership.
 
+Runtime paths/version/context come from a frozen runtime profile (#83); omitted means the qualified laptop default.
+
 No downloads, retries, warmup, policy or RAG. Server and requests share an isolated network namespace.
 """
 import argparse
@@ -19,7 +21,7 @@ SELF = Path(__file__).resolve()
 CONFIG_SHA = '3d9c501891d5307a863096274abdfeec716ee8fa163b5c259569f3592ed8effa'
 
 
-def worker_guard(server_group=None, parent_pid=None):
+def worker_guard(server_group=None, parent_pid=None, profile=r.LAPTOP_PROFILE):
     """Exclude only this process, its exact supervisor and its owned server group."""
     names = {'infer.py','run_question_policy.py','run_bounded_gemma.py','run_visual_crops.py',
              'run_crop_diagnostic.py','run_source_correction.py','run_local_smoke.py','run_smoke.py'}
@@ -33,10 +35,11 @@ def worker_guard(server_group=None, parent_pid=None):
             exe = Path(args[0]).name
             runner = exe.startswith('python') and any(Path(x).name in names or
                 Path(x).name.startswith(('run_gemma','run_qwen','run_rag')) for x in args[1:])
-            backend = exe in ('llama-server','ollama_llama_server') or 'vllm' in exe
+            backend = exe in ('llama-server','ollama_llama_server') or 'vllm' in exe or \
+                (profile['block_foreign_ollama'] and r.foreign_ollama(args))
             r.require(not (runner or backend) or allowed(pid), 'Competing inference worker')
         except (FileNotFoundError,ProcessLookupError): pass
-    gpu = subprocess.run(['/usr/lib/wsl/lib/nvidia-smi','--query-compute-apps=pid','--format=csv,noheader,nounits'],
+    gpu = subprocess.run([profile['nvidia_smi'],'--query-compute-apps=pid','--format=csv,noheader,nounits'],
                          capture_output=True,text=True,check=True)
     for line in gpu.stdout.splitlines():
         r.require(line.strip().isdigit(), 'Unrecognized GPU process listing')
@@ -46,6 +49,7 @@ def worker_guard(server_group=None, parent_pid=None):
 
 def preflight(a):
     out = r.output_path(a.output)
+    profile, profile_digest, profile_file_digest = r.load_profile(getattr(a, 'runtime_profile', None))
     inf, adapter = r.modules()
     r.require(1 <= a.max_calls <= inf.MAX_CALLS, 'Declare 1..100 maximum calls')
     r.require(a.max_output_tokens_total == a.max_calls * 1024, 'Total requested token budget must equal max-calls * 1024')
@@ -66,7 +70,9 @@ def preflight(a):
     return out, package, config, {'package_files': pins, 'ids': [c['id'] for c in cases],
         'config_sha256': CONFIG_SHA, 'model_digest': r.DIGEST, 'weight_bytes': sum(r.ASSETS.values()),
         'max_calls': a.max_calls, 'max_output_tokens_total': a.max_output_tokens_total,
-        'wall_seconds': a.wall_seconds, 'cost_usd': 0, 'retries': 0, 'context_fit': 'UNPROVEN',
+        'wall_seconds': a.wall_seconds, 'runtime_profile': profile, 'runtime_profile_sha256': profile_digest,
+        'runtime_profile_file': None if getattr(a, 'runtime_profile', None) is None else str(Path(a.runtime_profile).resolve()),
+        'runtime_profile_file_sha256': profile_file_digest, 'cost_usd': 0, 'retries': 0, 'context_fit': 'UNPROVEN',
         'script_sha256': r.sha(SELF), 'helper_sha256': r.sha(Path(r.__file__)),
         'infer_sha256': r.sha(r.ROOT/'infer.py'), 'adapter_sha256': r.sha(r.ROOT/'scripts/Bukareszt/matura_package.py')}
 
@@ -134,6 +140,9 @@ def inside(a):
     record = json.loads((out/'launch.json').read_text())
     r.require(os.getppid() == record['parent_pid'], 'Inside mode requires the recorded live supervisor')
     verify_pins(record['frozen_files'])
+    profile = r.validate_profile(record['runtime_profile'])
+    r.require(r.profile_sha(profile) == record['runtime_profile_sha256'], 'Runtime profile changed after launch record')
+    context = profile['context_length']
     proof = r.network_proof(a.host_net)
     r.write(out/'network-proof.json', proof)
     inf, _ = r.modules()
@@ -141,16 +150,14 @@ def inside(a):
     r.require([c['id'] for c in cases] == record['ids'], 'Prepared IDs changed')
     config = inf.load_config(out/'config.json', False)
     inf.OPENER = urllib.request.build_opener(urllib.request.ProxyHandler({}), inf.NoRedirect)
-    worker_guard(parent_pid=record['parent_pid'])
+    worker_guard(parent_pid=record['parent_pid'], profile=profile)
     home = out/'server-home'; home.mkdir()
-    env = {'PATH':'/usr/local/bin:/usr/bin:/bin:/usr/sbin:/usr/lib/wsl/lib', 'HOME':str(home),
-           'OLLAMA_HOST':f'127.0.0.1:{r.PORT}', 'OLLAMA_MODELS':str(r.CACHE), 'OLLAMA_CONTEXT_LENGTH':'4096',
-           'OLLAMA_NUM_PARALLEL':'1', 'OLLAMA_MAX_LOADED_MODELS':'1', 'OLLAMA_NO_CLOUD':'1', 'OLLAMA_KEEP_ALIVE':'5m'}
+    env = r.server_env(profile, home)
     server = None
     deadline = time.monotonic() + record['wall_seconds'] - 20
     try:
         with (out/'server.log').open('xb') as log:
-            server = subprocess.Popen(['/usr/local/bin/ollama','serve'], env=env, stdout=log,
+            server = subprocess.Popen([profile['ollama_binary'],'serve'], env=env, stdout=log,
                                       stderr=subprocess.STDOUT, start_new_session=True)
         ns = os.readlink(f'/proc/{server.pid}/ns/net')
         r.write(out/'server-pid.json', {'process_group':server.pid, 'namespace':ns})
@@ -160,22 +167,23 @@ def inside(a):
             r.require(server.poll() is None, 'Server exited')
             try:
                 version = r.api('version')
-                r.require(version.get('version') == '0.30.7', 'Runtime version changed')
+                r.require(version.get('version') == profile['ollama_version'], 'Runtime version changed')
                 r.verify_model()
                 break
             except (OSError, ValueError):
                 r.require(time.monotonic() < ready, 'Readiness timeout')
                 time.sleep(.5)
-        r.write(out/'readiness.json', {'version':version, 'digest':r.DIGEST, 'context_expected':4096})
+        r.write(out/'readiness.json', {'version':version, 'digest':r.DIGEST, 'context_expected':context,
+                                        'runtime_profile_sha256':record['runtime_profile_sha256']})
         def loaded_runtime():
             models = r.api('ps')['models']
             with (out/'runtime.jsonl').open('a',encoding='utf-8') as runtime:
                 runtime.write(json.dumps({'checked_at_utc':r.dt.datetime.now(r.dt.timezone.utc).isoformat(),
                                           'models':models})+'\n')
             r.require(len(models) == 1 and models[0].get('digest') == r.DIGEST and
-                      models[0].get('context_length') == 4096, 'Loaded model digest/context mismatch')
+                      models[0].get('context_length') == context, 'Loaded model digest/context mismatch')
         result = request_loop(cases, config, out, record['max_calls'], deadline,
-                              lambda: worker_guard(server.pid,record['parent_pid']), loaded_runtime, inf)
+                              lambda: worker_guard(server.pid,record['parent_pid'],profile), loaded_runtime, inf)
         r.write(out/'execution.json', result)
         return 0 if result['stop_reason'] == 'complete' else 1
     finally:
@@ -205,12 +213,16 @@ def execute(a):
     r.require(sys.platform == 'linux', 'Execute only under WSL/Linux')
     import fcntl
     out, package, config, record = preflight(a)
+    profile = record['runtime_profile']
+    r.check_platform(profile)
     (r.OWN/'private').mkdir(exist_ok=True)
     with (r.OWN/'private/offline-rehearsal.lock').open('a') as lock:
         fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
-        r.require(not r.api('ps',11434)['models'], 'Lead must first unload their own host model')
-        worker_guard()
-        r.verify_assets()
+        r.host_idle(profile)
+        worker_guard(profile=profile)
+        r.verify_binary(profile)
+        r.verify_assets(profile)
+        record['isolation_probe'] = r.isolation_probe()
         out.mkdir(parents=True)
         _, adapter = r.modules()
         adapter.prepare(package, out/'input.jsonl')
@@ -223,6 +235,11 @@ def execute(a):
         for p in [out/'input.jsonl',out/'input.jsonl.manifest.json',out/'config.json', SELF, Path(r.__file__),
                   r.ROOT/'infer.py',r.ROOT/'scripts/Bukareszt/matura_package.py']:
             record['frozen_files'][str(p)] = r.sha(p)
+        if record['runtime_profile_file'] is not None:
+            r.require(r.sha(Path(record['runtime_profile_file'])) == record['runtime_profile_file_sha256'], 'Runtime profile file changed')
+            record['frozen_files'][record['runtime_profile_file']] = record['runtime_profile_file_sha256']
+        if profile['ollama_binary_sha256'] is not None:
+            record['frozen_files'][profile['ollama_binary']] = profile['ollama_binary_sha256']
         record['git_revision'] = subprocess.check_output(['git','rev-parse','HEAD'], cwd=r.ROOT, text=True).strip()
         record['parent_pid'] = os.getpid()
         record['endpoint_change'] = '127.0.0.1:11434 -> isolated 127.0.0.1:11435; no sampling changes'
@@ -262,6 +279,8 @@ def main(argv=None):
     p.add_argument('--max-calls',type=int)
     p.add_argument('--max-output-tokens-total',type=int)
     p.add_argument('--wall-seconds',type=int)
+    p.add_argument('--runtime-profile',type=Path,default=None,
+                   help='Frozen runtime profile JSON; omitted = qualified laptop WSL 0.30.7/context 4096 default')
     a = p.parse_args(argv)
     if a.inside:
         r.require(not a.execute, 'Conflicting execution modes')

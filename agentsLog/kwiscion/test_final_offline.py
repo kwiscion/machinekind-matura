@@ -25,8 +25,12 @@ class FinalOffline(unittest.TestCase):
         (self.pkg/'exam.json').write_text(json.dumps(exam),encoding='utf-8')
         (self.pkg/'answers-template.json').write_text(json.dumps({'exam_id':exam['exam_id'],
             'answers':[{'id':i['id'],'answer':''} for i in exam['items']]}),encoding='utf-8')
+        config = f.r.ROOT/'outputs/local-smoke/gemma4-12b-val40-1024.config.json'
+        if not config.exists():  # non-WSL checkout: same pinned bytes are the CRLF form of the tracked copy
+            config = self.root/'config.json'
+            config.write_bytes((f.r.OWN/'gemma4-12b-val40-1024.config.json').read_bytes().replace(b'\r\n',b'\n').replace(b'\n',b'\r\n'))
         self.args = argparse.Namespace(output=self.root/'new-run', exam_dir=self.pkg,
-            config=f.r.ROOT/'outputs/local-smoke/gemma4-12b-val40-1024.config.json',
+            config=config,
             max_calls=3,max_output_tokens_total=3072,wall_seconds=1800)
 
     def tearDown(self):
