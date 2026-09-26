@@ -77,10 +77,42 @@ class GuardUnitTests(unittest.TestCase):
         with self.assertRaises(w.GuardFailure):
             w.assert_served_identity({"models": []})
 
-    def test_assert_missing_context_recorded_unvalidated(self):
-        actual = w.assert_served_identity(ps(context_length=None))
-        self.assertFalse(actual["context_validated"])
-        self.assertIsNone(actual["context_length"])
+    def test_assert_missing_context_fails_closed(self):
+        with self.assertRaises(w.GuardFailure) as cm:
+            w.assert_served_identity(ps(context_length=None))
+        self.assertIn("non-integer", str(cm.exception))
+
+    def test_assert_absent_context_field_fails_closed(self):
+        with self.assertRaises(w.GuardFailure):
+            w.assert_served_identity({"models": [{"digest": DIGEST}]})
+
+    def test_assert_bool_context_fails_closed(self):
+        with self.assertRaises(w.GuardFailure):
+            w.assert_served_identity(ps(context_length=True))
+
+    def test_assert_noninteger_context_fails_closed(self):
+        with self.assertRaises(w.GuardFailure):
+            w.assert_served_identity(ps(context_length="32768"))
+
+    def test_ambiguous_loaded_snapshot_fails_closed(self):
+        two_same = {"models": [{"digest": DIGEST, "context_length": 32768},
+                               {"digest": DIGEST, "context_length": 32768}]}
+        with self.assertRaises(w.GuardFailure) as cm:
+            w.assert_served_identity(two_same)
+        self.assertIn("unambiguous", str(cm.exception))
+
+    def test_expected_model_found_unambiguously_among_others(self):
+        mixed = {"models": [{"digest": "other-model", "context_length": 8192},
+                            {"digest": DIGEST, "context_length": 32768}]}
+        actual = w.assert_served_identity(mixed)
+        self.assertEqual(actual["context_length"], 32768)
+        self.assertTrue(actual["context_validated"])
+
+    def test_no_matching_model_among_multiple_fails_closed(self):
+        mixed = {"models": [{"digest": "other-a", "context_length": 8192},
+                            {"digest": "other-b", "context_length": 8192}]}
+        with self.assertRaises(w.GuardFailure):
+            w.assert_served_identity(mixed)
 
 
 class MainLoopGuardTests(unittest.TestCase):
@@ -143,6 +175,20 @@ class MainLoopGuardTests(unittest.TestCase):
         code, m = self.run_main(lambda case, config=None: ok_result(case["id"]),
                                 api_ps_value=ps(context_length=4096))
         self.assertEqual(m["stop_reason"], "served_identity_mismatch")
+
+    def test_served_context_missing_fails_closed(self):
+        code, m = self.run_main(lambda case, config=None: ok_result(case["id"]),
+                                api_ps_value=ps(context_length=None))
+        self.assertEqual(m["stop_reason"], "served_identity_mismatch")
+        self.assertEqual(m["dispatched"], 1)
+
+    def test_served_ambiguous_snapshot_fails_closed(self):
+        two_same = {"models": [{"digest": DIGEST, "context_length": 32768},
+                               {"digest": DIGEST, "context_length": 32768}]}
+        code, m = self.run_main(lambda case, config=None: ok_result(case["id"]),
+                                api_ps_value=two_same)
+        self.assertEqual(m["stop_reason"], "served_identity_mismatch")
+        self.assertEqual(m["dispatched"], 1)
 
     def test_context_overflow_stops(self):
         def seq(case, config=None):
