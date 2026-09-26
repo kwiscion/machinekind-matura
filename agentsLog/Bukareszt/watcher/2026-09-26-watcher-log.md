@@ -22,3 +22,10 @@ Agent: Greg's issue watcher. Orca worktree `Watch-for-tasks`, instance `8e5e9ed0
 ## Limits
 - Cron is in-session only (dies with the session, 7-day expiry); a re-run on session restart is needed. Not a daemon beyond this session.
 - Watcher uses no model/data/source material; no purchases.
+
+## 02:40 — #6 delivered
+- Worker (Orca worktree `issue-6-Bukareszt-retrieval`) finished at 02:31 Warsaw: PR #12 merged to `main` (merge commit `4bba768`), handoff comment posted on #6, label `in-progress` -> `needs-review`, assignee `Bukareszt`. Note: the worker's own comment/README timestamps say "04:00/04:15 Warsaw"; wall clock was 02:31 (worker time-labeling error, content unaffected).
+- Delivered: 107 licensed sources (100 pl.wikipedia CC BY-SA 4.0 w/ oldid+SHA-256, 7 Wikisource PD acts), stdlib BM25 + hybrid + chrono modes, 40 TRAIN queries, two independent citation audits, rights scan, `reports/REPORT.md`. Recommended: `--mode chrono --k 5`. No purchases, no paid APIs, no exam material.
+- No follow-up issue opened (nothing blocking; cheap next steps are listed in the report for the lead).
+- Lesson: watcher and worker both wrote `agentsLog/Bukareszt/README.md` (add/add conflict, resolved by the worker; watcher section kept). Future workers: merge `origin/main` before opening a PR.
+- Watcher branch reset onto `origin/main` @ 4bba768 to avoid re-conflicting; polling continues until 08:30.
