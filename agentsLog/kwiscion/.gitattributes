@@ -13,3 +13,10 @@ hetero-source-*.py -text whitespace=cr-at-eol
 model-answers/*bielik* -text whitespace=cr-at-eol
 run_bielik_panel.py -text whitespace=cr-at-eol
 test_bielik_panel.py -text whitespace=cr-at-eol
+
+# Preserve frozen replication and reviewed training/thinking preparation bytes.
+model-answers/hetero-replication-* -text whitespace=cr-at-eol
+hetero-replication-run.py -text whitespace=cr-at-eol
+2026-09-26-hetero-replication-*.json -text whitespace=cr-at-eol
+essay-lora-prep/** -text whitespace=cr-at-eol
+full-thinking-prep/** -text whitespace=cr-at-eol

@@ -1,0 +1,50 @@
+{
+  "status": "complete",
+  "calls": 18,
+  "requested_tokens": 18432,
+  "elapsed_seconds": 137.9146256969998,
+  "utc_end": "2026-09-26T19:38:32.830949+00:00",
+  "unsent": [],
+  "archive_sha256": "94a1098231204555f807fddf1a95ab9d756fe7dc4807f955144ed6c26e9e10e1",
+  "raw_sha256": "ab7189ff99c368f16d4e00721a059060a708719652d4460d52d9a75e149e0630",
+  "launch_sha256": "02828463f129d0341ef2a5308e6d9f379e2416dbeb7cf654a0b251b57025134d",
+  "stage_outputs": {
+    "bare": {
+      "sha256": "7434b96bdda759d70f800322e14ff3b8b52c40fea45815d429805ac989d5392d",
+      "ids": 6,
+      "complete": 6,
+      "errors": 0
+    },
+    "observation": {
+      "sha256": "2f0b2a1fe7cb58e2c88904557e0a672a7fd4b1d54e40a93266985e223e295c50",
+      "ids": 6,
+      "complete": 6,
+      "errors": 0
+    },
+    "final": {
+      "sha256": "4f34db6ca3d4dae5c0423c644adb8817ec7c0ea8d94e3a1f1a1cb76bc0a3ad94",
+      "ids": 6,
+      "complete": 6,
+      "errors": 0
+    }
+  },
+  "per_stage_usage": {
+    "bare": {
+      "prompt_tokens": 5622,
+      "completion_tokens": 620
+    },
+    "observation": {
+      "prompt_tokens": 11263,
+      "completion_tokens": 1683
+    },
+    "final": {
+      "prompt_tokens": 7986,
+      "completion_tokens": 727
+    }
+  },
+  "overlap_review": [],
+  "first_request_utc": "2026-09-26T19:36:29.846590+00:00",
+  "planning_rate_usd_per_hour": 3.28,
+  "execution_time_estimate_usd": 0.12565554785726646,
+  "actual_billing": "unverified"
+}

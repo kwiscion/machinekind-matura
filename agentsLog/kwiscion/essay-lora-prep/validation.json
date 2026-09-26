@@ -1,0 +1,16 @@
+{
+  "status": "CPU_PREPARATION_PASS_RUNTIME_SETUP_BLOCKED",
+  "synthetic_unit_tests": 21,
+  "unit_tests_passed": true,
+  "static_source_check": "source-check.json",
+  "real_jinja_template_check": "template-check.json",
+  "canonical_export_inspection": "canonical-export-inspection.json",
+  "actual_gemma_tokenizer_executed": false,
+  "tiny_model_probe_executed": false,
+  "cpu_setup": "torch2.8.0+cpu installed; transformers/peft install deadline reached",
+  "model_weights_downloaded": false,
+  "training_or_inference_executed": false,
+  "gpu_process_started": false,
+  "git_mutations": false,
+  "data_clearance_granted": false
+}

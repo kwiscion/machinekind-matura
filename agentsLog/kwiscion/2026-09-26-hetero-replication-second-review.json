@@ -1,0 +1,174 @@
+{
+  "review_status": "provisional_independent_sol",
+  "frozen_at": "2026-09-26T19:49:18.248328+00:00",
+  "scope": "six known-validation one-point items, twelve final answers; no full-exam score",
+  "blindness": "Arm names visible, but no root grades or observations read before or during this review. Official sources and rubric read independently; earlier reviews of some same items exist but scores not imported.",
+  "arms": {
+    "bare": {
+      "input_sha256": "7434b96bdda759d70f800322e14ff3b8b52c40fea45815d429805ac989d5392d",
+      "items": [
+        {
+          "id": "val2024-hist-z8.1",
+          "answer_sha256": "ee82a2be45e896aafb985366126a044dfa079806320036e2386e5b32886a4b2b",
+          "max_points": 1,
+          "points": 0,
+          "low": 0,
+          "high": 0,
+          "reason": "Incorrect document identification; alternative labels do not identify the required instrument.",
+          "error_category": "wrong_entity"
+        },
+        {
+          "id": "val2024-hist-z9",
+          "answer_sha256": "6bf97a93240d676f5a2a1eb23b384e2cb1253c0da34756d4e6d5ac39838f7e57",
+          "max_points": 1,
+          "points": 0,
+          "low": 0,
+          "high": 1,
+          "reason": "Correct decision and relevant text/image link, but added denominational identification is historically wrong and directly part of the explanation. Strict central rejection; lenient core-based credit remains plausible.",
+          "error_category": "correct_core_plus_factual_error"
+        },
+        {
+          "id": "val2024-hist-z13",
+          "answer_sha256": "33026c7d442434ed1a6f59beb7aca914a142634ff2a1d77e5c38a6eb8160ae77",
+          "max_points": 1,
+          "points": 1,
+          "low": 0,
+          "high": 1,
+          "reason": "Correct event and relevant date reference supply a creditable core. Added literal visual scene is absent from the image, so this point is disputed.",
+          "error_category": "correct_core_plus_visual_hallucination"
+        },
+        {
+          "id": "val2024-hist-z18",
+          "answer_sha256": "e7f44861c1d2b5d765bf9afc6c54484f8e76b44bcd6a97479943d8ac1938adf1",
+          "max_points": 1,
+          "points": 1,
+          "low": 0,
+          "high": 1,
+          "reason": "Correct coalition and plausible beast-plus-uniforms core supply two visual references. Invented headgear and mistaken colour identification make full credit disputed.",
+          "error_category": "correct_core_plus_visual_hallucination"
+        },
+        {
+          "id": "val2024-hist-z21",
+          "answer_sha256": "d75ae93b340f294c0769642433375abe91c7f354a8c6077e0baafa4aee1b1929",
+          "max_points": 1,
+          "points": 1,
+          "low": 1,
+          "high": 1,
+          "reason": "Connects visible scale and repeated symbols to the intended propaganda effect.",
+          "error_category": "none"
+        },
+        {
+          "id": "val2024-hist-z23.1",
+          "answer_sha256": "ca523939874fa19e15f2bea36216e7be91e5a9c296f2acd8c7f3f103f88c3d36",
+          "max_points": 1,
+          "points": 1,
+          "low": 1,
+          "high": 1,
+          "reason": "Identifies both methods and links the explanation to the two source types.",
+          "error_category": "none"
+        }
+      ],
+      "total": 4,
+      "low": 2,
+      "high": 5,
+      "max_points": 6,
+      "errors": 0,
+      "complete": 6
+    },
+    "final": {
+      "input_sha256": "4f34db6ca3d4dae5c0423c644adb8817ec7c0ea8d94e3a1f1a1cb76bc0a3ad94",
+      "items": [
+        {
+          "id": "val2024-hist-z8.1",
+          "answer_sha256": "99b0b5adfa67b274dc69785c96486b196244213269494e2e20a41bc1846533b5",
+          "max_points": 1,
+          "points": 0,
+          "low": 0,
+          "high": 0,
+          "reason": "Rephrases the same incorrect document family; no valid identification.",
+          "error_category": "wrong_entity"
+        },
+        {
+          "id": "val2024-hist-z9",
+          "answer_sha256": "b10f467299880fa60f3ee36416e86a22d25c4e0a310610dfb96d4fbd3447d76d",
+          "max_points": 1,
+          "points": 1,
+          "low": 1,
+          "high": 1,
+          "reason": "Correct decision with both inscription and graphical support; removes the earlier historical misclassification.",
+          "error_category": "none"
+        },
+        {
+          "id": "val2024-hist-z13",
+          "answer_sha256": "c7ee3bc763cfac1d7910ed833b8ee9bffa883a4044cf46e40a12a8e9395c3e66",
+          "max_points": 1,
+          "points": 1,
+          "low": 0,
+          "high": 1,
+          "reason": "Correct event and date remain creditable, but added people and physical scene are not shown. Credit remains disputed.",
+          "error_category": "correct_core_plus_visual_hallucination"
+        },
+        {
+          "id": "val2024-hist-z18",
+          "answer_sha256": "e1a5702f5c41bd5b5d30b4eb7804342eea22ff1c636b80af99d0fb39c516cae2",
+          "max_points": 1,
+          "points": 0,
+          "low": 0,
+          "high": 1,
+          "reason": "Correct coalition but reverses the visible participants action and retains invented headgear; the developed source explanation is materially unreliable. Lenient residual-feature credit is possible.",
+          "error_category": "visual_contradiction"
+        },
+        {
+          "id": "val2024-hist-z21",
+          "answer_sha256": "1076c8d110d50beaab6e703367e3207f13871167211cd9465bfb60bce7c482bd",
+          "max_points": 1,
+          "points": 1,
+          "low": 1,
+          "high": 1,
+          "reason": "Relevant visual features are tied to a clear propaganda mechanism.",
+          "error_category": "none"
+        },
+        {
+          "id": "val2024-hist-z23.1",
+          "answer_sha256": "3c5a75deb1148735d028b595a3560203e5d8fc27f6ac10bad6fa5b82a7da4d65",
+          "max_points": 1,
+          "points": 1,
+          "low": 1,
+          "high": 1,
+          "reason": "Both required methods are correctly stated.",
+          "error_category": "none"
+        }
+      ],
+      "total": 4,
+      "low": 3,
+      "high": 5,
+      "max_points": 6,
+      "errors": 0,
+      "complete": 6
+    }
+  },
+  "central_delta": 0,
+  "paired_delta_range": [
+    -1,
+    1
+  ],
+  "secure_gain": false,
+  "interpretation": "Central tie. Historical cleanup on one item is offset by worse visual grounding on another. Three uncertain rows dominate the score range.",
+  "provenance_hashes": {
+    "agentsLog\\Pewciu6\\private\\validation_2024\\eval_keys.jsonl": "279abe703dc1af4119a35624d6db893e310fc7afaffbef2a00e678f423706486",
+    "agentsLog\\Pewciu6\\private\\validation_2024\\MHIP-R0-100-2405-zasady.pdf": "95c275b9546611c1f8cd45b7973c436625fd0ee5643b778dcc8bb566db56cd4c",
+    "agentsLog\\kwiscion\\private\\validation_2024_keyfree\\runner_input.v2.jsonl": "6615fea2e6fd1d6f9db5b781fa84a883899d1c2fb83a28b914638089e6b015a4",
+    "agentsLog\\kwiscion\\private\\validation_2024_keyfree\\pages\\page-10.png": "fd35f322ab827a5a05d8348e86084124eada33dc1a71a3e92f89aff62c01468d",
+    "agentsLog\\kwiscion\\private\\validation_2024_keyfree\\pages\\page-12.png": "c380f684f4f4170b2788cc305123b4560b2cc0c8de8e745957ad0c9d7c71f7b7",
+    "agentsLog\\kwiscion\\private\\validation_2024_keyfree\\pages\\page-16.png": "9bda8c79c19a1433b11fda0cb32d615258954c3b1632255ac58178f240a4d23e",
+    "agentsLog\\kwiscion\\private\\validation_2024_keyfree\\pages\\page-21.png": "54b631cd65db862e9a4456407f7e9ca4808f7bb1b527dea576a0b5bbce09de70",
+    "agentsLog\\kwiscion\\private\\validation_2024_keyfree\\pages\\page-24.png": "98ced4dafd22f4e73eafb515c38673c85cd3f03782d653033144a04fa492ad4b",
+    "agentsLog\\kwiscion\\private\\validation_2024_keyfree\\pages\\page-26.png": "c8dd13c2e1ea0976ab50639a073664bd3557635c889dca052540ca0d5d8ee5ce"
+  },
+  "limitations": [
+    "Bounds reflect judgment uncertainty, not statistical confidence intervals.",
+    "The same standard should be applied across arms: preserve or reject correct cores consistently when additional claims are wrong.",
+    "Paired range treats the shared disputed date core identically across arms and does not award the worse visual account a gain: z9 delta0..1, z13 delta0, z18 delta-1..0. Without these paired constraints, broad arithmetic delta range is[-2,3].",
+    "No model calls, observation use, root grade access, May2025, training/retrieval writes or Git changes."
+  ]
+}

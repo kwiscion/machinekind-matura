@@ -1,0 +1,26 @@
+{
+  "torch": {
+    "available": true,
+    "version": "2.8.0+cpu"
+  },
+  "transformers": {
+    "available": false,
+    "version": null
+  },
+  "peft": {
+    "available": false,
+    "version": null
+  },
+  "tokenizers": {
+    "available": false,
+    "version": null
+  },
+  "safetensors": {
+    "available": false,
+    "version": null
+  },
+  "jinja2": {
+    "available": true,
+    "version": "3.1.6"
+  }
+}

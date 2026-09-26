@@ -1,0 +1,13 @@
+# Heterogeneous observer replication — completed
+
+Six image-bearing, non-essay source-v2 items are selected mechanically by the lowest SHA256 of UTF-8 `hetero-replication-v1|id`, excluding previous cases z1,z2,z4,z5.1,z14.1,z15.2. No keys or scores were read for selection. There are25 eligible rows. The six hash-ranked IDs are z18,z23.1,z9,z21,z13,z8.1; execution retains original source-v2 order **z8.1,z9,z13,z18,z21,z23.1**. All original text and seven image references are preserved byte-for-byte.
+
+Each case receives fresh Gemma bare control, Qwen observation, then Gemma final with the original full sources plus observation. Existing generic prompts and case-local fallback/systemic-stop semantics are unchanged. Both models have thinking off; temperature is omitted; context32,768; cap1,024 and timeout420seconds per request. Maximum18calls/18,432 requested output tokens/30minutes; no retries or extra smokes. Estimate ceiling1.64USD at the supplied3.28/hour rate; actual billing unverified. This is a selected known-validation replication, not an unseen test or full-exam score.
+
+Input SHA256 `fcfa9ab07d85f193f8589c429cbc8134f3bb28d38fa8002bc16e91a97b905ca3`; parent source-v2 `6615fea2e6fd1d6f9db5b781fa84a883899d1c2fb83a28b914638089e6b015a4`. Public manifest records full model/config/code/asset hashes and rank evidence without source contents or cloud metadata.
+
+Only runner change is tightening existing wall constants2700→1800seconds and the corresponding pre-dispatch threshold2275→1375; absolute UTC, SIGALRM, full-timeout reservation and no-retry guards remain. Runner SHA256 `1d487bea502975567c685e302d250b06c7c970d4b56c051fcc763aa8699b770f`; unchanged controller `b911087c9ef5167e23c65ab055f89e359ac9e73b5a06b26872f0d8944c77e266`. Fifteen inherited synthetic CPU tests pass; independent recomputation verifies selection and all prompt/image bytes. No model was called during preparation.
+
+The old owned server was absent from /proc and no model backend or port listener existed. It was restored with the identical pinned executable/store/settings, with fresh process identity privately recorded. Metadata checks show runtime0.34.4, both expected model digests and no loaded models. No unrelated service was touched.
+
+**Completed: 18/18 calls; local backup verified.** Absolute deadline: 2026-09-26T20:02:34.374230+00:00. Manifest SHA256 `02828463f129d0341ef2a5308e6d9f379e2416dbeb7cf654a0b251b57025134d`. An initial metadata parse failure occurred before any model call; timestamp precision was normalized without extending the deadline. Results, every failure/unsent ID, durable ledger/runtime/request evidence and raw responses will be backed up locally before completion; exact complete answer-only handoffs follow quotation review.

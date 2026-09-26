@@ -1,0 +1,93 @@
+{
+  "git_revision": "401e1bc",
+  "train_records": 90,
+  "essay_count": 34,
+  "repair_count": 56,
+  "eval_inputs": 16,
+  "train_sha256_git_blob": "83153814da8251210f2b9d225dc713ad245c273bdc5d46dd1216b0e4b97178f5",
+  "eval_sha256_git_blob": "5979ee0b8e0e4f084cf6070f42d31892ee53c1f5485409b4fc5dac1266055a28",
+  "train_fields": [
+    "id",
+    "messages",
+    "origin",
+    "source_group_id",
+    "source_ids",
+    "task_type"
+  ],
+  "eval_fields": [
+    "id",
+    "prompt",
+    "source_group_id"
+  ],
+  "role_sequences": [
+    [
+      "user",
+      "assistant"
+    ]
+  ],
+  "target_word_count_range": [
+    409,
+    457
+  ],
+  "canonical_group_map": {
+    "C-1939": "C-1939",
+    "C-1956": "C-1956",
+    "C-1968": "C-1968",
+    "C-1970": "C-1970",
+    "C-absolutism": "C-absolutism",
+    "C-alexander": "C-alexander",
+    "C-allied-conferences": "C-allied-conferences",
+    "C-athens": "C-athens",
+    "C-batory": "C-batory",
+    "C-black-death": "C-black-death",
+    "C-casimir3": "C-casimir3",
+    "C-charlemagne": "C-charlemagne",
+    "C-church-conflicts": "C-church-conflicts",
+    "C-cold-war": "C-cold-war",
+    "C-communist-takeover": "C-communist-takeover",
+    "C-cop": "C-cop",
+    "C-crusades": "C-crusades",
+    "C-discoveries": "C-discoveries",
+    "C-euro-atlantic": "C-euro-atlantic",
+    "C-french-rev": "C-french-rev",
+    "C-great-depression": "C-great-depression",
+    "C-hammurabi": "C-hammurabi",
+    "C-holocaust": "C-holocaust",
+    "C-hundred-years": "C-hundred-years",
+    "C-industrial": "C-industrial",
+    "C-january": "C-january",
+    "C-katyn": "C-katyn",
+    "C-league": "C-cold-war",
+    "C-lokietek": "C-lokietek",
+    "C-lublin": "C-lublin",
+    "C-magna-carta": "C-magna-carta",
+    "C-meiji": "C-meiji",
+    "C-napoleonic": "C-napoleonic",
+    "C-odnowiciel": "C-odnowiciel",
+    "C-persian-wars": "C-persian-wars",
+    "C-piast-origins": "C-piast-origins",
+    "C-reformation": "C-reformation",
+    "C-rome-empire": "C-rome-empire",
+    "C-rome-republic": "C-rome-republic",
+    "C-thirty-years": "C-thirty-years",
+    "C-unifications": "C-unifications",
+    "C-us-independence": "C-us-independence",
+    "C-ussr-collapse": "C-ussr-collapse",
+    "C-versailles": "C-versailles",
+    "C-vienna": "C-reformation",
+    "C-ww1-independence": "C-ww1-independence"
+  },
+  "component_edges": {
+    "C-league": "C-cold-war",
+    "C-vienna": "C-reformation"
+  },
+  "known_dev_overlap": [
+    "C-casimir3",
+    "C-january",
+    "C-lublin"
+  ],
+  "rights_review": "PENDING_ROOT_AUDIT",
+  "independent_data_audit": "PENDING",
+  "training_clearance_granted": false,
+  "note": "Git blob hashes are LF bytes; actual Windows working-file bytes need separate clearance binding."
+}
