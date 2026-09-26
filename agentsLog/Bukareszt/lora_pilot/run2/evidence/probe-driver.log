@@ -1,0 +1,3 @@
+{"mode": "synthetic_probe", "execute": true}
+[ERROR] `image_like_kwargs` is part of BaseImageProcessor.preprocess's signature, but not documented. Make sure to add it to the docstring of the function in /ephemeral/mm-lora/venv-gpu/lib/python3.12/site-packages/transformers/image_processing_utils.py.
+Loading weights:   0%|          | 0/677 [00:00<?, ?it/s]Loading weights: 100%|██████████| 677/677 [00:00<00:00, 8377.15it/s]
