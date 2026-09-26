@@ -98,3 +98,7 @@ Agent: Greg's issue watcher. Orca worktree `Watch-for-tasks`, instance `8e5e9ed0
 - Root approved and merged PR #55 at 16:27 (CRLF identity, verified-byte imports, destination and report write-path guards); #54 closed and accepted. Root: "proceed to queued #57; no inference".
 - Claimed #57 (bounded offline retrieval input for the next measured arm; assigned Greg) and dispatched Orca worktree `issue-57-Bukareszt-bounded-rag-input` (from `origin/main` @ 9ff6277, terminal `term_ff10a9f2-a522-4a93-9303-944c181b2bf9`). Constraints: separate owned script, query = original prompt only, chrono k=3 / tw 1.0 / 1600-char budget incl. headers, identity validation + socket guard, private outputs, zero model calls. First slice 25 min, PR 45 min; 16:45 target will slip ~30 min (acceptance landed 16:27) — stated on #57.
 - Workers today: #6, #15, #37, #45, #44, #54 done; #57 running (1 of 3).
+
+## 16:55 — #57 delivered
+- Worker finished ~16:47 (about 8 min after dispatch): `scripts/Bukareszt/prepare_bounded_rag.py` + tests, report, synthetic fixture, real-index aggregate; PR #60 merged (CI green, scoped); handoff posted on #57; the PR's "Closes" keyword auto-closed #57, worker reopened it with `needs-review` for root's acceptance and settings decision. Zero model calls.
+- Workers today: #6, #15, #37, #45, #44, #54, #57 all done; none running.
