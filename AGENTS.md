@@ -1,5 +1,8 @@
 # Agent instructions
 
+## Current control — 26 September, 18:30 Europe/Warsaw
+
+The owner resumed intensive work: **centralize the completed Astra 40-case audit and distribute distinct experiments**. Read the rewritten WINNING_PLAN.md first. Bare Gemma35 remains the quality fallback; fresh RTX control34/60 completed in146.6s, without proving formal equivalence. H100 readiness passed and is backed up; a new bounded declaration is needed for each experiment. Root owns existing Brev H100, Piotrek owns RTX source-grounding, Greg owns query repair/selective RAG after PR93, Paweł owns the essay route with independent grading, Przemek prepares independent essay data, Łukasz reviews runtime/prompt parity. Two additional H100s are offered but not yet provisioned or assigned. No duplicate workers, blanket specialist fleet, May2025 access or HF publication. Older queue/cutoff statements below are historical. Source/rights and offline/8GB rules remain binding.
 ## Active control — 26 September, 14:27 Europe/Warsaw
 
 17:54 update: full RAG independently reviewed27/60 [22,33], not promoted over bare35. Generic laptop launcher now also passed its own2-item real isolated qualification. User provisioned Brev H100 `voiceless-amaranth-zebra`, org `kwiscion-ff7442-omfi`, $3.28/hour; root Sol owns sole readiness worker #81, max60min/$3.28estimated/2syntheticcalls, no full batch yet. Preserve Piotrek's already-claimed RTX control; central H100 takes subsequent experiments after readiness. PR77 optional temperature is accepted with omitted behavior unchanged, no candidate calls yet. Separate CPU essay-pilot preparation #80 is active. Current WINNING_PLAN.md governs.

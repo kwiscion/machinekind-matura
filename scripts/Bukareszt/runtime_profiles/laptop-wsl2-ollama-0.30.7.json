@@ -1,0 +1,24 @@
+{
+  "profile_id": "laptop-wsl2-ollama-0.30.7-ctx4096",
+  "platform": "wsl2",
+  "ollama_version": "0.30.7",
+  "ollama_binary": "/usr/local/bin/ollama",
+  "ollama_binary_sha256": null,
+  "server_path_env": "/usr/local/bin:/usr/bin:/bin:/usr/sbin:/usr/lib/wsl/lib",
+  "nvidia_smi": "/usr/lib/wsl/lib/nvidia-smi",
+  "model_cache": "/usr/share/ollama/.ollama/models",
+  "model": "gemma4:12b-it-q4_K_M",
+  "manifest_digest": "4eb23ef187e2c5462566d6a1d3bbbc2f1346d0b4327cbb66d58fffbcc9b2b05c",
+  "assets": {
+    "1278394b693672ac2799eadc9a83fd98259a6a88a40acfb1dcaa6c6fc895a606": 7381382048,
+    "675ad6e68101ca9413ec806855c452362f0213f2dfc5800996b086fdb8119842": 175115584
+  },
+  "context_length": 4096,
+  "namespace_method": "unshare-rn",
+  "host_endpoint_check": {
+    "port": 11434,
+    "require_reachable": true
+  },
+  "block_foreign_ollama": false,
+  "verify_all_manifest_blobs": false
+}
