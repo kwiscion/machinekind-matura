@@ -1,0 +1,56 @@
+{
+  "artifact": "Qwen 3.5 9B May 2024 VALIDATION answer-only model outputs",
+  "status": "approved_for_public_answer_only_handoff",
+  "publication_ready": true,
+  "run_id": "qwen35-9b-val40-1024",
+  "run_finished_local": "2026-09-26 14:16 Europe/Warsaw",
+  "model": "qwen3.5:9b",
+  "model_revision": "6488c96fa5fa",
+  "reasoning_effort": "none",
+  "max_output_tokens": 1024,
+  "split": "VALIDATION",
+  "record_count": 40,
+  "unique_ids": 40,
+  "complete_output_count": 36,
+  "incomplete_output_count": 4,
+  "incomplete_ids": [
+    "val2024-hist-z8.2",
+    "val2024-hist-z12.2",
+    "val2024-hist-z18",
+    "val2024-hist-z19.1"
+  ],
+  "score_reference": {
+    "automatic_floor_points": 5,
+    "maximum_points": 60,
+    "provisional": true,
+    "review_required": 22,
+    "note": "Existing aggregate score only; no rescoring was performed for this answer-only artifact."
+  },
+  "source_attribution": {
+    "source_id": "cke-2024-mhip-arkusz",
+    "title": "Egzamin maturalny, Historia, poziom rozszerzony, formula 2023, maj 2024 - Arkusz egzaminacyjny (MHIP-R0-100-A-2405)",
+    "publisher": "Centralna Komisja Egzaminacyjna (CKE)",
+    "url": "https://cke.gov.pl/images/_EGZAMIN_MATURALNY_OD_2023/Arkusze_egzaminacyjne/2024/Historia/MHIP-R0-100-A-2405-arkusz.pdf",
+    "retrieved_at": "2026-09-25T23:58:25Z",
+    "sha256": "ad66a7c4f212ee1248661141971afae21060a28586086cc57460247a64463d21",
+    "license": "unknown",
+    "note": "Citation only; the PDF and its third-party source pack are not included."
+  },
+  "notice": "Model-generated answer strings for evaluation of the fixed May 2024 VALIDATION split only. Not for training, retrieval, or generation. Exam prompts, source text/images, keys, rubrics, and provider response blobs are not included. Citing the exam does not grant redistribution rights to its source material.",
+  "copy_review": "An independent Sol review of the six previously flagged overlaps found only short task restatements, answer options, or historical clauses, not long copied source passages. Original final-answer strings were restored unchanged. No source text was added.",
+  "schema": [
+    "id",
+    "model",
+    "model_revision",
+    "raw_response",
+    "error",
+    "latency_s",
+    "finish_reason"
+  ],
+  "hashes": {
+    "raw_private_run_sha256": "e9e47bb59f154e1b5ec6cbb861dd865f5817284bbb4ca694314bb9aaab15bf0f",
+    "frozen_input_sha256": "f4df6bcb9c1152d42e3650e820dfee1b4d182a5ad065eea41c9c0be85a0003c7",
+    "answer_jsonl_sha256": "731c0ca3c18212e8ad50590c9bd4fce5fef4fa013c4fcc3249fdaede4a8a2418"
+  },
+  "cost_usd": 0
+}

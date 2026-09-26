@@ -23,11 +23,11 @@ No training/retrieval material derived from fixed 2023/2024/2025 exam questions,
 
 | Owner | Primary responsibility | Immediate deliverable | Safe parallel work if blocked |
 | --- | --- | --- | --- |
-| @semberecki | GPU candidate execution, #33 | Working Gemma text+image load, then one full frozen validation arm; exact weights/runtime/context and private raw outputs | Resolve one bounded runtime blocker or validate local submission dry-run; no duplicate Qwen or speculative training |
+| @semberecki | GPU candidate execution, #33 | Working Gemma text+image load, then one full frozen validation arm; exact weights/runtime/context and public answer-only handoff | Resolve one bounded runtime blocker or validate local submission dry-run; no duplicate Qwen or speculative training |
 | @Pewciu6 | Score and diagnose candidates, #11 | Score arriving Qwen/Gemma outputs on fixed denominators; independent rubric review and loss-by-cause table | Grade completed rows incrementally, define blind review packets, review Greg's output schema; do not wait for every row |
 | @Bukareszt | Organizer package adapter, #37 | Tested offline exam.json/images -> existing runner -> answers.json command | Stage the existing pinned chrono index on the chosen inference machine once the adapter slice is ready |
 | @przemeknowak781 | Data/split readiness, #4 | Review/integrate the existing source-alias fix, preserve all 24 records, report 23/1 and tiny-holdout limitation | Prepare a source-backed error-category data plan from the scorecard; no exam-derived examples or blind volume chase |
-| @ljaniec | Runtime and throughput support | Help Piotrek reuse verified Gemma recipes; independently check context/image fidelity and final offline runtime | Diagnose a concrete handoff/latency problem or prepare deployment verification, without starting another candidate worker |
+| @ljaniec | Runtime and throughput support, #38 | Help Piotrek reuse verified Gemma recipes; independently check context/image fidelity and final offline runtime | Diagnose a concrete handoff/latency problem or prepare deployment verification, without starting another candidate worker |
 | @kwiscion | Lead coordination and acceptance, #3 | Unblock handoffs, maintain this plan/issue board, review exact PR heads, compare scorecards, select next arm | Run bounded Sol subagents on private-input bootstrap, output completeness/context diagnosis, integration review and local score preparation |
 
 An issue assignment is not execution. Each worker must claim with session ID, start time and ETA, then post the first artifact or concrete blocker. Keep one active parent worker per owner/issue. When a worker finishes, the lead assigns the next useful task from measured bottlenecks; do not manufacture work merely to spend tokens.
@@ -61,7 +61,9 @@ At each meaningful checkpoint, consult this plan, take one compact GitHub/worker
 
 Use GPT-6 Sol for bounded local implementation/review and Luna for extraction/checks. Give each subagent an exact artifact, owned paths, budget, stopping rule and independent acceptance check. Avoid asking the user to relay instructions that can be posted to an issue. Escalate only missing human facts/access or decisions that materially change the course.
 
-The lead's next local tasks are the key-free frozen-input bootstrap, safe integration of the already-tested split fix, and read-only context/completion diagnosis of the active Qwen run. No additional laptop inference worker while that run is active.
+Checkpoint at 14:55: the key-free bootstrap and owner dispatch are merged (#40); the existing split repair is published as a patch for Przemek, and Greg has delivered his first tested adapter slice. Qwen is finished. Its answer-only handoff is `agentsLog/kwiscion/model-answers/qwen35-9b-val40-1024.jsonl`, preserving every final answer and all four failures. Paweł owns independent scoring; 5/60 is only the current automatic floor. Piotrek has not yet acknowledged a working GPU run. The 14:45 acknowledgment gate slipped; the lead re-pinged the unclaimed owners with concrete artifacts.
+
+The source-completeness audit found one omitted visual on one available point. Preserve v1 and its score; explicitly version the correction as v2 before the new Gemma arm. Root will predeclare a single affected-item Qwen correction and label the resulting reuse of 39 unchanged v1 answers. This repairs input fidelity; it is not a fresh independent full run or evidence that the broad score gap is solved. Output-budget changes remain a separate intervention. No additional full laptop baseline is authorized by this correction.
 
 ## End-state checklist
 
