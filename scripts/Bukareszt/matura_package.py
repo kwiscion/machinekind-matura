@@ -192,8 +192,9 @@ def load_package(exam_dir: Path, template_path: Path | None = None) -> dict:
     exam_id = exam.get("exam_id")
     if not isinstance(exam_id, str) or not exam_id:
         errors.append("exam.json: exam_id must be a nonempty string")
-    instructions = exam.get("instructions", "")
-    if not isinstance(instructions, str):
+    if "instructions" not in exam:  # the organizer guide requires the field; an empty string is allowed
+        errors.append("exam.json: instructions is required (a string; may be empty)")
+    elif not isinstance(exam["instructions"], str):
         errors.append("exam.json: instructions must be a string")
     items = exam.get("items")
     if not isinstance(items, list) or not items:
@@ -217,7 +218,9 @@ def load_package(exam_dir: Path, template_path: Path | None = None) -> dict:
         for field in ("question", "answer_format"):
             if not isinstance(item.get(field), str) or not item[field].strip():
                 errors.append(f"{where}: {field} must be a nonempty string")
-        if not isinstance(item.get("source_text", ""), str):
+        if "source_text" not in item:  # required by the organizer guide; an explicit empty string is allowed
+            errors.append(f"{where}: source_text is required (a string; may be empty)")
+        elif not isinstance(item["source_text"], str):
             errors.append(f"{where}: source_text must be a string")
         max_points = item.get("max_points")
         if not is_number(max_points) or max_points < 0:
@@ -398,7 +401,9 @@ REASONING_BLOCK = re.compile(r"<(think|thinking|reasoning)>.*?</\1>", re.S | re.
 REASONING_TAG = re.compile(r"</?(think|thinking|reasoning)>", re.I)
 HARMONY_FINAL = "<|channel|>final<|message|>"
 HARMONY_MARKER = re.compile(r"<\|(channel|message|start|end|return|call)\|>")
-COMPLETE_FINISH = {None, "stop", "eos", "end_turn", "stop_sequence"}
+# Only an explicit, supported terminal signal counts as a complete answer (issue #45). A missing, null or
+# unknown finish_reason keeps the ID as a blank answer with a failure record; nonempty content alone is not enough.
+COMPLETE_FINISH = {"stop", "eos", "end_turn", "stop_sequence"}
 
 
 def final_content(content: str) -> tuple[str | None, str | None]:
@@ -427,10 +432,14 @@ def extract_answer(row: dict) -> tuple[str | None, dict | None]:
     def fail(kind: str, message: str) -> tuple[None, dict]:
         return None, {"type": kind, "message": message}
 
-    if row.get("error"):
+    if row.get("error") is not None:  # every non-null error is a failure, even "" or {} (issue #45)
         error = row["error"]
         message = error.get("message") if isinstance(error, dict) else error
-        kind = error.get("type", "error") if isinstance(error, dict) else "error"
+        kind = error.get("type") if isinstance(error, dict) else None
+        if not isinstance(kind, str) or not kind:
+            kind = "error"
+        if message is None or not str(message).strip():
+            message = "non-null error without a message: " + json.dumps(error, ensure_ascii=False)[:200]
         return fail(f"infer_{kind}", str(message)[:500])
     raw = row.get("raw_response")
     if isinstance(raw, str) and "provider_raw_response" in row:  # scripts/normalize_outputs.py format
@@ -454,8 +463,12 @@ def extract_answer(row: dict) -> tuple[str | None, dict | None]:
         if finish == "length":
             problem = ("truncated", "finish_reason=length: output cut by the token limit")
             continue
+        if "finish_reason" not in choice:
+            problem = ("incomplete", "finish_reason missing: no explicit completion signal")
+            continue
         if finish not in COMPLETE_FINISH:
-            problem = ("incomplete", f"finish_reason={finish!r} is not a normal completion")
+            problem = ("incomplete", f"finish_reason={finish!r} is not a supported completion signal "
+                                     f"(expected one of {sorted(COMPLETE_FINISH)})")
             continue
         text, issue = final_content(content)
         if issue:
