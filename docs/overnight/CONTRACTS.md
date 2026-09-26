@@ -1,6 +1,6 @@
 # Data and evaluation contracts
 
-These are additive interchange formats. A local `infer.py` prototype is not yet published; every task must supply standalone scripts or a reproducible adapter. The intended model input is JSONL `id`, `prompt`, optional local `images` paths; output should retain `id`, backend/model revision, raw response, usage, latency, and error. Keep canonical records and raw outputs separate. Paths are relative to the JSONL file; public records reference assets rather than embedding third-party images.
+These are additive interchange formats. The portable `infer.py` runner is published; every task must supply standalone scripts or a reproducible adapter compatible with it. Model input is JSONL `id`, `prompt`, optional local `images` paths; output retains `id`, backend/model revision, raw response, usage, latency, and error. Keep canonical records and raw outputs separate. Paths are relative to the JSONL file; public records reference assets rather than embedding third-party images.
 
 ## Source manifest (`sources.jsonl`)
 
