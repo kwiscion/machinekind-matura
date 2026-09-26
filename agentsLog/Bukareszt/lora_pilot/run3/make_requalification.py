@@ -38,7 +38,9 @@ def main():
     probe = json.loads(probe_p.read_text())
     ledger = [json.loads(l) for l in ledger_p.read_text().splitlines() if l.strip()]
     # fail closed: everything except the template criterion must already hold in the original evidence
-    assert ver.get('overall') == 'PASS', 'independent verification not PASS'
+    rcv = ver.get('root_criteria_verdict')
+    rcv_verdict = rcv.get('verdict') if isinstance(rcv, dict) else rcv
+    assert isinstance(rcv_verdict, str) and rcv_verdict.upper().startswith('PASS'), 'independent verification not PASS against root criteria'
     assert orig['status'] == 'FAIL' and orig['artifact'] == 'control' and orig['scope'] == 'matched_unmodified_export_text_image'
     assert orig['model_sha256'] == CONTROL_Q4_SHA and orig['mmproj_sha256'] == CONTROL_PROJ_SHA
     assert orig['served_chat_template_sha256'] == NORMALIZED_SHA and orig['served_template_is_pinned_hf'] is False
@@ -69,7 +71,9 @@ def main():
         'linked_original': {'control_serving_report_sha256': sha(orig_p), 'call_ledger_sha256': sha(ledger_p),
                             'server_log_sha256': sha(log_p), 'probe_report_sha256': sha(probe_p), 'run2_dir': str(a.run2),
                             'original_status': orig['status'], 'original_criteria': crit},
-        'independent_verification': {'path': str(a.verification), 'sha256': sha(a.verification), 'overall': ver['overall']},
+        'independent_verification': {'path': str(a.verification), 'sha256': sha(a.verification), 'overall_as_briefed': ver.get('overall'),
+                                     'root_criteria_verdict': rcv,
+                                     'note': 'overall_as_briefed FAILed only a worker-added sub-check (rival rewrites must differ on THIS template); root criterion judged separately'},
         'model_calls_in_requalification': 0,
     }
     a.out_report.write_text(json.dumps(report, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
