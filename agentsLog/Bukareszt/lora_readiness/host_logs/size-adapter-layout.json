@@ -1,0 +1,26 @@
+{
+  "files": [
+    {
+      "path": "/ephemeral/mm-lora/control/base-q4_k_m.gguf",
+      "bytes": 7381383392,
+      "sha256": "a192fac4a5989aa7db9452d91405cd401a7fb03e0af3b36343abeeb146d3282a"
+    },
+    {
+      "path": "/ephemeral/mm-lora/control/projector.gguf",
+      "bytes": 175115712,
+      "sha256": "9ff3ded7bf4360353a3c184aeef9fb1a15e54f08abcb1a45a46b3467333fb12e"
+    },
+    {
+      "path": "/ephemeral/mm-lora/control/adapter-probe/synthetic-adapter-bf16.gguf",
+      "bytes": 10399488,
+      "sha256": "fbe7225245eb3e9e146c1db737caf476696a21573c13aca5f7c1c105c6bb23a5"
+    }
+  ],
+  "total_bytes": 7566898592,
+  "limit_bytes": 8800000000,
+  "remaining_bytes": 1233101408,
+  "scope": "ALL_SUBMITTED_MODEL_WEIGHTS_INCLUDING_ADAPTERS_AND_PROJECTORS",
+  "byte_limit_pass": true,
+  "inventory_completeness": "CALLER_MUST_VERIFY_AGAINST_FINAL_SUBMISSION",
+  "runtime_load_adapter_support_and_matching_projector": "NOT_CHECKED"
+}

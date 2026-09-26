@@ -1,0 +1,50 @@
+{
+ "label": "text: control vs registry",
+ "kv_counts": [
+  52,
+  49
+ ],
+ "tensor_counts": [
+  667,
+  667
+ ],
+ "kv_diffs": {
+  "general.basename": [
+   "gemma-4",
+   "<absent>"
+  ],
+  "general.finetune": [
+   "it@707f0a3b",
+   "<absent>"
+  ],
+  "general.name": [
+   "Gemma 4 12B It@707F0A3B",
+   "<absent>"
+  ],
+  "tokenizer.chat_template": [
+   {
+    "chars": 18681,
+    "sha256_utf8": "ae53464bf3be25802b3a5b37def7fd89667067d7577049b3b2d74c4d8de4c6d4"
+   },
+   {
+    "chars": 17466,
+    "sha256_utf8": "36e3a42e5cf14cd0020e72d92e1fdd9970f59b82170e421f0cbe1bb42bead3f0"
+   }
+  ]
+ },
+ "tensor_meta_diff_count": 0,
+ "tensor_meta_diff_first10": {},
+ "tensor_types": [
+  [
+   "F32",
+   "Q4_K",
+   "Q6_K"
+  ],
+  [
+   "F32",
+   "Q4_K",
+   "Q6_K"
+  ]
+ ],
+ "note": "chat_template strings replaced by length+sha256 in the committed copy"
+}

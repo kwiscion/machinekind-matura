@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "scope": "random tiny CPU attach/backward/one-step/merge only",
+  "seconds": 5.308967365999706,
+  "versions": {
+    "torch": "2.8.0+cpu",
+    "transformers": "5.18.0.dev0",
+    "peft": "0.21.1.dev0"
+  },
+  "matched_modules": [
+    "model.language_model.layers.0.self_attn.q_proj",
+    "model.language_model.layers.0.self_attn.v_proj",
+    "model.language_model.layers.1.self_attn.q_proj",
+    "model.language_model.layers.1.self_attn.v_proj",
+    "model.language_model.layers.2.self_attn.q_proj",
+    "model.language_model.layers.2.self_attn.v_proj",
+    "model.language_model.layers.3.self_attn.q_proj",
+    "model.language_model.layers.3.self_attn.v_proj",
+    "model.language_model.layers.4.self_attn.q_proj",
+    "model.language_model.layers.4.self_attn.v_proj",
+    "model.language_model.layers.5.self_attn.q_proj"
+  ],
+  "trainable_parameters": 5248,
+  "initial_loss": 4.774726390838623,
+  "merge_max_abs_logit_delta": 4.172325134277344e-07,
+  "full_12b_runtime_export": "NOT_TESTED"
+}

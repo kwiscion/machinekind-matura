@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "rev": "2cc1e0d37bf51a2b1cebaf8718c8e03b3c4bb105",
+  "train_sha256": "83153814da8251210f2b9d225dc713ad245c273bdc5d46dd1216b0e4b97178f5",
+  "train_git_blob": "c429d9a4dc7dc404516ab9e2c03da5bc5a3a4d32",
+  "eval16_sha256": "5979ee0b8e0e4f084cf6070f42d31892ee53c1f5485409b4fc5dac1266055a28",
+  "attribution_sha256": "13e2aa555b5d590fe445e565a276879db124382107a4331652258af45d2a0b65",
+  "rows": 90,
+  "task_types": {
+    "essay": 34,
+    "essay_repair": 56
+  },
+  "eval_inputs": 16,
+  "reference_only_source_ids": [
+    "agad-lublin",
+    "mit-aristotle",
+    "uj-archive"
+  ],
+  "reference_only_source_entries_marked": 6,
+  "training_attribution_sidecar_sha256": "649dcf22644c5ed3aff1b2c5eb5436c1b54ec58e553fdf0c4c0ce25136bf5685",
+  "clearance_file": "agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+}
