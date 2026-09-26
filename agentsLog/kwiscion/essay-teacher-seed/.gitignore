@@ -1,0 +1,4 @@
+# Local source acquisition evidence; publish manifests/attribution, not website bundles.
+sources/
+source-private/
+__pycache__/
