@@ -1,5 +1,25 @@
 # Agent instructions
 
+## Active control — 26 September, 14:27 Europe/Warsaw
+
+At14:38 the owner authorized public GitHub sharing of model answers. Use answer-only evaluator handoffs with IDs/errors and provenance hashes, excluding copied source passages, official keys, question packs, credentials and reasoning/provider envelopes. Original raw files remain private. The active Codex goal drives lead continuation; the historical morning heartbeat remains paused.
+
+Consult [WINNING_PLAN.md](WINNING_PLAN.md) before dispatch, scope changes, accepting results and progress reports. The owner's target is **48/60 independently reviewed May 2024 validation points by 18:00 today**, followed by the highest Sunday score. The plan defines owners, time gates, experiment limits and fallback decisions. Issues remain the live scheduling authority. Piotrek (`semberecki`) has an **RTX 5090** and an active watcher; **Blackwells are unavailable**. He owns Gemma preparation and its single full validation arm on #33. The lead laptop owns the already-active Qwen full arm. Greg owns the organizer submission adapter on #37. Earlier hardware/cutoff notes below are historical and superseded. No duplicate GPU workers, HF publication, speculative specialist fleet, or May 2025 access.
+
+## Active course — 26 September, 12:45 Europe/Warsaw
+
+The owner set a single objective: the highest Sunday matura score. Binding rules are `hackathon_rules.txt`: Polish history, at most 8 GB per saved model, offline final inference. Progress and smallest-model tracks are out of scope. The course note is [agentsLog/kwiscion/2026-09-26-best-score-course.md](agentsLog/kwiscion/2026-09-26-best-score-course.md).
+
+Keep the merged runner, May 2024 evaluator, chrono retrieval index, strict data exporter, and pinned GGUF recipes. The next result that matters is one full May 2024 validation score for installed `qwen3.5:9b` with thinking off and a 1024-token output budget, then the same input on Gemma 4 12B Q4 after those weights actually load. @Pewciu6 scores both on issue #11. The lead freezes the higher score. One run per model; do not duplicate a GPU worker.
+
+@semberecki owns that GPU baseline on the 24 GB card ([issue #33](https://github.com/kwiscion/machinekind-matura/issues/33)). Image items and Gemma go there. Fine-tuning waits until that scorecard shows factual misses. @przemeknowak781 finishes only the source-alias split on the existing 24 strict records. @Bukareszt keeps the pinned chrono index and does not build a new retriever before the scorecard. @ljaniec gets Gemma 4 12B Q4 to a proven nonempty load, or hands that recipe over if Spark access is still denied. The lead does not publish to Hugging Face or open May 2025 on this path. PR #23 stays an unmerged draft.
+
+Final freeze remains Sunday 27 September at 11:00 Europe/Warsaw. No purchases, reset credits, or unrelated-project credentials. The 11:12 hardware note and the morning reports below are historical.
+
+## Earlier afternoon note — 26 September, 11:12 Europe/Warsaw
+
+The owner resumed project work and added Piotrek (`semberecki`) with a local 24 GB GPU and access to two Blackwell GPUs. That hardware note still applies. The priority split in this paragraph is superseded by the 12:45 course above.
+
 ## Active extension — 26 September, 08:47 Europe/Warsaw
 
 After a Windows restart interrupted coordination, the owner explicitly resumed work for two hours, through **10:47 today**. This supersedes the earlier 08:00/08:30/09:00 operational cutoffs below. Stop new model calls by 10:30, collect handoffs by 10:40, then report and pause the lead heartbeat at 10:47. Keep work bounded and delegate implementation/review to Sol/Luna to conserve the remaining subscription. Priorities are the PR #18 export/split repair, evaluator adjudication fix, and first real VALIDATION diagnostic. The 2025 test remains sealed until a candidate decision is frozen; the Sunday final freeze is unchanged.

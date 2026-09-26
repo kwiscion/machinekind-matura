@@ -1,0 +1,360 @@
+diff --git a/scripts/przemeknowak781/export_sft.py b/scripts/przemeknowak781/export_sft.py
+index b084c5e..861d2f6 100644
+--- a/scripts/przemeknowak781/export_sft.py
++++ b/scripts/przemeknowak781/export_sft.py
+@@ -4,22 +4,29 @@ Writes two variants to data/przemeknowak781/sft/:
+   closed_book_{train,holdout}.jsonl  user = question only
+   grounded_{train,holdout}.jsonl     user = question + source passages (the record's claims
+                                      plus distractor claims from other topics, shuffled)
+-The holdout is chosen by source_group_id so no topic appears in both parts. It is an internal
+-overfitting check only, not an exam split.
++The holdout is an internal overfitting check, not an exam split. Records that share a
++source_group_id or a source id stay in one connected component, and that component is
++assigned together so one article cannot land in both parts. Grounded distractors are
++drawn only from the destination component's partition.
+ 
+ Usage: python scripts/przemeknowak781/export_sft.py [--input PATH] [--holdout 0.1] [--distractors 2] [--seed 13]
+ """
+ import argparse
+-import hashlib
+ import json
+ import random
+ import sys
++from pathlib import Path
+ 
+ try:
+-    from .strict_eligibility import eligible_input
++    from .strict_eligibility import (
++        DEFAULT_HOLDOUT_FRACTION, DEFAULT_HOLDOUT_SEED, assert_record_split, eligible_input,
++        record_source_ids,
++    )
+ except ImportError:
+-    from strict_eligibility import eligible_input
+-from pathlib import Path
++    from strict_eligibility import (
++        DEFAULT_HOLDOUT_FRACTION, DEFAULT_HOLDOUT_SEED, assert_record_split, eligible_input,
++        record_source_ids,
++    )
+ 
+ BASE = Path(__file__).resolve().parents[2] / "data/przemeknowak781"
+ SYSTEM = ("Jesteś asystentem przygotowującym do matury z historii Polski. Odpowiadasz po polsku, "
+@@ -28,19 +35,24 @@ SYSTEM = ("Jesteś asystentem przygotowującym do matury z historii Polski. Odpo
+ GROUNDED_HINT = "Odpowiedz na podstawie fragmentów źródeł; nie wszystkie muszą dotyczyć pytania."
+ 
+ 
+-def in_holdout(group, fraction, seed):
+-    h = int(hashlib.sha256(f"{seed}:{group}".encode()).hexdigest(), 16)
+-    return (h % 10_000) / 10_000 < fraction
+-
+-
+-def render_exports(rows, fraction=0.1, distractors=2, seed=13):
++def render_exports(rows, fraction=DEFAULT_HOLDOUT_FRACTION, distractors=2, seed=DEFAULT_HOLDOUT_SEED):
+     if not 0 < fraction < 1 or distractors < 0:
+         raise ValueError('holdout must be between 0 and 1; distractors must be nonnegative')
+-    partition = lambda group: 'holdout' if in_holdout(group, fraction, seed) else 'train'
++    assignment = assert_record_split(rows, fraction, seed)
++    source_parts = {}
++    for row in rows:
++        part = assignment[row['source_group_id']]
++        for source_id in record_source_ids(row):
++            source_parts[source_id] = part
++
++    def partition(group):
++        return assignment[group]
++
+     pools = {part: [] for part in ('train', 'holdout')}
+     for row in rows:
+         part = partition(row['source_group_id'])
+-        pools[part].extend((row['source_group_id'], e['claim']) for e in row['evidence'])
++        pools[part].extend(
++            (row['source_group_id'], item['source_id'], item['claim']) for item in row['evidence'])
+     rng = random.Random(seed)
+     outputs = {f'{variant}_{part}': [] for variant in ('closed_book', 'grounded')
+                for part in ('train', 'holdout')}
+@@ -52,16 +64,21 @@ def render_exports(rows, fraction=0.1, distractors=2, seed=13):
+         closed = {'messages': [{'role': 'system', 'content': SYSTEM},
+                                {'role': 'user', 'content': row['prompt']},
+                                {'role': 'assistant', 'content': row['answer']}], **meta}
+-        others = [(g, claim) for g, claim in pools[part] if g != group]
+-        selected = [(group, e['claim']) for e in row['evidence']]
++        others = [item for item in pools[part] if item[0] != group]
++        selected = [(group, item['source_id'], item['claim']) for item in row['evidence']]
+         selected += rng.sample(others, min(distractors, len(others)))
+         rng.shuffle(selected)
+-        context = '\n'.join(f'[{i + 1}] {claim}' for i, (_, claim) in enumerate(selected))
++        context = '\n'.join(
++            f'[{index + 1}] {claim}' for index, (_group, _source_id, claim) in enumerate(selected))
++        context_groups = [item_group for item_group, _source_id, _claim in selected]
++        context_sources = [source_id for _item_group, source_id, _claim in selected]
+         grounded = {'messages': [{'role': 'system', 'content': SYSTEM},
+                                   {'role': 'user', 'content': f'{GROUNDED_HINT}\n\nFragmenty źródeł:\n{context}\n\nPytanie: {row["prompt"]}'},
+                                   {'role': 'assistant', 'content': row['answer']}],
+-                    **meta, 'context_source_group_ids': [g for g, _ in selected]}
+-        if any(partition(g) != part for g in grounded['context_source_group_ids']):
++                    **meta, 'context_source_group_ids': context_groups}
++        if any(partition(item_group) != part for item_group in context_groups):
++            raise ValueError('Cross-partition context detected')
++        if any(source_parts[source_id] != part for source_id in context_sources):
+             raise ValueError('Cross-partition context detected')
+         outputs[f'closed_book_{part}'].append(closed)
+         outputs[f'grounded_{part}'].append(grounded)
+@@ -73,9 +90,9 @@ def main(argv=None):
+     ap.add_argument('--input', type=Path, default=BASE / 'train_strict.jsonl',
+                     help='Reviewed strict artifact or exact subset; legacy verified labels are insufficient')
+     ap.add_argument('--output-dir', type=Path, default=BASE / 'sft')
+-    ap.add_argument('--holdout', type=float, default=0.1)
++    ap.add_argument('--holdout', type=float, default=DEFAULT_HOLDOUT_FRACTION)
+     ap.add_argument('--distractors', type=int, default=2)
+-    ap.add_argument('--seed', type=int, default=13)
++    ap.add_argument('--seed', type=int, default=DEFAULT_HOLDOUT_SEED)
+     args = ap.parse_args(argv)
+     try:
+         rows = eligible_input(args.input)
+diff --git a/scripts/przemeknowak781/strict_eligibility.py b/scripts/przemeknowak781/strict_eligibility.py
+index 738a846..ed88d53 100644
+--- a/scripts/przemeknowak781/strict_eligibility.py
++++ b/scripts/przemeknowak781/strict_eligibility.py
+@@ -9,6 +9,8 @@ from pathlib import Path
+ ROOT = Path(__file__).resolve().parents[2]
+ BASE = Path('data/przemeknowak781')
+ TRAIN = str(BASE / 'train.jsonl').replace('\\', '/')
++DEFAULT_HOLDOUT_FRACTION = 0.1
++DEFAULT_HOLDOUT_SEED = 13
+ LENSES = ['agentsLog/przemeknowak781/strict/r1_S.jsonl',
+           'agentsLog/przemeknowak781/strict/r1_Q.jsonl']
+ 
+@@ -21,6 +23,85 @@ def read_rows(path):
+     return rows
+ 
+ 
++def record_source_ids(row):
++    source_ids = set(row['source_ids'])
++    source_ids.update(item['source_id'] for item in row['evidence'])
++    return source_ids
++
++
++def in_holdout(group, fraction, seed):
++    digest = hashlib.sha256(f'{seed}:{group}'.encode()).hexdigest()
++    return (int(digest, 16) % 10_000) / 10_000 < fraction
++
++
++def component_keys(rows):
++    """Map each source_group_id to the canonical key of its connected component.
++
++    A component links records that share a source_group_id or any source id,
++    including evidence citations. The key is the lexicographically smallest
++    source_group_id in the component, so an unlinked group keeps its previous hash.
++    """
++    parent = {}
++
++    def find(node):
++        parent.setdefault(node, node)
++        while parent[node] != node:
++            parent[node] = parent[parent[node]]
++            node = parent[node]
++        return node
++
++    def union(left, right):
++        left_root = find(left)
++        right_root = find(right)
++        if left_root == right_root:
++            return
++        if left_root > right_root:
++            left_root, right_root = right_root, left_root
++        parent[right_root] = left_root
++
++    for row in rows:
++        group_node = ('group', row['source_group_id'])
++        find(group_node)
++        for source_id in record_source_ids(row):
++            union(group_node, ('source', source_id))
++
++    groups_by_root = {}
++    for row in rows:
++        root = find(('group', row['source_group_id']))
++        groups_by_root.setdefault(root, set()).add(row['source_group_id'])
++    keys = {}
++    for groups in groups_by_root.values():
++        canonical = min(groups)
++        for group in groups:
++            keys[group] = canonical
++    return keys
++
++
++def partition_groups(rows, fraction, seed):
++    keys = component_keys(rows)
++    return {
++        group: 'holdout' if in_holdout(key, fraction, seed) else 'train'
++        for group, key in keys.items()
++    }
++
++
++def assert_record_split(rows, fraction, seed):
++    assignment = partition_groups(rows, fraction, seed)
++    grouped = {'train': set(), 'holdout': set()}
++    sourced = {'train': set(), 'holdout': set()}
++    for row in rows:
++        part = assignment[row['source_group_id']]
++        grouped[part].add(row['source_group_id'])
++        sourced[part].update(record_source_ids(row))
++    group_overlap = grouped['train'] & grouped['holdout']
++    source_overlap = sourced['train'] & sourced['holdout']
++    if group_overlap:
++        raise ValueError('Cross-partition source_group_id overlap: ' + ', '.join(sorted(group_overlap)))
++    if source_overlap:
++        raise ValueError('Cross-partition source_id overlap: ' + ', '.join(sorted(source_overlap)))
++    return assignment
++
++
+ def reviewed_records(root=ROOT):
+     root = Path(root)
+     manifest = json.loads((root / BASE / 'strict_provenance.json').read_text(encoding='utf-8'))
+@@ -62,6 +143,7 @@ def main():
+     args = parser.parse_args()
+     target = ROOT / BASE / 'train_strict.jsonl'
+     expected = reviewed_records()
++    assert_record_split(expected, DEFAULT_HOLDOUT_FRACTION, DEFAULT_HOLDOUT_SEED)
+     if args.check:
+         if read_rows(target) != expected:
+             raise ValueError('Strict artifact differs from reviewed evidence')
+diff --git a/scripts/przemeknowak781/test_export_sft.py b/scripts/przemeknowak781/test_export_sft.py
+index 5f1772f..d67a2fb 100644
+--- a/scripts/przemeknowak781/test_export_sft.py
++++ b/scripts/przemeknowak781/test_export_sft.py
+@@ -24,6 +24,15 @@ class StrictExportTests(unittest.TestCase):
+         self.assertTrue(groups['train'])
+         self.assertTrue(groups['holdout'])
+         self.assertFalse(groups['train'] & groups['holdout'])
++        by_id = {row['id']: row for row in rows}
++        sources = {part: set() for part in ('train', 'holdout')}
++        group_sources = {}
++        for row in rows:
++            group_sources.setdefault(row['source_group_id'], set()).update(strict.record_source_ids(row))
++        for part in ('train', 'holdout'):
++            for rendered in output[f'grounded_{part}']:
++                sources[part].update(strict.record_source_ids(by_id[rendered['id']]))
++        self.assertFalse(sources['train'] & sources['holdout'])
+         for part, other in (('train', 'holdout'), ('holdout', 'train')):
+             foreign_claims = {e['claim'] for row in rows if row['source_group_id'] in groups[other]
+                               for e in row['evidence']}
+@@ -33,16 +42,115 @@ class StrictExportTests(unittest.TestCase):
+             # passages, plus exact provenance membership above, rather than banning shared facts.
+             foreign_claims = {claim for claim in foreign_claims
+                               if not any(claim in local for local in local_claims)}
+-            for row in output[f'grounded_{part}']:
+-                self.assertTrue(set(row['context_source_group_ids']) <= groups[part])
+-                context = row['messages'][1]['content'].split('\n\nPytanie:', 1)[0]
++            for rendered in output[f'grounded_{part}']:
++                self.assertTrue(set(rendered['context_source_group_ids']) <= groups[part])
++                context_sources = set()
++                for group in rendered['context_source_group_ids']:
++                    context_sources.update(group_sources[group])
++                self.assertTrue(context_sources <= sources[part])
++                context = rendered['messages'][1]['content'].split('\n\nPytanie:', 1)[0]
+                 self.assertFalse(any(claim in context for claim in foreign_claims))
+         return output
+ 
+     def test_real_strict_split_and_all_context_are_disjoint(self):
+         out = self.assert_isolated(strict.reviewed_records())
+-        self.assertEqual(len(out['grounded_train']), 22)
+-        self.assertEqual(len(out['grounded_holdout']), 2)
++        self.assertEqual(len(out['closed_book_train']), 23)
++        self.assertEqual(len(out['closed_book_holdout']), 1)
++        self.assertEqual(len(out['grounded_train']), 23)
++        self.assertEqual(len(out['grounded_holdout']), 1)
++
++    def _first_group(self, prefix, predicate):
++        for index in range(5000):
++            group = f'{prefix}-{index}'
++            if predicate(group):
++                return group
++        self.fail('no group id matched ' + prefix)
++
++    def _alias_row(self, row_id, group, source_ids, claim):
++        return {
++            'id': row_id,
++            'task_type': 'short_answer',
++            'era': '19th_century',
++            'source_group_id': group,
++            'source_ids': list(source_ids),
++            'prompt': 'Pytanie ' + row_id,
++            'answer': 'Odpowiedz ' + row_id,
++            'evidence': [{
++                'source_id': source_ids[0],
++                'locator': 'lead',
++                'claim': claim,
++            }],
++            'audit': {'status': 'verified'},
++        }
++
++    def _parts(self, output):
++        located = {}
++        for part in ('train', 'holdout'):
++            for row in output['closed_book_' + part]:
++                located[row['id']] = part
++            grounded_ids = {row['id'] for row in output['grounded_' + part]}
++            self.assertEqual(grounded_ids, {row['id'] for row in output['closed_book_' + part]})
++        return located
++
++    def test_article_with_two_group_ids_cannot_cross_the_split(self):
++        # These group ids fall on opposite sides of the old per-group hash. A second hop
++        # shares only a listed source id, so the chain stays together only if components
++        # are transitive across source_group_id or source_ids.
++        fraction = strict.DEFAULT_HOLDOUT_FRACTION
++        seed = strict.DEFAULT_HOLDOUT_SEED
++        train_group = self._first_group('grp-alias', lambda group: not strict.in_holdout(group, fraction, seed))
++        holdout_group = self._first_group('grp-alias', lambda group: strict.in_holdout(group, fraction, seed))
++        self.assertNotEqual(strict.in_holdout(train_group, fraction, seed),
++                            strict.in_holdout(holdout_group, fraction, seed))
++        canonical = min(train_group, holdout_group)
++        component_holdout = strict.in_holdout(canonical, fraction, seed)
++        chain_group = self._first_group(
++            'grp-chain',
++            lambda group: group > canonical and strict.in_holdout(group, fraction, seed) != component_holdout)
++        shared = 'src-plwiki-powstanie-listopadowe'
++        chained = 'src-plwiki-powstanie-styczniowe'
++        rows = [
++            self._alias_row('alias-holdout-side', holdout_group, [shared], 'CLAIM_SHARED_ARTICLE'),
++            self._alias_row('alias-train-side', train_group, [shared, chained], 'CLAIM_SHARED_ARTICLE'),
++            self._alias_row('alias-chained', chain_group, [chained], 'CLAIM_CHAINED_ARTICLE'),
++        ]
++        self.assertEqual(len(set(strict.component_keys(rows).values())), 1)
++        try:
++            output = export_sft.render_exports(rows)
++        except ValueError as exc:
++            self.fail('aliased groups were split: ' + str(exc))
++        located = self._parts(output)
++        self.assertEqual(set(located), {'alias-holdout-side', 'alias-train-side', 'alias-chained'})
++        self.assertEqual(len(set(located.values())), 1)
++        kept = next(iter(located.values()))
++        other = 'holdout' if kept == 'train' else 'train'
++        self.assertEqual(output['grounded_' + other], [])
++        self.assertEqual(output['closed_book_' + other], [])
++        allowed = {train_group, holdout_group, chain_group}
++        for rendered in output['grounded_' + kept]:
++            self.assertTrue(set(rendered['context_source_group_ids']) <= allowed)
++
++        real = strict.reviewed_records()
++        aliased = [row for row in real if shared in strict.record_source_ids(row)]
++        alias_groups = {row['source_group_id'] for row in aliased}
++        self.assertGreaterEqual(len(alias_groups), 2)
++        self.assertEqual({strict.in_holdout(group, fraction, seed) for group in alias_groups}, {False, True})
++        keys = strict.component_keys(real)
++        component_groups = {group for group, key in keys.items() if key == keys[next(iter(alias_groups))]}
++        self.assertIn('grp-powstanie-listopadowe-1830', component_groups)
++        self.assertIn('grp-cmp-powstania-xix', component_groups)
++        self.assertIn('grp-powstanie-styczniowe-1863', component_groups)
++        real_out = export_sft.render_exports(real)
++        real_parts = self._parts(real_out)
++        alias_ids = {row['id'] for row in aliased}
++        component_ids = {row['id'] for row in real if row['source_group_id'] in component_groups}
++        self.assertEqual(len({real_parts[row_id] for row_id in component_ids}), 1)
++        alias_part = real_parts[next(iter(alias_ids))]
++        other_part = 'holdout' if alias_part == 'train' else 'train'
++        for rendered in real_out['grounded_' + other_part]:
++            self.assertNotIn(shared, strict.record_source_ids(
++                next(row for row in real if row['id'] == rendered['id'])))
++            self.assertFalse(set(rendered['context_source_group_ids']) & component_groups)
+ 
+     def test_regression_on_legacy_197_split_previously_leaked_18_rows(self):
+         # Exercise selection only; these rows are explicitly not export-eligible.
