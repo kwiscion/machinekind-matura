@@ -85,7 +85,7 @@ def main():
             rows=[prep.tokenized_record(x,tokenizer,4096) for x in train]
         else:
             prompt='Syntetyczna kontrola uczenia. Zwróć słowo gotowe.'
-            prefix=tokenizer.apply_chat_template([{'role':'user','content':prompt}],tokenize=True,add_generation_prompt=True,enable_thinking=False)
+            prefix=tokenizer.apply_chat_template([{'role':'user','content':prompt}],tokenize=True,return_dict=False,add_generation_prompt=True,enable_thinking=False)
             answer=tokenizer.encode('gotowe<turn|>',add_special_tokens=False)
             rows=[{'input_ids':prefix+answer,'labels':[-100]*len(prefix)+answer}]
         require(all(0<len(x['input_ids'])<=4096 and len(x['input_ids'])==len(x['labels']) for x in rows),'No truncation')
