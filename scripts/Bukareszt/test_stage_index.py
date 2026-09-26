@@ -61,11 +61,11 @@ class SyntheticCorpus:
         self.rows = rows
         (self.root / "queries" / "train_queries.jsonl").write_text(
             json.dumps({"id": "t-q01", "split": "TRAIN", "prompt": "Kiedy zawarto unię lubelską?"}) + "\n", encoding="utf-8")
-        retrieval = si.load_retrieval(self.root)
+        retrieval = si.load_retrieval(self.root, si.sha256_text_file(self.root / "scripts" / "retrieval.py"))
         si.rebuild_index(retrieval, self.root)
         self.retrieval = retrieval
         self.manifest = si.build_manifest(self.root, None, si.sha256_file(self.root / "scripts" / "retrieval.py"))
-        proof = si.run_offline_query(self.root, "Kiedy zawarto unię lubelską?", "chrono", 2, 1.0)
+        proof = si.run_offline_query(self.root, "Kiedy zawarto unię lubelską?", "chrono", 2, 1.0, self.manifest["retrieval_script_sha256"])
         self.manifest["query_proof"] = {"query_id": "t-q01", "query": "Kiedy zawarto unię lubelską?", "mode": "chrono", "k": 2,
                                         "title_weight": 1.0, "results": proof["results"]}
         self.bundle = self.root / "private" / "bundle.tar.gz"
@@ -195,7 +195,7 @@ class StageIndexTests(unittest.TestCase):
         exact = {r["source_id"]: (self.c.root / r["local_path"]).read_text(encoding="utf-8") for r in self.c.rows}
         diffs = si.rebuild_raw(clone, self.c.rows, lambda r: {"revid": 1, "text": exact[r["source_id"]], "method": "fake"}, sleep=0, log=lambda *_: None)
         self.assertEqual(diffs, [])
-        retrieval = si.load_retrieval(clone)
+        retrieval = si.load_retrieval(clone, self.c.manifest["retrieval_script_sha256"])
         si.rebuild_index(retrieval, clone)
         checks = si.verify_staged(clone, self.c.manifest)
         self.assertEqual(checks["index_sha256"]["actual"], self.c.manifest["index_sha256"])
@@ -243,10 +243,14 @@ class StageIndexTests(unittest.TestCase):
         d = self.c.tmp / "real-crlf"
         d.mkdir(exist_ok=True)
         for src, pinned in ((SOURCES_SRC, si.PINNED_SOURCES_SHA256), (RETRIEVAL_SRC, manifest["retrieval_script_sha256"])):
+            # the checkout itself may be LF (Linux) or CRLF (Windows): only the declared canonical identity is asserted
             self.assertEqual(si.sha256_text_file(src), pinned, src)
-            self.assertEqual(si.sha256_file(src), pinned, f"{src} is committed with LF, so the byte hash is unchanged")
+            lf = d / f"lf-{src.name}"
+            lf.write_bytes(si.lf_bytes(src))
+            self.assertNotIn(b"\r\n", lf.read_bytes())
+            self.assertEqual(si.sha256_file(lf), pinned, "an explicit LF fixture hashes to the pinned value byte for byte")
             crlf = d / src.name
-            shutil.copy(src, crlf)
+            shutil.copy(lf, crlf)
             to_crlf(crlf)
             self.assertIn(b"\r\n", crlf.read_bytes())
             self.assertNotEqual(si.sha256_file(crlf), pinned, "raw CRLF bytes differ (the reported 701ad15... failure)")
@@ -341,6 +345,109 @@ class StageIndexTests(unittest.TestCase):
         self.assertEqual(si.DEFAULT_ROOT, REPO / "agentsLog" / "Bukareszt")
         self.assertTrue(si.DEFAULT_ROOT.is_absolute())
         self.assertTrue((si.DEFAULT_ROOT / "staging" / "manifest.json").is_file())
+
+
+    # ---- #54: retriever verified before import, owned destinations, scoped .gitattributes ----
+
+    def _marker_retriever(self, clone):
+        marker = clone / "IMPORTED_MARKER"
+        path = clone / "scripts" / "retrieval.py"
+        path.write_bytes(f"open({str(marker)!r}, 'w').write('imported')\n".encode() + path.read_bytes())
+        return marker
+
+    def test_wrong_hash_retriever_is_never_imported(self):
+        clone = self.c.fresh_clone()
+        marker = self._marker_retriever(clone)
+        with self.assertRaisesRegex(si.StageError, "refusing to import") as ctx:
+            si.load_retrieval(clone, self.c.manifest["retrieval_script_sha256"])
+        self.assertIn(str(clone / "scripts" / "retrieval.py"), str(ctx.exception))
+        self.assertFalse(marker.exists(), "wrong-hash retriever code was executed")
+        # the full stage path (real load_retrieval, no mocks) and the offline child refuse it too
+        report = clone / "report.json"
+        rc = si.main(["stage", "--allow-unpinned", "--root", str(clone), "--bundle", str(self.c.bundle), "--report", str(report)])
+        self.assertEqual(rc, 1)
+        self.assertFalse(marker.exists())
+        with self.assertRaises(si.StageError):
+            si.run_offline_query(clone, "x", "chrono", 1, 1.0, self.c.manifest["retrieval_script_sha256"])
+        self.assertFalse(marker.exists())
+
+    def test_verified_retriever_imports_from_checked_bytes(self):
+        clone = self.c.fresh_clone()
+        mod = si.load_retrieval(clone, self.c.manifest["retrieval_script_sha256"])
+        self.assertEqual(mod.INDEX_FILE, str(clone / "index" / "bm25_index.json"))
+        self.assertEqual(mod.__file__, str(clone / "scripts" / "retrieval.py"))
+
+    def test_stage_refuses_root_outside_workspace(self):
+        """Without the test override, --root must resolve to the workspace agentsLog/Bukareszt."""
+        clone = self.c.fresh_clone()
+        (clone / "raw").mkdir()
+        (clone / "raw" / "keep.txt").write_text("keep", encoding="utf-8")
+        rc = si.main(["stage", "--root", str(clone), "--bundle", str(self.c.bundle), "--report", str(clone / "r.json")])
+        self.assertEqual(rc, 1)
+        self.assertEqual((clone / "raw" / "keep.txt").read_text(encoding="utf-8"), "keep")
+        with self.assertRaisesRegex(si.StageError, "not the workspace artifact root"):
+            si.validate_root(clone)
+        self.assertEqual(si.validate_root(si.DEFAULT_ROOT), si.DEFAULT_ROOT.resolve())
+        with self.assertRaisesRegex(si.StageError, "lacks"):
+            si.validate_root(self.c.tmp, require_default=False)  # a directory that is not a retrieval root
+
+    def test_symlinked_destinations_are_refused_unmodified(self):
+        for rel in ("raw", "index", "private"):
+            clone = self.c.fresh_clone()
+            outside = self.c.tmp / f"outside-{rel}-{clone.name}"
+            outside.mkdir()
+            (outside / "precious.txt").write_text("do not delete", encoding="utf-8")
+            (clone / rel).parent.mkdir(parents=True, exist_ok=True)
+            try:
+                (clone / rel).symlink_to(outside, target_is_directory=True)
+            except (OSError, NotImplementedError):
+                self.skipTest("symlinks not permitted on this host")
+            report = clone / "report.json"
+            for extra in ([], ["--force"], ["--rebuild"]):
+                with mock.patch.object(si, "fetch_pinned", side_effect=AssertionError("network")):
+                    rc = si.main(["stage", "--allow-unpinned", "--root", str(clone), "--bundle", str(self.c.bundle),
+                                  "--report", str(report), *extra])
+                self.assertEqual(rc, 1, (rel, extra))
+                rep = json.loads(report.read_text(encoding="utf-8"))
+                self.assertIn("is a link", rep["blocker"])
+                self.assertFalse(rep["phases"]["destinations"]["ok"])
+                self.assertEqual(sorted(p.name for p in outside.iterdir()), ["precious.txt"], (rel, extra))
+            with self.assertRaisesRegex(si.StageError, "is a link"):
+                si.unpack_bundle(self.c.bundle, clone, self.c.manifest) if rel != "private" else \
+                    si.rebuild_raw(clone, self.c.rows, lambda r: {"revid": 1, "text": "", "method": "fake"}, sleep=0, log=lambda *_: None)
+            self.assertTrue((outside / "precious.txt").exists())
+
+    def test_destination_that_is_a_file_is_refused(self):
+        clone = self.c.fresh_clone()
+        (clone / "index").write_text("not a dir", encoding="utf-8")
+        with self.assertRaisesRegex(si.StageError, "not a directory"):
+            si.unpack_bundle(self.c.bundle, clone, self.c.manifest)
+        self.assertEqual((clone / "index").read_text(encoding="utf-8"), "not a dir")
+
+    def test_accepted_data_kept_when_destination_check_fails(self):
+        clone = self.c.fresh_clone()
+        si.unpack_bundle(self.c.bundle, clone, self.c.manifest)
+        before = si.sha256_file(clone / "index" / "bm25_index.json")
+        outside = self.c.tmp / f"outside-drift-{clone.name}"
+        outside.mkdir()
+        (clone / "private").mkdir(exist_ok=True)
+        (clone / "private" / "rebuild-drift").symlink_to(outside, target_is_directory=True)
+        rc = si.main(["stage", "--allow-unpinned", "--force", "--root", str(clone), "--bundle", str(self.c.bundle),
+                      "--report", str(clone / "r.json")])
+        self.assertEqual(rc, 1)
+        self.assertEqual(si.sha256_file(clone / "index" / "bm25_index.json"), before)
+        self.assertEqual(si.verify_raw(clone, self.c.rows), [])
+
+    def test_scoped_gitattributes_pins_lf_for_the_two_hashed_files(self):
+        if not shutil.which("git") or not (REPO / ".git").exists():
+            self.skipTest("not a git checkout")
+        paths = ["agentsLog/Bukareszt/sources/sources.jsonl", "agentsLog/Bukareszt/scripts/retrieval.py"]
+        out = subprocess.run(["git", "check-attr", "text", "eol", "--", *paths], cwd=REPO, capture_output=True, text=True).stdout
+        for path in paths:
+            self.assertIn(f"{path}: text: set", out)
+            self.assertIn(f"{path}: eol: lf", out)
+        other = subprocess.run(["git", "check-attr", "eol", "--", "agentsLog/Bukareszt/README.md"], cwd=REPO, capture_output=True, text=True).stdout
+        self.assertIn("eol: unspecified", other, "the entry is scoped to the two hashed files only")
 
 
 if __name__ == "__main__":

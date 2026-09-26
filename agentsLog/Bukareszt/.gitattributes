@@ -1,0 +1,3 @@
+# #44/#54: the two Git-tracked files whose SHA-256 is pinned by scripts/Bukareszt/stage_index.py stay LF in every checkout
+sources/sources.jsonl text eol=lf
+scripts/retrieval.py text eol=lf

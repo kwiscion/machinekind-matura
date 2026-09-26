@@ -121,12 +121,29 @@ def graph_content_sha256(graph: dict) -> str:
     return sha256_bytes(json.dumps(payload, ensure_ascii=False, sort_keys=True).encode("utf-8"))
 
 
-def load_retrieval(root: Path):
-    """Import the pinned retrieval module unchanged and point its paths at `root`."""
-    scripts_dir = str(root / "scripts")
-    if scripts_dir not in sys.path:
-        sys.path.insert(0, scripts_dir)
-    import retrieval  # noqa: PLC0415
+def load_retrieval(root: Path, expected_sha256: str):
+    """Import the pinned retrieval module unchanged and point its paths at `root`.
+
+    The file's bytes are read once and their LF-normalized SHA-256 is checked against `expected_sha256` before
+    anything is executed; the module is then compiled from exactly those verified bytes (no second read, no
+    `sys.path` import that could pick up another file or a cached module)."""
+    path = root / "scripts" / "retrieval.py"
+    data = path.read_bytes()
+    got = sha256_bytes(data.replace(b"\r\n", b"\n"))
+    if got != expected_sha256:
+        raise StageError(f"retrieval_script_sha256: {path} expected {expected_sha256} actual {got} "
+                         f"(CRLF->LF normalized; raw bytes {sha256_bytes(data)}); refusing to import it")
+    import importlib.util  # noqa: PLC0415
+
+    spec = importlib.util.spec_from_loader("retrieval", loader=None, origin=str(path))
+    retrieval = importlib.util.module_from_spec(spec)
+    retrieval.__file__ = str(path)
+    sys.modules["retrieval"] = retrieval  # dataclasses and pickling resolve the module by name
+    try:
+        exec(compile(data, str(path), "exec"), retrieval.__dict__)  # noqa: S102 -- verified bytes only
+    except BaseException:
+        sys.modules.pop("retrieval", None)
+        raise
 
     retrieval.ROOT = str(root)
     retrieval.SOURCES_JSONL = str(root / "sources" / "sources.jsonl")
@@ -139,6 +156,51 @@ def load_retrieval(root: Path):
 
 def now_iso() -> str:
     return time.strftime("%Y-%m-%dT%H:%M:%S%z")
+
+
+# --------------------------------------------------------------------------------------
+# owned destinations (checked before any recursive delete/move)
+# --------------------------------------------------------------------------------------
+
+ROOT_MARKERS = ("staging/manifest.json", "sources/sources.jsonl")  # retrieval.py is checked (and reported) by pinned_inputs
+OWNED_DESTINATIONS = ("raw", "index", "private/rebuild-tmp", "private/rebuild-drift")
+
+
+def validate_root(root: Path, require_default: bool = True) -> Path:
+    """The artifact root must be an existing directory that resolves to the workspace's `agentsLog/Bukareszt`
+    (tests may pass another root that carries the same marker files). Nothing is modified."""
+    resolved = root.resolve()
+    if not resolved.is_dir():
+        raise StageError(f"artifact root {root} is not a directory")
+    if require_default and resolved != DEFAULT_ROOT.resolve():
+        raise StageError(f"artifact root {root} resolves to {resolved}, not the workspace artifact root {DEFAULT_ROOT.resolve()}; "
+                         "refusing to replace raw/ or index/ outside it")
+    missing = [m for m in ROOT_MARKERS if not (resolved / m).is_file()]
+    if missing:
+        raise StageError(f"artifact root {resolved} lacks {missing}; refusing to treat it as the retrieval root")
+    return resolved
+
+
+def owned_dest(root: Path, rel: str) -> Path:
+    """Path of an owned destination under the (resolved) root. Every component must be a real directory inside
+    the root: a symlink/junction, a non-directory, or a resolved path outside the root is refused unmodified."""
+    root = root.resolve()
+    p = root
+    for part in rel.split("/"):
+        p = p / part
+        if p.is_symlink() or (hasattr(p, "is_junction") and p.is_junction()):
+            raise StageError(f"refusing to replace {p}: it is a link (-> {os.readlink(p)}), not a directory owned by {root}")
+        if p.exists() and not p.is_dir():
+            raise StageError(f"refusing to replace {p}: it exists and is not a directory")
+    resolved = p.resolve()
+    if resolved.parent != (root / rel).parent.resolve() or not resolved.is_relative_to(root):
+        raise StageError(f"refusing to replace {p}: resolves to {resolved}, outside {root}")
+    return p
+
+
+def validate_destinations(root: Path) -> dict:
+    """Check every destination `stage` may delete or replace, before any of them is touched."""
+    return {rel: str(owned_dest(root, rel)) for rel in OWNED_DESTINATIONS}
 
 
 # --------------------------------------------------------------------------------------
@@ -305,6 +367,7 @@ def write_bundle(root: Path, manifest: dict, out: Path) -> dict:
 
 def unpack_bundle(bundle: Path, root: Path, manifest: dict) -> dict:
     """Verify the archive hash, extract to a temp dir, hash every member, then move raw/ and index/ into place."""
+    dests = {sub: owned_dest(root, sub) for sub in ("raw", "index")}  # both checked before anything is removed
     expected = manifest.get("bundle", {}).get("sha256")
     if not expected:
         raise StageError("manifest carries no bundle SHA-256; refusing to unpack an unpinned archive")
@@ -335,8 +398,7 @@ def unpack_bundle(bundle: Path, root: Path, manifest: dict) -> dict:
         if got_sources != clone_sources:
             raise StageError(f"bundle sources.jsonl {got_sources} differs from the clone's {root / 'sources' / 'sources.jsonl'} "
                              f"{clone_sources} (SHA-256 of CRLF->LF normalized text)")
-        for sub in ("raw", "index"):
-            dest = root / sub
+        for sub, dest in dests.items():
             if dest.exists():
                 shutil.rmtree(dest)
             shutil.move(str(base / sub), str(dest))
@@ -382,7 +444,7 @@ def fetch_pinned(retrieval, row: dict) -> dict:
 def rebuild_raw(root: Path, rows: list[dict], fetcher, sleep: float = 0.3, log=print) -> list[dict]:
     """Fetch every pinned source. raw/ is replaced only when all sources match; otherwise the fetched text
     is left under private/rebuild-drift/ and the per-source differences are returned."""
-    work = root / "private" / "rebuild-tmp"
+    work, drift_dir, raw_dir = (owned_dest(root, rel) for rel in ("private/rebuild-tmp", "private/rebuild-drift", "raw"))
     if work.exists():
         shutil.rmtree(work)
     (work / "raw").mkdir(parents=True)
@@ -408,14 +470,12 @@ def rebuild_raw(root: Path, rows: list[dict], fetcher, sleep: float = 0.3, log=p
         if sleep:
             time.sleep(sleep)
     if diffs:
-        drift_dir = root / "private" / "rebuild-drift"
         if drift_dir.exists():
             shutil.rmtree(drift_dir)
         shutil.move(str(work / "raw"), str(drift_dir))
         shutil.rmtree(work, ignore_errors=True)
         log(f"fetched text kept for inspection under {drift_dir}; raw/ left untouched")
         return diffs
-    raw_dir = root / "raw"
     if raw_dir.exists():
         shutil.rmtree(raw_dir)
     shutil.move(str(work / "raw"), str(raw_dir))
@@ -469,7 +529,7 @@ def cmd_offline_query(args) -> int:
         except RuntimeError:
             pass
     root = Path(args.root)
-    retrieval = load_retrieval(root)
+    retrieval = load_retrieval(root, args.retrieval_sha256)
     t0 = time.perf_counter()
     idx = retrieval.load_index()
     graph = retrieval.load_graph() if args.mode == "chrono" else None
@@ -487,13 +547,13 @@ def cmd_offline_query(args) -> int:
     return 0
 
 
-def run_offline_query(root: Path, query: str, mode: str, k: int, title_weight: float) -> dict:
+def run_offline_query(root: Path, query: str, mode: str, k: int, title_weight: float, retrieval_sha256: str) -> dict:
     """Run `_offline-query` in a child with proxies stripped and (on Linux) an unshared network namespace."""
     env = {k_: v for k_, v in os.environ.items() if not k_.lower().endswith("_proxy")}
     env["PYTHONDONTWRITEBYTECODE"] = "1"
     env["NO_PROXY"] = "*"
     cmd = [sys.executable, "-I", str(Path(__file__).resolve()), "_offline-query", "--root", str(root), "--query", query,
-           "--mode", mode, "--k", str(k), "--title-weight", str(title_weight)]
+           "--mode", mode, "--k", str(k), "--title-weight", str(title_weight), "--retrieval-sha256", retrieval_sha256]
     guards = ["socket-guard", "proxy-env-stripped"]
     unshare = shutil.which("unshare")
     if unshare and platform.system() == "Linux":
@@ -580,7 +640,7 @@ def cmd_bundle(args) -> int:
         raise StageError(f"local assets are not the pinned #44 index: {wrong} != {pinned}")
     verify_staged(root, manifest)
     q = pick_train_query(root, args.query_id)
-    proof = run_offline_query(root, q["text"], **RETRIEVAL_CONFIG)
+    proof = run_offline_query(root, q["text"], **RETRIEVAL_CONFIG, retrieval_sha256=retrieval_sha)
     manifest["query_proof"] = {"query_id": q["id"], "query": q["text"], **RETRIEVAL_CONFIG,
                                "results": proof["results"], "recorded_on": platform.node(), "python": proof["python"]}
     out = Path(args.out) if args.out else root / "private" / BUNDLE_NAME
@@ -606,7 +666,7 @@ def cmd_verify(args) -> int:
 
 def cmd_stage(args) -> int:
     t_start = time.perf_counter()
-    root = Path(args.root).resolve()
+    root = validate_root(Path(args.root), require_default=not args.allow_unpinned)
     manifest = load_manifest(Path(args.manifest) if args.manifest else root / "staging" / "manifest.json", args.allow_unpinned)
     report: dict = {"issue": 44, "started_at": now_iso(), "host": platform.node(), "platform": platform.platform(),
                     "python": platform.python_version(), "repo": str(REPO), "root": str(root), "status": "FAIL",
@@ -629,7 +689,8 @@ def cmd_stage(args) -> int:
     try:
         # hard preconditions, before the retriever is imported and before any bundle/rebuild path runs
         report.update(phase("pinned_inputs", lambda: check_pinned_inputs(root, manifest)))
-        retrieval = load_retrieval(root)
+        report["destinations"] = phase("destinations", lambda: validate_destinations(root))
+        retrieval = load_retrieval(root, manifest["retrieval_script_sha256"])
         staged = False
         if not args.rebuild and not args.force:
             try:
@@ -664,7 +725,8 @@ def cmd_stage(args) -> int:
             report["path_used"] = "rebuild-from-pinned-revisions"
         if not args.no_query:
             proof_spec = manifest["query_proof"]
-            actual = phase("offline_query", lambda: run_offline_query(root, proof_spec["query"], proof_spec["mode"], proof_spec["k"], proof_spec["title_weight"]))
+            actual = phase("offline_query", lambda: run_offline_query(root, proof_spec["query"], proof_spec["mode"], proof_spec["k"],
+                                                                      proof_spec["title_weight"], manifest["retrieval_script_sha256"]))
             phase("compare_query_proof", lambda: compare_query_proof(actual, proof_spec))
         report["status"] = "PASS"
     except StageError as exc:
@@ -706,13 +768,15 @@ def main(argv=None) -> int:
             p.add_argument("--no-query", action="store_true", help="skip the offline TRAIN query proof")
             p.add_argument("--sleep", type=float, default=0.3, help="seconds between API requests in rebuild mode")
             p.add_argument("--report", default=None, help="report path (default <root>/private/stage_report.json)")
-            p.add_argument("--allow-unpinned", action="store_true", help="tests only: accept a manifest that is not the #44 index")
+            p.add_argument("--allow-unpinned", action="store_true",
+                           help="tests only: accept a manifest that is not the #44 index and a --root other than agentsLog/Bukareszt")
         if name == "bundle":
             p.add_argument("--out", default=None, help=f"bundle path (default <root>/private/{BUNDLE_NAME})")
             p.add_argument("--query-id", default=None, help="TRAIN query id for the proof (default: first TRAIN row)")
     p = sub.add_parser("_offline-query")
     p.add_argument("--root", required=True); p.add_argument("--query", required=True); p.add_argument("--mode", default="chrono")
-    p.add_argument("--k", type=int, default=5); p.add_argument("--title-weight", type=float, default=1.0); p.set_defaults(fn=cmd_offline_query)
+    p.add_argument("--k", type=int, default=5); p.add_argument("--title-weight", type=float, default=1.0)
+    p.add_argument("--retrieval-sha256", required=True); p.set_defaults(fn=cmd_offline_query)
     args = ap.parse_args(argv)
     try:
         return args.fn(args)
