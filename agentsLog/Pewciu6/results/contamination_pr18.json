@@ -1,0 +1,849 @@
+{
+  "issue": "PR#18 (issue #4 data)",
+  "corpus": "jsonl",
+  "split": "VALIDATION (May 2024, aggregate only)",
+  "inputs": {
+    "prompts_sha256": "f4df6bcb9c1152d42e3650e820dfee1b4d182a5ad065eea41c9c0be85a0003c7",
+    "index_sha256": null,
+    "corpus_jsonl": [
+      {
+        "path": "data/przemeknowak781/train.jsonl",
+        "sha256": "52df361cefca4d20a99b0795c766740e7df9f5fb935b6c7911d70914a3acbd7f",
+        "records": 231
+      },
+      {
+        "path": "data/przemeknowak781/examples.jsonl",
+        "sha256": "9e45649c0e99c73f57209411307095c814087f0165a4553e7e2f80ab01efeefd",
+        "records": 20
+      },
+      {
+        "path": "data/przemeknowak781/generated/batch-01.jsonl",
+        "sha256": "9d584281f20f5e14aa43700b147b504d7356d8f0961106a743b69e30218a0fe8",
+        "records": 27
+      },
+      {
+        "path": "data/przemeknowak781/generated/batch-02.jsonl",
+        "sha256": "a1e97c7d25a2ce78dfad431b7ad5451aba1d27bd4a6a3acd1913ab17963c1b16",
+        "records": 26
+      },
+      {
+        "path": "data/przemeknowak781/generated/batch-03.jsonl",
+        "sha256": "50a9f2ef89e49eb2ea9e6e16ac8d9ab8cec6f783a7d5614eb59c54a7ce75f56e",
+        "records": 26
+      },
+      {
+        "path": "data/przemeknowak781/generated/batch-04.jsonl",
+        "sha256": "baf0a75e3376cc4c31a258aac3c56458dc7f57965aa5529748de13a2dbd24742",
+        "records": 30
+      },
+      {
+        "path": "data/przemeknowak781/generated/batch-05.jsonl",
+        "sha256": "2cf480190893c91b031084be91d97b6b4d915e95a7adf28670eebdea26dfe69d",
+        "records": 7
+      },
+      {
+        "path": "data/przemeknowak781/generated/batch-06.jsonl",
+        "sha256": "c6f8903f0098a0bf91a65db083f07d8f788c05190cbe9809d69289dc1dc9b3c5",
+        "records": 27
+      },
+      {
+        "path": "data/przemeknowak781/generated/batch-07.jsonl",
+        "sha256": "8b4f7b2328edf1bdb09136ab840556b4f7784b54285e59aade20706f4b234dac",
+        "records": 27
+      },
+      {
+        "path": "data/przemeknowak781/generated/batch-08.jsonl",
+        "sha256": "003379076c925a4325485b4d0ca7054d09a9ca176d2b7b103948269f5ccdd895",
+        "records": 24
+      },
+      {
+        "path": "data/przemeknowak781/generated/batch-09.jsonl",
+        "sha256": "6c002cec51b07632b920d2e3e5e448e93f25f19cb2e4c182763f229a9bd2ba86",
+        "records": 24
+      },
+      {
+        "path": "data/przemeknowak781/generated/batch-10.jsonl",
+        "sha256": "a7c767ce53fa2f713f33fa89232555528f8441b06b5b3f72e799b8803ed01b94",
+        "records": 27
+      },
+      {
+        "path": "data/przemeknowak781/generated/r2-01.jsonl",
+        "sha256": "b141e466e24d3af922357cc8c255e9c82c5eba7f7f4cfd6dda63f414eb1275f3",
+        "records": 9
+      },
+      {
+        "path": "data/przemeknowak781/generated/r2-02.jsonl",
+        "sha256": "b12d442cfefab8171f4ff977a8ebb605da2a2c6a038781660155bbb499421743",
+        "records": 14
+      }
+    ],
+    "n_chunks": 2502,
+    "n_sources": 519,
+    "n_items": 40
+  },
+  "params": {
+    "normalization": "NFKC, lowercase, drop answer placeholders, punctuation->space, collapse ws",
+    "min_excerpt_chars": 100,
+    "ngrams": [
+      8,
+      13
+    ],
+    "bm25_k": 5,
+    "bm25_title_weight": 0.0,
+    "flag_c13": 0.2,
+    "flag_rev_c13": 0.5,
+    "review_rev_c13": 0.25,
+    "min_rev_chars": 60,
+    "flag_lcs_chars": 80,
+    "review_c13": 0.08
+  },
+  "units": {
+    "prompt": 40,
+    "excerpt": 59
+  },
+  "exact_hash_hits": 0,
+  "substring_hits": 0,
+  "flagged_units": {
+    "prompt": 0,
+    "excerpt": 0
+  },
+  "review_units": {
+    "prompt": 2,
+    "excerpt": 3
+  },
+  "distributions": {
+    "prompt.c13_max": {
+      "min": 0.0023,
+      "p50": 0.0062,
+      "p90": 0.0091,
+      "p99": 0.014,
+      "max": 0.014,
+      "mean": 0.0064
+    },
+    "prompt.c8_max": {
+      "min": 0.0088,
+      "p50": 0.0194,
+      "p90": 0.0256,
+      "p99": 0.0303,
+      "max": 0.0303,
+      "mean": 0.0193
+    },
+    "prompt.j13_max": {
+      "min": 0.0022,
+      "p50": 0.0054,
+      "p90": 0.0075,
+      "p99": 0.0113,
+      "max": 0.0113,
+      "mean": 0.0054
+    },
+    "prompt.j8_max": {
+      "min": 0.0069,
+      "p50": 0.0132,
+      "p90": 0.0185,
+      "p99": 0.0211,
+      "max": 0.0211,
+      "mean": 0.0137
+    },
+    "prompt.c13_corpus": {
+      "min": 0.01,
+      "p50": 0.0236,
+      "p90": 0.0377,
+      "p99": 0.0559,
+      "max": 0.0559,
+      "mean": 0.025
+    },
+    "prompt.bm25_top_c13_max": {
+      "min": 0.0,
+      "p50": 0.0027,
+      "p90": 0.0052,
+      "p99": 0.0101,
+      "max": 0.0101,
+      "mean": 0.0031
+    },
+    "prompt.lcs_chars": {
+      "min": 14,
+      "p50": 20,
+      "p90": 23,
+      "p99": 28,
+      "max": 28,
+      "mean": 19.75
+    },
+    "prompt.rc13_max": {
+      "min": 0.0222,
+      "p50": 0.0889,
+      "p90": 0.1481,
+      "p99": 0.2653,
+      "max": 0.2653,
+      "mean": 0.0954
+    },
+    "excerpt.c13_max": {
+      "min": 0.0,
+      "p50": 0.0135,
+      "p90": 0.0556,
+      "p99": 0.0818,
+      "max": 0.0821,
+      "mean": 0.025
+    },
+    "excerpt.c8_max": {
+      "min": 0.0071,
+      "p50": 0.0532,
+      "p90": 0.1079,
+      "p99": 0.1727,
+      "max": 0.1727,
+      "mean": 0.059
+    },
+    "excerpt.j13_max": {
+      "min": 0.0,
+      "p50": 0.009,
+      "p90": 0.0328,
+      "p99": 0.0409,
+      "max": 0.0498,
+      "mean": 0.0144
+    },
+    "excerpt.j8_max": {
+      "min": 0.0061,
+      "p50": 0.0248,
+      "p90": 0.0565,
+      "p99": 0.0658,
+      "max": 0.0663,
+      "mean": 0.0319
+    },
+    "excerpt.c13_corpus": {
+      "min": 0.0,
+      "p50": 0.0342,
+      "p90": 0.1326,
+      "p99": 0.1629,
+      "max": 0.1795,
+      "mean": 0.0522
+    },
+    "excerpt.bm25_top_c13_max": {
+      "min": 0.0,
+      "p50": 0.0,
+      "p90": 0.0249,
+      "p99": 0.0818,
+      "max": 0.0818,
+      "mean": 0.0102
+    },
+    "excerpt.lcs_chars": {
+      "min": 0,
+      "p50": 18,
+      "p90": 21,
+      "p99": 28,
+      "max": 28,
+      "mean": 15.661
+    },
+    "excerpt.rc13_max": {
+      "min": 0.0,
+      "p50": 0.0421,
+      "p90": 0.1042,
+      "p99": 0.1481,
+      "max": 0.2157,
+      "mean": 0.0542
+    }
+  },
+  "histograms": {
+    "prompt.c13_max": [
+      {
+        "bin": "[0.00,0.01)",
+        "count": 37
+      },
+      {
+        "bin": "[0.01,0.02)",
+        "count": 3
+      },
+      {
+        "bin": "[0.02,0.05)",
+        "count": 0
+      },
+      {
+        "bin": "[0.05,0.08)",
+        "count": 0
+      },
+      {
+        "bin": "[0.08,0.10)",
+        "count": 0
+      },
+      {
+        "bin": "[0.10,0.20)",
+        "count": 0
+      },
+      {
+        "bin": "[0.20,0.50)",
+        "count": 0
+      },
+      {
+        "bin": "[0.50,1.00]",
+        "count": 0
+      }
+    ],
+    "prompt.c8_max": [
+      {
+        "bin": "[0.00,0.01)",
+        "count": 1
+      },
+      {
+        "bin": "[0.01,0.02)",
+        "count": 22
+      },
+      {
+        "bin": "[0.02,0.05)",
+        "count": 17
+      },
+      {
+        "bin": "[0.05,0.08)",
+        "count": 0
+      },
+      {
+        "bin": "[0.08,0.10)",
+        "count": 0
+      },
+      {
+        "bin": "[0.10,0.20)",
+        "count": 0
+      },
+      {
+        "bin": "[0.20,0.50)",
+        "count": 0
+      },
+      {
+        "bin": "[0.50,1.00]",
+        "count": 0
+      }
+    ],
+    "prompt.c13_corpus": [
+      {
+        "bin": "[0.00,0.01)",
+        "count": 0
+      },
+      {
+        "bin": "[0.01,0.02)",
+        "count": 11
+      },
+      {
+        "bin": "[0.02,0.05)",
+        "count": 28
+      },
+      {
+        "bin": "[0.05,0.08)",
+        "count": 1
+      },
+      {
+        "bin": "[0.08,0.10)",
+        "count": 0
+      },
+      {
+        "bin": "[0.10,0.20)",
+        "count": 0
+      },
+      {
+        "bin": "[0.20,0.50)",
+        "count": 0
+      },
+      {
+        "bin": "[0.50,1.00]",
+        "count": 0
+      }
+    ],
+    "prompt.bm25_top_c13_max": [
+      {
+        "bin": "[0.00,0.01)",
+        "count": 39
+      },
+      {
+        "bin": "[0.01,0.02)",
+        "count": 1
+      },
+      {
+        "bin": "[0.02,0.05)",
+        "count": 0
+      },
+      {
+        "bin": "[0.05,0.08)",
+        "count": 0
+      },
+      {
+        "bin": "[0.08,0.10)",
+        "count": 0
+      },
+      {
+        "bin": "[0.10,0.20)",
+        "count": 0
+      },
+      {
+        "bin": "[0.20,0.50)",
+        "count": 0
+      },
+      {
+        "bin": "[0.50,1.00]",
+        "count": 0
+      }
+    ],
+    "prompt.rc13_max": [
+      {
+        "bin": "[0.00,0.01)",
+        "count": 0
+      },
+      {
+        "bin": "[0.01,0.02)",
+        "count": 0
+      },
+      {
+        "bin": "[0.02,0.05)",
+        "count": 10
+      },
+      {
+        "bin": "[0.05,0.08)",
+        "count": 5
+      },
+      {
+        "bin": "[0.08,0.10)",
+        "count": 8
+      },
+      {
+        "bin": "[0.10,0.20)",
+        "count": 13
+      },
+      {
+        "bin": "[0.20,0.50)",
+        "count": 4
+      },
+      {
+        "bin": "[0.50,1.00]",
+        "count": 0
+      }
+    ],
+    "excerpt.c13_max": [
+      {
+        "bin": "[0.00,0.01)",
+        "count": 23
+      },
+      {
+        "bin": "[0.01,0.02)",
+        "count": 11
+      },
+      {
+        "bin": "[0.02,0.05)",
+        "count": 16
+      },
+      {
+        "bin": "[0.05,0.08)",
+        "count": 6
+      },
+      {
+        "bin": "[0.08,0.10)",
+        "count": 3
+      },
+      {
+        "bin": "[0.10,0.20)",
+        "count": 0
+      },
+      {
+        "bin": "[0.20,0.50)",
+        "count": 0
+      },
+      {
+        "bin": "[0.50,1.00]",
+        "count": 0
+      }
+    ],
+    "excerpt.c8_max": [
+      {
+        "bin": "[0.00,0.01)",
+        "count": 1
+      },
+      {
+        "bin": "[0.01,0.02)",
+        "count": 6
+      },
+      {
+        "bin": "[0.02,0.05)",
+        "count": 21
+      },
+      {
+        "bin": "[0.05,0.08)",
+        "count": 17
+      },
+      {
+        "bin": "[0.08,0.10)",
+        "count": 7
+      },
+      {
+        "bin": "[0.10,0.20)",
+        "count": 7
+      },
+      {
+        "bin": "[0.20,0.50)",
+        "count": 0
+      },
+      {
+        "bin": "[0.50,1.00]",
+        "count": 0
+      }
+    ],
+    "excerpt.c13_corpus": [
+      {
+        "bin": "[0.00,0.01)",
+        "count": 15
+      },
+      {
+        "bin": "[0.01,0.02)",
+        "count": 7
+      },
+      {
+        "bin": "[0.02,0.05)",
+        "count": 12
+      },
+      {
+        "bin": "[0.05,0.08)",
+        "count": 7
+      },
+      {
+        "bin": "[0.08,0.10)",
+        "count": 8
+      },
+      {
+        "bin": "[0.10,0.20)",
+        "count": 10
+      },
+      {
+        "bin": "[0.20,0.50)",
+        "count": 0
+      },
+      {
+        "bin": "[0.50,1.00]",
+        "count": 0
+      }
+    ],
+    "excerpt.bm25_top_c13_max": [
+      {
+        "bin": "[0.00,0.01)",
+        "count": 42
+      },
+      {
+        "bin": "[0.01,0.02)",
+        "count": 9
+      },
+      {
+        "bin": "[0.02,0.05)",
+        "count": 4
+      },
+      {
+        "bin": "[0.05,0.08)",
+        "count": 2
+      },
+      {
+        "bin": "[0.08,0.10)",
+        "count": 2
+      },
+      {
+        "bin": "[0.10,0.20)",
+        "count": 0
+      },
+      {
+        "bin": "[0.20,0.50)",
+        "count": 0
+      },
+      {
+        "bin": "[0.50,1.00]",
+        "count": 0
+      }
+    ],
+    "excerpt.rc13_max": [
+      {
+        "bin": "[0.00,0.01)",
+        "count": 14
+      },
+      {
+        "bin": "[0.01,0.02)",
+        "count": 7
+      },
+      {
+        "bin": "[0.02,0.05)",
+        "count": 11
+      },
+      {
+        "bin": "[0.05,0.08)",
+        "count": 5
+      },
+      {
+        "bin": "[0.08,0.10)",
+        "count": 13
+      },
+      {
+        "bin": "[0.10,0.20)",
+        "count": 8
+      },
+      {
+        "bin": "[0.20,0.50)",
+        "count": 1
+      },
+      {
+        "bin": "[0.50,1.00]",
+        "count": 0
+      }
+    ]
+  },
+  "flagged_chunks": [
+    {
+      "chunk_id": "data/przemeknowak781/generated/batch-04.jsonl:pn781-hk-04-012#all",
+      "source_id": "pn781-hk-04-012",
+      "section": "all",
+      "units": 1,
+      "prompt_units": 0,
+      "excerpt_units": 1,
+      "max_c13": 0.0821,
+      "max_j13": 0.0,
+      "max_c8": 0.0,
+      "max_lcs_chars": 0,
+      "exact_or_substring": false,
+      "in_bm25_top5": false,
+      "band": "review",
+      "max_rc13": 0.0482
+    },
+    {
+      "chunk_id": "data/przemeknowak781/generated/batch-04.jsonl:pn781-hk-04-012#prompt",
+      "source_id": "pn781-hk-04-012",
+      "section": "prompt",
+      "units": 1,
+      "prompt_units": 0,
+      "excerpt_units": 1,
+      "max_c13": 0.0821,
+      "max_j13": 0.0,
+      "max_c8": 0.0,
+      "max_lcs_chars": 0,
+      "exact_or_substring": false,
+      "in_bm25_top5": false,
+      "band": "review",
+      "max_rc13": 0.1127
+    },
+    {
+      "chunk_id": "data/przemeknowak781/train.jsonl:pn781-hk-04-012#all",
+      "source_id": "pn781-hk-04-012",
+      "section": "all",
+      "units": 1,
+      "prompt_units": 0,
+      "excerpt_units": 1,
+      "max_c13": 0.0821,
+      "max_j13": 0.0,
+      "max_c8": 0.1088,
+      "max_lcs_chars": 28,
+      "exact_or_substring": false,
+      "in_bm25_top5": false,
+      "band": "review",
+      "max_rc13": 0.0449
+    },
+    {
+      "chunk_id": "data/przemeknowak781/train.jsonl:pn781-hk-04-012#prompt",
+      "source_id": "pn781-hk-04-012",
+      "section": "prompt",
+      "units": 1,
+      "prompt_units": 0,
+      "excerpt_units": 1,
+      "max_c13": 0.0821,
+      "max_j13": 0.0498,
+      "max_c8": 0.0,
+      "max_lcs_chars": 0,
+      "exact_or_substring": false,
+      "in_bm25_top5": false,
+      "band": "review",
+      "max_rc13": 0.1127
+    },
+    {
+      "chunk_id": "data/przemeknowak781/generated/batch-04.jsonl:pn781-hk-04-001#all",
+      "source_id": "pn781-hk-04-001",
+      "section": "all",
+      "units": 2,
+      "prompt_units": 0,
+      "excerpt_units": 2,
+      "max_c13": 0.0818,
+      "max_j13": 0.0,
+      "max_c8": 0.0,
+      "max_lcs_chars": 0,
+      "exact_or_substring": false,
+      "in_bm25_top5": true,
+      "band": "review",
+      "max_rc13": 0.0253
+    },
+    {
+      "chunk_id": "data/przemeknowak781/train.jsonl:pn781-hk-04-001#all",
+      "source_id": "pn781-hk-04-001",
+      "section": "all",
+      "units": 2,
+      "prompt_units": 0,
+      "excerpt_units": 2,
+      "max_c13": 0.0818,
+      "max_j13": 0.0,
+      "max_c8": 0.0,
+      "max_lcs_chars": 19,
+      "exact_or_substring": false,
+      "in_bm25_top5": true,
+      "band": "review",
+      "max_rc13": 0.0253
+    },
+    {
+      "chunk_id": "data/przemeknowak781/examples.jsonl:pn781-train-0013#prompt",
+      "source_id": "pn781-train-0013",
+      "section": "prompt",
+      "units": 2,
+      "prompt_units": 2,
+      "excerpt_units": 0,
+      "max_c13": 0.0062,
+      "max_j13": 0.0,
+      "max_c8": 0.0,
+      "max_lcs_chars": 0,
+      "exact_or_substring": false,
+      "in_bm25_top5": false,
+      "band": "review",
+      "max_rc13": 0.2653
+    },
+    {
+      "chunk_id": "data/przemeknowak781/train.jsonl:pn781-train-0013#prompt",
+      "source_id": "pn781-train-0013",
+      "section": "prompt",
+      "units": 2,
+      "prompt_units": 2,
+      "excerpt_units": 0,
+      "max_c13": 0.0062,
+      "max_j13": 0.0,
+      "max_c8": 0.0,
+      "max_lcs_chars": 0,
+      "exact_or_substring": false,
+      "in_bm25_top5": false,
+      "band": "review",
+      "max_rc13": 0.2653
+    }
+  ],
+  "runtime_s": 0.7,
+  "corpus_records": 519,
+  "corpus_unique_ids": 288,
+  "corpus_chunks": {
+    "all": 519,
+    "prompt": 519,
+    "answer": 519,
+    "claim": 945
+  },
+  "flagged_records": [
+    {
+      "id": "pn781-train-0013",
+      "files": [
+        "data/przemeknowak781/examples.jsonl",
+        "data/przemeknowak781/train.jsonl"
+      ],
+      "fields": [
+        "prompt"
+      ],
+      "band": "review",
+      "max_c13": 0.0062,
+      "max_rc13": 0.2653,
+      "max_lcs_chars": 0,
+      "units": 4,
+      "exact_or_substring": false
+    },
+    {
+      "id": "pn781-hk-04-012",
+      "files": [
+        "data/przemeknowak781/generated/batch-04.jsonl",
+        "data/przemeknowak781/train.jsonl"
+      ],
+      "fields": [
+        "all",
+        "prompt"
+      ],
+      "band": "review",
+      "max_c13": 0.0821,
+      "max_rc13": 0.1127,
+      "max_lcs_chars": 28,
+      "units": 4,
+      "exact_or_substring": false
+    },
+    {
+      "id": "pn781-hk-04-001",
+      "files": [
+        "data/przemeknowak781/generated/batch-04.jsonl",
+        "data/przemeknowak781/train.jsonl"
+      ],
+      "fields": [
+        "all"
+      ],
+      "band": "review",
+      "max_c13": 0.0818,
+      "max_rc13": 0.0253,
+      "max_lcs_chars": 19,
+      "units": 4,
+      "exact_or_substring": false
+    }
+  ],
+  "answer_key": {
+    "n_keys": 40,
+    "keys_sha256": "f66e387793c5dfad2bac8723a73716e434a9d6ecab40c544f8b529723f512123",
+    "params": {
+      "lex_flag_rev_c13": 0.5,
+      "lex_flag_fwd_c13": 0.2,
+      "lex_review_rev_c13": 0.25,
+      "lex_review_fwd_c13": 0.08,
+      "min_rev_chars": 60,
+      "topic_proxy": "BM25 top-10 training records for the VALIDATION prompt + key",
+      "fact_frac": 0.5,
+      "min_key_salient": 3,
+      "salient": "years + >=5-letter words (5-char prefix), boilerplate removed"
+    },
+    "keys_by_length": {
+      "long_ge_min_rev_chars": 24,
+      "short_13_to_min_rev_chars": 10,
+      "tiny_lt_13_not_ngram_checked": 6
+    },
+    "short_key_frac": 0.5,
+    "short_key_match_records": 6,
+    "short_key_match_unique_ids": 3,
+    "short_key_match_keys": 2,
+    "short_key_match_same_topic_unique_ids": 0,
+    "short_key_match_ids": [
+      {
+        "id": "pn781-hk-04-037",
+        "files": [
+          "data/przemeknowak781/generated/batch-04.jsonl",
+          "data/przemeknowak781/train.jsonl"
+        ],
+        "score": 1.0,
+        "n_keys": 1
+      },
+      {
+        "id": "pn781-train-0013",
+        "files": [
+          "data/przemeknowak781/examples.jsonl",
+          "data/przemeknowak781/train.jsonl"
+        ],
+        "score": 1.0,
+        "n_keys": 1
+      },
+      {
+        "id": "pn781-train-0015",
+        "files": [
+          "data/przemeknowak781/examples.jsonl",
+          "data/przemeknowak781/train.jsonl"
+        ],
+        "score": 1.0,
+        "n_keys": 1
+      }
+    ],
+    "lexical_flag_records": 0,
+    "lexical_flag_ids": [],
+    "lexical_review_records": 0,
+    "lexical_review_ids": [],
+    "keys_eligible_for_fact_match": 28,
+    "fact_match_records": 2,
+    "fact_match_unique_ids": 1,
+    "fact_match_keys": 1,
+    "fact_match_ids": [
+      {
+        "id": "pn781-hk-10-006",
+        "files": [
+          "data/przemeknowak781/generated/batch-10.jsonl",
+          "data/przemeknowak781/train.jsonl"
+        ],
+        "score": 0.75,
+        "n_keys": 1
+      }
+    ]
+  }
+}
