@@ -1,0 +1,49 @@
+{
+  "prepare_py_sha256": "0d3a0452ef9caf514c713766e81b3fc1f21ecfcb85db8d2b89072a9a75cf115e",
+  "train_sha256": "83153814da8251210f2b9d225dc713ad245c273bdc5d46dd1216b0e4b97178f5",
+  "synthetic_prepare": {
+    "returncode": 0,
+    "stdout_tail": "{\n  \"train_records\": 1,\n  \"holdout_records\": 1,\n  \"external_eval_input_count\": 0,\n  \"evaluation_loss_enabled\": true,\n  \"early_stopping_enabled\": false,\n  \"frozen_epochs\": 3,\n  \"canonical_components\": {\n    \"train\": [\n      \"SYN-A\"\n    ],\n    \"holdout\": [\n      \"SYN-B\"\n    ]\n  },\n  \"max_optimizer_steps\": 3,\n  \"tokenization\": \"PASS\",\n  \"max_sequence_tokens\": 867,\n  \"source_files\": {\n    \"train\": \"a2b3267cb641a9d32f58577392ab56c0a2391a77506fbfd337bc3564ec3fb262\",\n    \"holdout\": \"f07008c30aa070253775463b5b1aaf47778a93b05d4f409e6ef1d110d87e7f2f\",\n    \"clearance\": \"f06d4d6b7952a5b599c283f046649ba04c1d85017eca1f608ba28b679e62f291\"\n  }\n}\n",
+    "stderr_tail": "",
+    "record": {
+      "prompt_tokens": 23,
+      "completion_tokens": 844,
+      "masked_labels": 23,
+      "first_ids": [
+        2,
+        105,
+        2364,
+        107
+      ],
+      "last_ids": [
+        10255,
+        236761,
+        106
+      ]
+    }
+  },
+  "real_rows_tokenization_only": {
+    "rows": 90,
+    "pass": 90,
+    "fail": [],
+    "max_total_tokens": 2510,
+    "mean_total_tokens": 1624.8,
+    "max_prompt_tokens": 1452,
+    "completion_tokens_min_max": [
+      889,
+      1065
+    ],
+    "supervised_completion_tokens_total": 86883,
+    "cap": 4096,
+    "written_training_output": false
+  },
+  "tokenizer": {
+    "class": "GemmaTokenizer",
+    "vocab_size": 262144,
+    "len": 262144,
+    "turn_end_ids": [
+      106
+    ]
+  },
+  "status": "PASS"
+}
