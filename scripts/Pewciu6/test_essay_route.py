@@ -77,6 +77,29 @@ class PromptTests(unittest.TestCase):
         self.assertIn(ESSAY_NAMED, prompt)
         self.assertNotIn("zwięźle", prompt)
 
+    def test_source_first_paragraph_with_krotko_preserved(self):
+        # Regression (PR #102 review P1): a leading SOURCE paragraph that says "krótko"/"zwięźle"
+        # is item text, not a solver header, and must reach the solver verbatim.
+        source = ("Źródło 1. Kronikarz zapisał krótko i zwięźle: „W roku 1505 sejm zebrał się w Radomiu, "
+                  "a król zatwierdził uchwały.”")
+        text = source + "\n\n" + ESSAY_NAMED
+        header, body = essay_route.split_header(text)
+        self.assertEqual(header, "")
+        self.assertEqual(body, text)
+        info = essay_route.detect_essay(text)
+        self.assertTrue(info["is_essay"])
+        self.assertIn(source, essay_route.single_prompt(info, 1))
+        self.assertIn(source, essay_route.plan_prompt(info, 1))
+        self.assertIn(source, essay_route.write_prompt(info, 1, "- Teza: x"))
+        # An author paragraph without any solver imperative is kept too.
+        author = "Autor tekstu relacjonował wydarzenia krótko, pomijając szczegóły."
+        self.assertEqual(essay_route.split_header(author + "\n\n" + ESSAY_NAMED)[0], "")
+
+    def test_harness_header_recognized(self):
+        harness = ("Rozwiąż poniższe zadanie z egzaminu maturalnego z historii (poziom rozszerzony). "
+                   "Odpowiadaj po polsku, zwięźle i na podstawie źródeł zamieszczonych w zadaniu oraz własnej wiedzy.")
+        self.assertEqual(essay_route.split_header(harness + "\n\n" + ESSAY_NAMED), (harness, ESSAY_NAMED))
+
     def test_essay_header_kept(self):
         # A first paragraph that itself mentions the essay is task text, not a solver header.
         text = "Napisz wypracowanie zwięźle.\n\nTemat 1. A\n\nTemat 2. B"
@@ -138,7 +161,7 @@ class BuildTests(unittest.TestCase):
         self.tmp.cleanup()
 
     def run_build(self, *extra):
-        out = self.root / "out"
+        out = self.root / "private" / "out"
         with contextlib.redirect_stdout(io.StringIO()):
             code = essay_route.main(["build", "--input", str(self.input), "--out-dir", str(out), "--base-config", str(self.config), *extra])
         return code, out
@@ -158,7 +181,7 @@ class BuildTests(unittest.TestCase):
         plan = [json.loads(l) for l in (out / "plan.input.jsonl").read_text().splitlines()]
         self.assertEqual([r["id"] for r in single], ["a", "c"])
         self.assertEqual([r["id"] for r in plan], ["a__plan", "c__plan"])
-        self.assertEqual(single[0]["images"], ["../img/p.png"])
+        self.assertEqual(single[0]["images"], ["../../img/p.png"])
         self.assertEqual(set(single[0]), {"id", "prompt", "images"})
 
     def test_envelope_exceeded_refused(self):
@@ -195,6 +218,65 @@ class BuildTests(unittest.TestCase):
         self.assertNotIn("PLAN:", rows[1]["prompt"])
         record = json.loads((out / "write.record.json").read_text())
         self.assertEqual(record["plan_fallback_to_single"], ["c"])
+
+    def test_build_refuses_non_private_out_dir(self):
+        out = self.root / "public"
+        with contextlib.redirect_stderr(io.StringIO()):
+            code = essay_route.main(["build", "--input", str(self.input), "--out-dir", str(out), "--mode", "plan"])
+        self.assertEqual(code, 2)
+        self.assertFalse(out.exists())
+
+    def test_build_refuses_existing_out_dir(self):
+        self.assertEqual(self.run_build("--mode", "plan")[0], 0)
+        with contextlib.redirect_stderr(io.StringIO()):
+            self.assertEqual(self.run_build("--mode", "plan")[0], 2)
+
+    def run_write(self, out, plan_rows):
+        plan_out = self.root / "plan.output.jsonl"
+        write_rows(plan_out, plan_rows)
+        with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
+            return essay_route.main(["write-from-plan", "--manifest", str(out / "manifest.json"),
+                                     "--source", str(self.input), "--plan-output", str(plan_out)])
+
+    def test_write_from_plan_rejects_duplicate_plan_ids(self):
+        # Regression (PR #102 review P2): two completed rows with one plan id must not "last wins".
+        code, out = self.run_build("--mode", "plan")
+        code = self.run_write(out, [plan_output("a__plan", "- Teza: pierwsza"), plan_output("a__plan", "- Teza: druga"),
+                                    plan_output("c__plan", "- Teza: c")])
+        self.assertEqual(code, 2)
+        self.assertFalse((out / "write.input.jsonl").exists())
+
+    def test_write_from_plan_rejects_unexpected_plan_id(self):
+        code, out = self.run_build("--mode", "plan")
+        self.assertEqual(self.run_write(out, [plan_output("a__plan", "x"), plan_output("zzz__plan", "y")]), 2)
+        self.assertEqual(self.run_write(out, [plan_output("a", "x")]), 2)  # bare id, not a plan id
+        self.assertFalse((out / "write.input.jsonl").exists())
+
+    def test_write_from_plan_rejects_malformed_records(self):
+        code, out = self.run_build("--mode", "plan")
+        malformed = [
+            {"id": "a__plan", "raw_response": {"choices": []}},  # no error field
+            {"id": "a__plan", "raw_response": "tekst", "error": None},  # completed but not a provider object
+            {"id": "a__plan", "raw_response": {"choices": [{"message": {"content": ""}}]}, "error": None},
+            {"id": "a__plan", "raw_response": None, "error": "boom"},  # error must be an object
+            ["a__plan"],
+        ]
+        for row in malformed:
+            self.assertEqual(self.run_write(out, [row]), 2, row)
+        plan_out = self.root / "plan.output.jsonl"
+        plan_out.write_text('{"id": "a__plan", "raw_response": \n', encoding="utf-8")
+        with contextlib.redirect_stderr(io.StringIO()):
+            code = essay_route.main(["write-from-plan", "--manifest", str(out / "manifest.json"),
+                                     "--source", str(self.input), "--plan-output", str(plan_out)])
+        self.assertEqual(code, 2)
+        self.assertFalse((out / "write.input.jsonl").exists())
+
+    def test_failed_and_missing_plans_are_distinct_fallbacks(self):
+        code, out = self.run_build("--mode", "plan")
+        self.assertEqual(self.run_write(out, [plan_output("a__plan", "", error={"type": "http", "status": 500})]), 0)
+        record = json.loads((out / "write.record.json").read_text())
+        self.assertEqual(record["plan_fallback_to_single"], ["a", "c"])
+        self.assertEqual(record["plan_fallback_reasons"], {"a": "failed_plan:http", "c": "missing_plan"})
 
     def test_write_from_plan_rejects_changed_source(self):
         code, out = self.run_build("--mode", "plan")
@@ -240,6 +322,30 @@ class ReportTests(unittest.TestCase):
         self.assertEqual(result["summary"]["empty_or_error"], 1)
         self.assertEqual(result["summary"]["underlength"], 2)
         self.assertEqual(essay_report.report(rows), result)  # deterministic
+
+    def test_errored_partial_is_not_a_completed_answer(self):
+        # Regression (PR #102 review P2): a 301-word response that carries an error is partial.
+        partial = essay_text(words_per_aspect=90)
+        self.assertGreaterEqual(essay_report.count_words(partial), 300)
+        rows = [
+            plan_output("ok", essay_text(120)),
+            plan_output("part", partial, error={"type": "incomplete"}, finish="length"),
+            {"id": "part2", "raw_response": partial, "error": {"type": "timeout"}},
+        ]
+        result = essay_report.report(rows)
+        summary = result["summary"]
+        self.assertEqual(summary["completed"], 1)
+        self.assertEqual(summary["empty_or_error"], 2)
+        self.assertEqual(summary["partial_with_error"], 2)
+        ok_words = essay_report.count_words(essay_text(120))
+        self.assertEqual((summary["min_words"], summary["max_words"]), (ok_words, ok_words))
+        self.assertEqual(summary["three_aspects"], 1)
+        self.assertEqual(summary["underlength"], 2)
+        part = result["items"][1]
+        self.assertFalse(part["completed"])
+        self.assertTrue(part["partial"])
+        self.assertEqual(part["words"], 0)
+        self.assertGreaterEqual(part["partial_diagnostics"]["words"], 300)
 
     def test_solver_leak_and_chatter(self):
         text = "Z uwagi na to, że nie dołączyłeś źródła, piszę ogólnie.\n**Rozstrzygnięcie:** tak\n" + essay_text()

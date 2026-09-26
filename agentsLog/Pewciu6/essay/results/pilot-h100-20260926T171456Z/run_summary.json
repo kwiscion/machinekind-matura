@@ -1,0 +1,27 @@
+{
+ "status": "complete",
+ "stop_reason": null,
+ "failed_calls": [],
+ "unsent": {},
+ "fallbacks": null,
+ "request_options": {
+  "api": "ollama",
+  "num_ctx": 32768,
+  "temperature": null,
+  "think": false,
+  "base_url": "http://127.0.0.1:11434"
+ },
+ "handoff_sha256": {
+  "answers.single.jsonl": "eddbb522126ca4a6b74e9e32cf4764e821f2543d2537a1a9f00aceb859d6b93c",
+  "answers.write.jsonl": "8a86b6d5e01024e7c5af7d853d63eabdb21cc7dbda036405544da1fd93b1c7e8"
+ },
+ "run_id": "pilot-h100-20260926T171456Z",
+ "host": "Brev matura-pawel H100 PCIe 80GB",
+ "runtime": "Ollama 0.34.4",
+ "model": "gemma4:12b-it-q4_K_M",
+ "digest": "4eb23ef187e2c5462566d6a1d3bbbc2f1346d0b4327cbb66d58fffbcc9b2b05c",
+ "code": "main 1b6cd04",
+ "input_sha256": "fa546faf595b00dd13d70ea700ed8f70ade12227261313b3f24bb09866bbbf71",
+ "calls": 6,
+ "reserved_tokens": 7168
+}

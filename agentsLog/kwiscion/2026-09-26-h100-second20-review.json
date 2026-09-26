@@ -1,0 +1,434 @@
+{
+  "scope": "last20: input positions21-40; z14.2-z26",
+  "known_validation": true,
+  "review_status": "provisional_independent_sol",
+  "global_items": 40,
+  "global_max_points": 60,
+  "slice_items": 20,
+  "slice_max_points": 39,
+  "arms": {
+    "A": {
+      "input_sha256": "6615fea2e6fd1d6f9db5b781fa84a883899d1c2fb83a28b914638089e6b015a4",
+      "answer_sha256": "4f4345a65bc4658ec574f0ace411a40d35c1118ac47617b2337743bbf0d6e380",
+      "manifest_sha256": "9e3eea23499f9979918bb441abe773e47797794bd627aeaf2695e01638e74225",
+      "verified_complete_ids": 40,
+      "completed_answers": 40,
+      "unsent_ids": [],
+      "errors": 0,
+      "items": [
+        {
+          "id": "val2024-hist-z14.2",
+          "max_points": 1,
+          "points": 1,
+          "low": 1,
+          "high": 1,
+          "reason": "The requested selection is correct and unambiguous; unrelated neighboring-task material is excluded from this item.",
+          "error_category": "none"
+        },
+        {
+          "id": "val2024-hist-z15.1",
+          "max_points": 1,
+          "points": 1,
+          "low": 1,
+          "high": 1,
+          "reason": "Correct historical identification.",
+          "error_category": "none"
+        },
+        {
+          "id": "val2024-hist-z15.2",
+          "max_points": 1,
+          "points": 1,
+          "low": 1,
+          "high": 1,
+          "reason": "Correct decision supported by a substantive comparison of both supplied sources.",
+          "error_category": "none"
+        },
+        {
+          "id": "val2024-hist-z16.1",
+          "max_points": 1,
+          "points": 1,
+          "low": 1,
+          "high": 1,
+          "reason": "Correct decision and explanation connecting the visual barrier with the stated policy.",
+          "error_category": "none"
+        },
+        {
+          "id": "val2024-hist-z16.2",
+          "max_points": 1,
+          "points": 1,
+          "low": 1,
+          "high": 1,
+          "reason": "The requested selection and accompanying identification agree.",
+          "error_category": "none"
+        },
+        {
+          "id": "val2024-hist-z17.1",
+          "max_points": 1,
+          "points": 1,
+          "low": 0,
+          "high": 1,
+          "reason": "The required causal link and both sources are identified, but an added territorial claim distorts the causal sequence; adjudication needed.",
+          "error_category": "extraneous_factual_error"
+        },
+        {
+          "id": "val2024-hist-z17.2",
+          "max_points": 1,
+          "points": 1,
+          "low": 0,
+          "high": 1,
+          "reason": "Correct primary identification, with an invented alternative qualifier; adjudication needed on whether this invalidates the identification.",
+          "error_category": "contradictory_or_invented_alternative"
+        },
+        {
+          "id": "val2024-hist-z18",
+          "max_points": 1,
+          "points": 1,
+          "low": 0,
+          "high": 1,
+          "reason": "Correct side and interpretable hostile creature plus opposing soldiers; inaccurate additional visual descriptions make full credit uncertain.",
+          "error_category": "visual_misdescription"
+        },
+        {
+          "id": "val2024-hist-z19.1",
+          "max_points": 2,
+          "points": 0,
+          "low": 0,
+          "high": 0,
+          "reason": "Only one of three final judgments is correct; the minimum credit threshold is not reached.",
+          "error_category": "incorrect_judgments"
+        },
+        {
+          "id": "val2024-hist-z19.2",
+          "max_points": 1,
+          "points": 0,
+          "low": 0,
+          "high": 0,
+          "reason": "Wrong historical person selected.",
+          "error_category": "entity_identification"
+        },
+        {
+          "id": "val2024-hist-z20.1",
+          "max_points": 1,
+          "points": 1,
+          "low": 1,
+          "high": 1,
+          "reason": "Correct source selected with specific economic features supporting the explanation.",
+          "error_category": "none"
+        },
+        {
+          "id": "val2024-hist-z20.2",
+          "max_points": 2,
+          "points": 2,
+          "low": 1,
+          "high": 2,
+          "reason": "All three requested judgments are correct; unsolicited chronology in the explanations is wrong and needs adjudication.",
+          "error_category": "extraneous_factual_error"
+        },
+        {
+          "id": "val2024-hist-z21",
+          "max_points": 1,
+          "points": 1,
+          "low": 1,
+          "high": 1,
+          "reason": "Specific visible compositional features are linked to a persuasive political purpose.",
+          "error_category": "none"
+        },
+        {
+          "id": "val2024-hist-z22.1",
+          "max_points": 1,
+          "points": 1,
+          "low": 1,
+          "high": 1,
+          "reason": "Correct daily date.",
+          "error_category": "none"
+        },
+        {
+          "id": "val2024-hist-z22.2",
+          "max_points": 2,
+          "points": 2,
+          "low": 2,
+          "high": 2,
+          "reason": "Both required categories of similarity are accurately compared across the sources.",
+          "error_category": "none"
+        },
+        {
+          "id": "val2024-hist-z23.1",
+          "max_points": 1,
+          "points": 1,
+          "low": 1,
+          "high": 1,
+          "reason": "Both required methods are identified and grounded in the supplied sources.",
+          "error_category": "none"
+        },
+        {
+          "id": "val2024-hist-z23.2",
+          "max_points": 1,
+          "points": 0,
+          "low": 0,
+          "high": 0,
+          "reason": "Incorrect decision caused by misassigning the visual topic to the tabulated category.",
+          "error_category": "source_alignment"
+        },
+        {
+          "id": "val2024-hist-z24",
+          "max_points": 1,
+          "points": 0,
+          "low": 0,
+          "high": 0,
+          "reason": "Incorrect decision conflates different events despite distinct source evidence.",
+          "error_category": "source_conflation"
+        },
+        {
+          "id": "val2024-hist-z25",
+          "max_points": 3,
+          "points": 0,
+          "low": 0,
+          "high": 0,
+          "reason": "Misidentifies the central inscription and historical setting, so the proposed message is not supported by the image.",
+          "error_category": "visual_entity_and_context"
+        },
+        {
+          "id": "val2024-hist-z26",
+          "max_points": 15,
+          "points": 4,
+          "low": 3,
+          "high": 6,
+          "reason": "Essay body has 338 words: coherence receives 3; shallow historical argument and multiple factual errors constrain content to central 1 after deduction. Content depth and error grouping require adjudication.",
+          "error_category": "essay_factual_accuracy_and_depth"
+        }
+      ],
+      "total": 20,
+      "low": 15,
+      "high": 22,
+      "max_points": 39,
+      "nonessay_total": 16,
+      "nonessay_max_points": 24,
+      "essay_assessment": {
+        "body_word_count": 338,
+        "whole_response_whitespace_tokens": 399,
+        "word_count_method": "Whitespace-delimited essay body after removing conversational preface and heading; all 338 tokens contain letters or numbers.",
+        "narrative_gross": 3,
+        "factual_error_deduction": 2,
+        "narrative_net": 1,
+        "coherence": 3,
+        "points": 4,
+        "low": 3,
+        "high": 6,
+        "adjudication_needed": true
+      }
+    },
+    "B": {
+      "input_sha256": "6615fea2e6fd1d6f9db5b781fa84a883899d1c2fb83a28b914638089e6b015a4",
+      "answer_sha256": "030dc23e9f44e2f9e07cb76e484eeb6ee317b9aa7a4f93efc2dcb67ae4f8bda7",
+      "manifest_sha256": "fa9e061a881e744af226955b63e43a429c09ebebb6fa3f077bc355f1bbf82201",
+      "verified_complete_ids": 40,
+      "completed_answers": 38,
+      "unsent_ids": [
+        "val2024-hist-z26"
+      ],
+      "errors": 2,
+      "items": [
+        {
+          "id": "val2024-hist-z14.2",
+          "max_points": 1,
+          "points": 1,
+          "low": 1,
+          "high": 1,
+          "reason": "Correct and unambiguous selection in the requested subsection; unrelated neighboring-task material is excluded.",
+          "error_category": "none"
+        },
+        {
+          "id": "val2024-hist-z15.1",
+          "max_points": 1,
+          "points": 1,
+          "low": 1,
+          "high": 1,
+          "reason": "Correct historical identification.",
+          "error_category": "none"
+        },
+        {
+          "id": "val2024-hist-z15.2",
+          "max_points": 1,
+          "points": 0,
+          "low": 0,
+          "high": 0,
+          "reason": "Incorrect decision results from attributing praise in the source to the wrong person.",
+          "error_category": "source_attribution"
+        },
+        {
+          "id": "val2024-hist-z16.1",
+          "max_points": 1,
+          "points": 1,
+          "low": 1,
+          "high": 1,
+          "reason": "Correct decision and explanation joining the policy text to the visual exclusion of outside powers.",
+          "error_category": "none"
+        },
+        {
+          "id": "val2024-hist-z16.2",
+          "max_points": 1,
+          "points": 1,
+          "low": 1,
+          "high": 1,
+          "reason": "Correct selection and historical identification.",
+          "error_category": "none"
+        },
+        {
+          "id": "val2024-hist-z17.1",
+          "max_points": 1,
+          "points": 1,
+          "low": 0,
+          "high": 1,
+          "reason": "The required military-to-political causal link is present, but the ceremony location and an added characterization are wrong; adjudication needed.",
+          "error_category": "extraneous_factual_error"
+        },
+        {
+          "id": "val2024-hist-z17.2",
+          "max_points": 1,
+          "points": 1,
+          "low": 1,
+          "high": 1,
+          "reason": "Correct dynasty identified without conflicting alternatives.",
+          "error_category": "none"
+        },
+        {
+          "id": "val2024-hist-z18",
+          "max_points": 1,
+          "points": 0,
+          "low": 0,
+          "high": 1,
+          "reason": "Correct side, but misread headgear and unidentified generic soldiers do not securely establish two accurate visual arguments; a broad reading may accept them.",
+          "error_category": "insufficient_visual_grounding"
+        },
+        {
+          "id": "val2024-hist-z19.1",
+          "max_points": 2,
+          "points": 0,
+          "low": 0,
+          "high": 0,
+          "reason": "Only one of the three judgments is correct, below the minimum credit threshold.",
+          "error_category": "incorrect_judgments"
+        },
+        {
+          "id": "val2024-hist-z19.2",
+          "max_points": 1,
+          "points": 0,
+          "low": 0,
+          "high": 0,
+          "reason": "Wrong historical person selected.",
+          "error_category": "entity_identification"
+        },
+        {
+          "id": "val2024-hist-z20.1",
+          "max_points": 1,
+          "points": 1,
+          "low": 1,
+          "high": 1,
+          "reason": "Correct source selected and supported by specific economic features.",
+          "error_category": "none"
+        },
+        {
+          "id": "val2024-hist-z20.2",
+          "max_points": 2,
+          "points": 2,
+          "low": 2,
+          "high": 2,
+          "reason": "All requested judgments are correct; the decisive explanation identifies the appropriate economic policy.",
+          "error_category": "none"
+        },
+        {
+          "id": "val2024-hist-z21",
+          "max_points": 1,
+          "points": 1,
+          "low": 1,
+          "high": 1,
+          "reason": "Visible symbols and massed composition are linked to the intended political impression.",
+          "error_category": "none"
+        },
+        {
+          "id": "val2024-hist-z22.1",
+          "max_points": 1,
+          "points": 1,
+          "low": 1,
+          "high": 1,
+          "reason": "Correct daily date.",
+          "error_category": "none"
+        },
+        {
+          "id": "val2024-hist-z22.2",
+          "max_points": 2,
+          "points": 2,
+          "low": 2,
+          "high": 2,
+          "reason": "Both categories of similarity accurately compare the two sources.",
+          "error_category": "none"
+        },
+        {
+          "id": "val2024-hist-z23.1",
+          "max_points": 1,
+          "points": 1,
+          "low": 1,
+          "high": 1,
+          "reason": "Both required methods are identified.",
+          "error_category": "none"
+        },
+        {
+          "id": "val2024-hist-z23.2",
+          "max_points": 1,
+          "points": 1,
+          "low": 0,
+          "high": 1,
+          "reason": "An explicitly labeled correction gives the correct decision and source comparison, but an earlier contradictory decision remains; adjudication needed.",
+          "error_category": "contradictory_commitments_with_explicit_correction"
+        },
+        {
+          "id": "val2024-hist-z24",
+          "max_points": 1,
+          "points": 0,
+          "low": 0,
+          "high": 0,
+          "reason": "Incorrectly treats distinct source events as one crisis.",
+          "error_category": "source_conflation"
+        },
+        {
+          "id": "val2024-hist-z25",
+          "max_points": 3,
+          "points": 0,
+          "low": 0,
+          "high": 0,
+          "reason": "No complete final answer was delivered; incomplete output receives zero.",
+          "error_category": "incomplete_runtime_output"
+        },
+        {
+          "id": "val2024-hist-z26",
+          "max_points": 15,
+          "points": 0,
+          "low": 0,
+          "high": 0,
+          "reason": "Item was not dispatched after the declared stop rule; no essay or essay quality score is inferred.",
+          "error_category": "unsent"
+        }
+      ],
+      "total": 15,
+      "low": 13,
+      "high": 16,
+      "max_points": 39,
+      "nonessay_total": 15,
+      "nonessay_max_points": 24,
+      "essay_assessment": {
+        "status": "unsent",
+        "points": 0,
+        "low": 0,
+        "high": 0,
+        "word_count": null,
+        "note": "No generated essay exists; zero is an operational result and not an essay-quality assessment."
+      }
+    }
+  },
+  "limitations": [
+    "Independent agent first pass, not an organizer grade or adjudicated score.",
+    "Ranges express rubric judgment sensitivity, not statistical confidence intervals.",
+    "No prior review scores were consulted before the first pass; no arm configurations were inspected.",
+    "Detailed evaluator-only evidence is private; public output contains no answer, question, source, or key quotations."
+  ]
+}

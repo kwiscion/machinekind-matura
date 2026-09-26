@@ -5,12 +5,13 @@ from pathlib import Path
 import tempfile
 import time
 import unittest
-from unittest.mock import patch
+from unittest.mock import Mock, patch
 import run_gemma_package as f
 
 
 class FinalOffline(unittest.TestCase):
     def setUp(self):
+        (f.r.OWN/'private').mkdir(parents=True, exist_ok=True)
         self.tmp = tempfile.TemporaryDirectory(dir=f.r.OWN/'private', prefix='final-launch-test-')
         self.root = Path(self.tmp.name)
         self.inf, self.adapter = f.r.modules()
@@ -116,6 +117,105 @@ class FinalOffline(unittest.TestCase):
         self.args.max_calls=101
         self.args.max_output_tokens_total=101*1024
         with self.assertRaisesRegex(RuntimeError,'maximum calls'): f.preflight(self.args)
+
+    def response(self, item_id, finish='stop', content='Exact answer'):
+        raw={'choices':[{'finish_reason':finish,'message':{'content':content}}]}
+        return {'id':item_id,'error':self.inf.response_error(raw),
+                'usage':{'prompt_tokens':20,'completion_tokens':2},'raw_response':raw}
+
+    def test_opt_in_local_failures_keep_later_ids_and_exact_raw(self):
+        import copy
+        for finish,content in [('length','Unfinished text'),('stop',''),('stop',None),('stop',[{'type':'text','text':' '}])]:
+            with self.subTest(finish=finish,content=content):
+                self.args.output=self.root/('local-'+str(len(list(self.root.iterdir()))))
+                out,package,config,cases=self.prepared()
+                bad=self.response('alpha',finish,content)
+                if content is None: bad['raw_response']['choices'][0]['message']['reasoning']='Private reasoning'
+                original=copy.deepcopy(bad['raw_response'])
+                verify=Mock()
+                with patch.object(self.inf,'run_case',side_effect=[bad,self.response('B/2'),self.response('last',content='Good essay')]) as call:
+                    result=f.request_loop(cases,config,out,3,time.monotonic()+1800,lambda:None,verify,self.inf,True)
+                self.assertEqual(call.call_count,3)
+                self.assertEqual(verify.call_count,3)
+                self.assertEqual([x.args[0]['id'] for x in call.call_args_list],['alpha','B/2','last'])
+                self.assertEqual(result['case_error_ids'],['alpha'])
+                self.assertEqual(result['unsent_ids'],[])
+                self.assertEqual(result['stop_reason'],'complete')
+                saved=[json.loads(x) for x in (out/'raw.jsonl').read_text().splitlines()]
+                self.assertEqual(saved[0]['raw_response'],original)
+                self.assertIsNotNone(saved[0]['error'])
+                reservations=[json.loads(x)['id'] for x in (out/'calls.jsonl').read_text().splitlines()]
+                self.assertEqual(reservations,['alpha','B/2','last'])
+                self.assertEqual(f.finalize(out,package)['empty'],1)
+                answers=json.loads((out/'answers.json').read_text())['answers']
+                self.assertEqual(answers,[{'id':'alpha','answer':''},{'id':'B/2','answer':'Exact answer'},{'id':'last','answer':'Good essay'}])
+
+    def test_default_still_stops_known_case_error(self):
+        out,package,config,cases=self.prepared()
+        with patch.object(self.inf,'run_case',return_value=self.response('alpha','length','Partial')) as call:
+            result=f.request_loop(cases,config,out,3,time.monotonic()+1800,lambda:None,lambda:None,self.inf)
+        self.assertEqual(call.call_count,1)
+        self.assertEqual(result['unsent_ids'],['B/2','last'])
+        self.assertFalse(result['continue_case_errors'])
+        self.assertEqual(result['case_error_ids'],[])
+        self.assertEqual(f.finalize(out,package)['empty'],3)
+
+    def test_opt_in_uncertain_or_unsafe_failures_still_stop(self):
+        kinds=('http','timeout','provider','parse','missing_usage','malformed_usage','excess_prompt','excess_output','bool_usage',
+               'truncated','context_truncated','runtime','unknown_finish','missing_finish','refusal','tools','multiple_choices','malformed_content')
+        for kind in kinds:
+            with self.subTest(kind=kind):
+                self.args.output=self.root/kind
+                out,package,config,cases=self.prepared()
+                row=self.response('alpha','length','Partial')
+                raw=row['raw_response']; msg=raw['choices'][0]['message']
+                if kind in ('http','timeout','parse'): row['error']={'type':kind,'message':'blocked'}
+                if kind=='provider': raw['error']={'message':'server failed'}
+                if kind=='missing_usage': row['usage']=None
+                if kind=='malformed_usage': row['usage']='invalid'
+                if kind=='excess_prompt': row['usage']['prompt_tokens']=2817
+                if kind=='excess_output': row['usage']['completion_tokens']=1025
+                if kind=='bool_usage': row['usage']['completion_tokens']=True
+                if kind in ('truncated','context_truncated'): raw[kind]=True
+                if kind=='unknown_finish': raw['choices'][0]['finish_reason']='unknown'
+                if kind=='missing_finish': raw['choices'][0].pop('finish_reason')
+                if kind=='refusal': msg['refusal']='Refused'
+                if kind=='tools': msg['tool_calls']=[{'name':'tool'}]
+                if kind=='multiple_choices': raw['choices'].append(dict(raw['choices'][0]))
+                if kind=='malformed_content': msg['content']={'text':'bad'}
+                def verify():
+                    if kind=='runtime': raise RuntimeError('wrong runtime/context')
+                with patch.object(self.inf,'run_case',return_value=row) as call:
+                    result=f.request_loop(cases,config,out,3,time.monotonic()+1800,lambda:None,verify,self.inf,True)
+                self.assertEqual(call.call_count,1)
+                self.assertEqual(result['case_error_ids'],[])
+                self.assertEqual(result['unsent_ids'],['B/2','last'])
+                self.assertNotEqual(result['stop_reason'],'complete')
+                self.assertEqual(f.finalize(out,package)['empty'],3)
+
+    def test_opt_in_never_extends_budget_or_ignores_guard(self):
+        for kind in ('calls','deadline','pins','worker'):
+            with self.subTest(kind=kind):
+                self.args.output=self.root/kind
+                out,package,config,cases=self.prepared()
+                guard_count=0
+                def guard():
+                    nonlocal guard_count
+                    guard_count+=1
+                    if guard_count==2 and kind in ('pins','worker'): raise RuntimeError(kind+' changed')
+                with patch.object(self.inf,'run_case',return_value=self.response('alpha','length','Partial')) as call, \
+                     patch.object(f.time,'monotonic',side_effect=[0,1000] if kind=='deadline' else [0,0]):
+                    result=f.request_loop(cases,config,out,1 if kind=='calls' else 3,1000,guard,lambda:None,self.inf,True)
+                self.assertEqual(call.call_count,1)
+                self.assertEqual(len((out/'calls.jsonl').read_text().splitlines()),1)
+                self.assertEqual(result['unsent_ids'],['B/2','last'])
+                self.assertNotEqual(result['stop_reason'],'complete')
+                self.assertEqual(f.finalize(out,package)['empty'],3)
+
+    def test_opt_in_is_frozen_in_preflight(self):
+        self.assertFalse(f.preflight(self.args)[3]['continue_case_errors'])
+        self.args.continue_case_errors=True
+        self.assertTrue(f.preflight(self.args)[3]['continue_case_errors'])
 
     def test_guard_allows_exact_supervisor_but_blocks_other_cold_launcher(self):
         proc=self.root/'proc'; (proc/'999991').mkdir(parents=True)
