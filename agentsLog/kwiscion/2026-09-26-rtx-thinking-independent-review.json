@@ -1,0 +1,243 @@
+{
+  "review_status": "provisional_independent_sol_first_pass",
+  "scope": "paired_six_item_known_validation_panel",
+  "known_validation": true,
+  "input_sha256": "ca9e92d2a341abbb4d18807b9ca557c82c93000523ee943112a977712c503321",
+  "git_commit": "b346b86ee63643a47f5c62fc89a8de73f9e2d841",
+  "pr_url": "https://github.com/kwiscion/machinekind-matura/pull/136",
+  "first_pass_frozen_at_utc": "2026-09-26T20:52:11.174703+00:00",
+  "first_pass_sha256": "cbd8a103600ab976853baf6b6356d9585e3567b30af945fdcaf6ff9f3390be19",
+  "answer_hash_convention": "SHA256 of exact decoded final-answer string encoded UTF-8, without whitespace normalization",
+  "arms": {
+    "control": {
+      "items": [
+        {
+          "id": "val2024-hist-z5.1",
+          "arm": "control",
+          "answer_sha256": "b26589b7074b7d6cafdd16044369aef3bca9d50969794915b8df8ce16b73d721",
+          "points": 0,
+          "low": 0,
+          "high": 0,
+          "max_points": 1,
+          "error_category": "map_identity_conflation",
+          "reason": "Wrong decision; the map is assigned to the campaign suggested by the prose instead of identified from its own evidence.",
+          "error": null,
+          "finish_reason": "stop"
+        },
+        {
+          "id": "val2024-hist-z14.1",
+          "arm": "control",
+          "answer_sha256": "b844db4bf8300b2c8e8532ee7772c26a8e2095490be1d5cd462de340989f32d9",
+          "points": 0,
+          "low": 0,
+          "high": 0,
+          "max_points": 1,
+          "error_category": "chronology_and_map_conflation",
+          "reason": "Wrong decision and campaign identification, with an invented map date/location reading and additional confused military relationships.",
+          "error": null,
+          "finish_reason": "stop"
+        },
+        {
+          "id": "val2024-hist-z25",
+          "arm": "control",
+          "answer_sha256": "d3a60278f1f410f1653c9f65c99ebb3bf0212b77530872813b58af75081044f4",
+          "points": 0,
+          "low": 0,
+          "high": 0,
+          "max_points": 3,
+          "error_category": "wrong_historical_context_and_visual_reading",
+          "reason": "Assigns the cartoon to an unrelated historical episode, invents the meaning of its lettering and fails to establish the depicted political message. Generic mention of repression does not satisfy the rubric.",
+          "error": null,
+          "finish_reason": "stop"
+        },
+        {
+          "id": "val2024-hist-z2",
+          "arm": "control",
+          "answer_sha256": "b9231e5651e351255d5d25f5bb181392629e3c36251f76f906f0be2b4e167909",
+          "points": 1,
+          "low": 1,
+          "high": 1,
+          "max_points": 1,
+          "error_category": "none",
+          "reason": "Correct decision and identification of the earlier speaker versus later successor states. Approximate dating describes the partition process, not an exact date for every depicted state.",
+          "error": null,
+          "finish_reason": "stop"
+        },
+        {
+          "id": "val2024-hist-z4",
+          "arm": "control",
+          "answer_sha256": "8019fd7519105ba3da6790dfaa48af9622296e2175aa76750dbe6a1f761c1dba",
+          "points": 1,
+          "low": 1,
+          "high": 1,
+          "max_points": 1,
+          "error_category": "incidental_unsupported_specificity",
+          "reason": "The required two-tradition architectural argument is correct. An unnecessary order example is not established for the pictured columns, but is phrased as an example of the tradition and does not negate the portico/dome core.",
+          "error": null,
+          "finish_reason": "stop"
+        },
+        {
+          "id": "val2024-hist-z13",
+          "arm": "control",
+          "answer_sha256": "2760406e0d6d7fa2e1a857c2d47174e0b2b7ac8033dc37a1f12d7f91b5d5f97c",
+          "points": 1,
+          "low": 0,
+          "high": 1,
+          "max_points": 1,
+          "error_category": "correct_core_with_false_visual_claims",
+          "reason": "Correct event and genuinely visible date meet the basic identification/evidence core. However, a literal execution scene, implement and additional caption are invented. Central credit is retained; strict treatment of the contradictory visual justification could reject it.",
+          "error": null,
+          "finish_reason": "stop"
+        }
+      ],
+      "denominator": 8,
+      "total": 3,
+      "low": 2,
+      "high": 3,
+      "latency_sum_seconds": 28.156
+    },
+    "thinking": {
+      "items": [
+        {
+          "id": "val2024-hist-z5.1",
+          "arm": "thinking",
+          "answer_sha256": "19bd541bfbe9d604ffc74c10e739042e0c873bc89ae781bb5b83c03597aa70cf",
+          "points": 0,
+          "low": 0,
+          "high": 0,
+          "max_points": 1,
+          "error_category": "map_identity_conflation",
+          "reason": "The same wrong decision and map identification persist in a longer explanation.",
+          "error": null,
+          "finish_reason": "stop"
+        },
+        {
+          "id": "val2024-hist-z14.1",
+          "arm": "thinking",
+          "answer_sha256": "6bd394d1d5959854ac02e8ad7b1732a074ff2bf6921e3558618e58ed5d5961ba",
+          "points": 0,
+          "low": 0,
+          "high": 0,
+          "max_points": 1,
+          "error_category": "chronology_and_map_conflation",
+          "reason": "Wrong decision persists; the revised campaign/date narrative is also false and relies on unsupported map features.",
+          "error": null,
+          "finish_reason": "stop"
+        },
+        {
+          "id": "val2024-hist-z25",
+          "arm": "thinking",
+          "answer_sha256": "720714518e383ca201573eb9ccc02468f6a93090b591f3431cc019dac7f65f6b",
+          "points": 0,
+          "low": 0,
+          "high": 0,
+          "max_points": 3,
+          "error_category": "wrong_historical_context_and_visual_reading",
+          "reason": "Replaces the first incorrect episode with a different incorrect context and imagines a monetary object not shown. No correct political message is established, so no partial point is earned.",
+          "error": null,
+          "finish_reason": "stop"
+        },
+        {
+          "id": "val2024-hist-z2",
+          "arm": "thinking",
+          "answer_sha256": "e1d06bc3801173953ca3e7bb2a4cfe69dcb1c3c938dd3518a769d54066618ed1",
+          "points": 1,
+          "low": 1,
+          "high": 1,
+          "max_points": 1,
+          "error_category": "none",
+          "reason": "Correct political and chronological contrast grounded in both sources.",
+          "error": null,
+          "finish_reason": "stop"
+        },
+        {
+          "id": "val2024-hist-z4",
+          "arm": "thinking",
+          "answer_sha256": "8685550eb59f9bb35b6701fb7559336ba1db4658fed8fb0d6f5936cbf85000c9",
+          "points": 1,
+          "low": 1,
+          "high": 1,
+          "max_points": 1,
+          "error_category": "none",
+          "reason": "Correctly combines visible architectural features associated with both required traditions.",
+          "error": null,
+          "finish_reason": "stop"
+        },
+        {
+          "id": "val2024-hist-z13",
+          "arm": "thinking",
+          "answer_sha256": "f65817e71b1bc79eb37791e12e93a7978dbdef39251ad67426eec9111ea0fc25",
+          "points": 1,
+          "low": 0,
+          "high": 1,
+          "max_points": 1,
+          "error_category": "correct_core_with_false_visual_claims",
+          "reason": "Correct event and genuinely visible date remain an adequate core, but the added claim of a public execution scene is false. Central credit is retained; a stricter assessment of the contradictory visual explanation gives zero.",
+          "error": null,
+          "finish_reason": "stop"
+        }
+      ],
+      "denominator": 8,
+      "total": 3,
+      "low": 2,
+      "high": 3,
+      "latency_sum_seconds": 179.259
+    }
+  },
+  "paired_delta": {
+    "central": 0,
+    "low": -1,
+    "high": 1,
+    "meaning": "Judgment bounds across the two disputed z13 answers; not statistical confidence and not secure evidence of a gain. Applying the same acceptance rule to their shared core normally leaves a tie."
+  },
+  "secure_item_gains": [],
+  "secure_item_regressions": [],
+  "independence": "Arm labels visible; prior validation familiarity. No other grades of this bundle or raw thinking read. Frozen before launch/manifest text read.",
+  "method": "Full source-v2 prompts and all official task-specific rules read; original pages5,7,8,16,17,28 freshly inspected. Exact final answers only. No provider reasoning, other bundle grading or raw thinking read. Added falsehoods assessed against core requirements, without an automatic any-invented-element rejection rule.",
+  "lightweight_manifest_audit": {
+    "rows": 12,
+    "unique_id_arm_pairs": 12,
+    "error_rows": 0,
+    "stop_rows": 12,
+    "declared_max_calls": 12,
+    "declared_max_requested_tokens": 67584,
+    "requested_token_arithmetic": "6*1024 + 6*10240 = 67584",
+    "control": {
+      "think": false,
+      "num_predict": 1024
+    },
+    "thinking": {
+      "think": true,
+      "num_predict": 10240
+    },
+    "shared": {
+      "context_length": 32768,
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 64,
+      "model_digest": "4eb23ef187e2c5462566d6a1d3bbbc2f1346d0b4327cbb66d58fffbcc9b2b05c",
+      "runtime_version": "0.34.4"
+    },
+    "declared_start_utc": "2026-09-26T20:41:56Z",
+    "declared_end_utc": "2026-09-26T20:45:24Z",
+    "declared_elapsed_seconds": 208,
+    "dispatch_deadline_seconds": 1800,
+    "in_flight_timeout_seconds": 420,
+    "deadline_semantics": "Dispatch cutoff, not a hard1800-second process deadline; declared run elapsed far below it.",
+    "answer_row_latency_sum_seconds": 207.415,
+    "run_record_latency_sum_seconds": 214.0,
+    "latency_discrepancy": "Public run-record sum differs from exact published row sum by6.585s; does not affect grades.",
+    "runner_sha256": "61da9874d2c0ebc5d36b1a70b7900c75931e793af2299f6d7128943e495dd48f",
+    "input_source_v2_sha256_verified": "6615fea2e6fd1d6f9db5b781fa84a883899d1c2fb83a28b914638089e6b015a4",
+    "all_six_prompt_prefix_hashes_match": true,
+    "image_byte_parity": "Not independently established: grader local PNG byte hashes differ from published image hash prefixes; owner original raster files were not available. Same official exam pages were visually reviewed.",
+    "raw_controls_limit": "Response token counts, thinking presence/absence, truncation flags and individual runtime snapshots are reported by owner but not independently re-read because raw thinking was excluded from this review."
+  },
+  "implication": "This paired panel does not support longer native thinking as a remedy for source-identification failures. More reasoning changes stories without correcting the visual premise. Next work should verify exact image ingestion and test a generic check that final factual/visual claims are supported by the original image and text; do not supply item-specific corrections or promote another observation pipeline without new paired evidence.",
+  "limitations": [
+    "Six selected known-validation items, one stochastic sample per arm, visible arm labels, one independent reviewer.",
+    "Joint intervention changes thinking and generated-token allowance; it is not an isolated thinking-only causal estimate.",
+    "No full-exam score or promotion claim.",
+    "No new inference, training, Git mutation or May2025 access."
+  ]
+}

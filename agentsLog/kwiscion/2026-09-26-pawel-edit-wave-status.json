@@ -1,0 +1,180 @@
+{
+  "status": "NO_ACTIVE_REMOTE_GENERATION; ALL_18_DECLARED_HTTP_REQUESTS_COMPLETED; APPLICATION_LEDGER_UNAVAILABLE",
+  "snapshot_utc": "2026-09-26T20:40:34Z",
+  "scope": "Read-only audit of the owner-authorized essay project runtime and public project launch declaration",
+  "generation_calls_by_auditor": 0,
+  "process_mutations": 0,
+  "git_mutations": 0,
+  "runtime_observed": {
+    "completed_generation_http_requests": 18,
+    "http_200": 18,
+    "http_non_200": 0,
+    "first_completion_utc": "2026-09-26T20:11:00Z",
+    "last_completion_utc": "2026-09-26T20:28:06Z",
+    "loaded_models": 0,
+    "active_generation_processes": 0,
+    "active_generation_tcp_connections_at_earlier_snapshots": 0,
+    "service_restarts": 0
+  },
+  "application_result": {
+    "completed_valid_answers": null,
+    "length_or_empty_errors": null,
+    "edit_fallbacks": null,
+    "unsent_items": null,
+    "controller_terminal_state": null,
+    "live_guardian_verified": false,
+    "reason": "Controller was declared to run through a tunnel; no controller ledger or new edit-wave artifact was available on the inspected runtime or current local project/public branches."
+  },
+  "declared_wave": {
+    "source_url": "https://github.com/kwiscion/machinekind-matura/issues/80#issuecomment-5849486726",
+    "posted_utc": "2026-09-26T20:09:49Z",
+    "started_utc": "2026-09-26T20:09:13Z",
+    "deadline_utc": "2026-09-26T21:09:00Z",
+    "claimed_watchdog_exit_utc": "2026-09-26T21:09:15Z",
+    "max_calls": 18,
+    "max_requested_tokens": 270336,
+    "original_ceiling_calls": 19,
+    "original_ceiling_requested_tokens": 290816,
+    "deferred_calls": 1,
+    "deferred_scope": "Known-validation thinking essay diagnostic; not part of the enforced 18-call run",
+    "fixtures": [
+      "dev-essay-001",
+      "dev-essay-003",
+      "dev-essay-004",
+      "dev-essay-005",
+      "dev-essay-009",
+      "dev-essay-010"
+    ],
+    "topic": 1,
+    "stages": {
+      "T_draft": {
+        "think": true,
+        "cap": 20480
+      },
+      "N_draft": {
+        "think": false,
+        "cap": 4096
+      },
+      "T_exact_span_edit": {
+        "think": true,
+        "cap": 20480
+      }
+    },
+    "draft_order": "alternating",
+    "model": "gemma4:12b-it-q4_K_M",
+    "model_digest": "4eb23ef187e2c5462566d6a1d3bbbc2f1346d0b4327cbb66d58fffbcc9b2b05c",
+    "runtime_version": "0.34.4",
+    "context_length": 32768,
+    "temperature": "omitted",
+    "retries": 0,
+    "smokes": 0,
+    "structured_output_schema": false,
+    "bundle_sha256": "841697abd5632f7556bffa7920ac5c9eeaa35373cb9067a6065174c0e672417b",
+    "template_sha256": "3abac9a8ae64a548c67de6e6304b0ef6836ae346135da3ff08b46a3807b6cf04",
+    "index_sha256": "350800b1924b8f0094171fc5d68652da0f9260d03273a51ad6421c1a03e70429",
+    "retrieval_py_sha256": "5ce9918fcc0151c8e15391781ace98deaf4b786977a69e6e773ccc9d7b0a51a3",
+    "settings_verification": "Launch-declared; the serving command independently showed context32768 and matching model/projector blob identifiers, but the individual request options and exact manifest were not available."
+  },
+  "interpretation": "The dedicated runtime is currently idle and its journal accounts for the declared generation request count. This supports generation having finished. It does not establish parsed/factually correct answers, successful edits or the external controller finalization state.",
+  "evidence": {
+    "private_runtime_evidence_sha256": "eab9e557ee1fc9bd29b39c23bc6949ffc321ed7bf9db64ded009d9716d1aa946",
+    "private_launch_comment_sha256": "61da3b29e4579ffc4f5725c3bf0c1b5b9632ad325a584620230127f309551365",
+    "runtime_completions": [
+      {
+        "completed_at_utc": "2026-09-26T20:11:00+0000",
+        "http_status": 200,
+        "route": "/api/chat"
+      },
+      {
+        "completed_at_utc": "2026-09-26T20:11:10+0000",
+        "http_status": 200,
+        "route": "/api/chat"
+      },
+      {
+        "completed_at_utc": "2026-09-26T20:13:14+0000",
+        "http_status": 200,
+        "route": "/api/chat"
+      },
+      {
+        "completed_at_utc": "2026-09-26T20:13:25+0000",
+        "http_status": 200,
+        "route": "/api/chat"
+      },
+      {
+        "completed_at_utc": "2026-09-26T20:14:14+0000",
+        "http_status": 200,
+        "route": "/api/chat"
+      },
+      {
+        "completed_at_utc": "2026-09-26T20:15:23+0000",
+        "http_status": 200,
+        "route": "/api/chat"
+      },
+      {
+        "completed_at_utc": "2026-09-26T20:16:17+0000",
+        "http_status": 200,
+        "route": "/api/chat"
+      },
+      {
+        "completed_at_utc": "2026-09-26T20:16:31+0000",
+        "http_status": 200,
+        "route": "/api/chat"
+      },
+      {
+        "completed_at_utc": "2026-09-26T20:18:30+0000",
+        "http_status": 200,
+        "route": "/api/chat"
+      },
+      {
+        "completed_at_utc": "2026-09-26T20:18:42+0000",
+        "http_status": 200,
+        "route": "/api/chat"
+      },
+      {
+        "completed_at_utc": "2026-09-26T20:19:19+0000",
+        "http_status": 200,
+        "route": "/api/chat"
+      },
+      {
+        "completed_at_utc": "2026-09-26T20:22:41+0000",
+        "http_status": 200,
+        "route": "/api/chat"
+      },
+      {
+        "completed_at_utc": "2026-09-26T20:23:28+0000",
+        "http_status": 200,
+        "route": "/api/chat"
+      },
+      {
+        "completed_at_utc": "2026-09-26T20:23:39+0000",
+        "http_status": 200,
+        "route": "/api/chat"
+      },
+      {
+        "completed_at_utc": "2026-09-26T20:25:14+0000",
+        "http_status": 200,
+        "route": "/api/chat"
+      },
+      {
+        "completed_at_utc": "2026-09-26T20:25:26+0000",
+        "http_status": 200,
+        "route": "/api/chat"
+      },
+      {
+        "completed_at_utc": "2026-09-26T20:26:58+0000",
+        "http_status": 200,
+        "route": "/api/chat"
+      },
+      {
+        "completed_at_utc": "2026-09-26T20:28:06+0000",
+        "http_status": 200,
+        "route": "/api/chat"
+      }
+    ]
+  },
+  "needed_handoff": [
+    "External controller ledger and final run manifest",
+    "Answer-only exact T/N/edited-or-fallback outputs with hashes",
+    "Errors, truncation flags and actual usage per call; explicit fallback labels"
+  ]
+}

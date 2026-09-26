@@ -23,3 +23,7 @@ full-thinking-prep/** -text whitespace=cr-at-eol
 model-answers/full-thinking-* -text whitespace=cr-at-eol
 2026-09-26-full-thinking-*.json -text whitespace=cr-at-eol
 answer-recovery-prep/** -text whitespace=cr-at-eol
+model-answers/answer-recovery-* -text whitespace=cr-at-eol
+2026-09-26-answer-recovery-*.json -text whitespace=cr-at-eol
+2026-09-26-lora-readiness-*.json -text whitespace=cr-at-eol
+2026-09-26-rtx-thinking-*.json -text whitespace=cr-at-eol

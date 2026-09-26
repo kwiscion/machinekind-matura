@@ -1,0 +1,573 @@
+{
+  "schema": "essay_lora_clearance_v1",
+  "reviewer": "independent Sol /root/essay_corpus_sol",
+  "issued_date": "2026-09-26",
+  "scope": "Data-only clearance for exact canonical 90-row bounded essay pilot and input-only eval16. Carries forward prior independent content/source/split/rights reviews; not a new wholesale regrade, runtime approval, training launch, or release certification.",
+  "source_revision": "e5a730ebe423751bfd4f632378878141c159d8a4",
+  "checks": {
+    "independent_content_review": true,
+    "rights_export_review": true,
+    "source_group_alias_dedup": true,
+    "benchmark_exclusion_audit": true,
+    "evaluation_inputs_group_audit": true
+  },
+  "files": {
+    "train": {
+      "path": "agentsLog/Bukareszt/essay_corpus/export_v1/train_sft.jsonl",
+      "sha256": "83153814da8251210f2b9d225dc713ad245c273bdc5d46dd1216b0e4b97178f5"
+    },
+    "eval_inputs": {
+      "path": "agentsLog/Bukareszt/essay_corpus/export_v1/eval16_input.jsonl",
+      "sha256": "5979ee0b8e0e4f084cf6070f42d31892ee53c1f5485409b4fc5dac1266055a28"
+    }
+  },
+  "canonical_group_map": {
+    "C-1939": "C-1939",
+    "C-1956": "C-1956",
+    "C-1968": "C-1968",
+    "C-1970": "C-1970",
+    "C-absolutism": "C-absolutism",
+    "C-alexander": "C-alexander",
+    "C-allied-conferences": "C-allied-conferences",
+    "C-athens": "C-athens",
+    "C-batory": "C-batory",
+    "C-black-death": "C-black-death",
+    "C-casimir3": "C-casimir3",
+    "C-charlemagne": "C-charlemagne",
+    "C-church-conflicts": "C-church-conflicts",
+    "C-cold-war": "C-cold-war",
+    "C-communist-takeover": "C-communist-takeover",
+    "C-cop": "C-cop",
+    "C-crusades": "C-crusades",
+    "C-discoveries": "C-discoveries",
+    "C-euro-atlantic": "C-euro-atlantic",
+    "C-french-rev": "C-french-rev",
+    "C-great-depression": "C-great-depression",
+    "C-hammurabi": "C-hammurabi",
+    "C-holocaust": "C-holocaust",
+    "C-hundred-years": "C-hundred-years",
+    "C-industrial": "C-industrial",
+    "C-january": "C-january",
+    "C-katyn": "C-katyn",
+    "C-league": "C-cold-war",
+    "C-lokietek": "C-lokietek",
+    "C-lublin": "C-lublin",
+    "C-magna-carta": "C-magna-carta",
+    "C-meiji": "C-meiji",
+    "C-napoleonic": "C-napoleonic",
+    "C-odnowiciel": "C-odnowiciel",
+    "C-persian-wars": "C-persian-wars",
+    "C-piast-origins": "C-piast-origins",
+    "C-reformation": "C-reformation",
+    "C-rome-empire": "C-rome-empire",
+    "C-rome-republic": "C-rome-republic",
+    "C-thirty-years": "C-thirty-years",
+    "C-unifications": "C-unifications",
+    "C-us-independence": "C-us-independence",
+    "C-ussr-collapse": "C-ussr-collapse",
+    "C-versailles": "C-versailles",
+    "C-vienna": "C-reformation",
+    "C-ww1-independence": "C-ww1-independence"
+  },
+  "accepted_records": {
+    "bk117-b1-1970": {
+      "status": "accepted",
+      "record_sha256": "c96712e15f346b1bad617eb567087f01deb8f819a842555e045ffb40c122ff9f",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "bk117-b1-charlemagne": {
+      "status": "accepted",
+      "record_sha256": "37132e248f0c94fb6191ac41dcaab4f7324ab0bd87a6e0ed9d1f04e78ed6a335",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "bk117-b1-communist": {
+      "status": "accepted",
+      "record_sha256": "34c307871680b4d5b6f7e794a5667fcbe325570dacbe82d1a48b117966cf77c9",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "bk117-b1-piast": {
+      "status": "accepted",
+      "record_sha256": "42f82980f2a75d8cbb9d7e1fdf42f6dd1f0f08e6c670a429d08d828f72c98b6d",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "bk117-b1-thirty": {
+      "status": "accepted",
+      "record_sha256": "532acf9e2ec46558b148270d9cc7058b0f2a8104328b9e9bd7dbbc6d364d8692",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "bk117-b1-versailles": {
+      "status": "accepted",
+      "record_sha256": "d600faa17a6d113e69e533bdb5f73ea752f37f02b16fa9289a5804ec06983257",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "bk117-b2-1968": {
+      "status": "accepted",
+      "record_sha256": "6ecbdc7b7dd402ac6d8d54777300949a803248f1f19aa80aa75e96cc607555d7",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "bk117-b2-conferences": {
+      "status": "accepted",
+      "record_sha256": "1eee43cdc4ddd76cd99c1454fd0d6b3a7fcf7c28134a15a2d058cbb308c7c2eb",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "bk117-b2-cop": {
+      "status": "accepted",
+      "record_sha256": "88c63a923f488f00887fc693ac0f45f9a89f37770116e44106761db3dbf35cc6",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "bk117-b2-discoveries": {
+      "status": "accepted",
+      "record_sha256": "c8f86ed33092b55a0af5b95d55e8380dc451dd754f8b83b4aff6e4f9352b7977",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "bk117-b2-holocaust": {
+      "status": "accepted",
+      "record_sha256": "0aec8826f9690ea4dbe743494fdd312ceb173f821f1aa27057949de1fd0a98d4",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "bk117-b2-hundred": {
+      "status": "accepted",
+      "record_sha256": "ce4cef21ad5fc19f5c7fb70171e471722f3a8c70b2469aa3ae82b2514fbd3edc",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "bk117-b2-katyn": {
+      "status": "accepted",
+      "record_sha256": "ac07fd81803e09ed562a87a256c94370ed47f54cb6b6c94b7fc4a8daeac82051",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "bk117-b2-ussr": {
+      "status": "accepted",
+      "record_sha256": "e817211cdd817633100b4565f7a9e0bafc70d5195af758d94edc3e54c3bde5c6",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "bk117-b3-communist-t2": {
+      "status": "accepted",
+      "record_sha256": "60cc1d16eabc381b145a79ec1eaaec24e360d2afd74f77cad0da0e2d4fb0393f",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "bk117-b3-cop-t2": {
+      "status": "accepted",
+      "record_sha256": "af641166369790e2446fabfff2f30bbd783ec8cb149ab4a393b296cb8d328ca2",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "bk117-b3-euro": {
+      "status": "accepted",
+      "record_sha256": "d896b54872f11619238e06ea28a0ec722a56ca4e300204dd63ace2294e165f40",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "bk117-b3-hammurabi": {
+      "status": "accepted",
+      "record_sha256": "7ef709737488bd45e35b782371252e4aa1a0fd9af8a5f1dd6f1fa110709c8dbf",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "bk117-b3-katyn-t2": {
+      "status": "accepted",
+      "record_sha256": "81834c1c12075403198326ec4783b6d45df6f34e543873803b3d6b5e298f070d",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "bk117-b3-magna": {
+      "status": "accepted",
+      "record_sha256": "bc1e748712b4cba91d21ce8855fe980f637cab8e9f4c7cc41a9336fd3b22f896",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "bk117-b3-odnowiciel": {
+      "status": "accepted",
+      "record_sha256": "7a44864c3856ee278d56a74f209ecacd9435649a3c06f1345e1a0e38f8badd4b",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "bk117-b3-thirty-t2": {
+      "status": "accepted",
+      "record_sha256": "6375688aa94ada78c81082d5e15c940c90d0ae3d895f1dfc45e5663d16bd87c3",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "bk117-b1-1970-repair-wrapper": {
+      "status": "accepted",
+      "record_sha256": "214569438d3cee86733070976fde221f1d1f0123c26aa97fa1f1eeb82ee2bc53",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "bk117-b1-1970-repair-underlength": {
+      "status": "accepted",
+      "record_sha256": "95cc8a629376a40b42646f8b1143f98e62826003d3f1c6fef70df60295b5953a",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "bk117-b1-charlemagne-repair-extra_topic": {
+      "status": "accepted",
+      "record_sha256": "c43428eeead02355f7bc9c9493fd5e2cdd988faefed5807f01cdb6df311b5b94",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "bk117-b1-charlemagne-repair-underlength": {
+      "status": "accepted",
+      "record_sha256": "be7b5e91d41ad0ff5c25d08aec931cab51010a0173a925737856023c8e27fff1",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "bk117-b1-communist-repair-underlength": {
+      "status": "accepted",
+      "record_sha256": "f3e0426d54cabc58baf8551ca1be17284f8be207398cb68ede454ee7c32f038d",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "bk117-b1-communist-repair-wrapper": {
+      "status": "accepted",
+      "record_sha256": "62dd249b48f80e2dc3cbd20b4c822f9f1a3bd9e5c224a05ba4fab0420d00e94d",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "bk117-b1-piast-repair-wrapper": {
+      "status": "accepted",
+      "record_sha256": "00de193c9a8e9f77a9c8cf872991eec5a669cbc1687ca0626f92aa9e97679ddd",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "bk117-b1-piast-repair-extra_topic": {
+      "status": "accepted",
+      "record_sha256": "6250e5b9ea7f9bf3618a560706cc94dd845c40080992107ae770fe1d855251f3",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "bk117-b1-thirty-repair-extra_topic": {
+      "status": "accepted",
+      "record_sha256": "78487f4d86783834dd9593cad5849de9a4da42371db595a7cd2ea23154227704",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "bk117-b1-thirty-repair-underlength": {
+      "status": "accepted",
+      "record_sha256": "9a0dca0a2a6af6c2487dbbcfc8e11b969ca76110b9fae1894a27bae1585cec38",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "bk117-b1-versailles-repair-underlength": {
+      "status": "accepted",
+      "record_sha256": "b2bc48d55c52837f6fc7a141190eef832813d145b57fd3b3a4e07cce8dc282c0",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "bk117-b1-versailles-repair-wrapper": {
+      "status": "accepted",
+      "record_sha256": "7bf5150d60b84802d168c2d3e350c7a412708d43d277ab6bb68c58ac306681a3",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "bk117-b2-1968-repair-wrapper": {
+      "status": "accepted",
+      "record_sha256": "2b3ecd7689fcecb4c489edc5b245dfd3be7ad54f69095b81dbd60a23d6cce1c9",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "bk117-b2-1968-repair-extra_topic": {
+      "status": "accepted",
+      "record_sha256": "1e439b1f6fba0cfd18c7b88f9984a2cf468bbb64e10a8b36428c146547fec825",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "bk117-b2-conferences-repair-extra_topic": {
+      "status": "accepted",
+      "record_sha256": "0764b78d136fca693dd4ed4b006e14a5e3438e1774a2aa3bb790d4e1d54a3454",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "bk117-b2-conferences-repair-underlength": {
+      "status": "accepted",
+      "record_sha256": "a95257e037fd998fa6745effd2870958b9b21caf9703678c16947077af571274",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "bk117-b2-cop-repair-underlength": {
+      "status": "accepted",
+      "record_sha256": "2462ee8aa47c098c36a0db68f617f39a7b8ff19d28649d0c52d8db8306728cdd",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "bk117-b2-cop-repair-wrapper": {
+      "status": "accepted",
+      "record_sha256": "66b6c9d33aee15d690cdd40a257af64a487efd3ef035fdb45e7de9d64e9a781e",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "bk117-b2-discoveries-repair-wrapper": {
+      "status": "accepted",
+      "record_sha256": "56356dd7baa0a1ab7bd2e34d88c5786675a812fae10f0531a2b2c946c55ce0de",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "bk117-b2-discoveries-repair-extra_topic": {
+      "status": "accepted",
+      "record_sha256": "ccf95e580fb5319327a5abcb0477604e0a02825508d98b50f451e2e3a7e0c6a3",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "bk117-b2-holocaust-repair-extra_topic": {
+      "status": "accepted",
+      "record_sha256": "8c0834f2bec455195362709f68f3c9d00ffb59e8634517f584dbe16b5d32bef7",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "bk117-b2-holocaust-repair-underlength": {
+      "status": "accepted",
+      "record_sha256": "1c06a28672d6b2013fd1505b15158814ccf4d1fb34abf58c0faa48f91efe3417",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "bk117-b2-hundred-repair-underlength": {
+      "status": "accepted",
+      "record_sha256": "f3fb6ba2444e8479669b41d61a65f6d6dbd374d6a9e559b7f186cb7c802f1f09",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "bk117-b2-hundred-repair-wrapper": {
+      "status": "accepted",
+      "record_sha256": "9bd4b5b30e73595d3298444f6fcc58c005bdfa22ec946885c080a6245b3b1ed7",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "bk117-b2-katyn-repair-wrapper": {
+      "status": "accepted",
+      "record_sha256": "74cafaae7f1b401eea40108b6a86221658db7ed58116b49b683b9188125e9917",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "bk117-b2-katyn-repair-extra_topic": {
+      "status": "accepted",
+      "record_sha256": "3cafd128afbef471cbe3cab88b77a6f3b01269924ed902be17ef4681a2d7e3ce",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "bk117-b2-ussr-repair-underlength": {
+      "status": "accepted",
+      "record_sha256": "9da843a0730a9dc2b43c6ee23b011a403eb7909e4a707edeb55d17b98c522a2f",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "bk117-b2-ussr-repair-wrapper": {
+      "status": "accepted",
+      "record_sha256": "d03993438499133a92b83ff911612f0cdf9acb3c625206f271aec3489ca73be0",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "bk117-b3-communist-t2-repair-underlength": {
+      "status": "accepted",
+      "record_sha256": "29a69245a725cc95544aa2a085f5d7cf0ebf1dbb601afd1345dda0a241c6d296",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "bk117-b3-communist-t2-repair-wrapper": {
+      "status": "accepted",
+      "record_sha256": "26111cefd14d3579116302a9f0cd418ca041e5ed928fa443eb8ddc30d1922894",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "bk117-b3-cop-t2-repair-wrapper": {
+      "status": "accepted",
+      "record_sha256": "74ac7af76b3d86242bbeed70b343fd7f7a49b7caea9b15f4b7032405c2dc9be2",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "bk117-b3-cop-t2-repair-extra_topic": {
+      "status": "accepted",
+      "record_sha256": "2677cc1521f1a67e5ad129998b849ffc83ec3f0b08d696b81f8e30d331036b57",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "bk117-b3-euro-repair-extra_topic": {
+      "status": "accepted",
+      "record_sha256": "283013338a04625278a78bb626ad5b49a7945f406c9f6e95257b77646f88e811",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "bk117-b3-euro-repair-underlength": {
+      "status": "accepted",
+      "record_sha256": "6e1762c4b47656da418fe570f803a66cfb53a78ebe095fed6558a6cf463af7fc",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "bk117-b3-hammurabi-repair-underlength": {
+      "status": "accepted",
+      "record_sha256": "a8ae330bb94cc98e7ff4dfc390d58d4d09e9301661acea5888ebdc8ca5f83ee8",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "bk117-b3-hammurabi-repair-wrapper": {
+      "status": "accepted",
+      "record_sha256": "0c8d2b0d10db6d5cb3b97ee5de5dd0ad4ca8f77867e9c63e8474ad925bf440ba",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "bk117-b3-katyn-t2-repair-wrapper": {
+      "status": "accepted",
+      "record_sha256": "573c73e26168d0767ac342a16163fa31666c53a157574c80b1e2acaa6d92bee2",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "bk117-b3-katyn-t2-repair-extra_topic": {
+      "status": "accepted",
+      "record_sha256": "3e3ebb97c3feda6789d4e50a7c2ab8d68f328debaa293ea93dfb9edcca2104f8",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "bk117-b3-magna-repair-extra_topic": {
+      "status": "accepted",
+      "record_sha256": "b8e5db7d9274c3391a229b0051280cc72cc7f6d997b7d36ed70112f5c19220ad",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "bk117-b3-magna-repair-underlength": {
+      "status": "accepted",
+      "record_sha256": "88447a47cfa27f3587ce56e8af973ef1fe09b83d5071a9f69a83529942e4515a",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "bk117-b3-odnowiciel-repair-underlength": {
+      "status": "accepted",
+      "record_sha256": "fc5be70718e47faea44f1f0e02d2e9e50d2d6cbe480e41ae351e568a32748089",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "bk117-b3-odnowiciel-repair-wrapper": {
+      "status": "accepted",
+      "record_sha256": "fd391beec9e2d61f5b70108d146d72e4109f7d7b409dc16dabb6b495e6afa582",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "bk117-b3-thirty-t2-repair-wrapper": {
+      "status": "accepted",
+      "record_sha256": "a390977c2d335d05016aeacef4658730505d02954e25f3a768388fb477da9542",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "bk117-b3-thirty-t2-repair-extra_topic": {
+      "status": "accepted",
+      "record_sha256": "a58b5647a98fdd4e338ed1bf3748727a194e4d3780184f3b89f5d16e8a952e98",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "astra-seed-essay-solon": {
+      "status": "accepted",
+      "record_sha256": "c7833e01e5f3af1a6801cfb83bd35268077ae810b575ac36fff9ea77e4f076a9",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "astra-seed-essay-casimir": {
+      "status": "accepted",
+      "record_sha256": "c16bdeda97f6c33e1aab450384803372fccd31c69b24512f81d7e84f193c2495",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "astra-seed-essay-lublin": {
+      "status": "accepted",
+      "record_sha256": "1f61bf96ec112371d67b33cf49846a241d8872562f926dc6cb4cfa78fd66e1ca",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "astra-seed-essay-january": {
+      "status": "accepted",
+      "record_sha256": "62c08e5b3e1312e07b6ad94993829494d7af0874c9865957d547872659fbd33d",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "astra-seed-repair-solon": {
+      "status": "accepted",
+      "record_sha256": "81d81feae5394cf8a23165f32d8578c12fc7776d41d3ada4416d2f08deec352e",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "astra-seed-repair-casimir": {
+      "status": "accepted",
+      "record_sha256": "55372709f13080a7deb5cb74014785eb1ab3dc976d8b7cfeb88f5259268292b5",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "astra-seed-repair-lublin": {
+      "status": "accepted",
+      "record_sha256": "b3821466f5bafe0f18511170806456f2e03f3960c81bfeef51719fce5a1014d8",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "astra-seed-repair-january": {
+      "status": "accepted",
+      "record_sha256": "0329ac235a69bd35193c7b08ff7b86ffb122c0f7dc0da382b1d7832f92945f69",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "sol-corpus-essay-augustus": {
+      "status": "accepted",
+      "record_sha256": "a2f8da704e9b874a0cde986e3446228533f0b3ff383b495252feb086d356a862",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "sol-corpus-essay-investiture": {
+      "status": "accepted",
+      "record_sha256": "6a78e0d8cc4a3ab79909c08d5eb8fe2c13d5d39530f6fcbe65339c4a611bfcda",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "sol-corpus-essay-augsburg": {
+      "status": "accepted",
+      "record_sha256": "7af477e3bcd2066caf00888fe2c3fb779f40b3754f6243906ee3959106912bce",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "sol-corpus-essay-vienna": {
+      "status": "accepted",
+      "record_sha256": "e66102075b247489932f4e109a49543a778e3ecb5f0626dcce62020a5ebea48a",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "sol-corpus-essay-industrial": {
+      "status": "accepted",
+      "record_sha256": "258d3397216d801ce0a6130d56b4bed28937873741ea95edd24a23bd44f66706",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "sol-corpus-essay-meiji": {
+      "status": "accepted",
+      "record_sha256": "9808e04102bbff7f4d6b01074b6f7715fea9018b218b5ad2af6618829dd7a7af",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "sol-corpus-essay-league": {
+      "status": "accepted",
+      "record_sha256": "e84763d7ba5e335d6de2d5a56b54d4232256d5028e83ff22e94d237850f54282",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "sol-corpus-essay-marshall": {
+      "status": "accepted",
+      "record_sha256": "9ab9068d00ef3b592aa1c98deca8a6a65227b103ee907c35f886895aa6c0be04",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "sol-corpus-repair-augustus": {
+      "status": "accepted",
+      "record_sha256": "c8fdf140bcfc5f8cce15da7bc8754a5585426585acc19d2cbf8fcbaf396ee685",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "sol-corpus-repair-investiture": {
+      "status": "accepted",
+      "record_sha256": "f473a41d33965feafbd832b5021afb1e31bca4832d2f696d332cca8e245ffd92",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "sol-corpus-repair-augsburg": {
+      "status": "accepted",
+      "record_sha256": "46d8660698289355058ffd485f67d9e87e866dd2e1bcb7c5bb2dbae79cad9702",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "sol-corpus-repair-vienna": {
+      "status": "accepted",
+      "record_sha256": "329dc000659998f912c5a97f4448ebfa6ff67311d56093235226b45743048ab5",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "sol-corpus-repair-industrial": {
+      "status": "accepted",
+      "record_sha256": "2f35981420f8a7f887abcf89369bf3a9b764cfdd6fc47ccd8a2f8620bc6ec0e0",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "sol-corpus-repair-meiji": {
+      "status": "accepted",
+      "record_sha256": "5df632f98017a87488fab806bf859fd38a8dc9588f46c4cad1d8441d6f34a83a",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "sol-corpus-repair-league": {
+      "status": "accepted",
+      "record_sha256": "94ed42c7efbfa638593805a9fad358124d641e09faaeffcb41b2f26b6b3f23fe",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    },
+    "sol-corpus-repair-marshall": {
+      "status": "accepted",
+      "record_sha256": "78dc9877907b7f9863b0bd2b5acf327a5ee013414b43469842bf671012d22d76",
+      "independent_review_reference": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json; agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json"
+    }
+  },
+  "review_evidence": [
+    {
+      "path": "agentsLog/kwiscion/2026-09-26-essay-export-independent-review.json",
+      "sha256": "3f440dcd7be5c77dcb722e55aee8ec739489b449b840f77e6c9da51ba7f704f3"
+    },
+    {
+      "path": "agentsLog/kwiscion/2026-09-26-pr131-data-clearance.json",
+      "sha256": "e020a2adea48a10e79b8ba077e149239fdab9e3963ef0e3c2354e0e2ccc81d2b"
+    }
+  ],
+  "attribution": {
+    "path": "agentsLog/Bukareszt/lora_readiness/training_attribution.jsonl",
+    "sha256": "649dcf22644c5ed3aff1b2c5eb5436c1b54ec58e553fdf0c4c0ce25136bf5685",
+    "required_with_export": true,
+    "reference_only_entries": 6,
+    "restriction": "Reference-only sources confer no permission to redistribute source text; original prose and existing attribution only."
+  },
+  "split_evidence": {
+    "group_map_sha256": "59923aa0733d7b754a21cf10ade6c005f4f9875cf7396d270908a02ebe102142",
+    "leakage_report_sha256": "e70da63494d1e07c519c140011035d995eb3443cbcc59a9f5fe53816c387a3fd",
+    "export_manifest_sha256": "07be94168fe5124975efdddc8a25565d3eee9f947a0df22af46ad7ff56d330f9",
+    "connected_pairs": [
+      [
+        "C-reformation",
+        "C-vienna"
+      ],
+      [
+        "C-league",
+        "C-cold-war"
+      ]
+    ]
+  },
+  "evaluation": {
+    "mode": "input_only",
+    "evaluation_loss": false,
+    "early_stopping": false,
+    "frozen_epochs": 3,
+    "excluded_from_clean_posttraining_claims": [
+      "old #80 DEV Casimir",
+      "old #80 DEV Lublin",
+      "old #80 DEV January"
+    ],
+    "comparators": [
+      "matched exported-base nonthinking",
+      "strongest current base native-thinking"
+    ],
+    "limitations": "Eval16 factcards are fallible, not full gold essays. No unseen-pretraining claim. No legacy training rows may be added under this clearance."
+  },
+  "authorization": "No execution authorization is created by this sidecar. Root must declare finite runtime work after separate compatibility checks."
+}

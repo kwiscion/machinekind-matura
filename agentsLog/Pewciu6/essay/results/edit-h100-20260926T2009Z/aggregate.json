@@ -1,0 +1,671 @@
+{
+ "label": "DEVELOPMENT grading (fresh blind Opus agent graders; not promotion evidence)",
+ "raters": [
+  "graderA",
+  "graderB"
+ ],
+ "families": [
+  "N-draft",
+  "T-draft",
+  "T-patched"
+ ],
+ "summary": {
+  "N-draft": {
+   "n": 6,
+   "graded": 6,
+   "needs_adjudication": 0,
+   "resolved_n": 6,
+   "mean_resolved_only": 7.67,
+   "sum_over_denominator": "46/90"
+  },
+  "T-draft": {
+   "n": 6,
+   "graded": 6,
+   "needs_adjudication": 0,
+   "resolved_n": 6,
+   "mean_resolved_only": 9.58,
+   "sum_over_denominator": "57.5/90"
+  },
+  "T-patched": {
+   "n": 6,
+   "graded": 6,
+   "needs_adjudication": 0,
+   "resolved_n": 6,
+   "mean_resolved_only": 9.58,
+   "sum_over_denominator": "57.5/90"
+  }
+ },
+ "note": "successful-edit and fallback counts live in the export step's answers.jsonl, not here",
+ "cells": {
+  "dev-essay-001|N-draft|score": {
+   "graded": true,
+   "code": "E10",
+   "raters": [
+    "graderA",
+    "graderB"
+   ],
+   "ratings": {
+    "graderA": {
+     "total": 6,
+     "aspect_levels": [
+      1,
+      3,
+      1
+     ],
+     "coherence": 3,
+     "error_deduction": 2,
+     "factual_errors": 4
+    },
+    "graderB": {
+     "total": 6,
+     "aspect_levels": [
+      1,
+      3,
+      1
+     ],
+     "coherence": 3,
+     "error_deduction": 2,
+     "factual_errors": 3
+    }
+   },
+   "needs_adjudication": false,
+   "disagreement_reason": null,
+   "total": 6
+  },
+  "dev-essay-001|T-draft|score": {
+   "graded": true,
+   "code": "E07",
+   "raters": [
+    "graderA",
+    "graderB"
+   ],
+   "ratings": {
+    "graderA": {
+     "total": 11,
+     "aspect_levels": [
+      3,
+      3,
+      3
+     ],
+     "coherence": 3,
+     "error_deduction": 1,
+     "factual_errors": 3
+    },
+    "graderB": {
+     "total": 11,
+     "aspect_levels": [
+      3,
+      3,
+      3
+     ],
+     "coherence": 3,
+     "error_deduction": 1,
+     "factual_errors": 4
+    }
+   },
+   "needs_adjudication": false,
+   "disagreement_reason": null,
+   "total": 11
+  },
+  "dev-essay-001|T-patched|score": {
+   "graded": true,
+   "code": "E02",
+   "raters": [
+    "graderA",
+    "graderB"
+   ],
+   "ratings": {
+    "graderA": {
+     "total": 11,
+     "aspect_levels": [
+      3,
+      3,
+      3
+     ],
+     "coherence": 3,
+     "error_deduction": 1,
+     "factual_errors": 3
+    },
+    "graderB": {
+     "total": 11,
+     "aspect_levels": [
+      3,
+      3,
+      3
+     ],
+     "coherence": 3,
+     "error_deduction": 1,
+     "factual_errors": 4
+    }
+   },
+   "needs_adjudication": false,
+   "disagreement_reason": null,
+   "total": 11
+  },
+  "dev-essay-003|N-draft|score": {
+   "graded": true,
+   "code": "E04",
+   "raters": [
+    "graderA",
+    "graderB"
+   ],
+   "ratings": {
+    "graderA": {
+     "total": 9,
+     "aspect_levels": [
+      3,
+      3,
+      1
+     ],
+     "coherence": 3,
+     "error_deduction": 1,
+     "factual_errors": 3
+    },
+    "graderB": {
+     "total": 9,
+     "aspect_levels": [
+      3,
+      3,
+      1
+     ],
+     "coherence": 3,
+     "error_deduction": 1,
+     "factual_errors": 4
+    }
+   },
+   "needs_adjudication": false,
+   "disagreement_reason": null,
+   "total": 9
+  },
+  "dev-essay-003|T-draft|score": {
+   "graded": true,
+   "code": "E06",
+   "raters": [
+    "graderA",
+    "graderB"
+   ],
+   "ratings": {
+    "graderA": {
+     "total": 10,
+     "aspect_levels": [
+      3,
+      3,
+      1
+     ],
+     "coherence": 3,
+     "error_deduction": 0,
+     "factual_errors": 4
+    },
+    "graderB": {
+     "total": 9,
+     "aspect_levels": [
+      3,
+      3,
+      1
+     ],
+     "coherence": 3,
+     "error_deduction": 1,
+     "factual_errors": 4
+    }
+   },
+   "needs_adjudication": false,
+   "disagreement_reason": null,
+   "total": 9.5
+  },
+  "dev-essay-003|T-patched|score": {
+   "graded": true,
+   "code": "E15",
+   "raters": [
+    "graderA",
+    "graderB"
+   ],
+   "ratings": {
+    "graderA": {
+     "total": 10,
+     "aspect_levels": [
+      3,
+      3,
+      1
+     ],
+     "coherence": 3,
+     "error_deduction": 0,
+     "factual_errors": 4
+    },
+    "graderB": {
+     "total": 9,
+     "aspect_levels": [
+      3,
+      3,
+      1
+     ],
+     "coherence": 3,
+     "error_deduction": 1,
+     "factual_errors": 4
+    }
+   },
+   "needs_adjudication": false,
+   "disagreement_reason": null,
+   "total": 9.5
+  },
+  "dev-essay-004|N-draft|score": {
+   "graded": true,
+   "code": "E12",
+   "raters": [
+    "graderA",
+    "graderB"
+   ],
+   "ratings": {
+    "graderA": {
+     "total": 6,
+     "aspect_levels": [
+      1,
+      1,
+      1
+     ],
+     "coherence": 3,
+     "error_deduction": 0,
+     "factual_errors": 3
+    },
+    "graderB": {
+     "total": 6,
+     "aspect_levels": [
+      1,
+      1,
+      1
+     ],
+     "coherence": 3,
+     "error_deduction": 0,
+     "factual_errors": 2
+    }
+   },
+   "needs_adjudication": false,
+   "disagreement_reason": null,
+   "total": 6
+  },
+  "dev-essay-004|T-draft|score": {
+   "graded": true,
+   "code": "E01",
+   "raters": [
+    "graderA",
+    "graderB"
+   ],
+   "ratings": {
+    "graderA": {
+     "total": 12,
+     "aspect_levels": [
+      3,
+      3,
+      3
+     ],
+     "coherence": 3,
+     "error_deduction": 0,
+     "factual_errors": 1
+    },
+    "graderB": {
+     "total": 12,
+     "aspect_levels": [
+      3,
+      3,
+      3
+     ],
+     "coherence": 3,
+     "error_deduction": 0,
+     "factual_errors": 1
+    }
+   },
+   "needs_adjudication": false,
+   "disagreement_reason": null,
+   "total": 12
+  },
+  "dev-essay-004|T-patched|score": {
+   "graded": true,
+   "code": "E18",
+   "raters": [
+    "graderA",
+    "graderB"
+   ],
+   "ratings": {
+    "graderA": {
+     "total": 12,
+     "aspect_levels": [
+      3,
+      3,
+      3
+     ],
+     "coherence": 3,
+     "error_deduction": 0,
+     "factual_errors": 1
+    },
+    "graderB": {
+     "total": 12,
+     "aspect_levels": [
+      3,
+      3,
+      3
+     ],
+     "coherence": 3,
+     "error_deduction": 0,
+     "factual_errors": 1
+    }
+   },
+   "needs_adjudication": false,
+   "disagreement_reason": null,
+   "total": 12
+  },
+  "dev-essay-005|N-draft|score": {
+   "graded": true,
+   "code": "E05",
+   "raters": [
+    "graderA",
+    "graderB"
+   ],
+   "ratings": {
+    "graderA": {
+     "total": 8,
+     "aspect_levels": [
+      3,
+      1,
+      3
+     ],
+     "coherence": 3,
+     "error_deduction": 2,
+     "factual_errors": 4
+    },
+    "graderB": {
+     "total": 8,
+     "aspect_levels": [
+      3,
+      1,
+      3
+     ],
+     "coherence": 3,
+     "error_deduction": 2,
+     "factual_errors": 4
+    }
+   },
+   "needs_adjudication": false,
+   "disagreement_reason": null,
+   "total": 8
+  },
+  "dev-essay-005|T-draft|score": {
+   "graded": true,
+   "code": "E03",
+   "raters": [
+    "graderA",
+    "graderB"
+   ],
+   "ratings": {
+    "graderA": {
+     "total": 11,
+     "aspect_levels": [
+      3,
+      3,
+      3
+     ],
+     "coherence": 3,
+     "error_deduction": 1,
+     "factual_errors": 4
+    },
+    "graderB": {
+     "total": 11,
+     "aspect_levels": [
+      3,
+      3,
+      3
+     ],
+     "coherence": 3,
+     "error_deduction": 1,
+     "factual_errors": 4
+    }
+   },
+   "needs_adjudication": false,
+   "disagreement_reason": null,
+   "total": 11
+  },
+  "dev-essay-005|T-patched|score": {
+   "graded": true,
+   "code": "E08",
+   "raters": [
+    "graderA",
+    "graderB"
+   ],
+   "ratings": {
+    "graderA": {
+     "total": 11,
+     "aspect_levels": [
+      3,
+      3,
+      3
+     ],
+     "coherence": 3,
+     "error_deduction": 1,
+     "factual_errors": 4
+    },
+    "graderB": {
+     "total": 11,
+     "aspect_levels": [
+      3,
+      3,
+      3
+     ],
+     "coherence": 3,
+     "error_deduction": 1,
+     "factual_errors": 4
+    }
+   },
+   "needs_adjudication": false,
+   "disagreement_reason": null,
+   "total": 11
+  },
+  "dev-essay-009|N-draft|score": {
+   "graded": true,
+   "code": "E17",
+   "raters": [
+    "graderA",
+    "graderB"
+   ],
+   "ratings": {
+    "graderA": {
+     "total": 10,
+     "aspect_levels": [
+      1,
+      3,
+      3
+     ],
+     "coherence": 3,
+     "error_deduction": 0,
+     "factual_errors": 2
+    },
+    "graderB": {
+     "total": 10,
+     "aspect_levels": [
+      1,
+      3,
+      3
+     ],
+     "coherence": 3,
+     "error_deduction": 0,
+     "factual_errors": 3
+    }
+   },
+   "needs_adjudication": false,
+   "disagreement_reason": null,
+   "total": 10
+  },
+  "dev-essay-009|T-draft|score": {
+   "graded": true,
+   "code": "E16",
+   "raters": [
+    "graderA",
+    "graderB"
+   ],
+   "ratings": {
+    "graderA": {
+     "total": 10,
+     "aspect_levels": [
+      1,
+      3,
+      3
+     ],
+     "coherence": 3,
+     "error_deduction": 0,
+     "factual_errors": 2
+    },
+    "graderB": {
+     "total": 10,
+     "aspect_levels": [
+      1,
+      3,
+      3
+     ],
+     "coherence": 3,
+     "error_deduction": 0,
+     "factual_errors": 2
+    }
+   },
+   "needs_adjudication": false,
+   "disagreement_reason": null,
+   "total": 10
+  },
+  "dev-essay-009|T-patched|score": {
+   "graded": true,
+   "code": "E14",
+   "raters": [
+    "graderA",
+    "graderB"
+   ],
+   "ratings": {
+    "graderA": {
+     "total": 10,
+     "aspect_levels": [
+      1,
+      3,
+      3
+     ],
+     "coherence": 3,
+     "error_deduction": 0,
+     "factual_errors": 2
+    },
+    "graderB": {
+     "total": 10,
+     "aspect_levels": [
+      1,
+      3,
+      3
+     ],
+     "coherence": 3,
+     "error_deduction": 0,
+     "factual_errors": 2
+    }
+   },
+   "needs_adjudication": false,
+   "disagreement_reason": null,
+   "total": 10
+  },
+  "dev-essay-010|N-draft|score": {
+   "graded": true,
+   "code": "E11",
+   "raters": [
+    "graderA",
+    "graderB"
+   ],
+   "ratings": {
+    "graderA": {
+     "total": 7,
+     "aspect_levels": [
+      1,
+      1,
+      3
+     ],
+     "coherence": 3,
+     "error_deduction": 1,
+     "factual_errors": 3
+    },
+    "graderB": {
+     "total": 7,
+     "aspect_levels": [
+      1,
+      1,
+      3
+     ],
+     "coherence": 3,
+     "error_deduction": 1,
+     "factual_errors": 3
+    }
+   },
+   "needs_adjudication": false,
+   "disagreement_reason": null,
+   "total": 7
+  },
+  "dev-essay-010|T-draft|score": {
+   "graded": true,
+   "code": "E09",
+   "raters": [
+    "graderA",
+    "graderB"
+   ],
+   "ratings": {
+    "graderA": {
+     "total": 4,
+     "aspect_levels": [
+      1,
+      1,
+      1
+     ],
+     "coherence": 2,
+     "error_deduction": 1,
+     "factual_errors": 3
+    },
+    "graderB": {
+     "total": 4,
+     "aspect_levels": [
+      1,
+      1,
+      1
+     ],
+     "coherence": 2,
+     "error_deduction": 1,
+     "factual_errors": 3
+    }
+   },
+   "needs_adjudication": false,
+   "disagreement_reason": null,
+   "total": 4
+  },
+  "dev-essay-010|T-patched|score": {
+   "graded": true,
+   "code": "E13",
+   "raters": [
+    "graderA",
+    "graderB"
+   ],
+   "ratings": {
+    "graderA": {
+     "total": 4,
+     "aspect_levels": [
+      1,
+      1,
+      1
+     ],
+     "coherence": 2,
+     "error_deduction": 1,
+     "factual_errors": 3
+    },
+    "graderB": {
+     "total": 4,
+     "aspect_levels": [
+      1,
+      1,
+      1
+     ],
+     "coherence": 2,
+     "error_deduction": 1,
+     "factual_errors": 3
+    }
+   },
+   "needs_adjudication": false,
+   "disagreement_reason": null,
+   "total": 4
+  }
+ }
+}

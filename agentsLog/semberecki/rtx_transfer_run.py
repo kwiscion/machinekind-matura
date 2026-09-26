@@ -132,7 +132,11 @@ def api_ps() -> dict:
 
 
 def preflight() -> int:
-    """CPU-only preflight: repo root, input SHA, config load. No dispatch."""
+    """CPU-only preflight: repo root, input presence + SHA, config load. No dispatch."""
+    if not INPUT.exists():
+        print("CHECK FAIL: input absent on this checkout (not provisioned here)",
+              file=sys.stderr)
+        return 2
     actual = sha256_file(INPUT)
     if actual != INPUT_EXPECTED_SHA:
         print(f"CHECK FAIL: input SHA mismatch: {actual}", file=sys.stderr)
@@ -155,6 +159,10 @@ def main() -> int:
     if "--check" in sys.argv[1:]:
         return preflight()
 
+    if not INPUT.exists():
+        print("FATAL: input absent on this checkout (not provisioned here)",
+              file=sys.stderr)
+        return 2
     actual_input_sha = sha256_file(INPUT)
     if actual_input_sha != INPUT_EXPECTED_SHA:
         print(f"FATAL: input SHA mismatch: {actual_input_sha}", file=sys.stderr)
