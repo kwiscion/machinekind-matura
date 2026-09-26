@@ -121,3 +121,7 @@ Owner log entry for the issue watcher that dispatches Greg's issues to Orca work
 - 03:30 v2 audit scored: top-1 strict 0.25→0.40, lenient 0.625→0.725. Auditors caught claim errors in q26 (Wileńszczyzna) and q09 (Warmia); corrected.
 - 03:45 REPORT.md, README, rights scan re-run (exit 0); commit + PR.
 - 03:55 fresh-clone reproduction in a scratch directory: fetch → 0 revision drift, identical metrics, identical index SHA-256 after removing the manifest-file hash (timestamps) from the index payload. `fetch` now reports revision drift vs the committed manifest in `sources/fetch_failures.json`.
+
+## #37 submission adapter (organizer package → offline `answers.json`)
+
+Issue https://github.com/kwiscion/machinekind-matura/issues/37, branch `issue-37-Bukareszt-submission-adapter`, started 2026-09-26 14:40 Europe/Warsaw. Code in `scripts/Bukareszt/matura_package.py` (stdlib; `fetch-mock` / `check` / `prepare` / `finalize` / `validate` / `run` / `synthetic-outputs`) with 43 tests in `scripts/Bukareszt/test_matura_package.py`. Docs, command sequence, hashes and limits are in [`submission/README.md`](submission/README.md) and [`submission/REPORT.md`](submission/REPORT.md). The public mock was verified at 37 items / 60 points / 19 unique PNGs; its contents stay only in the ignored `private/`. No model was run and no score is claimed.

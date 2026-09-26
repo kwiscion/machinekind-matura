@@ -1,0 +1,21 @@
+{
+  "exam_id": "synthetic-fixture-v1",
+  "answers": [
+    {
+      "id": "1",
+      "answer": "czerwony (SYNTETYCZNE)"
+    },
+    {
+      "id": "2.1",
+      "answer": ""
+    },
+    {
+      "id": "2.2",
+      "answer": ""
+    },
+    {
+      "id": "3",
+      "answer": ""
+    }
+  ]
+}

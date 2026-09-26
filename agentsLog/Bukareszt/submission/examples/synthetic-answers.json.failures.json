@@ -1,0 +1,33 @@
+{
+  "exam_id": "synthetic-fixture-v1",
+  "answers_json": "synthetic-answers.json",
+  "answers_sha256": "ec1a2c2fbe4f86358e84cc6fd76e5091374d65842c8d6bc9f2e20bb0bbdd2dec",
+  "answers_bytes": 281,
+  "template_ids": 4,
+  "model_output_records": 3,
+  "model_output_sha256": {
+    "synthetic-raw-with-failures.jsonl": "9f009992dc9ac69c1c112bae5f1bf20e771c09eb78d4e0a146b5fa7be1c8b2d4"
+  },
+  "prepared_sha256": null,
+  "answered": 1,
+  "empty": 3,
+  "failures": [
+    {
+      "id": "2.1",
+      "type": "infer_incomplete",
+      "message": "No complete choice contains a nonempty final answer"
+    },
+    {
+      "id": "2.2",
+      "type": "malformed",
+      "message": "raw_response is not a chat-completions object"
+    },
+    {
+      "id": "3",
+      "type": "missing",
+      "message": "no model output for this id"
+    }
+  ],
+  "max_answer_chars": 22,
+  "note": "Format validity only; this is not a correctness score."
+}
