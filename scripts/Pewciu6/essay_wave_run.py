@@ -51,8 +51,13 @@ MIN_START_S = 30
 TRANSPORT_ERRORS = {"URLError", "ConnectionRefusedError", "ConnectionResetError", "RemoteDisconnected", "OSError"}
 GRACE_S = 5
 CAPS = {"final": 2048, "facts": 768, "critic": 1024, "select": 128}
-FAMILIES = {"A": ["final"], "B": ["facts", "final"], "C": ["critic", "final"], "D": ["select", "final"]}
-FAMILY_NAMES = {"A": "single", "B": "facts-first", "C": "critic-rewrite", "D": "topic-select"}
+FAMILIES = {"A": ["final"], "B": ["facts", "final"], "C": ["critic", "final"], "D": ["select", "final"],
+            "B3": ["facts", "final"], "C3": ["critic", "final"]}
+FAMILY_NAMES = {"A": "single", "B": "facts-first", "C": "critic-rewrite", "D": "topic-select",
+                "B3": "facts-first-grounded", "C3": "critic-rewrite-grounded"}
+# Variants (B3, C3) belong to the mechanism family named by their first letter for the family cap.
+RETRIEVER = os.environ.get("ESSAY_RETRIEVER", "")  # path to agentsLog/Bukareszt/scripts/retrieval.py with a built index
+RETRIEVE_K_TOPIC, RETRIEVE_K_ASPECT, RETRIEVE_MAX, SNIPPET = 4, 3, 8, 900
 
 FACTS_RULES = """\
 Etap 1 z 2: przygotuj wyłącznie BANK FAKTÓW do wypracowania na temat nr {topic} (nie pisz jeszcze wypracowania ani tezy). Dla każdego aspektu wymienionego w temacie (jeśli temat nie wymienia aspektów, wybierz trzy) podaj 4–5 faktów, każdy w osobnej linii w formacie: rok – nazwa własna – co się stało (jedno zdanie). Uwzględnij tylko fakty, których jesteś całkowicie pewien; jeśli nie jesteś pewien daty albo nazwy, pomiń fakt. Maksymalnie 250 słów.
@@ -91,7 +96,23 @@ Przeczytaj polecenie poniżej. Dla każdego tematu oceń, ile pewnych faktów z 
 POLECENIE:
 {body}
 """
+GROUNDED_FACTS_RULES = """\
+Etap 1 z 2: przygotuj wyłącznie BANK FAKTÓW do wypracowania na temat nr {topic} (nie pisz jeszcze wypracowania ani tezy), korzystając z WYCIĄGÓW poniżej. Dla każdego aspektu wymienionego w temacie (jeśli temat nie wymienia aspektów, wybierz trzy) podaj 4–5 faktów, każdy w osobnej linii w formacie: rok – nazwa własna – co się stało (jedno zdanie) [numer wyciągu]. Każdy fakt musi wynikać z wyciągów; datę i nazwę przepisz dokładnie z wyciągu. Jeśli do aspektu brakuje faktów w wyciągach, dodaj najwyżej dwa fakty z własnej wiedzy, oznaczone [W], i tylko wtedy, gdy jesteś ich całkowicie pewien. Maksymalnie 300 słów.
+"""
+GROUNDED_CRITIC_EXTRA = """\
+Sprawdź każdą datę, nazwę własną, przypisanie osoby do wydarzenia i związek przyczynowo-skutkowy w wypracowaniu, porównując je z WYCIĄGAMI poniżej. Za błąd uznaj też nazwy i wydarzenia, których wyciągi nie potwierdzają i które wyglądają na wymyślone, oraz fakty spoza zakresu chronologicznego tematu. Wskaż, które fakty z wyciągów mogłyby wzmocnić słabe aspekty.
+"""
+NO_CITATIONS = "W wypracowaniu nie podawaj numerów wyciągów ani oznaczeń [W].\n"
 SELECTION = re.compile(r"Temat\s*(?:nr\s*)?:?\s*(?:nr\s*)?(\d{1,2})", re.I)
+
+
+GROUNDED_TEMPLATES = False  # b1 hash unchanged; template_sha256_grounded() covers the variants
+
+
+def template_sha256_grounded() -> str:
+    parts = [WAVE_REVISION, GROUNDED_FACTS_RULES, GROUNDED_CRITIC_EXTRA, NO_CITATIONS, str(RETRIEVE_K_TOPIC),
+             str(RETRIEVE_K_ASPECT), str(RETRIEVE_MAX), str(SNIPPET)]
+    return sha256_text("\x00".join(parts))
 
 
 def sha256_text(text: str) -> str:
@@ -101,6 +122,8 @@ def sha256_text(text: str) -> str:
 def template_sha256() -> str:
     parts = [WAVE_REVISION, er.template_sha256(), FACTS_RULES, WRITE_FROM_FACTS, CRITIC_RULES,
              REWRITE_RULES, SELECT_RULES, json.dumps(CAPS, sort_keys=True)]
+    if GROUNDED_TEMPLATES:
+        parts += [GROUNDED_FACTS_RULES, GROUNDED_CRITIC_EXTRA, NO_CITATIONS]
     return sha256_text("\x00".join(parts))
 
 
@@ -147,6 +170,68 @@ def rewrite_prompt(info: dict, topic: int, draft: str, critique: str) -> str:
     return (er.COMMON_RULES.format(topic_label=topic) + er.topic_directive(topic)
             + REWRITE_RULES.format(draft=draft.strip(), critique=critique.strip())
             + "\nPOLECENIE:\n" + info["body"])
+
+
+def excerpts_block(excerpts: list[dict]) -> str:
+    lines = ["WYCIĄGI (polska Wikipedia, CC BY-SA 4.0; tylko materiał pomocniczy):"]
+    for n, ex in enumerate(excerpts, 1):
+        lines.append(f"[{n}] {ex['title']} – {ex['locator']}: {ex['text'].strip()}")
+    return "\n".join(lines) + "\n"
+
+
+def grounded_facts_prompt(info: dict, topic: int, excerpts: list[dict]) -> str:
+    return (GROUNDED_FACTS_RULES.format(topic=topic) + er.topic_directive(topic) + "\n" + excerpts_block(excerpts)
+            + "\nPOLECENIE:\n" + info["body"])
+
+
+def grounded_write_prompt(info: dict, topic: int, facts: str) -> str:
+    return write_from_facts_prompt(info, topic, facts).replace("\nPOLECENIE:\n", "\n" + NO_CITATIONS + "\nPOLECENIE:\n", 1)
+
+
+def grounded_critic_prompt(info: dict, topic: int, draft: str, excerpts: list[dict]) -> str:
+    return critic_prompt(info, topic, draft) + "\n" + GROUNDED_CRITIC_EXTRA + "\n" + excerpts_block(excerpts)
+
+
+def grounded_rewrite_prompt(info: dict, topic: int, draft: str, critique: str, excerpts: list[dict]) -> str:
+    base = rewrite_prompt(info, topic, draft, critique)
+    return base.replace("\nPOLECENIE:\n", "\n" + excerpts_block(excerpts) + NO_CITATIONS + "\nPOLECENIE:\n", 1)
+
+
+TOPIC_TEXT = re.compile(r"(?m)^\s*(?:Temat\s+)?{n}\.\s+(.+)$")
+ASPECTS = re.compile(r"aspekty?:\s*([^.]+)", re.I)
+
+
+def topic_text(info: dict, topic: int) -> str:
+    match = re.search(TOPIC_TEXT.pattern.replace("{n}", str(topic)), info["body"])
+    return match.group(1).strip() if match else ""
+
+
+def retrieval_queries(info: dict, topic: int) -> list[tuple[str, int]]:
+    """Queries derived only from the topic wording (never keys or ids)."""
+    text = topic_text(info, topic)
+    core = ASPECTS.split(text)[0].replace("W pracy uwzględnij", "").strip()
+    queries = [(core, RETRIEVE_K_TOPIC)]
+    aspects = ASPECTS.search(text)
+    if aspects:
+        for aspect in re.split(r",|\bi\b", aspects.group(1)):
+            if aspect.strip():
+                queries.append((f"{core} {aspect.strip()}", RETRIEVE_K_ASPECT))
+    return queries
+
+
+def retrieve(info: dict, topic: int) -> list[dict]:
+    import subprocess
+    if not RETRIEVER:
+        raise SystemExit("ESSAY_RETRIEVER is not set; grounded variants need the #6 BM25 retriever")
+    seen, out = set(), []
+    for query, k in retrieval_queries(info, topic):
+        res = subprocess.run([sys.executable, RETRIEVER, "query", query, "--k", str(k), "--json",
+                              "--snippet", str(SNIPPET)], capture_output=True, text=True, timeout=120, check=True)
+        for hit in json.loads(res.stdout):
+            if hit["chunk_id"] not in seen and len(out) < RETRIEVE_MAX:
+                seen.add(hit["chunk_id"])
+                out.append({k2: hit[k2] for k2 in ("chunk_id", "source_id", "title", "locator", "text", "score")})
+    return out
 
 
 def select_prompt(info: dict) -> str:
@@ -245,7 +330,8 @@ class Wave:
             raise StopWave("call_limit")
         if tokens + cap > env["max_tokens"]:
             raise StopWave("token_limit")
-        if family not in ledger["families"] and len(ledger["families"]) >= env["max_families"]:
+        mech = family[0]
+        if mech not in ledger["families"] and len(ledger["families"]) >= env["max_families"]:
             raise StopWave("family_limit")
         key = f"{family}|{item}|{stage}"
         if any(e["key"] == key for e in ledger["entries"]):
@@ -259,8 +345,8 @@ class Wave:
         left = ledger["deadline"] - now
         if left < MIN_START_S:
             raise StopWave("deadline")
-        if family not in ledger["families"]:
-            ledger["families"].append(family)
+        if mech not in ledger["families"]:
+            ledger["families"].append(mech)
         entry = {"seq": len(ledger["entries"]) + 1, "key": key, "batch": batch, "family": family, "item": item,
                  "stage": stage, "cap": cap, "prompt_sha256": sha256_text(prompt), "status": "reserved",
                  "t_reserved": now}
@@ -330,7 +416,8 @@ def run_batch(wave: Wave, batch: str, families: list[str], items: list, topic: i
     raw_path, answers_path = batch_dir / "raw.jsonl", batch_dir / "answers.jsonl"
     manifest = {"batch": batch, "families": families, "items": [r["id"] for r, _ in items], "topic": topic,
                 "source": str(source), "source_sha256": hashlib.sha256(source.read_bytes()).hexdigest(),
-                "template_sha256": template_sha256(), "caps": CAPS, "status": "running", "stop_reason": None,
+                "template_sha256": template_sha256(), "template_sha256_grounded": template_sha256_grounded(),
+                "caps": CAPS, "status": "running", "stop_reason": None,
                 "attempted": 0, "failed": [], "unsent": [], "started": wave.clock()}
     write_json_atomic(batch_dir / "batch_manifest.json", manifest)
     stop_reason = None
@@ -390,6 +477,31 @@ def run_batch(wave: Wave, batch: str, families: list[str], items: list, topic: i
                         else:
                             r = send(family, item_id, "final",
                                      rewrite_prompt(info, topic, draft["answer"], c["text"]))
+                elif family in ("B3", "C3"):
+                    excerpts = retrieve(info, topic)
+                    append_jsonl(batch_dir / "retrieval.jsonl", {"family": family, "item": item_id, "topic": topic,
+                                 "queries": retrieval_queries(info, topic),
+                                 "chunks": [{k2: e[k2] for k2 in ("chunk_id", "source_id", "locator", "score")}
+                                            for e in excerpts]})
+                    first = "facts" if family == "B3" else "critic"
+                    draft = prior_answers(wave.dir, "A").get(item_id) if family == "C3" else None
+                    if family == "C3" and not draft:
+                        for stage in ("critic", "final"):
+                            manifest["unsent"].append({"family": family, "item": item_id, "stage": stage,
+                                                       "reason": "no_A_draft"})
+                        r = {"error": "unsent_no_A_draft"}
+                    else:
+                        p1 = (grounded_facts_prompt(info, topic, excerpts) if family == "B3"
+                              else grounded_critic_prompt(info, topic, draft["answer"], excerpts))
+                        s1 = send(family, item_id, first, p1)
+                        if s1.get("error"):
+                            manifest["unsent"].append({"family": family, "item": item_id, "stage": "final",
+                                                       "reason": f"failed_{first}:{s1['error']}"})
+                            r = {"error": f"unsent_after_{first}_{s1['error']}"}
+                        else:
+                            p2 = (grounded_write_prompt(info, topic, s1["text"]) if family == "B3"
+                                  else grounded_rewrite_prompt(info, topic, draft["answer"], s1["text"], excerpts))
+                            r = send(family, item_id, "final", p2)
                 elif family == "D":
                     s = send(family, item_id, "select", select_prompt(info))
                     chosen = None if s.get("error") else parse_selection(s.get("text", ""), info["topics"])
@@ -450,7 +562,7 @@ def cmd_run(args) -> int:
     env = ledger["envelope"]
     summary = {"planned_calls": len(plan), "planned_tokens": need_tokens, "used_calls": calls,
                "used_tokens": tokens, "after_calls": calls + len(plan), "after_tokens": tokens + need_tokens,
-               "families_after": sorted(set(ledger["families"]) | set(families)),
+               "families_after": sorted(set(ledger["families"]) | {f[0] for f in families}),
                "seconds_left": round(wave.seconds_left(ledger), 1)}
     summary["fits"] = (summary["after_calls"] <= env["max_calls"] and summary["after_tokens"] <= env["max_tokens"]
                        and len(summary["families_after"]) <= env["max_families"])

@@ -24,7 +24,7 @@
 | dev-essay-008 | T1 | Galician autonomy, Austrian partition | src-plwiki-autonomia-galicyjska (76175430) | supported | "prawa ... które Galicja uzyskała w latach 1869–1873" |
 | dev-essay-008 | T2 | Revolution of 1905 occurred in Królestwo Polskie | src-plwiki-rewolucja-1905-roku-w-krolestwie-polskim (80703935) | supported | "napięta sytuacja ... utrzymywała się od co najmniej 1904" |
 
-**Summary: 15/15 supported**
+**Summary (006–008): 15/15 supported**
 
 ## Flags (wording, not factual errors)
 
@@ -38,3 +38,39 @@
   each spanning the full 41 years — reading is sound.
 
 No unsupported or contradicted premises found.
+
+## Replication set (009–012)
+
+Same checker/date/method as above, applied to dev-essay-009..012 (both topics each).
+
+| Fixture | Topic | Premise | Source id (oldid) | Verdict | Locator |
+|---|---|---|---|---|---|
+| dev-essay-009 | T1 | Unia w Krewie 1385 | src-plwiki-unia-w-krewie (80354694) | supported | "akt wydany 14 sierpnia 1385 roku" |
+| dev-essay-009 | T1 | Władysław II Jagiełło reigned 1386–1434 | src-plwiki-wladyslaw-ii-jagiello (80805804) | supported | "od 4 marca 1386 do 1 czerwca 1434" |
+| dev-essay-009 | T1 | Military aspect: Grunwald fought 1410 | src-plwiki-grunwald (80318601) | supported | "pod Grunwaldem 15 lipca 1410 roku" |
+| dev-essay-009 | T2 | Jadwiga Andegaweńska's role (union, Christianization of Lithuania) | src-plwiki-jadwiga-andegawenska (80425369) | supported | "chrystianizację Litwy w 1387" |
+| dev-essay-010 | T1 | Zygmunt II August reigned 1548–1572 | src-plwiki-zygmunt-ii-august (80622470) | supported | "od 1 kwietnia 1548 do 7 lipca 1572" |
+| dev-essay-010 | T1 | Ruch egzekucyjny active during his reign | src-plwiki-ruch-egzekucyjny (77683485) | supported | "sejm ... 22 listopada 1562" reforms |
+| dev-essay-010 | T1 | Terytorialny aspect: Unia lubelska 1569 | src-plwiki-unia-lubelska (80758426) | supported | "zawarte ... 1 lipca 1569" |
+| dev-essay-010 | T2 | Wolna elekcja rules set after 1572 | src-plwiki-wolna-elekcja (79416082) | supported | "pierwsza wolna elekcja ... w roku 1573" |
+| dev-essay-010 | T2 | Artykuły henrykowskie codify election rules, 1573 | src-plwiki-artykuly-henrykowskie (79943427) | supported | "spisane na sejmie elekcyjnym 1573 roku" |
+| dev-essay-011 | T1 | Sejm niemy 1717 (start bracket) | src-plwiki-sejm-niemy (76770450) | supported | "miała miejsce 1 lutego 1717" |
+| dev-essay-011 | T1 | Liberum veto contributed to Commonwealth's collapse | src-plwiki-liberum-veto (79646244) | supported | "collapse of ... First Polish-Lithuanian Commonwealth" |
+| dev-essay-011 | T1 | Konfederacja targowicka 1792 | src-plwiki-konfederacja-targowicka (77476727) | supported | "w nocy z 18 na 19 maja 1792" |
+| dev-essay-011 | T1 | Rozbiory 1772/1793/1795 (end bracket) | src-plwiki-rozbiory (80425883) | supported | "I rozbiór ... 1772 r. ... III rozbiór ... 1795 r." |
+| dev-essay-011 | T2 | Insurekcja kościuszkowska 1794 | src-plwiki-powstanie-kosciuszkowskie (79178134) | supported | "24 marca – 16 listopada 1794" |
+| dev-essay-012 | T1 | Wojna polsko-bolszewicka framed as 1919–1921 | src-plwiki-wojna-polsko-bolszewicka (80061025) | partly | "3 stycznia 1919 – 18 października 1920 (traktat ... 1921)" |
+| dev-essay-012 | T1 | Bitwa Warszawska 1920 within the war | src-plwiki-bitwa-warszawska (80608335) | supported | "13–25 sierpnia 1920 roku" |
+| dev-essay-012 | T1 | Traktat ryski 1921 (formal end) | src-plwiki-traktat-ryski-1921 (80631068) | supported | "podpisany w Rydze dnia 18 marca 1921" |
+| dev-essay-012 | T2 | Konstytucja marcowa adopted 1921 | src-plwiki-konstytucja-marcowa (80733076) | supported | "uchwalono przez aklamację 17 marca 1921" |
+
+**Summary (009–012): 17/18 supported (1 partly)**
+
+Flag: dev-essay-012 T1's "1919–1921" bracket is the standard textbook convention (fighting
+1919–Oct 1920, war formally closed by the March 1921 Treaty of Riga), but the pinned
+infobox itself gives the war's core duration as 1919–1920 and dates only the treaty to
+1921 — hence "partly" rather than "supported" for that exact wording.
+
+## Combined summary
+
+**32/33 premises supported across dev-essay-006–012 (1 partly, 0 unsupported).**

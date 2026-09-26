@@ -133,6 +133,26 @@ class WaveTests(unittest.TestCase):
         self.assertEqual(m["attempted"], 1)
         self.assertEqual(len(m["unsent"]), 2)
 
+    def test_grounded_variants_count_as_their_family(self):
+        orig = w.retrieve
+        w.retrieve = lambda info, topic: [{"chunk_id": "c1", "source_id": "s", "title": "T", "locator": "L",
+                                           "text": "1500 – X – coś.", "score": 1.0}]
+        try:
+            wave = self.wave()
+            m = w.run_batch(wave, "b1", ["A", "B3", "C3"], self.items(), 1, self.source)
+        finally:
+            w.retrieve = orig
+        self.assertEqual(m["status"], "complete")
+        self.assertEqual(m["attempted"], 5)
+        self.assertEqual(wave.load()["families"], ["A", "B", "C"])
+        prompts = [c[0] for c in wave.backend.calls]
+        self.assertIn("[1] T – L: 1500 – X – coś.", prompts[1])
+        self.assertIn("WYCIĄGI", prompts[3])
+        self.assertIn("Temat nr 1\nTeza: x.", prompts[3])
+        self.assertIn("nie podawaj numerów wyciągów", prompts[4])
+        rows = (self.dir / "batches/b1/retrieval.jsonl").read_text().splitlines()
+        self.assertEqual(len(rows), 2)
+
     def test_overrun_stops(self):
         def slow(prompt, cap, timeout):
             time.sleep(0.3)
