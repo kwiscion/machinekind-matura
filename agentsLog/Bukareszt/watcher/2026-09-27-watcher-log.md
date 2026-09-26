@@ -28,3 +28,9 @@ Continuation of 2026-09-26-watcher-log.md. Same watcher instance 8e5e9ed0-1189-4
 - Template requalification PASS with no model calls (pinned llama.cpp `fcb3074f` source locators; GGUF template = raw HF `ae53464b…`; C++ regression against pinned `libllama-common.so` reproduces `/props` `6a1015c4…ab82` via CRLF/CR→LF + one trailing newline removed); delta review PASS; requalification record `e88309c`.
 - Run3 launched 00:59:08, absolute deadline 01:58:58 (inside root's 01:30 latest start / 02:30 latest finish). Runs detached on the host under its own deadline guards.
 - The Mac's network is intermittent (GitHub API and SSH to the host failing at times ~01:08); the worker is retrying its status checks. The on-host wave is unaffected.
+
+## 01:14 — #117 pilot-run3 terminal: ALL STAGES PASS
+- Wave 00:59:08 → 01:10:37 (11.5 min), rc 0, backup verified, GPU idle, no wave process left.
+- 36/36 history optimizer steps on the 90 cleared rows from a fresh pristine base (325 s; peak 34.39 GB allocated). Loss per epoch falls (epoch 1 2.45→0.44, epoch 3 ≈1.08→0.28–0.44), with recurring spikes at the same row groups. All 11 multimodal tensor hashes unchanged after merge.
+- Export via the same pinned converter/quantizer: candidate Q4_K_M 7,381,382,848 B + projector 175,115,200 B = 7,556,498,048 B, within the 8.8 GB aggregate cap (one merged model + projector). Adapter 20 MB and merged BF16 23 GB stay on the dev host.
+- Explicitly a training/serving pilot, not an essay-quality claim; next per root is evaluating argument improvement. Terminal handoff posted on #117 (23:13Z); worker is still copying evidence over the slow link before its PR.
