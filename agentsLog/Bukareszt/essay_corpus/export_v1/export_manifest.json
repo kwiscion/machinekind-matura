@@ -1,10 +1,10 @@
 {
-  "train_rows": 81,
-  "essays": 31,
-  "bukareszt_accepted_essays": 19,
-  "repair_pairs": 50,
+  "train_rows": 90,
+  "essays": 34,
+  "bukareszt_accepted_essays": 22,
+  "repair_pairs": 56,
   "by_origin": {
-    "bukareszt": 57,
+    "bukareszt": 66,
     "root_seed": 8,
     "root_sol": 16
   },
@@ -39,6 +39,7 @@
     "C-katyn",
     "C-league",
     "C-lublin",
+    "C-magna-carta",
     "C-meiji",
     "C-odnowiciel",
     "C-piast-origins",
@@ -68,7 +69,7 @@
     "C-ww1-independence"
   ],
   "shared_groups": [],
-  "train_sha256": "046a866c189c82dc479b91f175ac7f342a174d97c5257a53ac1a341d318cdaad",
+  "train_sha256": "83153814da8251210f2b9d225dc713ad245c273bdc5d46dd1216b0e4b97178f5",
   "eval_sha256": "5979ee0b8e0e4f084cf6070f42d31892ee53c1f5485409b4fc5dac1266055a28",
   "input_sha256": {
     "/Users/bukareszt/orca/workspaces/machinekind-matura/issue-117-Bukareszt-essay-corpus/agentsLog/Bukareszt/essay_corpus/clusters.json": "17bf0da54812194aa0b84ac02846092eb1cd1b7897ffda550b646d196723e62c",
@@ -88,15 +89,16 @@
     "agentsLog/Bukareszt/essay_corpus/drafts/b2r_essays.jsonl": "5d2515d59daaaa09d8a2698d7ff34045d8c67d53e4e931d45ec22ad35edc33de",
     "agentsLog/Bukareszt/essay_corpus/drafts/b3_essays.jsonl": "27d8156bcc03a141ac65a63683ac5e10a95c8d5c25ec7de09817a24e5150eb7b",
     "agentsLog/Bukareszt/essay_corpus/drafts/b3r_essays.jsonl": "9aaeee00789ddf519f1ae3424870acb59c99c92ec6cdb3006ef21ca256f776e6",
-    "agentsLog/Bukareszt/essay_corpus/repairs_v1.jsonl": "232e95fb51f03c769c054576918547cc77d007a01bba59d73d941ce9be717f1c",
+    "agentsLog/Bukareszt/essay_corpus/repairs_v1.jsonl": "4e55aef4500c2f6c713e90bb8a5bd774cb7571b993b1694fd91570d7876dc61a",
     "agentsLog/Bukareszt/essay_corpus/reviews/b1_review1.jsonl": "810c403bcd99101379dd99b8b10ac1b0ca8de5dc5b11c920bdd83d66074a328a",
     "agentsLog/Bukareszt/essay_corpus/reviews/b1r_review.jsonl": "8ed00d5d84229a1212c964993d7330c249dd5416105bcd11fef62ff4b0a2fd6a",
     "agentsLog/Bukareszt/essay_corpus/reviews/b2_review1.jsonl": "ea11bfbc74e91e05709710b5f4f4a3e0e1998be513c4a0e3ae8b21bbe57da755",
     "agentsLog/Bukareszt/essay_corpus/reviews/b2r_review.jsonl": "e0c052c830cb1abbf00e362178650c5cf3309b5bc6bac4037c5035462a5dd711",
-    "agentsLog/Bukareszt/essay_corpus/reviews/b3_review1.jsonl": "e904d8695b4113629177c9f76652c44ea2e570b3cf910d592c6cde3742d823c8"
+    "agentsLog/Bukareszt/essay_corpus/reviews/b3_review1.jsonl": "e904d8695b4113629177c9f76652c44ea2e570b3cf910d592c6cde3742d823c8",
+    "agentsLog/Bukareszt/essay_corpus/reviews/b3r_review.jsonl": "8bc72f406e4b12fc98102e3eda341d1d2b28c8e1aee0cb07d8f20fa93e3a9076"
   },
-  "attribution_sha256": "aaf9f9aa3c9ccaf0f8eeea2138d76ea34e5c5ff7b9e35431479cb1ad40852b12",
-  "exclusions_sha256": "10ce14545772114d14ee993deaf03e46e8a67a7d54ff7c351fa488df16fcd50f",
+  "attribution_sha256": "13e2aa555b5d590fe445e565a276879db124382107a4331652258af45d2a0b65",
+  "exclusions_sha256": "bde81f79c1287aae6a7ba773098456e2879a447949bfde7fc6313323f4124dcd",
   "leakage_report_sha256": "e70da63494d1e07c519c140011035d995eb3443cbcc59a9f5fe53816c387a3fd",
   "licenses": [
     "CC BY-SA 4.0 (Wikipedia text); revision recorded",
