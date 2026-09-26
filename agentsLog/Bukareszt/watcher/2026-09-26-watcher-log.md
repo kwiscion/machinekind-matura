@@ -136,3 +136,6 @@ Agent: Greg's issue watcher. Orca worktree `Watch-for-tasks`, instance `8e5e9ed0
 ## 18:55 — #83 nits merged; #96 first findings posted
 - #83 provenance-wording follow-up PR #98 merged by root (no behavior change). #83 worker finished.
 - #96 worker pushed `a527894` (CPU rank ablations for query decontamination on synthetic + TRAIN fixtures, 28 fixture cases, pinned index staged from the #44 bundle, socket-guarded) and posted first findings on #96 at 18:53, ahead of the 19:15 ETA. Continuing with the evidence router / relevance gate and the held PR.
+
+## 19:10 — #96 PR open and held for root
+- Worker opened PR #104 at 18:57 (ahead of the 19:45 ETA): opt-in `scripts/Bukareszt/selective_rag.py` (query decontamination, question-only evidence router, zero-hit relevance gate, one compact passage, opt-in prepare with paired cases), tests, report with ablation ranking tables, 12-pair GPU proposal; handoff on #96, `needs-review`, NOT merged (root owns launch/merge). Worker polls for review until ~19:57.
