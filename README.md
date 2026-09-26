@@ -1,10 +1,10 @@
 # Matura: small offline exam assistant
 
-Current handoff: [morning status and active work](agentsLog/kwiscion/2026-09-26-morning-status.md). After the Windows restart, the owner extended lead work through **10:47 Europe/Warsaw on September 26**; this supersedes the original overnight operational cutoffs.
+**Current control document: [WINNING_PLAN.md](WINNING_PLAN.md). Target: 48/60 reviewed May 2024 validation points by 18:00 today, then the highest Sunday history-matura score.** Consult the plan for owners, time gates, experiment decisions and fallback rules. The [12:45 course note](agentsLog/kwiscion/2026-09-26-best-score-course.md) and [morning status](agentsLog/kwiscion/2026-09-26-morning-status.md) are historical checkpoints.
 
 For the installed HF CLI and project-specific account login, see [Hugging Face setup](docs/huggingface.md). Run `.\scripts\hf.ps1 auth login` from PowerShell, then confirm `kwiscion` with `auth whoami`.
 
-Overnight hackathon working assumption: **Polish history matura**. The lead must confirm the final subject before promotion; all records carry a `subject` field so other work can proceed. The final system may use local retrieval and tools, and each saved model's weights must fit within **8 GB**. Closed models and synthetic data are allowed during development; the final inference path must run offline.
+Subject, from the binding hackathon rules: **Polish history matura**. Records still carry a `subject` field. The final system may use local retrieval and tools, and each saved model's weights must fit within **8 GB**. Closed models and synthetic data are allowed during development; the final inference path must run offline.
 
 The handoff package is in [docs/overnight/PLAN.md](docs/overnight/PLAN.md). Start with [SETUP.md](docs/overnight/SETUP.md), then read [CONTRACTS.md](docs/overnight/CONTRACTS.md) and your assigned issue. Source and publication rules are in [SOURCE.md](SOURCE.md). GitHub issues are the overnight scheduling authority; live assignments are recorded in [ISSUE_LINKS.md](docs/overnight/ISSUE_LINKS.md); local issue bodies preserve the original briefs.
 
@@ -15,6 +15,9 @@ The handoff package is in [docs/overnight/PLAN.md](docs/overnight/PLAN.md). Star
 | Compact model experiments | @ljaniec | [Spark](docs/overnight/issues/spark.md) | [Issue](https://github.com/kwiscion/machinekind-matura/issues/5) |
 | Historical retrieval | @Bukareszt | [Retrieval](docs/overnight/issues/retrieval.md) | [Issue](https://github.com/kwiscion/machinekind-matura/issues/6) |
 | Evaluation and rubric audit | @Pewciu6 | [Evaluation](docs/overnight/issues/eval.md) | [Issue](https://github.com/kwiscion/machinekind-matura/issues/7) |
+| Best-score GPU baseline | @semberecki | [Course](agentsLog/kwiscion/2026-09-26-best-score-course.md) | [Issue](https://github.com/kwiscion/machinekind-matura/issues/33) |
+
+Current allocation: **Piotrek runs Gemma on his RTX 5090** (#33; Blackwells unavailable); the lead laptop is already running Qwen. **Greg builds the organizer package/answers.json adapter** ([#37](https://github.com/kwiscion/machinekind-matura/issues/37)); Paweł grades on #11; Przemek handles the existing split correction; Łukasz supports runtime/context/throughput without launching a duplicate candidate. Each owner must claim and post an ETA; an assignment alone does not mean a worker is running.
 
 Retrieval #6 and evaluator #7 are accepted implementation handoffs; model quality has not been promoted. [Evidence selection #15](https://github.com/kwiscion/machinekind-matura/issues/15) is closed as a negative experiment; keep the original retrieval baseline. [Real-output validation #11](https://github.com/kwiscion/machinekind-matura/issues/11) remains open. Training-data [PR #18](https://github.com/kwiscion/machinekind-matura/pull/18) is merged with fail-closed strict export: **24 eligible examples**. The current 22/2 internal split separates group IDs, but review found a shared source article under different group IDs; a correction is in progress before publication or holdout-based selection. The other records remain drafts. Spark #5 is closed with a runner and corrected synthetic smoke audit: 20/20 CPU answers were nonempty, but only 4/20 Spark answers were nonempty. No exam score or training gain follows from that smoke. Original issue ownership is retained; do not duplicate active workers.
 
