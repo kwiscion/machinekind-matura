@@ -1,0 +1,89 @@
+{
+ "revision": "essay-contract-v1",
+ "wave_id": "contract-h100-20260926T1822Z",
+ "envelope": {
+  "max_calls": 4,
+  "max_tokens": 74240,
+  "max_families": 1,
+  "wall_seconds": 2679,
+  "per_call_max_s": 420,
+  "retries": 0,
+  "prior_calls": 0,
+  "prior_tokens": 0
+ },
+ "caps": {
+  "select": 128,
+  "draft": 2048,
+  "critic": 1024,
+  "rewrite": 2048,
+  "repair": 2048
+ },
+ "template_sha256": "7f822cef9507dfd682cf117656ee3be9538e7ab910edc8c1248bb1cff1982adb",
+ "model": "gemma4:12b-it-q4_K_M",
+ "num_ctx": 32768,
+ "think": false,
+ "temperature": null,
+ "base_url": "http://127.0.0.1:11434",
+ "wave_start": 1790446840.504262,
+ "deadline": 1790449520.0,
+ "wave_start_iso": "2026-09-26T18:20:40Z",
+ "deadline_iso": "2026-09-26T19:05:20Z",
+ "families": [
+  "K"
+ ],
+ "entries": [
+  {
+   "seq": 1,
+   "key": "K|dev-essay-009|select",
+   "batch": "k1",
+   "family": "K",
+   "item": "dev-essay-009",
+   "stage": "select",
+   "cap": 128,
+   "prompt_sha256": "5edb272fd8cdbd1b08f0334685ded22c79c74785230ae13805e775e8dd506219",
+   "status": "ok",
+   "t_reserved": 1790446840.550866,
+   "elapsed_s": 4.79,
+   "error": null,
+   "eval_count": 6,
+   "prompt_eval_count": 244,
+   "done_reason": "stop"
+  },
+  {
+   "seq": 2,
+   "key": "K|dev-essay-009|draft",
+   "batch": "k1",
+   "family": "K",
+   "item": "dev-essay-009",
+   "stage": "draft",
+   "cap": 2048,
+   "prompt_sha256": "552e5abfe73682c746a2068efe13037e97a4faa47a996d81b14441d4587e324a",
+   "status": "ok",
+   "t_reserved": 1790446845.3398058,
+   "elapsed_s": 8.42,
+   "error": null,
+   "eval_count": 827,
+   "prompt_eval_count": 543,
+   "done_reason": "stop"
+  },
+  {
+   "seq": 3,
+   "key": "K|dev-essay-009|repair1",
+   "batch": "k1",
+   "family": "K",
+   "item": "dev-essay-009",
+   "stage": "repair1",
+   "cap": 2048,
+   "prompt_sha256": "c1f1d4c430a40b592fcfdbfb6f89ce2bdbb021fdb61b28bbab7ff638d5007814",
+   "status": "ok",
+   "t_reserved": 1790446853.763886,
+   "elapsed_s": 10.67,
+   "error": null,
+   "eval_count": 978,
+   "prompt_eval_count": 1469,
+   "done_reason": "stop"
+  }
+ ],
+ "created": 1790446840.504262,
+ "allowance_source": "wave-h100-20260926T172925Z remaining 4 calls/74240 tokens; launch https://github.com/kwiscion/machinekind-matura/issues/80#issuecomment-5848691583"
+}
