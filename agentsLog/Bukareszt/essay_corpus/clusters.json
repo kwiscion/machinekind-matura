@@ -550,11 +550,8 @@
       "C-1970"
     ],
     "train_bukareszt_planned": [
-      "C-magna-carta",
-      "C-odnowiciel",
       "C-vasa-wars",
-      "C-borders-uprisings",
-      "C-euro-atlantic"
+      "C-borders-uprisings"
     ],
     "train_bukareszt_batch2": [
       "C-hundred-years",
@@ -575,6 +572,12 @@
       "C-meiji",
       "C-league",
       "C-cold-war"
+    ],
+    "train_bukareszt_batch3": [
+      "C-magna-carta",
+      "C-odnowiciel",
+      "C-euro-atlantic",
+      "C-hammurabi"
     ]
   },
   "notes": "Paweł's #80 DEV essay fixtures are loaded from agentsLog/Pewciu6/essay/dev_fixtures.jsonl at check time and mapped to clusters (partition dev_pewciu6). Root's Astra seed and Sol batch are loaded from agentsLog/kwiscion/essay-teacher-seed/ and agentsLog/kwiscion/essay-corpus-sol/ when present. v2 (21:05 CEST): root Sol's eight fixed topics reserved; eval items 04/06/15 moved off Sol clusters; declared cross-cluster dependencies are merged into connected components before any partition check.",

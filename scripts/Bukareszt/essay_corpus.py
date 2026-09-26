@@ -473,14 +473,20 @@ KINDS = ["wrapper", "extra_topic", "underlength"]
 
 
 def cmd_repairs(args):
-    essays = {r["id"]: r for r in load_jsonl(args.essays)}
-    accepted = load_accepted(args.reviews, essays)
+    essays = {r["id"]: r for r in sorted((r for f in args.essays for r in load_jsonl(f)), key=lambda r: r.get("repair_round", 0))}
+    cfg, _, _ = load_clusters()
+    accepted = {k: v for k, v in load_accepted(args.reviews, essays).items()
+                if k not in cfg.get("withdrawn_essays", {})}
     pairs = []
     for i, eid in enumerate(sorted(accepted)):
         rec = essays[eid]
+        # A reviewer-flagged off-topic paragraph must not be propagated even as a defect.
+        kinds = [k for k in KINDS if not (k == "extra_topic" and accepted[eid].get("off_topic_issues"))]
         for j in range(args.per_essay):
-            kind = KINDS[(i + j) % len(KINDS)]
+            kind = kinds[(i + j) % len(kinds)]
             draft = make_defect(rec, kind, i + j)
+            if not contract_errors(draft) or contract_errors(rec["essay"]):
+                raise SystemExit(f"{eid}/{kind}: defect must fail and target must pass the contract")
             pairs.append({
                 "id": f"{eid}-repair-{kind}", "cluster_id": rec["cluster_id"], "source_ids": rec["source_ids"],
                 "task_type": "essay_repair", "defect": kind,
@@ -568,7 +574,7 @@ def cmd_ledger(args):
 
 def cmd_export(args):
     cfg, k2c, c2p = load_clusters()
-    essays = {r["id"]: r for r in load_jsonl(args.essays)}
+    essays = {r["id"]: r for r in sorted((r for f in args.essays for r in load_jsonl(f)), key=lambda r: r.get("repair_round", 0))}
     accepted = load_accepted(args.reviews, essays)
     pairs = load_jsonl(args.repairs) if args.repairs else []
     out = Path(args.out_dir)
@@ -632,12 +638,12 @@ def main(argv=None):
     c.add_argument("--factcards", nargs="+", required=True)
     c.add_argument("--out", required=True)
     r = sub.add_parser("repairs")
-    r.add_argument("--essays", required=True)
+    r.add_argument("--essays", nargs="+", required=True)
     r.add_argument("--reviews", nargs="+", required=True)
     r.add_argument("--per-essay", type=int, default=2)
     r.add_argument("--out", required=True)
     e = sub.add_parser("export")
-    e.add_argument("--essays", required=True)
+    e.add_argument("--essays", nargs="+", required=True)
     e.add_argument("--reviews", nargs="+", required=True)
     e.add_argument("--repairs")
     e.add_argument("--out-dir", required=True)
