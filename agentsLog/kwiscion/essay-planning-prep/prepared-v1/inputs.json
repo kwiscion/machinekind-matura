@@ -1,0 +1,68 @@
+[
+ {
+  "item": "dev-essay-001",
+  "topic": 1,
+  "full_task": "Wybierz jeden z podanych tematów i napisz wypracowanie. W wypracowaniu sformułuj stanowisko (tezę) i uzasadnij je, odwołując się do wiedzy historycznej. Wypracowanie powinno liczyć co najmniej 300 słów.\n\nTemat 1. Oceń znaczenie panowania Kazimierza III Wielkiego (1333–1370) dla rozwoju państwa polskiego. W pracy uwzględnij aspekty: polityczny, gospodarczy i kulturalny.\n\nTemat 2. Scharakteryzuj skutki unii lubelskiej zawartej w 1569 roku dla Korony Królestwa Polskiego i Wielkiego Księstwa Litewskiego. W pracy uwzględnij aspekty: ustrojowy i społeczny.",
+  "full_task_sha256": "b401de8fe91778fb639f3772600bedc307d8b7143d8ad0ab9cf445a938835cdc",
+  "aspects": [
+   "polityczny",
+   "gospodarczy",
+   "kulturalny"
+  ]
+ },
+ {
+  "item": "dev-essay-003",
+  "topic": 1,
+  "full_task": "Wybierz jeden z podanych tematów i napisz wypracowanie. W wypracowaniu sformułuj stanowisko (tezę) i uzasadnij je, odwołując się do wiedzy historycznej. Wypracowanie powinno liczyć co najmniej 300 słów.\n\nTemat 1. Oceń skuteczność prób reformowania Rzeczypospolitej w czasach panowania Stanisława Augusta Poniatowskiego (1764–1795). W pracy uwzględnij aspekty: ustrojowy, edukacyjny i międzynarodowy.\n\nTemat 2. Porównaj politykę władz pruskich i rosyjskich wobec Polaków w drugiej połowie XIX wieku.",
+  "full_task_sha256": "c2ebe6b7810536eeb04ef886f98da9924fd0327259547c7cdfab4d5518992966",
+  "aspects": [
+   "ustrojowy",
+   "edukacyjny",
+   "międzynarodowy"
+  ]
+ },
+ {
+  "item": "dev-essay-004",
+  "topic": 1,
+  "full_task": "Zadanie zawiera dwa tematy wypracowania. Wybierz jeden z nich i napisz wypracowanie. Zajmij stanowisko wobec tezy zawartej w temacie i uzasadnij je. Praca powinna liczyć minimum 300 słów.\n\n1. Oceń znaczenie powstania styczniowego (1863–1864) dla społeczeństwa polskiego. W pracy uwzględnij aspekty: polityczny, społeczny i kulturowy.\n2. Przedstaw przemiany ustroju politycznego II Rzeczypospolitej w latach 1921–1935.\n\nWYPRACOWANIE\nna temat nr ....",
+  "full_task_sha256": "3a051c981399237351a50b78d28f7db9f552da3e02afde1543482772f994ddfe",
+  "aspects": [
+   "polityczny",
+   "społeczny",
+   "kulturowy"
+  ]
+ },
+ {
+  "item": "dev-essay-005",
+  "topic": 1,
+  "full_task": "Wybierz jeden z podanych tematów i napisz wypracowanie. W wypracowaniu sformułuj stanowisko (tezę) i uzasadnij je, odwołując się do wiedzy historycznej. Wypracowanie powinno liczyć co najmniej 300 słów.\n\nTemat 1. Oceń działalność Polskiego Państwa Podziemnego w latach 1939–1945. W pracy uwzględnij aspekty: wojskowy, polityczny i społeczny.\n\nTemat 2. Przedstaw drogę społeczeństwa polskiego od strajków z sierpnia 1980 roku do obrad Okrągłego Stołu w 1989 roku.",
+  "full_task_sha256": "036e8c5eff1039894ce86506eec4085ffbbf44cdb47c3d0b616594880f0ce992",
+  "aspects": [
+   "wojskowy",
+   "polityczny",
+   "społeczny"
+  ]
+ },
+ {
+  "item": "dev-essay-009",
+  "topic": 1,
+  "full_task": "Wybierz jeden z podanych tematów i napisz wypracowanie. W wypracowaniu sformułuj stanowisko (tezę) i uzasadnij je, odwołując się do wiedzy historycznej. Wypracowanie powinno liczyć co najmniej 300 słów.\n\nTemat 1. Oceń znaczenie unii w Krewie (1385) i panowania Władysława II Jagiełły (1386–1434) dla państwa polskiego. W pracy uwzględnij aspekty: polityczny, militarny i religijny.\n\nTemat 2. Przedstaw rolę Jadwigi Andegaweńskiej w dziejach Polski.",
+  "full_task_sha256": "8a5a7bc7eba4b679d193578cf8eed0e0b0ecc27e811ffd04987466f85630b1de",
+  "aspects": [
+   "polityczny",
+   "militarny",
+   "religijny"
+  ]
+ },
+ {
+  "item": "dev-essay-010",
+  "topic": 1,
+  "full_task": "Zadanie zawiera dwa tematy wypracowania. Wybierz jeden z nich i napisz wypracowanie. Zajmij stanowisko wobec tezy zawartej w temacie i uzasadnij je. Praca powinna liczyć minimum 300 słów.\n\n1. Oceń skuteczność ruchu egzekucyjnego i reform czasów Zygmunta II Augusta (1548–1572). W pracy uwzględnij aspekty: ustrojowy, skarbowy i terytorialny.\n2. Scharakteryzuj zasady wolnej elekcji ustalone po 1572 roku.\n\nWYPRACOWANIE\nna temat nr ....",
+  "full_task_sha256": "c519c577e011744a3e9a3355d9bed181b37859b85849e64fa8a712c853f58ee8",
+  "aspects": [
+   "ustrojowy",
+   "skarbowy",
+   "terytorialny"
+  ]
+ }
+]

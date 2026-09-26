@@ -1,0 +1,104 @@
+{
+  "status": "FROZEN_FOUR_ITEM_PROPOSAL_NOT_AUTHORIZED",
+  "variants": [
+    "strong_single",
+    "structured_routes"
+  ],
+  "items": [
+    {
+      "id": "val2024-hist-z7",
+      "route": "closed",
+      "split": "known May2024 VALIDATION; already evaluated, not unseen",
+      "prompt_sha256": "4a62175b476f55fdce9a98f3d7c4a7104d6fb3eecb10c473d15e4542df30889b",
+      "images": []
+    },
+    {
+      "id": "val2024-hist-z2",
+      "route": "open_source",
+      "split": "known May2024 VALIDATION; already evaluated, not unseen",
+      "prompt_sha256": "f48729d728806fd0c2d78e7bf65026b6f3269f467154d2e314e62444540a0e84",
+      "images": [
+        {
+          "path": "pages/page-05.png",
+          "sha256": "738bfbfb73b4f90e4bb17a8cf6852899600d5e451b5d3dd0ea76ef499375169d"
+        }
+      ]
+    },
+    {
+      "id": "val2024-hist-z1",
+      "route": "image",
+      "split": "known May2024 VALIDATION; already evaluated, not unseen",
+      "prompt_sha256": "b817698751f78b1ba1fdc21dca3e3b546b0d913e2e28e79493b4f954f7c9a3b7",
+      "images": [
+        {
+          "path": "pages/page-04.png",
+          "sha256": "b0838350ae52a84d8b3eef81d59cd1c691e8cb08f23ad4970d21e632ed3f72b9"
+        }
+      ]
+    },
+    {
+      "id": "dev-essay-001",
+      "route": "essay",
+      "split": "original DEV",
+      "topic": 1,
+      "prompt_sha256": "b401de8fe91778fb639f3772600bedc307d8b7143d8ad0ab9cf445a938835cdc",
+      "images": []
+    }
+  ],
+  "selection_rule": "Two fixed existing items per route, selected before new prompts are executed; known prior failures exposed. No generalization claim.",
+  "source_v2_sha256": "6615fea2e6fd1d6f9db5b781fa84a883899d1c2fb83a28b914638089e6b015a4",
+  "source_passages_or_keys_included": false,
+  "new_corpus_or_heldout_material": false,
+  "budget_status": "Current user policy: context65536, initial thinkingcap32768, up to3 retries per failed logical stage, finite dynamic ceilings; independent runtime qualification and declaration required",
+  "parked_extension_items": [
+    {
+      "id": "val2024-hist-z10",
+      "route": "closed",
+      "split": "known May2024 VALIDATION; already evaluated, not unseen",
+      "prompt_sha256": "adf2edc85de8025edad4cba1216369f087df26fa5dca5049732e677a44306c2a",
+      "images": [
+        {
+          "path": "pages/page-13.png",
+          "sha256": "fdb1f949cc7f610ecfb0fd043aa416034aafb19aa0fd64e778d5398de008d781"
+        }
+      ]
+    },
+    {
+      "id": "val2024-hist-z18",
+      "route": "open_source",
+      "split": "known May2024 VALIDATION; already evaluated, not unseen",
+      "prompt_sha256": "374141927f6b1343344bc3a76df690a34f2631e1a78608ad897178fdfbdf7129",
+      "images": [
+        {
+          "path": "pages/page-21.png",
+          "sha256": "54b631cd65db862e9a4456407f7e9ca4808f7bb1b527dea576a0b5bbce09de70"
+        }
+      ]
+    },
+    {
+      "id": "val2024-hist-z14.2",
+      "route": "image",
+      "split": "known May2024 VALIDATION; already evaluated, not unseen",
+      "prompt_sha256": "b4b1f33481e02939da550e0785a4d3388eed48ea17077331ca4baa2839371a1e",
+      "images": [
+        {
+          "path": "pages/page-16.png",
+          "sha256": "9bda8c79c19a1433b11fda0cb32d615258954c3b1632255ac58178f240a4d23e"
+        },
+        {
+          "path": "pages/page-17.png",
+          "sha256": "2c4ead95a94bf197707d5c93d57ec9959dfe7f2e217a53eb169512a8bad71b0d"
+        }
+      ]
+    },
+    {
+      "id": "dev-essay-009",
+      "route": "essay",
+      "split": "original DEV",
+      "topic": 1,
+      "prompt_sha256": "8a5a7bc7eba4b679d193578cf8eed0e0b0ecc27e811ffd04987466f85630b1de",
+      "images": []
+    }
+  ],
+  "supersedes_panel_sha256": "db160b2ed35c28e06d2275761fd586f952eb2fd25223f5eb3e1d741a4575fba5"
+}

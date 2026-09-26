@@ -1,0 +1,254 @@
+{
+  "schema": "study_publication_allowlist_v1",
+  "scope": "Only listed files below this directory, plus this inventory itself. No wildcard addition of generated outputs.",
+  "model_calls": 0,
+  "source_provenance": {
+    "original_DEV": "agentsLog/Pewciu6/essay/README.md section provenance; original synthetic fixtures with clear rights, reference only, no source text copied",
+    "source_bundle_sha256": "fa3138bf4a386978ac1478c5610c46804a3d43ca32a969a43d2707482aa079a2",
+    "copied_helpers": "Existing scripts/Pewciu6 helpers and normalization dependency; exact hashes retained in prepared-v1/manifest.json; original authorship/repository terms continue."
+  },
+  "private_dependencies": [
+    {
+      "path": "agentsLog/kwiscion/private/validation_2024_keyfree/runner_input.v2.jsonl",
+      "sha256": "6615fea2e6fd1d6f9db5b781fa84a883899d1c2fb83a28b914638089e6b015a4",
+      "action": "Root provides existing known source-v2 pack privately to execution owner; preserve repo-relative location or explicitly reviewed mapping."
+    },
+    {
+      "path": "agentsLog/kwiscion/private/validation_2024_keyfree/pages/",
+      "action": "Same existing pack, complete original image bytes/order; prompt-study-panel.json pins required image paths/hashes. No fresh corpus, crop, public upload or May2025 access."
+    }
+  ],
+  "exclude": [
+    "Any original exam question/source pack or page images",
+    "Official keys/rubrics",
+    "Assembled case JSON/base64 images, native requests/envelopes, future model outputs absent a separate answer-only review",
+    "__pycache__ and *.pyc"
+  ],
+  "byte_preservation": "These are local raw-byte hashes. Root must retain narrow -text attributes for pinned executable/data artifacts before Git normalization; do not modify existing frozen files to repair line endings.",
+  "files": [
+    {
+      "path": "cpu-review-handoff.json",
+      "bytes": 2555,
+      "sha256": "05dca2beba73f5fade07f6a01052f0fae10865b67e4c186398478a0601d2d9e9",
+      "publication": "allow",
+      "category": "original_generic_code_tests_or_documentation"
+    },
+    {
+      "path": "deps/normalize_outputs.py",
+      "bytes": 3686,
+      "sha256": "40e3ed5e66a2a75d8d8c57515db9174c8cab9945e94ce9941641598c4f8268c6",
+      "publication": "allow",
+      "category": "unchanged_project_helper_with_original_author_provenance"
+    },
+    {
+      "path": "deps/Pewciu6/essay_contract.py",
+      "bytes": 31682,
+      "sha256": "2eab5f49b218af177cb88496c2f66a7918de281e320ec077ef562008e02a0a24",
+      "publication": "allow",
+      "category": "unchanged_project_helper_with_original_author_provenance"
+    },
+    {
+      "path": "deps/Pewciu6/essay_route.py",
+      "bytes": 23816,
+      "sha256": "590d025edc88a7f6b4d33297505c1fdff4607cc759e600980e982290715c1702",
+      "publication": "allow",
+      "category": "unchanged_project_helper_with_original_author_provenance"
+    },
+    {
+      "path": "deps/Pewciu6/essay_think_run.py",
+      "bytes": 27942,
+      "sha256": "8fc905db2b1165efa3bea95872d5ae6d13feabe85a8e55b1f858a634d8ed7cbb",
+      "publication": "allow",
+      "category": "unchanged_project_helper_with_original_author_provenance"
+    },
+    {
+      "path": "deps/Pewciu6/essay_wave_run.py",
+      "bytes": 32275,
+      "sha256": "d9a8aa881f2a269b596dbcf5324e222d125ac735020a81d597c9d37b8ff9c2fd",
+      "publication": "allow",
+      "category": "unchanged_project_helper_with_original_author_provenance"
+    },
+    {
+      "path": "essay-topic-selection-next.md",
+      "bytes": 4070,
+      "sha256": "9e313a61375a4be129474b451ac9858887365ff0d9d226717293f88b8db14c68",
+      "publication": "allow",
+      "category": "original_generic_code_tests_or_documentation"
+    },
+    {
+      "path": "planning_wave.py",
+      "bytes": 16687,
+      "sha256": "86ba00baca2311c4dab12484690a5dfc821860e2c536510c025182acab38e383",
+      "publication": "allow",
+      "category": "original_generic_code_tests_or_documentation"
+    },
+    {
+      "path": "prepared-v1/deps/normalize_outputs.py",
+      "bytes": 3686,
+      "sha256": "40e3ed5e66a2a75d8d8c57515db9174c8cab9945e94ce9941641598c4f8268c6",
+      "publication": "allow",
+      "category": "unchanged_project_helper_with_original_author_provenance"
+    },
+    {
+      "path": "prepared-v1/deps/Pewciu6/essay_contract.py",
+      "bytes": 31682,
+      "sha256": "2eab5f49b218af177cb88496c2f66a7918de281e320ec077ef562008e02a0a24",
+      "publication": "allow",
+      "category": "unchanged_project_helper_with_original_author_provenance"
+    },
+    {
+      "path": "prepared-v1/deps/Pewciu6/essay_route.py",
+      "bytes": 23816,
+      "sha256": "590d025edc88a7f6b4d33297505c1fdff4607cc759e600980e982290715c1702",
+      "publication": "allow",
+      "category": "unchanged_project_helper_with_original_author_provenance"
+    },
+    {
+      "path": "prepared-v1/deps/Pewciu6/essay_think_run.py",
+      "bytes": 27942,
+      "sha256": "8fc905db2b1165efa3bea95872d5ae6d13feabe85a8e55b1f858a634d8ed7cbb",
+      "publication": "allow",
+      "category": "unchanged_project_helper_with_original_author_provenance"
+    },
+    {
+      "path": "prepared-v1/deps/Pewciu6/essay_wave_run.py",
+      "bytes": 32275,
+      "sha256": "d9a8aa881f2a269b596dbcf5324e222d125ac735020a81d597c9d37b8ff9c2fd",
+      "publication": "allow",
+      "category": "unchanged_project_helper_with_original_author_provenance"
+    },
+    {
+      "path": "prepared-v1/inputs.json",
+      "bytes": 4407,
+      "sha256": "1923faa5a158979bd427ab6181f73c30cbd30b15f83bed96af1158d20b936bad",
+      "publication": "allow",
+      "category": "rights_cleared_original_synthetic_DEV_tasks_not_exam_pack"
+    },
+    {
+      "path": "prepared-v1/manifest.json",
+      "bytes": 1989,
+      "sha256": "79b7487fa7e7f127f138b20f651eb0248ee383b6bad7b4e2b58681d1a29aea1f",
+      "publication": "allow",
+      "category": "original_generic_code_tests_or_documentation"
+    },
+    {
+      "path": "prepared-v1/planning_wave.py",
+      "bytes": 16687,
+      "sha256": "86ba00baca2311c4dab12484690a5dfc821860e2c536510c025182acab38e383",
+      "publication": "allow",
+      "category": "original_generic_code_tests_or_documentation"
+    },
+    {
+      "path": "prepared-v1/prompts.json",
+      "bytes": 18267,
+      "sha256": "87de7e4a1f8cc5b0de7c69001d496203defae42afc4c63977c5f105063b3361a",
+      "publication": "allow",
+      "category": "original_generic_code_tests_or_documentation"
+    },
+    {
+      "path": "prompt-study-budget-v2.json",
+      "bytes": 2660,
+      "sha256": "f09bbfc7da51fa671f2411e0cacc0a155893d1b0b22d22709198bc22ea8c2b5a",
+      "publication": "allow",
+      "category": "original_generic_code_tests_or_documentation"
+    },
+    {
+      "path": "prompt-study-panel.json",
+      "bytes": 3708,
+      "sha256": "299268977512dc9d08df197027a9192c6531097aa38b4f86316877a5f2cdbe41",
+      "publication": "allow",
+      "category": "known_validation_identifiers_hashes_and_private_relative_paths_only"
+    },
+    {
+      "path": "prompt-study-proposal.md",
+      "bytes": 9148,
+      "sha256": "0123c207040b11ce46fe2bec9b179d9f5b6db914f2573fd86fe208da8f12660c",
+      "publication": "allow",
+      "category": "original_generic_code_tests_or_documentation"
+    },
+    {
+      "path": "README.md",
+      "bytes": 5116,
+      "sha256": "e5e9af37b9544b65ea1d61d64a95c23a0f722be51fb91957e1d6311ca298dcc4",
+      "publication": "allow",
+      "category": "original_generic_code_tests_or_documentation"
+    },
+    {
+      "path": "route-study-prompts.json",
+      "bytes": 3583,
+      "sha256": "9d1ea1b1eaa07a264842af5643e8968c3c47be1735dac596ffb49106cd50fa36",
+      "publication": "allow",
+      "category": "original_generic_code_tests_or_documentation"
+    },
+    {
+      "path": "shared_routes.py",
+      "bytes": 1299,
+      "sha256": "45e8c2fa82132441f2f07213c3bd10b2693ffb69ce5fa20456c80a060f20490f",
+      "publication": "allow",
+      "category": "original_generic_code_tests_or_documentation"
+    },
+    {
+      "path": "SHARED_RUNTIME_INTEGRATION.md",
+      "bytes": 6791,
+      "sha256": "2045383915f7f43f0e197bd96578e1706740af8461d30416f51fd1dd154369d2",
+      "publication": "allow",
+      "category": "original_generic_code_tests_or_documentation"
+    },
+    {
+      "path": "structured-handoff-manifest.json",
+      "bytes": 2782,
+      "sha256": "8ff6da3d7966e65a788af88387ebd30e9bb3665440f2ec327c316ab6ebc534a5",
+      "publication": "allow",
+      "category": "original_generic_code_tests_or_documentation"
+    },
+    {
+      "path": "STRUCTURED_HANDOFF.md",
+      "bytes": 6347,
+      "sha256": "27d5417692ffd85c41b04945859effe1adfeeebc45d96d282658d51ec8729d32",
+      "publication": "allow",
+      "category": "original_generic_code_tests_or_documentation"
+    },
+    {
+      "path": "structured_routes.py",
+      "bytes": 15205,
+      "sha256": "44340c0572e82999ac074f47fb8e5810d777cdea37e855298d55e5c11ef3bb18",
+      "publication": "allow",
+      "category": "original_generic_code_tests_or_documentation"
+    },
+    {
+      "path": "study_driver.py",
+      "bytes": 5108,
+      "sha256": "493df23c67c426323537ecbcb1e03231d842c8ca921a8b51186081558a447346",
+      "publication": "allow",
+      "category": "original_generic_code_tests_or_documentation"
+    },
+    {
+      "path": "test_planning_wave.py",
+      "bytes": 8626,
+      "sha256": "a94218cb41ba59ae16f8f34948605371ca56cb9e5e74432e75165c44315b4de8",
+      "publication": "allow",
+      "category": "original_generic_code_tests_or_documentation"
+    },
+    {
+      "path": "test_shared_routes.py",
+      "bytes": 1669,
+      "sha256": "339944ec59882449c50736598ae278400a9996918ac1886cd3c410682a1d36fe",
+      "publication": "allow",
+      "category": "original_generic_code_tests_or_documentation"
+    },
+    {
+      "path": "test_structured_routes.py",
+      "bytes": 11177,
+      "sha256": "bd8060ef4d5f7c6bf2c5b8c379c036e239972ed7ef54d8618d4e8757636ec1a5",
+      "publication": "allow",
+      "category": "original_generic_code_tests_or_documentation"
+    },
+    {
+      "path": "test_study_driver.py",
+      "bytes": 2380,
+      "sha256": "06fcd24469bdd74095217aba04304ad2bae1b56af307c1cc3da557a0d465fcca",
+      "publication": "allow",
+      "category": "original_generic_code_tests_or_documentation"
+    }
+  ]
+}

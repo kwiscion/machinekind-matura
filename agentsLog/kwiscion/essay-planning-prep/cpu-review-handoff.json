@@ -1,0 +1,42 @@
+{
+  "status": "CPU_PIPELINE_AND_SHARED_HOOKS_PASS_AWAIT_INDEPENDENT_REVIEW",
+  "manifest_sha256": "79b7487fa7e7f127f138b20f651eb0248ee383b6bad7b4e2b58681d1a29aea1f",
+  "runner_sha256": "86ba00baca2311c4dab12484690a5dfc821860e2c536510c025182acab38e383",
+  "tests_sha256": "a94218cb41ba59ae16f8f34948605371ca56cb9e5e74432e75165c44315b4de8",
+  "windows_tests": {
+    "passed": 14,
+    "seconds": 5.753
+  },
+  "model_calls": 0,
+  "remote_operations": 0,
+  "dependencies": {
+    "deps\\normalize_outputs.py": "40e3ed5e66a2a75d8d8c57515db9174c8cab9945e94ce9941641598c4f8268c6",
+    "deps\\Pewciu6\\essay_contract.py": "2eab5f49b218af177cb88496c2f66a7918de281e320ec077ef562008e02a0a24",
+    "deps\\Pewciu6\\essay_route.py": "590d025edc88a7f6b4d33297505c1fdff4607cc759e600980e982290715c1702",
+    "deps\\Pewciu6\\essay_think_run.py": "8fc905db2b1165efa3bea95872d5ae6d13feabe85a8e55b1f858a634d8ed7cbb",
+    "deps\\Pewciu6\\essay_wave_run.py": "d9a8aa881f2a269b596dbcf5324e222d125ac735020a81d597c9d37b8ff9c2fd"
+  },
+  "launch_blocker": "Owned-server absolute guardian/cleanup integration and independent review; fresh root declaration required",
+  "source": "Exact six original DEV topic-1 tasks from preserved Pawel edit bundle; no retrieval evidence copied",
+  "linux_tests": {
+    "passed": 14,
+    "seconds": 9.663
+  },
+  "shared_runtime_integration": "shared_routes.py suffix-only hooks; ownership/deadline/cleanup delegated to reusable harness",
+  "shared_routes_sha256": "45e8c2fa82132441f2f07213c3bd10b2693ffb69ce5fa20456c80a060f20490f",
+  "shared_route_tests": {
+    "passed": 4,
+    "seconds": 0.008
+  },
+  "proposal_files": {
+    "shared_routes.py": "45e8c2fa82132441f2f07213c3bd10b2693ffb69ce5fa20456c80a060f20490f",
+    "test_shared_routes.py": "339944ec59882449c50736598ae278400a9996918ac1886cd3c410682a1d36fe",
+    "prompt-study-proposal.md": "63d9fa406459e0fbd2d7f0c5cf4c28a1a6ef1fe7ced5f76bf82c9289286ca74b",
+    "prompt-study-panel.json": "299268977512dc9d08df197027a9192c6531097aa38b4f86316877a5f2cdbe41",
+    "route-study-prompts.json": "9d1ea1b1eaa07a264842af5643e8968c3c47be1735dac596ffb49106cd50fa36",
+    "essay-topic-selection-next.md": "9e313a61375a4be129474b451ac9858887365ff0d9d226717293f88b8db14c68",
+    "prompt-study-budget-v2.json": "9c90b9e13edbb60d591ddcea1dd4ef2283efdb444a6b35ae79eb2d433555e445",
+    "README.md": "144951b149c7fe417e56806bae0c73b2b0169facaff289baf60fe02ef1f60853"
+  },
+  "proposal_note": "Current large-thinking policy supersedes previous8item/small-capbudget sketches; originalprepared-v1and14testsunchanged"
+}

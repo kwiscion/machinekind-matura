@@ -1,14 +1,14 @@
 # Winning plan
 
-**Goal:** highest final history score; target48/60. Current champion: **Gemma4 12B Q4, 38/60** on known validation; preserved fallback35/60. Updated27September00:45. This is strategy, not a log; issues own tasks.
+**Goal:** highest final history score; target48/60. Current champion: **Gemma4 12B Q4, 38/60** on known validation; preserved fallback35/60. Updated27September01:30. This is strategy, not a log; issues own tasks.
 
 ## Finish the harness, then improve answers
 
 1. **One reusable, timed harness.** Default60minutes; configurable120minutes if available, with10minutes reserved for recovery, validation and submission. Measure throughput and qualify larger context/output limits; short answers can need substantial reasoning. Adapt compute to time remaining, preserving complete question text and images.
 2. **No blank submission entries.** Preserve usable answers. After an empty, truncated, timed-out or malformed result, attempt at least3 retries: larger budget, thinking off, then bounded final-answer synthesis. Allocate recovery time before it is exhausted. If every attempt fails, use the owner's literal emergency fallback `Tadeusz Kościuszko`; mark it as a placeholder, never a successful recovery. Record any hard-deadline exception.
-3. **One champion end-to-end rehearsal.** Exercise the actual organizer package/answers path, forced failure recovery, schema/IDs, essay constraints and timing. Report score, blanks, placeholders, recovered items and elapsed time. Keep this harness for later candidates; repeat only checks affected by a change.
+3. **Finish the running champion rehearsal.** The improved harness is merged; native65,536 context is verified. Complete the actual organizer package/answers path, forced failure recovery, schema/IDs, essay constraints and timing. Report score, blanks, placeholders, recovered items and elapsed time. Reuse this harness; repeat only checks affected by later changes.
 4. **Better prompts and purposeful extra calls.** Test evidence/causal planning, closed-answer disagreement resolution, open-answer coverage checks and essay planning→prose. Compare candidate quality with selector quality. Prefer large mechanism changes over wording sweeps. Use one fast grading pass; second review only for consequential uncertainty.
-5. **Finish the essay LoRA pilot.**90 training rows/16 separate evaluation inputs; real backward works. Judge argument gain and factual errors. Use one merged model with regression checks, or prove essay-only adapter switching on one shared base.
+5. **Measure the trained essay LoRA.**36 training steps completed; merged export fits and serves text/images. Compare16 separate evaluation inputs against its matched untrained export in one grading pass. Training loss is not quality. Promote only with argument gain and acceptable factual/nonessay regressions; essay-only adapter switching remains unproven.
 
 ## Owners
 
