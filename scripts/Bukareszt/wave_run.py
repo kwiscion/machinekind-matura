@@ -74,7 +74,9 @@ def write_state(state: dict) -> None:
 
 
 def used(state: dict) -> dict:
-    calls = tokens = 0
+    """Experiment ledger plus calls recorded outside it (e.g. the 2 readiness calls) under state['external']."""
+    ext = state.get("external", {})
+    calls, tokens = ext.get("calls", 0), ext.get("requested_tokens", 0)
     if LEDGER.exists():
         for line in LEDGER.read_text().splitlines():
             row = json.loads(line)
@@ -182,7 +184,7 @@ def execute(a) -> int:
                     child.wait()
         finally:
             launcher.cleanup_owned(out)
-            summary = {"child_status": status, "finished_at": now(), "ledger_after": used(read_state())}
+            summary = {"child_status": status, "finished_at": now(), "envelope_used_after": used(read_state())}
             r.write(out / "outcome.json", summary)
             print(json.dumps(summary))
         return 0 if status == 0 else 1

@@ -2,17 +2,17 @@
 
 26 September 2026. Host `matura-greg` (Brev `sx8ihq0wx`, H100 PCIe 80 GB). Runtime: Ollama 0.34.4 (executable `ad9c5344…2ff4`), `gemma4:12b-it-q4_K_M` (digest `4eb23ef1…b05c`), context 32768. The unchanged bare config (`3d9c5018…`, CRLF pin) is used: thinking off, 1024 output cap, 420 s timeout, temperature omitted. The server and runner share one `unshare -rn` namespace with loopback only. The runtime profile is `scripts/Bukareszt/runtime_profiles/h100-matura-greg-ollama-0.34.4.json` (canonical SHA `a8af3f3c…93af`).
 
-**Status: answers generated, NOT graded.** Independent grading is requested on #11. The numbers below are descriptive only; they do not count as score evidence. I do not grade my own track.
+**Status: W1 graded by root (17:54Z): bare 1/5 vs corrected-selective 1/5, no gain; corrected-selective is not expanded. W2 awaits the independent Sol reviewer.** Independent grading is requested on #11. The numbers below are descriptive only; they do not count as score evidence. I do not grade my own track.
 
 ## Envelope and ledger
 
 | | used | wave cap |
 |---|---|---|
-| calls | **70** (W1 10, W2 60), 0 errors, 0 retries | 120 |
-| requested output/reasoning tokens | **71,680** (70 × 1024; reasoning off) | 240,000 |
+| calls | **72** = 70 experiment calls (W1 10, W2 60; 0 errors, 0 retries) + 2 readiness calls | 120 (48 left) |
+| requested output/reasoning tokens | **73,728** = 71,680 experiment (70 × 1024; reasoning off) + 2,048 readiness | 240,000 (166,272 left) |
 | actual prompt / completion tokens | 67,780 / 9,636 | – |
 | mechanism families | **4**: corrected-selective-rag, retrieve-verify-answer, question-to-relation, fact-cards (bare = comparator) | 4 |
-| wave window | first launch 17:36:46Z; last call 17:42:05Z; summed request latency 165.9 s | 90 min |
+| wave window | first launch 17:36:55Z (deadline 19:06:55Z); last call 17:42:05Z; summed request latency 165.9 s | 90 min |
 
 The window cap was well respected: the last call came about 5.3 minutes after the first launch.
 
@@ -20,7 +20,7 @@ The window cap was well respected: the last call came about 5.3 minutes after th
 - **Rate:** `rate_unverified: true`. As a planning proxy only, I use the central instance's $3.28/hour. This is not a bill, and it is not a cap; the provider charge must be reconciled separately.
 - **Instance:** `matura-greg` has been up since ≈16:49Z.
 - **This session's use:** setup plus wave ran 17:25Z–17:43Z, ≈18 min, which is ≈$1.0 at the proxy rate.
-- **Qualification:** the 2 synthetic readiness calls (answers `4e62aaee…`) are separate from this ledger.
+- **Qualification:** the 2 synthetic readiness calls (answers `4e62aaee…`) are not rows in `ledger.jsonl`, but per root (17:54Z) they **count toward the envelope**. `wave_state.json` records them under `external`, and `wave_run.py` adds them before every cap check.
 
 Ledger: `ledger.jsonl` (one row per attempt, including arm, role and tokens).
 
