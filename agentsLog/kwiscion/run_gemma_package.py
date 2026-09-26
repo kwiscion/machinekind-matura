@@ -229,6 +229,7 @@ def execute(a):
         config_bytes = Path(a.config).read_bytes()
         r.require(r.hashlib.sha256(config_bytes).hexdigest() == CONFIG_SHA, 'Original config changed during preflight')
         config = json.loads(config_bytes)
+        pinned_base_url = config['base_url']  # provenance only; never contacted
         config['base_url'] = r.ENDPOINT+'/v1'  # isolated endpoint only; generation settings unchanged
         r.write(out/'config.json', config)
         record['frozen_files'] = dict(record['package_files'])
@@ -242,7 +243,9 @@ def execute(a):
             record['frozen_files'][profile['ollama_binary']] = profile['ollama_binary_sha256']
         record['git_revision'] = subprocess.check_output(['git','rev-parse','HEAD'], cwd=r.ROOT, text=True).strip()
         record['parent_pid'] = os.getpid()
-        record['endpoint_change'] = '127.0.0.1:11434 -> isolated 127.0.0.1:11435; no sampling changes'
+        record['endpoint_change'] = (f"pinned config base_url {pinned_base_url} (not contacted) -> isolated "
+            f"{r.ENDPOINT}/v1 inside the namespace; host idle check port {profile['host_endpoint_check']['port']} "
+            f"per runtime profile; no sampling changes")
         r.write(out/'launch.json', record)
         command = ['unshare','-rn','--',sys.executable,'-B',str(SELF),'--inside',
                    '--host-net',os.readlink('/proc/self/ns/net'),'--output',str(out)]

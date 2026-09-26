@@ -1,0 +1,40 @@
+# Scored validation versus organizer prompt parity — issue #38
+
+26 September 2026, 18:50 Europe/Warsaw; baseline code reviewed on main `10b79ea91af49f5b5ecefb1524613a8faa229ced`. Author scope [5847961812](https://github.com/kwiscion/machinekind-matura/issues/38#issuecomment-5847961812). CPU-only source/provenance review and original synthetic fixtures: zero network/model calls, remote commands, downloads, namespace/service changes or paid spend. No PR93 full test pass repeated; Greg owns shared integration.
+
+## What was checked
+
+The pinned question builder SHA `7dd1f3368cd406a4bf34d1065b3957595b53b40f043cf07abf9d9e2bd3739531` matches current bytes. The [key-free bootstrap](../kwiscion/validation-2024-keyfree/bootstrap.py) verifies that pin, constructs `PROMPT_HEADER + parsed sheet text`, and refuses input drift from the published v1 hash. The explicit [v2 repair](../kwiscion/validation-2024-keyfree/repair-v2.py) adds only the missing image; all40 prompt strings remain unchanged, final input SHA `6615fea2e6fd1d6f9db5b781fa84a883899d1c2fb83a28b914638089e6b015a4`. The RTX handoff reports that same input. This binds the reported scored path to reviewed construction; **a local private full40 input/package pair is unavailable here**, so no claim of independently diffing40 real prompt strings or actual runtime requests.
+
+Executed `python3 -B agentsLog/ljaniec/prompt_parity_probe.py`; results in [synthetic evidence](2026-09-26-prompt-parity-synthetic.json). Four original task fixtures include a shared-source group, two subtasks, cross-page continuation, text-only and an essay-shaped task. Eight `infer.run_case` calls went only to an in-memory capture stub; socket creation was forbidden. No backend contacted. All four bare/organizer text hashes differ even with identical task/source text and image bytes. Image order, single-user role and generation settings match. This is construction evidence, not accuracy or token/context-fit evidence.
+
+## Construction differences
+
+| Dimension | Scored bare source-v2 path | Organizer adapter and final launcher |
+| --- | --- | --- |
+| Entry | Bootstrap `runner_bytes` → frozen JSONL → `infer.load_cases/run_case` | `matura_package.prepare/build_prompt` → JSONL → same infer functions; `run_gemma_package` uses this exact adapter |
+| Item/source grouping | PDF `parse_arkusz` copies shared group preamble into each subtask and prefixes group/subtask markers | Renders each supplied item independently; `group` is metadata, not a lookup/merge instruction. Shared source must already be present in each item |
+| Neighboring subtasks | Text parser excludes other subtask bodies; attaches shared-source plus own pages. Whole-page images may still show neighbors | Does not automatically add neighbors. Supplied question/source text and images are preserved; any visible neighbors depend on supplied assets |
+| Header | Polish history/extended-level, concision, source plus own knowledge; conditional decision/justification, PF and choice guidance | Generic one-task header; optional whole-exam instructions; task ID/max points; explicit answer format and final-answer footer |
+| Source placement | Shared source text precedes the subtask text within one extracted task body | Question first, then separate nonempty `source_text` under a source label. Identical facts do not imply identical order/text |
+| Footer/metadata | No additional adapter footer; PDF parser normalizes selected layout/filler lines | Adds syntax-example disclaimer and final-only Polish footer; sorted unknown exam/item/image fields are rendered; known descriptive metadata is not universally rendered |
+| Images | Modality heuristic, question-sheet essay detection, explicit v2 repair; sorted page union | Every supplied image in item array order, no modality heuristic/automatic page selection; adds textual path list. Infer sends text first, then encoded images |
+| Roles/history | One `user` message; no system message or previous-item history | Same infer transport; no launcher-specific prompt or extra role/history |
+| Chat template/runtime | Native model/backend applies template after the OpenAI request | Same mechanism if actual model/runtime/settings match; identical user roles alone do not prove equal template/runtime or image preprocessing |
+| Thinking/output | Pinned config: `reasoning_effort:none`, max output1024, timeout420 | Launcher pins same semantic config, changing only isolated endpoint. No essay-specific output cap implemented here |
+| Sampling | Temperature omitted in this bare config; backend defaults, no frozen seed | Same omission; infer supports explicit optional temperature after PR77, but final launcher’s pinned config rejects a modified config. A candidate needs a separately reviewed declaration/path |
+| Retrieval | Bare control has none | Adapter run supports opt-in bounded retrieval; generic final launcher remains bare. Preserve omission for a parity control |
+
+Code anchors: [builder](../Pewciu6/harness/build_validation_2024.py) `PROMPT_HEADER:39`, `parse_arkusz:235`; adapter `build_prompt:341`, `prepare:365`; infer `load_cases:117`, `run_case:172`; final launcher `preflight:50`, `inside:138`, `execute:212`. No fixed evaluator task labels, keys or outcomes were used to select routing.
+
+The config byte hashes differ only because of line endings: committed LF SHA `bc3c91d9da1a6b5ad0d083506e090a2d840833b24a92af0765cd19f2bd8294e3`; its CRLF copy SHA `3d9c501891d5307a863096274abdfeec716ee8fa163b5c259569f3592ed8effa` equals the launcher pin. JSON generation settings are the same. Reformatting is nevertheless rejected by the byte pin; retain exact declared execution bytes.
+
+## Minimal decision and acceptance
+
+**Prefer a separately declared organizer-rendered control using the existing adapter.** Its frozen prompt differences can be measured with the same source-v2 tasks/assets and matched runtime/model/context/thinking/output/sampling, without changing the scored baseline or inventing a PDF-equivalent renderer. An operator with the existing private source artifacts prepares the organizer representation, checks every requirement/shared source and exact ordered image bytes, and publishes only hashes/aggregate differences. Freeze actual prepared JSONL/config/model/runtime hashes before calls; preserve IDs and60 points, original results, failures/unsent and full call/time/cost allocation. This report authorizes no calls or new worker.
+
+Do not infer organizer quality from a JSON/schema/offline smoke pass or import the35/60 fallback score into a new prompt path. A baseline-style `header + question/source` shortcut cannot recreate PDF extraction/ordering from arbitrary organizer fields. If a common renderer is later selected, make it an explicit versioned opt-in shared integration, with source completeness, no duplicated/missing group content, item/image ordering and default-byte-preservation acceptance. Then grade its actual end-to-end control before deployment.
+
+Related accepted portability limitation: final launcher `request_loop:103` retains fixed2816 prompt-token ceiling even for context32768 profiles; this is deliberately documented in Greg’s issue83 README. It can reject an otherwise fitting organizer request. Changing it is a separate reviewed guard decision, not permission to relax context safeguards here; no duplicate PR93 test/implementation.
+
+Independent read-only Sol reviewer checked adapter/final-launcher construction alongside root’s baseline/probe. No shared code changed. Runtime #38 review was already delivered in PR84/90; #88 reproduction acceptance remains with Piotrek/lead. Lead reports H100 readiness terminal/backed up; its raw private evidence was not accessible here and root retains GPU/offline ownership. Paweł’s new essay/LoRA recipe is not yet published at this checkpoint; its architecture/processor, PEFT, merged/adapter runtime and actual ≤8GB export need independent review when delivered. Prompt parity first report is delivered within the new30-minute ETA; monitor/dedup continue.

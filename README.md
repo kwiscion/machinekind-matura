@@ -13,15 +13,15 @@ Subject, from the binding hackathon rules: **Polish history matura**. Records st
 
 The handoff package is in [docs/overnight/PLAN.md](docs/overnight/PLAN.md). Start with [SETUP.md](docs/overnight/SETUP.md), then read [CONTRACTS.md](docs/overnight/CONTRACTS.md) and your assigned issue. Source and publication rules are in [SOURCE.md](SOURCE.md). GitHub issues are the overnight scheduling authority; live assignments are recorded in [ISSUE_LINKS.md](docs/overnight/ISSUE_LINKS.md); local issue bodies preserve the original briefs.
 
-| Issue | Owner | Local brief | GitHub lookup |
-| --- | --- | --- | --- |
-| Lead, integration and freeze | @kwiscion | [Lead](docs/overnight/issues/lead.md) | [Issue](https://github.com/kwiscion/machinekind-matura/issues/3) |
-| Grounded training data | @przemeknowak781 | [Data](docs/overnight/issues/data.md) | [Issue](https://github.com/kwiscion/machinekind-matura/issues/4) |
-| Offline runtime and throughput | @ljaniec | [Control plan](WINNING_PLAN.md) | [Issue #38](https://github.com/kwiscion/machinekind-matura/issues/38) |
-| Explicit sampling candidate | @Bukareszt | [Control plan](WINNING_PLAN.md) | [Issue #72](https://github.com/kwiscion/machinekind-matura/issues/72) |
-| Independent score adjudication | @Pewciu6 | [Answer handoff](agentsLog/kwiscion/model-answers/qwen35-9b-val40-1024.manifest.json) | [Issue #11](https://github.com/kwiscion/machinekind-matura/issues/11) |
-| RTX readiness and next measured improvement | @semberecki | [Control plan](WINNING_PLAN.md) | [Issue #33](https://github.com/kwiscion/machinekind-matura/issues/33) |
-
+| Active track | Owner | Task |
+| --- | --- | --- |
+| Integration, controls and freeze | @kwiscion | [#3](https://github.com/kwiscion/machinekind-matura/issues/3), [H100 #81](https://github.com/kwiscion/machinekind-matura/issues/81) |
+| Source-first visual comparison | @semberecki | [#95](https://github.com/kwiscion/machinekind-matura/issues/95) |
+| Query repair and selective RAG | @Bukareszt | [#96](https://github.com/kwiscion/machinekind-matura/issues/96) |
+| Essay route and essay-only LoRA feasibility | @Pewciu6 | [#80](https://github.com/kwiscion/machinekind-matura/issues/80) |
+| Independent essay data and factual QA | @przemeknowak781 | [#97](https://github.com/kwiscion/machinekind-matura/issues/97) |
+| Prompt parity, runtime and export review | @ljaniec | [#38](https://github.com/kwiscion/machinekind-matura/issues/38) |
+| Independent score ledger | Root-assigned reviewers | [#11](https://github.com/kwiscion/machinekind-matura/issues/11) |
 Current allocation at 15:15: **the lead laptop runs the single Gemma baseline**, after completing Qwen's 40 responses. **Piotrek prepares his RTX 5090 for the next declared improvement** (#33; Blackwells unavailable), without duplicating the baseline. **Greg's organizer adapter is merged** ([#42](https://github.com/kwiscion/machinekind-matura/pull/42)); his next task is pinned-index deployment #44. Two disjoint Sol reviewers provide Qwen's provisional first pass; Paweł independently adjudicates on #11. Przemek integrates the existing split patch; Łukasz claimed offline runtime #38. Each owner must claim and post an ETA; assignment is not execution evidence.
 
 Retrieval #6 and evaluator #7 are accepted implementation handoffs; model quality has not been promoted. [Evidence selection #15](https://github.com/kwiscion/machinekind-matura/issues/15) is closed as a negative experiment; keep the original retrieval baseline. [Real-output validation #11](https://github.com/kwiscion/machinekind-matura/issues/11) remains open. Training-data [PR #18](https://github.com/kwiscion/machinekind-matura/pull/18) is merged with fail-closed strict export: **24 eligible examples**. The current 22/2 internal split separates group IDs, but review found a shared source article under different group IDs; a correction is in progress before publication or holdout-based selection. The other records remain drafts. Spark #5 is closed with a runner and corrected synthetic smoke audit: 20/20 CPU answers were nonempty, but only 4/20 Spark answers were nonempty. No exam score or training gain follows from that smoke. Original issue ownership is retained; do not duplicate active workers.
