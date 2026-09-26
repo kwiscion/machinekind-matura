@@ -47,8 +47,18 @@
     "capabilities": ["completion", "vision", "audio", "tools", "thinking"],
     "thinking_default": true,
     "loaded_context": 32768,
+    "per_call_context_override": "none (smoke calls used the loaded 32768 context; no n_ctx override per call)",
     "processor": "100% GPU",
-    "llama_server_vram_mib": 9184
+    "llama_server_vram_mib": 9184,
+    "memory_measurement_qualification": "single nvidia-smi compute-apps sample at ~17:33 CEST (9184 MiB llama-server); not a peak-attributed series"
+  },
+  "image_token_control_check": {
+    "requested_by": "kwiscion on #38 @15:26:28Z (research, not authorization)",
+    "bundled_llama_server_flags": ["--image-min-tokens N", "--image-max-tokens N"],
+    "flag_presence_verified": true,
+    "env_view": "ollama serve config prints empty LLAMA_ARG_FIT/LLAMA_ARG_FIT_TARGET; serve process (pid 177755) holds 72 inherited env vars incl. OLLAMA_MODELS; no proxy vars set",
+    "backend_env_direct_capture": "pending a runtime probe (llama-server unloads on keep_alive expiry; not captured without a model call)",
+    "note": "later 560-token visual pilot would need context/accounting and a separate lead declaration"
   },
   "smoke_calls": {
     "budget": "max 4, thinking off, 1024 output tokens, $0 (local)",
@@ -63,21 +73,31 @@
         "done_reason": "stop",
         "thinking": null,
         "prompt_eval_count": 26,
+        "prompt_eval_duration_s": 23.08,
+        "prompt_tokens_per_s": 1.1,
         "eval_count": 14,
+        "eval_duration_s": 5.28,
+        "eval_tokens_per_s": 2.7,
+        "load_duration_s": 29.32,
         "total_duration_s": 57.7,
-        "note": "includes first model load; answer correct (966)"
+        "note": "includes first model load (29.3s) and first-call vision/CUDA warmup inside the 23.1s prefill; answer correct (966)"
       },
       {
         "n": 2,
-        "kind": "synthetic image (stdlib-generated 128x128 PNG, sha256 b33a595becfa50d7, no exam material)",
-        "image_file_sha256_16": "b33a595becfa50d7",
+        "kind": "synthetic image (stdlib-generated 128x128 PNG, no exam material)",
+        "image_file_sha256": "b33a595becfa50d7949076789c06964216a1dba7a23937baecf89aa211f5566d",
         "response_nonempty": true,
         "done_reason": "stop",
         "thinking": null,
         "prompt_eval_count": 116,
+        "prompt_eval_duration_s": 2.99,
+        "prompt_tokens_per_s": 38.8,
         "eval_count": 17,
+        "eval_duration_s": 0.25,
+        "eval_tokens_per_s": 67.7,
+        "load_duration_s": 0.0,
         "total_duration_s": 3.3,
-        "note": "vision path works; correct description (red circle on white); actual image input verified via prompt token count"
+        "note": "vision path works; correct description (red circle on white); actual image input verified via prompt token count; warm"
       },
       {
         "n": 3,
@@ -86,8 +106,12 @@
         "done_reason": "stop",
         "thinking": null,
         "prompt_eval_count": 51,
+        "prompt_eval_duration_s": 0.07,
+        "prompt_tokens_per_s": 750.7,
         "eval_count": 233,
+        "eval_duration_s": 4.32,
         "eval_tokens_per_s": 54.0,
+        "load_duration_s": 0.0,
         "total_duration_s": 4.5,
         "note": "sustained warm throughput 54.0 tok/s over 233 tok / 4.32 s; model kept warm (keep_alive); vs laptop reference mean 37.4 s per completed answer (partial CPU offload)"
       }
