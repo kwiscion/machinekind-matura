@@ -1,0 +1,34 @@
+{
+  "artifact_sha256": "10beafb69e3059b68bdc89248517559496d1e37f31b7cc7d55a06cc5d9898276",
+  "record_count": 20,
+  "unique_id_count": 20,
+  "duplicate_id_record_count": 0,
+  "response_empty_count": 16,
+  "response_nonempty_count": 4,
+  "reported_error_count": 0,
+  "empty_response_without_reported_error_count": 16,
+  "reported_error_or_empty_response_count": 16,
+  "latency": {
+    "denominator_records_with_latency": 20,
+    "sum_seconds": 97.63199999999998,
+    "mean_seconds": 4.8816,
+    "median_seconds": 4.8825
+  },
+  "completion_tokens": {
+    "denominator_records_with_token_count": 20,
+    "sum": 4000,
+    "configured_budget": 200,
+    "records_at_or_above_budget": 20,
+    "interpretation": "Possible truncation only; token counts do not prove finish reason."
+  },
+  "model_revision_present_count": 0,
+  "finish_reason_present_count": 0,
+  "input_kind": "synthetic-smoke",
+  "input_comparison": {
+    "input_sha256": "cfa1ef4a155b2652085ac0c5f4a084b3b3f168d3118ba4ddb81058b5dc610756",
+    "input_record_count": 20,
+    "exact_id_set_match": true,
+    "all_record_prompts_match_by_id": true,
+    "exact_id_sequence_match": true
+  }
+}

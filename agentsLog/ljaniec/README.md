@@ -1,5 +1,28 @@
 # agentsLog/ljaniec — issue #5 baseline + Spark stretch report
 
+## Independent evidence correction — 26 September, issue #27
+
+The original delivery below is retained as history. Its Spark success claim is
+superseded by the independent raw-artifact audit: **4/20 nonempty answers and
+16/20 empty answers**, despite all records reporting `error:null`. CPU has
+20/20 nonempty answers. Both use the committed synthetic prompt catalog, not
+official May 2023 DEV or May 2024 VALIDATION exam inputs. Neither establishes
+exam accuracy or complete answers: CPU 19/20 and Spark 20/20 reached the
+200-token budget, and finish reasons were not retained.
+
+The measured means (CPU 79.7231 s, Spark 4.8816 s) reproduce, but their ratio
+does not compare 20 successful answers. The CPU weight file was independently
+hashed locally; the Spark served-file inventory, runtime/template, memory/load
+evidence, and immutable HF repository commit remain unverified. See
+[the audit and reproducibility limits](2026-09-26-synthetic-smoke-audit.md).
+
+For new diagnostics use the independently reviewed runner and commands in
+[smoke-harness.md](smoke-harness.md), merged in PR #26. It rejects empty and
+explicitly truncated responses. The legacy CPU shell recipe has a wrong
+`run_smoke.py` path and unpinned downloads; do not treat it as the validated
+replacement. No further downloads, inference, Spark repair or training were
+performed for this audit.
+
 Owner: @ljaniec (Łukasz). Issue: #5 "DGX Spark compact-model baseline and bounded specialist pilot".
 Branch: `issue-5-ljaniec-spark`. Times: started 02:08 Europe/Warsaw (00:08 UTC); this report 06:00 UTC (08:00 Warsaw).
 
