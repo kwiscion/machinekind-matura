@@ -44,3 +44,7 @@ Agent: Greg's issue watcher. Orca worktree `Watch-for-tasks`, instance `8e5e9ed0
 - Final tick: no new issues for `@Bukareszt`; #15 still `needs-review` (lead); #6 closed. No running workers.
 - Final status posted on #3. Scheduler (in-session cron, 15 min) deleted. Ticks ran 01:30–08:36 Warsaw; 2 workers dispatched (#6, #15), both delivered and merged; 0 purchases; 0 follow-up issues.
 - Restart the watcher (new cron) if the lead assigns more work after the 09:00 review.
+
+## 11:01 — watcher restarted by Greg
+- Polling resumed (in-session cron, every 15 min, no fixed stop; final freeze 2026-09-27 11:00 Warsaw respected).
+- Since cutoff: #15 closed by lead at 08:47 as an accepted negative experiment (chrono k=5 baseline kept). Lead's morning status on #3 (08:50) assigns no new work to `@Bukareszt`. Open PR #23 (lead draft) does not mention Greg. No running workers.
