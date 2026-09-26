@@ -23,3 +23,8 @@ Continuation of 2026-09-26-watcher-log.md. Same watcher instance 8e5e9ed0-1189-4
 ## 00:50 — #117 new run3 window
 - Root (22:49Z = 00:49): resume after the narrow CPU normalization check; run3 latest start 01:30, latest finish 02:30, ≤60 min from actual start; bounds unchanged (reuse probe/control, ≤36 fresh history steps, 2 new candidate calls × 512 tokens, no new synthetic/control calls); no further approval round. After a viable adapter/merged export, evaluate argument improvement first; no new framework or long documentation.
 - Worker has pushed the run3 continuation code (`68e7557`, template criterion only, history-start operator, requalification builder, not launched) and its independent agent is verifying the llama.cpp source vs the tarball. Relayed the new window verbatim.
+
+## 01:10 — #117 pilot-run3 running
+- Template requalification PASS with no model calls (pinned llama.cpp `fcb3074f` source locators; GGUF template = raw HF `ae53464b…`; C++ regression against pinned `libllama-common.so` reproduces `/props` `6a1015c4…ab82` via CRLF/CR→LF + one trailing newline removed); delta review PASS; requalification record `e88309c`.
+- Run3 launched 00:59:08, absolute deadline 01:58:58 (inside root's 01:30 latest start / 02:30 latest finish). Runs detached on the host under its own deadline guards.
+- The Mac's network is intermittent (GitHub API and SSH to the host failing at times ~01:08); the worker is retrying its status checks. The on-host wave is unaffected.
