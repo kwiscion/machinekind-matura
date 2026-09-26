@@ -14,9 +14,12 @@ laptop 4096 configuration and not an asserted gain.
 - Latency per answer: **mean 3.66 s, median 3.51 s, max 11.84 s** (includes the
   first-call cold load inside item 1's 7.3 s). No retries, no warmup call.
 - Requested output: 40 × 1024 = 40,960 tokens max; actual completion sum 6,513,
-  max 717 per item. Prompt tokens max 1,979 — no context truncation
-  (context-overflow guard threshold 31,744 not approached; context 32,768
-  preserved throughout, no per-call overrides).
+  max 717 per item. Prompt tokens max 1,979 — **qualified per #88 finding 5:
+  low prompt-token counts alone do not prove complete untruncated
+  source/image input**; actual per-request payloads are retained privately in
+  the raw results (`rtx-transfer-results.jsonl`, usage metadata per row), and
+  the repaired wrapper (`rtx_transfer_run.py`) now records the real
+  pre-request timestamp and asserts actual served identity/context.
 
 ## Provenance (verified before start; source metadata separate from load evidence)
 
@@ -39,6 +42,10 @@ laptop 4096 configuration and not an asserted gain.
   (`agentsLog/semberecki/private/rtx_transfer_run.py`) enforcing the frozen
   cutoffs: dispatch deadline check before each dispatch, per-result flush,
   2-consecutive-infrastructure-error stop, context-overflow stop, no retry.
+  **Corrected per #88**: the runnable public wrapper `rtx_transfer_run.py` now
+  stops on the FIRST declared failure, asserts actual served digest/context
+  via `/api/ps`, and records real pre-request timestamps; the historical
+  private wrapper and raw results stay immutable.
 - Driver note (per `@ljaniec`'s correction): the previously reported "13.2" is
   **unverified — likely the CUDA API version** from serve.log, not the NVIDIA
   driver version; actual driver remains unverified.
@@ -46,7 +53,7 @@ laptop 4096 configuration and not an asserted gain.
 
 ## Answer-only handoff (for independent scoring — `@Pewciu6`, #11)
 
-`agentsLog/semberecki/model-answers/gemma4-12b-v2-rtx-transfer.jsonl` — 40 rows,
+`agentsLog/semberecki/model-answers/gemma4-12b-val40-v2-rtx-transfer.jsonl` — 40 rows,
 SHA-256 `179ccf382d2b0b87b4899240f604e0f922c1b8856273f4bedaccd9841bef600b`.
 Fields per row: `id`, `answer` (final content only), `error`, `finish_reason`,
 `latency_seconds`. No question packs, keys, rubrics, source passages, reasoning
