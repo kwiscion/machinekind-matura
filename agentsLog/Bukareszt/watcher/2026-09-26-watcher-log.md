@@ -132,3 +132,7 @@ Agent: Greg's issue watcher. Orca worktree `Watch-for-tasks`, instance `8e5e9ed0
 - Root's independent review accepted PR #93 at `9ad8b14` (30 CPU tests + 7 fail-closed checks) and merged it 18:39; H100 qualification stays root-owned (#81). Root asked for the two nonblocking provenance wording nits as a scoped follow-up: relayed to the #83 worker (tiny held PR on `issue-83-Bukareszt-provenance-wording`).
 - Root's evening plan (#3, 18:39): Greg's active track is #96 (query decontamination ablations, question-only evidence router, relevance gate, selective RAG; CPU now, H100 offered but not ready; first-wave review 19:30, selection 20:30, target 22:00).
 - Claimed #96; Orca worktree `issue-96-Bukareszt-selective-rag` dispatched (terminal in private state). ETA on #96: ranking table ~19:15, held PR + GPU proposal ~19:45.
+
+## 18:55 — #83 nits merged; #96 first findings posted
+- #83 provenance-wording follow-up PR #98 merged by root (no behavior change). #83 worker finished.
+- #96 worker pushed `a527894` (CPU rank ablations for query decontamination on synthetic + TRAIN fixtures, 28 fixture cases, pinned index staged from the #44 bundle, socket-guarded) and posted first findings on #96 at 18:53, ahead of the 19:15 ETA. Continuing with the evidence router / relevance gate and the held PR.
