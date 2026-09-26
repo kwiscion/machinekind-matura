@@ -18,6 +18,14 @@ Verified by era: medieval 40, early_modern 74, 19th_century 28, 20th_century 55.
 
 **Read the audit before training on this set.** In a strict provisional audit ([audit_sample.md](audit_sample.md)), 12/20 random Haiku-verified items met the strict standard; the rest add context or interpretation beyond the cited claims, or have poorly formed prompts. The 20 hand-grounded items (`pn781-train-*`) passed 20/20. Recommended next step: a stricter second verification (e.g. Sonnet) before any training use.
 
+## Strict re-verification (in progress, 2026-09-26 ~02:00–03:00 UTC)
+Rubric `prompts/verify_strict_v2.md`: two independent judges per record (`claude-opus-5-5`), Lens S (every fact in the claims, no added interpretation) and Lens Q (standalone prompt, complete fluent answer, correct task type). Failures go to one repair pass (`prompts/repair_v2.md`, prompt and answer only, claims fixed), are re-gated with `validate.py`, and are re-judged by fresh judges. Orchestrated with `strict_rounds.py`; raw verdicts and repairs are in `strict/`.
+
+- Round 1, all 231 records: 24 passed both lenses (Lens S 63/230, Lens Q 65/231). 169 were repaired and passed the gate, 1 repair failed the gate, 37 were dropped. Calibration: the 20 hand-grounded items passed Lens S 7/20 and Lens Q 18/20. Several Lens S failures were real (facts from the article but not in the cited claim); others only objected that a claim fragment did not name its subject. Amendment 2.1 therefore lets the cited article title establish the subject, and nothing else, from round B on.
+- New: 60 essay plans (`prompts/essay_gen_v1.md`, 2 per source over the 30 largest articles balanced by era), all passing the gate; raw output is in `generated/essay-*.jsonl`.
+- Round B: 229 candidates (169 repaired + 60 essays) are being judged.
+- `export_sft.py` writes chat-format LoRA files (closed-book and grounded with distractor passages, topic-disjoint holdout); it runs after the strict set is final.
+
 ## Pipeline
 1. `fetch_sources.py` — 100 plwiki articles (medieval → 1989) fetched by pinned `oldid` through the MediaWiki API, split into sections into git-ignored `cache/`. Reruns reuse oldids from `sources.jsonl` (checked: 98/98 re-extracted texts had identical SHA-256). Disambiguation pages are skipped.
 2. `make_batches.py` — per-agent batches of trimmed sections (lead first, ≤6,000 chars per source).
