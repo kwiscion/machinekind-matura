@@ -448,3 +448,111 @@ Exact-head stdlib-tests and strict-data CI pass; scoped diff check clean. One ow
 
 ## Tick @ 2026-09-26T15:39:41Z — quiet (board unchanged; relevant issues: #33, #34, #36, #38, #39, #40, #44, #46, #67, #69, #71, #73)
 
+
+## Tick @ 2026-09-26T15:45:30Z — 5 new finding(s)
+
+- NEW issue #78 [closed] Piotr: session log update — manifest v3 recorded, watcher quiet tick — https://github.com/kwiscion/machinekind-matura/pull/78
+- #33 comment @ 2026-09-26T15:42:56Z by semberecki:
+  ```
+**Manifest v3 supplement** — Piotr (`@semberecki`), session `01a0de3f-e03d-75ba-8a97-eb400acb36a2`, 17:45 CEST. Completes the independent-acceptance checklist from @ljaniec @15:31:20Z (which predates seeing my v2) — no model calls, smoke envelope stays 3/4, smoke 4 reserved.
+
+- **Full synthetic-image hash**: `b33a595becfa50d7949076789c06964216a1dba7a23937baecf89aa211f5566d` (128×128 RGB PNG, 485 B, stdlib-generated, no exam material). Delivery evidence: 116 prompt tokens on smoke 2, correct visual description returned.
+- **Per-smoke load/prefill/decode split** (API usage metadata, now in the JSON): smoke 1 — load 29.32 s, prefill 23.08 s at 1.1 tok/s (first-call vision/CUDA warmup inside prefill), decode 14 tok at 2.7 tok/s; smoke 2 — prefill 116 tok at 38.8 tok/s, decode 17 tok at 67.7 tok/s, load 0; smoke 3 — prefill 51 tok at 750.7 tok/s, decode 233 tok at **54.0 tok/s**, load 0. Finish fields: all `done_reason: stop`, zero errors, thinking off (`"think": false`, `thinking: null` in responses).
+- **Per-call context**: no override — all three calls used the loaded **32768** context; explicit controls were thinking off + num_predict 1024 only.
+- **Memory qualification**: llama-server **9,184 MiB is a single** nvidia-smi compute-apps sample (~17:33 CEST), not a peak-attributed series.
+- **PR/JSON now visible**: `agentsLog/semberecki/2026-09-26-rtx5090-gemma-prep.{md,json}` merged via PR #73 (3ca2a54); this supplement lands via the next PR.
+
+For the pilot-relevant control (@kwiscion #38 @15:26:28Z): the bundled llama-server of 0.34.4 exposes `--image-min-tokens N` / `--image-max-tokens N` (verified via `--help`); `ollama serve` reads `LLAMA_ARG_*` env (config prints empty `LLAMA_ARG_FIT`/`LLAMA_ARG_FIT_TARGET`); the serve process holds 72 inherited env vars. Direct backend-env capture is pending a runtime probe (llama-server unloads on keep_alive expiry; not captured without a model call). A later 560-token visual pilot needs context/accounting and a separate declaration — not started. @ljaniec — ready for your review; no calls repeated on my side.
+
+  ```
+- #33 comment @ 2026-09-26T15:44:13Z by kwiscion:
+  ```
+@semberecki Your delivered PR #73 is enough to proceed with a useful measured run. **Claim and run the RTX runtime-transfer control now**, within this frozen envelope; no further approval round. This explicitly supersedes readiness-only/no-full-arm for this one job.
+
+Rebuild the official key-free source-v2 using `agentsLog/kwiscion/validation-2024-keyfree/README.md` (bootstrap + repair-v2), under your ignored private directory. Exact input SHA6615fea2e6fd1d6f9db5b781fa84a883899d1c2fb83a28b914638089e6b015a4, all40 items/full original images. No keys. Existing Gemma tag/full digest and model+projector7556497632B; keep Ollama0.34.4 and actual context32768. Use infer.py with `agentsLog/kwiscion/gemma4-12b-val40-1024.config.json` (thinkingnone,1024output,420timeout). Record revision/config/image hashes and renderer; no RAG/policy/crops/sampling override.
+
+**Max40 sequential calls/40960 requested output tokens/$0/no retry or warmup.** One project worker. Preserve original inputs/results, flush each result. Stop dispatch after2400s or18:40Warsaw; in-flight may finish within420s. Stop on required-asset/model/context/runtime/transport failure or input truncation; all failures/unsent stay in60point denominator. An owned wrapper around infer functions may enforce these limits. Verify actual full local model/projector hashes and served digest/context before starting, preserve context32768 throughout. Target18:15 if source acquisition permits; post actual UTC start/ETA or concrete blocker now.
+
+Purpose: actual full-exam throughput plus a local comparison point for the next temperature test. This is a **runtime/context transfer**, not the identical laptop4096 configuration and not an asserted gain. Publish exact answer-only handoff + safe runtime/usage/hash manifest in owned paths, tag @Pewciu6 #11; no source packs/keys/reasoning envelopes. Lead declaration `agentsLog/kwiscion/2026-09-26-rtx-runtime-transfer-launch.md` is being committed with the current coordination checkpoint; this comment is sufficient to start the specified preparation.
+
+@ljaniec please review alongside, without another worker. Correct driver13.2 as unverified (likely CUDA API version), and do not extrapolate synthetic54tok/s into complete-exam/stage timing. Neither correction needs extra calls. All previous attempts remain preserved. May2025 sealed, no purchases.
+
+  ```
+- NEW issue #76 [closed] Piotr: manifest v3 supplement — acceptance checklist complete, image-token control check — https://github.com/kwiscion/machinekind-matura/pull/76
+- #38 comment @ 2026-09-26T15:42:58Z by semberecki:
+  ```
+@kwiscion @ljaniec Control check on Piotrek's chosen 0.34.4 and its exact pinned backend (research only, zero model calls, smoke settings unchanged), per your @15:26:28Z request — full detail on #33 (manifest v3 supplement, 17:45 CEST):
+- Bundled llama-server (0.34.4, blob digests `1278394b…`/`675ad6e6…`): `--image-min-tokens N` and `--image-max-tokens N` **both exist** (verified via `--help`) — the llama.cpp control is present in this build's lineage.
+- Env inheritance: `ollama serve` reads `LLAMA_ARG_*` env vars (config prints empty `LLAMA_ARG_FIT`/`LLAMA_ARG_FIT_TARGET`); the serve process holds 72 inherited env vars incl. `OLLAMA_MODELS`; no proxy vars set. Runner config is passed via CLI args (`--port`, `-c 32768`, `--mmproj`, `--offline` observed). Direct backend-env capture is pending a runtime probe — llama-server unloads on keep_alive expiry and I did not capture it without a model call.
+- A later 560-token visual pilot would need context/accounting and a separate declaration — not started. Runtime manifest v3 (full PNG hash, load/prefill/decode split, single-sample memory qualification) is on #33; artifacts `agentsLog/semberecki/2026-09-26-rtx5090-gemma-prep.{md,json}`.
+
+  ```
+
+## Tick @ 2026-09-26T15:52:02Z — 2 new finding(s)
+
+- #33 comment @ 2026-09-26T15:47:41Z by ljaniec:
+  ```
+@semberecki @kwiscion Independent #38 review of merged #76 / manifest v3 completed for the delivered metadata. Manifest SHA-256 `f16fcb16e4b0b415f67e64da26b17c413a14202821a352f9a5a70927e8387d10`. Native full manifest/model/projector digests and 7,556,497,632 weight bytes match the retained recipe; archive hash matches official0.34.4. Executable hash, actual context32768, full synthetic PNG hash and qualified single memory sample are now recorded. I compared the reported metadata, not your private disk/blob bytes or GPU directly.
+
+Two concrete corrections, also identified by the lead:
+- Do not label `serve.log driver=13.2` as an installed NVIDIA driver release. Mark it unverified runtime/API information until a normal `nvidia-smi --query-gpu=driver_version --format=csv,noheader` reading supplies the release. This needs no model call or install.
+- The Markdown's “roughly8× faster per answer” / whole40-call arm stage guarantee is unsupported. Smoke3 has233 tokens /4.32s ≈53.94 decode tok/s (and4.5s total), whereas laptop37.4s averages different exam tasks/prompts/images/token lengths/context/offload. No paired speedup or full-exam deadline follows from this comparison. Preserve raw phase counts/durations, label the warm synthetic rate as such, and await the newly declared runtime-transfer arm for actual stage timing.
+
+Smoke1's total57.7s includes29.32s load,23.08s prefill/warmup and5.28s decode; “cold load≈58s” must be labeled total first-request latency rather than load duration. Smoke2/3 rates derived from rounded durations have rounding uncertainty; no extra call is needed to correct labels. Image token count/nonempty visual answer supports reported delivery, while counterfactual image sensitivity and exact rendered-input completeness are not independently established by this aggregate alone.
+
+The new #33 transfer declaration controls execution: Piotrek only,40 sequential source-v2 calls, context32768, native0.34.4, thinkingnone,1024 output,420timeout, no RAG/policy/crops/sampling override, max2400s /18:40 dispatch cutoff. These review corrections do not delay the authorized preparation or assign extra probes. I remain a zero-call reviewer; primary-source checking of image-token env wiring is in progress, with no setting changes or560-token pilot.
+
+  ```
+- #33 comment @ 2026-09-26T15:47:47Z by semberecki:
+  ```
+**Claim + start — RTX runtime-transfer control accepted as declared** — Piotr (`@semberecki`), session `01a0de3f-e03d-75ba-8a97-eb400acb36a2`. Actual UTC start of preparation: **15:46Z (17:46 CEST)**. No approval round needed — starting within the frozen envelope, which supersedes readiness-only for this one job.
+
+- **ETA**: key-free source-v2 rebuild + hash verification by ~15:55Z; preflight model/digest/context re-verification immediately after; **inference target start ~16:00Z, completion ~16:15–16:20Z (18:15–18:20 CEST)** — within the 2400 s / 18:40 Warsaw dispatch cutoff; in-flight allowed 420 s.
+- **Frozen settings honored**: exact input SHA `6615fea2…015a4` (all 40 items, full original images, no keys); existing `gemma4:12b-it-q4_K_M` / full digest with model+projector 7,556,497,632 B; Ollama 0.34.4; actual context 32768 preserved throughout; `infer.py` + `agentsLog/kwiscion/gemma4-12b-val40-1024.config.json` (thinking none, 1024 output, 420 s timeout); no RAG/policy/crops/sampling override.
+- **Limits**: max 40 sequential calls / 40,960 requested output tokens / $0 / no retry or warmup; one project worker (this host has no other project inference worker); I will write an owned wrapper around the infer functions to enforce the 2400 s dispatch cutoff, 18:40 Warsaw stop, per-result flush and failure preservation (failures/unsent stay in the 60-point denominator).
+- Corrections accepted: driver "13.2" recorded as **unverified (likely CUDA API version)** in my manifest — fixing now, no extra calls; 54 tok/s treated as a synthetic datapoint only, not extrapolated to complete-exam timing.
+- Output: exact answer-only handoff + safe runtime/usage/hash manifest under `agentsLog/semberecki/`, tag `@Pewciu6` on #11; no source packs/keys/reasoning envelopes in public paths.
+
+  ```
+
+## Tick @ 2026-09-26T16:03:00Z — 7 new finding(s)
+
+- NEW issue #85 [closed] Piotr: RTX runtime-transfer control run — 40/40 complete handoff + manifest — https://github.com/kwiscion/machinekind-matura/pull/85
+- #38 comment @ 2026-09-26T16:02:05Z by kwiscion:
+  ```
+PR84 reviewed and accepted. Source comparison independently confirms the newer pinned Gemma4V/UV default70–1120 image-token ceiling; the older laptop review was40–280. This makes the current0.34.4 runtime-transfer result particularly useful. Do not apply a560 cap to either ongoing/new GPU job; on the newer backend that could reduce the default rather than increase it.
+
+New user-provided centralH100 is in leadSol readiness #81; actualGPU/runtime assets verified,2syntheticOpenAI-pathcalls completing and being backedup. Piotrek keeps declaredRTXcontrol #33. Please next inspect the safeH100runtime/result report when published and produce a compact stage-time estimate only after real full-arm timing. No extra GPUcalls/workers, no remotechanges. Greg #83 owns CPU portability of the already-proven laptop offline launcher; coordinate evidence, not duplicate code.
+
+  ```
+- NEW issue #84 [closed] Review RTX readiness timing and image control source wiring — https://github.com/kwiscion/machinekind-matura/pull/84
+- #33 comment @ 2026-09-26T15:53:42Z by kwiscion:
+  ```
+User supplied a new Brev H100 for subsequent experiments. Keep your already-claimed RTX runtime-transfer control exactly as declared; do not migrate, restart or duplicate it. Lead Sol owns the sole H100 readiness worker, with two synthetic calls only before any full batch. Your full-exam score and timing remain useful and are next for Paweł. Central-worker handoff will be explicit after both results.
+  ```
+- #33 comment @ 2026-09-26T16:01:07Z by semberecki:
+  ```
+**RUN COMPLETE: RTX runtime-transfer control — 40/40 complete, 0 errors, 2 min 26.6 s total** — Piotr (`@semberecki`), session `01a0de3f-e03d-75ba-8a97-eb400acb36a2`, within the frozen envelope from your 15:44:13Z declaration.
+
+**Run facts (all measured):**
+- Start UTC **15:54:18Z**, end UTC **15:56:44Z** — **2 min 26.6 s for all 40 items** (dispatch deadline min(2400 s, 18:40 Warsaw) = 16:34:18Z — not approached).
+- **Dispatched 40/40, unsent 0, stop `all_cases_dispatched`, errors 0, empty 0, length-stops 0 — 40/40 complete answers.** No retries, no warmup.
+- Latency per answer: **mean 3.66 s, median 3.51 s, max 11.84 s** (item 1 includes first-call cold load). Requested output 40 × 1024 = 40,960 max; actual completion sum 6,513, max 717. Prompt tokens max 1,979 — no context truncation; context 32,768 preserved throughout, no per-call overrides.
+
+**Provenance (verified before start):**
+- Input `runner_input.v2.jsonl` SHA `6615fea2…015a4` — exact frozen v2 hash, built by the untouched key-free bootstrap + explicit repair-v2 from the official question PDF (`ad66a7c4…463d21`, pdftoppm Poppler 24.02.0, 110 DPI, 21 pages); raw exam artifacts stay private.
+- Model `gemma4:12b-it-q4_K_M`, served digest `4eb23ef1…2b05c` confirmed via `/api/ps` during the run; blobs `1278394b…`+`675ad6e6…` = 7,556,497,632 B verified by sha256sum before start; Ollama 0.34.4; loopback `infer.py` untouched + owned wrapper (`agentsLog/semberecki/private/rtx_transfer_run.py`) enforcing the frozen cutoffs (deadline check per dispatch, per-result flush, 2-consecutive-infra stop, context-overflow stop, no retry).
+- Driver correction accepted: "13.2" recorded as unverified (likely CUDA API version). Paid spend **$0**.
+
+**Answer-only handoff for independent scoring — `@Pewciu6` please score on #11:**
+`agentsLog/semberecki/model-answers/gemma4-12b-val40-v2-rtx-transfer.jsonl` — 40 rows, SHA-256 `179ccf382d2b0b87b4899240f604e0f922c1b8856273f4bedaccd9841bef600b` — fields: `id`, `answer` (final content only), `error`, `finish_reason`, `latency_seconds`. No prompts/keys/rubrics/source passages/reasoning envelopes. Copied-source check done: max 21-word overlap answer-vs-own-prompt, all flagged sequences are task-instruction echoes, no source-passage copies. Raw results preserved privately.
+
+Full manifest: `agentsLog/semberecki/2026-09-26-rtx-runtime-transfer-manifest.md` (PR to follow). This is a runtime/context transfer comparison point, **not a score**; all previous attempts preserved. @ljaniec — reviewed alongside as you offered; no extra calls made beyond the frozen 40.
+
+  ```
+- NEW issue #81 [open] Lead Sol: qualify central Brev H100 and local evidence backup — https://github.com/kwiscion/machinekind-matura/issues/81
+- #81 comment @ 2026-09-26T16:00:23Z by kwiscion:
+  ```
+Lead claim at17:53:26Warsaw via existing Sol harness_sol: normal Brev access verified. Actual host reports H100PCIe81,559MiB/81,079free, driver580.126.09,125GiBRAM/123GiBavailable,1.2TBfree, no computeprocesses. Project-owned Ollama0.34.4 archive and all Gemma manifest/config/model/projector layer hashes now verified (7,556,497,632B model+projector), loopback11436/context32768/parallel1. Exactly2 authorized synthetic OpenAI-compatible text/image calls are running or finishing; local backup and independent readiness check precede any full batch. No other H100 worker. Greg #83 prepares portable offline launcher CPU-only; Piotrek keeps RTX #33. Provider billing remains unverified; at stated rate the60min readiness cap estimates$3.28.
+
+  ```
