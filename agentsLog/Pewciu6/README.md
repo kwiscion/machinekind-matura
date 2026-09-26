@@ -34,6 +34,8 @@
 | `2026-09-26T0250-contamination-13.md` | #13 report: 0 flagged chunks, 6 review-band chunks (stock phrasing), positive control 6/6. |
 | `results/contamination_pr18.json` | PR #18 training-data audit: aggregates, flagged/review record IDs and scores, answer-key angle counts (no exam text, no answers). |
 | `2026-09-26T0420-contamination-pr18.md` | PR #18 report: 0 flagged records, 3 review-band (stock phrasing), 4 single-fact answer overlaps (optional exclusion), positive control 10/10. |
+| `results/contamination_pr18_r2.json` | PR #18 re-run at head `c5009a5e` (essay-plan + SFT export added): same aggregates format as above. |
+| `2026-09-26T0520-contamination-pr18-r2.md` | PR #18 delta report: still 0 flagged, same 3 review-band, +2 single-fact answer overlaps from the new essay files (optional exclusion now 6), positive control repeated OK. |
 | `harness/test_contamination_jsonl.py` | Unit tests for the JSONL-corpus mode of `contamination_check.py`. |
 | `2026-09-26T0225-audit-procedures.md` | Procedures for the citation-support audit, the 15–20 item independent audit, blind essay review, and the vision/OCR slice. |
 | `private/` (git-ignored) | PDFs, `eval_keys.jsonl`, `runner_input.jsonl`, `pages/`, sanity outputs, dry-run audit sheet. **Never commit.** |
@@ -142,6 +144,8 @@ Anyone who rebuilds from the same PDFs should get the same hashes.
 ## Contamination check: PR #18 training data
 
 `contamination_check.py --corpus-jsonl <files> --keys <private eval_keys>` uses training examples (prompt + answer + evidence claims) as the corpus and adds reverse 13-gram containment plus an aggregate-only answer-key angle. Against PR #18 head `64d69815` (519 records, 288 unique IDs), 0 records are flagged and 3 are in the review band (stock phrasing). 0 answers reproduce long-key prose. 4 IDs share a single fact (a name or a date) with a VALIDATION key; excluding them is optional. See `2026-09-26T0420-contamination-pr18.md`.
+
+**Re-run at head `c5009a5e`** (10 new essay-plan files, 60 records, `pending`; SFT export script added but not committed). Still 0 flagged records, same 3 in the review band with unchanged scores. 2 more IDs (both `essay-08.jsonl`, both single on-topic historical facts) share a fact with a VALIDATION key, bringing the optional exclusion list to 6. Positive control repeated on the extended corpus and still discriminative. See `2026-09-26T0520-contamination-pr18-r2.md`.
 
 ## Next action
 
