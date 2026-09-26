@@ -1,0 +1,531 @@
+{
+  "reviewer": "root/harness_sol",
+  "independent_not_blind": true,
+  "owner_grades_not_read_at_freeze": true,
+  "precomparison_frozen_utc": "2026-09-26T18:46:17.074192+00:00",
+  "answer_file_sha256": "31f8dec43d3cfe3ce601485155992bf2db11281be81fc9f4441af1618ede4c55",
+  "fixture_file_sha256": "b96734272fa89c7cf8ea79d42760141a40507ddf69713a579ecbf0598a870951",
+  "method": "3 aspects4/3/1/0; factual deductions1-2=>1,3-5=>2,>5=>3; coherence0-3 with300-body-word gate. Body counts exclude topic/aspect/Teza/conclusion labels and punctuation-only whitespace tokens; no answer string was edited. Ranges are judgment sensitivity, not confidence intervals.",
+  "rows": [
+    {
+      "id": "dev-essay-009__A",
+      "item": "dev-essay-009",
+      "family": "A",
+      "answer_sha256": "0bd29bfdb132ffab814eedc1b502a7e165312cc12c3f949065bc0bf1a57042f1",
+      "raw_whitespace_words": 386,
+      "body_words": 369,
+      "single_topic": true,
+      "required_sources": "No source excerpts required by fixture; source_ids are reference-only metadata.",
+      "aspect_points": [
+        1,
+        3,
+        3
+      ],
+      "aspect_order": [
+        "political",
+        "military",
+        "religious"
+      ],
+      "confirmed_error_count": 1,
+      "errors": [
+        "Krewo did not institute hereditary succession to the Polish crown."
+      ],
+      "factual_deduction": 1,
+      "narrative_points": 6,
+      "coherence_points": 3,
+      "total": 9,
+      "judgment_range": [
+        8,
+        11
+      ],
+      "rationale": [
+        "Political section rests largely on administrative integration/hereditary-rule assertions; correct election fact is thinly developed.",
+        "Grunwald and joint forces support military relevance, but the unspecified 1410-1434 defensive system earns no factual credit.",
+        "Baptism and legitimacy provide satisfactory religious reasoning, without nuanced chronology or confessional diversity."
+      ],
+      "uncertainty": [
+        "Unspecified border defence system and generalized papal-protection claims are unsupported, not separately counted as proven false."
+      ],
+      "owner_comparison": {
+        "owner_total": 3,
+        "owner_levels": [
+          "superficial",
+          "superficial",
+          "superficial"
+        ],
+        "owner_coherence": 2,
+        "owner_error_count": 3,
+        "review_minus_owner": 6
+      }
+    },
+    {
+      "id": "dev-essay-010__A",
+      "item": "dev-essay-010",
+      "family": "A",
+      "answer_sha256": "04ae877647949033f6b6fbe2c71481f50ac00beb09226711b88dc54cedc7a8db",
+      "raw_whitespace_words": 415,
+      "body_words": 398,
+      "single_topic": true,
+      "required_sources": "No source excerpts required by fixture; source_ids are reference-only metadata.",
+      "aspect_points": [
+        3,
+        1,
+        1
+      ],
+      "aspect_order": [
+        "constitutional",
+        "fiscal",
+        "territorial"
+      ],
+      "confirmed_error_count": 1,
+      "errors": [
+        "Polesie is presented as one of the regions incorporated into the Crown in1569; the relevant provinces were Podlasie, Volhynia, Braclaw and Kyiv."
+      ],
+      "factual_deduction": 1,
+      "narrative_points": 4,
+      "coherence_points": 3,
+      "total": 7,
+      "judgment_range": [
+        5,
+        8
+      ],
+      "rationale": [
+        "Real union and post-reign1573 constitutional consequence provide some relevant constitutional reasoning, although the execution movement's aims are poorly understood.",
+        "No egzekucja dobr/kwarta mechanism; generic1564 tax and1572 blocked-reform assertions cannot substantiate satisfactory fiscal evaluation.",
+        "Some correct incorporation names, but vague administrative claims and the wrong region leave a superficial territorial account."
+      ],
+      "uncertainty": [
+        "1564 tax law, final1572 financial blockage and1570 administrative reform are unsupported specifics; withheld credit rather than automatically counting each as proven false.",
+        "Central absolutism is not the execution movement's criterion of success; this reduces relevance, not an extra date error."
+      ],
+      "owner_comparison": {
+        "owner_total": 3,
+        "owner_levels": [
+          "superficial",
+          "superficial",
+          "superficial"
+        ],
+        "owner_coherence": 2,
+        "owner_error_count": 4,
+        "review_minus_owner": 4
+      }
+    },
+    {
+      "id": "dev-essay-011__A",
+      "item": "dev-essay-011",
+      "family": "A",
+      "answer_sha256": "74174411ba34f9cdec792b9887a41b7e829d3b3b998c8f9664d2edf8c31bfc4a",
+      "raw_whitespace_words": 360,
+      "body_words": 343,
+      "single_topic": true,
+      "required_sources": "No source excerpts required by fixture; source_ids are reference-only metadata.",
+      "aspect_points": [
+        3,
+        3,
+        3
+      ],
+      "aspect_order": [
+        "constitutional",
+        "domestic",
+        "international"
+      ],
+      "confirmed_error_count": 2,
+      "errors": [
+        "Bar Confederation dated1792 instead of1768-1772.",
+        "1793 described as the first partition instead of the second."
+      ],
+      "factual_deduction": 1,
+      "narrative_points": 8,
+      "coherence_points": 2,
+      "total": 10,
+      "judgment_range": [
+        9,
+        11
+      ],
+      "rationale": [
+        "Veto and constitutional repair link institutional weakness to collapse.",
+        "Targowica and elite division form a satisfactory argument despite the Bar date error.",
+        "Neighbour intervention/partition sequence is relevant but not deeply analysed."
+      ],
+      "uncertainty": [
+        "The thesis says weakened noble liberties caused collapse, whereas the body argues their abuse/excess did: a minor logical inconsistency lowers coherence to2. Treating this as a slip could restore1 point."
+      ],
+      "owner_comparison": {
+        "owner_total": 3,
+        "owner_levels": [
+          "superficial",
+          "superficial",
+          "superficial"
+        ],
+        "owner_coherence": 2,
+        "owner_error_count": 3,
+        "review_minus_owner": 7
+      }
+    },
+    {
+      "id": "dev-essay-012__A",
+      "item": "dev-essay-012",
+      "family": "A",
+      "answer_sha256": "069908149da8b10d80d88c47b22d8eae6693651e4afe77d51e1819fb3a6a31f8",
+      "raw_whitespace_words": 381,
+      "body_words": 364,
+      "single_topic": true,
+      "required_sources": "No source excerpts required by fixture; source_ids are reference-only metadata.",
+      "aspect_points": [
+        3,
+        1,
+        3
+      ],
+      "aspect_order": [
+        "military",
+        "political",
+        "territorial"
+      ],
+      "confirmed_error_count": 1,
+      "errors": [
+        "Central national defence body is misnamed and dated1919: the Rada Obrony Panstwa was formed1July1920."
+      ],
+      "factual_deduction": 1,
+      "narrative_points": 6,
+      "coherence_points": 3,
+      "total": 9,
+      "judgment_range": [
+        8,
+        11
+      ],
+      "rationale": [
+        "Warsaw and Niemen victories are correctly linked to survival.",
+        "Political consolidation is asserted through a wrong institution/date and broad recognition rhetoric.",
+        "Riga1921 and the eastern border are correctly connected, but limited discussion of settlement tradeoffs."
+      ],
+      "uncertainty": [
+        "Traktat rymski is treated as a local wording slip because the same essay correctly names the Riga treaty and year; not a second factual deduction."
+      ],
+      "owner_comparison": {
+        "owner_total": 5,
+        "owner_levels": [
+          "superficial",
+          "superficial",
+          "superficial"
+        ],
+        "owner_coherence": 3,
+        "owner_error_count": 1,
+        "review_minus_owner": 4
+      }
+    },
+    {
+      "id": "dev-essay-009__C3",
+      "item": "dev-essay-009",
+      "family": "C3",
+      "answer_sha256": "6a46ec74248ba91090f08f8ca1742307935a99b465dab69e57359b96c2614955",
+      "raw_whitespace_words": 459,
+      "body_words": 442,
+      "single_topic": true,
+      "required_sources": "No source excerpts required by fixture; source_ids are reference-only metadata.",
+      "aspect_points": [
+        3,
+        3,
+        3
+      ],
+      "aspect_order": [
+        "political",
+        "military",
+        "religious"
+      ],
+      "confirmed_error_count": 1,
+      "errors": [
+        "Pomerania recovery is placed within the reign ending1434; Gdansk Pomerania returned in1466."
+      ],
+      "factual_deduction": 1,
+      "narrative_points": 8,
+      "coherence_points": 3,
+      "total": 11,
+      "judgment_range": [
+        9,
+        12
+      ],
+      "rationale": [
+        "Personal-union explanation repairs the principal political confusion.",
+        "Grunwald/joint forces remain useful; Pomerania is a new false example. Kalmar pressure is broadly plausible and not counted as an invented event.",
+        "Christianization weakening the Order's ideological justification improves the argument, but complete impossibility of crusading claims is overstated."
+      ],
+      "uncertainty": [
+        "Krewo prisoner-release promise is broadened into freedom for Poles; treated as imprecision. No separate automatic error for broad Kalmar causality."
+      ],
+      "owner_comparison": {
+        "owner_total": 8,
+        "owner_levels": [
+          "satisfying",
+          "superficial",
+          "satisfying"
+        ],
+        "owner_coherence": 2,
+        "owner_error_count": 2,
+        "review_minus_owner": 3
+      }
+    },
+    {
+      "id": "dev-essay-010__C3",
+      "item": "dev-essay-010",
+      "family": "C3",
+      "answer_sha256": "c9f555c49a18eb5fad3b19e2c0e28ec3ae7eb95eb1afdc2b1423deb85e00d505",
+      "raw_whitespace_words": 476,
+      "body_words": 459,
+      "single_topic": true,
+      "required_sources": "No source excerpts required by fixture; source_ids are reference-only metadata.",
+      "aspect_points": [
+        3,
+        1,
+        1
+      ],
+      "aspect_order": [
+        "constitutional",
+        "fiscal",
+        "territorial"
+      ],
+      "confirmed_error_count": 5,
+      "errors": [
+        "1551 preparation commission is presented as an enacted revision of the First Lithuanian Statute.",
+        "Transfer of hereditary Lithuanian rights is attributed to1569 rather than1564.",
+        "Denial of stable-revenue military financing disregards kwarta and the standing wojsko kwarciane.",
+        "The erroneous1569 Polesie incorporation persists.",
+        "The simultaneous1569 integration phrasing conflates Oswiecim/Zator1564 incorporation with Royal Prussia1569 integration."
+      ],
+      "factual_deduction": 2,
+      "narrative_points": 3,
+      "coherence_points": 3,
+      "total": 6,
+      "judgment_range": [
+        5,
+        8
+      ],
+      "rationale": [
+        "Lithuanian sejmiks and Second Statute add relevant correct detail, but date compression prevents rich treatment.",
+        "The fiscal section still misses the central achievement and now positively denies its substance.",
+        "More territorial names do not cure the incorrect grouping/chronology."
+      ],
+      "uncertainty": [
+        "No separate extra error counted for repeating the same centralization misconception.",
+        "Error count sensitivity:3 firm issues (kwarta, Polesie,1569 succession) plus2 contextual chronology readings (1551 enactment; simultaneous Oswiecim/Zator). Deduction remains2 throughout3-5; score unchanged after owner comparison."
+      ],
+      "owner_comparison": {
+        "owner_total": 6,
+        "owner_levels": [
+          "satisfying",
+          "superficial",
+          "superficial"
+        ],
+        "owner_coherence": 2,
+        "owner_error_count": 2,
+        "review_minus_owner": 0
+      }
+    },
+    {
+      "id": "dev-essay-011__C3",
+      "item": "dev-essay-011",
+      "family": "C3",
+      "answer_sha256": "b9617861cfa67428b1ab2b2aa4dda7f241df196f54fc46b89f3518be2ee51496",
+      "raw_whitespace_words": 441,
+      "body_words": 424,
+      "single_topic": true,
+      "required_sources": "No source excerpts required by fixture; source_ids are reference-only metadata.",
+      "aspect_points": [
+        3,
+        3,
+        3
+      ],
+      "aspect_order": [
+        "constitutional",
+        "domestic",
+        "international"
+      ],
+      "confirmed_error_count": 1,
+      "errors": [
+        "Bar Confederation still dated1792 instead of1768-1772."
+      ],
+      "factual_deduction": 1,
+      "narrative_points": 8,
+      "coherence_points": 3,
+      "total": 11,
+      "judgment_range": [
+        10,
+        12
+      ],
+      "rationale": [
+        "Adds a correctly dated Reciprocal Guarantee and clearer institutional thesis.",
+        "Targowica argument persists; factual critic fails to fix Bar chronology.",
+        "Second/third partition terminology and participants are repaired; adequate rather than rich causal analysis."
+      ],
+      "uncertainty": [],
+      "owner_comparison": {
+        "owner_total": 6,
+        "owner_levels": [
+          "satisfying",
+          "superficial",
+          "superficial"
+        ],
+        "owner_coherence": 2,
+        "owner_error_count": 1,
+        "review_minus_owner": 5
+      }
+    },
+    {
+      "id": "dev-essay-012__C3",
+      "item": "dev-essay-012",
+      "family": "C3",
+      "answer_sha256": "007546844159fa80938a22ce1ecd4010511f5bd4177b2e0a9dd668246701d5d2",
+      "raw_whitespace_words": 408,
+      "body_words": 391,
+      "single_topic": true,
+      "required_sources": "No source excerpts required by fixture; source_ids are reference-only metadata.",
+      "aspect_points": [
+        3,
+        3,
+        3
+      ],
+      "aspect_order": [
+        "military",
+        "political",
+        "territorial"
+      ],
+      "confirmed_error_count": 1,
+      "errors": [
+        "The December1919 Soviet peace-offer decision is assigned to premier Paderewski, whose government ended9December; the official proposal was22December under Skulski."
+      ],
+      "factual_deduction": 1,
+      "narrative_points": 8,
+      "coherence_points": 3,
+      "total": 11,
+      "judgment_range": [
+        9,
+        12
+      ],
+      "rationale": [
+        "Adds Wieprz and Komarow, correctly contextualized, but cumulative battle names alone do not make an in-depth argument.",
+        "Mikaszewicze/federal aims broaden political coverage; newly introduced premier chronology remains wrong.",
+        "Correct exact Riga date and compromise account; lacks detailed border/minority/federation consequences for rich credit."
+      ],
+      "uncertainty": [
+        "The premier claim is assessed as the stated response to the December offer, not denial that Paderewski earlier discussed Entente policy."
+      ],
+      "owner_comparison": {
+        "owner_total": 7,
+        "owner_levels": [
+          "satisfying",
+          "superficial",
+          "superficial"
+        ],
+        "owner_coherence": 3,
+        "owner_error_count": 1,
+        "review_minus_owner": 4
+      }
+    }
+  ],
+  "precomparison_sha256": "49d6c645635e5c0ceb4fc1862f01313f2e3b75458698eca2fa2888ba17a37cc0",
+  "owner_grade_file_sha256": "8a3ee2602ddbd19c20d2a8990f99256ec68c864abf0ecb65a58f11f894a64026",
+  "owner_comparison_utc": "2026-09-26T18:48:07.291543+00:00",
+  "totals": {
+    "A": 35,
+    "C3": 39
+  },
+  "owner_totals": {
+    "A": 14,
+    "C3": 27
+  },
+  "verdict": "Modest provisional rubric gain (+4/60), not replication of owner magnitude (+13/60). Some factual corrections, persistent and newly introduced errors; no reliability or promotion proof. All eight already meet300-word gate.",
+  "sources": [
+    {
+      "id": "rubric",
+      "url": "https://www.oke.waw.pl/wp-content/uploads/OKE_WARSZAWA/EM/EM_2023/Materia%C5%82y_dodatkowe/2024/Material_dodatkowy_historia_wypracowanie.pdf",
+      "supports": "General historical argumentation/coherence rubric;300-word2023/2024 footnote."
+    },
+    {
+      "id": "execution",
+      "url": "https://zpe.gov.pl/watek/LP6A43JBQH/19/a/ruch-egzekucyjny/DA1OC2RLX",
+      "supports": "Execution movement, royal estates and kwarta."
+    },
+    {
+      "id": "lublin",
+      "url": "https://zpe.gov.pl/a/droga-do-unii-realnej/DB6cUAxPR",
+      "supports": "Four1569 incorporated provinces."
+    },
+    {
+      "id": "statute",
+      "url": "https://wilanow-palac.pl/pasaz-wiedzy/drugi-statut-litewski-1566",
+      "supports": "1551 drafting commission versus1566 Second Statute."
+    },
+    {
+      "id": "succession",
+      "url": "https://zpe.gov.pl/a/wolna-elekcja/D11JYInQ4",
+      "supports": "1564 transfer of hereditary Lithuanian rights."
+    },
+    {
+      "id": "duchies",
+      "url": "https://zpe.gov.pl/kronika/16356426",
+      "supports": "Oswiecim/Zator duchy endpoint1564; contextual chronology concern."
+    },
+    {
+      "id": "bar",
+      "url": "https://zpe.gov.pl/a/przeczytaj/DonoeTv4p",
+      "supports": "Bar Confederation1768-1772."
+    },
+    {
+      "id": "defence",
+      "url": "https://1920.gov.pl/1-lipca-1920/",
+      "supports": "Contemporary Act establishing Rada Obrony Panstwa1July1920."
+    },
+    {
+      "id": "paderewski",
+      "url": "https://www.aan.gov.pl/paderewski/page22.html",
+      "supports": "Archival dismissal document9December1919."
+    },
+    {
+      "id": "peace",
+      "url": "https://rcin.org.pl/Content/239860/WA303_276185_II15098-4_Gmurczyk-Wronska.pdf",
+      "supports": "Skulski cabinet and22December1919 peace proposal."
+    },
+    {
+      "id": "pomorze",
+      "url": "https://bazhum.muzhp.pl/media/texts/rocznik-bezpieczenstwa-miedzynarodowego/20112012-tom-6/rocznik_bezpieczenstwa_miedzynarodowego-r2011_2012-t6-s155-169.pdf",
+      "supports": "Pomerania recovered1466 after Jagiello reign."
+    },
+    {
+      "id": "kalmar",
+      "url": "https://buk.wzks.uj.edu.pl/grunwald/postaci/index.php?osoba=06_01_ulrich-von-jungingen",
+      "supports": "Broad two-front strategic pressure/Gotland settlement; contradicts categorical no causal link dismissal."
+    }
+  ],
+  "lead_case_only_adjudication": {
+    "reviewer": "root Astra",
+    "scope": "dev-essay-011 only, not the full packet",
+    "received_utc": "2026-09-26T18:50:14.700398+00:00",
+    "A": {
+      "aspect_points": [
+        3,
+        3,
+        1
+      ],
+      "confirmed_errors": 2,
+      "deduction": 1,
+      "coherence": 2,
+      "total": 8
+    },
+    "C3": {
+      "aspect_points": [
+        3,
+        3,
+        3
+      ],
+      "confirmed_errors": 1,
+      "deduction": 1,
+      "coherence": 2,
+      "total": 10
+    },
+    "rationale": "A international argument generic and mislabels first partition; C3 specific second/third partition participants/dates support satisfactory credit. Formulaic repetition/overstatement makes full coherence insecure. Constitution label identifiable, not a separate invented event.",
+    "sources": [
+      "https://zpe.gov.pl/a/upadek-rzeczypospolitej-obojga-narodow/DrSK5HUTC",
+      "https://orka.sejm.gov.pl/proc9.nsf/uchwaly/1111_u.htm"
+    ],
+    "does_not_replace_independent_firstpass_totals": true
+  }
+}

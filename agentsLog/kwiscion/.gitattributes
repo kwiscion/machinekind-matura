@@ -8,3 +8,8 @@ test_source_observation.py -text whitespace=cr-at-eol
 model-answers/hetero-source-* -text whitespace=cr-at-eol
 model-answers/organizer-control-* -text whitespace=cr-at-eol
 hetero-source-*.py -text whitespace=cr-at-eol
+
+# Frozen matched text-panel answer/controller artifacts.
+model-answers/*bielik* -text whitespace=cr-at-eol
+run_bielik_panel.py -text whitespace=cr-at-eol
+test_bielik_panel.py -text whitespace=cr-at-eol

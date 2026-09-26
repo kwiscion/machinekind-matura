@@ -1,0 +1,63 @@
+{
+  "archive_sha256": "30c3a861d48061065a1386e8348d6979c2fdb70fa8eaa7a1cf0aea2e6d6e9d64",
+  "raw_sha256": "2bdf49086ea14b707ae7c6c55e3b7999b7b874c6c7f2729956150a6d31b84760",
+  "panel_sha256": "213197cc40570123d52d90e3c5609675f4d2f36f050704a042475bba418614d0",
+  "controller_sha256": "cc11da3b70c8f3da6f6905b2878d227d90bc5bb54a308d3ee5cad7a5663b1278",
+  "launch_sha256": "b387d3ac21e9da2a1db9c982655dcb6756bc3e96d822ff5b6a7dcbb2cccf1513",
+  "calls": 18,
+  "readiness_calls_separate": 2,
+  "total_calls_including_readiness": 20,
+  "requested_output_tokens": 18432,
+  "elapsed_seconds": 68.7058156080002,
+  "unsent": [],
+  "models": {
+    "bielik11b-v3-q5:latest": {
+      "filename": "bielik-panel9-answer-only.jsonl",
+      "rows": 9,
+      "complete": 7,
+      "sha256": "aae8a0c0fe0549bde136dd77a688f220fa3d74e6d55fca64c8467350160a5587",
+      "usage": {
+        "prompt_tokens": 9544,
+        "completion_tokens": 4512
+      },
+      "latency_seconds": 42.704,
+      "exact_final_strings": true
+    },
+    "gemma4:12b-it-q4_K_M": {
+      "filename": "gemma-matched-bielik-panel9-answer-only.jsonl",
+      "rows": 9,
+      "complete": 9,
+      "sha256": "95e332d8383e96f6f60a82c76273fccce699155e313d910322a837025a350a71",
+      "usage": {
+        "prompt_tokens": 7174,
+        "completion_tokens": 1511
+      },
+      "latency_seconds": 23.727,
+      "exact_final_strings": true
+    }
+  },
+  "overlap_flags": [],
+  "failed_items": [
+    {
+      "model": "bielik11b-v3-q5:latest",
+      "id": "val2024-hist-z3.2",
+      "error": {
+        "type": "incomplete",
+        "message": "No complete choice contains a nonempty final answer"
+      },
+      "finish_reason": "length",
+      "completion_tokens": 1024
+    },
+    {
+      "model": "bielik11b-v3-q5:latest",
+      "id": "val2024-hist-z15.1",
+      "error": {
+        "type": "incomplete",
+        "message": "No complete choice contains a nonempty final answer"
+      },
+      "finish_reason": "length",
+      "completion_tokens": 1024
+    }
+  ],
+  "quotation_review": "No contiguous normalized word overlap of 15 or more words with the source-only input; exact completed strings preserved. Failed partial completions stay private."
+}
