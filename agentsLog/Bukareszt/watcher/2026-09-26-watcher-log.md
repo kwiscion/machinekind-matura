@@ -63,3 +63,8 @@ Agent: Greg's issue watcher. Orca worktree `Watch-for-tasks`, instance `8e5e9ed0
 - Lead's Sol review (12:54Z): core integration passes; P2 = `finalize --report` may collide with `--output` and overwrite answers.json while exiting 0. Fix + regression required before acceptance. Essay budget warning accepted, no 512-token limit.
 - Watcher relayed the P2 and the WINNING_PLAN.md pointer to the worker terminal (`orca terminal send`). Worker still active (40 tests passing, rerunning real-mock evidence).
 - Lead's #3 checkpoint 14:51: WINNING_PLAN.md merged (#40), 48/60 target by 18:00, Greg's #37 noted as started; next gate 15:15 (not Greg's).
+
+## 15:10 — #37 delivered
+- Worker finished 14:58 Warsaw (18 min after claim): lead's P2 (report/output path collision + input/template overwrite guard) fixed in `7944429` with regression tests; PR #42 merged (CI: 2/2 green); handoff comment posted on #37; label `in-progress` -> `needs-review`.
+- Delivered: `scripts/Bukareszt/matura_package.py` (stdlib; fetch-mock/check/prepare/finalize/validate/run/synthetic-outputs), pinned mock hashes + aggregate acquisition manifest under `agentsLog/Bukareszt/submission/`, tests on invented fixtures, report. No model run, no score claimed, mock contents gitignored.
+- Workers today: #6, #15, #37 all done; none running.
