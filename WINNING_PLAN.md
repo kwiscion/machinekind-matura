@@ -12,6 +12,15 @@ No training/retrieval material derived from fixed 2023/2024/2025 exam questions,
 
 ## Operating facts
 
+Latest score checkpoint, 15:45: both v1 baselines are complete. Disjoint Sol reviews propose **Qwen 24/60** (specific adjudication range 14-31) and **Gemma 35/60** (27-40). Paweł independently proposed Qwen **26/60** in #51; the item disagreements are being reconciled. These are provisional agent judgments, not organizer scores. Gemma is the stronger working baseline; the 48/60 target is not achieved and May 2025 stays sealed. Full answers, aggregate reviews and item scores/flags are published under `agentsLog/kwiscion/`.
+
+- Paweł claimed #11; prioritize Gemma's seven flagged judgments and loss table now. Greg delivered #45's adapter fixes via #48 and index staging via #50 (review in progress). Łukasz remains active on #38. Piotrek and Przemek still need a start acknowledgment.
+- A separate Cursor session keeps launching an unreviewed blanket-format arm on the laptop. The lead stopped its first worker at 15:36 after 11 rows; a continuation appeared at 15:38. Do not restart or extend it. Preserve partial artifacts; the owner has been asked to stop the competing Cursor agent. No new laptop arm while this conflict remains.
+- The one declared Gemma source-v2 correction completed once; Qwen's corresponding call remains blocked by the other worker. Treat possible overlap as a runtime limitation. Neither correction is included in the baseline scores above.
+- The next improvement arm is being selected from Gemma's measured errors. Do not automatically turn this into training, a new corpus or several unmeasured interventions.
+
+The following bullets and earlier checkpoints retain the execution history; the timestamped paragraph above governs current dispatch.
+
 - Piotrek (@semberecki) has an RTX 5090 and an active issue watcher. The two Blackwells are **unavailable**. Confirm actual VRAM at claim; do not disturb other workloads.
 - The lead laptop completed the single Qwen 3.5 9B full baseline, thinking off and 1024 output tokens: 40 responses, 36 complete and four truncated. Its heuristic floor is 5/60 with substantial review unresolved; no independently reviewed full score is established. Preserve the run and do not duplicate it.
 - Gemma 4 12B Q4 is the next candidate. A local v1 run was discovered at 14:56, started at 14:53 by a separate process; its first 13 responses had nonempty final content and no errors. Preserve this single run. Piotrek prepares the RTX 5090 for the next measured arm and must not duplicate the laptop baseline. Spark's earlier failed load remains historical.

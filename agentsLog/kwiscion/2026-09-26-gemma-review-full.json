@@ -1,0 +1,51 @@
+{
+  "status": "provisional_agent_first_pass_pending_independent_adjudication",
+  "model": "gemma4:12b-it-q4_K_M",
+  "input_version": "v1",
+  "input_sha256": "f4df6bcb9c1152d42e3650e820dfee1b4d182a5ad065eea41c9c0be85a0003c7",
+  "answer_sha256": "39a5dbbb5b7262b8fb15bacfea051f27258951c9a2af3a48c52fce1c213aeaf3",
+  "items": 40,
+  "max_points": 60,
+  "provisional_points": 35,
+  "provisional_percentage": 58.33,
+  "specific_adjudication_range": [
+    27,
+    40
+  ],
+  "range_is_statistical_confidence_interval": false,
+  "adjudication_item_count": 7,
+  "complete_outputs": 40,
+  "incomplete_outputs": 0,
+  "target_points": 48,
+  "provisional_gap_to_target": 13,
+  "source_reviews": [
+    {
+      "subset": "first20",
+      "points": 11,
+      "max_points": 21,
+      "range": [
+        9,
+        14
+      ]
+    },
+    {
+      "subset": "second20",
+      "points": 24,
+      "max_points": 39,
+      "range": [
+        18,
+        26
+      ]
+    }
+  ],
+  "private_review_sha256": {
+    "first20.json": "76a2dfd5e08bf0fc8e07ddb0c3a9e856ba084919e2d837d59fa812c53dedacbc",
+    "second20.json": "952db10fbc2b5c1d7950c222e3618ffef04a008031ba27e37b180a780d776a28"
+  },
+  "limitations": [
+    "Two disjoint Sol first passes, not two independent full grades; Pawel adjudication pending.",
+    "All points are provisional; bounds reflect the flagged judgments, not all possible grader errors.",
+    "Known v1 missing visual and numbering ambiguity; no repaired-input outputs included.",
+    "No official organizer or human-confirmed score; no target attainment or candidate freeze."
+  ]
+}
