@@ -88,13 +88,82 @@ All three: index SHA-256 `350800b1…0429`, 0/107 raw differences, graph content
 index load 0.10 s, ranking 0.7 ms. Guards used: `socket-guard`, `proxy-env-stripped` (`unshare` is not available
 on macOS; it is added automatically on Linux when `unshare -rn true` succeeds).
 
-Tests: `python3 -m unittest -v scripts.Bukareszt.test_stage_index` (14 tests, synthetic two-source corpus, no
+Tests: `python3 -m unittest -v scripts.Bukareszt.test_stage_index` (33 tests since the follow-ups below, synthetic two-source corpus, no
 network): bundle round trip in a fresh clone, byte-deterministic bundle, tampered member / raw file / archive hash
 each fail naming the item and hashes, manifest without an archive hash refused, rebuild drift reported per source
 without rewriting the manifest or `raw/`, exact rebuild reproduces the index hash without touching
 `reports/index_meta.json`, modified retriever refused before unpacking, socket guard blocks `urlopen` /
 `socket.socket()` / `socket.SocketType()`, query-proof score tolerance vs. order mismatch. CI does not discover `scripts/Bukareszt/` tests (workflow is shared);
 run them locally.
+
+## #44 follow-up: Windows CRLF checkouts and fail-closed pinned inputs
+
+The lead's portability review of #50 found that a Windows checkout (`core.autocrlf=true`, no `.gitattributes`)
+hashes `sources.jsonl` as `701ad15…` instead of the pinned LF `8b77a63a…`, and that a retriever hash mismatch was
+only recorded. Fix (branch `issue-44-Bukareszt-identity-fix`, `scripts/Bukareszt/` only):
+
+- **Text identity.** The two Git-tracked pinned inputs, `sources/sources.jsonl` and `scripts/retrieval.py`, are
+  hashed as SHA-256 of their bytes with every CR LF replaced by LF. Nothing else is normalized: a trailing newline
+  is kept or left absent exactly as committed, and a lone CR or a UTF-8 BOM still changes the hash. For LF files
+  this is the identity, so every pinned value (`8b77a63a…`, `5ce9918f…`, `350800b1…`, bundle `da0d4ad7…`) is
+  unchanged. `sources.jsonl` is written into the bundle as LF bytes, so `bundle` on a CRLF checkout rebuilds the
+  byte-identical archive. Untracked assets (`raw/`, `index/`, the bundle) keep exact byte hashes. Parsed-only
+  text (`manifest.json`, `queries/*.jsonl`) is read in text mode and is newline-agnostic.
+- **Fail closed.** `stage` checks both inputs before importing the retriever, before unpacking a bundle and before
+  any rebuild request. `verify` checks them too. A mismatch or missing file exits 1, and the message names each file
+  path with the expected hash, the actual normalized hash and the raw byte hash.
+- **Paths.** `DEFAULT_ROOT` derives from the script location, not from the current working directory. Relative
+  `--root`/`--bundle`/`--report` resolve against the caller's working directory. A test stages a fresh clone from
+  another working directory using only relative paths.
+
+Evidence (real `git -c core.autocrlf=true clone`, macOS, bundle `da0d4ad7…`):
+
+| report | code | result |
+| --- | --- | --- |
+| [before](stage_report_crlf_clone_before_fix.json) | main `a8f4c79` | FAIL: `retrieval.py` `7c30237b…` ≠ `5ce9918f…` (`sources.jsonl` `701ad15…` would fail next) |
+| [after](stage_report_crlf_clone_after_fix.json) | fix | PASS via bundle, index `350800b1…`, identical top-5, 0.33 s |
+| [tampered](stage_report_crlf_clone_tampered_retriever.json) | fix, `--rebuild`, no bundle, edited `retrieval.py` | exit 1 after the `pinned_inputs` phase; no import, fetch or rebuild |
+
+`bundle` run on the CRLF clone reproduced `da0d4ad7…` (3,942,102 B) and the same manifest `files`, hashes and query
+proof.
+
+### #54 additions (lead's three blockers, same PR #55)
+
+- **Canonical checkout.** The nested [`agentsLog/Bukareszt/.gitattributes`](../.gitattributes) sets `text eol=lf` for
+  exactly `sources/sources.jsonl` and `scripts/retrieval.py`. It lives in an owned path, the root `.gitattributes`
+  is untouched, and no global Git settings were changed. A fresh `core.autocrlf=true` clone now writes both files
+  as LF, so their bytes hash to `8b77a63a…`/`5ce9918f…`. All other files keep the user's line endings.
+  **Existing CRLF working files:** Git does not rewrite an unchanged blob on pull or checkout, so a clone made
+  before this change keeps CRLF copies. `stage`/`verify` accept them anyway, because they hash CRLF→LF-normalized
+  text: tested on such a clone, with PASS and 29/29 tests. To refresh them on disk, delete the two files and run
+  `git checkout -- agentsLog/Bukareszt/sources/sources.jsonl agentsLog/Bukareszt/scripts/retrieval.py`; tested,
+  this gives the pinned byte hashes.
+- **Owned destinations.**
+  - `stage` resolves `--root` and refuses any root that does not resolve to the workspace's `agentsLog/Bukareszt`.
+    Only `--allow-unpinned`, which is for tests, lifts this, and even then the root must contain
+    `staging/manifest.json` and `sources/sources.jsonl`.
+  - Before any delete or move, every component of `raw/`, `index/`, `private/rebuild-tmp/` and
+    `private/rebuild-drift/` must be a real directory, not a symlink or junction, and must resolve inside the root.
+    A violation is refused without modifying it (phase `destinations`).
+  - `unpack_bundle` and `rebuild_raw` re-check their destinations before touching them.
+  - Accepted `raw/`/`index/` stay intact on any failure.
+- **Retriever verified before import.** `load_retrieval(root, expected_sha256)` reads `retrieval.py` once and
+  checks its normalized SHA-256. Only then does it compile exactly those bytes; nothing is imported from
+  `sys.path`. The offline query child receives `--retrieval-sha256` and checks it the same way. A regression
+  fixture that writes a marker file on import proves the wrong-hash file is never executed: by `load_retrieval`,
+  by a full `stage`, or by the child.
+- **Write paths (lead's review of `ec19dc2`).** Every file this script writes goes through `owned_file()` before
+  the write: the stage report (default `private/stage_report.json`), and `bundle`'s archive, `manifest.json` and
+  `ATTRIBUTION.md`. It finds the root among the target's ancestors, even when the root is spelled through a link
+  above it. Inside the root, a link, junction, non-file or escape is refused. An explicit path outside the root is
+  used as given.
+  - If the report destination is refused, `stage` exits 1 before any staging and prints the report to stdout. It
+    never writes through the refused path, including from `finally`.
+  - Reproduced with a symlinked `private/`: `ec19dc2` wrote `stage_report.json` outside the root; the fix writes
+    nothing there.
+- **Test fix from the lead's review.** The real-file test no longer assumes the checkout itself is LF. It asserts
+  the canonical identity and uses an explicit LF fixture. The synthetic corpus also pins the normalized retriever
+  hash, so the whole suite passes on a CRLF checkout.
 
 ## Limits
 
