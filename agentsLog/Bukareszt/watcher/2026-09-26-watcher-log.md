@@ -68,3 +68,9 @@ Agent: Greg's issue watcher. Orca worktree `Watch-for-tasks`, instance `8e5e9ed0
 - Worker finished 14:58 Warsaw (18 min after claim): lead's P2 (report/output path collision + input/template overwrite guard) fixed in `7944429` with regression tests; PR #42 merged (CI: 2/2 green); handoff comment posted on #37; label `in-progress` -> `needs-review`.
 - Delivered: `scripts/Bukareszt/matura_package.py` (stdlib; fetch-mock/check/prepare/finalize/validate/run/synthetic-outputs), pinned mock hashes + aggregate acquisition manifest under `agentsLog/Bukareszt/submission/`, tests on invented fixtures, report. No model run, no score claimed, mock contents gitignored.
 - Workers today: #6, #15, #37 all done; none running.
+
+## 15:30 — #37 closed by lead; #44 and #45 claimed and dispatched
+- Lead closed #37 (15:15) after acceptance. Two new items for Greg:
+  - #44 "stage the pinned chrono index for offline GPU inference" (lead, assigned `@Bukareszt`, `ready`; precondition #37/#42 met). Claimed; Orca worktree `issue-44-Bukareszt-stage-index` (from `origin/main` @ e0daf40, terminal `term_f9064351-fc62-453c-b88b-dee91d43d50d`). First artifact due 30 min, handoff PR 60 min, then short notes on #33/#38.
+  - #45 "Submission adapter: reject unverified completion and missing source fields" (filed by `@ljaniec` from #38 review; implementation is Greg's adapter). Claimed implementation (in-progress, `Bukareszt` added as assignee, ljaniec keeps acceptance); Orca worktree `issue-45-Bukareszt-adapter-fix` (terminal `term_062c5e7f-b72c-45ee-a5e7-88af5a3075c8`). Fix + tests due 30 min, PR 45 min.
+- Both workers told about each other (disjoint files) and to re-merge `origin/main` before PR. Concurrent workers: 2 of 3.
