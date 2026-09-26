@@ -1,0 +1,102 @@
+# plwiki title | optional oldid | optional source_id | optional source_group_id | era
+Chrzest Polski|||| medieval
+Mieszko I|||| medieval
+Bolesław I Chrobry|||| medieval
+Zjazd gnieźnieński|||| medieval
+Bolesław III Krzywousty|||| medieval
+Testament Bolesława Krzywoustego|||| medieval
+Rozbicie dzielnicowe w Polsce|||| medieval
+Bitwa pod Legnicą|||| medieval
+Władysław I Łokietek|||| medieval
+Kazimierz III Wielki|||| medieval
+Akademia Krakowska|||| medieval
+Unia w Krewie|||| medieval
+Jadwiga Andegaweńska|||| medieval
+Władysław II Jagiełło|||| medieval
+Wielka wojna z zakonem krzyżackim|||| medieval
+Bitwa pod Grunwaldem|80318601|src-plwiki-grunwald|grp-grunwald-1410| medieval
+Pierwszy pokój toruński|||| medieval
+Wojna trzynastoletnia|||| medieval
+Drugi pokój toruński|||| medieval
+Kazimierz IV Jagiellończyk|||| medieval
+Nihil novi|||| early_modern
+Hołd pruski|||| early_modern
+Zygmunt I Stary|||| early_modern
+Zygmunt II August|||| early_modern
+Ruch egzekucyjny|||| early_modern
+Unia lubelska|80758426|src-plwiki-unia-lubelska|grp-unia-lubelska-1569| early_modern
+Konfederacja warszawska|||| early_modern
+Artykuły henrykowskie|||| early_modern
+Pacta conventa|||| early_modern
+Wolna elekcja|||| early_modern
+Stefan Batory|||| early_modern
+Zygmunt III Waza|||| early_modern
+Bitwa pod Kircholmem|||| early_modern
+Bitwa pod Kłuszynem|||| early_modern
+Powstanie Chmielnickiego|||| early_modern
+Potop szwedzki|||| early_modern
+Traktaty welawsko-bydgoskie|||| early_modern
+Pokój oliwski|||| early_modern
+Rokosz Lubomirskiego|||| early_modern
+Liberum veto|||| early_modern
+Jan III Sobieski|||| early_modern
+Bitwa pod Wiedniem (1683)|||| early_modern
+August II Mocny|||| early_modern
+Sejm niemy|||| early_modern
+Stanisław August Poniatowski|||| early_modern
+Konfederacja barska|||| early_modern
+Komisja Edukacji Narodowej|||| early_modern
+Sejm Czteroletni|||| early_modern
+Konstytucja 3 maja|79675786|src-plwiki-konstytucja-3-maja|grp-konstytucja-3-maja-1791| early_modern
+Konfederacja targowicka|||| early_modern
+Wojna polsko-rosyjska 1792|||| early_modern
+Powstanie kościuszkowskie|||| early_modern
+Rozbiory Polski|80425883|src-plwiki-rozbiory|grp-rozbiory-1772-1795| early_modern
+Tadeusz Kościuszko|||| early_modern
+Legiony Polskie we Włoszech|||| 19th_century
+Księstwo Warszawskie|||| 19th_century
+Kongres wiedeński|||| 19th_century
+Królestwo Polskie (kongresowe)|||| 19th_century
+Powstanie listopadowe|80808124|src-plwiki-powstanie-listopadowe|grp-powstanie-listopadowe-1830| 19th_century
+Wielka Emigracja|||| 19th_century
+Powstanie krakowskie|||| 19th_century
+Rabacja galicyjska|||| 19th_century
+Wiosna Ludów|||| 19th_century
+Powstanie styczniowe|80712129|src-plwiki-powstanie-styczniowe|grp-powstanie-styczniowe-1863| 19th_century
+Romuald Traugutt|||| 19th_century
+Pozytywizm warszawski|||| 19th_century
+Kulturkampf|||| 19th_century
+Rusyfikacja|||| 19th_century
+Autonomia galicyjska|||| 19th_century
+Rewolucja 1905 roku w Królestwie Polskim|||| 20th_century
+Polska Partia Socjalistyczna|||| 20th_century
+Legiony Polskie (1914–1918)|||| 20th_century
+Akt 5 listopada|||| 20th_century
+Powstanie wielkopolskie|||| 20th_century
+Powstania śląskie|||| 20th_century
+Wojna polsko-bolszewicka|||| 20th_century
+Bitwa Warszawska|80608335|src-plwiki-bitwa-warszawska|grp-bitwa-warszawska-1920| 20th_century
+Traktat ryski (1921)|||| 20th_century
+Konstytucja marcowa|||| 20th_century
+Przewrót majowy|||| 20th_century
+Konstytucja kwietniowa|||| 20th_century
+Centralny Okręg Przemysłowy|||| 20th_century
+Józef Piłsudski|||| 20th_century
+Roman Dmowski|||| 20th_century
+Kampania wrześniowa|||| 20th_century
+Pakt Ribbentrop-Mołotow|||| 20th_century
+Zbrodnia katyńska|||| 20th_century
+Polskie Państwo Podziemne|||| 20th_century
+Armia Krajowa|||| 20th_century
+Powstanie w getcie warszawskim|||| 20th_century
+Powstanie warszawskie|||| 20th_century
+Bitwa o Monte Cassino|||| 20th_century
+Konferencja jałtańska|||| 20th_century
+Polski Komitet Wyzwolenia Narodowego|||| 20th_century
+Poznański Czerwiec|||| 20th_century
+Październik 1956|||| 20th_century
+Marzec 1968|||| 20th_century
+Grudzień 1970|||| 20th_century
+Sierpień 1980|||| 20th_century
+Stan wojenny w Polsce (1981–1983)|||| 20th_century
+Okrągły Stół (Polska)|||| 20th_century
