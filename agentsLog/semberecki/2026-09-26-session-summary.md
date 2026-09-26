@@ -258,3 +258,54 @@ graded (Δ 0), independent grade pending with root Sol; RTX transfer control
 (34/60, 146.6 s) untouched; all 18 raw records preserved; watcher cron
 continues (minutes 7,22,37,52); next RTX action awaits the lead's
 declaration; $0 spent, no purchases.
+
+---
+
+## Native-thinking bundle + acceptance polish — 23:00 CEST update
+
+- **12-call native-thinking comparison authorized in #95 5849041941 (19:09:43Z)**
+  — found after the 20:11:38Z relay flagged the missing launch acknowledgement;
+  ACK + claim posted 5849662468 (20:34:28Z, dispatch ETA ~22:55 CEST, actually
+  dispatched earlier).
+- **Frozen launch record before dispatch**
+  (`2026-09-26-rtx-native-thinking-launch.md`): SAME six source-heavy items,
+  fresh control think:false/1024 total vs thinking arm think:true/10240 total,
+  explicit temp 1.0/top_p 0.95/top_k 64 in both; 12 calls / 67,584 requested
+  tokens / 30-min absolute deadline / $0 / no retries/smokes; input/config/
+  runner/prompt/image hashes frozen; capability via zero-generation
+  `/api/show` metadata (thinking levels false,true).
+- **Private-dir restore incident**: the earlier clean-checkout test had left
+  the private dir nested (mv-back landed inside the recreated dir). Restored
+  fully — hashes re-verified (input v2, PDF, wrapper=retained original,
+  transfer 40 rows, multiscale 18 rows); no data lost.
+- **Diagnostic run TERMINAL**: 12/12 calls, 0 errors, 0 sampling failures,
+  `all_calls_dispatched`, wall 3 m 28 s (20:41:56Z→20:45:24Z). Thinking
+  evidence recorded in behavior: every thinking call nonempty (2,374–16,905
+  chars; z25 longest), ZERO thinking in control calls (no violations either
+  direction); thinking-arm eval 791–5,214 well under the 10,240 cap; 0
+  truncations/length-stops/empty finals (organizer capped-thinking failure
+  mode did not occur at this budget); served digest+context asserted
+  fail-closed; single response model.
+- Copied-source check: max 14-word overlap (both z14.1 arms) = "Zadanie 14.1"
+  task-instruction echo, not source copies; **0 thinking-content leaks**
+  (published answers byte-equal private finals).
+- **Answer-only handoff (NO reasoning)**
+  (`model-answers/gemma4-12b-val6panel-native-thinking-bundle.jsonl`, 12 rows,
+  sha256 `ca9e92d2a341abbb4d18807b9ca557c82c93000523ee943112a977712c503321`);
+  **PR #136 merged** (b346b86); results posted #95 (5849761653) + #11
+  (5849765345); raw thinking preserved privately.
+- **ljaniec #88 acceptance: PASS** (five findings repaired; one minor
+  observation). Polish delivered: input-existence guard in `preflight()`/
+  `main()` of the public wrapper (absent input → clean CHECK FAIL + exit 2,
+  not a traceback) — **PR #138 merged** (79fe2ca); #88 comment 5849818844.
+  22 guard tests pass; absent/present exits verified.
+- Board: lead's full-40 native-thinking handoff at 38/60 aggregate first pass
+  (PR #134; ljaniec assigned second review); lead's failure-only recovery
+  terminal; Paweł dropped grading of the old 22 #38 outputs (essay lab stays
+  #80); hetero bundle parked.
+
+**Session status at 23:00 CEST**: native-thinking bundle delivered and
+posted, independent grading with root; #88 fully closed; watcher cron
+continues (minutes 7,22,37,52); next RTX action awaits the lead's
+declaration; RTX transfer control (34/60, 146.6 s), parked multiscale bundle
+and all raw records untouched; $0 spent, no purchases.
