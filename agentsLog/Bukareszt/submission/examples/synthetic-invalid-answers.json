@@ -1,0 +1,23 @@
+{
+  "exam_id": "synthetic-fixture-v1",
+  "answers": [
+    {
+      "id": "1",
+      "answer": 1
+    },
+    {
+      "id": "2.1",
+      "answer": "x",
+      "reasoning": "y"
+    },
+    {
+      "id": "2.1",
+      "answer": ""
+    },
+    {
+      "id": "99",
+      "answer": ""
+    }
+  ],
+  "usage": {}
+}

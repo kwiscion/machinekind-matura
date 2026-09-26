@@ -24,6 +24,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import math
 import os
 import re
 import subprocess
@@ -94,7 +95,38 @@ def load_json_strict(path: Path):
 
 
 def utf16_units(text: str) -> int:
-    return len(text.encode("utf-16-le")) // 2
+    return len(text.encode("utf-16-le", "surrogatepass")) // 2
+
+
+def has_lone_surrogate(text: str) -> bool:
+    return any(0xD800 <= ord(char) <= 0xDFFF for char in text)
+
+
+# str.splitlines() also splits on U+2028/U+2029/U+0085, which json.dumps(ensure_ascii=False) leaves raw;
+# escape them in files we write and split JSONL only on "\n" when reading.
+LINE_SEPARATORS = {"\u2028": "\\u2028", "\u2029": "\\u2029", "\x85": "\\u0085"}
+
+
+def jsonl_line(record: dict) -> str:
+    text = json.dumps(record, ensure_ascii=False)
+    for raw, escaped in LINE_SEPARATORS.items():
+        text = text.replace(raw, escaped)
+    return text + "\n"
+
+
+def jsonl_lines(text: str) -> list[str]:
+    return [line.rstrip("\r") for line in text.split("\n")]
+
+
+def is_number(value) -> bool:
+    return type(value) in (int, float) and math.isfinite(value)
+
+
+# Fields whose meaning is known and which are deliberately not sent to the model (metadata).
+EXAM_META_FIELDS = {"exam_id", "title", "language", "source_exam_id", "source_url", "input_format", "max_points",
+                    "instructions", "items"}
+ITEM_KNOWN_FIELDS = {"id", "group", "max_points", "question", "source_text", "images", "answer_format"}
+IMAGE_KNOWN_FIELDS = {"path", "source_page", "sha256"}
 
 
 def safe_relative(path_text: str, where: str) -> PurePosixPath:
@@ -106,7 +138,42 @@ def safe_relative(path_text: str, where: str) -> PurePosixPath:
     return rel
 
 
+def check_new_outputs(outputs: list[Path | None], protected: list[Path]) -> None:
+    """Refuse before any write: outputs must be new, distinct, and never an input artifact."""
+    resolved = [path.resolve() for path in outputs if path is not None]
+    guarded = {path.resolve() for path in protected}
+    if len(set(resolved)) != len(resolved):
+        raise PackageError(f"Output paths collide: {[str(p) for p in resolved]}")
+    for path in resolved:
+        if path in guarded:
+            raise PackageError(f"Output would overwrite an input artifact: {path}")
+        if path.exists():
+            raise PackageError(f"Output must be a new path: {path}")
+
+
 # ---------------------------------------------------------------- package check
+
+def exact_case(root: Path, rel: PurePosixPath) -> bool:
+    """True when every path component exists with exactly this spelling (macOS/Windows ignore case)."""
+    current = root
+    for part in rel.parts:
+        if part not in os.listdir(current):
+            return False
+        current = current / part
+    return True
+
+
+def extra_fields(exam: dict) -> dict:
+    """Unknown fields that prepare will pass to the model verbatim instead of dropping them."""
+    found = {"exam": sorted(set(exam) - EXAM_META_FIELDS), "item": set(), "image": set()}
+    for item in exam.get("items", []):
+        if isinstance(item, dict):
+            found["item"] |= set(item) - ITEM_KNOWN_FIELDS
+            for image in item.get("images") or []:
+                if isinstance(image, dict):
+                    found["image"] |= set(image) - IMAGE_KNOWN_FIELDS
+    return {key: sorted(value) for key, value in found.items()}
+
 
 def load_package(exam_dir: Path, template_path: Path | None = None) -> dict:
     """Validate exam.json + template + images. Returns a dict with exam, template and summary."""
@@ -153,7 +220,7 @@ def load_package(exam_dir: Path, template_path: Path | None = None) -> dict:
         if not isinstance(item.get("source_text", ""), str):
             errors.append(f"{where}: source_text must be a string")
         max_points = item.get("max_points")
-        if type(max_points) not in (int, float) or max_points < 0:
+        if not is_number(max_points) or max_points < 0:
             errors.append(f"{where}: max_points must be a nonnegative number")
         else:
             points += max_points
@@ -184,8 +251,8 @@ def load_package(exam_dir: Path, template_path: Path | None = None) -> dict:
             if exam_dir not in file_path.parents:
                 errors.append(f"{where}: image {key} resolves outside the exam folder")
                 continue
-            if not file_path.is_file():
-                errors.append(f"{where}: image file missing: {key}")
+            if not file_path.is_file() or not exact_case(exam_dir, rel):
+                errors.append(f"{where}: image file missing (paths are case-sensitive): {key}")
                 images[key] = {"sha256": expected.lower(), "bytes": None}
                 continue
             data = file_path.read_bytes()
@@ -199,7 +266,7 @@ def load_package(exam_dir: Path, template_path: Path | None = None) -> dict:
     duplicates = sorted({i for i in item_ids if item_ids.count(i) > 1})
     if duplicates:
         errors.append(f"exam.json: duplicate item ids {duplicates}")
-    if "max_points" in exam and exam["max_points"] != points:
+    if "max_points" in exam and (not is_number(exam["max_points"]) or exam["max_points"] != points):
         errors.append(f"exam.json: max_points {exam['max_points']} != sum of item points {points}")
 
     template_ids: list[str] = []
@@ -243,26 +310,44 @@ def load_package(exam_dir: Path, template_path: Path | None = None) -> dict:
         "items_with_images": sum(1 for item in items if item.get("images")),
         "image_bytes": sum(meta["bytes"] or 0 for meta in images.values()),
         "template_ids_match": True,
+        "unknown_fields_passed_to_model": extra_fields(exam),
         "exam_json_sha256": sha256_file(exam_path),
         "template_sha256": sha256_file(template_path),
         "item_ids_sha256": sha256_bytes("\n".join(item_ids).encode("utf-8")),
     }
     return {"exam_dir": exam_dir, "exam": exam, "template": template, "template_path": template_path,
-            "images": images, "summary": summary}
+            "exam_path": exam_path, "images": images, "summary": summary}
+
+
+def package_inputs(package: dict) -> list[Path]:
+    return [package["exam_path"], package["template_path"]] + [package["exam_dir"] / rel for rel in package["images"]]
 
 
 # ---------------------------------------------------------------- prepare
 
-def build_prompt(instructions: str, item: dict) -> str:
+def field_text(value) -> str:
+    return value if isinstance(value, str) else json.dumps(value, ensure_ascii=False)
+
+
+def build_prompt(exam: dict, item: dict) -> str:
     parts = [PROMPT_HEADER]
+    instructions = exam.get("instructions", "")
     if instructions.strip():
         parts.append("Instrukcja do całego egzaminu:\n" + instructions)
+    for field in sorted(set(exam) - EXAM_META_FIELDS):  # unknown exam-level material is sent, not dropped
+        parts.append(f"{field}:\n" + field_text(exam[field]))
     parts.append(f"Zadanie {item['id']} (maks. {item['max_points']} pkt)\n" + item["question"])
     if item.get("source_text", "").strip():
         parts.append("Materiał źródłowy:\n" + item["source_text"])
+    for field in sorted(set(item) - ITEM_KNOWN_FIELDS):
+        parts.append(f"{field}:\n" + field_text(item[field]))
     if item.get("images"):
-        names = "\n".join(f"- {PurePosixPath(image['path']).as_posix()}" for image in item["images"])
-        parts.append("Załączone obrazy (w tej kolejności):\n" + names)
+        lines = []
+        for image in item["images"]:
+            line = f"- {PurePosixPath(image['path']).as_posix()}"
+            extra = {k: image[k] for k in sorted(set(image) - IMAGE_KNOWN_FIELDS)}
+            lines.append(line + (" " + json.dumps(extra, ensure_ascii=False) if extra else ""))
+        parts.append("Załączone obrazy (w tej kolejności):\n" + "\n".join(lines))
     parts.append("Wymagany format odpowiedzi:\n" + item["answer_format"])
     parts.append(PROMPT_FOOTER)
     return "\n\n".join(parts)
@@ -270,16 +355,19 @@ def build_prompt(instructions: str, item: dict) -> str:
 
 def prepare(package: dict, output: Path) -> dict:
     output = output.resolve()
-    if output.exists():
-        raise PackageError(f"Output must be a new path: {output}")
+    manifest_path = output.with_name(output.name + ".manifest.json")
+    check_new_outputs([output, manifest_path], package_inputs(package))
     exam = package["exam"]
     records = []
     for item in exam["items"]:
         image_paths = []
         for image in item.get("images", []):
             target = package["exam_dir"] / safe_relative(image["path"], item["id"])
-            image_paths.append(Path(os.path.relpath(target, output.parent)).as_posix())
-        record = {"id": item["id"], "prompt": build_prompt(exam.get("instructions", ""), item), "images": image_paths}
+            try:
+                image_paths.append(Path(os.path.relpath(target, output.parent)).as_posix())
+            except ValueError:  # different drive on Windows: infer.py also accepts absolute paths
+                image_paths.append(target.as_posix())
+        record = {"id": item["id"], "prompt": build_prompt(exam, item), "images": image_paths}
         # Every source string must survive verbatim; fail loudly instead of guessing a context window.
         for field in ("question", "source_text", "answer_format"):
             if item.get(field) and item[field] not in record["prompt"]:
@@ -288,7 +376,7 @@ def prepare(package: dict, output: Path) -> dict:
     output.parent.mkdir(parents=True, exist_ok=True)
     with output.open("x", encoding="utf-8", newline="\n") as handle:
         for record in records:
-            handle.write(json.dumps(record, ensure_ascii=False) + "\n")
+            handle.write(jsonl_line(record))
     manifest = {
         **package["summary"],
         "prepared_jsonl": output.name,
@@ -299,14 +387,39 @@ def prepare(package: dict, output: Path) -> dict:
         "images_per_record_max": max(len(r["images"]) for r in records),
         "ids": [r["id"] for r in records],
     }
-    manifest_path = output.with_name(output.name + ".manifest.json")
-    manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    with manifest_path.open("x", encoding="utf-8") as handle:
+        handle.write(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n")
     return manifest
 
 
 # ---------------------------------------------------------------- finalize
 
-THINK_BLOCK = re.compile(r"<think>.*?</think>", re.S | re.I)
+REASONING_BLOCK = re.compile(r"<(think|thinking|reasoning)>.*?</\1>", re.S | re.I)
+REASONING_TAG = re.compile(r"</?(think|thinking|reasoning)>", re.I)
+HARMONY_FINAL = "<|channel|>final<|message|>"
+HARMONY_MARKER = re.compile(r"<\|(channel|message|start|end|return|call)\|>")
+COMPLETE_FINISH = {None, "stop", "eos", "end_turn", "stop_sequence"}
+
+
+def final_content(content: str) -> tuple[str | None, str | None]:
+    """Remove reasoning channels. Returns (text, problem)."""
+    if HARMONY_MARKER.search(content):
+        if HARMONY_FINAL not in content:
+            return None, "harmony channel markers without a final channel"
+        content = content.rsplit(HARMONY_FINAL, 1)[1]
+        content = re.split(r"<\|(end|return)\|>", content, maxsplit=1)[0]
+        if HARMONY_MARKER.search(content):
+            return None, "unexpected harmony markers inside the final channel"
+    content = REASONING_BLOCK.sub("", content)
+    tags = REASONING_TAG.findall(content)
+    if tags:
+        # Qwen-style chat templates open <think> in the prompt, so only the closing tag reaches the output.
+        opening = re.search(r"<(think|thinking|reasoning)>", content, re.I)
+        closing = list(re.finditer(r"</(think|thinking|reasoning)>", content, re.I))
+        if opening or not closing:
+            return None, "unbalanced reasoning block in final content"
+        content = content[closing[-1].end():]
+    return content, None
 
 
 def extract_answer(row: dict) -> tuple[str | None, dict | None]:
@@ -327,45 +440,53 @@ def extract_answer(row: dict) -> tuple[str | None, dict | None]:
     choices = raw.get("choices")
     if not isinstance(choices, list) or not choices:
         return fail("malformed", "raw_response has no choices")
-    truncated = False
+    problem = ("empty", "no nonempty final answer content")
     for choice in choices:
         if not isinstance(choice, dict) or not isinstance(choice.get("message"), dict):
             continue
         content = choice["message"].get("content")
-        if isinstance(content, list):
-            content = "".join(part["text"] for part in content if isinstance(part, dict) and isinstance(part.get("text"), str))
+        if isinstance(content, list):  # only plain text parts; reasoning/thinking parts are never submitted
+            content = "".join(part["text"] for part in content if isinstance(part, dict)
+                              and part.get("type", "text") in ("text", "output_text") and isinstance(part.get("text"), str))
         if not isinstance(content, str) or not content.strip():
             continue
-        if choice.get("finish_reason") == "length":
-            truncated = True
+        finish = choice.get("finish_reason")
+        if finish == "length":
+            problem = ("truncated", "finish_reason=length: output cut by the token limit")
             continue
-        text = THINK_BLOCK.sub("", content)
-        if re.search(r"</?think>", text, re.I):
-            return fail("malformed", "unbalanced <think> reasoning block in final content")
+        if finish not in COMPLETE_FINISH:
+            problem = ("incomplete", f"finish_reason={finish!r} is not a normal completion")
+            continue
+        text, issue = final_content(content)
+        if issue:
+            problem = ("malformed", issue)
+            continue
         text = text.strip()
         if not text:
             continue
-        try:
-            text.encode("utf-8")
-        except UnicodeEncodeError:
-            return fail("malformed", "answer is not encodable as UTF-8 (lone surrogate)")
+        if has_lone_surrogate(text):
+            problem = ("malformed", "answer is not encodable as UTF-8 (lone surrogate)")
+            continue
         if len(text) > MAX_ANSWER_CHARS or utf16_units(text) > MAX_ANSWER_CHARS:
-            return fail("over_limit", f"answer has {len(text)} characters (> {MAX_ANSWER_CHARS}); not truncated")
+            problem = ("over_limit", f"answer has {len(text)} characters (> {MAX_ANSWER_CHARS}); not truncated")
+            continue
         return text, None
-    if truncated:
-        return fail("truncated", "finish_reason=length: output cut by the token limit")
-    return fail("empty", "no nonempty final answer content")
+    return fail(*problem)
 
 
 def read_jsonl(path: Path) -> list[dict]:
     rows = []
-    for number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
+    try:
+        text = path.read_text(encoding="utf-8")
+    except UnicodeDecodeError as exc:
+        raise PackageError(f"{path.name}: not valid UTF-8 ({exc.reason})") from exc
+    for number, line in enumerate(jsonl_lines(text), 1):
         if not line.strip():
             continue
         try:
-            row = json.loads(line)
-        except json.JSONDecodeError as exc:
-            raise PackageError(f"{path.name} line {number}: invalid JSON ({exc.msg})") from exc
+            row = json.loads(line, object_pairs_hook=reject_duplicate_keys)
+        except (json.JSONDecodeError, ValueError) as exc:
+            raise PackageError(f"{path.name} line {number}: invalid JSON ({exc})") from exc
         if not isinstance(row, dict) or not isinstance(row.get("id"), str):
             raise PackageError(f"{path.name} line {number}: record needs a string id")
         rows.append(row)
@@ -377,12 +498,17 @@ def finalize(package: dict, outputs: list[Path], answers_path: Path, report_path
     template = package["template"]
     exam_id = template["exam_id"]
     template_ids = [entry["id"] for entry in template["answers"]]
+    check_new_outputs([answers_path, report_path],
+                      package_inputs(package) + list(outputs) + ([manifest_path] if manifest_path else []))
     if manifest_path:
         manifest = load_json_strict(manifest_path)
         if manifest.get("exam_id") != exam_id:
             raise PackageError(f"Prepared manifest exam_id {manifest.get('exam_id')!r} != template exam_id {exam_id!r}")
         if manifest.get("ids") != [item["id"] for item in package["exam"]["items"]]:
             raise PackageError("Prepared manifest ids differ from this package")
+        for key in ("exam_json_sha256", "template_sha256"):
+            if manifest.get(key) != package["summary"][key]:
+                raise PackageError(f"Prepared manifest {key} differs from this package (outputs from another exam?)")
     rows = [row for path in outputs for row in read_jsonl(path)]
     by_id: dict[str, dict] = {}
     for row in rows:
@@ -409,11 +535,9 @@ def finalize(package: dict, outputs: list[Path], answers_path: Path, report_path
     problems = validate_submission_bytes(encoded, template)
     if problems:
         raise PackageError("Refusing to write invalid answers.json:\n  " + "\n  ".join(problems))
-    answers_path = answers_path.resolve()
-    if answers_path.exists():
-        raise PackageError(f"Output must be a new path: {answers_path}")
     answers_path.parent.mkdir(parents=True, exist_ok=True)
-    answers_path.write_bytes(encoded)
+    with answers_path.open("xb") as handle:
+        handle.write(encoded)
     report = {
         "exam_id": exam_id,
         "answers_json": str(answers_path),
@@ -421,6 +545,8 @@ def finalize(package: dict, outputs: list[Path], answers_path: Path, report_path
         "answers_bytes": len(encoded),
         "template_ids": len(template_ids),
         "model_output_records": len(rows),
+        "model_output_sha256": {str(path): sha256_file(path) for path in outputs},
+        "prepared_sha256": manifest.get("prepared_sha256") if manifest_path else None,
         "answered": sum(1 for a in answers if a["answer"]),
         "empty": sum(1 for a in answers if not a["answer"]),
         "failures": failures,
@@ -429,7 +555,8 @@ def finalize(package: dict, outputs: list[Path], answers_path: Path, report_path
     }
     if report_path:
         report_path.parent.mkdir(parents=True, exist_ok=True)
-        report_path.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        with report_path.open("x", encoding="utf-8") as handle:
+            handle.write(json.dumps(report, ensure_ascii=False, indent=2) + "\n")
     return report
 
 
@@ -450,7 +577,7 @@ def validate_submission_bytes(data: bytes, template: dict) -> list[str]:
         doc = json.loads(data.decode("utf-8"), object_pairs_hook=reject_duplicate_keys)
     except UnicodeDecodeError as exc:
         return problems + [f"not valid UTF-8: {exc.reason}"]
-    except (json.JSONDecodeError, PackageError) as exc:
+    except (json.JSONDecodeError, PackageError, ValueError) as exc:  # ValueError: e.g. >4300-digit integers
         return problems + [f"invalid JSON: {exc}"]
     if not isinstance(doc, dict):
         return problems + ["top level must be an object"]
@@ -461,7 +588,9 @@ def validate_submission_bytes(data: bytes, template: dict) -> list[str]:
     answers = doc.get("answers")
     if not isinstance(answers, list):
         return problems + ["answers must be an array"]
-    expected = [entry["id"] for entry in template["answers"]]
+    expected = [entry.get("id") for entry in template["answers"] if isinstance(entry, dict)]
+    if len(expected) != len(template["answers"]) or not all(isinstance(i, str) for i in expected):
+        return problems + ["template entries must be objects with string ids"]
     seen: list[str] = []
     for index, entry in enumerate(answers):
         if not isinstance(entry, dict) or set(entry) != {"id", "answer"}:
@@ -473,6 +602,9 @@ def validate_submission_bytes(data: bytes, template: dict) -> list[str]:
         seen.append(entry["id"])
         if not isinstance(entry["answer"], str):
             problems.append(f"answer {entry['id']!r}: must be a string, got {type(entry['answer']).__name__}")
+            continue
+        if has_lone_surrogate(entry["answer"]):
+            problems.append(f"answer {entry['id']!r}: contains a lone surrogate (not encodable as UTF-8)")
             continue
         if len(entry["answer"]) > MAX_ANSWER_CHARS or utf16_units(entry["answer"]) > MAX_ANSWER_CHARS:
             problems.append(f"answer {entry['id']!r}: {len(entry['answer'])} characters (> {MAX_ANSWER_CHARS})")
@@ -570,28 +702,36 @@ def run_pipeline(args) -> int:
     prepared = workdir / "input.jsonl"
     manifest = prepare(package, prepared)
     ids = manifest["ids"]
-    raw_paths = []
+    if len(ids) > args.max_calls_total:
+        raise PackageError(f"{len(ids)} items exceed --max-calls-total {args.max_calls_total}; no requests sent")
+    lines = [line for line in jsonl_lines(prepared.read_text(encoding="utf-8")) if line.strip()]
+    chunks = []
     for start in range(0, len(ids), INFER_MAX_CALLS):
-        chunk_ids = ids[start:start + INFER_MAX_CALLS]
+        number = start // INFER_MAX_CALLS + 1
         chunk_input = prepared
-        if len(ids) > INFER_MAX_CALLS:
-            chunk_input = workdir / f"input.part{start // INFER_MAX_CALLS + 1}.jsonl"
-            lines = prepared.read_text(encoding="utf-8").splitlines()[start:start + INFER_MAX_CALLS]
-            chunk_input.write_text("\n".join(lines) + "\n", encoding="utf-8")
-        raw = workdir / f"raw.part{start // INFER_MAX_CALLS + 1}.jsonl"
+        if len(ids) > INFER_MAX_CALLS:  # infer.py accepts at most 100 cases per call
+            chunk_input = workdir / f"input.part{number}.jsonl"
+            chunk_input.write_text("\n".join(lines[start:start + INFER_MAX_CALLS]) + "\n", encoding="utf-8")
+        chunks.append((chunk_input, workdir / f"raw.part{number}.jsonl", len(lines[start:start + INFER_MAX_CALLS])))
+
+    def infer(chunk_input, raw, count, dry_run):
         command = [sys.executable, str(args.infer), "--config", str(args.config), "--input", str(chunk_input),
-                   "--output", str(raw), "--max-calls", str(len(chunk_ids))]
-        if args.dry_run:
-            command.append("--dry-run")
+                   "--output", str(raw), "--max-calls", str(count)] + (["--dry-run"] if dry_run else [])
         print("+ " + " ".join(command), file=sys.stderr)
-        status = subprocess.run(command).returncode
-        if status == 2:
-            raise PackageError(f"infer.py rejected config/input (exit 2); see its message above")
-        if not args.dry_run:
-            raw_paths.append(raw)
+        return subprocess.run(command).returncode
+
+    for chunk in chunks:  # validate every chunk before the first model call
+        if infer(*chunk, dry_run=True) != 0:
+            raise PackageError("infer.py rejected config/input in dry run; no requests sent")
     if args.dry_run:
         print(json.dumps({"dry_run": True, "prepared": str(prepared), **{k: manifest[k] for k in ("exam_id", "items", "points", "unique_image_files")}}))
         return 0
+    raw_paths = []
+    for chunk in chunks:
+        status = infer(*chunk, dry_run=False)
+        if status not in (0, 1) or not chunk[1].is_file():
+            raise PackageError(f"infer.py exited {status} for {chunk[0].name}; raw records kept in {workdir}")
+        raw_paths.append(chunk[1])
     report = finalize(package, raw_paths, workdir / "answers.json", workdir / "failures.json",
                       prepared.with_name(prepared.name + ".manifest.json"))
     print(json.dumps({k: v for k, v in report.items() if k != "failures"} | {"failures": len(report["failures"])}, ensure_ascii=False))
@@ -634,7 +774,7 @@ def synthetic_outputs(package: dict, output: Path, failures: bool) -> int:
     output.parent.mkdir(parents=True, exist_ok=True)
     with output.open("x", encoding="utf-8") as handle:
         for row in rows:
-            handle.write(json.dumps(row, ensure_ascii=False) + "\n")
+            handle.write(jsonl_line(row))
     return len(rows)
 
 
@@ -667,7 +807,9 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--raw", required=True, type=Path, nargs="+", help="infer.py output JSONL file(s)")
     p.add_argument("--output", required=True, type=Path, help="new answers.json path")
     p.add_argument("--report", type=Path, help="failure report JSON (default: <output>.failures.json)")
-    p.add_argument("--manifest", type=Path, help="prepare manifest to cross-check exam_id and ids")
+    group = p.add_mutually_exclusive_group(required=True)
+    group.add_argument("--manifest", type=Path, help="<input>.jsonl.manifest.json from prepare: ties outputs to this exam")
+    group.add_argument("--no-manifest", action="store_true", help="skip the cross-check (exam_id cannot be verified)")
 
     p = sub.add_parser("validate", help="check answers.json against the template; exit 2 when invalid")
     p.add_argument("answers", type=Path)
@@ -681,6 +823,7 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--workdir", required=True, type=Path, help="new folder for input, raw records, answers.json")
     p.add_argument("--infer", type=Path, default=REPO_ROOT / "infer.py")
     p.add_argument("--dry-run", action="store_true", help="validate package + config only; no model calls")
+    p.add_argument("--max-calls-total", type=int, default=200, help="refuse packages with more items (default 200)")
 
     p = sub.add_parser("synthetic-outputs", help="write SYNTHETIC infer.py-format records for format tests only")
     p.add_argument("--exam-dir", required=True, type=Path)
@@ -729,6 +872,9 @@ def main(argv: list[str] | None = None) -> int:
             return run_pipeline(args)
     except (PackageError, OSError, zipfile.BadZipFile) as exc:
         print(f"Error: {exc}", file=sys.stderr)
+        return 2
+    except Exception as exc:  # never let a crash look like exit 1 ("valid file with blanks")
+        print(f"Error: unexpected {type(exc).__name__}: {exc}", file=sys.stderr)
         return 2
     return 2
 

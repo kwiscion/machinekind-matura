@@ -51,7 +51,7 @@ class Base(unittest.TestCase):
         return write_jsonl(self.tmp / name, [mp.synthetic_record(i, a) for i, a in answers.items()])
 
     def finalize(self, raw, name="answers.json"):
-        return cli("finalize", "--exam-dir", self.pkg, "--raw", raw, "--output", self.tmp / name)
+        return cli("finalize", "--exam-dir", self.pkg, "--raw", raw, "--output", self.tmp / name, "--no-manifest")
 
     def report(self, name="answers.json"):
         return json.loads((self.tmp / (name + ".failures.json")).read_text(encoding="utf-8"))
@@ -218,6 +218,152 @@ class Finalize(Base):
         self.assertTrue(all("SYNTETYCZNA" in a["answer"] for a in doc["answers"]))
 
 
+class ReviewRegressions(Base):
+    """Defects found by the independent review of the first slice."""
+
+    def answers(self):
+        return json.loads((self.tmp / "answers.json").read_text(encoding="utf-8"))["answers"]
+
+    def test_line_separators_in_model_output(self):
+        raw = self.tmp / "raw.jsonl"
+        raw.write_text(json.dumps(mp.synthetic_record("1", "linia\u2028druga\x85trzecia"), ensure_ascii=False) + "\n",
+                       encoding="utf-8")
+        self.assertEqual(self.finalize(raw)[0], 1)  # 3 missing, but the file is written
+        self.assertEqual(self.answers()[0]["answer"], "linia\u2028druga\x85trzecia")
+
+    def test_line_separators_in_exam_text(self):
+        sys.path.insert(0, str(mp.REPO_ROOT))
+        import infer
+        self.edit_exam(lambda e: e["items"][0].update(question="pytanie\u2028z separatorem\u2029i\x85NEL"))
+        out = self.tmp / "input.jsonl"
+        self.assertEqual(cli("prepare", "--exam-dir", self.pkg, "--output", out)[0], 0)
+        self.assertEqual(len(infer.load_cases(out, 100)), 4)
+
+    def test_crashes_exit_2_not_1(self):
+        (self.tmp / "huge.jsonl").write_text('{"id":"1","n":' + "9" * 5000 + "}\n", encoding="utf-8")
+        self.assertEqual(self.finalize(self.tmp / "huge.jsonl")[0], 2)
+        (self.tmp / "latin.jsonl").write_bytes('{"id":"1","x":"\u0142"}'.encode("latin-1", "replace") + b"\xb3\n")
+        self.assertEqual(self.finalize(self.tmp / "latin.jsonl")[0], 2)
+        self.assertFalse((self.tmp / "answers.json").exists())
+        template = self.pkg / "answers-template.json"
+        for body in ('{"exam_id":"synthetic-fixture-v1","answers":[{"id":"1","answer":"a\\ud800b"}]}',
+                     '{"exam_id":"synthetic-fixture-v1","answers":[{"id":"1","answer":' + "7" * 5000 + "}]}"):
+            (self.tmp / "v.json").write_text(body, encoding="utf-8")
+            self.assertEqual(cli("validate", self.tmp / "v.json", "--template", template)[0], 2)
+        (self.tmp / "bad-template.json").write_text('{"exam_id":"x","answers":[{"answer":""}]}', encoding="utf-8")
+        self.assertEqual(cli("validate", self.tmp / "v.json", "--template", self.tmp / "bad-template.json")[0], 2)
+
+    def test_reasoning_parts_and_markers_never_submitted(self):
+        parts = mp.synthetic_record("1", None)
+        parts["raw_response"] = {"choices": [{"finish_reason": "stop", "message": {"content": [
+            {"type": "reasoning", "text": "SECRET"}, {"type": "thinking", "text": "HIDDEN"}, {"type": "text", "text": "final"}]}}]}
+        rows = [parts,
+                mp.synthetic_record("2.1", "<thinking>SECRET</thinking>Y"),
+                mp.synthetic_record("2.2", "<|channel|>analysis<|message|>SECRET<|end|><|start|>assistant<|channel|>final<|message|>Z<|return|>"),
+                mp.synthetic_record("3", "<|channel|>analysis<|message|>SECRET only")]
+        self.assertEqual(self.finalize(write_jsonl(self.tmp / "r.jsonl", rows))[0], 1)
+        self.assertEqual([a["answer"] for a in self.answers()], ["final", "Y", "Z", ""])
+        self.assertNotIn("SECRET", (self.tmp / "answers.json").read_text(encoding="utf-8"))
+
+    def test_orphan_closing_think_keeps_final_text(self):
+        self.finalize(self.raw({"1": "rozumowanie...</think>\n\nOdpowiedź A", "2.1": "a</think>b</think>c"}))
+        self.assertEqual([a["answer"] for a in self.answers()][:2], ["Odpowiedź A", "c"])
+
+    def test_content_filter_and_next_choice(self):
+        filtered = mp.synthetic_record("1", "częściowa", finish_reason="content_filter")
+        multi = mp.synthetic_record("2.1", "<think>open")
+        multi["raw_response"]["choices"].append({"finish_reason": "stop", "message": {"content": "druga"}})
+        self.finalize(write_jsonl(self.tmp / "r.jsonl", [filtered, multi]))
+        self.assertEqual([a["answer"] for a in self.answers()][:2], ["", "druga"])
+        self.assertEqual(self.report()["failures"][0]["type"], "incomplete")
+
+    def test_duplicate_keys_in_raw_record(self):
+        (self.tmp / "d.jsonl").write_text('{"id":"1","id":"2.1","raw_response":null,"error":null}\n', encoding="utf-8")
+        self.assertEqual(self.finalize(self.tmp / "d.jsonl")[0], 2)
+
+    def test_manifest_required_and_tied_to_package(self):
+        raw = self.raw({"1": "a"})
+        with self.assertRaises(SystemExit) as caught:  # argparse: --manifest or --no-manifest required
+            cli("finalize", "--exam-dir", self.pkg, "--raw", raw, "--output", self.tmp / "a.json")
+        self.assertEqual(caught.exception.code, 2)
+        cli("prepare", "--exam-dir", self.pkg, "--output", self.tmp / "input.jsonl")
+        other = self.tmp / "other"
+        shutil.copytree(self.pkg, other)
+        for name in ("exam.json", "answers-template.json"):
+            path = other / name
+            path.write_text(path.read_text(encoding="utf-8").replace("synthetic-fixture-v1", "other-exam-v9"), encoding="utf-8")
+        code, _, err = cli("finalize", "--exam-dir", other, "--raw", raw, "--output", self.tmp / "a.json",
+                           "--manifest", self.tmp / "input.jsonl.manifest.json")
+        self.assertEqual(code, 2)
+        self.assertIn("exam_id", err)
+
+    def test_unknown_fields_are_sent_not_dropped(self):
+        def change(exam):
+            exam["preamble"] = "WSTĘP-XYZ"
+            exam["items"][0]["hint"] = "PODPOWIEDŹ-XYZ"
+            exam["items"][0]["images"][0]["caption"] = "PODPIS-XYZ"
+        self.edit_exam(change)
+        code, out, _ = cli("check", "--exam-dir", self.pkg)
+        self.assertEqual(json.loads(out)["unknown_fields_passed_to_model"], {"exam": ["preamble"], "item": ["hint"], "image": ["caption"]})
+        cli("prepare", "--exam-dir", self.pkg, "--output", self.tmp / "input.jsonl")
+        first = json.loads((self.tmp / "input.jsonl").read_text(encoding="utf-8").split("\n")[0])
+        for marker in ("WSTĘP-XYZ", "PODPOWIEDŹ-XYZ", "PODPIS-XYZ"):
+            self.assertIn(marker, first["prompt"])
+
+    def test_case_sensitive_image_paths_and_finite_points(self):
+        self.edit_exam(lambda e: e["items"][0]["images"][0].update(path="images/FIXTURE-RED.png"))
+        self.assertIn("case-sensitive", cli("check", "--exam-dir", self.pkg)[2])
+        shutil.rmtree(self.pkg)
+        shutil.copytree(FIXTURE, self.pkg)
+        (self.pkg / "exam.json").write_text((self.pkg / "exam.json").read_text(encoding="utf-8")
+                                           .replace('"max_points": 7', '"max_points": Infinity'), encoding="utf-8")
+        self.assertEqual(cli("check", "--exam-dir", self.pkg)[0], 2)
+
+    def test_failure_report_not_overwritten(self):
+        (self.tmp / "answers.json.failures.json").write_text("{}")
+        self.assertEqual(self.finalize(self.raw({"1": "a"}))[0], 2)
+        self.assertFalse((self.tmp / "answers.json").exists())
+
+
+class OutputPathGuards(Base):
+    """Lead review P2: --report must never overwrite --output, the package, or raw inputs."""
+
+    def run_finalize(self, output, report, raw=None, manifest=None):
+        raw = raw or self.raw({i: "a" for i in IDS})
+        extra = ["--manifest", manifest] if manifest else ["--no-manifest"]
+        return cli("finalize", "--exam-dir", self.pkg, "--raw", raw, "--output", output, "--report", report, *extra)
+
+    def test_report_equal_to_output_rejected_before_writing(self):
+        target = self.tmp / "answers.json"
+        code, _, err = self.run_finalize(target, self.tmp / "sub" / ".." / "answers.json")
+        self.assertEqual(code, 2)
+        self.assertIn("collide", err)
+        self.assertFalse(target.exists())
+
+    def test_outputs_never_overwrite_inputs(self):
+        raw = self.raw({i: "a" for i in IDS})
+        cli("prepare", "--exam-dir", self.pkg, "--output", self.tmp / "input.jsonl")
+        manifest = self.tmp / "input.jsonl.manifest.json"
+        protected = [self.pkg / "exam.json", self.pkg / "answers-template.json", self.pkg / "images" / "fixture-red.png",
+                     raw, manifest]
+        before = {path: path.read_bytes() for path in protected}
+        for target in protected:
+            for output, report in ((target, self.tmp / "r.json"), (self.tmp / "a.json", target)):
+                with self.subTest(target=target.name, as_report=report == target):
+                    code, _, err = self.run_finalize(output, report, raw, manifest)
+                    self.assertEqual(code, 2)
+                    self.assertIn("input artifact", err)
+                    self.assertFalse((self.tmp / "a.json").exists() or (self.tmp / "r.json").exists())
+        self.assertEqual(before, {path: path.read_bytes() for path in protected})
+
+    def test_prepare_never_overwrites_package_or_manifest(self):
+        self.assertEqual(cli("prepare", "--exam-dir", self.pkg, "--output", self.pkg / "exam.json")[0], 2)
+        (self.tmp / "input.jsonl.manifest.json").write_text("keep")
+        self.assertEqual(cli("prepare", "--exam-dir", self.pkg, "--output", self.tmp / "input.jsonl")[0], 2)
+        self.assertEqual((self.tmp / "input.jsonl.manifest.json").read_text(), "keep")
+        self.assertFalse((self.tmp / "input.jsonl").exists())
+
+
 class Validate(Base):
     def check(self, doc=None, raw_bytes=None):
         path = self.tmp / "candidate.json"
@@ -273,7 +419,7 @@ class Validate(Base):
         self.assertIn("1 MiB", problems[0])
 
     def test_finalize_refuses_oversized_file(self):
-        code, _, err = cli("finalize", "--exam-dir", self.pkg, "--output", self.tmp / "big.json", "--raw",
+        code, _, err = cli("finalize", "--exam-dir", self.pkg, "--output", self.tmp / "big.json", "--no-manifest", "--raw",
                            write_jsonl(self.tmp / "r.jsonl", [mp.synthetic_record(i, "€" * 99_000) for i in IDS]))
         self.assertEqual(code, 2)
         self.assertIn("1 MiB", err)
