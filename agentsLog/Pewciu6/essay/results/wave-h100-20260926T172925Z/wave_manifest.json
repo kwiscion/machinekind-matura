@@ -1,0 +1,85 @@
+{
+ "wave_id": "wave-h100-20260926T172925Z",
+ "issue": 80,
+ "owner": "Pewciu6",
+ "label": "DEVELOPMENT essay lab wave (not a validation score)",
+ "recorded_utc": "2026-09-26T17:34:47Z",
+ "authorization": [
+  "https://github.com/kwiscion/machinekind-matura/issues/80#issuecomment-5848224209",
+  "https://github.com/kwiscion/machinekind-matura/pull/107#issuecomment-5848244715",
+  "WINNING_PLAN.md @ f3d5485"
+ ],
+ "host": {
+  "name": "Brev matura-pawel (id u0knmsmcr, hyperstack_H100)",
+  "gpu": "NVIDIA H100 PCIe 81559 MiB, idle at claim (0 MiB used, no other ollama model loaded)",
+  "cpu_threads": 28,
+  "ram_gb": 177,
+  "runtime": "Ollama 0.34.4",
+  "access": "ssh -L 11434 tunnel to 127.0.0.1:11434",
+  "exclusive": true
+ },
+ "model": {
+  "name": "gemma4:12b-it-q4_K_M",
+  "digest": "4eb23ef187e2c5462566d6a1d3bbbc2f1346d0b4327cbb66d58fffbcc9b2b05c"
+ },
+ "request": {
+  "api": "ollama /api/chat",
+  "stream": false,
+  "think": false,
+  "num_ctx": 32768,
+  "temperature": "not sent (server default, as in the pilot)"
+ },
+ "envelope": {
+  "wall_minutes": 90,
+  "deadline": "first wave call + 5400 s (fixed in ledger at first reservation)",
+  "per_call_timeout_s": "min(420, left); none started with <30 s left; +5 s grace then abandon and stop",
+  "max_calls_total": 120,
+  "prior_calls": 9,
+  "remaining_calls": 111,
+  "max_requested_tokens_total": 240000,
+  "prior_tokens": 7168,
+  "remaining_tokens": 232832,
+  "max_families": 4,
+  "retries": 0,
+  "enforcement": "scripts/Pewciu6/essay_wave_run.py: ledger reloaded and checked before every call, atomic persisted reservation, worker-thread timeout, global watchdog hard exit at deadline+15 s, batch ids never reused, run.lock blocks resume, transport error stops a batch"
+ },
+ "caps": {
+  "final": 2048,
+  "facts": 768,
+  "critic": 1024,
+  "select": 128
+ },
+ "families": {
+  "A": "dedicated long-form single pass (essay-route-v1)",
+  "B": "facts-first: fact bank (cap 768) then argument only from the bank",
+  "C": "critic (cap 1024) of the A draft, then full rewrite",
+  "D": "controlled topic selection (cap 128) then the A prompt on the chosen topic (separately named experiment)"
+ },
+ "matched": "final cap 2048 and topic 1 for A/B/C; D changes topic by design",
+ "items": {
+  "dev": "dev_fixtures.jsonl, 8 original items (3 new: 006 medieval, 007 medieval/early modern, 008 19th c.), topic 1",
+  "validation_check": "val2024-hist-z26 only, single development check, reported separately, never training; model sees only the exam task text, no keys"
+ },
+ "planned_batch_b1": {
+  "families": "A,B,C,D",
+  "items": 8,
+  "calls": 56,
+  "requested_tokens": 80896
+ },
+ "hashes": {
+  "essay_wave_run.py": "69c5e9679ef5dc80d395058cbc66d3101ff892df3ebc7664340732d70e2942f4",
+  "essay_wave_grade.py": "f34a74e619b9f2cda98b879bce5fd4b3f69cc4d6d9f8e24acf26a9fff81f7ed7",
+  "essay_route.py": "4d040e185cc5a8ca4cfb20b905cd7d311bc65364bae7d8eedbc1b32f47776b38",
+  "dev_fixtures.jsonl": "e441074e7d6918184b21244ed5dd92b9babfb5d8c6be3418587adcd022c96a6d",
+  "template_sha256": "be745ac44b750789e7ae77adce58c328f921dd27b7de6c19fcff327f71f24903",
+  "validation_runner_input (private)": "f4df6bcb9c1152d42e3650e820dfee1b4d182a5ad065eea41c9c0be85a0003c7"
+ },
+ "ledger": "agentsLog/Pewciu6/essay/private/wave-h100-20260926T172925Z/ledger.json (private, backed up to ~/matura-backups/ after each batch)",
+ "cost": {
+  "hourly_rate": "owner-supplied, pending",
+  "estimate": "about 3.28 USD/h (the plan's confirmed central-H100 rate, used as a stand-in) x 1.5 h = about 4.92 USD for the wave; the instance is already running and billed hourly regardless",
+  "purchases": "none"
+ },
+ "grading": "blind fresh grader subagent per batch (Claude), official CKE essay criteria A (0-12, minus factual-error deductions) and B (0-3); DEVELOPMENT grading, not promotion evidence",
+ "out_of_scope": "LoRA training; the 39 short questions"
+}

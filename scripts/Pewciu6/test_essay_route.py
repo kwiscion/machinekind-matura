@@ -363,7 +363,7 @@ class FixtureTests(unittest.TestCase):
     def test_dev_fixtures_are_routed_and_fit_envelope(self):
         path = Path(__file__).resolve().parents[2] / "agentsLog" / "Pewciu6" / "essay" / "dev_fixtures.jsonl"
         rows = essay_route.read_jsonl(path)
-        self.assertTrue(4 <= len(rows) <= 6)
+        self.assertTrue(4 <= len(rows) <= 12)  # 5 pilot + 3 wave fixtures
         for row in rows:
             self.assertEqual(row["split"], "DEV")
             self.assertEqual(row["rights_status"], "clear")
