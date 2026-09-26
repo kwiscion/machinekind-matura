@@ -1,10 +1,10 @@
 {
-  "train_rows": 54,
-  "essays": 22,
-  "bukareszt_accepted_essays": 10,
-  "repair_pairs": 32,
+  "train_rows": 81,
+  "essays": 31,
+  "bukareszt_accepted_essays": 19,
+  "repair_pairs": 50,
   "by_origin": {
-    "bukareszt": 30,
+    "bukareszt": 57,
     "root_seed": 8,
     "root_sol": 16
   },
@@ -21,6 +21,7 @@
   "train_groups": [
     "C-1968",
     "C-1970",
+    "C-allied-conferences",
     "C-athens",
     "C-casimir3",
     "C-charlemagne",
@@ -28,12 +29,18 @@
     "C-cold-war",
     "C-communist-takeover",
     "C-cop",
+    "C-discoveries",
+    "C-euro-atlantic",
+    "C-hammurabi",
     "C-holocaust",
+    "C-hundred-years",
     "C-industrial",
     "C-january",
+    "C-katyn",
     "C-league",
     "C-lublin",
     "C-meiji",
+    "C-odnowiciel",
     "C-piast-origins",
     "C-reformation",
     "C-rome-empire",
@@ -61,7 +68,7 @@
     "C-ww1-independence"
   ],
   "shared_groups": [],
-  "train_sha256": "70d7f809d42b34a3b675bc33bd2f3dd133eb8e71c5e727d10eb77648584009d0",
+  "train_sha256": "2defe3af75af4cbdc701abdf30b6e8fd642e0350d4286421b75584432ac0d06f",
   "eval_sha256": "5979ee0b8e0e4f084cf6070f42d31892ee53c1f5485409b4fc5dac1266055a28",
   "format": "chat messages (user/assistant), no system prompt; eval rows are runner input {id,prompt}"
 }
