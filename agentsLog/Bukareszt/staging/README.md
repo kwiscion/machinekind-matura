@@ -88,7 +88,7 @@ All three: index SHA-256 `350800b1…0429`, 0/107 raw differences, graph content
 index load 0.10 s, ranking 0.7 ms. Guards used: `socket-guard`, `proxy-env-stripped` (`unshare` is not available
 on macOS; it is added automatically on Linux when `unshare -rn true` succeeds).
 
-Tests: `python3 -m unittest -v scripts.Bukareszt.test_stage_index` (29 tests since the follow-ups below, synthetic two-source corpus, no
+Tests: `python3 -m unittest -v scripts.Bukareszt.test_stage_index` (33 tests since the follow-ups below, synthetic two-source corpus, no
 network): bundle round trip in a fresh clone, byte-deterministic bundle, tampered member / raw file / archive hash
 each fail naming the item and hashes, manifest without an archive hash refused, rebuild drift reported per source
 without rewriting the manifest or `raw/`, exact rebuild reproduces the index hash without touching
@@ -152,6 +152,15 @@ proof.
   `sys.path`. The offline query child receives `--retrieval-sha256` and checks it the same way. A regression
   fixture that writes a marker file on import proves the wrong-hash file is never executed: by `load_retrieval`,
   by a full `stage`, or by the child.
+- **Write paths (lead's review of `ec19dc2`).** Every file this script writes goes through `owned_file()` before
+  the write: the stage report (default `private/stage_report.json`), and `bundle`'s archive, `manifest.json` and
+  `ATTRIBUTION.md`. It finds the root among the target's ancestors, even when the root is spelled through a link
+  above it. Inside the root, a link, junction, non-file or escape is refused. An explicit path outside the root is
+  used as given.
+  - If the report destination is refused, `stage` exits 1 before any staging and prints the report to stdout. It
+    never writes through the refused path, including from `finally`.
+  - Reproduced with a symlinked `private/`: `ec19dc2` wrote `stage_report.json` outside the root; the fix writes
+    nothing there.
 - **Test fix from the lead's review.** The real-file test no longer assumes the checkout itself is LF. It asserts
   the canonical identity and uses an explicit LF fixture. The synthetic corpus also pins the normalized retriever
   hash, so the whole suite passes on a CRLF checkout.
