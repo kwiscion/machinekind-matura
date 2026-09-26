@@ -1,30 +1,27 @@
 # Winning plan
 
-**Goal:** highest Sunday history-matura score; target 48/60. Best complete known-validation result: **38/60, independently reviewed**. Preserved fallback: 35/60. Final offline qualification is unfinished. Freeze: **27 September, 11:00 Europe/Warsaw**. Updated 27 September, 00:37. Consult this page before dispatch or promotion; issues own tasks and claims.
+**Goal:** highest final history score; target48/60. Current champion: **Gemma4 12B Q4, 38/60** on known validation; preserved fallback35/60. Updated27September00:45. This is strategy, not a log; issues own tasks.
 
-## One model, better answers
+## Finish the harness, then improve answers
 
-The **entire submitted weight set** must fit 8 GB + 10%; our conservative cap is 8,800,000,000 bytes. The verified Gemma 4 12B Q4 cache, including projector and metadata, is 7,556,509,301 bytes. Reuse those weights across question-specific prompts, planning and review. No Gemma+Qwen/Bielik fleet or two full essay/base copies. Other models remain development challengers. [Rule](docs/SUBMISSION_WEIGHT_BUDGET.md).
-
-## Three priorities
-
-1. **Finish the executable submission.** Qualify isolated text/image inference, integrate the complete organizer path, and preserve the 35-point fallback. The 38-point result loses 6 points to empty finals; a separate retry recovered only 1/6, and reasoning-note recovery 0/6. Neither is promoted.
-2. **Improve essay arguments.** One topic, 400-500 body words, clean prose. Native thinking helped an independent panel 52/90 to 62/90; factual span editing showed no aggregate gain. Test explicit evidence-and-causality planning before writing. The full-exam essay is 8/15, losing 7 argument points.
-3. **Test training, without multiplying models.** 90 cleared rows and 16 separate evaluation inputs are ready. A real gradient update and control text/image serving worked; Greg owns the history-training continuation. Deploy one merged model with nonessay regression checks, or a proven adapter on one shared base; compare against the same export pipeline.
+1. **One reusable, timed harness.** Default60minutes; configurable120minutes if available, with10minutes reserved for recovery, validation and submission. Measure throughput and qualify larger context/output limits; short answers can need substantial reasoning. Adapt compute to time remaining, preserving complete question text and images.
+2. **No blank submission entries.** Preserve usable answers. After an empty, truncated, timed-out or malformed result, attempt at least3 retries: larger budget, thinking off, then bounded final-answer synthesis. Allocate recovery time before it is exhausted. If every attempt fails, use the owner's literal emergency fallback `Tadeusz Kościuszko`; mark it as a placeholder, never a successful recovery. Record any hard-deadline exception.
+3. **One champion end-to-end rehearsal.** Exercise the actual organizer package/answers path, forced failure recovery, schema/IDs, essay constraints and timing. Report score, blanks, placeholders, recovered items and elapsed time. Keep this harness for later candidates; repeat only checks affected by a change.
+4. **Better prompts and purposeful extra calls.** Test evidence/causal planning, closed-answer disagreement resolution, open-answer coverage checks and essay planning→prose. Compare candidate quality with selector quality. Prefer large mechanism changes over wording sweeps. Use one fast grading pass; second review only for consequential uncertainty.
+5. **Finish the essay LoRA pilot.**90 training rows/16 separate evaluation inputs; real backward works. Judge argument gain and factual errors. Use one merged model with regression checks, or prove essay-only adapter switching on one shared base.
 
 ## Owners
 
-| Owner | Live responsibility |
+| Owner | Work |
 |---|---|
-| @kwiscion + Sol | Integration, package qualification and freeze [#3](https://github.com/kwiscion/machinekind-matura/issues/3) |
-| Root Sol proxy; @Pewciu6 grading standby | Argument planning versus thinking essays [#80](https://github.com/kwiscion/machinekind-matura/issues/80) |
-| @Bukareszt | Bounded single-model LoRA pilot [#117](https://github.com/kwiscion/machinekind-matura/issues/117) |
-| @ljaniec | Source-grounded essay evaluation checklist [#143](https://github.com/kwiscion/machinekind-matura/issues/143) |
-| Root Sol proxy; @semberecki standby | Standalone Qwen thinking challenger [#95](https://github.com/kwiscion/machinekind-matura/issues/95) |
-| @przemeknowak781 | Standby; Bielik proxy complete [#97](https://github.com/kwiscion/machinekind-matura/issues/97) |
+| Root + Sol | Recovery/context/deadline harness and champion rehearsal [#3](https://github.com/kwiscion/machinekind-matura/issues/3) |
+| Root Sol; Paweł grading standby | Structured prompt/essay experiments [#80](https://github.com/kwiscion/machinekind-matura/issues/80) |
+| Greg | LoRA pilot [#117](https://github.com/kwiscion/machinekind-matura/issues/117) |
+| Łukasz | Source-grounded evaluation notes [#143](https://github.com/kwiscion/machinekind-matura/issues/143) |
+| Piotrek / Przemek | Standby; Qwen preparation parked while harness takes priority |
 
-## Guardrails
+## Final constraints
 
-Park generic RAG/policy, multiscale and heterogeneous observation: no replicated gain. One claimed worker per host; bounded calls/time/cost and backed-up evidence. Pivot after uninformative failures. Promotion requires a complete organizer-path result, independent grading and actual offline/aggregate-size qualification. May 2025 stays sealed; no held-out training/retrieval, purchases or reset credits.
+One shared weight set: Gemma package7,556,509,301bytes; aggregate cap8,800,000,000bytes. Offline inference. No held-out training/retrieval, purchases or duplicate GPU workers. Preserve evidence and bound runtime/cost; old no-retry and double-grading policies are superseded.
 
-Details: [score reconciliation](agentsLog/kwiscion/2026-09-26-full-thinking-review-reconciliation.md), [package evidence](agentsLog/kwiscion/2026-09-26-final-package-stage.md), [history](agentsLog/kwiscion/2026-09-26-plan-history-through-2200.md), [operator runbook](agentsLog/kwiscion/SUNDAY_OPERATOR_RUNBOOK.md). Keep this page short; put tasks in issues and results in agentsLog.
+**Requesting final questions freezes ALL team projects.** Commit code/prompts/settings and finish rehearsals before access; afterwards only run the frozen solution and submit. Planned freeze27September11:00Warsaw, earlier if access is requested. May2025 remains sealed. [Submission page](https://warsawmodeltrainers.dev/submissions.html?exam=final). Detailed tasks/results: GitHub issues and agentsLog; [previous plan](agentsLog/kwiscion/2026-09-27-plan-before-harness-priority.md).
