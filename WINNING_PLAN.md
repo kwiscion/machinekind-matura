@@ -1,6 +1,6 @@
 # Winning plan
 
-Owner: @kwiscion. Current decision record: **26 September 2026, 16:45 Europe/Warsaw**. Consult this before dispatch, scope changes, accepting results and reporting progress. GitHub issues are the live scheduling authority. Explicit newer owner decisions override this document. [Earlier checkpoints](agentsLog/kwiscion/2026-09-26-plan-history-through-1608.md) are historical.
+Owner: @kwiscion. Current decision record: **26 September 2026, 17:02 Europe/Warsaw**. Consult this before dispatch, scope changes, accepting results and reporting progress. GitHub issues are the live scheduling authority. Explicit newer owner decisions override this document. [Earlier checkpoints](agentsLog/kwiscion/2026-09-26-plan-history-through-1608.md) are historical.
 
 ## Objective and evidence
 
@@ -19,6 +19,14 @@ Both v1 inputs omitted one required image. Source-v2 repairs it without changing
 
 ## Current experiment and queue
 
+**Current controlling decision at17:02:** Paweł independently adjudicated the completed generic-policy arm at **32/60 [22,35]** in [PR #61](agentsLog/Pewciu6/2026-09-26T1651-score-gemma-policy.md), agreeing with38/40 first-pass scores. It is not promoted. Bare source-v2 composite35/60 remains strongest. The crop diagnostic completed3/3; first pass3/6 [2,3] versus bare2/6, with all possible gain disputed. Paweł adjudicates it separately; no crop composite is promoted.
+
+The lead [declares one full bounded-RAG attempt](agentsLog/kwiscion/2026-09-26-bounded-rag-launch.md) now: reviewed PR #60, original bare source-v2/images/settings, chrono top-k3/titleweight1/1600total evidence characters, no policy or crops, at most40calls/40960 requested output tokens/$0/no retries. Frozen manifest and input passed native/WSL dry preflight. Dispatch stops17:40 or2400 elapsed seconds, with the reviewed runtime/projection guards; a420-second in-flight call may finish17:47. Preserve unsent items in the60-point denominator. Paweł and local Sol reviewers grade immutable output snapshots; do not stop on interim accuracy.
+
+The17:00 gate slipped because tested prompts did not improve35 and retrieval preparation/review finished17:01. Aim for output17:30–17:40 and review by18:00; report any incompleteness honestly. Greg's #57 is accepted; [#62](https://github.com/kwiscion/machinekind-matura/issues/62) adds opt-in RAG to the organizer-package flow without changing the bare default. A lead-owned offline fallback is prepared; user/network namespace creation is verified, but actual isolated server/CUDA/model execution is not. It gets a separate two-call declaration after this run ends. Piotrek still investigates his watcher; do not wait for an unclaimed GPU.
+
+The following paragraphs preserve the prior experimental record; this decision supersedes their earlier launch/ownership states.
+
 The lead's **single question-policy Gemma run completed at 16:34: 40/40 answers, zero errors, 24.8 minutes, $0**. Disjoint first-pass reviews give **10/21 + 20/39 = 30/60 (range 24–34)**; Paweł's independent adjudication remains pending. It is not promoted; bare Gemma's source-v2 composite remains the working 35/60. The run used source-v2 and an identical generic question-following policy for every case, unchanged weights, thinking off, context 4096, 1024 output tokens and a 420-second timeout. No retrieval or task-specific factual hints. Actual usage: 40,993 prompt and 5,893 completion tokens; 40 calls, no retries or continuation. See the [full review](agentsLog/kwiscion/2026-09-26-policy-review-full.md), [frozen launch record](agentsLog/kwiscion/2026-09-26-question-policy-launch.md) and [full handoff](agentsLog/kwiscion/model-answers/question-policy-gemma-val40-answer-only.manifest.json).
 
 The reviewed dispatcher preserves every result and unsent ID. It verifies model identity and effective context after the first real load, watches actual prompt usage and infrastructure failures, and stops on competing inference, reported OOM/context truncation, prompt usage above 2816, two consecutive infrastructure failures, a failed completion-time projection after five calls, 60 elapsed minutes or 17:10. Exact multimodal pre-counting was unavailable; fit is explicitly estimated, not proven. Sampling defaults remain unchanged. Never stop based on interim correctness.
@@ -36,8 +44,8 @@ Greg claimed #57 at 16:40; the first runnable retrieval slice is due around 17:0
 | Owner | Live issue | Current deliverable |
 | --- | --- | --- |
 | @kwiscion | [#3](https://github.com/kwiscion/machinekind-matura/issues/3) | Own laptop queue, score handoffs, exact-head reviews and next experiment; Sol handles bounded review and visual audit |
-| @Pewciu6 | [#11](https://github.com/kwiscion/machinekind-matura/issues/11) | Review published exploratory format answers and isolated source correction; then independently adjudicate the question-policy result |
-| @Bukareszt | [#57](https://github.com/kwiscion/machinekind-matura/issues/57) | Prepare bounded offline RAG input without model calls; staging #54 is accepted via reviewed PR #55 |
+| @Pewciu6 | [#11](https://github.com/kwiscion/machinekind-matura/issues/11) | Policy adjudication delivered in #61; now adjudicate three crop answers, then the bounded-RAG arm |
+| @Bukareszt | [#62](https://github.com/kwiscion/machinekind-matura/issues/62) | Add opt-in bounded retrieval to the organizer-package runner without calls; #57 accepted after independent review |
 | @ljaniec | [#38](https://github.com/kwiscion/machinekind-matura/issues/38) | Offline runtime and organizer-package rehearsal handoff; original 16:00 ETA slipped, artifact requested |
 | @semberecki | [#33](https://github.com/kwiscion/machinekind-matura/issues/33) | Prepare RTX 5090 and claim readiness/ETA; no acknowledgment yet, no duplicate baseline |
 | @przemeknowak781 | [#4](https://github.com/kwiscion/machinekind-matura/issues/4) | Integrate reviewed source-alias patch preserving 24 records (23 train/one holdout); unacknowledged, outside critical path |
@@ -49,7 +57,7 @@ An assignment is not proof of execution. Claim with session, start time and ETA;
 | Time | Required decision/evidence |
 | --- | --- |
 | 16:00 — achieved | Stronger working base selected: Gemma; organizer adapter implemented; both baseline scorecards reviewed |
-| 17:00 | Paired improvement result, full denominator and independent grading; select only measured gains |
+| 17:00 — slipped | Policy did not beat bare35; three-crop gain disputed. Retrieval attempt declared17:02 after preparation/review |
 | 17:30 | Candidate selection and offline package rehearsal; stop broad experiments and fix concrete submission defects |
 | 18:00 | Honest score against 48/60, failures and uncertainty preserved, next Sunday work chosen from evidence |
 
