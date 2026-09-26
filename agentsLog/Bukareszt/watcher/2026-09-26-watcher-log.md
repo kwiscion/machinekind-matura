@@ -170,3 +170,8 @@ Agent: Greg's issue watcher. Orca worktree `Watch-for-tasks`, instance `8e5e9ed0
 - Worker pushed `a029b76` (66 canonical topic clusters over 207 sources, 149 canonical title keys, 0 unmapped; leakage checker; original 16-topic eval reservation) and `ae8da00` (batch-1 DRAFT essays/fact cards, deterministic check, tests). Progress comment on #117 at 20:50. Independent reviewer subagent running on batch 1.
 - Root (18:56Z): Sol's 8 topics are fixed (Augustus, Investiture/Canossa, Augsburg, Vienna, British Industrial Revolution, Meiji, League of Nations, Marshall Plan) and must not be duplicated; cross-topic source dependencies (Augsburg+Vienna, League+Marshall) must form connected components before splitting; all records stay split=null until Greg's global mapping. PR #123 carries the reviewed Astra 4+4 seed.
 - Relayed both points to the worker with a request for a regression test and confirmation on #117.
+
+## 21:36 — #117 PR #130 open; root reprioritized to a 12+12 essay pilot export
+- Worker opened PR #130 (canonical source groups, 16-topic eval set, expansion) and ingested root's accepted seed/Sol rows plus declared dependencies into the global export (`5956a5b`); batch-3 drafts and b2 repair round pending independent review.
+- Root 19:21Z: reviewed Sol 8+8 merged in PR #128 alongside Astra 4+4 (PR #123): 12 essays + 12 repair pairs, 61 fact cards; canonical split/export is Greg's.
+- Root 19:33Z: prioritize a small cleared essay-only pilot export now (source-component map, exclusions, attribution/rights, accepted-record export proof); legacy 24 short/chronology records not needed; no 100-example prerequisite; training pilot needs frozen accepted data. Relayed verbatim to the worker with concrete actions for PR #130.
