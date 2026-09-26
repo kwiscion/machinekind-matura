@@ -1,0 +1,101 @@
+{
+  "schema": "visual_zoom_preparation_v1",
+  "status": "PREPARED_NOT_AUTHORIZED",
+  "selected_source_ids": [
+    "5.1",
+    "18",
+    "23.2",
+    "25"
+  ],
+  "slots": [
+    {
+      "slot_id": "5.1-control",
+      "source_id": "5.1",
+      "arm": "control",
+      "original_image_count": 1,
+      "total_image_count": 1,
+      "question_sha256": "188d56ae45ed4753487c22a42cbe721936459edcad117ebfbcddba5f7edda856",
+      "source_text_sha256": "7f260d6375a56014758b567bad0098133ad5f2201636cc6799713794ebbd7e75"
+    },
+    {
+      "slot_id": "5.1-zoom",
+      "source_id": "5.1",
+      "arm": "zoom",
+      "original_image_count": 1,
+      "total_image_count": 5,
+      "question_sha256": "188d56ae45ed4753487c22a42cbe721936459edcad117ebfbcddba5f7edda856",
+      "source_text_sha256": "7f260d6375a56014758b567bad0098133ad5f2201636cc6799713794ebbd7e75"
+    },
+    {
+      "slot_id": "18-zoom",
+      "source_id": "18",
+      "arm": "zoom",
+      "original_image_count": 1,
+      "total_image_count": 5,
+      "question_sha256": "de91f759a2a8db843e0ba266ea2afe0e9a7d3006f093fe6877be949732f550e1",
+      "source_text_sha256": "ad66b026a01654f2afa2ef759ce388e5731ff3693ccb5d362c82837c2ec8dd7a"
+    },
+    {
+      "slot_id": "18-control",
+      "source_id": "18",
+      "arm": "control",
+      "original_image_count": 1,
+      "total_image_count": 1,
+      "question_sha256": "de91f759a2a8db843e0ba266ea2afe0e9a7d3006f093fe6877be949732f550e1",
+      "source_text_sha256": "ad66b026a01654f2afa2ef759ce388e5731ff3693ccb5d362c82837c2ec8dd7a"
+    },
+    {
+      "slot_id": "23.2-control",
+      "source_id": "23.2",
+      "arm": "control",
+      "original_image_count": 1,
+      "total_image_count": 1,
+      "question_sha256": "88d82740739c6805f6005d68722d21fea565b39046b5a6cc413c94fe87b69233",
+      "source_text_sha256": "a9916e50e7c07315bed2611bcbe1a431f3e8ac18437401adf421b7723c067ec0"
+    },
+    {
+      "slot_id": "23.2-zoom",
+      "source_id": "23.2",
+      "arm": "zoom",
+      "original_image_count": 1,
+      "total_image_count": 5,
+      "question_sha256": "88d82740739c6805f6005d68722d21fea565b39046b5a6cc413c94fe87b69233",
+      "source_text_sha256": "a9916e50e7c07315bed2611bcbe1a431f3e8ac18437401adf421b7723c067ec0"
+    },
+    {
+      "slot_id": "25-zoom",
+      "source_id": "25",
+      "arm": "zoom",
+      "original_image_count": 1,
+      "total_image_count": 5,
+      "question_sha256": "bdf3c304e9fdc688890057ab97703c0372f5a757105961a67cbdc908e07c0435",
+      "source_text_sha256": "09b6cab6eb15f32c01358722afdf79581f130c55a7c8d3895ab3a4de35757e86"
+    },
+    {
+      "slot_id": "25-control",
+      "source_id": "25",
+      "arm": "control",
+      "original_image_count": 1,
+      "total_image_count": 1,
+      "question_sha256": "bdf3c304e9fdc688890057ab97703c0372f5a757105961a67cbdc908e07c0435",
+      "source_text_sha256": "09b6cab6eb15f32c01358722afdf79581f130c55a7c8d3895ab3a4de35757e86"
+    }
+  ],
+  "algorithm": "full originals first, then TL/TR/BL/BR per original;55% dimensions;10% central overlap; no resizing",
+  "note": "Pierwsze obrazy zachowują wszystkie pełne oryginalne strony. Następnie dla każdej strony dodano cztery nakładające się fragmenty w kolejności: lewy górny, prawy górny, lewy dolny, prawy dolny. To powiększone widoki tych samych materiałów, a nie nowe źródła. Nakładające się obszary powtarzają treść; nie traktuj powtórzeń jako dodatkowego dowodu. Czytaj fragmenty w kontekście pełnych stron.",
+  "note_sha256": "34e0b9282667aa3c701f95417d23c1b15b9f4d7ca332c3630f10c640d434344d",
+  "code_sha256": "3c2b68227c085086c53b7e9c07a2a4ac6ebf5f321d65b6de047aae1a137d4999",
+  "scheduler_sha256": "d99d9271d6cc589f0e9caccfee3d1387c4695d0fd9cd33db97bcd3efba54a521",
+  "prepared_manifest_sha256": "d14ef2394d2511e87708e0e4b7f1c3680f225b11131939afd93bf973f9a3a96d",
+  "max_calls": 32,
+  "max_requested_tokens": 1179648,
+  "max_seconds": 3600,
+  "context": 65536,
+  "initial_output_cap": 32768,
+  "thinking": true,
+  "temperature": "omitted",
+  "model": "gemma4:12b-it-q4_K_M",
+  "weights_model_plus_projector_bytes": 7556497632,
+  "aggregate_limit_bytes": 8800000000,
+  "quality_scope": "Four deliberately selected known-validation source items; no whole-exam gain claim"
+}
