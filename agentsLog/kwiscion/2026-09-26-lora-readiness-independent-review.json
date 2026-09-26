@@ -1,0 +1,205 @@
+{
+  "reviewer": "independent Sol /root/essay_corpus_sol",
+  "pr": 135,
+  "head": "0aed5fd5a7d29cc3648ca3f2f516584df56779a7",
+  "merge": "e5a730ebe423751bfd4f632378878141c159d8a4",
+  "verdict": "DATA_CLEARED; NEXT_BOUNDED_FULL_MODEL_COMPATIBILITY_STEP_SUPPORTED; TRAINING_SERVING_RELEASE_NOT_QUALIFIED",
+  "method": "Read exact Git blobs into ignored isolated copy; no checkout/fetch/Git mutation, GPU, inference, model download or remotehost access. Reviewed archived host evidence, not independently rerun model/conversion experiments.",
+  "clearance": {
+    "path": "agentsLog/kwiscion/essay-lora-prep/essay_lora_clearance_v1.json",
+    "sha256": "9a31742306e1c37aa096ff9e16e128083b8fff8e83257658e21457f2b35921fd",
+    "validation": {
+      "train_records": 90,
+      "holdout_records": 0,
+      "external_eval_input_count": 16,
+      "evaluation_loss_enabled": false,
+      "early_stopping_enabled": false,
+      "frozen_epochs": 3,
+      "canonical_components": {
+        "train": [
+          "C-1968",
+          "C-1970",
+          "C-allied-conferences",
+          "C-athens",
+          "C-casimir3",
+          "C-charlemagne",
+          "C-church-conflicts",
+          "C-cold-war",
+          "C-communist-takeover",
+          "C-cop",
+          "C-discoveries",
+          "C-euro-atlantic",
+          "C-hammurabi",
+          "C-holocaust",
+          "C-hundred-years",
+          "C-industrial",
+          "C-january",
+          "C-katyn",
+          "C-lublin",
+          "C-magna-carta",
+          "C-meiji",
+          "C-odnowiciel",
+          "C-piast-origins",
+          "C-reformation",
+          "C-rome-empire",
+          "C-thirty-years",
+          "C-ussr-collapse",
+          "C-versailles"
+        ],
+        "holdout": [],
+        "external_eval": [
+          "C-1939",
+          "C-1956",
+          "C-absolutism",
+          "C-alexander",
+          "C-batory",
+          "C-black-death",
+          "C-crusades",
+          "C-french-rev",
+          "C-great-depression",
+          "C-lokietek",
+          "C-napoleonic",
+          "C-persian-wars",
+          "C-rome-republic",
+          "C-unifications",
+          "C-us-independence",
+          "C-ww1-independence"
+        ]
+      },
+      "max_optimizer_steps": 36
+    }
+  },
+  "checks": {
+    "canonical_train_hash": "83153814da8251210f2b9d225dc713ad245c273bdc5d46dd1216b0e4b97178f5",
+    "canonical_eval_hash": "5979ee0b8e0e4f084cf6070f42d31892ee53c1f5485409b4fc5dac1266055a28",
+    "attribution_sidecar_exact_reconstruction": true,
+    "reference_only_entries": 6,
+    "root_prepare_tests": "25/25 PASS",
+    "real_data_binding": "PASS",
+    "negative_gate_checks": [
+      "missing accepted record",
+      "wrong data hash",
+      "eval component collision"
+    ],
+    "tiny_probe_source_hashes_match_local": true,
+    "size_arithmetic": "PASS; historical control artifacts only"
+  },
+  "cpu_probe": {
+    "status": "PASS",
+    "scope": "random tiny CPU attach/backward/one-step/merge only",
+    "trainable_parameters": 5248,
+    "loss": 4.774726390838623,
+    "merge_max_abs_logit_delta": 4.172325134277344e-07
+  },
+  "archived_sizes": {
+    "merged": {
+      "bytes": 7556499104,
+      "remaining_bytes": 1243500896,
+      "files": [
+        {
+          "path": "/ephemeral/mm-lora/control/base-q4_k_m.gguf",
+          "bytes": 7381383392,
+          "sha256": "a192fac4a5989aa7db9452d91405cd401a7fb03e0af3b36343abeeb146d3282a"
+        },
+        {
+          "path": "/ephemeral/mm-lora/control/projector.gguf",
+          "bytes": 175115712,
+          "sha256": "9ff3ded7bf4360353a3c184aeef9fb1a15e54f08abcb1a45a46b3467333fb12e"
+        }
+      ]
+    },
+    "adapter": {
+      "bytes": 7566898592,
+      "remaining_bytes": 1233101408,
+      "files": [
+        {
+          "path": "/ephemeral/mm-lora/control/base-q4_k_m.gguf",
+          "bytes": 7381383392,
+          "sha256": "a192fac4a5989aa7db9452d91405cd401a7fb03e0af3b36343abeeb146d3282a"
+        },
+        {
+          "path": "/ephemeral/mm-lora/control/projector.gguf",
+          "bytes": 175115712,
+          "sha256": "9ff3ded7bf4360353a3c184aeef9fb1a15e54f08abcb1a45a46b3467333fb12e"
+        },
+        {
+          "path": "/ephemeral/mm-lora/control/adapter-probe/synthetic-adapter-bf16.gguf",
+          "bytes": 10399488,
+          "sha256": "fbe7225245eb3e9e146c1db737caf476696a21573c13aca5f7c1c105c6bb23a5"
+        }
+      ]
+    }
+  },
+  "findings": [
+    {
+      "severity": "gate",
+      "topic": "Full model and serving",
+      "detail": "No full 12B attach/backward/memory, actual trained-adapter load/switch, offline text/image serving, or all-route regression is established. Tiny synthetic CPU success supports the next separately declared compatibility step only."
+    },
+    {
+      "severity": "evidence_gap",
+      "topic": "Tokenizer report missing",
+      "detail": "README cites host_logs/tokenizer-control.json, but this file is absent from the exact PR135 tree. The implementation invokes unchanged tokenized_record on canonical90, but 90/90, max2510 and 86883 tokens are host claims without the committed result. Retrieve/hash the log or rerun local-base preparation with this real clearance before history training."
+    },
+    {
+      "severity": "correction",
+      "topic": "Training and merged-size wording",
+      "detail": "runtime_probe.py does execute one backward and AdamW optimizer step on a random tiny model. Zero history training and zero full12B training is accurate; nothing was trained is not. The 7556499104-byte pair is the unmodified base control, not an actual LoRA-merged checkpoint. The 7566898592-byte layout contains a random untrained synthetic adapter. Recheck the actual candidate final inventory."
+    },
+    {
+      "severity": "gate",
+      "topic": "Matched export control",
+      "detail": "Registry and new control have identical tensor metadata and338 F32 tensors, but all329 quantized tensors and embedded chat templates differ. This does not establish a quantizer-only cause or identical underlying full weights for the registry. Use matched newly exported untrained base vs candidate with identical serving template/settings, and separately compare strongest registry native-thinking baseline. Adapter on registry base needs explicit qualification too."
+    },
+    {
+      "severity": "next_runner_requirement",
+      "topic": "Fail-closed export",
+      "detail": "host_scripts/export_control2.sh uses set -u and echoes conversion return codes while continuing. Historical file/hash evidence supports produced artifacts, but this script is not a safe future candidate export gate. Stop on each failed conversion/quantization, use a fresh directory, and require expected hashes/complete aggregate inventory."
+    }
+  ],
+  "exact_blob_hashes": {
+    "agentsLog/Bukareszt/essay_corpus/clusters.json": "17bf0da54812194aa0b84ac02846092eb1cd1b7897ffda550b646d196723e62c",
+    "agentsLog/Bukareszt/essay_corpus/export_v1/attribution.jsonl": "13e2aa555b5d590fe445e565a276879db124382107a4331652258af45d2a0b65",
+    "agentsLog/Bukareszt/essay_corpus/export_v1/eval16_input.jsonl": "5979ee0b8e0e4f084cf6070f42d31892ee53c1f5485409b4fc5dac1266055a28",
+    "agentsLog/Bukareszt/essay_corpus/export_v1/exclusions.json": "bde81f79c1287aae6a7ba773098456e2879a447949bfde7fc6313323f4124dcd",
+    "agentsLog/Bukareszt/essay_corpus/export_v1/export_manifest.json": "07be94168fe5124975efdddc8a25565d3eee9f947a0df22af46ad7ff56d330f9",
+    "agentsLog/Bukareszt/essay_corpus/export_v1/train_sft.jsonl": "83153814da8251210f2b9d225dc713ad245c273bdc5d46dd1216b0e4b97178f5",
+    "agentsLog/Bukareszt/essay_corpus/group_map.jsonl": "59923aa0733d7b754a21cf10ade6c005f4f9875cf7396d270908a02ebe102142",
+    "agentsLog/Bukareszt/essay_corpus/leakage_report.json": "e70da63494d1e07c519c140011035d995eb3443cbcc59a9f5fe53816c387a3fd",
+    "agentsLog/Bukareszt/lora_readiness/README.md": "c47fc4f5f312a98ca04513b31a825ec8044c6c88a80f10cbbc648dceb30d0969",
+    "agentsLog/Bukareszt/lora_readiness/adapter_convert_probe.py": "5b301e2d7955d0417a773adcf8856a7c30b1ba4045277f7df7bea95631549f9d",
+    "agentsLog/Bukareszt/lora_readiness/check_data.py": "e89b896edbc9e38ddb1f68db283f870b78d58d3d6248c19649db1a462346be2a",
+    "agentsLog/Bukareszt/lora_readiness/data_check.json": "beaccc3b394e5905edd95cc5ecbecd8d77e8df844c5630c5df8589eaad22974e",
+    "agentsLog/Bukareszt/lora_readiness/host_logs/adapter-convert-probe.json": "cf7f4bc7124b3d163f3a4f65469fd98691200a80a84249bd154992f9c29e9b99",
+    "agentsLog/Bukareszt/lora_readiness/host_logs/base_sha256.txt": "9dda0d2f663943574a10aa9d4720d742550ff79f7f0fe2e14238cbac5a791337",
+    "agentsLog/Bukareszt/lora_readiness/host_logs/control_sha256.txt": "f95b83852e8a055144ccf6ee2790ed685c6f88a216f6c8f12c7d82895f85cabd",
+    "agentsLog/Bukareszt/lora_readiness/host_logs/convert_freeze.txt": "7f84eac46a5aa7b420bda4e22c2e46e37860e490d6e0a1b5f76486db71eb9124",
+    "agentsLog/Bukareszt/lora_readiness/host_logs/convert_pinned_freeze.txt": "429872c5181546674816a9123c9229be0e4f46194ce3a05f4c075094e8d4b07e",
+    "agentsLog/Bukareszt/lora_readiness/host_logs/cpu-probe-runtime.json": "99889f22a2be184bd82cd3914cbd391b5c2fd11ae9d6455134793a0825a5a406",
+    "agentsLog/Bukareszt/lora_readiness/host_logs/cpu-probe.json": "271fd7ea32dfe20cbb63c29c2e22f230530e7a925b514ee86433cb7ca77043cf",
+    "agentsLog/Bukareszt/lora_readiness/host_logs/cpu_freeze.txt": "2764f85a3d19ec5b8ea5360a682cac23cbb8189fe38e105ee4a759697beff30c",
+    "agentsLog/Bukareszt/lora_readiness/host_logs/gguf-diff-projector.json": "fc84b82771874bfbdb3a37aa0e74868c8d4d923a49452cab5209d93678a213ed",
+    "agentsLog/Bukareszt/lora_readiness/host_logs/gguf-diff-text.json": "a1f636aa0de2c1048449a112bc6dd7db92a9c5ee2c927a2d15a819b7df7a09cd",
+    "agentsLog/Bukareszt/lora_readiness/host_logs/gpu_check.json": "6814f13bbd012a5d8592909dd4a291abd826208c4e1b0adeb34e5bcf0b20f736",
+    "agentsLog/Bukareszt/lora_readiness/host_logs/gpu_freeze.txt": "decf252c5a403a851c41b0da9f02c33a40367aec033232260c57f6d39c72dd5c",
+    "agentsLog/Bukareszt/lora_readiness/host_logs/size-adapter-layout.json": "9cb7f7ebe91795ae16f3a84639eebfd551ef45e443e2297fbf511ea621388d90",
+    "agentsLog/Bukareszt/lora_readiness/host_logs/size-merged-layout.json": "20a4fb496ff9075fb2182fe8ed569b49bcb6b37e7ef37d566e47d410c394caa7",
+    "agentsLog/Bukareszt/lora_readiness/host_logs/src_sha256.txt": "9f65173913b79895a892ac5d17201a35f19754b01ea2c742499d45d843dd3ea8",
+    "agentsLog/Bukareszt/lora_readiness/host_logs/tensorhash-projector.json": "cb2574ba177e5b314e521b4d3208e90325538285d95968052a927d507c380a84",
+    "agentsLog/Bukareszt/lora_readiness/host_logs/tensorhash-text-bytype.json": "2f37b881d9dbe0331a719c49af16b21d9057eb53a3a45485378f5aecd4f5967c",
+    "agentsLog/Bukareszt/lora_readiness/host_logs/tensorhash-text.json": "b161cdb5a56ebfefef4de7c2d4ce748d702c2c6d4e34225cd41c8ca0e5675836",
+    "agentsLog/Bukareszt/lora_readiness/host_scripts/dl_base.sh": "2c5a29fdc1eba7c467ac993227773a93d921ceaa808c0a7837d41b2229381737",
+    "agentsLog/Bukareszt/lora_readiness/host_scripts/envs.sh": "eb62b0c0922c5d4c87efdcb2192f16ad4daab9fcd4ea06aef74516c434d7624b",
+    "agentsLog/Bukareszt/lora_readiness/host_scripts/export_control.sh": "922e4856207d5688900ae51de2e50411b0648617311a0b5af921f53cd3928bfe",
+    "agentsLog/Bukareszt/lora_readiness/host_scripts/export_control2.sh": "228d70bac98e60ddb02da1e776314076b2a180632fcb5676f52936db5529959f",
+    "agentsLog/Bukareszt/lora_readiness/host_scripts/fetch_src.sh": "422cc08a5c1d191236052fd41308084a2ec73ebe40d5176e6119cc9d4db19159",
+    "agentsLog/Bukareszt/lora_readiness/host_scripts/gguf_diff.py": "abf7e3fe7c8febde0def1fb4ff8fb2295753a98a655f0edc9ce648b59b341272",
+    "agentsLog/Bukareszt/lora_readiness/host_scripts/gguf_tensor_hash.py": "261752d0c1d632aeb1d87db60bb77b1a52d03d15e97393709c229ea0862050fe",
+    "agentsLog/Bukareszt/lora_readiness/host_scripts/gguf_type_diff.py": "2ca01ae3ce9c7b83babbf0c0dfd7d858f6f9febe552539404b58689c66bd061d",
+    "agentsLog/Bukareszt/lora_readiness/host_scripts/llama_build.sh": "2284a63cee752ce05ab9b2626afd9d973dd25745062a8f68c25ab68f15b6dffa",
+    "agentsLog/Bukareszt/lora_readiness/probe_linux.py": "cb768c9c708fcb9983e2a57789d3727e070848d876ca1a034cb3b9a951fac726",
+    "agentsLog/Bukareszt/lora_readiness/setup_manifest.json": "a5011f2f5128a8162233d3cb5fbbd2370cd780cb5e7638fbca2227a1676a457c",
+    "agentsLog/Bukareszt/lora_readiness/tokenizer_control.py": "298d34031d18e6db3870f9ae1f7faaed54eba3d79cb5846fbeac7090124a469e",
+    "agentsLog/Bukareszt/lora_readiness/training_attribution.jsonl": "649dcf22644c5ed3aff1b2c5eb5436c1b54ec58e553fdf0c4c0ce25136bf5685"
+  }
+}

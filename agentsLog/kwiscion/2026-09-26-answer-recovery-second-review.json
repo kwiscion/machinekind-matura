@@ -1,0 +1,120 @@
+{
+  "reviewer": "essay_corpus_sol",
+  "date": "2026-09-26",
+  "scope": "Six actual submitted responses, three selected runtime-failure items per arm. No inferred full-exam score.",
+  "independence": "Arm labels A/B were visible. Reviewer previously graded the full-thinking last20 and knows aggregate evidence from assignment/plan. No interrupted notes, recovery request envelopes, root recovery grades, or other recovery assessments were read. This is independent scoring, not a fully blinded evaluation.",
+  "method": "Original source-v2 prompts and full page images 14, 15, 22 and 28 were inspected. Official item rules were applied manually. Exact answer SHA256 uses decoded answer string encoded UTF-8 without normalization; file SHA256 uses raw bytes.",
+  "arms": [
+    {
+      "arm": "A",
+      "artifact": "agentsLog/kwiscion/model-answers/answer-recovery-A-three.jsonl",
+      "sha256": "ad93976a5361179d209e67e4ed6573849bfaf0e6b829b1c13549727ae0e7b56c",
+      "max_points": 6,
+      "central": 1,
+      "low": 1,
+      "high": 1,
+      "items": [
+        {
+          "id": "val2024-hist-z12.1",
+          "answer_sha256": "62478762e64cd72e2e894e35124dcef82f171c476f87cec9fa0f1a55c602a825",
+          "max_points": 1,
+          "central": 0,
+          "low": 0,
+          "high": 0,
+          "reason": "The response names Ludwik Maria and Wladyslaw IV, neither the ruler supported by the abdication narrative and Paris monument. The supplied evidence identifies Jan Kazimierz. No correct identification is present."
+        },
+        {
+          "id": "val2024-hist-z19.1",
+          "answer_sha256": "db9fc7fcd2dd98e5090f480ffdc23eaed8fc5145870a85b076423e9b4be98986",
+          "max_points": 2,
+          "central": 1,
+          "low": 1,
+          "high": 1,
+          "reason": "Two of three selections are correct (positions 1 and 3); position 2 is wrong. The Cieszyn stamp concerns a planned plebiscite that did not take place. The official rule awards one point for exactly two correct selections."
+        },
+        {
+          "id": "val2024-hist-z25",
+          "answer_sha256": "cd296834bc9a3c9661fd86b42defa72bbaddae7d677267c5f4dd3945661e2b9e",
+          "max_points": 3,
+          "central": 0,
+          "low": 0,
+          "high": 0,
+          "reason": "The response interprets the scene as alcohol prohibition in the USA and misreads the inscription as SOAKER. The observed uniform, broom and bars are attached to the wrong political event. It misses the Solidarity suppression / concealment and externally controlled Polish communist leadership message. An isolated visual noun does not satisfy the minimum correct-message-plus-interpreted-element requirement."
+        }
+      ]
+    },
+    {
+      "arm": "B",
+      "artifact": "agentsLog/kwiscion/model-answers/answer-recovery-B-three.jsonl",
+      "sha256": "fcc745275a65969ec04e54a0c4ed649d97c7da8c20e31ba3db7eeb96b2e31f5a",
+      "max_points": 6,
+      "central": 0,
+      "low": 0,
+      "high": 0,
+      "items": [
+        {
+          "id": "val2024-hist-z12.1",
+          "answer_sha256": "11627d48a9598e1cbdc7a685ce64b4ae7a4037495a28415e04fde95b1cfa8912",
+          "max_points": 1,
+          "central": 0,
+          "low": 0,
+          "high": 0,
+          "reason": "Jan III Sobieski is the wrong ruler. The abdication narrative after the death of Ludwika Maria and the Paris monument support Jan Kazimierz. No partial identification credit is available."
+        },
+        {
+          "id": "val2024-hist-z19.1",
+          "answer_sha256": "89290644b6d09a570b25c4cdacce278727131f34f13dcd96da0d83d06bbd2388",
+          "max_points": 2,
+          "central": 0,
+          "low": 0,
+          "high": 0,
+          "reason": "Only selection 1 is correct; selections 2 and 3 are wrong. The Cieszyn plebiscite was not held, and Poland received the smaller territorial portion of the Upper Silesian plebiscite area. The official two-point item awards no point for only one correct selection."
+        },
+        {
+          "id": "val2024-hist-z25",
+          "answer_sha256": "7e48a3c5c83298b0457656a7b0cab396ab07be995a2f110ca8caf41b8dd0a420",
+          "max_points": 3,
+          "central": 0,
+          "low": 0,
+          "high": 0,
+          "reason": "The response places a supposedly German soldier in the First World War and treats the inscription as SODADA and the sweeping as German military collapse. That is an incorrect message and historical setting. It does not interpret the Solidarity inscription, sweeping under the carpet, or puppet strings in the relevant Polish communist context. Broom/uniform recognition alone earns no point."
+        }
+      ]
+    }
+  ],
+  "evidence_files": [
+    {
+      "path": "agentsLog/kwiscion/private/validation_2024_keyfree/runner_input.v2.jsonl",
+      "sha256": "6615fea2e6fd1d6f9db5b781fa84a883899d1c2fb83a28b914638089e6b015a4"
+    },
+    {
+      "path": "agentsLog/Pewciu6/private/validation_2024/eval_keys.jsonl",
+      "sha256": "279abe703dc1af4119a35624d6db893e310fc7afaffbef2a00e678f423706486"
+    },
+    {
+      "path": "agentsLog/Pewciu6/private/validation_2024/MHIP-R0-100-2405-zasady.pdf",
+      "sha256": "95c275b9546611c1f8cd45b7973c436625fd0ee5643b778dcc8bb566db56cd4c"
+    },
+    {
+      "path": "agentsLog/kwiscion/private/validation_2024_keyfree/pages/page-14.png",
+      "sha256": "38016a9c95eae9a433d93450298244ccfb00c6e9031280b61962a4952b7956a1"
+    },
+    {
+      "path": "agentsLog/kwiscion/private/validation_2024_keyfree/pages/page-15.png",
+      "sha256": "77f50f108eb4752eed9625d1f4a0cc66a3055b063d6256f8e38da571aac4fe42"
+    },
+    {
+      "path": "agentsLog/kwiscion/private/validation_2024_keyfree/pages/page-22.png",
+      "sha256": "ce28404c0507cae44688e5b5da22c1c2366b119ecf02eee8d08b66f9dc2b6fdb"
+    },
+    {
+      "path": "agentsLog/kwiscion/private/validation_2024_keyfree/pages/page-28.png",
+      "sha256": "3ddacc9941ab9dda555b473004e9a59d6ceaf3c8542c025f0c72ff91579b3da2"
+    }
+  ],
+  "limitations": [
+    "Only the preselected three failures were tested per arm; this is not a fresh full-exam evaluation.",
+    "No meaningful scoring dispute remains: central, low and high coincide for every response.",
+    "No inference, model calls, training writes or Git operations were performed."
+  ]
+}
