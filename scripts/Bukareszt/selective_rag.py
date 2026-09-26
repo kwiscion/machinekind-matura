@@ -9,7 +9,7 @@ are untouched; their retrieval default (whole original prompt as the chrono quer
         --fixtures agentsLog/Bukareszt/issue96/fixtures/synthetic_fixtures.jsonl \
         --controls agentsLog/Bukareszt/queries/train_queries.jsonl --out agentsLog/Bukareszt/issue96/ablation.json
 
-    # opt-in runner input: routed cases get <= one compact passage, everything else stays byte-identical
+    # opt-in runner input: routed cases get <= one compact passage, every other prompt is unchanged
     python3 scripts/Bukareszt/selective_rag.py prepare --input <keyfree.jsonl> \
         --output agentsLog/Bukareszt/private/selective/<name>.jsonl [--pairs 12]
 
@@ -26,10 +26,9 @@ The answering prompt always keeps the complete original task, sources and biblio
 
 Router (question text only; no evaluator task_type, keys, answers or IDs): essay | supplied_source |
 external_fact | mixed | ambiguous. Only external_fact and mixed may retrieve; everything else stays bare.
-Gate: distinctive query terms = idf >= GATE_MIN_IDF, not digits, not generic exam-instruction words. The top-1 hit of
-the decontaminated query passes if one of them is in its article title, or >= GATE_MIN_TERMS of them are in the chunk
-covering >= GATE_MIN_COVERAGE of them; otherwise zero hits.
-The passed chunk is reduced to one compact sentence window (<= WINDOW_CHARS) around the matched terms.
+Gate (relation-aware, see `gate`): distinctive terms = idf >= GATE_MIN_IDF, not digits, not generic exam-instruction
+words. The top-1 hit is first cut to one compact sentence window (<= WINDOW_CHARS); that final window must support the
+requested relation, not only the entity (a title/entity match alone never passes); otherwise zero hits.
 Stdlib only; socket-guarded; zero model calls.
 """
 from __future__ import annotations
@@ -52,8 +51,6 @@ TITLE_WEIGHT = 1.0
 RANK_K = 5
 GATE_MIN_IDF = 3.0
 GATE_MIN_TERMS = 2
-GATE_MIN_COVERAGE = 0.2
-GATE_MIN_TITLE_TERMS = 1
 WINDOW_CHARS = 480
 BUDGET_CHARS = 800  # whole evidence block incl. #57 header/footer; one passage only
 
@@ -64,8 +61,15 @@ GENERIC_WORDS = (
     "rozstrzygnij porównaj wskaż przedstaw napisz wypisz zaznacz odpowiedź odpowiedzi jeden jedna jedną jedno dwa dwie trzy "
     "który która które którego której opisany opisana opisane opisanej opisanego opisanym przytoczono fragment fragmentu "
     "własnej wiedzy podstawie mowa czego tego tej wtedy później następnie zbudowano zawarto odwołaj przyczynę przyczyny "
-    "skutek skutki dlaczego przykład przykłady wydarzenie wydarzenia postać postaci państwo państwa okres okresu"
+    "skutek skutki dlaczego przykład przykłady wydarzenie wydarzenia postać postaci państwo państwa okres okresu "
+    "jaki jaka jakie jakim jakich jakiego jakiej jak czym czego kogo kto co kiedy gdzie ile ten ta te tę to tego tych "
+    "jego jej ich trakcie czasie wyniku mocy ramach uchwalenia zawarcia podpisania wydania ogłoszenia "
+    "zawierał zawierała zawierało zawierać polegał polegała polegało nazywano nazywa nazywał podjął podjęła podjęto "
+    "wydał wydała wydano ogłosił ogłosiła ogłoszono dotyczył dotyczyła dotyczyło"
 )
+# the noun right after "nazwę/imię/…" names the ANSWER TYPE ("nazwę konfliktu"), not a relation the passage must state
+ANSWER_TYPE_RE = re.compile(
+    r"\b(?:nazwę|nazwy|imię|imiona|nazwisko|nazwiska|rok|datę)\s+(?:(?:tego|tej|tych|jednego|jednej|dwóch)\s+)?(\w+)", re.I)
 
 BARE_HEADER = (
     "Rozwiąż poniższe zadanie z egzaminu maturalnego z historii (poziom rozszerzony). "
@@ -94,7 +98,16 @@ BCE_AFTER_RE = re.compile(r"^\s*(?:r\.\s*)?(?:p\.\s*n\.\s*e\.|przed\s+(?:naszą\
 MATERIAL_RE = re.compile(
     r"Tekst źródłowy|Materiał źródłowy:|Tekst\s+\d|Źródło\s+\d|Ilustracj|Mapa\b|Mapy\b|Fotografi|Tabel|Wykres|Plakat|"
     r"Karykatur", re.I)
-ESSAY_RE = re.compile(r"wypracowani|\(0\s*[–-]\s*1[0-9]\)|maks\.\s*1[0-9]\s*pkt", re.I)
+ESSAY_RE = re.compile(
+    r"wypracowani|rozprawk|\besej|wypowiedź (?:argumentacyjn|pisemn)|dłuższ\w* wypowied|"
+    r"(?:co najmniej|minimum|min\.|nie mniej niż|około)\s*\d+\s*słów|\d+\s*słów|"
+    r"\(0\s*[–-]\s*1[0-9]\)|maks\.\s*1[0-9]\s*pkt", re.I)
+LONG_FORM_RE = re.compile(r"\btez[aęy]\b|argument|zakończeni|wstęp\w*\b", re.I)  # >= 2 distinct cues = essay
+SOURCE_ONLY_RE = re.compile(
+    r"na podstawie (?:tekstu|tekstów|źródła|źródeł|ilustracji|mapy|tabeli|wykresu|fotografii|plakatu|obu|materiału|"
+    r"przytoczon|zamieszczon|podan)", re.I)
+OWN_KNOWLEDGE_RE = re.compile(r"własnej wiedzy|wiedzy pozaźródłow|wiedzy własnej", re.I)
+DATE_ASK_RE = re.compile(r"\bkiedy\b|w którym roku|\b(?:podaj|oraz|i)\s+(?:rok|datę)\b|\brok\s+(?:jego|jej|ich)\b", re.I)
 SOURCE_CUE_RE = re.compile(
     r"na podstawie (?:tekstu|tekstów|źródła|źródeł|ilustracji|mapy|tabeli|wykresu|fotografii|plakatu|obu|materiału)"
     r"|z tekstu|w tekście|w źródle|wypisz|porównaj|według autor|ile\b", re.I)
@@ -227,18 +240,26 @@ def rank(retrieval, idx, graph, query: dict, k: int = RANK_K) -> list[dict]:
 # question-only evidence router
 # --------------------------------------------------------------------------------------
 
+def command_sentences(text: str) -> list[str]:
+    return [s for s in re.split(r"(?<=[.?!:])\s+|\n", text) if COMMAND_RE.search(s) or s.rstrip().endswith("?")]
+
+
 def route(prompt: str) -> dict:
     text = strip_templates(prompt)
-    commands = [s for s in re.split(r"(?<=[.?!:])\s+|\n", text) if COMMAND_RE.search(s)]
+    commands = command_sentences(text)
     command = " ".join(commands)
+    long_form = {m.group(0).lower()[:4] for m in LONG_FORM_RE.finditer(prompt)}
     material = bool(MATERIAL_RE.search(text)) or any(is_bibliography(line) for line in text.split("\n"))
     signals = {"material": material, "commands": len(commands),
-               "essay": bool(ESSAY_RE.search(prompt)), "source_cue": bool(SOURCE_CUE_RE.search(command)),
-               "external_cue": bool(EXTERNAL_CUE_RE.search(command))}
+               "essay": bool(ESSAY_RE.search(prompt)) or len(long_form) >= 2,
+               "source_only": bool(SOURCE_ONLY_RE.search(command)) and not OWN_KNOWLEDGE_RE.search(command),
+               "source_cue": bool(SOURCE_CUE_RE.search(command)), "external_cue": bool(EXTERNAL_CUE_RE.search(command))}
     if signals["essay"]:
         r = "essay"
     elif not commands:
         r = "ambiguous"
+    elif signals["source_only"]:
+        r = "supplied_source"  # "na podstawie tekstu ..." without own knowledge: answer verbs do not imply external facts
     elif signals["source_cue"] and not signals["external_cue"]:
         r = "supplied_source"
     elif material:
@@ -260,27 +281,64 @@ def distinctive_terms(retrieval, idx, text: str) -> set[str]:
             if not t.isdigit() and t not in generic and idx.idf(t) >= GATE_MIN_IDF}
 
 
-def gate(retrieval, idx, query: dict, hits: list[dict]) -> dict:
-    """Pass the top-1 hit only with lexical support: a distinctive question term in its article title, or
-    >= GATE_MIN_TERMS distinctive terms in the chunk covering >= GATE_MIN_COVERAGE of them. Otherwise zero hits."""
+def proper_name_terms(retrieval, command: str) -> set[str]:
+    """Stems of capitalised words that are not sentence-initial: entity names, never relation evidence."""
+    out = set()
+    for sent in re.split(r"(?<=[.?!:])\s+|\n", command):
+        for m in re.finditer(r"\w+", sent):
+            if m.start() > 0 and m.group(0)[0].isupper():
+                out.update(retrieval.tokenize(m.group(0)))
+    return out
+
+
+def gate(retrieval, idx, query: dict, hits: list[dict], command: str, mixed: bool = False) -> dict:
+    """Relation-aware gate, evaluated on the FINAL compact window of the top-1 hit (zero hits otherwise).
+
+    cmd = distinctive terms of the question's command sentences. answer-type = the noun after "nazwę/imię/rok…"
+    ("nazwę konfliktu": the passage need not say "konflikt"). relation = cmd terms that are neither answer-type, nor a
+    capitalised entity name, nor in the hit's article title (e.g. "żeglarstwa" in "imię nauczyciela żeglarstwa X").
+      * relation terms exist: the window must contain >= 1 of them AND >= GATE_MIN_TERMS (external) or GATE_MIN_TERMS + 1 (mixed)
+        non-answer-type question/description terms must be found in window+title. A matching entity (title or body) without the requested relation never passes;
+      * no relation terms (identify what the question/material describes): >= GATE_MIN_TERMS (external) or
+        GATE_MIN_TERMS + 1 (mixed) distinctive description terms must occur in the window itself;
+      * a date request additionally needs a 3-4 digit number in the window."""
     terms = distinctive_terms(retrieval, idx, query["text"])
-    if not hits or not terms:
-        return {"pass": False, "reason": "no hits" if not hits else "no distinctive query terms",
-                "query_terms": len(terms), "matched": [], "title_matched": [], "coverage": 0.0}
+    cmd = distinctive_terms(retrieval, idx, strip_templates(command))
+    base = {"query_terms": len(terms), "command_terms": sorted(cmd), "answer_type_terms": [], "relation_terms": [],
+            "matched": [], "window_matched": [], "window": None}
+    if not hits or not (terms or cmd):
+        return base | {"pass": False, "reason": "no hits" if not hits else "no distinctive query terms"}
     top = hits[0]
-    title_terms = set(retrieval.tokenize(top["title"]))
-    matched = sorted(terms & (set(retrieval.tokenize(top["text"])) | title_terms))
-    title_matched = sorted(terms & title_terms)
-    coverage = round(len(matched) / len(terms), 3)
-    ok = len(title_matched) >= GATE_MIN_TITLE_TERMS or (len(matched) >= GATE_MIN_TERMS and coverage >= GATE_MIN_COVERAGE)
-    return {"pass": ok, "reason": ("title match" if title_matched else "chunk terms") if ok else "weak lexical support",
-            "query_terms": len(terms), "matched": matched, "title_matched": title_matched, "coverage": coverage}
+    title = set(retrieval.tokenize(top["title"]))
+    answer_type = {t for m in ANSWER_TYPE_RE.finditer(command) for t in retrieval.tokenize(m.group(1))}
+    names = proper_name_terms(retrieval, command)
+    relation = cmd - title - answer_type - names
+    description = terms - answer_type
+    window = compact_window(retrieval, top["text"], relation or description, terms)
+    wt = set(retrieval.tokenize(window))
+    date_ok = not DATE_ASK_RE.search(command) or bool(re.search(r"(?<!\d)\d{3,4}(?!\d)", window))
+    out = base | {"answer_type_terms": sorted(answer_type), "relation_terms": sorted(relation), "window": window,
+                  "matched": sorted(terms & (wt | title)), "window_matched": sorted((terms | cmd) & wt)}
+    if relation:
+        support = ((cmd - answer_type) | description) & (wt | title)
+        need = GATE_MIN_TERMS + (1 if mixed else 0)
+        ok = bool(relation & wt) and len(support) >= need and date_ok
+        reason = ("requested relation absent from passage" if not relation & wt else
+                  "too little of the question supported" if len(support) < need else
+                  "no date in passage" if not date_ok else "relation+entity in passage")
+    else:
+        need = GATE_MIN_TERMS + (1 if mixed else 0)
+        m = description & wt
+        ok = len(m) >= need and date_ok
+        reason = ("described entity supported in passage" if ok else
+                  "no date in passage" if len(m) >= need else "weak support in passage")
+    return out | {"pass": ok, "reason": reason}
 
 
-def compact_window(retrieval, text: str, matched: list[str], limit: int = WINDOW_CHARS) -> str:
-    """Best contiguous sentence window (<= limit chars) by count of matched distinctive terms; no new text."""
+def compact_window(retrieval, text: str, primary, secondary=(), limit: int = WINDOW_CHARS) -> str:
+    """Best contiguous sentence window (<= limit chars): 2 points per primary term, 1 per other term; no new text."""
     sents = [s for s in re.split(r"(?<=[.!?])\s+", " ".join(text.split())) if s]
-    want = set(matched)
+    prim, sec = set(primary), set(secondary) - set(primary)
     best, best_score = "", -1
     for i in range(len(sents)):
         window = ""
@@ -289,7 +347,8 @@ def compact_window(retrieval, text: str, matched: list[str], limit: int = WINDOW
             if len(cand) > limit:
                 break
             window = cand
-            score = len(want & set(retrieval.tokenize(window)))
+            toks = set(retrieval.tokenize(window))
+            score = 2 * len(prim & toks) + len(sec & toks)
             if score > best_score or (score == best_score and len(window) < len(best)):
                 best, best_score = window, score
     return best or text[:limit]
@@ -302,12 +361,12 @@ def select_evidence(retrieval, idx, graph, prompt: str) -> dict:
         return out
     q = build_query(retrieval, prompt, SELECTED_VARIANT)
     hits = rank(retrieval, idx, graph, q)
-    g = gate(retrieval, idx, q, hits)
-    out.update(query=q, ranked=hits, gate=g)
+    g = gate(retrieval, idx, q, hits, " ".join(command_sentences(strip_templates(prompt))), r["route"] == "mixed")
+    out.update(query=q, ranked=hits, gate={k: v for k, v in g.items() if k != "window"})
     if g["pass"]:
         top = hits[0]
         out["passage"] = {"chunk_id": top["chunk_id"], "source_id": top["source_id"], "title": top["title"],
-                          "locator": top["locator"], "text": compact_window(retrieval, top["text"], g["matched"])}
+                          "locator": top["locator"], "text": g["window"]}
     return out
 
 
@@ -472,11 +531,11 @@ def cmd_prepare(args) -> dict:
         "status": "prepared_not_launched", "issue": 96, "created_at": si.now_iso(), "model_calls": 0,
         "network": guard, "fetch_or_rebuild": False,
         "settings": {"variant": SELECTED_VARIANT, "variant_flags": VARIANTS[SELECTED_VARIANT], "rank_k": RANK_K,
-                     "gate": {"min_idf": GATE_MIN_IDF, "min_terms": GATE_MIN_TERMS, "min_coverage": GATE_MIN_COVERAGE,
-                              "min_title_terms": GATE_MIN_TITLE_TERMS, "generic_words_sha256": sha256_text(GENERIC_WORDS)},
+                     "gate": {"min_idf": GATE_MIN_IDF, "min_terms": GATE_MIN_TERMS,
+                              "rule": "relation-aware, evaluated on the final compact window", "generic_words_sha256": sha256_text(GENERIC_WORDS)},
                      "window_chars": WINDOW_CHARS, "budget_chars": BUDGET_CHARS, "max_passages": 1,
                      "layout": "[#57 evidence block with one compact passage] + original prompt (verbatim suffix); "
-                               "unrouted/gated-out cases byte-identical to input"},
+                               "unrouted/gated-out prompts unchanged (image paths re-expressed relative to the output)"},
         "input": {"file": str(input_path), "sha256": pbr.sha256_bytes(input_bytes)},
         "output": {"file": str(output), "sha256": pbr.sha256_bytes(payload), "bytes": len(payload)},
         "index": identity,

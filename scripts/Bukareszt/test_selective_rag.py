@@ -96,9 +96,64 @@ class RouterTests(unittest.TestCase):
                 self.assertEqual(r["route"], expected)
                 self.assertEqual(r["retrieve"], expected in ("external_fact", "mixed"))
 
+    def test_review_source_only_answer_verbs_and_essay_phrasing(self):
+        # root's PR #104 review probes, re-expressed with independent invented text
+        cases = {
+            "Tekst źródłowy\nOrmel usiadł pod dębem.\nNa podstawie tekstu podaj nazwę drzewa, pod którym usiadł Ormel.":
+                "supplied_source",
+            "Tekst źródłowy\nOrmel usiadł pod dębem.\nNa podstawie tekstu wyjaśnij, dlaczego Ormel odpoczywał.":
+                "supplied_source",
+            "Tekst źródłowy\nOrmel usiadł pod dębem.\nNa podstawie tekstu i własnej wiedzy podaj nazwę krainy.": "mixed",
+            "Napisz rozprawkę o Ormelu. Praca musi liczyć co najmniej 300 słów.": "essay",
+            "Oceń rolę Ormela. Sformułuj tezę, podaj argumenty i zakończenie.": "essay",
+            "Przedstaw w dłuższej wypowiedzi dzieje Ormela.": "essay",
+        }
+        for prompt, expected in cases.items():
+            with self.subTest(expected=expected, prompt=prompt[-50:]):
+                self.assertEqual(S.route(prompt)["route"], expected)
+
     def test_router_ignores_answer_side_metadata(self):
         # the router takes only the prompt string; evaluator task_type / keys cannot reach it
         self.assertEqual(S.route.__code__.co_argcount, 1)
+
+
+class RelationGateTests(unittest.TestCase):
+    """Root's review probe 1: a same-entity passage without the requested relation must not pass."""
+
+    @classmethod
+    def setUpClass(cls):
+        import importlib.util
+        spec = importlib.util.spec_from_file_location("retrieval_gate_test", PINNED_ROOT / "scripts" / "retrieval.py")
+        cls.retrieval = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(cls.retrieval)
+        chunks = [{"chunk_id": "ormel#0", "source_id": "ormel", "title": "Ormel", "locator": "Wstęp", "section": "Wstęp",
+                   "text": "Ormel mieszkał nad rzeką.", "years": []},
+                  {"chunk_id": "ormel#1", "source_id": "ormel", "title": "Ormel", "locator": "Młodość", "section": "Młodość",
+                   "text": "Żeglarstwa uczył Ormela stary przewoźnik Tabor z wioski nad jeziorem.", "years": []}]
+        chunks += [{"chunk_id": f"filler#{i}", "source_id": f"filler{i}", "title": f"Wypełniacz {i}", "locator": "x",
+                    "section": "x", "text": f"Kronika numer {i} opisuje zboża, targi i pogodę w dolinie.", "years": []}
+                   for i in range(40)]
+        cls.idx = cls.retrieval.BM25Index(chunks)
+        cls.graph = {"year_to_chunks": {}, "entity_to_chunks": {}}
+
+    def select(self, prompt):
+        return S.select_evidence(self.retrieval, self.idx, self.graph, prompt)
+
+    def test_entity_without_relation_abstains(self):
+        out = self.select("Podaj imię nauczyciela gry na harfie, który uczył Ormela.")
+        self.assertTrue(out["route"]["retrieve"])
+        self.assertIsNone(out["passage"], out["gate"])
+        self.assertFalse(out["gate"]["pass"])
+
+    def test_entity_with_relation_passes_in_final_window(self):
+        out = self.select("Podaj imię nauczyciela żeglarstwa, który uczył Ormela.")
+        self.assertIsNotNone(out["passage"], out["gate"])
+        self.assertIn("Żeglarstwa", out["passage"]["text"])
+
+    def test_source_only_probe_inserts_nothing(self):
+        out = self.select("Tekst źródłowy\nOrmel usiadł pod dębem.\nNa podstawie tekstu podaj nazwę drzewa, pod którym usiadł Ormel.")
+        self.assertIsNone(out["query"])
+        self.assertIsNone(out["passage"])
 
 
 @unittest.skipUnless(PINNED, "pinned index not staged")
@@ -123,8 +178,8 @@ class PinnedIndexTests(unittest.TestCase):
         self.assertTrue(out["route"]["retrieve"])
         self.assertIsNone(out["passage"])
         hit = S.select_evidence(self.retrieval, self.idx, self.graph,
-                                "Podaj nazwę dokumentu z 1215 roku, który ograniczył władzę króla Anglii wobec baronów.")
-        self.assertEqual(hit["passage"]["source_id"], "plwiki-wielka-karta-swobod")
+                                "Podaj nazwę planu pomocy gospodarczej USA dla Europy ogłoszonego po II wojnie światowej.")
+        self.assertEqual(hit["passage"]["source_id"], "plwiki-plan-marshalla")
         self.assertLessEqual(len(hit["passage"]["text"]), S.WINDOW_CHARS)
         chunk = next(c for c in self.idx.chunks if c["chunk_id"] == hit["passage"]["chunk_id"])
         self.assertIn(hit["passage"]["text"], " ".join(chunk["text"].split()))  # verbatim, no new text
@@ -140,7 +195,7 @@ class PinnedIndexTests(unittest.TestCase):
         import tempfile
         tmp = Path(tempfile.mkdtemp(prefix="sel-rag-"))
         cases = [
-            {"id": "a", "prompt": "Podaj nazwę dokumentu z 1215 roku, który ograniczył władzę króla Anglii wobec baronów.",
+            {"id": "a", "prompt": "Podaj nazwę planu pomocy gospodarczej USA dla Europy ogłoszonego po II wojnie światowej.",
              "images": ["img/a.png"]},
             {"id": "b", "prompt": "Tekst źródłowy\nSpłonęło sto domów.\nNa podstawie tekstu podaj, ile domów spłonęło.", "extra": 1},
             {"id": "c", "prompt": "Podaj imię faraona, dla którego wzniesiono największą piramidę w Gizie."},

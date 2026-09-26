@@ -17,13 +17,13 @@
  },
  "fixtures": {
   "file": "agentsLog/Bukareszt/issue96/fixtures/synthetic_fixtures.jsonl",
-  "sha256": "5582e25d1d292112246d5f4047dc7978d27e47e3ba7308a5a39c2c901a8883d5"
+  "sha256": "b6bf4160f705a0c8b941354668229772fb52e26363856a3df24b407ed0a6f077"
  },
  "controls": {
   "file": "agentsLog/Bukareszt/queries/train_queries.jsonl",
   "sha256": "b2e359bf2501469a216f178ad76511d45604e61ad42d4257fca34d15f82f024d"
  },
- "builder_sha256": "ea7f0f0543f8483e7e02da000e445d2ed16978fcfc977614d45672f7c0cf4492",
+ "builder_sha256": "5d1656725f555dc545dd864e9b397a29933b798547bf98deaef399ad3b97473c",
  "variants": {
   "base": {
    "strip_header": false,
@@ -115,7 +115,7 @@
     "hit@5": 98,
     "MRR@5": 0.939,
     "top1_wrong_and_year_boosted": 3,
-    "cases_with_boost_years": 41
+    "cases_with_boost_years": 43
    },
    "A_header_off": {
     "n_relevant": 99,
@@ -124,7 +124,7 @@
     "hit@5": 98,
     "MRR@5": 0.961,
     "top1_wrong_and_year_boosted": 4,
-    "cases_with_boost_years": 41
+    "cases_with_boost_years": 43
    },
    "B_pubnum_mask": {
     "n_relevant": 99,
@@ -133,7 +133,7 @@
     "hit@5": 98,
     "MRR@5": 0.939,
     "top1_wrong_and_year_boosted": 3,
-    "cases_with_boost_years": 31
+    "cases_with_boost_years": 33
    },
    "C_yearboost_off": {
     "n_relevant": 99,
@@ -160,7 +160,7 @@
     "hit@5": 99,
     "MRR@5": 0.936,
     "top1_wrong_and_year_boosted": 3,
-    "cases_with_boost_years": 31
+    "cases_with_boost_years": 33
    },
    "E_bce_aware": {
     "n_relevant": 99,
@@ -169,7 +169,7 @@
     "hit@5": 98,
     "MRR@5": 0.931,
     "top1_wrong_and_year_boosted": 3,
-    "cases_with_boost_years": 41
+    "cases_with_boost_years": 43
    },
    "F_A+B+E": {
     "n_relevant": 99,
@@ -178,7 +178,7 @@
     "hit@5": 98,
     "MRR@5": 0.955,
     "top1_wrong_and_year_boosted": 5,
-    "cases_with_boost_years": 31
+    "cases_with_boost_years": 33
    },
    "G_A+B_bm25": {
     "n_relevant": 99,
@@ -196,7 +196,7 @@
     "hit@5": 98,
     "MRR@5": 0.961,
     "top1_wrong_and_year_boosted": 4,
-    "cases_with_boost_years": 31
+    "cases_with_boost_years": 33
    }
   },
   "hit@1_by_category": {
@@ -410,13 +410,13 @@
  },
  "pipeline": {
   "summary": {
-   "inserted_relevant": 80,
-   "route_ok": 108,
-   "abstained_missed": 14,
-   "inserted_irrelevant": 5,
-   "abstained_correct": 9
+   "abstained_missed": 44,
+   "route_ok": 117,
+   "inserted_irrelevant": 4,
+   "inserted_relevant": 52,
+   "abstained_correct": 17
   },
-  "n": 108,
+  "n": 117,
   "cases": [
    {
     "id": "syn-pub-01",
@@ -424,26 +424,29 @@
     "expected_route": "mixed",
     "route": "mixed",
     "gate": {
-     "pass": true,
-     "reason": "chunk terms",
-     "query_terms": 18,
+     "query_terms": 17,
+     "command_terms": [
+      "akt"
+     ],
+     "answer_type_terms": [
+      "akt"
+     ],
+     "relation_terms": [],
      "matched": [
-      "akt",
       "przysz",
       "szlach",
-      "uchwal",
-      "wybór",
-      "zobowi"
+      "wybór"
      ],
-     "title_matched": [],
-     "coverage": 0.333
+     "window_matched": [
+      "przysz",
+      "szlach",
+      "wybór"
+     ],
+     "pass": false,
+     "reason": "no date in passage"
     },
-    "outcome": "inserted_relevant",
-    "passage": {
-     "chunk_id": "plwiki-konfederacja-warszawska#1058",
-     "source_id": "plwiki-konfederacja-warszawska",
-     "chars": 257
-    }
+    "outcome": "abstained_missed",
+    "passage": null
    },
    {
     "id": "syn-pub-02",
@@ -451,16 +454,29 @@
     "expected_route": "mixed",
     "route": "mixed",
     "gate": {
-     "pass": false,
-     "reason": "weak lexical support",
      "query_terms": 16,
+     "command_terms": [
+      "malbor",
+      "przyni",
+      "zdobyc"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [
+      "przyni",
+      "zdobyc"
+     ],
      "matched": [
       "malbor",
       "mistrz",
       "zakon"
      ],
-     "title_matched": [],
-     "coverage": 0.188
+     "window_matched": [
+      "malbor",
+      "mistrz",
+      "zakon"
+     ],
+     "pass": false,
+     "reason": "requested relation absent from passage"
     },
     "outcome": "abstained_missed",
     "passage": null
@@ -471,23 +487,25 @@
     "expected_route": "mixed",
     "route": "mixed",
     "gate": {
-     "pass": true,
-     "reason": "chunk terms",
      "query_terms": 15,
+     "command_terms": [],
+     "answer_type_terms": [
+      "sejm"
+     ],
+     "relation_terms": [],
      "matched": [
       "liberu",
-      "parlam",
       "vet"
      ],
-     "title_matched": [],
-     "coverage": 0.2
+     "window_matched": [
+      "liberu",
+      "vet"
+     ],
+     "pass": false,
+     "reason": "weak support in passage"
     },
-    "outcome": "inserted_relevant",
-    "passage": {
-     "chunk_id": "plwiki-sejm-wielki#1176",
-     "source_id": "plwiki-sejm-wielki",
-     "chars": 252
-    }
+    "outcome": "abstained_missed",
+    "passage": null
    },
    {
     "id": "syn-pub-04",
@@ -495,17 +513,24 @@
     "expected_route": "mixed",
     "route": "mixed",
     "gate": {
-     "pass": true,
-     "reason": "chunk terms",
-     "query_terms": 11,
+     "query_terms": 10,
+     "command_terms": [],
+     "answer_type_terms": [
+      "państw"
+     ],
+     "relation_terms": [],
      "matched": [
-      "moc",
       "napole",
       "uni",
       "związa"
      ],
-     "title_matched": [],
-     "coverage": 0.364
+     "window_matched": [
+      "napole",
+      "uni",
+      "związa"
+     ],
+     "pass": true,
+     "reason": "described entity supported in passage"
     },
     "outcome": "inserted_irrelevant",
     "passage": {
@@ -520,9 +545,16 @@
     "expected_route": "mixed",
     "route": "mixed",
     "gate": {
-     "pass": true,
-     "reason": "title match",
-     "query_terms": 15,
+     "query_terms": 14,
+     "command_terms": [
+      "strajk"
+     ],
+     "answer_type_terms": [
+      "porozu"
+     ],
+     "relation_terms": [
+      "strajk"
+     ],
      "matched": [
       "postul",
       "robotn",
@@ -531,10 +563,16 @@
       "wśród",
       "zawodo"
      ],
-     "title_matched": [
+     "window_matched": [
+      "postul",
+      "robotn",
+      "stoczn",
+      "strajk",
+      "wśród",
       "zawodo"
      ],
-     "coverage": 0.4
+     "pass": true,
+     "reason": "relation+entity in passage"
     },
     "outcome": "inserted_relevant",
     "passage": {
@@ -549,25 +587,34 @@
     "expected_route": "mixed",
     "route": "mixed",
     "gate": {
-     "pass": true,
-     "reason": "title match",
      "query_terms": 17,
+     "command_terms": [
+      "akt",
+      "federa"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [
+      "akt",
+      "federa"
+     ],
      "matched": [
       "akt",
       "lubels",
-      "lublin",
-      "oba",
       "skarb",
       "uni",
       "urzęd",
-      "wspóln",
-      "władc"
+      "wspóln"
      ],
-     "title_matched": [
+     "window_matched": [
+      "akt",
       "lubels",
-      "uni"
+      "skarb",
+      "uni",
+      "urzęd",
+      "wspóln"
      ],
-     "coverage": 0.529
+     "pass": true,
+     "reason": "relation+entity in passage"
     },
     "outcome": "inserted_relevant",
     "passage": {
@@ -582,26 +629,29 @@
     "expected_route": "mixed",
     "route": "mixed",
     "gate": {
-     "pass": true,
-     "reason": "title match",
      "query_terms": 15,
+     "command_terms": [
+      "władc"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [
+      "władc"
+     ],
      "matched": [
       "chrzes",
       "kronik",
-      "książ",
       "wiar"
      ],
-     "title_matched": [
-      "chrzes"
+     "window_matched": [
+      "chrzes",
+      "kronik",
+      "wiar"
      ],
-     "coverage": 0.267
+     "pass": false,
+     "reason": "requested relation absent from passage"
     },
-    "outcome": "inserted_relevant",
-    "passage": {
-     "chunk_id": "plwiki-chrzest-polski#0289",
-     "source_id": "plwiki-chrzest-polski",
-     "chars": 307
-    }
+    "outcome": "abstained_missed",
+    "passage": null
    },
    {
     "id": "syn-bib-03",
@@ -609,26 +659,33 @@
     "expected_route": "mixed",
     "route": "mixed",
     "gate": {
-     "pass": true,
-     "reason": "title match",
      "query_terms": 14,
+     "command_terms": [
+      "religi",
+      "ruch",
+      "zapocz"
+     ],
+     "answer_type_terms": [
+      "ruch"
+     ],
+     "relation_terms": [
+      "religi",
+      "zapocz"
+     ],
      "matched": [
       "luter",
       "marcin",
       "wormac"
      ],
-     "title_matched": [
-      "luter",
-      "marcin"
+     "window_matched": [
+      "marcin",
+      "wormac"
      ],
-     "coverage": 0.214
+     "pass": false,
+     "reason": "requested relation absent from passage"
     },
-    "outcome": "inserted_relevant",
-    "passage": {
-     "chunk_id": "plwiki-marcin-luter#0821",
-     "source_id": "plwiki-marcin-luter",
-     "chars": 468
-    }
+    "outcome": "abstained_missed",
+    "passage": null
    },
    {
     "id": "syn-bce-01",
@@ -636,16 +693,24 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "chunk terms",
-     "query_terms": 9,
+     "query_terms": 8,
+     "command_terms": [
+      "konfli"
+     ],
+     "answer_type_terms": [
+      "konfli"
+     ],
+     "relation_terms": [],
      "matched": [
       "ateńsc",
-      "darius",
-      "równin"
+      "darius"
      ],
-     "title_matched": [],
-     "coverage": 0.333
+     "window_matched": [
+      "ateńsc",
+      "darius"
+     ],
+     "pass": true,
+     "reason": "described entity supported in passage"
     },
     "outcome": "inserted_relevant",
     "passage": {
@@ -660,19 +725,28 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "title match",
      "query_terms": 9,
+     "command_terms": [
+      "władc"
+     ],
+     "answer_type_terms": [
+      "władc"
+     ],
+     "relation_terms": [],
      "matched": [
       "macedo",
       "perski",
       "podbój",
       "wyrusz"
      ],
-     "title_matched": [
-      "macedo"
+     "window_matched": [
+      "macedo",
+      "perski",
+      "podbój",
+      "wyrusz"
      ],
-     "coverage": 0.444
+     "pass": true,
+     "reason": "described entity supported in passage"
     },
     "outcome": "inserted_relevant",
     "passage": {
@@ -687,15 +761,24 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "chunk terms",
      "query_terms": 9,
+     "command_terms": [
+      "ustroj"
+     ],
+     "answer_type_terms": [
+      "ustroj"
+     ],
+     "relation_terms": [],
      "matched": [
       "tradyc",
       "urzędn"
      ],
-     "title_matched": [],
-     "coverage": 0.222
+     "window_matched": [
+      "tradyc",
+      "urzędn"
+     ],
+     "pass": true,
+     "reason": "described entity supported in passage"
     },
     "outcome": "inserted_relevant",
     "passage": {
@@ -710,18 +793,26 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "chunk terms",
      "query_terms": 8,
-     "matched": [
-      "babilo",
-      "kazał",
-      "stel",
-      "wyryć",
+     "command_terms": [
       "zbior"
      ],
-     "title_matched": [],
-     "coverage": 0.625
+     "answer_type_terms": [
+      "zbior"
+     ],
+     "relation_terms": [],
+     "matched": [
+      "kazał",
+      "stel",
+      "wyryć"
+     ],
+     "window_matched": [
+      "kazał",
+      "stel",
+      "wyryć"
+     ],
+     "pass": true,
+     "reason": "described entity supported in passage"
     },
     "outcome": "inserted_relevant",
     "passage": {
@@ -736,14 +827,22 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": false,
-     "reason": "weak lexical support",
-     "query_terms": 6,
+     "query_terms": 5,
+     "command_terms": [
+      "trakta"
+     ],
+     "answer_type_terms": [
+      "trakta"
+     ],
+     "relation_terms": [],
      "matched": [
       "ofensy"
      ],
-     "title_matched": [],
-     "coverage": 0.167
+     "window_matched": [
+      "ofensy"
+     ],
+     "pass": false,
+     "reason": "weak support in passage"
     },
     "outcome": "abstained_missed",
     "passage": null
@@ -754,18 +853,26 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "title match",
      "query_terms": 10,
+     "command_terms": [
+      "najazd"
+     ],
+     "answer_type_terms": [
+      "najazd"
+     ],
+     "relation_terms": [],
      "matched": [
       "jasnog",
       "klaszt",
       "szwedz"
      ],
-     "title_matched": [
+     "window_matched": [
+      "jasnog",
+      "klaszt",
       "szwedz"
      ],
-     "coverage": 0.3
+     "pass": true,
+     "reason": "described entity supported in passage"
     },
     "outcome": "inserted_relevant",
     "passage": {
@@ -780,21 +887,29 @@
     "expected_route": "mixed",
     "route": "mixed",
     "gate": {
-     "pass": true,
-     "reason": "title match",
      "query_terms": 15,
+     "command_terms": [
+      "manife"
+     ],
+     "answer_type_terms": [
+      "powsta"
+     ],
+     "relation_terms": [],
      "matched": [
-      "bron",
       "któr",
       "manife",
       "staj",
       "synów",
       "właści"
      ],
-     "title_matched": [
-      "manife"
+     "window_matched": [
+      "któr",
+      "staj",
+      "synów",
+      "właści"
      ],
-     "coverage": 0.4
+     "pass": true,
+     "reason": "described entity supported in passage"
     },
     "outcome": "inserted_relevant",
     "passage": {
@@ -809,23 +924,28 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "title match",
      "query_terms": 4,
+     "command_terms": [
+      "dzieja",
+      "krzywo"
+     ],
+     "answer_type_terms": [
+      "okres"
+     ],
+     "relation_terms": [
+      "dzieja"
+     ],
      "matched": [
       "krzywo"
      ],
-     "title_matched": [
+     "window_matched": [
       "krzywo"
      ],
-     "coverage": 0.25
+     "pass": false,
+     "reason": "requested relation absent from passage"
     },
-    "outcome": "inserted_relevant",
-    "passage": {
-     "chunk_id": "plwiki-boleslaw-krzywousty#0402",
-     "source_id": "plwiki-boleslaw-krzywousty",
-     "chars": 174
-    }
+    "outcome": "abstained_missed",
+    "passage": null
    },
    {
     "id": "syn-ext-02",
@@ -833,22 +953,29 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "chunk terms",
      "query_terms": 5,
-     "matched": [
+     "command_terms": [
       "angli",
+      "baronó",
+      "dokume"
+     ],
+     "answer_type_terms": [
+      "dokume"
+     ],
+     "relation_terms": [
       "baronó"
      ],
-     "title_matched": [],
-     "coverage": 0.4
+     "matched": [
+      "baronó"
+     ],
+     "window_matched": [
+      "baronó"
+     ],
+     "pass": false,
+     "reason": "too little of the question supported"
     },
-    "outcome": "inserted_relevant",
-    "passage": {
-     "chunk_id": "plwiki-wielka-karta-swobod#0205",
-     "source_id": "plwiki-wielka-karta-swobod",
-     "chars": 166
-    }
+    "outcome": "abstained_missed",
+    "passage": null
    },
    {
     "id": "syn-ext-03",
@@ -856,15 +983,26 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "chunk terms",
-     "query_terms": 3,
+     "query_terms": 2,
+     "command_terms": [
+      "pruski",
+      "zabor"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [
+      "pruski",
+      "zabor"
+     ],
      "matched": [
       "pruski",
       "zabor"
      ],
-     "title_matched": [],
-     "coverage": 0.667
+     "window_matched": [
+      "pruski",
+      "zabor"
+     ],
+     "pass": true,
+     "reason": "relation+entity in passage"
     },
     "outcome": "inserted_relevant",
     "passage": {
@@ -879,16 +1017,32 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "chunk terms",
-     "query_terms": 5,
+     "query_terms": 4,
+     "command_terms": [
+      "europ",
+      "usa",
+      "wojni",
+      "świato"
+     ],
+     "answer_type_terms": [
+      "plan"
+     ],
+     "relation_terms": [
+      "wojni",
+      "świato"
+     ],
      "matched": [
       "europ",
       "wojni",
       "świato"
      ],
-     "title_matched": [],
-     "coverage": 0.6
+     "window_matched": [
+      "europ",
+      "wojni",
+      "świato"
+     ],
+     "pass": true,
+     "reason": "relation+entity in passage"
     },
     "outcome": "inserted_relevant",
     "passage": {
@@ -930,12 +1084,21 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": false,
-     "reason": "weak lexical support",
      "query_terms": 2,
+     "command_terms": [
+      "japoni",
+      "modern"
+     ],
+     "answer_type_terms": [
+      "okres"
+     ],
+     "relation_terms": [
+      "modern"
+     ],
      "matched": [],
-     "title_matched": [],
-     "coverage": 0.0
+     "window_matched": [],
+     "pass": false,
+     "reason": "requested relation absent from passage"
     },
     "outcome": "abstained_correct",
     "passage": null
@@ -946,14 +1109,28 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": false,
-     "reason": "weak lexical support",
      "query_terms": 4,
+     "command_terms": [
+      "chińsk",
+      "dynast",
+      "panowa",
+      "zakaza"
+     ],
+     "answer_type_terms": [
+      "dynast"
+     ],
+     "relation_terms": [
+      "chińsk",
+      "panowa"
+     ],
      "matched": [
       "dynast"
      ],
-     "title_matched": [],
-     "coverage": 0.25
+     "window_matched": [
+      "dynast"
+     ],
+     "pass": false,
+     "reason": "requested relation absent from passage"
     },
     "outcome": "abstained_correct",
     "passage": null
@@ -964,12 +1141,22 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": false,
-     "reason": "weak lexical support",
-     "query_terms": 5,
+     "query_terms": 4,
+     "command_terms": [
+      "budow",
+      "kanał",
+      "otwart",
+      "sueski"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [
+      "budow",
+      "otwart"
+     ],
      "matched": [],
-     "title_matched": [],
-     "coverage": 0.0
+     "window_matched": [],
+     "pass": false,
+     "reason": "requested relation absent from passage"
     },
     "outcome": "abstained_correct",
     "passage": null
@@ -980,12 +1167,26 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": false,
-     "reason": "weak lexical support",
      "query_terms": 5,
+     "command_terms": [
+      "faraon",
+      "gizi",
+      "najwię",
+      "pirami",
+      "wznies"
+     ],
+     "answer_type_terms": [
+      "faraon"
+     ],
+     "relation_terms": [
+      "najwię",
+      "pirami",
+      "wznies"
+     ],
      "matched": [],
-     "title_matched": [],
-     "coverage": 0.0
+     "window_matched": [],
+     "pass": false,
+     "reason": "requested relation absent from passage"
     },
     "outcome": "abstained_correct",
     "passage": null
@@ -1009,31 +1210,216 @@
     "passage": null
    },
    {
+    "id": "syn-rel-01",
+    "category": "wrong_relation",
+    "expected_route": "external_fact",
+    "route": "external_fact",
+    "gate": {
+     "query_terms": 5,
+     "command_terms": [
+      "batore",
+      "gry",
+      "lutn",
+      "nauczy",
+      "stefan"
+     ],
+     "answer_type_terms": [
+      "nauczy"
+     ],
+     "relation_terms": [
+      "gry",
+      "lutn"
+     ],
+     "matched": [
+      "batore",
+      "stefan"
+     ],
+     "window_matched": [
+      "batore",
+      "stefan"
+     ],
+     "pass": false,
+     "reason": "requested relation absent from passage"
+    },
+    "outcome": "abstained_correct",
+    "passage": null
+   },
+   {
+    "id": "syn-rel-02",
+    "category": "wrong_relation",
+    "expected_route": "external_fact",
+    "route": "external_fact",
+    "gate": {
+     "query_terms": 5,
+     "command_terms": [
+      "chrobr",
+      "gnieźn",
+      "najsta",
+      "pomnik",
+      "rzeźbi"
+     ],
+     "answer_type_terms": [
+      "rzeźbi"
+     ],
+     "relation_terms": [
+      "najsta",
+      "pomnik"
+     ],
+     "matched": [
+      "chrobr",
+      "gnieźn",
+      "pomnik",
+      "rzeźbi"
+     ],
+     "window_matched": [
+      "chrobr",
+      "gnieźn",
+      "pomnik",
+      "rzeźbi"
+     ],
+     "pass": true,
+     "reason": "relation+entity in passage"
+    },
+    "outcome": "inserted_irrelevant",
+    "passage": {
+     "chunk_id": "plwiki-boleslaw-chrobry#0352",
+     "source_id": "plwiki-boleslaw-chrobry",
+     "chars": 385
+    }
+   },
+   {
+    "id": "syn-rel-03",
+    "category": "wrong_relation",
+    "expected_route": "external_fact",
+    "route": "external_fact",
+    "gate": {
+     "query_terms": 4,
+     "command_terms": [
+      "potraw",
+      "ulubio"
+     ],
+     "answer_type_terms": [
+      "ulubio"
+     ],
+     "relation_terms": [
+      "potraw"
+     ],
+     "matched": [],
+     "window_matched": [],
+     "pass": false,
+     "reason": "requested relation absent from passage"
+    },
+    "outcome": "abstained_correct",
+    "passage": null
+   },
+   {
+    "id": "syn-rel-04",
+    "category": "wrong_relation",
+    "expected_route": "external_fact",
+    "route": "external_fact",
+    "gate": {
+     "query_terms": 4,
+     "command_terms": [
+      "chrzes",
+      "koni",
+      "przyby",
+      "swój"
+     ],
+     "answer_type_terms": [
+      "koni"
+     ],
+     "relation_terms": [
+      "przyby",
+      "swój"
+     ],
+     "matched": [
+      "chrzes"
+     ],
+     "window_matched": [
+      "chrzes"
+     ],
+     "pass": false,
+     "reason": "requested relation absent from passage"
+    },
+    "outcome": "abstained_correct",
+    "passage": null
+   },
+   {
+    "id": "syn-src-04",
+    "category": "supplied_source",
+    "expected_route": "supplied_source",
+    "route": "supplied_source",
+    "gate": null,
+    "outcome": "abstained_correct",
+    "passage": null
+   },
+   {
+    "id": "syn-src-05",
+    "category": "supplied_source",
+    "expected_route": "supplied_source",
+    "route": "supplied_source",
+    "gate": null,
+    "outcome": "abstained_correct",
+    "passage": null
+   },
+   {
+    "id": "syn-ess-03",
+    "category": "essay",
+    "expected_route": "essay",
+    "route": "essay",
+    "gate": null,
+    "outcome": "abstained_correct",
+    "passage": null
+   },
+   {
+    "id": "syn-ess-04",
+    "category": "essay",
+    "expected_route": "essay",
+    "route": "essay",
+    "gate": null,
+    "outcome": "abstained_correct",
+    "passage": null
+   },
+   {
+    "id": "syn-ess-05",
+    "category": "essay",
+    "expected_route": "essay",
+    "route": "essay",
+    "gate": null,
+    "outcome": "abstained_correct",
+    "passage": null
+   },
+   {
     "id": "ret-train-q01",
     "category": "control_train",
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "title match",
-     "query_terms": 4,
+     "query_terms": 3,
+     "command_terms": [
+      "hammur",
+      "kodeks",
+      "spisan"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [
+      "spisan"
+     ],
      "matched": [
       "hammur",
       "kodeks",
       "spisan"
      ],
-     "title_matched": [
+     "window_matched": [
       "hammur",
-      "kodeks"
+      "kodeks",
+      "spisan"
      ],
-     "coverage": 0.75
+     "pass": false,
+     "reason": "no date in passage"
     },
-    "outcome": "inserted_relevant",
-    "passage": {
-     "chunk_id": "plwiki-kodeks-hammurabiego#0145",
-     "source_id": "plwiki-kodeks-hammurabiego",
-     "chars": 76
-    }
+    "outcome": "abstained_missed",
+    "passage": null
    },
    {
     "id": "ret-train-q01+hdr",
@@ -1041,26 +1427,31 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "title match",
-     "query_terms": 4,
+     "query_terms": 3,
+     "command_terms": [
+      "hammur",
+      "kodeks",
+      "spisan"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [
+      "spisan"
+     ],
      "matched": [
       "hammur",
       "kodeks",
       "spisan"
      ],
-     "title_matched": [
+     "window_matched": [
       "hammur",
-      "kodeks"
+      "kodeks",
+      "spisan"
      ],
-     "coverage": 0.75
+     "pass": false,
+     "reason": "no date in passage"
     },
-    "outcome": "inserted_relevant",
-    "passage": {
-     "chunk_id": "plwiki-kodeks-hammurabiego#0145",
-     "source_id": "plwiki-kodeks-hammurabiego",
-     "chars": 76
-    }
+    "outcome": "abstained_missed",
+    "passage": null
    },
    {
     "id": "ret-train-q02",
@@ -1068,25 +1459,29 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "title match",
-     "query_terms": 5,
+     "query_terms": 3,
+     "command_terms": [
+      "ateńsk",
+      "demokr",
+      "ostrac"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [
+      "ostrac"
+     ],
      "matched": [
       "ateńsk",
       "demokr"
      ],
-     "title_matched": [
+     "window_matched": [
       "ateńsk",
       "demokr"
      ],
-     "coverage": 0.4
+     "pass": false,
+     "reason": "requested relation absent from passage"
     },
-    "outcome": "inserted_relevant",
-    "passage": {
-     "chunk_id": "plwiki-demokracja-atenska#0000",
-     "source_id": "plwiki-demokracja-atenska",
-     "chars": 88
-    }
+    "outcome": "abstained_missed",
+    "passage": null
    },
    {
     "id": "ret-train-q02+hdr",
@@ -1094,25 +1489,29 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "title match",
-     "query_terms": 5,
+     "query_terms": 3,
+     "command_terms": [
+      "ateńsk",
+      "demokr",
+      "ostrac"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [
+      "ostrac"
+     ],
      "matched": [
       "ateńsk",
       "demokr"
      ],
-     "title_matched": [
+     "window_matched": [
       "ateńsk",
       "demokr"
      ],
-     "coverage": 0.4
+     "pass": false,
+     "reason": "requested relation absent from passage"
     },
-    "outcome": "inserted_relevant",
-    "passage": {
-     "chunk_id": "plwiki-demokracja-atenska#0000",
-     "source_id": "plwiki-demokracja-atenska",
-     "chars": 88
-    }
+    "outcome": "abstained_missed",
+    "passage": null
    },
    {
     "id": "ret-train-q03",
@@ -1120,24 +1519,28 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "title match",
-     "query_terms": 3,
+     "query_terms": 2,
+     "command_terms": [
+      "karol",
+      "korono"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [
+      "korono"
+     ],
      "matched": [
       "karol",
       "korono"
      ],
-     "title_matched": [
-      "karol"
+     "window_matched": [
+      "karol",
+      "korono"
      ],
-     "coverage": 0.667
+     "pass": false,
+     "reason": "no date in passage"
     },
-    "outcome": "inserted_relevant",
-    "passage": {
-     "chunk_id": "plwiki-karol-wielki#0159",
-     "source_id": "plwiki-karol-wielki",
-     "chars": 85
-    }
+    "outcome": "abstained_missed",
+    "passage": null
    },
    {
     "id": "ret-train-q03+hdr",
@@ -1145,24 +1548,28 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "title match",
-     "query_terms": 3,
+     "query_terms": 2,
+     "command_terms": [
+      "karol",
+      "korono"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [
+      "korono"
+     ],
      "matched": [
       "karol",
       "korono"
      ],
-     "title_matched": [
-      "karol"
+     "window_matched": [
+      "karol",
+      "korono"
      ],
-     "coverage": 0.667
+     "pass": false,
+     "reason": "no date in passage"
     },
-    "outcome": "inserted_relevant",
-    "passage": {
-     "chunk_id": "plwiki-karol-wielki#0159",
-     "source_id": "plwiki-karol-wielki",
-     "chars": 85
-    }
+    "outcome": "abstained_missed",
+    "passage": null
    },
    {
     "id": "ret-train-q04",
@@ -1170,22 +1577,31 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "chunk terms",
-     "query_terms": 5,
+     "query_terms": 4,
+     "command_terms": [
+      "kart",
+      "poddan",
+      "swobód",
+      "zobowi"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [
+      "poddan",
+      "zobowi"
+     ],
      "matched": [
       "kart",
       "swobód"
      ],
-     "title_matched": [],
-     "coverage": 0.4
+     "window_matched": [
+      "kart",
+      "swobód"
+     ],
+     "pass": false,
+     "reason": "requested relation absent from passage"
     },
-    "outcome": "inserted_relevant",
-    "passage": {
-     "chunk_id": "plwiki-wielka-karta-swobod#0205",
-     "source_id": "plwiki-wielka-karta-swobod",
-     "chars": 100
-    }
+    "outcome": "abstained_missed",
+    "passage": null
    },
    {
     "id": "ret-train-q04+hdr",
@@ -1193,22 +1609,31 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "chunk terms",
-     "query_terms": 5,
+     "query_terms": 4,
+     "command_terms": [
+      "kart",
+      "poddan",
+      "swobód",
+      "zobowi"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [
+      "poddan",
+      "zobowi"
+     ],
      "matched": [
       "kart",
       "swobód"
      ],
-     "title_matched": [],
-     "coverage": 0.4
+     "window_matched": [
+      "kart",
+      "swobód"
+     ],
+     "pass": false,
+     "reason": "requested relation absent from passage"
     },
-    "outcome": "inserted_relevant",
-    "passage": {
-     "chunk_id": "plwiki-wielka-karta-swobod#0205",
-     "source_id": "plwiki-wielka-karta-swobod",
-     "chars": 100
-    }
+    "outcome": "abstained_missed",
+    "passage": null
    },
    {
     "id": "ret-train-q05",
@@ -1216,15 +1641,26 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "chunk terms",
      "query_terms": 2,
+     "command_terms": [
+      "chrzes",
+      "odbył"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [
+      "chrzes",
+      "odbył"
+     ],
      "matched": [
       "chrzes",
       "odbył"
      ],
-     "title_matched": [],
-     "coverage": 1.0
+     "window_matched": [
+      "chrzes",
+      "odbył"
+     ],
+     "pass": true,
+     "reason": "relation+entity in passage"
     },
     "outcome": "inserted_relevant",
     "passage": {
@@ -1239,15 +1675,26 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "chunk terms",
      "query_terms": 2,
+     "command_terms": [
+      "chrzes",
+      "odbył"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [
+      "chrzes",
+      "odbył"
+     ],
      "matched": [
       "chrzes",
       "odbył"
      ],
-     "title_matched": [],
-     "coverage": 1.0
+     "window_matched": [
+      "chrzes",
+      "odbył"
+     ],
+     "pass": true,
+     "reason": "relation+entity in passage"
     },
     "outcome": "inserted_relevant",
     "passage": {
@@ -1262,18 +1709,23 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "title match",
-     "query_terms": 3,
+     "query_terms": 2,
+     "command_terms": [
+      "gnieźn",
+      "zjazd"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [],
      "matched": [
       "gnieźn",
       "zjazd"
      ],
-     "title_matched": [
+     "window_matched": [
       "gnieźn",
       "zjazd"
      ],
-     "coverage": 0.667
+     "pass": true,
+     "reason": "described entity supported in passage"
     },
     "outcome": "inserted_relevant",
     "passage": {
@@ -1288,18 +1740,23 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "title match",
-     "query_terms": 3,
+     "query_terms": 2,
+     "command_terms": [
+      "gnieźn",
+      "zjazd"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [],
      "matched": [
       "gnieźn",
       "zjazd"
      ],
-     "title_matched": [
+     "window_matched": [
       "gnieźn",
       "zjazd"
      ],
-     "coverage": 0.667
+     "pass": true,
+     "reason": "described entity supported in passage"
     },
     "outcome": "inserted_relevant",
     "passage": {
@@ -1314,18 +1771,23 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "title match",
-     "query_terms": 4,
+     "query_terms": 2,
+     "command_terms": [
+      "krewi",
+      "uni"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [],
      "matched": [
       "krewi",
       "uni"
      ],
-     "title_matched": [
+     "window_matched": [
       "krewi",
       "uni"
      ],
-     "coverage": 0.5
+     "pass": true,
+     "reason": "described entity supported in passage"
     },
     "outcome": "inserted_relevant",
     "passage": {
@@ -1340,18 +1802,23 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "title match",
-     "query_terms": 4,
+     "query_terms": 2,
+     "command_terms": [
+      "krewi",
+      "uni"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [],
      "matched": [
       "krewi",
       "uni"
      ],
-     "title_matched": [
+     "window_matched": [
       "krewi",
       "uni"
      ],
-     "coverage": 0.5
+     "pass": true,
+     "reason": "described entity supported in passage"
     },
     "outcome": "inserted_relevant",
     "passage": {
@@ -1366,17 +1833,29 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "title match",
      "query_terms": 4,
+     "command_terms": [
+      "bitwi",
+      "grunwa",
+      "litews",
+      "wojska"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [
+      "bitwi",
+      "litews",
+      "wojska"
+     ],
      "matched": [
       "bitwi",
       "grunwa"
      ],
-     "title_matched": [
+     "window_matched": [
+      "bitwi",
       "grunwa"
      ],
-     "coverage": 0.5
+     "pass": true,
+     "reason": "relation+entity in passage"
     },
     "outcome": "inserted_relevant",
     "passage": {
@@ -1391,17 +1870,29 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "title match",
      "query_terms": 4,
+     "command_terms": [
+      "bitwi",
+      "grunwa",
+      "litews",
+      "wojska"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [
+      "bitwi",
+      "litews",
+      "wojska"
+     ],
      "matched": [
       "bitwi",
       "grunwa"
      ],
-     "title_matched": [
+     "window_matched": [
+      "bitwi",
       "grunwa"
      ],
-     "coverage": 0.5
+     "pass": true,
+     "reason": "relation+entity in passage"
     },
     "outcome": "inserted_relevant",
     "passage": {
@@ -1416,17 +1907,26 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "title match",
-     "query_terms": 5,
+     "query_terms": 3,
+     "command_terms": [
+      "pokoj",
+      "toruńs",
+      "ziemi"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [
+      "pokoj",
+      "ziemi"
+     ],
      "matched": [
       "pokoj",
       "toruńs"
      ],
-     "title_matched": [
-      "toruńs"
+     "window_matched": [
+      "pokoj"
      ],
-     "coverage": 0.4
+     "pass": true,
+     "reason": "relation+entity in passage"
     },
     "outcome": "inserted_relevant",
     "passage": {
@@ -1441,17 +1941,26 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "title match",
-     "query_terms": 5,
+     "query_terms": 3,
+     "command_terms": [
+      "pokoj",
+      "toruńs",
+      "ziemi"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [
+      "pokoj",
+      "ziemi"
+     ],
      "matched": [
       "pokoj",
       "toruńs"
      ],
-     "title_matched": [
-      "toruńs"
+     "window_matched": [
+      "pokoj"
      ],
-     "coverage": 0.4
+     "pass": true,
+     "reason": "relation+entity in passage"
     },
     "outcome": "inserted_relevant",
     "passage": {
@@ -1466,20 +1975,28 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "title match",
-     "query_terms": 4,
+     "query_terms": 3,
+     "command_terms": [
+      "luter",
+      "marcin",
+      "tez"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [
+      "tez"
+     ],
      "matched": [
       "luter",
       "marcin",
-      "ogłosi",
       "tez"
      ],
-     "title_matched": [
+     "window_matched": [
       "luter",
-      "marcin"
+      "marcin",
+      "tez"
      ],
-     "coverage": 1.0
+     "pass": true,
+     "reason": "relation+entity in passage"
     },
     "outcome": "inserted_relevant",
     "passage": {
@@ -1494,20 +2011,28 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "title match",
-     "query_terms": 4,
+     "query_terms": 3,
+     "command_terms": [
+      "luter",
+      "marcin",
+      "tez"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [
+      "tez"
+     ],
      "matched": [
       "luter",
       "marcin",
-      "ogłosi",
       "tez"
      ],
-     "title_matched": [
+     "window_matched": [
       "luter",
-      "marcin"
+      "marcin",
+      "tez"
      ],
-     "coverage": 1.0
+     "pass": true,
+     "reason": "relation+entity in passage"
     },
     "outcome": "inserted_relevant",
     "passage": {
@@ -1522,25 +2047,32 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "title match",
      "query_terms": 5,
+     "command_terms": [
+      "litw",
+      "lubels",
+      "relacj",
+      "uni",
+      "zmieni"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [
+      "relacj",
+      "zmieni"
+     ],
      "matched": [
       "lubels",
       "uni"
      ],
-     "title_matched": [
+     "window_matched": [
       "lubels",
       "uni"
      ],
-     "coverage": 0.4
+     "pass": false,
+     "reason": "requested relation absent from passage"
     },
-    "outcome": "inserted_relevant",
-    "passage": {
-     "chunk_id": "plwiki-unia-lubelska#1045",
-     "source_id": "plwiki-unia-lubelska",
-     "chars": 70
-    }
+    "outcome": "abstained_missed",
+    "passage": null
    },
    {
     "id": "ret-train-q11+hdr",
@@ -1548,25 +2080,32 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "title match",
      "query_terms": 5,
+     "command_terms": [
+      "litw",
+      "lubels",
+      "relacj",
+      "uni",
+      "zmieni"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [
+      "relacj",
+      "zmieni"
+     ],
      "matched": [
       "lubels",
       "uni"
      ],
-     "title_matched": [
+     "window_matched": [
       "lubels",
       "uni"
      ],
-     "coverage": 0.4
+     "pass": false,
+     "reason": "requested relation absent from passage"
     },
-    "outcome": "inserted_relevant",
-    "passage": {
-     "chunk_id": "plwiki-unia-lubelska#1045",
-     "source_id": "plwiki-unia-lubelska",
-     "chars": 70
-    }
+    "outcome": "abstained_missed",
+    "passage": null
    },
    {
     "id": "ret-train-q12",
@@ -1574,17 +2113,25 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "title match",
      "query_terms": 2,
+     "command_terms": [
+      "gwaran",
+      "konfed"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [
+      "gwaran"
+     ],
      "matched": [
       "gwaran",
       "konfed"
      ],
-     "title_matched": [
+     "window_matched": [
+      "gwaran",
       "konfed"
      ],
-     "coverage": 1.0
+     "pass": true,
+     "reason": "relation+entity in passage"
     },
     "outcome": "inserted_relevant",
     "passage": {
@@ -1599,17 +2146,25 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "title match",
      "query_terms": 2,
+     "command_terms": [
+      "gwaran",
+      "konfed"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [
+      "gwaran"
+     ],
      "matched": [
       "gwaran",
       "konfed"
      ],
-     "title_matched": [
+     "window_matched": [
+      "gwaran",
       "konfed"
      ],
-     "coverage": 1.0
+     "pass": true,
+     "reason": "relation+entity in passage"
     },
     "outcome": "inserted_relevant",
     "passage": {
@@ -1624,25 +2179,29 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "title match",
-     "query_terms": 5,
+     "query_terms": 3,
+     "command_terms": [
+      "artyku",
+      "henryk",
+      "nakład"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [
+      "nakład"
+     ],
      "matched": [
       "artyku",
       "henryk"
      ],
-     "title_matched": [
+     "window_matched": [
       "artyku",
       "henryk"
      ],
-     "coverage": 0.4
+     "pass": false,
+     "reason": "requested relation absent from passage"
     },
-    "outcome": "inserted_relevant",
-    "passage": {
-     "chunk_id": "plwiki-artykuly-henrykowskie#1071",
-     "source_id": "plwiki-artykuly-henrykowskie",
-     "chars": 277
-    }
+    "outcome": "abstained_missed",
+    "passage": null
    },
    {
     "id": "ret-train-q13+hdr",
@@ -1650,25 +2209,29 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "title match",
-     "query_terms": 5,
+     "query_terms": 3,
+     "command_terms": [
+      "artyku",
+      "henryk",
+      "nakład"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [
+      "nakład"
+     ],
      "matched": [
       "artyku",
       "henryk"
      ],
-     "title_matched": [
+     "window_matched": [
       "artyku",
       "henryk"
      ],
-     "coverage": 0.4
+     "pass": false,
+     "reason": "requested relation absent from passage"
     },
-    "outcome": "inserted_relevant",
-    "passage": {
-     "chunk_id": "plwiki-artykuly-henrykowskie#1071",
-     "source_id": "plwiki-artykuly-henrykowskie",
-     "chars": 277
-    }
+    "outcome": "abstained_missed",
+    "passage": null
    },
    {
     "id": "ret-train-q14",
@@ -1676,15 +2239,28 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "chunk terms",
-     "query_terms": 4,
+     "query_terms": 3,
+     "command_terms": [
+      "odsiec",
+      "pokona",
+      "wiedeń"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [
+      "odsiec",
+      "pokona",
+      "wiedeń"
+     ],
      "matched": [
       "odsiec",
       "wiedeń"
      ],
-     "title_matched": [],
-     "coverage": 0.5
+     "window_matched": [
+      "odsiec",
+      "wiedeń"
+     ],
+     "pass": true,
+     "reason": "relation+entity in passage"
     },
     "outcome": "inserted_relevant",
     "passage": {
@@ -1699,15 +2275,28 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "chunk terms",
-     "query_terms": 4,
+     "query_terms": 3,
+     "command_terms": [
+      "odsiec",
+      "pokona",
+      "wiedeń"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [
+      "odsiec",
+      "pokona",
+      "wiedeń"
+     ],
      "matched": [
       "odsiec",
       "wiedeń"
      ],
-     "title_matched": [],
-     "coverage": 0.5
+     "window_matched": [
+      "odsiec",
+      "wiedeń"
+     ],
+     "pass": true,
+     "reason": "relation+entity in passage"
     },
     "outcome": "inserted_relevant",
     "passage": {
@@ -1722,22 +2311,27 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "chunk terms",
-     "query_terms": 3,
-     "matched": [
+     "query_terms": 2,
+     "command_terms": [
       "ustroj",
       "zasad"
      ],
-     "title_matched": [],
-     "coverage": 0.667
+     "answer_type_terms": [],
+     "relation_terms": [
+      "ustroj",
+      "zasad"
+     ],
+     "matched": [
+      "zasad"
+     ],
+     "window_matched": [
+      "zasad"
+     ],
+     "pass": false,
+     "reason": "too little of the question supported"
     },
-    "outcome": "inserted_irrelevant",
-    "passage": {
-     "chunk_id": "plwiki-konstytucja-marcowa#2018",
-     "source_id": "plwiki-konstytucja-marcowa",
-     "chars": 159
-    }
+    "outcome": "abstained_missed",
+    "passage": null
    },
    {
     "id": "ret-train-q15+hdr",
@@ -1745,22 +2339,27 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "chunk terms",
-     "query_terms": 3,
-     "matched": [
+     "query_terms": 2,
+     "command_terms": [
       "ustroj",
       "zasad"
      ],
-     "title_matched": [],
-     "coverage": 0.667
+     "answer_type_terms": [],
+     "relation_terms": [
+      "ustroj",
+      "zasad"
+     ],
+     "matched": [
+      "zasad"
+     ],
+     "window_matched": [
+      "zasad"
+     ],
+     "pass": false,
+     "reason": "too little of the question supported"
     },
-    "outcome": "inserted_irrelevant",
-    "passage": {
-     "chunk_id": "plwiki-konstytucja-marcowa#2018",
-     "source_id": "plwiki-konstytucja-marcowa",
-     "chars": 159
-    }
+    "outcome": "abstained_missed",
+    "passage": null
    },
    {
     "id": "ret-train-q16",
@@ -1768,23 +2367,28 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "title match",
      "query_terms": 3,
+     "command_terms": [
+      "rozbio",
+      "trzech",
+      "uczest"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [
+      "trzech",
+      "uczest"
+     ],
      "matched": [
       "rozbio"
      ],
-     "title_matched": [
+     "window_matched": [
       "rozbio"
      ],
-     "coverage": 0.333
+     "pass": false,
+     "reason": "requested relation absent from passage"
     },
-    "outcome": "inserted_relevant",
-    "passage": {
-     "chunk_id": "plwiki-rozbiory-polski#1218",
-     "source_id": "plwiki-rozbiory-polski",
-     "chars": 172
-    }
+    "outcome": "abstained_missed",
+    "passage": null
    },
    {
     "id": "ret-train-q16+hdr",
@@ -1792,23 +2396,28 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "title match",
      "query_terms": 3,
+     "command_terms": [
+      "rozbio",
+      "trzech",
+      "uczest"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [
+      "trzech",
+      "uczest"
+     ],
      "matched": [
       "rozbio"
      ],
-     "title_matched": [
+     "window_matched": [
       "rozbio"
      ],
-     "coverage": 0.333
+     "pass": false,
+     "reason": "requested relation absent from passage"
     },
-    "outcome": "inserted_relevant",
-    "passage": {
-     "chunk_id": "plwiki-rozbiory-polski#1218",
-     "source_id": "plwiki-rozbiory-polski",
-     "chars": 172
-    }
+    "outcome": "abstained_missed",
+    "passage": null
    },
    {
     "id": "ret-train-q17",
@@ -1816,18 +2425,32 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "title match",
-     "query_terms": 6,
+     "query_terms": 5,
+     "command_terms": [
+      "chłopo",
+      "kościu",
+      "obiecy",
+      "połani",
+      "uniwer"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [
+      "chłopo",
+      "obiecy",
+      "połani"
+     ],
      "matched": [
       "kościu",
       "połani",
       "uniwer"
      ],
-     "title_matched": [
-      "kościu"
+     "window_matched": [
+      "kościu",
+      "połani",
+      "uniwer"
      ],
-     "coverage": 0.5
+     "pass": true,
+     "reason": "relation+entity in passage"
     },
     "outcome": "inserted_relevant",
     "passage": {
@@ -1842,18 +2465,32 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "title match",
-     "query_terms": 6,
+     "query_terms": 5,
+     "command_terms": [
+      "chłopo",
+      "kościu",
+      "obiecy",
+      "połani",
+      "uniwer"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [
+      "chłopo",
+      "obiecy",
+      "połani"
+     ],
      "matched": [
       "kościu",
       "połani",
       "uniwer"
      ],
-     "title_matched": [
-      "kościu"
+     "window_matched": [
+      "kościu",
+      "połani",
+      "uniwer"
      ],
-     "coverage": 0.5
+     "pass": true,
+     "reason": "relation+entity in passage"
     },
     "outcome": "inserted_relevant",
     "passage": {
@@ -1868,17 +2505,26 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "title match",
-     "query_terms": 5,
+     "query_terms": 3,
+     "command_terms": [
+      "księst",
+      "trakta",
+      "władc"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [
+      "trakta",
+      "władc"
+     ],
      "matched": [
       "księst",
       "trakta"
      ],
-     "title_matched": [
-      "księst"
+     "window_matched": [
+      "trakta"
      ],
-     "coverage": 0.4
+     "pass": true,
+     "reason": "relation+entity in passage"
     },
     "outcome": "inserted_relevant",
     "passage": {
@@ -1893,17 +2539,26 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "title match",
-     "query_terms": 5,
+     "query_terms": 3,
+     "command_terms": [
+      "księst",
+      "trakta",
+      "władc"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [
+      "trakta",
+      "władc"
+     ],
      "matched": [
       "księst",
       "trakta"
      ],
-     "title_matched": [
-      "księst"
+     "window_matched": [
+      "trakta"
      ],
-     "coverage": 0.4
+     "pass": true,
+     "reason": "relation+entity in passage"
     },
     "outcome": "inserted_relevant",
     "passage": {
@@ -1918,18 +2573,23 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "title match",
-     "query_terms": 4,
+     "query_terms": 2,
+     "command_terms": [
+      "kongre",
+      "wiedeń"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [],
      "matched": [
       "kongre",
       "wiedeń"
      ],
-     "title_matched": [
+     "window_matched": [
       "kongre",
       "wiedeń"
      ],
-     "coverage": 0.5
+     "pass": true,
+     "reason": "described entity supported in passage"
     },
     "outcome": "inserted_relevant",
     "passage": {
@@ -1944,18 +2604,23 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "title match",
-     "query_terms": 4,
+     "query_terms": 2,
+     "command_terms": [
+      "kongre",
+      "wiedeń"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [],
      "matched": [
       "kongre",
       "wiedeń"
      ],
-     "title_matched": [
+     "window_matched": [
       "kongre",
       "wiedeń"
      ],
-     "coverage": 0.5
+     "pass": true,
+     "reason": "described entity supported in passage"
     },
     "outcome": "inserted_relevant",
     "passage": {
@@ -1970,12 +2635,14 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": false,
-     "reason": "weak lexical support",
-     "query_terms": 1,
+     "query_terms": 0,
+     "command_terms": [],
+     "answer_type_terms": [],
+     "relation_terms": [],
      "matched": [],
-     "title_matched": [],
-     "coverage": 0.0
+     "window_matched": [],
+     "pass": false,
+     "reason": "no distinctive query terms"
     },
     "outcome": "abstained_missed",
     "passage": null
@@ -1986,12 +2653,14 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": false,
-     "reason": "weak lexical support",
-     "query_terms": 1,
+     "query_terms": 0,
+     "command_terms": [],
+     "answer_type_terms": [],
+     "relation_terms": [],
      "matched": [],
-     "title_matched": [],
-     "coverage": 0.0
+     "window_matched": [],
+     "pass": false,
+     "reason": "no distinctive query terms"
     },
     "outcome": "abstained_missed",
     "passage": null
@@ -2002,12 +2671,18 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": false,
-     "reason": "weak lexical support",
-     "query_terms": 2,
+     "query_terms": 1,
+     "command_terms": [
+      "oboz"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [
+      "oboz"
+     ],
      "matched": [],
-     "title_matched": [],
-     "coverage": 0.0
+     "window_matched": [],
+     "pass": false,
+     "reason": "requested relation absent from passage"
     },
     "outcome": "abstained_missed",
     "passage": null
@@ -2018,12 +2693,18 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": false,
-     "reason": "weak lexical support",
-     "query_terms": 2,
+     "query_terms": 1,
+     "command_terms": [
+      "oboz"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [
+      "oboz"
+     ],
      "matched": [],
-     "title_matched": [],
-     "coverage": 0.0
+     "window_matched": [],
+     "pass": false,
+     "reason": "requested relation absent from passage"
     },
     "outcome": "abstained_missed",
     "passage": null
@@ -2034,19 +2715,27 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "title match",
-     "query_terms": 4,
+     "query_terms": 3,
+     "command_terms": [
+      "chłopó",
+      "uwłasz",
+      "zaborz"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [
+      "zaborz"
+     ],
      "matched": [
       "chłopó",
       "uwłasz",
       "zaborz"
      ],
-     "title_matched": [
-      "chłopó",
-      "uwłasz"
+     "window_matched": [
+      "uwłasz",
+      "zaborz"
      ],
-     "coverage": 0.75
+     "pass": true,
+     "reason": "relation+entity in passage"
     },
     "outcome": "inserted_relevant",
     "passage": {
@@ -2061,19 +2750,27 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "title match",
-     "query_terms": 4,
+     "query_terms": 3,
+     "command_terms": [
+      "chłopó",
+      "uwłasz",
+      "zaborz"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [
+      "zaborz"
+     ],
      "matched": [
       "chłopó",
       "uwłasz",
       "zaborz"
      ],
-     "title_matched": [
-      "chłopó",
-      "uwłasz"
+     "window_matched": [
+      "uwłasz",
+      "zaborz"
      ],
-     "coverage": 0.75
+     "pass": true,
+     "reason": "relation+entity in passage"
     },
     "outcome": "inserted_relevant",
     "passage": {
@@ -2088,17 +2785,29 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "title match",
-     "query_terms": 5,
+     "query_terms": 4,
+     "command_terms": [
+      "kom",
+      "kultur",
+      "pruski",
+      "zaborz"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [
+      "kom",
+      "pruski",
+      "zaborz"
+     ],
      "matched": [
       "kultur",
       "pruski"
      ],
-     "title_matched": [
-      "kultur"
+     "window_matched": [
+      "kultur",
+      "pruski"
      ],
-     "coverage": 0.4
+     "pass": true,
+     "reason": "relation+entity in passage"
     },
     "outcome": "inserted_relevant",
     "passage": {
@@ -2113,17 +2822,29 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "title match",
-     "query_terms": 5,
+     "query_terms": 4,
+     "command_terms": [
+      "kom",
+      "kultur",
+      "pruski",
+      "zaborz"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [
+      "kom",
+      "pruski",
+      "zaborz"
+     ],
      "matched": [
       "kultur",
       "pruski"
      ],
-     "title_matched": [
-      "kultur"
+     "window_matched": [
+      "kultur",
+      "pruski"
      ],
-     "coverage": 0.4
+     "pass": true,
+     "reason": "relation+entity in passage"
     },
     "outcome": "inserted_relevant",
     "passage": {
@@ -2138,23 +2859,26 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "title match",
-     "query_terms": 3,
+     "query_terms": 2,
+     "command_terms": [
+      "akt",
+      "ogłasz"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [
+      "ogłasz"
+     ],
      "matched": [
       "akt"
      ],
-     "title_matched": [
+     "window_matched": [
       "akt"
      ],
-     "coverage": 0.333
+     "pass": false,
+     "reason": "requested relation absent from passage"
     },
-    "outcome": "inserted_relevant",
-    "passage": {
-     "chunk_id": "plwiki-akt-5-listopada#1686",
-     "source_id": "plwiki-akt-5-listopada",
-     "chars": 97
-    }
+    "outcome": "abstained_missed",
+    "passage": null
    },
    {
     "id": "ret-train-q24+hdr",
@@ -2162,23 +2886,26 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "title match",
-     "query_terms": 3,
+     "query_terms": 2,
+     "command_terms": [
+      "akt",
+      "ogłasz"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [
+      "ogłasz"
+     ],
      "matched": [
       "akt"
      ],
-     "title_matched": [
+     "window_matched": [
       "akt"
      ],
-     "coverage": 0.333
+     "pass": false,
+     "reason": "requested relation absent from passage"
     },
-    "outcome": "inserted_relevant",
-    "passage": {
-     "chunk_id": "plwiki-akt-5-listopada#1686",
-     "source_id": "plwiki-akt-5-listopada",
-     "chars": 97
-    }
+    "outcome": "abstained_missed",
+    "passage": null
    },
    {
     "id": "ret-train-q25",
@@ -2186,16 +2913,33 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "chunk terms",
-     "query_terms": 7,
-     "matched": [
+     "query_terms": 6,
+     "command_terms": [
+      "odegra",
+      "przebi",
+      "rol",
       "uderze",
       "wieprz",
       "znad"
      ],
-     "title_matched": [],
-     "coverage": 0.429
+     "answer_type_terms": [],
+     "relation_terms": [
+      "odegra",
+      "przebi",
+      "rol",
+      "uderze",
+      "znad"
+     ],
+     "matched": [
+      "wieprz",
+      "znad"
+     ],
+     "window_matched": [
+      "wieprz",
+      "znad"
+     ],
+     "pass": true,
+     "reason": "relation+entity in passage"
     },
     "outcome": "inserted_relevant",
     "passage": {
@@ -2210,16 +2954,33 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "chunk terms",
-     "query_terms": 7,
-     "matched": [
+     "query_terms": 6,
+     "command_terms": [
+      "odegra",
+      "przebi",
+      "rol",
       "uderze",
       "wieprz",
       "znad"
      ],
-     "title_matched": [],
-     "coverage": 0.429
+     "answer_type_terms": [],
+     "relation_terms": [
+      "odegra",
+      "przebi",
+      "rol",
+      "uderze",
+      "znad"
+     ],
+     "matched": [
+      "wieprz",
+      "znad"
+     ],
+     "window_matched": [
+      "wieprz",
+      "znad"
+     ],
+     "pass": true,
+     "reason": "relation+entity in passage"
     },
     "outcome": "inserted_relevant",
     "passage": {
@@ -2234,18 +2995,29 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "title match",
      "query_terms": 4,
-     "matched": [
+     "command_terms": [
       "bolsze",
+      "kończą",
+      "trakta",
+      "ustalo"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [
+      "bolsze",
+      "kończą",
+      "ustalo"
+     ],
+     "matched": [
       "kończą",
       "trakta"
      ],
-     "title_matched": [
+     "window_matched": [
+      "kończą",
       "trakta"
      ],
-     "coverage": 0.75
+     "pass": true,
+     "reason": "relation+entity in passage"
     },
     "outcome": "inserted_irrelevant",
     "passage": {
@@ -2260,18 +3032,29 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "title match",
      "query_terms": 4,
-     "matched": [
+     "command_terms": [
       "bolsze",
+      "kończą",
+      "trakta",
+      "ustalo"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [
+      "bolsze",
+      "kończą",
+      "ustalo"
+     ],
+     "matched": [
       "kończą",
       "trakta"
      ],
-     "title_matched": [
+     "window_matched": [
+      "kończą",
       "trakta"
      ],
-     "coverage": 0.75
+     "pass": true,
+     "reason": "relation+entity in passage"
     },
     "outcome": "inserted_irrelevant",
     "passage": {
@@ -2286,24 +3069,27 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "title match",
      "query_terms": 2,
+     "command_terms": [
+      "majowe",
+      "przewr"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [
+      "majowe"
+     ],
      "matched": [
       "majowe",
       "przewr"
      ],
-     "title_matched": [
-      "przewr"
+     "window_matched": [
+      "majowe"
      ],
-     "coverage": 1.0
+     "pass": false,
+     "reason": "no date in passage"
     },
-    "outcome": "inserted_relevant",
-    "passage": {
-     "chunk_id": "plwiki-przewrot-majowy#2067",
-     "source_id": "plwiki-przewrot-majowy",
-     "chars": 150
-    }
+    "outcome": "abstained_missed",
+    "passage": null
    },
    {
     "id": "ret-train-q27+hdr",
@@ -2311,24 +3097,27 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "title match",
      "query_terms": 2,
+     "command_terms": [
+      "majowe",
+      "przewr"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [
+      "majowe"
+     ],
      "matched": [
       "majowe",
       "przewr"
      ],
-     "title_matched": [
-      "przewr"
+     "window_matched": [
+      "majowe"
      ],
-     "coverage": 1.0
+     "pass": false,
+     "reason": "no date in passage"
     },
-    "outcome": "inserted_relevant",
-    "passage": {
-     "chunk_id": "plwiki-przewrot-majowy#2067",
-     "source_id": "plwiki-przewrot-majowy",
-     "chars": 150
-    }
+    "outcome": "abstained_missed",
+    "passage": null
    },
    {
     "id": "ret-train-q28",
@@ -2336,21 +3125,33 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "title match",
-     "query_terms": 6,
+     "query_terms": 5,
+     "command_terms": [
+      "budowa",
+      "centra",
+      "inicja",
+      "okręg",
+      "przemy"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [
+      "budowa",
+      "inicja"
+     ],
      "matched": [
       "budowa",
       "centra",
       "okręg",
       "przemy"
      ],
-     "title_matched": [
+     "window_matched": [
+      "budowa",
       "centra",
       "okręg",
       "przemy"
      ],
-     "coverage": 0.667
+     "pass": true,
+     "reason": "relation+entity in passage"
     },
     "outcome": "inserted_relevant",
     "passage": {
@@ -2365,21 +3166,33 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "title match",
-     "query_terms": 6,
+     "query_terms": 5,
+     "command_terms": [
+      "budowa",
+      "centra",
+      "inicja",
+      "okręg",
+      "przemy"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [
+      "budowa",
+      "inicja"
+     ],
      "matched": [
       "budowa",
       "centra",
       "okręg",
       "przemy"
      ],
-     "title_matched": [
+     "window_matched": [
+      "budowa",
       "centra",
       "okręg",
       "przemy"
      ],
-     "coverage": 0.667
+     "pass": true,
+     "reason": "relation+entity in passage"
     },
     "outcome": "inserted_relevant",
     "passage": {
@@ -2394,21 +3207,33 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "title match",
-     "query_terms": 6,
+     "query_terms": 5,
+     "command_terms": [
+      "mołoto",
+      "pakt",
+      "protok",
+      "ribben",
+      "tajn"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [
+      "protok",
+      "tajn"
+     ],
      "matched": [
       "mołoto",
       "pakt",
       "protok",
       "ribben"
      ],
-     "title_matched": [
+     "window_matched": [
       "mołoto",
       "pakt",
+      "protok",
       "ribben"
      ],
-     "coverage": 0.667
+     "pass": true,
+     "reason": "relation+entity in passage"
     },
     "outcome": "inserted_relevant",
     "passage": {
@@ -2423,21 +3248,33 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "title match",
-     "query_terms": 6,
+     "query_terms": 5,
+     "command_terms": [
+      "mołoto",
+      "pakt",
+      "protok",
+      "ribben",
+      "tajn"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [
+      "protok",
+      "tajn"
+     ],
      "matched": [
       "mołoto",
       "pakt",
       "protok",
       "ribben"
      ],
-     "title_matched": [
+     "window_matched": [
       "mołoto",
       "pakt",
+      "protok",
       "ribben"
      ],
-     "coverage": 0.667
+     "pass": true,
+     "reason": "relation+entity in passage"
     },
     "outcome": "inserted_relevant",
     "passage": {
@@ -2452,25 +3289,29 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "title match",
-     "query_terms": 5,
+     "query_terms": 3,
+     "command_terms": [
+      "katyńs",
+      "organ",
+      "zbrodn"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [
+      "organ"
+     ],
      "matched": [
       "katyńs",
       "zbrodn"
      ],
-     "title_matched": [
+     "window_matched": [
       "katyńs",
       "zbrodn"
      ],
-     "coverage": 0.4
+     "pass": false,
+     "reason": "requested relation absent from passage"
     },
-    "outcome": "inserted_relevant",
-    "passage": {
-     "chunk_id": "plwiki-zbrodnia-katynska#2455",
-     "source_id": "plwiki-zbrodnia-katynska",
-     "chars": 53
-    }
+    "outcome": "abstained_missed",
+    "passage": null
    },
    {
     "id": "ret-train-q30+hdr",
@@ -2478,25 +3319,29 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "title match",
-     "query_terms": 5,
+     "query_terms": 3,
+     "command_terms": [
+      "katyńs",
+      "organ",
+      "zbrodn"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [
+      "organ"
+     ],
      "matched": [
       "katyńs",
       "zbrodn"
      ],
-     "title_matched": [
+     "window_matched": [
       "katyńs",
       "zbrodn"
      ],
-     "coverage": 0.4
+     "pass": false,
+     "reason": "requested relation absent from passage"
     },
-    "outcome": "inserted_relevant",
-    "passage": {
-     "chunk_id": "plwiki-zbrodnia-katynska#2455",
-     "source_id": "plwiki-zbrodnia-katynska",
-     "chars": 53
-    }
+    "outcome": "abstained_missed",
+    "passage": null
    },
    {
     "id": "ret-train-q31",
@@ -2504,14 +3349,24 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": false,
-     "reason": "weak lexical support",
      "query_terms": 2,
+     "command_terms": [
+      "dług",
+      "trwał"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [
+      "dług",
+      "trwał"
+     ],
      "matched": [
       "dług"
      ],
-     "title_matched": [],
-     "coverage": 0.5
+     "window_matched": [
+      "dług"
+     ],
+     "pass": false,
+     "reason": "too little of the question supported"
     },
     "outcome": "abstained_missed",
     "passage": null
@@ -2522,14 +3377,24 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": false,
-     "reason": "weak lexical support",
      "query_terms": 2,
+     "command_terms": [
+      "dług",
+      "trwał"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [
+      "dług",
+      "trwał"
+     ],
      "matched": [
       "dług"
      ],
-     "title_matched": [],
-     "coverage": 0.5
+     "window_matched": [
+      "dług"
+     ],
+     "pass": false,
+     "reason": "too little of the question supported"
     },
     "outcome": "abstained_missed",
     "passage": null
@@ -2540,19 +3405,28 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "title match",
-     "query_terms": 4,
+     "query_terms": 3,
+     "command_terms": [
+      "jałtań",
+      "konfer",
+      "zapadł"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [
+      "zapadł"
+     ],
      "matched": [
       "jałtań",
       "konfer",
       "zapadł"
      ],
-     "title_matched": [
+     "window_matched": [
       "jałtań",
-      "konfer"
+      "konfer",
+      "zapadł"
      ],
-     "coverage": 0.75
+     "pass": true,
+     "reason": "relation+entity in passage"
     },
     "outcome": "inserted_relevant",
     "passage": {
@@ -2567,19 +3441,28 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "title match",
-     "query_terms": 4,
+     "query_terms": 3,
+     "command_terms": [
+      "jałtań",
+      "konfer",
+      "zapadł"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [
+      "zapadł"
+     ],
      "matched": [
       "jałtań",
       "konfer",
       "zapadł"
      ],
-     "title_matched": [
+     "window_matched": [
       "jałtań",
-      "konfer"
+      "konfer",
+      "zapadł"
      ],
-     "coverage": 0.75
+     "pass": true,
+     "reason": "relation+entity in passage"
     },
     "outcome": "inserted_relevant",
     "passage": {
@@ -2594,14 +3477,24 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": false,
-     "reason": "weak lexical support",
      "query_terms": 3,
+     "command_terms": [
+      "manife",
+      "pkwn",
+      "zapowi"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [
+      "zapowi"
+     ],
      "matched": [
       "pkwn"
      ],
-     "title_matched": [],
-     "coverage": 0.333
+     "window_matched": [
+      "pkwn"
+     ],
+     "pass": false,
+     "reason": "requested relation absent from passage"
     },
     "outcome": "abstained_missed",
     "passage": null
@@ -2612,14 +3505,24 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": false,
-     "reason": "weak lexical support",
      "query_terms": 3,
+     "command_terms": [
+      "manife",
+      "pkwn",
+      "zapowi"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [
+      "zapowi"
+     ],
      "matched": [
       "pkwn"
      ],
-     "title_matched": [],
-     "coverage": 0.333
+     "window_matched": [
+      "pkwn"
+     ],
+     "pass": false,
+     "reason": "requested relation absent from passage"
     },
     "outcome": "abstained_missed",
     "passage": null
@@ -2630,18 +3533,31 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "chunk terms",
-     "query_terms": 6,
-     "matched": [
+     "query_terms": 5,
+     "command_terms": [
       "hasł",
-      "jaki",
       "poznan",
       "robotn",
+      "wysuwa",
       "żądani"
      ],
-     "title_matched": [],
-     "coverage": 0.833
+     "answer_type_terms": [],
+     "relation_terms": [
+      "hasł",
+      "robotn",
+      "wysuwa",
+      "żądani"
+     ],
+     "matched": [
+      "hasł",
+      "robotn"
+     ],
+     "window_matched": [
+      "hasł",
+      "robotn"
+     ],
+     "pass": true,
+     "reason": "relation+entity in passage"
     },
     "outcome": "inserted_relevant",
     "passage": {
@@ -2656,18 +3572,31 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "chunk terms",
-     "query_terms": 6,
-     "matched": [
+     "query_terms": 5,
+     "command_terms": [
       "hasł",
-      "jaki",
       "poznan",
       "robotn",
+      "wysuwa",
       "żądani"
      ],
-     "title_matched": [],
-     "coverage": 0.833
+     "answer_type_terms": [],
+     "relation_terms": [
+      "hasł",
+      "robotn",
+      "wysuwa",
+      "żądani"
+     ],
+     "matched": [
+      "hasł",
+      "robotn"
+     ],
+     "window_matched": [
+      "hasł",
+      "robotn"
+     ],
+     "pass": true,
+     "reason": "relation+entity in passage"
     },
     "outcome": "inserted_relevant",
     "passage": {
@@ -2682,12 +3611,18 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": false,
-     "reason": "weak lexical support",
-     "query_terms": 3,
+     "query_terms": 1,
+     "command_terms": [
+      "najważ"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [
+      "najważ"
+     ],
      "matched": [],
-     "title_matched": [],
-     "coverage": 0.0
+     "window_matched": [],
+     "pass": false,
+     "reason": "requested relation absent from passage"
     },
     "outcome": "abstained_missed",
     "passage": null
@@ -2698,12 +3633,18 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": false,
-     "reason": "weak lexical support",
-     "query_terms": 3,
+     "query_terms": 1,
+     "command_terms": [
+      "najważ"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [
+      "najważ"
+     ],
      "matched": [],
-     "title_matched": [],
-     "coverage": 0.0
+     "window_matched": [],
+     "pass": false,
+     "reason": "requested relation absent from passage"
     },
     "outcome": "abstained_missed",
     "passage": null
@@ -2714,12 +3655,19 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": false,
-     "reason": "weak lexical support",
      "query_terms": 2,
+     "command_terms": [
+      "czel",
+      "wron"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [
+      "czel"
+     ],
      "matched": [],
-     "title_matched": [],
-     "coverage": 0.0
+     "window_matched": [],
+     "pass": false,
+     "reason": "requested relation absent from passage"
     },
     "outcome": "abstained_missed",
     "passage": null
@@ -2730,12 +3678,19 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": false,
-     "reason": "weak lexical support",
      "query_terms": 2,
+     "command_terms": [
+      "czel",
+      "wron"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [
+      "czel"
+     ],
      "matched": [],
-     "title_matched": [],
-     "coverage": 0.0
+     "window_matched": [],
+     "pass": false,
+     "reason": "requested relation absent from passage"
     },
     "outcome": "abstained_missed",
     "passage": null
@@ -2746,19 +3701,30 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "title match",
-     "query_terms": 5,
-     "matched": [
+     "query_terms": 4,
+     "command_terms": [
       "okrągł",
       "stol",
       "ustale",
       "ustroj"
      ],
-     "title_matched": [
-      "okrągł"
+     "answer_type_terms": [],
+     "relation_terms": [
+      "ustale",
+      "ustroj"
      ],
-     "coverage": 0.8
+     "matched": [
+      "okrągł",
+      "ustale",
+      "ustroj"
+     ],
+     "window_matched": [
+      "okrągł",
+      "ustale",
+      "ustroj"
+     ],
+     "pass": true,
+     "reason": "relation+entity in passage"
     },
     "outcome": "inserted_relevant",
     "passage": {
@@ -2773,19 +3739,30 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "title match",
-     "query_terms": 5,
-     "matched": [
+     "query_terms": 4,
+     "command_terms": [
       "okrągł",
       "stol",
       "ustale",
       "ustroj"
      ],
-     "title_matched": [
-      "okrągł"
+     "answer_type_terms": [],
+     "relation_terms": [
+      "ustale",
+      "ustroj"
      ],
-     "coverage": 0.8
+     "matched": [
+      "okrągł",
+      "ustale",
+      "ustroj"
+     ],
+     "window_matched": [
+      "okrągł",
+      "ustale",
+      "ustroj"
+     ],
+     "pass": true,
+     "reason": "relation+entity in passage"
     },
     "outcome": "inserted_relevant",
     "passage": {
@@ -2800,25 +3777,29 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "title match",
      "query_terms": 3,
+     "command_terms": [
+      "berliń",
+      "mur",
+      "upadł"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [
+      "upadł"
+     ],
      "matched": [
       "berliń",
       "mur"
      ],
-     "title_matched": [
+     "window_matched": [
       "berliń",
       "mur"
      ],
-     "coverage": 0.667
+     "pass": false,
+     "reason": "requested relation absent from passage"
     },
-    "outcome": "inserted_relevant",
-    "passage": {
-     "chunk_id": "plwiki-mur-berlinski#3285",
-     "source_id": "plwiki-mur-berlinski",
-     "chars": 60
-    }
+    "outcome": "abstained_missed",
+    "passage": null
    },
    {
     "id": "ret-train-q38+hdr",
@@ -2826,25 +3807,29 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "title match",
      "query_terms": 3,
+     "command_terms": [
+      "berliń",
+      "mur",
+      "upadł"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [
+      "upadł"
+     ],
      "matched": [
       "berliń",
       "mur"
      ],
-     "title_matched": [
+     "window_matched": [
       "berliń",
       "mur"
      ],
-     "coverage": 0.667
+     "pass": false,
+     "reason": "requested relation absent from passage"
     },
-    "outcome": "inserted_relevant",
-    "passage": {
-     "chunk_id": "plwiki-mur-berlinski#3285",
-     "source_id": "plwiki-mur-berlinski",
-     "chars": 60
-    }
+    "outcome": "abstained_missed",
+    "passage": null
    },
    {
     "id": "ret-train-q39",
@@ -2852,17 +3837,25 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "title match",
      "query_terms": 2,
+     "command_terms": [
+      "marsha",
+      "przyst"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [
+      "przyst"
+     ],
      "matched": [
       "marsha",
       "przyst"
      ],
-     "title_matched": [
-      "marsha"
+     "window_matched": [
+      "marsha",
+      "przyst"
      ],
-     "coverage": 1.0
+     "pass": true,
+     "reason": "relation+entity in passage"
     },
     "outcome": "inserted_relevant",
     "passage": {
@@ -2877,17 +3870,25 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "title match",
      "query_terms": 2,
+     "command_terms": [
+      "marsha",
+      "przyst"
+     ],
+     "answer_type_terms": [],
+     "relation_terms": [
+      "przyst"
+     ],
      "matched": [
       "marsha",
       "przyst"
      ],
-     "title_matched": [
-      "marsha"
+     "window_matched": [
+      "marsha",
+      "przyst"
      ],
-     "coverage": 1.0
+     "pass": true,
+     "reason": "relation+entity in passage"
     },
     "outcome": "inserted_relevant",
     "passage": {
@@ -2902,18 +3903,29 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "title match",
-     "query_terms": 5,
-     "matched": [
+     "query_terms": 4,
+     "command_terms": [
       "pokoj",
       "trzydz",
-      "westfa"
+      "westfa",
+      "zasad"
      ],
-     "title_matched": [
+     "answer_type_terms": [],
+     "relation_terms": [
+      "pokoj",
+      "westfa",
+      "zasad"
+     ],
+     "matched": [
+      "pokoj",
       "trzydz"
      ],
-     "coverage": 0.6
+     "window_matched": [
+      "pokoj",
+      "trzydz"
+     ],
+     "pass": true,
+     "reason": "relation+entity in passage"
     },
     "outcome": "inserted_relevant",
     "passage": {
@@ -2928,18 +3940,29 @@
     "expected_route": "external_fact",
     "route": "external_fact",
     "gate": {
-     "pass": true,
-     "reason": "title match",
-     "query_terms": 5,
-     "matched": [
+     "query_terms": 4,
+     "command_terms": [
       "pokoj",
       "trzydz",
-      "westfa"
+      "westfa",
+      "zasad"
      ],
-     "title_matched": [
+     "answer_type_terms": [],
+     "relation_terms": [
+      "pokoj",
+      "westfa",
+      "zasad"
+     ],
+     "matched": [
+      "pokoj",
       "trzydz"
      ],
-     "coverage": 0.6
+     "window_matched": [
+      "pokoj",
+      "trzydz"
+     ],
+     "pass": true,
+     "reason": "relation+entity in passage"
     },
     "outcome": "inserted_relevant",
     "passage": {
@@ -2979,6 +4002,15 @@
 {"variant": "base", "id": "syn-ooc-04", "category": "out_of_corpus", "query_sha256": "30c3b79470090669be67c6acd6daf2621f0b42b8f9349f4a7e078ef47425687c", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-mieszko-i#0299", "plws-konstytucja-marcowa-1921#3432", "plwiki-zbrodnia-katynska#2504", "plwiki-marcin-luter#0847", "plwiki-wielkie-odkrycia-geograficzne#0771"], "first_relevant_rank": null, "top1_year_boosted": 0},
 {"variant": "base", "id": "syn-ess-01", "category": "essay", "query_sha256": "8b1ef4417bf4c5204e7d4081a9392c096eacd7f82daa7e6ac50d6ec21d637743", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-konfederacja-targowicka#1256", "plwiki-marcin-luter#0823", "plws-konstytucja-marcowa-1921#3432", "plwiki-zbrodnia-katynska#2504", "plwiki-kampania-wrzesniowa#2332"], "first_relevant_rank": null, "top1_year_boosted": 0},
 {"variant": "base", "id": "syn-ess-02", "category": "essay", "query_sha256": "0249fa399307f9bcccbe706c6b121df36276acad99edd20b7d624d92cd09a6a5", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-konfederacja-targowicka#1256", "plwiki-kazimierz-wielki#0590", "plwiki-reformacja#0796", "plwiki-kazimierz-wielki#0594", "plwiki-reformacja#0799"], "first_relevant_rank": null, "top1_year_boosted": 1},
+{"variant": "base", "id": "syn-rel-01", "category": "wrong_relation", "query_sha256": "7c4dfc166df683dc1f6b8726b8ae0b7211f00f17c2b4ccd9bac4375538a9ecf0", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-konfederacja-warszawska#1062", "plws-konstytucja-marcowa-1921#3432", "plwiki-konfederacja-warszawska#1063", "plwiki-mieszko-i#0299", "plwiki-zbrodnia-katynska#2504"], "first_relevant_rank": null, "top1_year_boosted": 0},
+{"variant": "base", "id": "syn-rel-02", "category": "wrong_relation", "query_sha256": "fe63bd8f9295524bbedc766e0c86f9a4e52c304d547d5ea4e9728ee79dd9559d", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-boleslaw-chrobry#0352", "plwiki-boleslaw-chrobry#0351", "plwiki-boleslaw-chrobry#0338", "plwiki-mieszko-i#0333", "plwiki-boleslaw-chrobry#0357"], "first_relevant_rank": null, "top1_year_boosted": 1},
+{"variant": "base", "id": "syn-rel-03", "category": "wrong_relation", "query_sha256": "4bd294bcc64e56d4143ba4f1d96f99ca77ae7b933d894c5d96477b1da1473f43", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-kazimierz-wielki#0608", "plwiki-wojna-polsko-bolszewicka#1848", "plwiki-kazimierz-wielki#0610", "plwiki-kazimierz-wielki#0512", "plwiki-kazimierz-wielki#0508"], "first_relevant_rank": null, "top1_year_boosted": 0},
+{"variant": "base", "id": "syn-rel-04", "category": "wrong_relation", "query_sha256": "2db067a9a6de34076fbff669c023fcf7ba83568d3072a09fc6723a10f3934b28", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-chrzest-polski#0291", "plwiki-mieszko-i#0305", "plwiki-chrzest-polski#0288", "plwiki-mieszko-i#0299", "plwiki-chrzest-polski#0263"], "first_relevant_rank": null, "top1_year_boosted": 2},
+{"variant": "base", "id": "syn-src-04", "category": "supplied_source", "query_sha256": "bdc2d61fd062f45d948fb4086fb828f4e55ff792a21277d97a041568773da458", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plws-konstytucja-marcowa-1921#3432", "plwiki-zbrodnia-katynska#2504", "plwiki-wielkie-odkrycia-geograficzne#0771", "plwiki-nato#3343", "plwiki-wojna-polsko-bolszewicka#1848"], "first_relevant_rank": null, "top1_year_boosted": 0},
+{"variant": "base", "id": "syn-src-05", "category": "supplied_source", "query_sha256": "fccbb7fe9cf8e27cf34d092f6164fa54046d3fe1ac0f9a2df6e37c3fd9ce0b42", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-zbrodnia-katynska#2504", "plwiki-powstanie-styczniowe#1472", "plwiki-demokracja-atenska#0009", "plws-konstytucja-marcowa-1921#3432", "plwiki-rozbiory-polski#1216"], "first_relevant_rank": null, "top1_year_boosted": 0},
+{"variant": "base", "id": "syn-ess-03", "category": "essay", "query_sha256": "d146d401f5bf77b7eb208efc0ae9cdbb759745694d76ea34af6c1860bda35aff", "years": [300], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-zbrodnia-katynska#2504", "plwiki-nato#3343", "plwiki-marcin-luter#0817", "plwiki-polska-w-ue#3354", "plwiki-unia-w-krewie#0621"], "first_relevant_rank": null, "top1_year_boosted": 0},
+{"variant": "base", "id": "syn-ess-04", "category": "essay", "query_sha256": "acf1effbcb94c854983e5be2efdbf95d4346cf46e349853c95c245a03a278d8f", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-konfederacja-targowicka#1256", "plwiki-konstytucja-marcowa#2034", "plwiki-rozbiory-polski#1211", "plwiki-konstytucja-marcowa#2033", "plwiki-rozbiory-polski#1210"], "first_relevant_rank": null, "top1_year_boosted": 0},
+{"variant": "base", "id": "syn-ess-05", "category": "essay", "query_sha256": "82ab18f1ad7b4a75b3844cee4f3a5adf623780f46bb222332d32c38169f3d0c4", "years": [250], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-marcin-luter#0817", "plwiki-wielkie-odkrycia-geograficzne#0771", "plwiki-kazimierz-wielki#0542", "plwiki-kazimierz-wielki#0568", "plwiki-kazimierz-wielki#0611"], "first_relevant_rank": null, "top1_year_boosted": 0},
 {"variant": "base", "id": "ret-train-q01", "category": "control_train", "query_sha256": "1e3d7f277076db21e33fed957b4615627b279f4aa0e82873380cc4aa151b41c1", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-kodeks-hammurabiego#0145", "plwiki-kodeks-hammurabiego#0147", "plwiki-kodeks-hammurabiego#0151", "plwiki-kodeks-hammurabiego#0148", "plwiki-kodeks-hammurabiego#0150"], "first_relevant_rank": 1, "top1_year_boosted": 1},
 {"variant": "base", "id": "ret-train-q01+hdr", "category": "control_train_hdr", "query_sha256": "e6ba9e10420f1c5c237b371c998723374c20f6fd59dffb7276c2aa93418e0ef6", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-kodeks-hammurabiego#0148", "plwiki-kodeks-hammurabiego#0145", "plwiki-kodeks-hammurabiego#0151", "plwiki-kodeks-hammurabiego#0147", "plwiki-kodeks-hammurabiego#0150"], "first_relevant_rank": 1, "top1_year_boosted": 1},
 {"variant": "base", "id": "ret-train-q02", "category": "control_train", "query_sha256": "cc3d1df03f6d1aa9f77bf762a868bb3c7622f1465995756549c3bc5844d6ce0f", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-demokracja-atenska#0000", "plwiki-demokracja-atenska#0017", "plwiki-demokracja-atenska#0003", "plwiki-demokracja-atenska#0010", "plwiki-demokracja-atenska#0001"], "first_relevant_rank": 1, "top1_year_boosted": 1},
@@ -3087,6 +4119,15 @@
 {"variant": "A_header_off", "id": "syn-ooc-04", "category": "out_of_corpus", "query_sha256": "8902b8687a5a43a808f4ce97c6e3466dfbb7853d16be77caea518e8dc92e9a18", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-mieszko-i#0299", "plwiki-mieszko-i#0297", "plwiki-chrzest-polski#0291", "plwiki-nato#3330", "plwiki-powstanie-w-getcie-warszawskim#2577"], "first_relevant_rank": null, "top1_year_boosted": 0},
 {"variant": "A_header_off", "id": "syn-ess-01", "category": "essay", "query_sha256": "32975efeb984410c56164905a68f08b2b0a2cdb277d0a4309d33ad51ece0a98d", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-rewolucja-francuska#0926", "plwiki-konfederacja-targowicka#1256", "plwiki-nato#3329", "plwiki-konstytucja-marcowa#2030", "plwiki-rewolucja-francuska#0983"], "first_relevant_rank": null, "top1_year_boosted": 0},
 {"variant": "A_header_off", "id": "syn-ess-02", "category": "essay", "query_sha256": "c33f844f038419da272cbab84a2953b0db1dc98954bb65d4d7d606cc57e3f5ee", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-reformacja#0802", "plwiki-kazimierz-wielki#0594", "plwiki-kazimierz-wielki#0591", "plwiki-reformacja#0799", "plwiki-kazimierz-wielki#0512"], "first_relevant_rank": null, "top1_year_boosted": 1},
+{"variant": "A_header_off", "id": "syn-rel-01", "category": "wrong_relation", "query_sha256": "feaa5f916e3bd84542717f12667916567d4c7c8311f2e25cb2be14cb6196e017", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-konfederacja-warszawska#1062", "plwiki-stefan-batory#1084", "plwiki-stefan-batory#1096", "plwiki-stefan-batory#1095", "plwiki-konfederacja-warszawska#1063"], "first_relevant_rank": null, "top1_year_boosted": 0},
+{"variant": "A_header_off", "id": "syn-rel-02", "category": "wrong_relation", "query_sha256": "2baf55e3079cf0f336bd55a89611a4b73c80b7ad9e7789765b3d6d9056efaf49", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-boleslaw-chrobry#0352", "plwiki-boleslaw-chrobry#0351", "plwiki-boleslaw-chrobry#0338", "plwiki-mieszko-i#0333", "plwiki-boleslaw-chrobry#0358"], "first_relevant_rank": null, "top1_year_boosted": 1},
+{"variant": "A_header_off", "id": "syn-rel-03", "category": "wrong_relation", "query_sha256": "4e83849faba5e35cce77c8e9dee835230d4c646793bdf00cad83d571597d4bcb", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-kazimierz-wielki#0512", "plwiki-kazimierz-wielki#0603", "plwiki-kazimierz-wielki#0608", "plwiki-kazimierz-wielki#0609", "plwiki-kazimierz-wielki#0607"], "first_relevant_rank": null, "top1_year_boosted": 0},
+{"variant": "A_header_off", "id": "syn-rel-04", "category": "wrong_relation", "query_sha256": "4d44cbd121338aa54a789e35bc2d4a4cbf8ac33831c7f662ae22fd6e443947ed", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-chrzest-polski#0291", "plwiki-mieszko-i#0297", "plwiki-mieszko-i#0305", "plwiki-mieszko-i#0304", "plwiki-mieszko-i#0299"], "first_relevant_rank": null, "top1_year_boosted": 1},
+{"variant": "A_header_off", "id": "syn-src-04", "category": "supplied_source", "query_sha256": "96aa8a16b7773197398837d8a827c0ac616b83f77cf59f95feab9fab078d4ba0", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-nato#3330", "plwiki-mieszko-i#0296", "plwiki-nato#3329", "plwiki-wojna-polsko-bolszewicka#1848", "plwiki-powstanie-warszawskie#2654"], "first_relevant_rank": null, "top1_year_boosted": 0},
+{"variant": "A_header_off", "id": "syn-src-05", "category": "supplied_source", "query_sha256": "f62ab8155a87819c5e1d50141c3ad5d9c5e8bb0a3b1bc88405bd67d3f2db233e", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-nato#3330", "plwiki-demokracja-atenska#0008", "plwiki-mieszko-i#0326", "plwiki-konstytucja-marcowa#2035", "plwiki-wojna-trzynastoletnia#0678"], "first_relevant_rank": null, "top1_year_boosted": 0},
+{"variant": "A_header_off", "id": "syn-ess-03", "category": "essay", "query_sha256": "c103b54e6f45144a59f634c3eaabd4c43271b664aba79223ea2ed73fddaf8c76", "years": [300], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-unia-w-krewie#0621", "plwiki-polska-w-ue#3354", "plwiki-polska-w-ue#3352", "plwiki-bitwa-warszawska#1988", "plwiki-stan-wojenny#3073"], "first_relevant_rank": null, "top1_year_boosted": 0},
+{"variant": "A_header_off", "id": "syn-ess-04", "category": "essay", "query_sha256": "f4a8b91b152a365ca7c7ee3b429db774cf1af7f919a016d130fef680d936bb13", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-rozbiory-polski#1211", "plwiki-nato#3330", "plwiki-rozbiory-polski#1210", "plwiki-rewolucja-francuska#0970", "plwiki-kampania-wrzesniowa#2327"], "first_relevant_rank": null, "top1_year_boosted": 0},
+{"variant": "A_header_off", "id": "syn-ess-05", "category": "essay", "query_sha256": "a40f119ecfb5aa90a44e122b6f3a7145a448a5c2f6aad18ec5ac5ab3f4b9cc8b", "years": [250], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-stan-wojenny#3073", "plwiki-reformacja#0797", "plwiki-kazimierz-wielki#0611", "plwiki-nato#3330", "plwiki-kazimierz-wielki#0521"], "first_relevant_rank": null, "top1_year_boosted": 0},
 {"variant": "A_header_off", "id": "ret-train-q01", "category": "control_train", "query_sha256": "1e3d7f277076db21e33fed957b4615627b279f4aa0e82873380cc4aa151b41c1", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-kodeks-hammurabiego#0145", "plwiki-kodeks-hammurabiego#0147", "plwiki-kodeks-hammurabiego#0151", "plwiki-kodeks-hammurabiego#0148", "plwiki-kodeks-hammurabiego#0150"], "first_relevant_rank": 1, "top1_year_boosted": 1},
 {"variant": "A_header_off", "id": "ret-train-q01+hdr", "category": "control_train_hdr", "query_sha256": "1e3d7f277076db21e33fed957b4615627b279f4aa0e82873380cc4aa151b41c1", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-kodeks-hammurabiego#0145", "plwiki-kodeks-hammurabiego#0147", "plwiki-kodeks-hammurabiego#0151", "plwiki-kodeks-hammurabiego#0148", "plwiki-kodeks-hammurabiego#0150"], "first_relevant_rank": 1, "top1_year_boosted": 1},
 {"variant": "A_header_off", "id": "ret-train-q02", "category": "control_train", "query_sha256": "cc3d1df03f6d1aa9f77bf762a868bb3c7622f1465995756549c3bc5844d6ce0f", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-demokracja-atenska#0000", "plwiki-demokracja-atenska#0017", "plwiki-demokracja-atenska#0003", "plwiki-demokracja-atenska#0010", "plwiki-demokracja-atenska#0001"], "first_relevant_rank": 1, "top1_year_boosted": 1},
@@ -3195,6 +4236,15 @@
 {"variant": "B_pubnum_mask", "id": "syn-ooc-04", "category": "out_of_corpus", "query_sha256": "30c3b79470090669be67c6acd6daf2621f0b42b8f9349f4a7e078ef47425687c", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-mieszko-i#0299", "plws-konstytucja-marcowa-1921#3432", "plwiki-zbrodnia-katynska#2504", "plwiki-marcin-luter#0847", "plwiki-wielkie-odkrycia-geograficzne#0771"], "first_relevant_rank": null, "top1_year_boosted": 0},
 {"variant": "B_pubnum_mask", "id": "syn-ess-01", "category": "essay", "query_sha256": "8b1ef4417bf4c5204e7d4081a9392c096eacd7f82daa7e6ac50d6ec21d637743", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-konfederacja-targowicka#1256", "plwiki-marcin-luter#0823", "plws-konstytucja-marcowa-1921#3432", "plwiki-zbrodnia-katynska#2504", "plwiki-kampania-wrzesniowa#2332"], "first_relevant_rank": null, "top1_year_boosted": 0},
 {"variant": "B_pubnum_mask", "id": "syn-ess-02", "category": "essay", "query_sha256": "0249fa399307f9bcccbe706c6b121df36276acad99edd20b7d624d92cd09a6a5", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-konfederacja-targowicka#1256", "plwiki-kazimierz-wielki#0590", "plwiki-reformacja#0796", "plwiki-kazimierz-wielki#0594", "plwiki-reformacja#0799"], "first_relevant_rank": null, "top1_year_boosted": 1},
+{"variant": "B_pubnum_mask", "id": "syn-rel-01", "category": "wrong_relation", "query_sha256": "7c4dfc166df683dc1f6b8726b8ae0b7211f00f17c2b4ccd9bac4375538a9ecf0", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-konfederacja-warszawska#1062", "plws-konstytucja-marcowa-1921#3432", "plwiki-konfederacja-warszawska#1063", "plwiki-mieszko-i#0299", "plwiki-zbrodnia-katynska#2504"], "first_relevant_rank": null, "top1_year_boosted": 0},
+{"variant": "B_pubnum_mask", "id": "syn-rel-02", "category": "wrong_relation", "query_sha256": "fe63bd8f9295524bbedc766e0c86f9a4e52c304d547d5ea4e9728ee79dd9559d", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-boleslaw-chrobry#0352", "plwiki-boleslaw-chrobry#0351", "plwiki-boleslaw-chrobry#0338", "plwiki-mieszko-i#0333", "plwiki-boleslaw-chrobry#0357"], "first_relevant_rank": null, "top1_year_boosted": 1},
+{"variant": "B_pubnum_mask", "id": "syn-rel-03", "category": "wrong_relation", "query_sha256": "4bd294bcc64e56d4143ba4f1d96f99ca77ae7b933d894c5d96477b1da1473f43", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-kazimierz-wielki#0608", "plwiki-wojna-polsko-bolszewicka#1848", "plwiki-kazimierz-wielki#0610", "plwiki-kazimierz-wielki#0512", "plwiki-kazimierz-wielki#0508"], "first_relevant_rank": null, "top1_year_boosted": 0},
+{"variant": "B_pubnum_mask", "id": "syn-rel-04", "category": "wrong_relation", "query_sha256": "2db067a9a6de34076fbff669c023fcf7ba83568d3072a09fc6723a10f3934b28", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-chrzest-polski#0291", "plwiki-mieszko-i#0305", "plwiki-chrzest-polski#0288", "plwiki-mieszko-i#0299", "plwiki-chrzest-polski#0263"], "first_relevant_rank": null, "top1_year_boosted": 2},
+{"variant": "B_pubnum_mask", "id": "syn-src-04", "category": "supplied_source", "query_sha256": "bdc2d61fd062f45d948fb4086fb828f4e55ff792a21277d97a041568773da458", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plws-konstytucja-marcowa-1921#3432", "plwiki-zbrodnia-katynska#2504", "plwiki-wielkie-odkrycia-geograficzne#0771", "plwiki-nato#3343", "plwiki-wojna-polsko-bolszewicka#1848"], "first_relevant_rank": null, "top1_year_boosted": 0},
+{"variant": "B_pubnum_mask", "id": "syn-src-05", "category": "supplied_source", "query_sha256": "fccbb7fe9cf8e27cf34d092f6164fa54046d3fe1ac0f9a2df6e37c3fd9ce0b42", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-zbrodnia-katynska#2504", "plwiki-powstanie-styczniowe#1472", "plwiki-demokracja-atenska#0009", "plws-konstytucja-marcowa-1921#3432", "plwiki-rozbiory-polski#1216"], "first_relevant_rank": null, "top1_year_boosted": 0},
+{"variant": "B_pubnum_mask", "id": "syn-ess-03", "category": "essay", "query_sha256": "d146d401f5bf77b7eb208efc0ae9cdbb759745694d76ea34af6c1860bda35aff", "years": [300], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-zbrodnia-katynska#2504", "plwiki-nato#3343", "plwiki-marcin-luter#0817", "plwiki-polska-w-ue#3354", "plwiki-unia-w-krewie#0621"], "first_relevant_rank": null, "top1_year_boosted": 0},
+{"variant": "B_pubnum_mask", "id": "syn-ess-04", "category": "essay", "query_sha256": "acf1effbcb94c854983e5be2efdbf95d4346cf46e349853c95c245a03a278d8f", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-konfederacja-targowicka#1256", "plwiki-konstytucja-marcowa#2034", "plwiki-rozbiory-polski#1211", "plwiki-konstytucja-marcowa#2033", "plwiki-rozbiory-polski#1210"], "first_relevant_rank": null, "top1_year_boosted": 0},
+{"variant": "B_pubnum_mask", "id": "syn-ess-05", "category": "essay", "query_sha256": "82ab18f1ad7b4a75b3844cee4f3a5adf623780f46bb222332d32c38169f3d0c4", "years": [250], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-marcin-luter#0817", "plwiki-wielkie-odkrycia-geograficzne#0771", "plwiki-kazimierz-wielki#0542", "plwiki-kazimierz-wielki#0568", "plwiki-kazimierz-wielki#0611"], "first_relevant_rank": null, "top1_year_boosted": 0},
 {"variant": "B_pubnum_mask", "id": "ret-train-q01", "category": "control_train", "query_sha256": "1e3d7f277076db21e33fed957b4615627b279f4aa0e82873380cc4aa151b41c1", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-kodeks-hammurabiego#0145", "plwiki-kodeks-hammurabiego#0147", "plwiki-kodeks-hammurabiego#0151", "plwiki-kodeks-hammurabiego#0148", "plwiki-kodeks-hammurabiego#0150"], "first_relevant_rank": 1, "top1_year_boosted": 1},
 {"variant": "B_pubnum_mask", "id": "ret-train-q01+hdr", "category": "control_train_hdr", "query_sha256": "e6ba9e10420f1c5c237b371c998723374c20f6fd59dffb7276c2aa93418e0ef6", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-kodeks-hammurabiego#0148", "plwiki-kodeks-hammurabiego#0145", "plwiki-kodeks-hammurabiego#0151", "plwiki-kodeks-hammurabiego#0147", "plwiki-kodeks-hammurabiego#0150"], "first_relevant_rank": 1, "top1_year_boosted": 1},
 {"variant": "B_pubnum_mask", "id": "ret-train-q02", "category": "control_train", "query_sha256": "cc3d1df03f6d1aa9f77bf762a868bb3c7622f1465995756549c3bc5844d6ce0f", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-demokracja-atenska#0000", "plwiki-demokracja-atenska#0017", "plwiki-demokracja-atenska#0003", "plwiki-demokracja-atenska#0010", "plwiki-demokracja-atenska#0001"], "first_relevant_rank": 1, "top1_year_boosted": 1},
@@ -3303,6 +4353,15 @@
 {"variant": "C_yearboost_off", "id": "syn-ooc-04", "category": "out_of_corpus", "query_sha256": "30c3b79470090669be67c6acd6daf2621f0b42b8f9349f4a7e078ef47425687c", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-mieszko-i#0299", "plws-konstytucja-marcowa-1921#3432", "plwiki-zbrodnia-katynska#2504", "plwiki-marcin-luter#0847", "plwiki-wielkie-odkrycia-geograficzne#0771"], "first_relevant_rank": null, "top1_year_boosted": 0},
 {"variant": "C_yearboost_off", "id": "syn-ess-01", "category": "essay", "query_sha256": "8b1ef4417bf4c5204e7d4081a9392c096eacd7f82daa7e6ac50d6ec21d637743", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-konfederacja-targowicka#1256", "plwiki-marcin-luter#0823", "plws-konstytucja-marcowa-1921#3432", "plwiki-zbrodnia-katynska#2504", "plwiki-kampania-wrzesniowa#2332"], "first_relevant_rank": null, "top1_year_boosted": 0},
 {"variant": "C_yearboost_off", "id": "syn-ess-02", "category": "essay", "query_sha256": "0249fa399307f9bcccbe706c6b121df36276acad99edd20b7d624d92cd09a6a5", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-konfederacja-targowicka#1256", "plwiki-kazimierz-wielki#0590", "plwiki-reformacja#0796", "plwiki-kazimierz-wielki#0594", "plwiki-reformacja#0799"], "first_relevant_rank": null, "top1_year_boosted": 1},
+{"variant": "C_yearboost_off", "id": "syn-rel-01", "category": "wrong_relation", "query_sha256": "7c4dfc166df683dc1f6b8726b8ae0b7211f00f17c2b4ccd9bac4375538a9ecf0", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-konfederacja-warszawska#1062", "plws-konstytucja-marcowa-1921#3432", "plwiki-konfederacja-warszawska#1063", "plwiki-mieszko-i#0299", "plwiki-zbrodnia-katynska#2504"], "first_relevant_rank": null, "top1_year_boosted": 0},
+{"variant": "C_yearboost_off", "id": "syn-rel-02", "category": "wrong_relation", "query_sha256": "fe63bd8f9295524bbedc766e0c86f9a4e52c304d547d5ea4e9728ee79dd9559d", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-boleslaw-chrobry#0352", "plwiki-boleslaw-chrobry#0351", "plwiki-boleslaw-chrobry#0338", "plwiki-mieszko-i#0333", "plwiki-boleslaw-chrobry#0357"], "first_relevant_rank": null, "top1_year_boosted": 1},
+{"variant": "C_yearboost_off", "id": "syn-rel-03", "category": "wrong_relation", "query_sha256": "4bd294bcc64e56d4143ba4f1d96f99ca77ae7b933d894c5d96477b1da1473f43", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-kazimierz-wielki#0608", "plwiki-wojna-polsko-bolszewicka#1848", "plwiki-kazimierz-wielki#0610", "plwiki-kazimierz-wielki#0512", "plwiki-kazimierz-wielki#0508"], "first_relevant_rank": null, "top1_year_boosted": 0},
+{"variant": "C_yearboost_off", "id": "syn-rel-04", "category": "wrong_relation", "query_sha256": "2db067a9a6de34076fbff669c023fcf7ba83568d3072a09fc6723a10f3934b28", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-chrzest-polski#0291", "plwiki-mieszko-i#0305", "plwiki-chrzest-polski#0288", "plwiki-mieszko-i#0299", "plwiki-chrzest-polski#0263"], "first_relevant_rank": null, "top1_year_boosted": 2},
+{"variant": "C_yearboost_off", "id": "syn-src-04", "category": "supplied_source", "query_sha256": "bdc2d61fd062f45d948fb4086fb828f4e55ff792a21277d97a041568773da458", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plws-konstytucja-marcowa-1921#3432", "plwiki-zbrodnia-katynska#2504", "plwiki-wielkie-odkrycia-geograficzne#0771", "plwiki-nato#3343", "plwiki-wojna-polsko-bolszewicka#1848"], "first_relevant_rank": null, "top1_year_boosted": 0},
+{"variant": "C_yearboost_off", "id": "syn-src-05", "category": "supplied_source", "query_sha256": "fccbb7fe9cf8e27cf34d092f6164fa54046d3fe1ac0f9a2df6e37c3fd9ce0b42", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-zbrodnia-katynska#2504", "plwiki-powstanie-styczniowe#1472", "plwiki-demokracja-atenska#0009", "plws-konstytucja-marcowa-1921#3432", "plwiki-rozbiory-polski#1216"], "first_relevant_rank": null, "top1_year_boosted": 0},
+{"variant": "C_yearboost_off", "id": "syn-ess-03", "category": "essay", "query_sha256": "d146d401f5bf77b7eb208efc0ae9cdbb759745694d76ea34af6c1860bda35aff", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-zbrodnia-katynska#2504", "plwiki-nato#3343", "plwiki-marcin-luter#0817", "plwiki-polska-w-ue#3354", "plwiki-unia-w-krewie#0621"], "first_relevant_rank": null, "top1_year_boosted": 0},
+{"variant": "C_yearboost_off", "id": "syn-ess-04", "category": "essay", "query_sha256": "acf1effbcb94c854983e5be2efdbf95d4346cf46e349853c95c245a03a278d8f", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-konfederacja-targowicka#1256", "plwiki-konstytucja-marcowa#2034", "plwiki-rozbiory-polski#1211", "plwiki-konstytucja-marcowa#2033", "plwiki-rozbiory-polski#1210"], "first_relevant_rank": null, "top1_year_boosted": 0},
+{"variant": "C_yearboost_off", "id": "syn-ess-05", "category": "essay", "query_sha256": "82ab18f1ad7b4a75b3844cee4f3a5adf623780f46bb222332d32c38169f3d0c4", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-marcin-luter#0817", "plwiki-wielkie-odkrycia-geograficzne#0771", "plwiki-kazimierz-wielki#0542", "plwiki-kazimierz-wielki#0568", "plwiki-kazimierz-wielki#0611"], "first_relevant_rank": null, "top1_year_boosted": 0},
 {"variant": "C_yearboost_off", "id": "ret-train-q01", "category": "control_train", "query_sha256": "1e3d7f277076db21e33fed957b4615627b279f4aa0e82873380cc4aa151b41c1", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-kodeks-hammurabiego#0145", "plwiki-kodeks-hammurabiego#0147", "plwiki-kodeks-hammurabiego#0151", "plwiki-kodeks-hammurabiego#0148", "plwiki-kodeks-hammurabiego#0150"], "first_relevant_rank": 1, "top1_year_boosted": 1},
 {"variant": "C_yearboost_off", "id": "ret-train-q01+hdr", "category": "control_train_hdr", "query_sha256": "e6ba9e10420f1c5c237b371c998723374c20f6fd59dffb7276c2aa93418e0ef6", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-kodeks-hammurabiego#0148", "plwiki-kodeks-hammurabiego#0145", "plwiki-kodeks-hammurabiego#0151", "plwiki-kodeks-hammurabiego#0147", "plwiki-kodeks-hammurabiego#0150"], "first_relevant_rank": 1, "top1_year_boosted": 1},
 {"variant": "C_yearboost_off", "id": "ret-train-q02", "category": "control_train", "query_sha256": "cc3d1df03f6d1aa9f77bf762a868bb3c7622f1465995756549c3bc5844d6ce0f", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-demokracja-atenska#0000", "plwiki-demokracja-atenska#0017", "plwiki-demokracja-atenska#0003", "plwiki-demokracja-atenska#0010", "plwiki-demokracja-atenska#0001"], "first_relevant_rank": 1, "top1_year_boosted": 1},
@@ -3411,6 +4470,15 @@
 {"variant": "C2_bm25", "id": "syn-ooc-04", "category": "out_of_corpus", "query_sha256": "30c3b79470090669be67c6acd6daf2621f0b42b8f9349f4a7e078ef47425687c", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-mieszko-i#0299", "plws-konstytucja-marcowa-1921#3432", "plwiki-zbrodnia-katynska#2504", "plwiki-marcin-luter#0847", "plwiki-wielkie-odkrycia-geograficzne#0771"], "first_relevant_rank": null, "top1_year_boosted": 0},
 {"variant": "C2_bm25", "id": "syn-ess-01", "category": "essay", "query_sha256": "8b1ef4417bf4c5204e7d4081a9392c096eacd7f82daa7e6ac50d6ec21d637743", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-konfederacja-targowicka#1256", "plwiki-marcin-luter#0823", "plws-konstytucja-marcowa-1921#3432", "plwiki-zbrodnia-katynska#2504", "plwiki-kampania-wrzesniowa#2332"], "first_relevant_rank": null, "top1_year_boosted": 0},
 {"variant": "C2_bm25", "id": "syn-ess-02", "category": "essay", "query_sha256": "0249fa399307f9bcccbe706c6b121df36276acad99edd20b7d624d92cd09a6a5", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-konfederacja-targowicka#1256", "plwiki-zbrodnia-katynska#2505", "plwiki-kazimierz-wielki#0611", "plwiki-kazimierz-wielki#0590", "plwiki-kazimierz-wielki#0516"], "first_relevant_rank": null, "top1_year_boosted": 0},
+{"variant": "C2_bm25", "id": "syn-rel-01", "category": "wrong_relation", "query_sha256": "7c4dfc166df683dc1f6b8726b8ae0b7211f00f17c2b4ccd9bac4375538a9ecf0", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-konfederacja-warszawska#1062", "plws-konstytucja-marcowa-1921#3432", "plwiki-konfederacja-warszawska#1063", "plwiki-mieszko-i#0299", "plwiki-zbrodnia-katynska#2504"], "first_relevant_rank": null, "top1_year_boosted": 0},
+{"variant": "C2_bm25", "id": "syn-rel-02", "category": "wrong_relation", "query_sha256": "fe63bd8f9295524bbedc766e0c86f9a4e52c304d547d5ea4e9728ee79dd9559d", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-boleslaw-chrobry#0352", "plwiki-boleslaw-chrobry#0351", "plwiki-boleslaw-chrobry#0338", "plwiki-mieszko-i#0333", "plwiki-boleslaw-chrobry#0356"], "first_relevant_rank": null, "top1_year_boosted": 0},
+{"variant": "C2_bm25", "id": "syn-rel-03", "category": "wrong_relation", "query_sha256": "4bd294bcc64e56d4143ba4f1d96f99ca77ae7b933d894c5d96477b1da1473f43", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-kazimierz-wielki#0608", "plwiki-wojna-polsko-bolszewicka#1848", "plwiki-kazimierz-wielki#0610", "plwiki-kazimierz-wielki#0512", "plwiki-kazimierz-wielki#0508"], "first_relevant_rank": null, "top1_year_boosted": 0},
+{"variant": "C2_bm25", "id": "syn-rel-04", "category": "wrong_relation", "query_sha256": "2db067a9a6de34076fbff669c023fcf7ba83568d3072a09fc6723a10f3934b28", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-chrzest-polski#0291", "plwiki-mieszko-i#0305", "plwiki-mieszko-i#0299", "plwiki-chrzest-polski#0289", "plwiki-mieszko-i#0297"], "first_relevant_rank": null, "top1_year_boosted": 0},
+{"variant": "C2_bm25", "id": "syn-src-04", "category": "supplied_source", "query_sha256": "bdc2d61fd062f45d948fb4086fb828f4e55ff792a21277d97a041568773da458", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plws-konstytucja-marcowa-1921#3432", "plwiki-zbrodnia-katynska#2504", "plwiki-wielkie-odkrycia-geograficzne#0771", "plwiki-nato#3343", "plwiki-wojna-polsko-bolszewicka#1848"], "first_relevant_rank": null, "top1_year_boosted": 0},
+{"variant": "C2_bm25", "id": "syn-src-05", "category": "supplied_source", "query_sha256": "fccbb7fe9cf8e27cf34d092f6164fa54046d3fe1ac0f9a2df6e37c3fd9ce0b42", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-zbrodnia-katynska#2504", "plwiki-powstanie-styczniowe#1472", "plwiki-demokracja-atenska#0009", "plws-konstytucja-marcowa-1921#3432", "plwiki-rozbiory-polski#1216"], "first_relevant_rank": null, "top1_year_boosted": 0},
+{"variant": "C2_bm25", "id": "syn-ess-03", "category": "essay", "query_sha256": "d146d401f5bf77b7eb208efc0ae9cdbb759745694d76ea34af6c1860bda35aff", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-zbrodnia-katynska#2504", "plwiki-nato#3343", "plwiki-marcin-luter#0817", "plwiki-polska-w-ue#3354", "plwiki-unia-w-krewie#0621"], "first_relevant_rank": null, "top1_year_boosted": 0},
+{"variant": "C2_bm25", "id": "syn-ess-04", "category": "essay", "query_sha256": "acf1effbcb94c854983e5be2efdbf95d4346cf46e349853c95c245a03a278d8f", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-konfederacja-targowicka#1256", "plwiki-konstytucja-marcowa#2034", "plwiki-rozbiory-polski#1211", "plwiki-konstytucja-marcowa#2033", "plwiki-rozbiory-polski#1210"], "first_relevant_rank": null, "top1_year_boosted": 0},
+{"variant": "C2_bm25", "id": "syn-ess-05", "category": "essay", "query_sha256": "82ab18f1ad7b4a75b3844cee4f3a5adf623780f46bb222332d32c38169f3d0c4", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-marcin-luter#0817", "plwiki-wielkie-odkrycia-geograficzne#0771", "plwiki-kazimierz-wielki#0542", "plwiki-kazimierz-wielki#0568", "plwiki-kazimierz-wielki#0611"], "first_relevant_rank": null, "top1_year_boosted": 0},
 {"variant": "C2_bm25", "id": "ret-train-q01", "category": "control_train", "query_sha256": "1e3d7f277076db21e33fed957b4615627b279f4aa0e82873380cc4aa151b41c1", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-kodeks-hammurabiego#0145", "plwiki-kodeks-hammurabiego#0147", "plwiki-kodeks-hammurabiego#0151", "plwiki-kodeks-hammurabiego#0148", "plwiki-kodeks-hammurabiego#0150"], "first_relevant_rank": 1, "top1_year_boosted": 0},
 {"variant": "C2_bm25", "id": "ret-train-q01+hdr", "category": "control_train_hdr", "query_sha256": "e6ba9e10420f1c5c237b371c998723374c20f6fd59dffb7276c2aa93418e0ef6", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-kodeks-hammurabiego#0148", "plwiki-kodeks-hammurabiego#0145", "plwiki-kodeks-hammurabiego#0151", "plwiki-kodeks-hammurabiego#0147", "plwiki-kodeks-hammurabiego#0150"], "first_relevant_rank": 1, "top1_year_boosted": 0},
 {"variant": "C2_bm25", "id": "ret-train-q02", "category": "control_train", "query_sha256": "cc3d1df03f6d1aa9f77bf762a868bb3c7622f1465995756549c3bc5844d6ce0f", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-demokracja-atenska#0000", "plwiki-demokracja-atenska#0017", "plwiki-demokracja-atenska#0015", "plwiki-demokracja-atenska#0019", "plwiki-demokracja-atenska#0003"], "first_relevant_rank": 1, "top1_year_boosted": 0},
@@ -3519,6 +4587,15 @@
 {"variant": "D_bib_drop", "id": "syn-ooc-04", "category": "out_of_corpus", "query_sha256": "30c3b79470090669be67c6acd6daf2621f0b42b8f9349f4a7e078ef47425687c", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-mieszko-i#0299", "plws-konstytucja-marcowa-1921#3432", "plwiki-zbrodnia-katynska#2504", "plwiki-marcin-luter#0847", "plwiki-wielkie-odkrycia-geograficzne#0771"], "first_relevant_rank": null, "top1_year_boosted": 0},
 {"variant": "D_bib_drop", "id": "syn-ess-01", "category": "essay", "query_sha256": "8b1ef4417bf4c5204e7d4081a9392c096eacd7f82daa7e6ac50d6ec21d637743", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-konfederacja-targowicka#1256", "plwiki-marcin-luter#0823", "plws-konstytucja-marcowa-1921#3432", "plwiki-zbrodnia-katynska#2504", "plwiki-kampania-wrzesniowa#2332"], "first_relevant_rank": null, "top1_year_boosted": 0},
 {"variant": "D_bib_drop", "id": "syn-ess-02", "category": "essay", "query_sha256": "0249fa399307f9bcccbe706c6b121df36276acad99edd20b7d624d92cd09a6a5", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-konfederacja-targowicka#1256", "plwiki-kazimierz-wielki#0590", "plwiki-reformacja#0796", "plwiki-kazimierz-wielki#0594", "plwiki-reformacja#0799"], "first_relevant_rank": null, "top1_year_boosted": 1},
+{"variant": "D_bib_drop", "id": "syn-rel-01", "category": "wrong_relation", "query_sha256": "7c4dfc166df683dc1f6b8726b8ae0b7211f00f17c2b4ccd9bac4375538a9ecf0", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-konfederacja-warszawska#1062", "plws-konstytucja-marcowa-1921#3432", "plwiki-konfederacja-warszawska#1063", "plwiki-mieszko-i#0299", "plwiki-zbrodnia-katynska#2504"], "first_relevant_rank": null, "top1_year_boosted": 0},
+{"variant": "D_bib_drop", "id": "syn-rel-02", "category": "wrong_relation", "query_sha256": "fe63bd8f9295524bbedc766e0c86f9a4e52c304d547d5ea4e9728ee79dd9559d", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-boleslaw-chrobry#0352", "plwiki-boleslaw-chrobry#0351", "plwiki-boleslaw-chrobry#0338", "plwiki-mieszko-i#0333", "plwiki-boleslaw-chrobry#0357"], "first_relevant_rank": null, "top1_year_boosted": 1},
+{"variant": "D_bib_drop", "id": "syn-rel-03", "category": "wrong_relation", "query_sha256": "4bd294bcc64e56d4143ba4f1d96f99ca77ae7b933d894c5d96477b1da1473f43", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-kazimierz-wielki#0608", "plwiki-wojna-polsko-bolszewicka#1848", "plwiki-kazimierz-wielki#0610", "plwiki-kazimierz-wielki#0512", "plwiki-kazimierz-wielki#0508"], "first_relevant_rank": null, "top1_year_boosted": 0},
+{"variant": "D_bib_drop", "id": "syn-rel-04", "category": "wrong_relation", "query_sha256": "2db067a9a6de34076fbff669c023fcf7ba83568d3072a09fc6723a10f3934b28", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-chrzest-polski#0291", "plwiki-mieszko-i#0305", "plwiki-chrzest-polski#0288", "plwiki-mieszko-i#0299", "plwiki-chrzest-polski#0263"], "first_relevant_rank": null, "top1_year_boosted": 2},
+{"variant": "D_bib_drop", "id": "syn-src-04", "category": "supplied_source", "query_sha256": "bdc2d61fd062f45d948fb4086fb828f4e55ff792a21277d97a041568773da458", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plws-konstytucja-marcowa-1921#3432", "plwiki-zbrodnia-katynska#2504", "plwiki-wielkie-odkrycia-geograficzne#0771", "plwiki-nato#3343", "plwiki-wojna-polsko-bolszewicka#1848"], "first_relevant_rank": null, "top1_year_boosted": 0},
+{"variant": "D_bib_drop", "id": "syn-src-05", "category": "supplied_source", "query_sha256": "fccbb7fe9cf8e27cf34d092f6164fa54046d3fe1ac0f9a2df6e37c3fd9ce0b42", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-zbrodnia-katynska#2504", "plwiki-powstanie-styczniowe#1472", "plwiki-demokracja-atenska#0009", "plws-konstytucja-marcowa-1921#3432", "plwiki-rozbiory-polski#1216"], "first_relevant_rank": null, "top1_year_boosted": 0},
+{"variant": "D_bib_drop", "id": "syn-ess-03", "category": "essay", "query_sha256": "d146d401f5bf77b7eb208efc0ae9cdbb759745694d76ea34af6c1860bda35aff", "years": [300], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-zbrodnia-katynska#2504", "plwiki-nato#3343", "plwiki-marcin-luter#0817", "plwiki-polska-w-ue#3354", "plwiki-unia-w-krewie#0621"], "first_relevant_rank": null, "top1_year_boosted": 0},
+{"variant": "D_bib_drop", "id": "syn-ess-04", "category": "essay", "query_sha256": "acf1effbcb94c854983e5be2efdbf95d4346cf46e349853c95c245a03a278d8f", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-konfederacja-targowicka#1256", "plwiki-konstytucja-marcowa#2034", "plwiki-rozbiory-polski#1211", "plwiki-konstytucja-marcowa#2033", "plwiki-rozbiory-polski#1210"], "first_relevant_rank": null, "top1_year_boosted": 0},
+{"variant": "D_bib_drop", "id": "syn-ess-05", "category": "essay", "query_sha256": "82ab18f1ad7b4a75b3844cee4f3a5adf623780f46bb222332d32c38169f3d0c4", "years": [250], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-marcin-luter#0817", "plwiki-wielkie-odkrycia-geograficzne#0771", "plwiki-kazimierz-wielki#0542", "plwiki-kazimierz-wielki#0568", "plwiki-kazimierz-wielki#0611"], "first_relevant_rank": null, "top1_year_boosted": 0},
 {"variant": "D_bib_drop", "id": "ret-train-q01", "category": "control_train", "query_sha256": "1e3d7f277076db21e33fed957b4615627b279f4aa0e82873380cc4aa151b41c1", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-kodeks-hammurabiego#0145", "plwiki-kodeks-hammurabiego#0147", "plwiki-kodeks-hammurabiego#0151", "plwiki-kodeks-hammurabiego#0148", "plwiki-kodeks-hammurabiego#0150"], "first_relevant_rank": 1, "top1_year_boosted": 1},
 {"variant": "D_bib_drop", "id": "ret-train-q01+hdr", "category": "control_train_hdr", "query_sha256": "e6ba9e10420f1c5c237b371c998723374c20f6fd59dffb7276c2aa93418e0ef6", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-kodeks-hammurabiego#0148", "plwiki-kodeks-hammurabiego#0145", "plwiki-kodeks-hammurabiego#0151", "plwiki-kodeks-hammurabiego#0147", "plwiki-kodeks-hammurabiego#0150"], "first_relevant_rank": 1, "top1_year_boosted": 1},
 {"variant": "D_bib_drop", "id": "ret-train-q02", "category": "control_train", "query_sha256": "cc3d1df03f6d1aa9f77bf762a868bb3c7622f1465995756549c3bc5844d6ce0f", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-demokracja-atenska#0000", "plwiki-demokracja-atenska#0017", "plwiki-demokracja-atenska#0003", "plwiki-demokracja-atenska#0010", "plwiki-demokracja-atenska#0001"], "first_relevant_rank": 1, "top1_year_boosted": 1},
@@ -3627,6 +4704,15 @@
 {"variant": "E_bce_aware", "id": "syn-ooc-04", "category": "out_of_corpus", "query_sha256": "30c3b79470090669be67c6acd6daf2621f0b42b8f9349f4a7e078ef47425687c", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-mieszko-i#0299", "plws-konstytucja-marcowa-1921#3432", "plwiki-zbrodnia-katynska#2504", "plwiki-marcin-luter#0847", "plwiki-wielkie-odkrycia-geograficzne#0771"], "first_relevant_rank": null, "top1_year_boosted": 0},
 {"variant": "E_bce_aware", "id": "syn-ess-01", "category": "essay", "query_sha256": "8b1ef4417bf4c5204e7d4081a9392c096eacd7f82daa7e6ac50d6ec21d637743", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-konfederacja-targowicka#1256", "plwiki-marcin-luter#0823", "plws-konstytucja-marcowa-1921#3432", "plwiki-zbrodnia-katynska#2504", "plwiki-kampania-wrzesniowa#2332"], "first_relevant_rank": null, "top1_year_boosted": 0},
 {"variant": "E_bce_aware", "id": "syn-ess-02", "category": "essay", "query_sha256": "0249fa399307f9bcccbe706c6b121df36276acad99edd20b7d624d92cd09a6a5", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-konfederacja-targowicka#1256", "plwiki-kazimierz-wielki#0590", "plwiki-reformacja#0796", "plwiki-kazimierz-wielki#0594", "plwiki-reformacja#0799"], "first_relevant_rank": null, "top1_year_boosted": 1},
+{"variant": "E_bce_aware", "id": "syn-rel-01", "category": "wrong_relation", "query_sha256": "7c4dfc166df683dc1f6b8726b8ae0b7211f00f17c2b4ccd9bac4375538a9ecf0", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-konfederacja-warszawska#1062", "plws-konstytucja-marcowa-1921#3432", "plwiki-konfederacja-warszawska#1063", "plwiki-mieszko-i#0299", "plwiki-zbrodnia-katynska#2504"], "first_relevant_rank": null, "top1_year_boosted": 0},
+{"variant": "E_bce_aware", "id": "syn-rel-02", "category": "wrong_relation", "query_sha256": "fe63bd8f9295524bbedc766e0c86f9a4e52c304d547d5ea4e9728ee79dd9559d", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-boleslaw-chrobry#0352", "plwiki-boleslaw-chrobry#0351", "plwiki-boleslaw-chrobry#0338", "plwiki-mieszko-i#0333", "plwiki-boleslaw-chrobry#0357"], "first_relevant_rank": null, "top1_year_boosted": 1},
+{"variant": "E_bce_aware", "id": "syn-rel-03", "category": "wrong_relation", "query_sha256": "4bd294bcc64e56d4143ba4f1d96f99ca77ae7b933d894c5d96477b1da1473f43", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-kazimierz-wielki#0608", "plwiki-wojna-polsko-bolszewicka#1848", "plwiki-kazimierz-wielki#0610", "plwiki-kazimierz-wielki#0512", "plwiki-kazimierz-wielki#0508"], "first_relevant_rank": null, "top1_year_boosted": 0},
+{"variant": "E_bce_aware", "id": "syn-rel-04", "category": "wrong_relation", "query_sha256": "2db067a9a6de34076fbff669c023fcf7ba83568d3072a09fc6723a10f3934b28", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-chrzest-polski#0291", "plwiki-mieszko-i#0305", "plwiki-chrzest-polski#0288", "plwiki-mieszko-i#0299", "plwiki-chrzest-polski#0263"], "first_relevant_rank": null, "top1_year_boosted": 2},
+{"variant": "E_bce_aware", "id": "syn-src-04", "category": "supplied_source", "query_sha256": "bdc2d61fd062f45d948fb4086fb828f4e55ff792a21277d97a041568773da458", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plws-konstytucja-marcowa-1921#3432", "plwiki-zbrodnia-katynska#2504", "plwiki-wielkie-odkrycia-geograficzne#0771", "plwiki-nato#3343", "plwiki-wojna-polsko-bolszewicka#1848"], "first_relevant_rank": null, "top1_year_boosted": 0},
+{"variant": "E_bce_aware", "id": "syn-src-05", "category": "supplied_source", "query_sha256": "fccbb7fe9cf8e27cf34d092f6164fa54046d3fe1ac0f9a2df6e37c3fd9ce0b42", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-zbrodnia-katynska#2504", "plwiki-powstanie-styczniowe#1472", "plwiki-demokracja-atenska#0009", "plws-konstytucja-marcowa-1921#3432", "plwiki-rozbiory-polski#1216"], "first_relevant_rank": null, "top1_year_boosted": 0},
+{"variant": "E_bce_aware", "id": "syn-ess-03", "category": "essay", "query_sha256": "d146d401f5bf77b7eb208efc0ae9cdbb759745694d76ea34af6c1860bda35aff", "years": [300], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-zbrodnia-katynska#2504", "plwiki-nato#3343", "plwiki-marcin-luter#0817", "plwiki-polska-w-ue#3354", "plwiki-unia-w-krewie#0621"], "first_relevant_rank": null, "top1_year_boosted": 0},
+{"variant": "E_bce_aware", "id": "syn-ess-04", "category": "essay", "query_sha256": "acf1effbcb94c854983e5be2efdbf95d4346cf46e349853c95c245a03a278d8f", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-konfederacja-targowicka#1256", "plwiki-konstytucja-marcowa#2034", "plwiki-rozbiory-polski#1211", "plwiki-konstytucja-marcowa#2033", "plwiki-rozbiory-polski#1210"], "first_relevant_rank": null, "top1_year_boosted": 0},
+{"variant": "E_bce_aware", "id": "syn-ess-05", "category": "essay", "query_sha256": "82ab18f1ad7b4a75b3844cee4f3a5adf623780f46bb222332d32c38169f3d0c4", "years": [250], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-marcin-luter#0817", "plwiki-wielkie-odkrycia-geograficzne#0771", "plwiki-kazimierz-wielki#0542", "plwiki-kazimierz-wielki#0568", "plwiki-kazimierz-wielki#0611"], "first_relevant_rank": null, "top1_year_boosted": 0},
 {"variant": "E_bce_aware", "id": "ret-train-q01", "category": "control_train", "query_sha256": "1e3d7f277076db21e33fed957b4615627b279f4aa0e82873380cc4aa151b41c1", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-kodeks-hammurabiego#0145", "plwiki-kodeks-hammurabiego#0147", "plwiki-kodeks-hammurabiego#0151", "plwiki-kodeks-hammurabiego#0148", "plwiki-kodeks-hammurabiego#0150"], "first_relevant_rank": 1, "top1_year_boosted": 1},
 {"variant": "E_bce_aware", "id": "ret-train-q01+hdr", "category": "control_train_hdr", "query_sha256": "e6ba9e10420f1c5c237b371c998723374c20f6fd59dffb7276c2aa93418e0ef6", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-kodeks-hammurabiego#0148", "plwiki-kodeks-hammurabiego#0145", "plwiki-kodeks-hammurabiego#0151", "plwiki-kodeks-hammurabiego#0147", "plwiki-kodeks-hammurabiego#0150"], "first_relevant_rank": 1, "top1_year_boosted": 1},
 {"variant": "E_bce_aware", "id": "ret-train-q02", "category": "control_train", "query_sha256": "cc3d1df03f6d1aa9f77bf762a868bb3c7622f1465995756549c3bc5844d6ce0f", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-demokracja-atenska#0000", "plwiki-demokracja-atenska#0017", "plwiki-demokracja-atenska#0003", "plwiki-demokracja-atenska#0010", "plwiki-demokracja-atenska#0001"], "first_relevant_rank": 1, "top1_year_boosted": 1},
@@ -3735,6 +4821,15 @@
 {"variant": "F_A+B+E", "id": "syn-ooc-04", "category": "out_of_corpus", "query_sha256": "8902b8687a5a43a808f4ce97c6e3466dfbb7853d16be77caea518e8dc92e9a18", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-mieszko-i#0299", "plwiki-mieszko-i#0297", "plwiki-chrzest-polski#0291", "plwiki-nato#3330", "plwiki-powstanie-w-getcie-warszawskim#2577"], "first_relevant_rank": null, "top1_year_boosted": 0},
 {"variant": "F_A+B+E", "id": "syn-ess-01", "category": "essay", "query_sha256": "32975efeb984410c56164905a68f08b2b0a2cdb277d0a4309d33ad51ece0a98d", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-rewolucja-francuska#0926", "plwiki-konfederacja-targowicka#1256", "plwiki-nato#3329", "plwiki-konstytucja-marcowa#2030", "plwiki-rewolucja-francuska#0983"], "first_relevant_rank": null, "top1_year_boosted": 0},
 {"variant": "F_A+B+E", "id": "syn-ess-02", "category": "essay", "query_sha256": "c33f844f038419da272cbab84a2953b0db1dc98954bb65d4d7d606cc57e3f5ee", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-reformacja#0802", "plwiki-kazimierz-wielki#0594", "plwiki-kazimierz-wielki#0591", "plwiki-reformacja#0799", "plwiki-kazimierz-wielki#0512"], "first_relevant_rank": null, "top1_year_boosted": 1},
+{"variant": "F_A+B+E", "id": "syn-rel-01", "category": "wrong_relation", "query_sha256": "feaa5f916e3bd84542717f12667916567d4c7c8311f2e25cb2be14cb6196e017", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-konfederacja-warszawska#1062", "plwiki-stefan-batory#1084", "plwiki-stefan-batory#1096", "plwiki-stefan-batory#1095", "plwiki-konfederacja-warszawska#1063"], "first_relevant_rank": null, "top1_year_boosted": 0},
+{"variant": "F_A+B+E", "id": "syn-rel-02", "category": "wrong_relation", "query_sha256": "2baf55e3079cf0f336bd55a89611a4b73c80b7ad9e7789765b3d6d9056efaf49", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-boleslaw-chrobry#0352", "plwiki-boleslaw-chrobry#0351", "plwiki-boleslaw-chrobry#0338", "plwiki-mieszko-i#0333", "plwiki-boleslaw-chrobry#0358"], "first_relevant_rank": null, "top1_year_boosted": 1},
+{"variant": "F_A+B+E", "id": "syn-rel-03", "category": "wrong_relation", "query_sha256": "4e83849faba5e35cce77c8e9dee835230d4c646793bdf00cad83d571597d4bcb", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-kazimierz-wielki#0512", "plwiki-kazimierz-wielki#0603", "plwiki-kazimierz-wielki#0608", "plwiki-kazimierz-wielki#0609", "plwiki-kazimierz-wielki#0607"], "first_relevant_rank": null, "top1_year_boosted": 0},
+{"variant": "F_A+B+E", "id": "syn-rel-04", "category": "wrong_relation", "query_sha256": "4d44cbd121338aa54a789e35bc2d4a4cbf8ac33831c7f662ae22fd6e443947ed", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-chrzest-polski#0291", "plwiki-mieszko-i#0297", "plwiki-mieszko-i#0305", "plwiki-mieszko-i#0304", "plwiki-mieszko-i#0299"], "first_relevant_rank": null, "top1_year_boosted": 1},
+{"variant": "F_A+B+E", "id": "syn-src-04", "category": "supplied_source", "query_sha256": "96aa8a16b7773197398837d8a827c0ac616b83f77cf59f95feab9fab078d4ba0", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-nato#3330", "plwiki-mieszko-i#0296", "plwiki-nato#3329", "plwiki-wojna-polsko-bolszewicka#1848", "plwiki-powstanie-warszawskie#2654"], "first_relevant_rank": null, "top1_year_boosted": 0},
+{"variant": "F_A+B+E", "id": "syn-src-05", "category": "supplied_source", "query_sha256": "f62ab8155a87819c5e1d50141c3ad5d9c5e8bb0a3b1bc88405bd67d3f2db233e", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-nato#3330", "plwiki-demokracja-atenska#0008", "plwiki-mieszko-i#0326", "plwiki-konstytucja-marcowa#2035", "plwiki-wojna-trzynastoletnia#0678"], "first_relevant_rank": null, "top1_year_boosted": 0},
+{"variant": "F_A+B+E", "id": "syn-ess-03", "category": "essay", "query_sha256": "c103b54e6f45144a59f634c3eaabd4c43271b664aba79223ea2ed73fddaf8c76", "years": [300], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-unia-w-krewie#0621", "plwiki-polska-w-ue#3354", "plwiki-polska-w-ue#3352", "plwiki-bitwa-warszawska#1988", "plwiki-stan-wojenny#3073"], "first_relevant_rank": null, "top1_year_boosted": 0},
+{"variant": "F_A+B+E", "id": "syn-ess-04", "category": "essay", "query_sha256": "f4a8b91b152a365ca7c7ee3b429db774cf1af7f919a016d130fef680d936bb13", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-rozbiory-polski#1211", "plwiki-nato#3330", "plwiki-rozbiory-polski#1210", "plwiki-rewolucja-francuska#0970", "plwiki-kampania-wrzesniowa#2327"], "first_relevant_rank": null, "top1_year_boosted": 0},
+{"variant": "F_A+B+E", "id": "syn-ess-05", "category": "essay", "query_sha256": "a40f119ecfb5aa90a44e122b6f3a7145a448a5c2f6aad18ec5ac5ab3f4b9cc8b", "years": [250], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-stan-wojenny#3073", "plwiki-reformacja#0797", "plwiki-kazimierz-wielki#0611", "plwiki-nato#3330", "plwiki-kazimierz-wielki#0521"], "first_relevant_rank": null, "top1_year_boosted": 0},
 {"variant": "F_A+B+E", "id": "ret-train-q01", "category": "control_train", "query_sha256": "1e3d7f277076db21e33fed957b4615627b279f4aa0e82873380cc4aa151b41c1", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-kodeks-hammurabiego#0145", "plwiki-kodeks-hammurabiego#0147", "plwiki-kodeks-hammurabiego#0151", "plwiki-kodeks-hammurabiego#0148", "plwiki-kodeks-hammurabiego#0150"], "first_relevant_rank": 1, "top1_year_boosted": 1},
 {"variant": "F_A+B+E", "id": "ret-train-q01+hdr", "category": "control_train_hdr", "query_sha256": "1e3d7f277076db21e33fed957b4615627b279f4aa0e82873380cc4aa151b41c1", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-kodeks-hammurabiego#0145", "plwiki-kodeks-hammurabiego#0147", "plwiki-kodeks-hammurabiego#0151", "plwiki-kodeks-hammurabiego#0148", "plwiki-kodeks-hammurabiego#0150"], "first_relevant_rank": 1, "top1_year_boosted": 1},
 {"variant": "F_A+B+E", "id": "ret-train-q02", "category": "control_train", "query_sha256": "cc3d1df03f6d1aa9f77bf762a868bb3c7622f1465995756549c3bc5844d6ce0f", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-demokracja-atenska#0000", "plwiki-demokracja-atenska#0017", "plwiki-demokracja-atenska#0003", "plwiki-demokracja-atenska#0010", "plwiki-demokracja-atenska#0001"], "first_relevant_rank": 1, "top1_year_boosted": 1},
@@ -3843,6 +4938,15 @@
 {"variant": "G_A+B_bm25", "id": "syn-ooc-04", "category": "out_of_corpus", "query_sha256": "8902b8687a5a43a808f4ce97c6e3466dfbb7853d16be77caea518e8dc92e9a18", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-mieszko-i#0299", "plwiki-mieszko-i#0297", "plwiki-chrzest-polski#0291", "plwiki-nato#3330", "plwiki-powstanie-w-getcie-warszawskim#2577"], "first_relevant_rank": null, "top1_year_boosted": 0},
 {"variant": "G_A+B_bm25", "id": "syn-ess-01", "category": "essay", "query_sha256": "32975efeb984410c56164905a68f08b2b0a2cdb277d0a4309d33ad51ece0a98d", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-rewolucja-francuska#0926", "plwiki-konfederacja-targowicka#1256", "plwiki-nato#3329", "plwiki-konstytucja-marcowa#2030", "plwiki-rewolucja-francuska#0983"], "first_relevant_rank": null, "top1_year_boosted": 0},
 {"variant": "G_A+B_bm25", "id": "syn-ess-02", "category": "essay", "query_sha256": "c33f844f038419da272cbab84a2953b0db1dc98954bb65d4d7d606cc57e3f5ee", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-reformacja#0802", "plwiki-kazimierz-wielki#0594", "plwiki-kazimierz-wielki#0591", "plwiki-reformacja#0799", "plwiki-nato#3330"], "first_relevant_rank": null, "top1_year_boosted": 0},
+{"variant": "G_A+B_bm25", "id": "syn-rel-01", "category": "wrong_relation", "query_sha256": "feaa5f916e3bd84542717f12667916567d4c7c8311f2e25cb2be14cb6196e017", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-konfederacja-warszawska#1062", "plwiki-stefan-batory#1084", "plwiki-stefan-batory#1096", "plwiki-stefan-batory#1095", "plwiki-konfederacja-warszawska#1063"], "first_relevant_rank": null, "top1_year_boosted": 0},
+{"variant": "G_A+B_bm25", "id": "syn-rel-02", "category": "wrong_relation", "query_sha256": "2baf55e3079cf0f336bd55a89611a4b73c80b7ad9e7789765b3d6d9056efaf49", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-boleslaw-chrobry#0352", "plwiki-boleslaw-chrobry#0351", "plwiki-boleslaw-chrobry#0338", "plwiki-mieszko-i#0333", "plwiki-boleslaw-chrobry#0358"], "first_relevant_rank": null, "top1_year_boosted": 0},
+{"variant": "G_A+B_bm25", "id": "syn-rel-03", "category": "wrong_relation", "query_sha256": "4e83849faba5e35cce77c8e9dee835230d4c646793bdf00cad83d571597d4bcb", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-kazimierz-wielki#0512", "plwiki-kazimierz-wielki#0603", "plwiki-kazimierz-wielki#0608", "plwiki-kazimierz-wielki#0609", "plwiki-kazimierz-wielki#0607"], "first_relevant_rank": null, "top1_year_boosted": 0},
+{"variant": "G_A+B_bm25", "id": "syn-rel-04", "category": "wrong_relation", "query_sha256": "4d44cbd121338aa54a789e35bc2d4a4cbf8ac33831c7f662ae22fd6e443947ed", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-chrzest-polski#0291", "plwiki-mieszko-i#0297", "plwiki-mieszko-i#0305", "plwiki-mieszko-i#0304", "plwiki-mieszko-i#0299"], "first_relevant_rank": null, "top1_year_boosted": 0},
+{"variant": "G_A+B_bm25", "id": "syn-src-04", "category": "supplied_source", "query_sha256": "96aa8a16b7773197398837d8a827c0ac616b83f77cf59f95feab9fab078d4ba0", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-nato#3330", "plwiki-mieszko-i#0296", "plwiki-nato#3329", "plwiki-wojna-polsko-bolszewicka#1848", "plwiki-powstanie-warszawskie#2654"], "first_relevant_rank": null, "top1_year_boosted": 0},
+{"variant": "G_A+B_bm25", "id": "syn-src-05", "category": "supplied_source", "query_sha256": "f62ab8155a87819c5e1d50141c3ad5d9c5e8bb0a3b1bc88405bd67d3f2db233e", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-nato#3330", "plwiki-demokracja-atenska#0008", "plwiki-mieszko-i#0326", "plwiki-konstytucja-marcowa#2035", "plwiki-wojna-trzynastoletnia#0678"], "first_relevant_rank": null, "top1_year_boosted": 0},
+{"variant": "G_A+B_bm25", "id": "syn-ess-03", "category": "essay", "query_sha256": "c103b54e6f45144a59f634c3eaabd4c43271b664aba79223ea2ed73fddaf8c76", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-unia-w-krewie#0621", "plwiki-polska-w-ue#3354", "plwiki-polska-w-ue#3352", "plwiki-bitwa-warszawska#1988", "plwiki-stan-wojenny#3073"], "first_relevant_rank": null, "top1_year_boosted": 0},
+{"variant": "G_A+B_bm25", "id": "syn-ess-04", "category": "essay", "query_sha256": "f4a8b91b152a365ca7c7ee3b429db774cf1af7f919a016d130fef680d936bb13", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-rozbiory-polski#1211", "plwiki-nato#3330", "plwiki-rozbiory-polski#1210", "plwiki-rewolucja-francuska#0970", "plwiki-kampania-wrzesniowa#2327"], "first_relevant_rank": null, "top1_year_boosted": 0},
+{"variant": "G_A+B_bm25", "id": "syn-ess-05", "category": "essay", "query_sha256": "a40f119ecfb5aa90a44e122b6f3a7145a448a5c2f6aad18ec5ac5ab3f4b9cc8b", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-stan-wojenny#3073", "plwiki-reformacja#0797", "plwiki-kazimierz-wielki#0611", "plwiki-nato#3330", "plwiki-kazimierz-wielki#0521"], "first_relevant_rank": null, "top1_year_boosted": 0},
 {"variant": "G_A+B_bm25", "id": "ret-train-q01", "category": "control_train", "query_sha256": "1e3d7f277076db21e33fed957b4615627b279f4aa0e82873380cc4aa151b41c1", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-kodeks-hammurabiego#0145", "plwiki-kodeks-hammurabiego#0147", "plwiki-kodeks-hammurabiego#0151", "plwiki-kodeks-hammurabiego#0148", "plwiki-kodeks-hammurabiego#0150"], "first_relevant_rank": 1, "top1_year_boosted": 0},
 {"variant": "G_A+B_bm25", "id": "ret-train-q01+hdr", "category": "control_train_hdr", "query_sha256": "1e3d7f277076db21e33fed957b4615627b279f4aa0e82873380cc4aa151b41c1", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-kodeks-hammurabiego#0145", "plwiki-kodeks-hammurabiego#0147", "plwiki-kodeks-hammurabiego#0151", "plwiki-kodeks-hammurabiego#0148", "plwiki-kodeks-hammurabiego#0150"], "first_relevant_rank": 1, "top1_year_boosted": 0},
 {"variant": "G_A+B_bm25", "id": "ret-train-q02", "category": "control_train", "query_sha256": "cc3d1df03f6d1aa9f77bf762a868bb3c7622f1465995756549c3bc5844d6ce0f", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-demokracja-atenska#0000", "plwiki-demokracja-atenska#0017", "plwiki-demokracja-atenska#0015", "plwiki-demokracja-atenska#0019", "plwiki-demokracja-atenska#0003"], "first_relevant_rank": 1, "top1_year_boosted": 0},
@@ -3951,6 +5055,15 @@
 {"variant": "H_A+B", "id": "syn-ooc-04", "category": "out_of_corpus", "query_sha256": "8902b8687a5a43a808f4ce97c6e3466dfbb7853d16be77caea518e8dc92e9a18", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-mieszko-i#0299", "plwiki-mieszko-i#0297", "plwiki-chrzest-polski#0291", "plwiki-nato#3330", "plwiki-powstanie-w-getcie-warszawskim#2577"], "first_relevant_rank": null, "top1_year_boosted": 0},
 {"variant": "H_A+B", "id": "syn-ess-01", "category": "essay", "query_sha256": "32975efeb984410c56164905a68f08b2b0a2cdb277d0a4309d33ad51ece0a98d", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-rewolucja-francuska#0926", "plwiki-konfederacja-targowicka#1256", "plwiki-nato#3329", "plwiki-konstytucja-marcowa#2030", "plwiki-rewolucja-francuska#0983"], "first_relevant_rank": null, "top1_year_boosted": 0},
 {"variant": "H_A+B", "id": "syn-ess-02", "category": "essay", "query_sha256": "c33f844f038419da272cbab84a2953b0db1dc98954bb65d4d7d606cc57e3f5ee", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-reformacja#0802", "plwiki-kazimierz-wielki#0594", "plwiki-kazimierz-wielki#0591", "plwiki-reformacja#0799", "plwiki-kazimierz-wielki#0512"], "first_relevant_rank": null, "top1_year_boosted": 1},
+{"variant": "H_A+B", "id": "syn-rel-01", "category": "wrong_relation", "query_sha256": "feaa5f916e3bd84542717f12667916567d4c7c8311f2e25cb2be14cb6196e017", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-konfederacja-warszawska#1062", "plwiki-stefan-batory#1084", "plwiki-stefan-batory#1096", "plwiki-stefan-batory#1095", "plwiki-konfederacja-warszawska#1063"], "first_relevant_rank": null, "top1_year_boosted": 0},
+{"variant": "H_A+B", "id": "syn-rel-02", "category": "wrong_relation", "query_sha256": "2baf55e3079cf0f336bd55a89611a4b73c80b7ad9e7789765b3d6d9056efaf49", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-boleslaw-chrobry#0352", "plwiki-boleslaw-chrobry#0351", "plwiki-boleslaw-chrobry#0338", "plwiki-mieszko-i#0333", "plwiki-boleslaw-chrobry#0358"], "first_relevant_rank": null, "top1_year_boosted": 1},
+{"variant": "H_A+B", "id": "syn-rel-03", "category": "wrong_relation", "query_sha256": "4e83849faba5e35cce77c8e9dee835230d4c646793bdf00cad83d571597d4bcb", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-kazimierz-wielki#0512", "plwiki-kazimierz-wielki#0603", "plwiki-kazimierz-wielki#0608", "plwiki-kazimierz-wielki#0609", "plwiki-kazimierz-wielki#0607"], "first_relevant_rank": null, "top1_year_boosted": 0},
+{"variant": "H_A+B", "id": "syn-rel-04", "category": "wrong_relation", "query_sha256": "4d44cbd121338aa54a789e35bc2d4a4cbf8ac33831c7f662ae22fd6e443947ed", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-chrzest-polski#0291", "plwiki-mieszko-i#0297", "plwiki-mieszko-i#0305", "plwiki-mieszko-i#0304", "plwiki-mieszko-i#0299"], "first_relevant_rank": null, "top1_year_boosted": 1},
+{"variant": "H_A+B", "id": "syn-src-04", "category": "supplied_source", "query_sha256": "96aa8a16b7773197398837d8a827c0ac616b83f77cf59f95feab9fab078d4ba0", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-nato#3330", "plwiki-mieszko-i#0296", "plwiki-nato#3329", "plwiki-wojna-polsko-bolszewicka#1848", "plwiki-powstanie-warszawskie#2654"], "first_relevant_rank": null, "top1_year_boosted": 0},
+{"variant": "H_A+B", "id": "syn-src-05", "category": "supplied_source", "query_sha256": "f62ab8155a87819c5e1d50141c3ad5d9c5e8bb0a3b1bc88405bd67d3f2db233e", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-nato#3330", "plwiki-demokracja-atenska#0008", "plwiki-mieszko-i#0326", "plwiki-konstytucja-marcowa#2035", "plwiki-wojna-trzynastoletnia#0678"], "first_relevant_rank": null, "top1_year_boosted": 0},
+{"variant": "H_A+B", "id": "syn-ess-03", "category": "essay", "query_sha256": "c103b54e6f45144a59f634c3eaabd4c43271b664aba79223ea2ed73fddaf8c76", "years": [300], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-unia-w-krewie#0621", "plwiki-polska-w-ue#3354", "plwiki-polska-w-ue#3352", "plwiki-bitwa-warszawska#1988", "plwiki-stan-wojenny#3073"], "first_relevant_rank": null, "top1_year_boosted": 0},
+{"variant": "H_A+B", "id": "syn-ess-04", "category": "essay", "query_sha256": "f4a8b91b152a365ca7c7ee3b429db774cf1af7f919a016d130fef680d936bb13", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-rozbiory-polski#1211", "plwiki-nato#3330", "plwiki-rozbiory-polski#1210", "plwiki-rewolucja-francuska#0970", "plwiki-kampania-wrzesniowa#2327"], "first_relevant_rank": null, "top1_year_boosted": 0},
+{"variant": "H_A+B", "id": "syn-ess-05", "category": "essay", "query_sha256": "a40f119ecfb5aa90a44e122b6f3a7145a448a5c2f6aad18ec5ac5ab3f4b9cc8b", "years": [250], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-stan-wojenny#3073", "plwiki-reformacja#0797", "plwiki-kazimierz-wielki#0611", "plwiki-nato#3330", "plwiki-kazimierz-wielki#0521"], "first_relevant_rank": null, "top1_year_boosted": 0},
 {"variant": "H_A+B", "id": "ret-train-q01", "category": "control_train", "query_sha256": "1e3d7f277076db21e33fed957b4615627b279f4aa0e82873380cc4aa151b41c1", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-kodeks-hammurabiego#0145", "plwiki-kodeks-hammurabiego#0147", "plwiki-kodeks-hammurabiego#0151", "plwiki-kodeks-hammurabiego#0148", "plwiki-kodeks-hammurabiego#0150"], "first_relevant_rank": 1, "top1_year_boosted": 1},
 {"variant": "H_A+B", "id": "ret-train-q01+hdr", "category": "control_train_hdr", "query_sha256": "1e3d7f277076db21e33fed957b4615627b279f4aa0e82873380cc4aa151b41c1", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-kodeks-hammurabiego#0145", "plwiki-kodeks-hammurabiego#0147", "plwiki-kodeks-hammurabiego#0151", "plwiki-kodeks-hammurabiego#0148", "plwiki-kodeks-hammurabiego#0150"], "first_relevant_rank": 1, "top1_year_boosted": 1},
 {"variant": "H_A+B", "id": "ret-train-q02", "category": "control_train", "query_sha256": "cc3d1df03f6d1aa9f77bf762a868bb3c7622f1465995756549c3bc5844d6ce0f", "years": [], "bce_years": [], "masked_numbers": 0, "top5": ["plwiki-demokracja-atenska#0000", "plwiki-demokracja-atenska#0017", "plwiki-demokracja-atenska#0003", "plwiki-demokracja-atenska#0010", "plwiki-demokracja-atenska#0001"], "first_relevant_rank": 1, "top1_year_boosted": 1},

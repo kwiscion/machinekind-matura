@@ -179,6 +179,31 @@ add("syn-ess-01", "essay", BARE + (
 add("syn-ess-02", "essay", organizer("Oceń skutki reform Kazimierza Wielkiego dla państwa polskiego.",
     fmt="Wypracowanie (wypowiedź argumentacyjna)."), [], "essay", "abstain", "essay via answer format")
 
+# --- added after root's PR #104 review (19:07): same-entity/wrong-relation, source-only answer verbs, essay phrasing --
+add("syn-rel-01", "wrong_relation", BARE + "Zadanie 25. (0–1)\nPodaj imię nauczyciela gry na lutni króla Stefana "
+    "Batorego.", [], "external_fact", "abstain", "entity in corpus, requested relation not")
+add("syn-rel-02", "wrong_relation", BARE + "Zadanie 26. (0–1)\nPodaj nazwisko rzeźbiarza, który wykonał najstarszy "
+    "pomnik Bolesława Chrobrego w Gnieźnie.", [], "external_fact", "abstain", "entity in corpus, monument maker not")
+add("syn-rel-03", "wrong_relation", organizer("Podaj nazwę ulubionej potrawy króla Kazimierza Wielkiego."), [],
+    "external_fact", "abstain", "entity in corpus, no-answer relation")
+add("syn-rel-04", "wrong_relation", BARE + "Zadanie 27. (0–1)\nPodaj imię konia, na którym Mieszko I przybył na "
+    "swój chrzest.", [], "external_fact", "abstain", "same entity + event, invented relation")
+add("syn-src-04", "supplied_source", BARE + (
+    "Zadanie 28. (0–1)\nTekst źródłowy\nWędrowiec usiadł pod starym dębem przy drodze i czekał na kupców z miasta.\n"
+    "Na podstawie tekstu podaj nazwę drzewa, pod którym usiadł wędrowiec."), [], "supplied_source", "abstain",
+    "answer verb 'podaj nazwę' restricted to the text")
+add("syn-src-05", "supplied_source", BARE + (
+    "Zadanie 29. (0–1)\nTekst źródłowy\nKupcy opuścili miasto, gdy rada podniosła cła na sól i sukno.\n"
+    "Na podstawie tekstu wyjaśnij, dlaczego kupcy opuścili miasto."), [], "supplied_source", "abstain",
+    "'wyjaśnij' restricted to the text")
+add("syn-ess-03", "essay", BARE + "Zadanie 30.\nNapisz rozprawkę na temat znaczenia unii Polski z Litwą. Twoja praca "
+    "powinna liczyć co najmniej 300 słów. Sformułuj tezę, podaj argumenty i zakończenie.", [], "essay", "abstain",
+    "rozprawka + word count")
+add("syn-ess-04", "essay", organizer("Przedstaw w dłuższej wypowiedzi przyczyny upadku Rzeczypospolitej w XVIII "
+    "wieku.", fmt="Tekst ciągły."), [], "essay", "abstain", "long-form phrasing without the word wypracowanie")
+add("syn-ess-05", "essay", BARE + "Zadanie 31.\nOceń politykę Kazimierza Wielkiego. Napisz tekst (około 250 słów), "
+    "w którym sformułujesz tezę i podasz argumenty.", [], "essay", "abstain", "word count + thesis/arguments")
+
 if __name__ == "__main__":
     OUT.write_text("".join(json.dumps(r, ensure_ascii=False) + "\n" for r in F), encoding="utf-8")
     print(f"wrote {len(F)} fixtures -> {OUT}")
