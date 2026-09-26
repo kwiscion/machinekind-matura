@@ -220,7 +220,15 @@ def cmd_groups(args):
                     usage[cid].add("pn781_" + ("strict" if "strict" in path.name else "legacy_draft"))
     # Root folders.
     root_found = defaultdict(set)
+    ext = cfg.get("external_group_map", {})
     for part, p, rec in root_records():
+        gid = rec.get("source_group_id")
+        if isinstance(gid, str) and gid:
+            if gid in ext:
+                root_found[part].add(ext[gid])
+                usage[ext[gid]].add(part)
+            else:
+                unmapped.append(f"{part}:source_group_id={gid} (add to external_group_map)")
         for t in titles_in(rec):
             cid = k2c.get(canon(cfg, t))
             if cid:
@@ -392,6 +400,7 @@ def cmd_check(args):
         if not 40 <= otw <= 160:
             e.append(f"off_topic_paragraph {otw} words")
         results.append({"id": rec["id"], "cluster_id": rec["cluster_id"], "words": body_words(rec["essay"]),
+                        "essay_sha256": hashlib.sha256(rec["essay"].encode()).hexdigest(),
                         "pass": not e, "errors": e})
     out = {"essays": args.essays, "essays_sha256": sha256_file(args.essays),
            "factcards": args.factcards, "factcards_sha256": sha256_file(args.factcards),
@@ -505,6 +514,56 @@ def load_accepted(review_paths, essays):
     return ok
 
 
+def cmd_ledger(args):
+    """Per-essay status ledger: generation hash, deterministic check, every verdict, final status.
+    Rule: an essay gets at most one repair round; a non-accept verdict after the repair drops it."""
+    cfg, _, _ = load_clusters()
+    withdrawn = cfg.get("withdrawn_essays", {})
+    versions = defaultdict(list)          # id -> [(round, record, file)]
+    for f in args.essays:
+        for r in load_jsonl(f):
+            versions[r["id"]].append((r.get("repair_round", 0), r, f))
+    verdicts = defaultdict(list)
+    for f in args.reviews:
+        for v in load_jsonl(f):
+            verdicts[v["id"]].append(v)
+    checks = {}
+    for f in args.checks:
+        for r in json.loads(Path(f).read_text(encoding="utf-8"))["results"]:
+            checks[(r["id"], f)] = r
+    rows = []
+    for eid in sorted(versions):
+        vs = sorted(versions[eid], key=lambda x: x[0])
+        hist = []
+        for rnd, rec, f in vs:
+            h = hashlib.sha256(rec["essay"].encode()).hexdigest()
+            vv = [v for v in verdicts[eid] if v.get("essay_sha256") == h]
+            chk = [c for (i, cf), c in checks.items() if i == eid and c.get("essay_sha256", h) == h]
+            hist.append({"round": rnd, "file": f, "essay_sha256": h, "words": body_words(rec["essay"]),
+                         "teacher": rec["teacher"], "check_pass": [c["pass"] for c in chk],
+                         "verdicts": [{"verdict": v["verdict"], "issues": len(v.get("issues", [])),
+                                       "reviewer": v.get("reviewer", {}).get("agent")} for v in vv]})
+        last = hist[-1]
+        lv = last["verdicts"][-1]["verdict"] if last["verdicts"] else None
+        if eid in withdrawn:
+            status, reason = "withdrawn", withdrawn[eid]
+        elif lv == "accept" and all(last["check_pass"] or [False]):
+            status, reason = "accepted", ""
+        elif lv is None:
+            status, reason = "pending_review", ""
+        elif last["round"] >= 1 or lv == "reject":
+            status, reason = "dropped", f"{lv} after {last['round']} repair round(s)"
+        else:
+            status, reason = "repair_pending", ""
+        rows.append({"id": eid, "status": status, "reason": reason, "history": hist})
+    write_jsonl(Path(args.out), rows)
+    counts = defaultdict(int)
+    for r in rows:
+        counts[r["status"]] += 1
+    print(json.dumps(dict(counts)))
+    return 0
+
+
 # ---------------------------------------------------------------- export
 
 def cmd_export(args):
@@ -563,6 +622,11 @@ def main(argv=None):
     sub = ap.add_subparsers(dest="cmd", required=True)
     sub.add_parser("groups")
     sub.add_parser("evalcards")
+    lg = sub.add_parser("ledger")
+    lg.add_argument("--essays", nargs="+", required=True)
+    lg.add_argument("--reviews", nargs="+", required=True)
+    lg.add_argument("--checks", nargs="+", required=True)
+    lg.add_argument("--out", required=True)
     c = sub.add_parser("check")
     c.add_argument("--essays", required=True)
     c.add_argument("--factcards", required=True)
@@ -578,7 +642,7 @@ def main(argv=None):
     e.add_argument("--repairs")
     e.add_argument("--out-dir", required=True)
     a = ap.parse_args(argv)
-    return {"groups": cmd_groups, "evalcards": cmd_evalcards, "check": cmd_check, "repairs": cmd_repairs, "export": cmd_export}[a.cmd](a)
+    return {"groups": cmd_groups, "evalcards": cmd_evalcards, "ledger": cmd_ledger, "check": cmd_check, "repairs": cmd_repairs, "export": cmd_export}[a.cmd](a)
 
 
 if __name__ == "__main__":

@@ -597,5 +597,11 @@
   "withdrawn_essays": {
     "bk117-b1-vienna": "cluster C-vienna claimed by root Sol (Congress of Vienna); kept as draft/ledger only, never exported",
     "bk117-b1-industrial": "cluster C-industrial claimed by root Sol (British Industrial Revolution); kept as draft/ledger only, never exported"
+  },
+  "external_group_map": {
+    "history-solon-reforms": "C-athens",
+    "history-casimir-iii-statebuilding": "C-casimir3",
+    "history-lublin-union-1569": "C-lublin",
+    "history-january-uprising-peasant-policy": "C-january"
   }
 }

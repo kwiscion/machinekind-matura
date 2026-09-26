@@ -93,10 +93,17 @@
     "train_strict.jsonl:C-vasa-wars": 1
   },
   "root_folders_present": {
-    "root_seed": false,
+    "root_seed": true,
     "root_sol": false
   },
-  "root_clusters_found": {},
+  "root_clusters_found": {
+    "root_seed": [
+      "C-athens",
+      "C-casimir3",
+      "C-january",
+      "C-lublin"
+    ]
+  },
   "exam_source_title_hits": 0,
   "unmapped": [],
   "fails": [],
@@ -123,6 +130,6 @@
     "C-teutonic: #4 strict training records overlap Paweł #80 DEV fixtures",
     "C-ww1-independence: eval_bukareszt_16 shares a cluster with #4 legacy DRAFT records (not export-eligible; keep excluded)"
   ],
-  "group_map_sha256": "f6a30fd69b04be122a90a4f2b109c5e9c6cf3d8766382c6fc15addfaf6de7f2b",
-  "clusters_sha256": "c544c32e9b03f7959b3605652ae6035f2a6e01739c03d02be79b86a233d195b5"
+  "group_map_sha256": "f2c3cb373cece156c4b1889bf7a6cf33915f62636f521473ddebe5e5f891eaf4",
+  "clusters_sha256": "1b5e9866615abf3529be2e00f08832b4075c849b745d1829bb01f56d47d4b303"
 }
