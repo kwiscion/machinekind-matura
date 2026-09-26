@@ -1,0 +1,13 @@
+{
+  "exam_id": "kwiscion-offline-synthetic-v1",
+  "answers": [
+    {
+      "id": "offline-text",
+      "answer": "gotowe"
+    },
+    {
+      "id": "offline-image",
+      "answer": "Czerwony"
+    }
+  ]
+}

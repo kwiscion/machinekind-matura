@@ -1,0 +1,41 @@
+{
+  "status": "OPERATOR_FAIL",
+  "serving_semantic_status": "PASS",
+  "calls": 2,
+  "requested_tokens": 20480,
+  "prompt_tokens": 407,
+  "generated_tokens": 295,
+  "per_item": [
+    {
+      "id": "offline-text",
+      "prompt_tokens": 143,
+      "generated_tokens": 169,
+      "latency_s": 112.26215255599891,
+      "finish_reason": "stop"
+    },
+    {
+      "id": "offline-image",
+      "prompt_tokens": 264,
+      "generated_tokens": 126,
+      "latency_s": 8.595390277998376,
+      "finish_reason": "stop"
+    }
+  ],
+  "declared_utc": "2026-09-26T21:44:29.786546+00:00",
+  "deadline_utc": "2026-09-26T22:04:29.786546+00:00",
+  "answers_sha256": "4e62aaee0315e6d411bc37c75c9e910e2add10ab2020959b7ab1e752fd25e037",
+  "archive_sha256": "693a4d7d6490222934651b873f657ed2759554e303bdf57e999a782e69309c1c",
+  "manifest_sha256": "b9956168b610ad11323b2db3f24c8b6b28bbafb466c04c3ae5c02ed492918c30",
+  "runner_sha256": "c699adf93fa9f1d790d25219fb7de8ace508ba71516108c168fddcbcd389b15b",
+  "cache_bytes": 7556509301,
+  "failure": "Redundant parent namespace fallback raised PermissionError after successful owned-group cleanup; shell guardian exit1",
+  "no_retry_model_calls": true,
+  "transport_shell_reexecution": "Brev re-executed shell after connection/nonzero handling; fresh-directory check refused before declaration or model dispatch",
+  "scope": "two synthetic items, not generic Sunday package or exam-quality proof",
+  "terminal_wall_seconds_from_declaration": 131.9980664253235,
+  "wall_time_basis": "remote guardian-exit-code receipt filesystem timestamp minus declaration; metadata measurement, not provider billing",
+  "estimated_execution_cost_usd": 0.12026490496529472,
+  "planning_rate_usd_per_hour": 3.28,
+  "actual_billing_verified": false,
+  "declared_cost_ceiling_usd": 1.1
+}

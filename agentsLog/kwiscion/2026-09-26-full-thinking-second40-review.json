@@ -1,0 +1,1074 @@
+{
+  "status": "frozen_independent_initial_review_before_comparison",
+  "frozen_at": "2026-09-26T21:28:54.138837+00:00",
+  "reviewer": "root/full40_second_sol",
+  "scope": "All 40 exact final answers, May 2024 VALIDATION; strict 60-point denominator",
+  "independence": {
+    "model_blind": false,
+    "aggregate_exposed": 38,
+    "disclosure": "AGENTS.md and WINNING_PLAN.md required reading exposed provisional current aggregate 38/60 plus historical aggregates. Calibration exposed unrelated DEV essay examples. The evaluator README was read after the manual judgments were formed and exposed older-arm summaries and item comparisons; it was not used to change these grades. No current-wave first-pass per-item score file, current-wave other essay grade, or raw reasoning was opened.",
+    "previous_current_wave_item_grades_read": false,
+    "raw_reasoning_read": false,
+    "ordering": "Scores were manually formed before computing the sum; initial total was announced before file generation. The matching 38 aggregate is coincidental, not a reconciliation."
+  },
+  "provenance": {
+    "agentsLog/kwiscion/model-answers/full-thinking-gemma-val40.jsonl": "fdbf288a3deb276d9600a353403ac8c1aa10fc37df11ec6f0524c0d76a12bde9",
+    "agentsLog/kwiscion/model-answers/full-thinking-answers.json": "11057839c6cb04a9b83d8149750202b6b975390fff9433bc8c4425c66219ae49",
+    "agentsLog/kwiscion/private/validation_2024_keyfree/runner_input.v2.jsonl": "6615fea2e6fd1d6f9db5b781fa84a883899d1c2fb83a28b914638089e6b015a4",
+    "agentsLog/Pewciu6/private/validation_2024/eval_keys.jsonl": "279abe703dc1af4119a35624d6db893e310fc7afaffbef2a00e678f423706486",
+    "agentsLog/Pewciu6/private/validation_2024/MHIP-R0-100-2405-zasady.pdf": "95c275b9546611c1f8cd45b7973c436625fd0ee5643b778dcc8bb566db56cd4c"
+  },
+  "template_parity": {
+    "answer_count": 40,
+    "exact_decoded_answer_matches": 40,
+    "id_matches": 40
+  },
+  "totals": {
+    "central": 38,
+    "low": 37,
+    "high": 41,
+    "max_points": 60,
+    "nonessay_central": 30,
+    "essay_central": 8,
+    "empty_final_items": 3,
+    "empty_final_max_points": 6
+  },
+  "range_interpretation": "Judgment sensitivity, not a statistical confidence interval. Upper alternatives on z2/z18/z23.2 are explicitly more lenient readings, not additional demonstrated correct facts.",
+  "items": [
+    {
+      "id": "val2024-hist-z1",
+      "max_points": 1,
+      "central": 0,
+      "low": 0,
+      "high": 0,
+      "rationale": "Chooses the wrong relief; the asserted double crown is not present on the selected figure.",
+      "error_class": "image_ocr",
+      "answer_sha256": "46bb7687a5636aaf98527f2be526be604f024de1688af7a08bf8075bd3e02461",
+      "answer_hash_definition": "UTF-8 bytes of exact decoded answer string; no normalization",
+      "finish_reason": "stop",
+      "runtime_error": null,
+      "image_evidence": [
+        {
+          "path": "agentsLog/kwiscion/private/validation_2024_keyfree/pages/page-04.png",
+          "sha256": "b0838350ae52a84d8b3eef81d59cd1c691e8cb08f23ad4970d21e632ed3f72b9",
+          "visually_inspected": true
+        }
+      ],
+      "official_rubric_locator": "MHIP-R0-100-2405-zasady Zadanie 1"
+    },
+    {
+      "id": "val2024-hist-z2",
+      "max_points": 1,
+      "central": 0,
+      "low": 0,
+      "high": 1,
+      "rationale": "Correct negative decision and later successor states, but misrepresents the speech as a division of the empire among successors by its ruler. The central source contrast is factually corrupted. Upper bound accepts the surviving unified-versus-posthumous-state distinction.",
+      "error_class": "content_incorrect",
+      "answer_sha256": "c02ccdeb18b40a9a0604ae8d4faaa17c375a30068ce43fb503c0158878d7819e",
+      "answer_hash_definition": "UTF-8 bytes of exact decoded answer string; no normalization",
+      "finish_reason": "stop",
+      "runtime_error": null,
+      "image_evidence": [
+        {
+          "path": "agentsLog/kwiscion/private/validation_2024_keyfree/pages/page-05.png",
+          "sha256": "738bfbfb73b4f90e4bb17a8cf6852899600d5e451b5d3dd0ea76ef499375169d",
+          "visually_inspected": true
+        }
+      ],
+      "official_rubric_locator": "MHIP-R0-100-2405-zasady Zadanie 2"
+    },
+    {
+      "id": "val2024-hist-z3.1",
+      "max_points": 1,
+      "central": 1,
+      "low": 1,
+      "high": 1,
+      "rationale": "Identifies the ruler by the required name and cognomen.",
+      "error_class": "none",
+      "answer_sha256": "60fe88300544e30bf286cae0ae338a7432a35aae6149baa1f711ed13d6e61919",
+      "answer_hash_definition": "UTF-8 bytes of exact decoded answer string; no normalization",
+      "finish_reason": "stop",
+      "runtime_error": null,
+      "image_evidence": [],
+      "official_rubric_locator": "MHIP-R0-100-2405-zasady Zadanie 3.1"
+    },
+    {
+      "id": "val2024-hist-z3.2",
+      "max_points": 1,
+      "central": 0,
+      "low": 0,
+      "high": 0,
+      "rationale": "Repeats descriptions of powers instead of supplying either required republican office name.",
+      "error_class": "content_incorrect",
+      "answer_sha256": "d216911f584adee2ca5838273f8eb99bdfc60a2946f935a00dbe26ce1a497bfc",
+      "answer_hash_definition": "UTF-8 bytes of exact decoded answer string; no normalization",
+      "finish_reason": "stop",
+      "runtime_error": null,
+      "image_evidence": [],
+      "official_rubric_locator": "MHIP-R0-100-2405-zasady Zadanie 3.2"
+    },
+    {
+      "id": "val2024-hist-z4",
+      "max_points": 1,
+      "central": 1,
+      "low": 1,
+      "high": 1,
+      "rationale": "Correctly links the visible columned portico and dome to the two architectural traditions.",
+      "error_class": "none",
+      "answer_sha256": "3b3870ef6f2d152eae50059a00e91d8d60a18d0041f118780fc19d31917783ff",
+      "answer_hash_definition": "UTF-8 bytes of exact decoded answer string; no normalization",
+      "finish_reason": "stop",
+      "runtime_error": null,
+      "image_evidence": [
+        {
+          "path": "agentsLog/kwiscion/private/validation_2024_keyfree/pages/page-07.png",
+          "sha256": "ab3f7fb24dfe6f05654171eca2d0e6421ab5b8dd6290bd81d03ff59123040510",
+          "visually_inspected": true
+        }
+      ],
+      "official_rubric_locator": "MHIP-R0-100-2405-zasady Zadanie 4"
+    },
+    {
+      "id": "val2024-hist-z5.1",
+      "max_points": 1,
+      "central": 0,
+      "low": 0,
+      "high": 0,
+      "rationale": "Positive decision falsely equates the mapped northern expedition routes with the papal appeal; the map does not show the claimed crusading campaign.",
+      "error_class": "image_ocr",
+      "answer_sha256": "956ce998e1c0aa363e4b72e7364f86c089f7a11f0b24e4c0a51618320424ee38",
+      "answer_hash_definition": "UTF-8 bytes of exact decoded answer string; no normalization",
+      "finish_reason": "stop",
+      "runtime_error": null,
+      "image_evidence": [
+        {
+          "path": "agentsLog/kwiscion/private/validation_2024_keyfree/pages/page-08.png",
+          "sha256": "ef1749770b71483f45caf36183e782389741456a7f5bbcce92d361c0dd02cc77",
+          "visually_inspected": true
+        }
+      ],
+      "official_rubric_locator": "MHIP-R0-100-2405-zasady Zadanie 5.1"
+    },
+    {
+      "id": "val2024-hist-z5.2",
+      "max_points": 1,
+      "central": 1,
+      "low": 1,
+      "high": 1,
+      "rationale": "Names the state containing the route endpoint correctly.",
+      "error_class": "none",
+      "answer_sha256": "a24f2bf38116a78c8f37803544f300f09249a79eb21590f66f9b97a2486743dc",
+      "answer_hash_definition": "UTF-8 bytes of exact decoded answer string; no normalization",
+      "finish_reason": "stop",
+      "runtime_error": null,
+      "image_evidence": [
+        {
+          "path": "agentsLog/kwiscion/private/validation_2024_keyfree/pages/page-08.png",
+          "sha256": "ef1749770b71483f45caf36183e782389741456a7f5bbcce92d361c0dd02cc77",
+          "visually_inspected": true
+        },
+        {
+          "path": "agentsLog/kwiscion/private/validation_2024_keyfree/pages/page-09.png",
+          "sha256": "4d30f761f2678e3d4d616e5193c3abf94e80bce42c8c2522e63098530c5d4fd9",
+          "visually_inspected": true
+        }
+      ],
+      "official_rubric_locator": "MHIP-R0-100-2405-zasady Zadanie 5.2"
+    },
+    {
+      "id": "val2024-hist-z6",
+      "max_points": 2,
+      "central": 2,
+      "low": 2,
+      "high": 2,
+      "rationale": "Identifies all three orders through visible symbols and explicitly describes the hierarchical arrangement; full structure requirement is met.",
+      "error_class": "none",
+      "answer_sha256": "2885f6260ea505036ca04850174c1f982905b8af9c176468ac9018def8924a75",
+      "answer_hash_definition": "UTF-8 bytes of exact decoded answer string; no normalization",
+      "finish_reason": "stop",
+      "runtime_error": null,
+      "image_evidence": [
+        {
+          "path": "agentsLog/kwiscion/private/validation_2024_keyfree/pages/page-09.png",
+          "sha256": "4d30f761f2678e3d4d616e5193c3abf94e80bce42c8c2522e63098530c5d4fd9",
+          "visually_inspected": true
+        }
+      ],
+      "official_rubric_locator": "MHIP-R0-100-2405-zasady Zadanie 6"
+    },
+    {
+      "id": "val2024-hist-z7",
+      "max_points": 1,
+      "central": 0,
+      "low": 0,
+      "high": 0,
+      "rationale": "Reverses the order and treats separate reigns/events as stages of one conflict.",
+      "error_class": "chronology",
+      "answer_sha256": "c92bfd9f7be83ca35c80f89489bd5b2e24da67d151254dcb389bcdd6938f3c9d",
+      "answer_hash_definition": "UTF-8 bytes of exact decoded answer string; no normalization",
+      "finish_reason": "stop",
+      "runtime_error": null,
+      "image_evidence": [],
+      "official_rubric_locator": "MHIP-R0-100-2405-zasady Zadanie 7"
+    },
+    {
+      "id": "val2024-hist-z8.1",
+      "max_points": 1,
+      "central": 1,
+      "low": 1,
+      "high": 1,
+      "rationale": "Supplies the accepted historical document name.",
+      "error_class": "none",
+      "answer_sha256": "5c475e016139d980af64e5d0d069d9722fd38e8e6b377dc6dfab2872b796c7eb",
+      "answer_hash_definition": "UTF-8 bytes of exact decoded answer string; no normalization",
+      "finish_reason": "stop",
+      "runtime_error": null,
+      "image_evidence": [
+        {
+          "path": "agentsLog/kwiscion/private/validation_2024_keyfree/pages/page-10.png",
+          "sha256": "fd35f322ab827a5a05d8348e86084124eada33dc1a71a3e92f89aff62c01468d",
+          "visually_inspected": true
+        },
+        {
+          "path": "agentsLog/kwiscion/private/validation_2024_keyfree/pages/page-11.png",
+          "sha256": "e1286880491d7909f45b9a25ee044599591a621ea78f717088e9bc4e0083a254",
+          "visually_inspected": true
+        }
+      ],
+      "official_rubric_locator": "MHIP-R0-100-2405-zasady Zadanie 8.1"
+    },
+    {
+      "id": "val2024-hist-z8.2",
+      "max_points": 1,
+      "central": 1,
+      "low": 1,
+      "high": 1,
+      "rationale": "Matches senators and land deputies across text and labeled illustration. Omission of the king does not defeat the allowed joint-chambers justification; the wording concerns the consenting bodies.",
+      "error_class": "none",
+      "answer_sha256": "f7161674f4baed0333872a254c662e9c997fd0fb0600ba1c2b9354305c6957dd",
+      "answer_hash_definition": "UTF-8 bytes of exact decoded answer string; no normalization",
+      "finish_reason": "stop",
+      "runtime_error": null,
+      "image_evidence": [
+        {
+          "path": "agentsLog/kwiscion/private/validation_2024_keyfree/pages/page-10.png",
+          "sha256": "fd35f322ab827a5a05d8348e86084124eada33dc1a71a3e92f89aff62c01468d",
+          "visually_inspected": true
+        },
+        {
+          "path": "agentsLog/kwiscion/private/validation_2024_keyfree/pages/page-11.png",
+          "sha256": "e1286880491d7909f45b9a25ee044599591a621ea78f717088e9bc4e0083a254",
+          "visually_inspected": true
+        }
+      ],
+      "official_rubric_locator": "MHIP-R0-100-2405-zasady Zadanie 8.2"
+    },
+    {
+      "id": "val2024-hist-z9",
+      "max_points": 1,
+      "central": 1,
+      "low": 1,
+      "high": 1,
+      "rationale": "Connects inscription and depicted papal pillar to rejection of papal authority; both required evidence channels are present.",
+      "error_class": "none",
+      "answer_sha256": "b4cbfae01189558fc6d95f713c435fdd480f47e180116d101104b7df274c996a",
+      "answer_hash_definition": "UTF-8 bytes of exact decoded answer string; no normalization",
+      "finish_reason": "stop",
+      "runtime_error": null,
+      "image_evidence": [
+        {
+          "path": "agentsLog/kwiscion/private/validation_2024_keyfree/pages/page-12.png",
+          "sha256": "c380f684f4f4170b2788cc305123b4560b2cc0c8de8e745957ad0c9d7c71f7b7",
+          "visually_inspected": true
+        }
+      ],
+      "official_rubric_locator": "MHIP-R0-100-2405-zasady Zadanie 9"
+    },
+    {
+      "id": "val2024-hist-z10",
+      "max_points": 1,
+      "central": 1,
+      "low": 1,
+      "high": 1,
+      "rationale": "Correct selected alternative.",
+      "error_class": "none",
+      "answer_sha256": "477890b75a0eb132cae066fc5952a9570d2da434bbf5abc0a3a3738f304949ce",
+      "answer_hash_definition": "UTF-8 bytes of exact decoded answer string; no normalization",
+      "finish_reason": "stop",
+      "runtime_error": null,
+      "image_evidence": [
+        {
+          "path": "agentsLog/kwiscion/private/validation_2024_keyfree/pages/page-13.png",
+          "sha256": "fdb1f949cc7f610ecfb0fd043aa416034aafb19aa0fd64e778d5398de008d781",
+          "visually_inspected": true
+        }
+      ],
+      "official_rubric_locator": "MHIP-R0-100-2405-zasady Zadanie 10"
+    },
+    {
+      "id": "val2024-hist-z11.1",
+      "max_points": 1,
+      "central": 1,
+      "low": 1,
+      "high": 1,
+      "rationale": "Both rulers are correctly matched to their respective passages.",
+      "error_class": "none",
+      "answer_sha256": "079ea38d523032ce57ac5fa1795a573febbc47e08143bd76a1fa2b2e0ad553a4",
+      "answer_hash_definition": "UTF-8 bytes of exact decoded answer string; no normalization",
+      "finish_reason": "stop",
+      "runtime_error": null,
+      "image_evidence": [
+        {
+          "path": "agentsLog/kwiscion/private/validation_2024_keyfree/pages/page-13.png",
+          "sha256": "fdb1f949cc7f610ecfb0fd043aa416034aafb19aa0fd64e778d5398de008d781",
+          "visually_inspected": true
+        },
+        {
+          "path": "agentsLog/kwiscion/private/validation_2024_keyfree/pages/page-14.png",
+          "sha256": "38016a9c95eae9a433d93450298244ccfb00c6e9031280b61962a4952b7956a1",
+          "visually_inspected": true
+        }
+      ],
+      "official_rubric_locator": "MHIP-R0-100-2405-zasady Zadanie 11.1"
+    },
+    {
+      "id": "val2024-hist-z11.2",
+      "max_points": 1,
+      "central": 1,
+      "low": 1,
+      "high": 1,
+      "rationale": "Explains religious conversion for political control of the capital and settlement of the conflict; meaning is sufficiently clear.",
+      "error_class": "none",
+      "answer_sha256": "530dc4731a651065965231252eb5215840046cc97c063c0e058ad9890109134e",
+      "answer_hash_definition": "UTF-8 bytes of exact decoded answer string; no normalization",
+      "finish_reason": "stop",
+      "runtime_error": null,
+      "image_evidence": [
+        {
+          "path": "agentsLog/kwiscion/private/validation_2024_keyfree/pages/page-13.png",
+          "sha256": "fdb1f949cc7f610ecfb0fd043aa416034aafb19aa0fd64e778d5398de008d781",
+          "visually_inspected": true
+        },
+        {
+          "path": "agentsLog/kwiscion/private/validation_2024_keyfree/pages/page-14.png",
+          "sha256": "38016a9c95eae9a433d93450298244ccfb00c6e9031280b61962a4952b7956a1",
+          "visually_inspected": true
+        }
+      ],
+      "official_rubric_locator": "MHIP-R0-100-2405-zasady Zadanie 11.2"
+    },
+    {
+      "id": "val2024-hist-z12.1",
+      "max_points": 1,
+      "central": 0,
+      "low": 0,
+      "high": 0,
+      "rationale": "Actual final answer is empty after native combined length cap; strict denominator retained.",
+      "error_class": "incomplete_output",
+      "answer_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "answer_hash_definition": "UTF-8 bytes of exact decoded answer string; no normalization",
+      "finish_reason": "length",
+      "runtime_error": {
+        "type": "length",
+        "message": "Native combined thinking/final cap reached"
+      },
+      "image_evidence": [
+        {
+          "path": "agentsLog/kwiscion/private/validation_2024_keyfree/pages/page-14.png",
+          "sha256": "38016a9c95eae9a433d93450298244ccfb00c6e9031280b61962a4952b7956a1",
+          "visually_inspected": true
+        },
+        {
+          "path": "agentsLog/kwiscion/private/validation_2024_keyfree/pages/page-15.png",
+          "sha256": "77f50f108eb4752eed9625d1f4a0cc66a3055b063d6256f8e38da571aac4fe42",
+          "visually_inspected": true
+        }
+      ],
+      "official_rubric_locator": "MHIP-R0-100-2405-zasady Zadanie 12.1"
+    },
+    {
+      "id": "val2024-hist-z12.2",
+      "max_points": 1,
+      "central": 1,
+      "low": 1,
+      "high": 1,
+      "rationale": "Correct historical term.",
+      "error_class": "none",
+      "answer_sha256": "9ac6463cbc6e7e45cea508accb3280e7e5134f6f700a23b8d0e4d3d0f36bfd87",
+      "answer_hash_definition": "UTF-8 bytes of exact decoded answer string; no normalization",
+      "finish_reason": "stop",
+      "runtime_error": null,
+      "image_evidence": [
+        {
+          "path": "agentsLog/kwiscion/private/validation_2024_keyfree/pages/page-14.png",
+          "sha256": "38016a9c95eae9a433d93450298244ccfb00c6e9031280b61962a4952b7956a1",
+          "visually_inspected": true
+        },
+        {
+          "path": "agentsLog/kwiscion/private/validation_2024_keyfree/pages/page-15.png",
+          "sha256": "77f50f108eb4752eed9625d1f4a0cc66a3055b063d6256f8e38da571aac4fe42",
+          "visually_inspected": true
+        }
+      ],
+      "official_rubric_locator": "MHIP-R0-100-2405-zasady Zadanie 12.2"
+    },
+    {
+      "id": "val2024-hist-z12.3",
+      "max_points": 1,
+      "central": 1,
+      "low": 1,
+      "high": 1,
+      "rationale": "Correct style supported by visible dynamism, expressive pose and rich drapery.",
+      "error_class": "none",
+      "answer_sha256": "517188543537b07ac132423b76220de8c6e187f0636db3ad967e58e86c83d321",
+      "answer_hash_definition": "UTF-8 bytes of exact decoded answer string; no normalization",
+      "finish_reason": "stop",
+      "runtime_error": null,
+      "image_evidence": [
+        {
+          "path": "agentsLog/kwiscion/private/validation_2024_keyfree/pages/page-14.png",
+          "sha256": "38016a9c95eae9a433d93450298244ccfb00c6e9031280b61962a4952b7956a1",
+          "visually_inspected": true
+        },
+        {
+          "path": "agentsLog/kwiscion/private/validation_2024_keyfree/pages/page-15.png",
+          "sha256": "77f50f108eb4752eed9625d1f4a0cc66a3055b063d6256f8e38da571aac4fe42",
+          "visually_inspected": true
+        }
+      ],
+      "official_rubric_locator": "MHIP-R0-100-2405-zasady Zadanie 12.3"
+    },
+    {
+      "id": "val2024-hist-z13",
+      "max_points": 1,
+      "central": 1,
+      "low": 1,
+      "high": 1,
+      "rationale": "Correct event supported by the dated inscription visible in the drawing. The task accepts reference to content; it does not require interpretation of another symbol in addition.",
+      "error_class": "none",
+      "answer_sha256": "8a902554bed72ebcd5a3b5f9dfa431bb10ac44a068f6aba76f5b90ad6c29ce0d",
+      "answer_hash_definition": "UTF-8 bytes of exact decoded answer string; no normalization",
+      "finish_reason": "stop",
+      "runtime_error": null,
+      "image_evidence": [
+        {
+          "path": "agentsLog/kwiscion/private/validation_2024_keyfree/pages/page-16.png",
+          "sha256": "9bda8c79c19a1433b11fda0cb32d615258954c3b1632255ac58178f240a4d23e",
+          "visually_inspected": true
+        }
+      ],
+      "official_rubric_locator": "MHIP-R0-100-2405-zasady Zadanie 13"
+    },
+    {
+      "id": "val2024-hist-z14.1",
+      "max_points": 1,
+      "central": 0,
+      "low": 0,
+      "high": 0,
+      "rationale": "Wrong positive decision and invented twentieth-century setting for both Napoleonic sources; map troop legend and geography contradict the explanation.",
+      "error_class": "image_ocr",
+      "answer_sha256": "e28a71b4c4585bc6d24924e9ef91790d408ae0821adcac9744f6f22203a07bd0",
+      "answer_hash_definition": "UTF-8 bytes of exact decoded answer string; no normalization",
+      "finish_reason": "stop",
+      "runtime_error": null,
+      "image_evidence": [
+        {
+          "path": "agentsLog/kwiscion/private/validation_2024_keyfree/pages/page-16.png",
+          "sha256": "9bda8c79c19a1433b11fda0cb32d615258954c3b1632255ac58178f240a4d23e",
+          "visually_inspected": true
+        },
+        {
+          "path": "agentsLog/kwiscion/private/validation_2024_keyfree/pages/page-17.png",
+          "sha256": "2c4ead95a94bf197707d5c93d57ec9959dfe7f2e217a53eb169512a8bad71b0d",
+          "visually_inspected": true
+        }
+      ],
+      "official_rubric_locator": "MHIP-R0-100-2405-zasady Zadanie 14.1"
+    },
+    {
+      "id": "val2024-hist-z14.2",
+      "max_points": 1,
+      "central": 1,
+      "low": 1,
+      "high": 1,
+      "rationale": "Correct commander alternative.",
+      "error_class": "none",
+      "answer_sha256": "0200946aa0d009b6b1e1fb830338cbd4d0a18607cda052562e66dfa8c3af52e6",
+      "answer_hash_definition": "UTF-8 bytes of exact decoded answer string; no normalization",
+      "finish_reason": "stop",
+      "runtime_error": null,
+      "image_evidence": [
+        {
+          "path": "agentsLog/kwiscion/private/validation_2024_keyfree/pages/page-16.png",
+          "sha256": "9bda8c79c19a1433b11fda0cb32d615258954c3b1632255ac58178f240a4d23e",
+          "visually_inspected": true
+        },
+        {
+          "path": "agentsLog/kwiscion/private/validation_2024_keyfree/pages/page-17.png",
+          "sha256": "2c4ead95a94bf197707d5c93d57ec9959dfe7f2e217a53eb169512a8bad71b0d",
+          "visually_inspected": true
+        }
+      ],
+      "official_rubric_locator": "MHIP-R0-100-2405-zasady Zadanie 14.2"
+    },
+    {
+      "id": "val2024-hist-z15.1",
+      "max_points": 1,
+      "central": 1,
+      "low": 1,
+      "high": 1,
+      "rationale": "Correct uprising name.",
+      "error_class": "none",
+      "answer_sha256": "a45033385ae077d92aef81254a2ea0587dbd814366886db262f4423e937c1245",
+      "answer_hash_definition": "UTF-8 bytes of exact decoded answer string; no normalization",
+      "finish_reason": "stop",
+      "runtime_error": null,
+      "image_evidence": [],
+      "official_rubric_locator": "MHIP-R0-100-2405-zasady Zadanie 15.1"
+    },
+    {
+      "id": "val2024-hist-z15.2",
+      "max_points": 1,
+      "central": 1,
+      "low": 1,
+      "high": 1,
+      "rationale": "Correct song version with concrete shared criticism of the commanders limitations; references both sources.",
+      "error_class": "none",
+      "answer_sha256": "287b0d1121a937748356d576e975a79b5fd4e788b2a3650307b6689ceba04a9d",
+      "answer_hash_definition": "UTF-8 bytes of exact decoded answer string; no normalization",
+      "finish_reason": "stop",
+      "runtime_error": null,
+      "image_evidence": [],
+      "official_rubric_locator": "MHIP-R0-100-2405-zasady Zadanie 15.2"
+    },
+    {
+      "id": "val2024-hist-z16.1",
+      "max_points": 1,
+      "central": 1,
+      "low": 1,
+      "high": 1,
+      "rationale": "Connects the cartoon border restriction to the speech opposing European intervention in the Americas.",
+      "error_class": "none",
+      "answer_sha256": "799faa398574649ff8c62d1169ce7af07ea497b1b2edd026c21a20bec14f00f7",
+      "answer_hash_definition": "UTF-8 bytes of exact decoded answer string; no normalization",
+      "finish_reason": "stop",
+      "runtime_error": null,
+      "image_evidence": [
+        {
+          "path": "agentsLog/kwiscion/private/validation_2024_keyfree/pages/page-19.png",
+          "sha256": "1bd640bf6e230b21a5307b0022d0b4d3411881df08fedc869c5242522f5bc385",
+          "visually_inspected": true
+        },
+        {
+          "path": "agentsLog/kwiscion/private/validation_2024_keyfree/pages/page-20.png",
+          "sha256": "a577e889152dca7a2d4969a0b87508c1288da762b3d15390edadab0259b1433e",
+          "visually_inspected": true
+        }
+      ],
+      "official_rubric_locator": "MHIP-R0-100-2405-zasady Zadanie 16.1"
+    },
+    {
+      "id": "val2024-hist-z16.2",
+      "max_points": 1,
+      "central": 1,
+      "low": 1,
+      "high": 1,
+      "rationale": "Correct president alternative.",
+      "error_class": "none",
+      "answer_sha256": "ec433a5e9e7be1b45e2226820cf04fe93860b449a6bdc918dd4cea9c735fe094",
+      "answer_hash_definition": "UTF-8 bytes of exact decoded answer string; no normalization",
+      "finish_reason": "stop",
+      "runtime_error": null,
+      "image_evidence": [
+        {
+          "path": "agentsLog/kwiscion/private/validation_2024_keyfree/pages/page-19.png",
+          "sha256": "1bd640bf6e230b21a5307b0022d0b4d3411881df08fedc869c5242522f5bc385",
+          "visually_inspected": true
+        },
+        {
+          "path": "agentsLog/kwiscion/private/validation_2024_keyfree/pages/page-20.png",
+          "sha256": "a577e889152dca7a2d4969a0b87508c1288da762b3d15390edadab0259b1433e",
+          "visually_inspected": true
+        }
+      ],
+      "official_rubric_locator": "MHIP-R0-100-2405-zasady Zadanie 16.2"
+    },
+    {
+      "id": "val2024-hist-z17.1",
+      "max_points": 1,
+      "central": 1,
+      "low": 1,
+      "high": 1,
+      "rationale": "Explains the military victory enabling national unification and the imperial ceremony; both sources used.",
+      "error_class": "none",
+      "answer_sha256": "5c80674240b2102af27c15a3580c2c1983e5f32c08d74619f10000b2bb785418",
+      "answer_hash_definition": "UTF-8 bytes of exact decoded answer string; no normalization",
+      "finish_reason": "stop",
+      "runtime_error": null,
+      "image_evidence": [
+        {
+          "path": "agentsLog/kwiscion/private/validation_2024_keyfree/pages/page-20.png",
+          "sha256": "a577e889152dca7a2d4969a0b87508c1288da762b3d15390edadab0259b1433e",
+          "visually_inspected": true
+        }
+      ],
+      "official_rubric_locator": "MHIP-R0-100-2405-zasady Zadanie 17.1"
+    },
+    {
+      "id": "val2024-hist-z17.2",
+      "max_points": 1,
+      "central": 1,
+      "low": 1,
+      "high": 1,
+      "rationale": "Correct dynasty.",
+      "error_class": "none",
+      "answer_sha256": "20889d813d31928350fe6a157d6483da3e9b0a88fe498c40ad6f63cc3729171b",
+      "answer_hash_definition": "UTF-8 bytes of exact decoded answer string; no normalization",
+      "finish_reason": "stop",
+      "runtime_error": null,
+      "image_evidence": [
+        {
+          "path": "agentsLog/kwiscion/private/validation_2024_keyfree/pages/page-20.png",
+          "sha256": "a577e889152dca7a2d4969a0b87508c1288da762b3d15390edadab0259b1433e",
+          "visually_inspected": true
+        },
+        {
+          "path": "agentsLog/kwiscion/private/validation_2024_keyfree/pages/page-21.png",
+          "sha256": "54b631cd65db862e9a4456407f7e9ca4808f7bb1b527dea576a0b5bbce09de70",
+          "visually_inspected": true
+        }
+      ],
+      "official_rubric_locator": "MHIP-R0-100-2405-zasady Zadanie 17.2"
+    },
+    {
+      "id": "val2024-hist-z18",
+      "max_points": 1,
+      "central": 0,
+      "low": 0,
+      "high": 1,
+      "rationale": "Correct side, but calls the beasts military headgear a crown and does not identify the opposing soldiers by their uniforms. Central grade finds fewer than two correctly interpreted distinguishing graphic elements; upper bound allows generic beast-plus-combatants interpretation.",
+      "error_class": "image_ocr",
+      "answer_sha256": "eba0966b0d8ad455f19c44b150b230e960e18f093de00963ab42ef6187d89709",
+      "answer_hash_definition": "UTF-8 bytes of exact decoded answer string; no normalization",
+      "finish_reason": "stop",
+      "runtime_error": null,
+      "image_evidence": [
+        {
+          "path": "agentsLog/kwiscion/private/validation_2024_keyfree/pages/page-21.png",
+          "sha256": "54b631cd65db862e9a4456407f7e9ca4808f7bb1b527dea576a0b5bbce09de70",
+          "visually_inspected": true
+        }
+      ],
+      "official_rubric_locator": "MHIP-R0-100-2405-zasady Zadanie 18"
+    },
+    {
+      "id": "val2024-hist-z19.1",
+      "max_points": 2,
+      "central": 0,
+      "low": 0,
+      "high": 0,
+      "rationale": "Actual final answer is empty after native combined length cap; both points remain in denominator.",
+      "error_class": "incomplete_output",
+      "answer_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "answer_hash_definition": "UTF-8 bytes of exact decoded answer string; no normalization",
+      "finish_reason": "length",
+      "runtime_error": {
+        "type": "length",
+        "message": "Native combined thinking/final cap reached"
+      },
+      "image_evidence": [
+        {
+          "path": "agentsLog/kwiscion/private/validation_2024_keyfree/pages/page-22.png",
+          "sha256": "ce28404c0507cae44688e5b5da22c1c2366b119ecf02eee8d08b66f9dc2b6fdb",
+          "visually_inspected": true
+        }
+      ],
+      "official_rubric_locator": "MHIP-R0-100-2405-zasady Zadanie 19.1"
+    },
+    {
+      "id": "val2024-hist-z19.2",
+      "max_points": 1,
+      "central": 0,
+      "low": 0,
+      "high": 0,
+      "rationale": "Names an unrelated general.",
+      "error_class": "entity_confusion",
+      "answer_sha256": "0ed4cc6b39e85b8ddd6207312f8708c311ac17c36c2fccb5ae2bce7af0ac9dc2",
+      "answer_hash_definition": "UTF-8 bytes of exact decoded answer string; no normalization",
+      "finish_reason": "stop",
+      "runtime_error": null,
+      "image_evidence": [
+        {
+          "path": "agentsLog/kwiscion/private/validation_2024_keyfree/pages/page-22.png",
+          "sha256": "ce28404c0507cae44688e5b5da22c1c2366b119ecf02eee8d08b66f9dc2b6fdb",
+          "visually_inspected": true
+        }
+      ],
+      "official_rubric_locator": "MHIP-R0-100-2405-zasady Zadanie 19.2"
+    },
+    {
+      "id": "val2024-hist-z20.1",
+      "max_points": 1,
+      "central": 1,
+      "low": 1,
+      "high": 1,
+      "rationale": "Correct source selection supported by private trade, services and small workshops.",
+      "error_class": "none",
+      "answer_sha256": "b04955a508ef2bbd9b14f54d5fb3141e32dda851a6c04bed39c5c2f3d8de31fc",
+      "answer_hash_definition": "UTF-8 bytes of exact decoded answer string; no normalization",
+      "finish_reason": "stop",
+      "runtime_error": null,
+      "image_evidence": [],
+      "official_rubric_locator": "MHIP-R0-100-2405-zasady Zadanie 20.1"
+    },
+    {
+      "id": "val2024-hist-z20.2",
+      "max_points": 2,
+      "central": 2,
+      "low": 2,
+      "high": 2,
+      "rationale": "All three truth judgments correct.",
+      "error_class": "none",
+      "answer_sha256": "965900c5f74bb87fae65cc88f8d30d90bd1e90b14f4cd1bd9ef666adb006a063",
+      "answer_hash_definition": "UTF-8 bytes of exact decoded answer string; no normalization",
+      "finish_reason": "stop",
+      "runtime_error": null,
+      "image_evidence": [],
+      "official_rubric_locator": "MHIP-R0-100-2405-zasady Zadanie 20.2"
+    },
+    {
+      "id": "val2024-hist-z21",
+      "max_points": 1,
+      "central": 1,
+      "low": 1,
+      "high": 1,
+      "rationale": "Links visible massed ranks and repeated party symbols to propaganda of power and unity.",
+      "error_class": "none",
+      "answer_sha256": "fff1d56d8b019909f4df21b95879874106e0a26a74d5a632580e27ef9bb8e642",
+      "answer_hash_definition": "UTF-8 bytes of exact decoded answer string; no normalization",
+      "finish_reason": "stop",
+      "runtime_error": null,
+      "image_evidence": [
+        {
+          "path": "agentsLog/kwiscion/private/validation_2024_keyfree/pages/page-24.png",
+          "sha256": "98ced4dafd22f4e73eafb515c38673c85cd3f03782d653033144a04fa492ad4b",
+          "visually_inspected": true
+        }
+      ],
+      "official_rubric_locator": "MHIP-R0-100-2405-zasady Zadanie 21"
+    },
+    {
+      "id": "val2024-hist-z22.1",
+      "max_points": 1,
+      "central": 1,
+      "low": 1,
+      "high": 1,
+      "rationale": "Correct day and month; added year is also correct.",
+      "error_class": "none",
+      "answer_sha256": "cdee0b8d35b3bac1932af148b387a59753a6e2fdbf7a5f452921c4e292e0f42a",
+      "answer_hash_definition": "UTF-8 bytes of exact decoded answer string; no normalization",
+      "finish_reason": "stop",
+      "runtime_error": null,
+      "image_evidence": [],
+      "official_rubric_locator": "MHIP-R0-100-2405-zasady Zadanie 22.1"
+    },
+    {
+      "id": "val2024-hist-z22.2",
+      "max_points": 2,
+      "central": 2,
+      "low": 2,
+      "high": 2,
+      "rationale": "Provides one shared international consequence and one shared domestic consequence, with concrete reference to later restraint and Solidarity.",
+      "error_class": "none",
+      "answer_sha256": "2256597a8b1ad1fc888cea23a400cfed5fd02212f263275686ead71132ddee21",
+      "answer_hash_definition": "UTF-8 bytes of exact decoded answer string; no normalization",
+      "finish_reason": "stop",
+      "runtime_error": null,
+      "image_evidence": [],
+      "official_rubric_locator": "MHIP-R0-100-2405-zasady Zadanie 22.2"
+    },
+    {
+      "id": "val2024-hist-z23.1",
+      "max_points": 1,
+      "central": 1,
+      "low": 1,
+      "high": 1,
+      "rationale": "Both methods are correctly identified from the poster and discrepancy in voting totals.",
+      "error_class": "none",
+      "answer_sha256": "658c3a23b04f887b9dbca904932b97e6a60a61c95de1de82809db27c9d46ce5c",
+      "answer_hash_definition": "UTF-8 bytes of exact decoded answer string; no normalization",
+      "finish_reason": "stop",
+      "runtime_error": null,
+      "image_evidence": [
+        {
+          "path": "agentsLog/kwiscion/private/validation_2024_keyfree/pages/page-26.png",
+          "sha256": "c8dd13c2e1ea0976ab50639a073664bd3557635c889dca052540ca0d5d8ee5ce",
+          "visually_inspected": true
+        }
+      ],
+      "official_rubric_locator": "MHIP-R0-100-2405-zasady Zadanie 23.1"
+    },
+    {
+      "id": "val2024-hist-z23.2",
+      "max_points": 1,
+      "central": 0,
+      "low": 0,
+      "high": 1,
+      "rationale": "Correct negative decision, but assigns Senate abolition to the wrong question and wrong real-vote percentage, breaking the evidence comparison. Upper bound accepts the independently correct observation that the third question has the highest support.",
+      "error_class": "content_incorrect",
+      "answer_sha256": "87959580e133f8587469ceb78af8489971be981fb23aee0aa0a54c70769e433a",
+      "answer_hash_definition": "UTF-8 bytes of exact decoded answer string; no normalization",
+      "finish_reason": "stop",
+      "runtime_error": null,
+      "image_evidence": [
+        {
+          "path": "agentsLog/kwiscion/private/validation_2024_keyfree/pages/page-26.png",
+          "sha256": "c8dd13c2e1ea0976ab50639a073664bd3557635c889dca052540ca0d5d8ee5ce",
+          "visually_inspected": true
+        }
+      ],
+      "official_rubric_locator": "MHIP-R0-100-2405-zasady Zadanie 23.2"
+    },
+    {
+      "id": "val2024-hist-z24",
+      "max_points": 1,
+      "central": 1,
+      "low": 1,
+      "high": 1,
+      "rationale": "Correctly separates the Czechoslovak 1968 map from the Hungarian 1956 text using named political actors. Added reference to Hungary on the map is imprecise, but the decisive identification remains correct.",
+      "error_class": "none",
+      "answer_sha256": "75bd696adad4f5e0c1ea525e235b5f3e8018e2c7a149e7f8afccb6c49c98818f",
+      "answer_hash_definition": "UTF-8 bytes of exact decoded answer string; no normalization",
+      "finish_reason": "stop",
+      "runtime_error": null,
+      "image_evidence": [
+        {
+          "path": "agentsLog/kwiscion/private/validation_2024_keyfree/pages/page-27.png",
+          "sha256": "9900c6ca5c919283c8eb96fca43059c935ff071db790a9809a815fd20930c39a",
+          "visually_inspected": true
+        }
+      ],
+      "official_rubric_locator": "MHIP-R0-100-2405-zasady Zadanie 24"
+    },
+    {
+      "id": "val2024-hist-z25",
+      "max_points": 3,
+      "central": 0,
+      "low": 0,
+      "high": 0,
+      "rationale": "Actual final answer is empty after native combined length cap; all three points remain in denominator.",
+      "error_class": "incomplete_output",
+      "answer_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "answer_hash_definition": "UTF-8 bytes of exact decoded answer string; no normalization",
+      "finish_reason": "length",
+      "runtime_error": {
+        "type": "length",
+        "message": "Native combined thinking/final cap reached"
+      },
+      "image_evidence": [
+        {
+          "path": "agentsLog/kwiscion/private/validation_2024_keyfree/pages/page-28.png",
+          "sha256": "3ddacc9941ab9dda555b473004e9a59d6ceaf3c8542c025f0c72ff91579b3da2",
+          "visually_inspected": true
+        }
+      ],
+      "official_rubric_locator": "MHIP-R0-100-2405-zasady Zadanie 25"
+    },
+    {
+      "id": "val2024-hist-z26",
+      "max_points": 15,
+      "central": 8,
+      "low": 7,
+      "high": 8,
+      "rationale": "Topic 3; military 3, diplomatic 1, political-constitutional 1; narrative 5, factual deduction 0, coherence 3. Clear connected prose, but two aspects rely on general assertions rather than developed historical examples. Lower bound allows coherence 2 for the unbridged transition from 1920 military success to diplomatic settlement.",
+      "error_class": "essay_argumentation",
+      "answer_sha256": "3f7561add3016ff2dbe830f24bdbb92d5bcfb74148d9bbdf5eb6e8261a678688",
+      "answer_hash_definition": "UTF-8 bytes of exact decoded answer string; no normalization",
+      "finish_reason": "stop",
+      "runtime_error": null,
+      "image_evidence": [],
+      "official_rubric_locator": "MHIP-R0-100-2405-zasady Zadanie 26"
+    }
+  ],
+  "essay": {
+    "topic": 3,
+    "word_count": 384,
+    "word_count_method": "Python str.split on complete submitted body; no heading present",
+    "aspects": [
+      {
+        "aspect": "military",
+        "score": 3,
+        "classification": "satisfactory",
+        "answer_paragraph": 2,
+        "passage": "Tworząc Legiony Polskie już w trakcie I wojny światowej, stworzył on zalążek nowoczesnej armii",
+        "claims": [
+          "Legions supplied military cadres",
+          "Pilsudski led the wartime effort against Soviet Russia",
+          "Warsaw victory helped preserve independence"
+        ],
+        "assessment": "Connects concrete formations and a named military turning point to the survival of sovereignty. The conditional explanation of losing independence supplies genuine reasoning. Limited detail prevents rich credit."
+      },
+      {
+        "aspect": "diplomatic",
+        "score": 1,
+        "classification": "superficial",
+        "answer_paragraph": 3,
+        "passage": "Potrafił on umiejętnie balansować między potrzebą wsparcia od Zachodu a koniecznością zachowania niezależności",
+        "claims": [
+          "International recognition mattered",
+          "Pilsudski and his collaborators obtained support",
+          "Polish demands were represented at Versailles"
+        ],
+        "assessment": "Versailles supplies a historical anchor, but the claimed diplomatic mechanism and Pilsudskis contribution are asserted, not demonstrated. No concrete act or negotiation is developed. This is insufficient for satisfactory credit, without requiring a fixed list of names."
+      },
+      {
+        "aspect": "political-constitutional",
+        "score": 1,
+        "classification": "superficial",
+        "answer_paragraph": 4,
+        "passage": "Stworzył on fundamenty państwa, które mimo wewnętrznych sporów, posiadało jasno zdefiniowane ramy organizacyjne i aparat władzy.",
+        "claims": [
+          "Pilsudski unified political forces",
+          "His authority aided transition to state administration",
+          "State institutions were established"
+        ],
+        "assessment": "Relevant causal claim about unifying authority, but no institution, legal decision, transfer of power or constitutional action is concretely developed. General state-building assertions merit superficial credit."
+      }
+    ],
+    "narrative_before_deduction": 5,
+    "established_distinct_factual_errors": [],
+    "factual_deduction": 0,
+    "factual_cautions": [
+      {
+        "claim": "Pilsudski and collaborators secured Versailles outcomes",
+        "classification": "unsupported attribution / overgeneralization",
+        "treatment": "Limits argument strength; not separately treated as a proven false statement because the answer also credits collaborators and does not claim personal attendance or sole authorship."
+      },
+      {
+        "claim": "Pilsudski created the Legions",
+        "classification": "broad conventional shorthand",
+        "treatment": "No deduction for sole authorship not explicitly claimed; the relevant cadre-building argument is creditable."
+      },
+      {
+        "claim": "The 1920 victory mattered for independence",
+        "classification": "relevant preservation argument",
+        "treatment": "Not an error about achieving independence in 1918: the paragraph explicitly says independence could have been a short-lived episode without its subsequent defense."
+      }
+    ],
+    "narrative_after_deduction": 5,
+    "coherence": 3,
+    "coherence_rationale": "Introduction states a position, each paragraph advances one requested aspect, and conclusion returns to that position. No topic switching or contradictory thesis. Generic support is penalized in argumentation, not automatically twice. Low bound 2 reflects the potentially unbridged chronological link between the military paragraph and diplomatic settlement.",
+    "central": 8,
+    "low": 7,
+    "high": 8,
+    "rubric": "CKE official PDF pages 24-26; discrete aspect scores 0/1/3/4; deductions from narrative only, floor zero; separate coherence 0-3."
+  },
+  "image_inventory": [
+    {
+      "path": "agentsLog/kwiscion/private/validation_2024_keyfree/pages/page-04.png",
+      "sha256": "b0838350ae52a84d8b3eef81d59cd1c691e8cb08f23ad4970d21e632ed3f72b9",
+      "visually_inspected": true
+    },
+    {
+      "path": "agentsLog/kwiscion/private/validation_2024_keyfree/pages/page-05.png",
+      "sha256": "738bfbfb73b4f90e4bb17a8cf6852899600d5e451b5d3dd0ea76ef499375169d",
+      "visually_inspected": true
+    },
+    {
+      "path": "agentsLog/kwiscion/private/validation_2024_keyfree/pages/page-07.png",
+      "sha256": "ab3f7fb24dfe6f05654171eca2d0e6421ab5b8dd6290bd81d03ff59123040510",
+      "visually_inspected": true
+    },
+    {
+      "path": "agentsLog/kwiscion/private/validation_2024_keyfree/pages/page-08.png",
+      "sha256": "ef1749770b71483f45caf36183e782389741456a7f5bbcce92d361c0dd02cc77",
+      "visually_inspected": true
+    },
+    {
+      "path": "agentsLog/kwiscion/private/validation_2024_keyfree/pages/page-09.png",
+      "sha256": "4d30f761f2678e3d4d616e5193c3abf94e80bce42c8c2522e63098530c5d4fd9",
+      "visually_inspected": true
+    },
+    {
+      "path": "agentsLog/kwiscion/private/validation_2024_keyfree/pages/page-10.png",
+      "sha256": "fd35f322ab827a5a05d8348e86084124eada33dc1a71a3e92f89aff62c01468d",
+      "visually_inspected": true
+    },
+    {
+      "path": "agentsLog/kwiscion/private/validation_2024_keyfree/pages/page-11.png",
+      "sha256": "e1286880491d7909f45b9a25ee044599591a621ea78f717088e9bc4e0083a254",
+      "visually_inspected": true
+    },
+    {
+      "path": "agentsLog/kwiscion/private/validation_2024_keyfree/pages/page-12.png",
+      "sha256": "c380f684f4f4170b2788cc305123b4560b2cc0c8de8e745957ad0c9d7c71f7b7",
+      "visually_inspected": true
+    },
+    {
+      "path": "agentsLog/kwiscion/private/validation_2024_keyfree/pages/page-13.png",
+      "sha256": "fdb1f949cc7f610ecfb0fd043aa416034aafb19aa0fd64e778d5398de008d781",
+      "visually_inspected": true
+    },
+    {
+      "path": "agentsLog/kwiscion/private/validation_2024_keyfree/pages/page-14.png",
+      "sha256": "38016a9c95eae9a433d93450298244ccfb00c6e9031280b61962a4952b7956a1",
+      "visually_inspected": true
+    },
+    {
+      "path": "agentsLog/kwiscion/private/validation_2024_keyfree/pages/page-15.png",
+      "sha256": "77f50f108eb4752eed9625d1f4a0cc66a3055b063d6256f8e38da571aac4fe42",
+      "visually_inspected": true
+    },
+    {
+      "path": "agentsLog/kwiscion/private/validation_2024_keyfree/pages/page-16.png",
+      "sha256": "9bda8c79c19a1433b11fda0cb32d615258954c3b1632255ac58178f240a4d23e",
+      "visually_inspected": true
+    },
+    {
+      "path": "agentsLog/kwiscion/private/validation_2024_keyfree/pages/page-17.png",
+      "sha256": "2c4ead95a94bf197707d5c93d57ec9959dfe7f2e217a53eb169512a8bad71b0d",
+      "visually_inspected": true
+    },
+    {
+      "path": "agentsLog/kwiscion/private/validation_2024_keyfree/pages/page-19.png",
+      "sha256": "1bd640bf6e230b21a5307b0022d0b4d3411881df08fedc869c5242522f5bc385",
+      "visually_inspected": true
+    },
+    {
+      "path": "agentsLog/kwiscion/private/validation_2024_keyfree/pages/page-20.png",
+      "sha256": "a577e889152dca7a2d4969a0b87508c1288da762b3d15390edadab0259b1433e",
+      "visually_inspected": true
+    },
+    {
+      "path": "agentsLog/kwiscion/private/validation_2024_keyfree/pages/page-21.png",
+      "sha256": "54b631cd65db862e9a4456407f7e9ca4808f7bb1b527dea576a0b5bbce09de70",
+      "visually_inspected": true
+    },
+    {
+      "path": "agentsLog/kwiscion/private/validation_2024_keyfree/pages/page-22.png",
+      "sha256": "ce28404c0507cae44688e5b5da22c1c2366b119ecf02eee8d08b66f9dc2b6fdb",
+      "visually_inspected": true
+    },
+    {
+      "path": "agentsLog/kwiscion/private/validation_2024_keyfree/pages/page-24.png",
+      "sha256": "98ced4dafd22f4e73eafb515c38673c85cd3f03782d653033144a04fa492ad4b",
+      "visually_inspected": true
+    },
+    {
+      "path": "agentsLog/kwiscion/private/validation_2024_keyfree/pages/page-26.png",
+      "sha256": "c8dd13c2e1ea0976ab50639a073664bd3557635c889dca052540ca0d5d8ee5ce",
+      "visually_inspected": true
+    },
+    {
+      "path": "agentsLog/kwiscion/private/validation_2024_keyfree/pages/page-27.png",
+      "sha256": "9900c6ca5c919283c8eb96fca43059c935ff071db790a9809a815fd20930c39a",
+      "visually_inspected": true
+    },
+    {
+      "path": "agentsLog/kwiscion/private/validation_2024_keyfree/pages/page-28.png",
+      "sha256": "3ddacc9941ab9dda555b473004e9a59d6ceaf3c8542c025f0c72ff91579b3da2",
+      "visually_inspected": true
+    }
+  ],
+  "boundary": "No inference, training, remote mutation, Git mutation, May 2025 access or third-party passage/key reproduction. Only these review MD/JSON files authored."
+}

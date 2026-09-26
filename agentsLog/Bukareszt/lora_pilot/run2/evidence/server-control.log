@@ -1,0 +1,31 @@
+0.00.000.638 I srv  llama_server: initializing ...
+0.00.196.191 I cmn  common_param: common_params_print_info: verbosity = 3 (adjust with the `-lv N` CLI arg)
+0.00.196.323 I srv  init_listene: The UI is disabled
+0.00.196.330 I srv  init_listene: Use --ui/--no-ui (or deprecated --webui/--no-webui) to enable/disable
+0.00.196.389 W srv  llama_server: security: no API key is set and CORS allows all origins (see https://github.com/ggml-org/llama.cpp/pull/25655)
+0.00.200.689 I srv    load_model: loading model '/ephemeral/mm-lora/control/base-q4_k_m.gguf'
+0.01.431.948 W load: control-looking token:    212 '</s>' was not control-type; this is probably a bug in the model. its type will be overridden
+0.01.432.570 W load: control-looking token:     50 '<|tool_response>' was not control-type; this is probably a bug in the model. its type will be overridden
+0.01.466.928 W load: special_eog_ids contains '<|tool_response>', removing '</s>' token from EOG list
+0.02.600.027 I cmn          init: llama threadpool init, n_threads = 28
+0.02.789.499 W init_audio: audio input is in experimental stage and may have reduced quality:
+    https://github.com/ggml-org/llama.cpp/discussions/13759
+0.02.789.513 I srv    load_model: loaded multimodal model, '/ephemeral/mm-lora/control/projector.gguf'
+0.02.840.028 I srv    load_model: initializing, n_slots = 1, n_ctx_slot = 8192, kv_unified = 'false'
+0.02.847.708 I srv  llama_server: model loaded
+0.02.847.729 I srv  llama_server: listening on http://127.0.0.1:18117
+0.03.024.353 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = -1
+0.03.024.487 I slot launch_slot_: id  0 | task 0 | processing task, is_child = 0
+0.03.807.817 I slot print_timing: id  0 | task 0 | prompt eval time =      71.08 ms /    32 tokens (    2.22 ms per token,   450.17 tokens per second)
+0.03.807.825 I slot print_timing: id  0 | task 0 |        eval time =     712.19 ms /    80 tokens (    9.02 ms per token,   110.92 tokens per second)
+0.03.807.826 I slot print_timing: id  0 | task 0 |       total time =     783.28 ms /   112 tokens
+0.03.807.834 I slot print_timing: id  0 | task 0 |    graphs reused =         78
+0.03.807.899 I slot      release: id  0 | task 0 | stop processing: n_tokens = 111, truncated = 0
+0.03.820.932 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 19416129924
+0.03.847.436 I slot launch_slot_: id  0 | task 83 | processing task, is_child = 0
+0.04.258.474 I slot print_timing: id  0 | task 83 | prompt eval time =     262.62 ms /   106 tokens (    2.48 ms per token,   403.62 tokens per second)
+0.04.258.483 I slot print_timing: id  0 | task 83 |        eval time =     148.38 ms /    17 tokens (    9.27 ms per token,   107.83 tokens per second)
+0.04.258.488 I slot print_timing: id  0 | task 83 |       total time =     411.01 ms /   123 tokens
+0.04.258.489 I slot print_timing: id  0 | task 83 |    graphs reused =         93
+0.04.258.536 I slot      release: id  0 | task 83 | stop processing: n_tokens = 123, truncated = 0
+0.04.260.544 I srv    operator(): operator(): cleaning up before exit...
