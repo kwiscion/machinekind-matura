@@ -1,0 +1,46 @@
+{
+  "essays": "agentsLog/Bukareszt/essay_corpus/drafts/b3r_essays.jsonl",
+  "essays_sha256": "9aaeee00789ddf519f1ae3424870acb59c99c92ec6cdb3006ef21ca256f776e6",
+  "factcards": [
+    "agentsLog/Bukareszt/essay_corpus/drafts/b3_factcards.jsonl",
+    "agentsLog/Bukareszt/essay_corpus/drafts/b3r_factcards.jsonl",
+    "agentsLog/Bukareszt/essay_corpus/drafts/b1_factcards.jsonl",
+    "agentsLog/Bukareszt/essay_corpus/drafts/b2_factcards.jsonl"
+  ],
+  "factcards_sha256": [
+    "151013f0307496a610ae6169440e98f92048f3f7ed5591e33ed5ad157aa773f3",
+    "5097fca42a1264675e8b046a72be584f33486831f0712ad38d98d2bb07f78f4c",
+    "419ddc7ee1c4ea0e93290a12ac138158033753406148a31a67a5fea11940ff52",
+    "4200fb5a701f0a2024875c1cde77c67c2ef5beaf65a2ee61049de33b03efb1e8"
+  ],
+  "factcards_total": 374,
+  "factcards_failing": {},
+  "results": [
+    {
+      "id": "bk117-b3-magna",
+      "cluster_id": "C-magna-carta",
+      "words": 422,
+      "essay_sha256": "c358b6e6b4dd38037e5ddc52ad928f6eef4c2461926b2e0a1dd13a03cd0e0ad0",
+      "pass": true,
+      "errors": []
+    },
+    {
+      "id": "bk117-b3-thirty-t2",
+      "cluster_id": "C-thirty-years",
+      "words": 441,
+      "essay_sha256": "496d2f22457a63e061fe09c9a194807fc5ecb8a908846dbd772cb66a8d23d0e0",
+      "pass": true,
+      "errors": []
+    },
+    {
+      "id": "bk117-b3-communist-t2",
+      "cluster_id": "C-communist-takeover",
+      "words": 437,
+      "essay_sha256": "5f9bd47a0be6e5cef63bbcde850db1905d532724e06a411ed0aa68edd12efef4",
+      "pass": true,
+      "errors": []
+    }
+  ],
+  "passed": 3,
+  "total": 3
+}

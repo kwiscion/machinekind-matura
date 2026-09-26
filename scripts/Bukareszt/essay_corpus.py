@@ -149,6 +149,7 @@ def root_accepted_rows(cfg):
                 rows.append({"id": rec["id"], "task_type": rec["task_type"], "origin": part,
                              "source_group_id": ext[rec["source_group_id"]],
                              "root_source_group_id": rec["source_group_id"],
+                             "source_ids": rec.get("source_ids", []),
                              "messages": [{"role": "user", "content": rec["prompt"]},
                                           {"role": "assistant", "content": rec["response"]}]})
     return rows, rejected
@@ -638,7 +639,7 @@ def cmd_export(args):
     train = []
     for eid in sorted(accepted):
         r = essays[eid]
-        train.append({"id": eid, "task_type": "essay", "source_group_id": r["cluster_id"],
+        train.append({"id": eid, "task_type": "essay", "source_group_id": r["cluster_id"], "source_ids": r["source_ids"],
                       "messages": [{"role": "user", "content": exam_prompt(r)},
                                    {"role": "assistant", "content": r["essay"]}]})
     for p in pairs:
@@ -646,7 +647,7 @@ def cmd_export(args):
             continue
         if p["transformation"]["from_essay_id"] not in accepted:
             raise SystemExit(f"repair {p['id']} built from non-accepted essay")
-        train.append({"id": p["id"], "task_type": "essay_repair", "source_group_id": p["cluster_id"],
+        train.append({"id": p["id"], "task_type": "essay_repair", "source_group_id": p["cluster_id"], "source_ids": p["source_ids"],
                       "messages": [{"role": "user", "content": p["prompt"]},
                                    {"role": "assistant", "content": p["answer"]}]})
     for r in train:
@@ -666,7 +667,40 @@ def cmd_export(args):
         errs = contract_errors(r["messages"][1]["content"])
         if errs:
             raise SystemExit(f"{r['id']}: {errs}")
+    # Attribution/rights per row.
+    srcs = {("bukareszt", d["source_id"]): d for d in load_jsonl(BK_SOURCES)}
+    for part, d in ROOT_DIRS.items():
+        for fn in ("sources.jsonl", "crosscheck-sources.jsonl"):
+            if (d / fn).exists():
+                for x in load_jsonl(d / fn):
+                    srcs.setdefault((part, x["source_id"]), x)
+    attribution = []
+    for r in train:
+        refs = []
+        for sid in r["source_ids"]:
+            x = srcs.get((r["origin"], sid))
+            if x is None:
+                raise SystemExit(f"{r['id']}: no source manifest entry for {sid}")
+            refs.append({"source_id": sid, "title": x.get("title"), "url": x.get("permalink") or x.get("url"),
+                         "revision": x.get("revision_id") or x.get("revision_or_sha256"), "license": x.get("license")})
+        attribution.append({"id": r["id"], "origin": r["origin"], "source_group_id": r["source_group_id"], "sources": refs})
+    # Exclusions: everything known but not exported, with reason.
+    led = {x["id"]: x for x in load_jsonl(CORPUS / "ledger.jsonl")} if (CORPUS / "ledger.jsonl").exists() else {}
+    rep = json.loads((CORPUS / "leakage_report.json").read_text(encoding="utf-8"))
+    exclusions = {
+        "bukareszt_not_accepted": {k: v["status"] + (": " + v["reason"] if v["reason"] else "") for k, v in led.items() if v["status"] != "accepted"},
+        "root_rows_rejected": root_rejected,
+        "pn781_legacy_and_strict_records": "not included in this essay-only export (24 strict short/chronology + 231 legacy drafts); cluster overlap is reported in leakage_report.json",
+        "pn781_clusters_in_train_groups": sorted(g for g in tg if any(k.endswith(":" + g) for k in rep.get("pn781_records_by_cluster", {}))),
+        "eval16_and_eval_factcards": "never training; separate eval16_input.jsonl; cards in eval16_factcards.jsonl",
+        "train_groups_overlapping_pewciu6_dev": sorted(g for g in tg if g in dev_pewciu6_clusters()),
+    }
+    inputs = sorted({*args.essays, *args.reviews, *([args.repairs] if args.repairs else []),
+                     str(CORPUS / "clusters.json"), str(CORPUS / "eval16_topics.jsonl"), str(BK_SOURCES)}
+                    | {str(d / f) for d in ROOT_DIRS.values() for f in ("essays.jsonl", "repairs.jsonl", "independent-review.json", "sources.jsonl") if (d / f).exists()})
     out.mkdir(parents=True, exist_ok=True)
+    write_jsonl(out / "attribution.jsonl", attribution)
+    (out / "exclusions.json").write_text(json.dumps(exclusions, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     write_jsonl(out / "train_sft.jsonl", train)
     write_jsonl(out / "eval16_input.jsonl", evrows)
     man = {"train_rows": len(train), "essays": sum(r["task_type"] == "essay" for r in train),
@@ -678,6 +712,11 @@ def cmd_export(args):
            "train_groups_overlapping_pewciu6_dev": sorted(g for g in tg if g in dev_pewciu6_clusters()),
            "train_groups": sorted(tg), "eval_groups": sorted(eg), "shared_groups": leak,
            "train_sha256": sha256_file(out / "train_sft.jsonl"), "eval_sha256": sha256_file(out / "eval16_input.jsonl"),
+           "input_sha256": {f: sha256_file(f) for f in inputs},
+           "attribution_sha256": sha256_file(out / "attribution.jsonl"),
+           "exclusions_sha256": sha256_file(out / "exclusions.json"),
+           "leakage_report_sha256": sha256_file(CORPUS / "leakage_report.json"),
+           "licenses": sorted({ref["license"] for a in attribution for ref in a["sources"]}),
            "format": "chat messages (user/assistant), no system prompt; eval rows are runner input {id,prompt}"}
     (out / "export_manifest.json").write_text(json.dumps(man, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(man, ensure_ascii=False, indent=1))
