@@ -1,0 +1,5 @@
+# Private essay run dirs: raw provider output and plan-bearing inputs never get committed.
+private/
+*.output.jsonl
+write.input.jsonl
+run_manifest.json

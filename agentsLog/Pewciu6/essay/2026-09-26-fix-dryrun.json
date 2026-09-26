@@ -14,14 +14,12 @@
     "single": {
       "file": "single.input.jsonl",
       "calls": 2,
-      "max_output_tokens": 1536,
-      "sha256": "d0702b275f767bd8b8ee7ced2e5d58722797bd9af5649cad3f0f268c1ec9c13c"
+      "max_output_tokens": 1536
     },
     "plan": {
       "file": "plan.input.jsonl",
       "calls": 2,
-      "max_output_tokens": 512,
-      "sha256": "d0c8f44bef39fabf95d2ecf425ed4e90ba39f7ce5f14e9a8464ef1ce90b1231c"
+      "max_output_tokens": 512
     },
     "write": {
       "file": "write.input.jsonl",
@@ -75,14 +73,7 @@
   ],
   "non_essay_passthrough": 0,
   "commands": [
-    "python infer.py --config agentsLog/Pewciu6/essay/pilot-v1/config.final.json --input agentsLog/Pewciu6/essay/pilot-v1/single.input.jsonl --output agentsLog/Pewciu6/essay/pilot-v1/single.output.jsonl --max-calls 2",
-    "python infer.py --config agentsLog/Pewciu6/essay/pilot-v1/config.plan.json --input agentsLog/Pewciu6/essay/pilot-v1/plan.input.jsonl --output agentsLog/Pewciu6/essay/pilot-v1/plan.output.jsonl --max-calls 2",
-    "python scripts/Pewciu6/essay_route.py write-from-plan --manifest agentsLog/Pewciu6/essay/pilot-v1/manifest.json --source agentsLog/Pewciu6/essay/dev_fixtures.jsonl --plan-output agentsLog/Pewciu6/essay/pilot-v1/plan.output.jsonl",
-    "python infer.py --config agentsLog/Pewciu6/essay/pilot-v1/config.final.json --input agentsLog/Pewciu6/essay/pilot-v1/write.input.jsonl --output agentsLog/Pewciu6/essay/pilot-v1/write.output.jsonl --max-calls 2"
+    "python scripts/Pewciu6/essay_pilot_run.py --manifest agentsLog/Pewciu6/essay/private/pilot-v2/manifest.json --source agentsLog/Pewciu6/essay/dev_fixtures.jsonl"
   ],
-  "notes": "No model calls were made by this script. Inference requires the lead's host assignment and launch record.",
-  "configs": {
-    "config.final.json": "afe8330a32c503f7b4fae8e63c28f06e62c15e599f374e2bdcfe31675460d7b4",
-    "config.plan.json": "290d12fa12eb8b3205adb88edeece50c6fb309a51405ad8c3c056d6e9cef0282"
-  }
+  "notes": "No model calls were made by this script. Inference requires the lead's host assignment and launch record."
 }
