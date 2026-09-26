@@ -1,0 +1,225 @@
+{
+  "schema_version": 1,
+  "owner": "ljaniec",
+  "task": "Gemma 4 preparation and original load probe only",
+  "coordination_issue": "https://github.com/kwiscion/machinekind-matura/issues/33",
+  "cpu_handoff": "https://github.com/kwiscion/machinekind-matura/issues/33#issuecomment-5845947062",
+  "status": "weights_verified_runtime_load_failed",
+  "no_full_validation": true,
+  "exam_calls": 0,
+  "total_probe_requests": 1,
+  "model": {
+    "native_tag": "gemma4:12b-it-q4_K_M",
+    "native_registry_manifest_sha256": "4eb23ef187e2c5462566d6a1d3bbbc2f1346d0b4327cbb66d58fffbcc9b2b05c",
+    "license": "Apache-2.0",
+    "license_source": "https://ollama.com/library/gemma4:12b",
+    "publisher_source": "https://huggingface.co/google/gemma-4-12B-it",
+    "quantization": "Q4_K_M",
+    "projector_quantization": "BF16",
+    "saved_inference_weight_bytes": 7556497632,
+    "weight_limit_bytes": 8000000000,
+    "within_limit": true,
+    "all_downloaded_layers": [
+      {
+        "path": "/usr/share/ollama/.ollama/models/blobs/sha256-c805f5b265d8e695c44f4065dfc368206cd8026447604925fef8db57ee32ee23",
+        "media_type": "application/vnd.docker.container.image.v1+json",
+        "bytes": 548,
+        "sha256": "c805f5b265d8e695c44f4065dfc368206cd8026447604925fef8db57ee32ee23",
+        "expected_bytes": 548,
+        "expected_digest": "sha256:c805f5b265d8e695c44f4065dfc368206cd8026447604925fef8db57ee32ee23"
+      },
+      {
+        "path": "/usr/share/ollama/.ollama/models/blobs/sha256-1278394b693672ac2799eadc9a83fd98259a6a88a40acfb1dcaa6c6fc895a606",
+        "media_type": "application/vnd.ollama.image.model",
+        "bytes": 7381382048,
+        "sha256": "1278394b693672ac2799eadc9a83fd98259a6a88a40acfb1dcaa6c6fc895a606",
+        "expected_bytes": 7381382048,
+        "expected_digest": "sha256:1278394b693672ac2799eadc9a83fd98259a6a88a40acfb1dcaa6c6fc895a606"
+      },
+      {
+        "path": "/usr/share/ollama/.ollama/models/blobs/sha256-675ad6e68101ca9413ec806855c452362f0213f2dfc5800996b086fdb8119842",
+        "media_type": "application/vnd.ollama.image.projector",
+        "bytes": 175115584,
+        "sha256": "675ad6e68101ca9413ec806855c452362f0213f2dfc5800996b086fdb8119842",
+        "expected_bytes": 175115584,
+        "expected_digest": "sha256:675ad6e68101ca9413ec806855c452362f0213f2dfc5800996b086fdb8119842"
+      },
+      {
+        "path": "/usr/share/ollama/.ollama/models/blobs/sha256-0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+        "media_type": "application/vnd.ollama.image.license",
+        "bytes": 10174,
+        "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+        "expected_bytes": 10174,
+        "expected_digest": "sha256:0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594"
+      },
+      {
+        "path": "/usr/share/ollama/.ollama/models/blobs/sha256-56380ca2ab89f1f68c283f4d50863c0bcab52ae3f1b9a88e4ab5617b176f71a3",
+        "media_type": "application/vnd.ollama.image.params",
+        "bytes": 42,
+        "sha256": "56380ca2ab89f1f68c283f4d50863c0bcab52ae3f1b9a88e4ab5617b176f71a3",
+        "expected_bytes": 42,
+        "expected_digest": "sha256:56380ca2ab89f1f68c283f4d50863c0bcab52ae3f1b9a88e4ab5617b176f71a3"
+      }
+    ],
+    "upstream_hf_revision": "not supplied by native manifest; no HF QAT bundle used"
+  },
+  "runtime": {
+    "ollama_version": "0.32.14",
+    "ollama_binary_sha256": "26f44ca89143f2326a3aad98b2cb5e8b5af9397aef7001cd8d022e90d6e0b55e",
+    "llama_server_binary_sha256": "f6e05586c5e7dd2110b2d8efadf23ff3b081dcdd53be67cfd32884af7b476163",
+    "architecture": "gemma4",
+    "api_show_template_placeholder": "{{ .Prompt }}",
+    "resolved_renderer": "not recovered or verified",
+    "tokenizer_model": "gemma4",
+    "tokenizer_add_bos": true,
+    "tokenizer_bos_id": 2,
+    "tokenizer_eos_id": 1,
+    "capabilities_reported": [
+      "completion",
+      "vision",
+      "audio",
+      "tools",
+      "thinking"
+    ],
+    "fingerprint_evidence": "final-read-only-transcript.txt: reconstructed from observed tool output; exact inspection timestamp unavailable"
+  },
+  "preparation": {
+    "started_at": "2026-09-26T11:10:27.882023+00:00",
+    "completed_at": "2026-09-26T11:16:28.817124+00:00",
+    "elapsed_seconds": 360.93490253400523,
+    "completion_observed_after_ssh_recovery": "2026-09-26T11:33:54Z",
+    "actual_hashes_verified_before_probe": true,
+    "manifest_and_backend_binding_verified_before_probe": true,
+    "binding": {
+      "timestamp": "2026-09-26T11:35:42.882633+00:00",
+      "tag": "gemma4:12b-it-q4_K_M",
+      "installed_manifest_path": "/usr/share/ollama/.ollama/models/manifests/registry.ollama.ai/library/gemma4/12b-it-q4_K_M",
+      "installed_manifest_sha256": "4eb23ef187e2c5462566d6a1d3bbbc2f1346d0b4327cbb66d58fffbcc9b2b05c",
+      "captured_registry_manifest_sha256": "4eb23ef187e2c5462566d6a1d3bbbc2f1346d0b4327cbb66d58fffbcc9b2b05c",
+      "prepare_end_manifest_sha256": "4eb23ef187e2c5462566d6a1d3bbbc2f1346d0b4327cbb66d58fffbcc9b2b05c",
+      "backend_digest": "4eb23ef187e2c5462566d6a1d3bbbc2f1346d0b4327cbb66d58fffbcc9b2b05c"
+    }
+  },
+  "probe": {
+    "name": "original_polish_text",
+    "completed_at": "2026-09-26T11:35:45.255178+00:00",
+    "http_status": 500,
+    "request_elapsed_seconds": 2.3918414219951956,
+    "latency_kind": "failed request transport and startup latency; not generation or successful cold-load latency",
+    "error_category": "CUDA out of memory; backend startup failed after its automatic projector CPU offload retry",
+    "usable_final_completion": false,
+    "final_content_characters": 0,
+    "done": null,
+    "done_reason": null,
+    "thinking_requested": false,
+    "thinking_behavior_verified": false,
+    "context_tokens": 2048,
+    "maximum_output_tokens": 96,
+    "vision_attempted": false,
+    "vision_status": "not attempted after text load failure",
+    "successful_cold_load_duration": null,
+    "generated_tokens": null,
+    "client_low_memory_abort": false,
+    "client_wall_abort": false,
+    "backend_cancellation_confirmed": false
+  },
+  "memory": {
+    "device": "NVIDIA GB10",
+    "device_total_memory": "N/A / Not Supported; unknown, not zero",
+    "device_used_memory": "N/A / Not Supported; unknown, not zero",
+    "shared_ram_total_bytes": 130594136064,
+    "shared_mem_available_before_probe_bytes": 21424705536,
+    "shared_mem_available_sampled_min_bytes": 21317132288,
+    "shared_mem_available_after_probe_bytes": 21405171712,
+    "memory_sample_count": 5,
+    "maximum_sampled_combined_ollama_runner_rss_bytes": 265400320,
+    "isolated_model_peak_memory": null,
+    "limitations": "Five samples during a failed 2.39-second startup do not establish an isolated or successful model memory peak. The final worker inspection listed VLLM PID 70522 at 93,990 MiB; its reconstructed transcript has no exact inspection timestamp. This task did not modify that worker. CUDA allocation failure occurred despite available shared RAM; its cause was not isolated."
+  },
+  "remote_task_directory": "/home/ljaniec/matura-tasks/gemma-load-20260926-1106",
+  "local_private_directory": "agentsLog/ljaniec/private/gemma-spark-load-20260926",
+  "private_evidence_hashes": [
+    {
+      "private_filename": "registry-manifest.json",
+      "bytes": 905,
+      "sha256": "4eb23ef187e2c5462566d6a1d3bbbc2f1346d0b4327cbb66d58fffbcc9b2b05c"
+    },
+    {
+      "private_filename": "inventory.json",
+      "bytes": 2124,
+      "sha256": "37015f5487fb7109cee703f15fc5de9f4182f61aa336e657f5d6c545ce0227bd"
+    },
+    {
+      "private_filename": "show.json",
+      "bytes": 106207,
+      "sha256": "cf293cff216a862f879c3b1f42223cd6995f933c93550790c09aba4305e2c38e"
+    },
+    {
+      "private_filename": "prepare-start.json",
+      "bytes": 289,
+      "sha256": "7720f0613ead67577a573db99ea2a4716441f653801ffd81bc4c14a516f773a5"
+    },
+    {
+      "private_filename": "prepare-end.json",
+      "bytes": 254,
+      "sha256": "fd78ad4c36a1e6159989477ced1a47fe8027377e30b42c604dafc5fc154ded85"
+    },
+    {
+      "private_filename": "pull-progress.jsonl",
+      "bytes": 926427,
+      "sha256": "08eddf1c86d2d941f99ef3464225c86c44ad276f4c458b795a1e41c373c85b58"
+    },
+    {
+      "private_filename": "probe-weight-verification.json",
+      "bytes": 483,
+      "sha256": "7f3f59557aa1e72dc448c7e3ca71b253147c3c652a9ca3a0a1ab72e487123987"
+    },
+    {
+      "private_filename": "polish-text-manifest-binding.json",
+      "bytes": 604,
+      "sha256": "ae21c010873e122df46bf64ff642848698531a2588f07dc193a55b317c258a8d"
+    },
+    {
+      "private_filename": "polish-text-request.json",
+      "bytes": 358,
+      "sha256": "8045f6955e44b8f53c8e4a12668e6a114654a101f5be7e597f505d1593e35523"
+    },
+    {
+      "private_filename": "polish-text-raw.jsonl",
+      "bytes": 188,
+      "sha256": "f916e2c09a26cb859cbd70c1597afc5f4cc59a14d592fc1bfe93dc672c440647"
+    },
+    {
+      "private_filename": "polish-text-memory.json",
+      "bytes": 2023,
+      "sha256": "5eff215b0ef9e926b347e793819ef990bc70a548033826a7798a3a36fd2859d1"
+    },
+    {
+      "private_filename": "probe-before.json",
+      "bytes": 377,
+      "sha256": "0ecfdca7aeac3853fdeaa26a3b0b99efc598cf483d4af775118cdd5d3406fe73"
+    },
+    {
+      "private_filename": "probe-after.json",
+      "bytes": 377,
+      "sha256": "b6e2442e29bc708d9fb588f9733657028cbc1ce09608c17d1ee1db6e6f9df342"
+    },
+    {
+      "private_filename": "probe-summary.json",
+      "bytes": 701,
+      "sha256": "1e148f07c97b3b9b4aa66fa6a2de26ef45db79994774e884ad651e874e12b1d8"
+    },
+    {
+      "private_filename": "synthetic-shapes.png",
+      "bytes": 3394,
+      "sha256": "83a2ace9fe963c8cddb9834fa683dd2150455b8951262c69922ea0b57385dd55"
+    },
+    {
+      "private_filename": "final-read-only-transcript.txt",
+      "bytes": 1930,
+      "sha256": "648aacc865855cde71e038326a18dc006b97c089c31eca55d49957423116cb7d",
+      "provenance": "Reconstructed from observed read-only tool output, chunk 5328bf; not a new execution. Exact wall-clock timestamp not retained."
+    }
+  ],
+  "next_step": "CPU handoff belongs to the lead and issue33 owner; no further Spark inference or runtime repair in this task."
+}
