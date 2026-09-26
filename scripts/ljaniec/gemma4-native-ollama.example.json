@@ -5,5 +5,5 @@
   "model_revision": "4eb23ef187e2c5462566d6a1d3bbbc2f1346d0b4327cbb66d58fffbcc9b2b05c",
   "reasoning_effort": "none",
   "max_output_tokens": 1024,
-  "timeout_seconds": 600
+  "timeout_seconds": 420
 }
