@@ -1,0 +1,113 @@
+{
+  "status": "EXPLORATORY_THREE_EARLIER_CANDIDATES_SINGLE_PASS",
+  "input_sha256": "c8b0d3a6a727495a5e7db801b61b2ce65aaf8d1408f794bcaadacda831434c88",
+  "official_task": "26 topic3",
+  "official_key_sha256": "279abe703dc1af4119a35624d6db893e310fc7afaffbef2a00e678f423706486",
+  "word_count_convention": "Whitespace-delimited tokens containing a letter/number, excluding standalone punctuation; candidate2 topic label excluded. Abbreviations and hyphenated compounds count once.",
+  "frozen_final_score": 7,
+  "frozen_final_score_sha256": "66893a33d655630578d9b2ba3c5f08bbf77656b34407c4c642859d109eb0eef5",
+  "candidate_records": [
+    {
+      "attempt": 0,
+      "answer_sha256": "da76751e8799c4f81e3ffc8037ba6ec5c60522ddf72136bbf2527245dfaab3fd",
+      "body_words": 370,
+      "whitespace_body_tokens": 372,
+      "one_topic": 3,
+      "argument_points": {
+        "military": 3,
+        "diplomatic": 1,
+        "political_constitutional": 1
+      },
+      "argument_evidence": {
+        "military": "Concrete Warsaw victory and army-building causal link remain sufficient, but not rich. Candidate2 retains this credit despite its separate erroneous organizational examples.",
+        "diplomatic": "Broad geopolitical/federal/recognition claims without an actual diplomatic action and supported outcome.",
+        "political_constitutional": "Integration and authority asserted without an adequate concrete institutional example."
+      },
+      "factual_errors": [
+        "Commands the whole Legions rather than the First Brigade; same overgeneralization as final."
+      ],
+      "error_count_central": 1,
+      "error_sources": [
+        "https://muzeumpilsudski.pl/jozef-pilsudski-1867-1935/"
+      ],
+      "error_deduction": 1,
+      "coherence": 3,
+      "coherence_reason": "One sustained thesis, three related aspects and conclusion; factual mistakes do not automatically lower coherence.",
+      "central": 7,
+      "low": 7,
+      "high": 8,
+      "uncertainty": "Legions phrasing could be read as shorthand, removing deduction.",
+      "other_imprecision": "Prometheism framing and claimed diplomatic success are unsupported/general; no extra counted error."
+    },
+    {
+      "attempt": 1,
+      "answer_sha256": "9baa452be2ca16a9f1124f82f8dc08b1137dd2cbbd7213f691136af55f369dd1",
+      "body_words": 392,
+      "whitespace_body_tokens": 392,
+      "one_topic": 3,
+      "argument_points": {
+        "military": 3,
+        "diplomatic": 1,
+        "political_constitutional": 1
+      },
+      "argument_evidence": {
+        "military": "Concrete Warsaw victory and army-building causal link remain sufficient, but not rich. Candidate2 retains this credit despite its separate erroneous organizational examples.",
+        "diplomatic": "Broad geopolitical/federal/recognition claims without an actual diplomatic action and supported outcome.",
+        "political_constitutional": "Integration and authority asserted without an adequate concrete institutional example."
+      },
+      "factual_errors": [
+        "Uses the Soviet Union for the immediate1920 threat, before its1922 creation.",
+        "Anachronistically casts the initial post-independence consolidation as leadership of the sanacja movement, formed after1926."
+      ],
+      "error_count_central": 2,
+      "error_sources": [
+        "https://zpe.gov.pl/a/geneza-zsrs/DD96ENHJE",
+        "https://sztetl.org.pl/pl/slownik/sanacja"
+      ],
+      "error_deduction": 1,
+      "coherence": 3,
+      "coherence_reason": "One sustained thesis, three related aspects and conclusion; factual mistakes do not automatically lower coherence.",
+      "central": 7,
+      "low": 7,
+      "high": 7,
+      "uncertainty": "A narrower reading of the first error still leaves one established error and the same deduction.",
+      "other_imprecision": "Prometheism framing and claimed diplomatic success are unsupported/general; no extra counted error."
+    },
+    {
+      "attempt": 2,
+      "answer_sha256": "688ce8c4381346f4bbdc5bace8b480a5f8896313f69f9d6637cce2bd26883bcb",
+      "body_words": 371,
+      "whitespace_body_tokens": 371,
+      "one_topic": 3,
+      "argument_points": {
+        "military": 3,
+        "diplomatic": 1,
+        "political_constitutional": 1
+      },
+      "argument_evidence": {
+        "military": "Concrete Warsaw victory and army-building causal link remain sufficient, but not rich. Candidate2 retains this credit despite its separate erroneous organizational examples.",
+        "diplomatic": "Broad geopolitical/federal/recognition claims without an actual diplomatic action and supported outcome.",
+        "political_constitutional": "Integration and authority asserted without an adequate concrete institutional example."
+      },
+      "factual_errors": [
+        "Misnames Związek Walki Czynnej as Związek Walki Czynu.",
+        "Invents a confederation of dangerous deeds as an independence organization; not a supported historical institution."
+      ],
+      "error_count_central": 2,
+      "error_sources": [
+        "https://muzeumpilsudski.pl/jozef-pilsudski-1867-1935/"
+      ],
+      "error_deduction": 1,
+      "coherence": 3,
+      "coherence_reason": "One sustained thesis, three related aspects and conclusion; factual mistakes do not automatically lower coherence.",
+      "central": 7,
+      "low": 7,
+      "high": 7,
+      "uncertainty": "A narrower reading of the first error still leaves one established error and the same deduction.",
+      "other_imprecision": "Fabricated organizational detail is a factual defect, not a reason to erase correct Warsaw causal reasoning."
+    }
+  ],
+  "conclusion": "All three earlier candidates and the final score7 centrally. No improved argument development; all miss400–500words while passing official300. Candidate1 is longest at392words but contains two chronological errors; candidate2 introduces spurious organization names. Final362 is shorter than all predecessors and retains one command-scope error. Mechanical word repair neither improved the central rubric score nor reached its own length target.",
+  "selection_caveat": "This is one unblinded diagnostic of three new candidate answers after final grade frozen; no posthoc substitution, final regrade, exam-score change or second pass. Cannot infer that selecting longest would improve factual quality.",
+  "prospective_policy": "Preserve an earlier valid candidate; use a bounded local expansion that keeps supported existing claims and strengthens one shallow argument, forbids invented institutions/names/dates, then mechanically rechecks one topic, complete prose and length. Do not discard the preserved candidate merely because a newer answer exists. Length is advisory evidence, not a factual-quality selector."
+}

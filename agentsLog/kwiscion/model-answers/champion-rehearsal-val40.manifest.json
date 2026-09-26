@@ -1,0 +1,12 @@
+{
+  "scope": "Full organizer-schema recovery rehearsal with two declared faults; not a clean baseline benchmark",
+  "items": 40,
+  "answers_sha256": "eb70f42aa7706aa7a622d61b1378925914d025ea02c4bfa3a06a8bd544356ce8",
+  "answer_only_jsonl_sha256": "c650744f4ca2360a3cf1cc6a17d42433e2866a76f20f36374472004faef26a20",
+  "backup_archive_sha256": "e9c9729eee7266d0c2f94b92cd61a35723a161d7cce95e1acfaa3e4b4ad4e105",
+  "declared_manifest_sha256": "3b7d63703189dff609e61a30538ae85f2be65c48755ef9067bab1235f4613356",
+  "binding_sha256": "4ee1ef11269ca47d3bacd8be56d36ee2ffedecb3987db42f4a7c432afd3018fd",
+  "scheduler_sha256": "17b153638574ba08c8239d8b5373fbf0039fe9034dea26848138e7204cc15506",
+  "final_nonblank": 40,
+  "placeholders": 0
+}

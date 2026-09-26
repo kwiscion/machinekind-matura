@@ -1,0 +1,299 @@
+{
+  "status": "ARITHMETIC_COMPARISON_OF_FROZEN_GRADES_NOT_REGRADING",
+  "prior_grade_sha256": "21de78a8a73666307eca867232707a308144aa3fe40085bfb2f9e159c231e781",
+  "current_grade_sha256": "66893a33d655630578d9b2ba3c5f08bbf77656b34407c4c642859d109eb0eef5",
+  "old_total": 38,
+  "new_total": 38,
+  "net": 0,
+  "items": [
+    {
+      "id": "1",
+      "old": 0,
+      "new": 0,
+      "delta": 0,
+      "old_generation_error": null
+    },
+    {
+      "id": "2",
+      "old": 0,
+      "new": 1,
+      "delta": 1,
+      "old_generation_error": null
+    },
+    {
+      "id": "3.1",
+      "old": 1,
+      "new": 1,
+      "delta": 0,
+      "old_generation_error": null
+    },
+    {
+      "id": "3.2",
+      "old": 0,
+      "new": 1,
+      "delta": 1,
+      "old_generation_error": null
+    },
+    {
+      "id": "4",
+      "old": 1,
+      "new": 1,
+      "delta": 0,
+      "old_generation_error": null
+    },
+    {
+      "id": "5.1",
+      "old": 0,
+      "new": 0,
+      "delta": 0,
+      "old_generation_error": null
+    },
+    {
+      "id": "5.2",
+      "old": 1,
+      "new": 1,
+      "delta": 0,
+      "old_generation_error": null
+    },
+    {
+      "id": "6",
+      "old": 2,
+      "new": 2,
+      "delta": 0,
+      "old_generation_error": null
+    },
+    {
+      "id": "7",
+      "old": 0,
+      "new": 0,
+      "delta": 0,
+      "old_generation_error": null
+    },
+    {
+      "id": "8.1",
+      "old": 1,
+      "new": 1,
+      "delta": 0,
+      "old_generation_error": null
+    },
+    {
+      "id": "8.2",
+      "old": 1,
+      "new": 1,
+      "delta": 0,
+      "old_generation_error": null
+    },
+    {
+      "id": "9",
+      "old": 1,
+      "new": 1,
+      "delta": 0,
+      "old_generation_error": null
+    },
+    {
+      "id": "10",
+      "old": 1,
+      "new": 1,
+      "delta": 0,
+      "old_generation_error": null
+    },
+    {
+      "id": "11.1",
+      "old": 1,
+      "new": 0,
+      "delta": -1,
+      "old_generation_error": null
+    },
+    {
+      "id": "11.2",
+      "old": 1,
+      "new": 1,
+      "delta": 0,
+      "old_generation_error": null
+    },
+    {
+      "id": "12.1",
+      "old": 0,
+      "new": 0,
+      "delta": 0,
+      "old_generation_error": {
+        "type": "length",
+        "message": "Native combined thinking/final cap reached"
+      }
+    },
+    {
+      "id": "12.2",
+      "old": 1,
+      "new": 1,
+      "delta": 0,
+      "old_generation_error": null
+    },
+    {
+      "id": "12.3",
+      "old": 1,
+      "new": 1,
+      "delta": 0,
+      "old_generation_error": null
+    },
+    {
+      "id": "13",
+      "old": 1,
+      "new": 1,
+      "delta": 0,
+      "old_generation_error": null
+    },
+    {
+      "id": "14.1",
+      "old": 0,
+      "new": 0,
+      "delta": 0,
+      "old_generation_error": null
+    },
+    {
+      "id": "14.2",
+      "old": 1,
+      "new": 1,
+      "delta": 0,
+      "old_generation_error": null
+    },
+    {
+      "id": "15.1",
+      "old": 1,
+      "new": 1,
+      "delta": 0,
+      "old_generation_error": null
+    },
+    {
+      "id": "15.2",
+      "old": 1,
+      "new": 1,
+      "delta": 0,
+      "old_generation_error": null
+    },
+    {
+      "id": "16.1",
+      "old": 1,
+      "new": 1,
+      "delta": 0,
+      "old_generation_error": null
+    },
+    {
+      "id": "16.2",
+      "old": 1,
+      "new": 1,
+      "delta": 0,
+      "old_generation_error": null
+    },
+    {
+      "id": "17.1",
+      "old": 1,
+      "new": 1,
+      "delta": 0,
+      "old_generation_error": null
+    },
+    {
+      "id": "17.2",
+      "old": 1,
+      "new": 1,
+      "delta": 0,
+      "old_generation_error": null
+    },
+    {
+      "id": "18",
+      "old": 0,
+      "new": 0,
+      "delta": 0,
+      "old_generation_error": null
+    },
+    {
+      "id": "19.1",
+      "old": 0,
+      "new": 1,
+      "delta": 1,
+      "old_generation_error": {
+        "type": "length",
+        "message": "Native combined thinking/final cap reached"
+      }
+    },
+    {
+      "id": "19.2",
+      "old": 0,
+      "new": 1,
+      "delta": 1,
+      "old_generation_error": null
+    },
+    {
+      "id": "20.1",
+      "old": 1,
+      "new": 1,
+      "delta": 0,
+      "old_generation_error": null
+    },
+    {
+      "id": "20.2",
+      "old": 2,
+      "new": 1,
+      "delta": -1,
+      "old_generation_error": null
+    },
+    {
+      "id": "21",
+      "old": 1,
+      "new": 1,
+      "delta": 0,
+      "old_generation_error": null
+    },
+    {
+      "id": "22.1",
+      "old": 1,
+      "new": 1,
+      "delta": 0,
+      "old_generation_error": null
+    },
+    {
+      "id": "22.2",
+      "old": 2,
+      "new": 2,
+      "delta": 0,
+      "old_generation_error": null
+    },
+    {
+      "id": "23.1",
+      "old": 1,
+      "new": 1,
+      "delta": 0,
+      "old_generation_error": null
+    },
+    {
+      "id": "23.2",
+      "old": 0,
+      "new": 0,
+      "delta": 0,
+      "old_generation_error": null
+    },
+    {
+      "id": "24",
+      "old": 1,
+      "new": 0,
+      "delta": -1,
+      "old_generation_error": null
+    },
+    {
+      "id": "25",
+      "old": 0,
+      "new": 0,
+      "delta": 0,
+      "old_generation_error": {
+        "type": "length",
+        "message": "Native combined thinking/final cap reached"
+      }
+    },
+    {
+      "id": "26",
+      "old": 8,
+      "new": 7,
+      "delta": -1,
+      "old_generation_error": null
+    }
+  ]
+}
