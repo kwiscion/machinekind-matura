@@ -120,3 +120,7 @@ Agent: Greg's issue watcher. Orca worktree `Watch-for-tasks`, instance `8e5e9ed0
 ## 17:55 — #72 delivered and merged by root
 - Worker opened PR #77 at 17:43 (optional `temperature` in `infer.py`: finite 0–2, forwarded only when supplied, omitted payload byte-identical; pinned Ollama 0.30.7 conversion cited from primary source; experimental non-promoted Gemma temp-0.2 candidate config under owned paths; tests), handoff on #72, `needs-review`, held per instruction. Root's review asked for one narrow fix (bounds check before `isfinite` for huge ints) -> `568ed70`; root merged #77 at 17:52 (`1f25930`). #72 stays open `needs-review` for root's closure.
 - Workers today: #6, #15, #37, #45, #44, #54, #57, #62, #72 all delivered; none running.
+
+## 18:12 — #83 claimed and dispatched
+- New #83 "make qualified offline launcher portable to central H100" (assigned Greg; integration exception to refactor root's #82 launcher/helper via an explicit frozen runtime profile; hold PR for lead review; slice 18:30 / PR 18:45). Claimed; Orca worktree `issue-83-Bukareszt-portable-launcher` dispatched (terminal in private state). ETA stated on #83: slice ~18:35, PR ~18:50, not merged.
+- #38 lead note (16:02Z) to Lukasz mentions H100 readiness under #81; nothing else for Greg. #88 (RTX handoff repair) is not Greg's.
