@@ -1,0 +1,27 @@
+{
+  "status": "FAIL",
+  "mode": "synthetic_probe",
+  "history_optimizer_steps": 0,
+  "synthetic_optimizer_steps": 0,
+  "manifest_sha256": "62802c5b284b5fc53b743d527f6cb5084e519a1ea2b676e14feee650b7617fc1",
+  "base_weight_sha256": "5a84cb313260ac447237b890387116dfa8682e49a6b44bc585ae8353abbff18d",
+  "tokenizer_sha256": "cc8d3a0ce36466ccc1278bf987df5f71db1719b9ca6b4118264f45cb627bfe0f",
+  "driver_sha256": "3d466395cad9a2d596a356f15904024e2102b655c79fdc6319942d17bd1443dd",
+  "candidate_sha256": "fc3b61de8cd061617ed5351cac441b8610cca19fff6a0b8827feb767cd617707",
+  "pinned_files": {
+    "/ephemeral/mm-lora/pilot-src/agentsLog/kwiscion/essay-lora-prep/run_real_pilot.py": "3d466395cad9a2d596a356f15904024e2102b655c79fdc6319942d17bd1443dd",
+    "/ephemeral/mm-lora/pilot-src/agentsLog/kwiscion/essay-lora-prep/prepare.py": "0d3a0452ef9caf514c713766e81b3fc1f21ecfcb85db8d2b89072a9a75cf115e",
+    "/ephemeral/mm-lora/pilot-src/agentsLog/kwiscion/essay-lora-prep/candidate.json": "fc3b61de8cd061617ed5351cac441b8610cca19fff6a0b8827feb767cd617707",
+    "/ephemeral/mm-lora/pilot-src/agentsLog/kwiscion/essay-lora-prep/evidence-manifest.json": "2ffac97f62bc12db94277e6cc2d3d30e876f4eb5ebb2731ada1ebee91c2db5cd"
+  },
+  "versions": {
+    "torch": "2.8.0+cu128",
+    "cuda": "12.8",
+    "transformers": "5.18.0.dev0",
+    "peft": "0.21.1.dev0"
+  },
+  "error": "TypeError: unsupported operand type(s) for +: 'BatchEncoding' and 'list'",
+  "elapsed_seconds": 22.23360864300048,
+  "peak_cuda_allocated_bytes": 0,
+  "peak_cuda_reserved_bytes": 0
+}
