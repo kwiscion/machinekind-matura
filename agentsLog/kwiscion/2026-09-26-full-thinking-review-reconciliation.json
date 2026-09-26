@@ -1,0 +1,883 @@
+{
+  "status": "RECONCILED_ALL40_CENTRAL_AGREEMENT_NO_MATERIAL_ADJUDICATION_REQUIRED",
+  "created_at": "2026-09-26T21:33:06.908341+00:00",
+  "known_validation": true,
+  "independently_reviewed_points": 38,
+  "max_points": 60,
+  "qualification": "Independent review on known May 2024 validation; not an organizer grade, final offline qualification, or candidate promotion.",
+  "provenance": {
+    "2026-09-26-full-thinking-score.json": "21de78a8a73666307eca867232707a308144aa3fe40085bfb2f9e159c231e781",
+    "2026-09-26-full-thinking-first20-review.json": "be1fdc29b6c0313b974774f1b644b15a5c66a42bbc4e1d5cdca4c36d1ba4ed1b",
+    "2026-09-26-full-thinking-last20-review.json": "c1509abd1d690cfdc8817e9100e64f110b0de9d7dcff996cbd2961814b57672e",
+    "2026-09-26-full-thinking-second40-review.json": "cd220c19a807507b20119ce00232eaddec55e148d06a221b9ae311c04f002e2f"
+  },
+  "answer_artifact_sha256": "fdbf288a3deb276d9600a353403ac8c1aa10fc37df11ec6f0524c0d76a12bde9",
+  "official_max_point_reference_sha256": "279abe703dc1af4119a35624d6db893e310fc7afaffbef2a00e678f423706486",
+  "initial_review_files_unchanged": {
+    "json_sha256": "cd220c19a807507b20119ce00232eaddec55e148d06a221b9ae311c04f002e2f",
+    "markdown_sha256": "e2e3c75cb4738fc17a0906b0d427d5a1304652cc8b071a6c6080e2a359ce5838"
+  },
+  "verification": {
+    "items": 40,
+    "unique_items": 40,
+    "source_review_partition": [
+      20,
+      20
+    ],
+    "source_review_manifest_hashes_match": true,
+    "answer_hash_matches": 40,
+    "organizer_template_exact_answer_matches": 40,
+    "official_max_points_matches": 40,
+    "central_agreement": 40,
+    "central_disagreements": 0,
+    "max_sum": 60,
+    "first_total": 38,
+    "second_total": 38
+  },
+  "ranges": {
+    "type": "judgment sensitivity; not confidence intervals",
+    "first": [
+      37,
+      40
+    ],
+    "second": [
+      37,
+      41
+    ],
+    "averaged_or_merged": false,
+    "item_bound_difference": {
+      "id": "val2024-hist-z23.2",
+      "first": [
+        0,
+        0
+      ],
+      "second": [
+        0,
+        1
+      ],
+      "central_both": 0,
+      "explanation": "Both reject the wrong question-column/percentage linkage centrally. The second review preserves a lenient upper reading of the surviving maximum-third-question comparison; first review does not. No central adjudication is required."
+    }
+  },
+  "essay_comparison": {
+    "central_both": 8,
+    "range_both": [
+      7,
+      8
+    ],
+    "body_words_both": 384,
+    "aspects_both": {
+      "military": 3,
+      "diplomatic": 1,
+      "political_constitutional": 1
+    },
+    "narrative_before_deduction_both": 5,
+    "factual_deduction_both": 0,
+    "coherence_both": 3,
+    "independent_rationale_agreement": "Military examples explain preservation of sovereignty; diplomatic and political-constitutional paragraphs are general assertions lacking developed historical mechanisms. Broad Legion and Versailles attributions are not centrally established distinct factual falsehoods.",
+    "lower_bound_rationale_difference": {
+      "first": "Allows one factual deduction for contested attribution.",
+      "second": "Allows coherence 2 for the unbridged military-1920 to diplomatic-settlement transition."
+    },
+    "material_central_or_aspect_difference": false
+  },
+  "adjudication": {
+    "required": false,
+    "reason": "No central point, aspect, factual-deduction, or coherence disagreement. Sensitivity alternatives remain attributable; no averaging or forced alignment."
+  },
+  "loss_budget": {
+    "total": 22,
+    "blank_final": {
+      "points": 6,
+      "items": [
+        "val2024-hist-z12.1",
+        "val2024-hist-z19.1",
+        "val2024-hist-z25"
+      ]
+    },
+    "essay": {
+      "points": 7,
+      "narrative_argumentation": 7,
+      "factual_deductions": 0,
+      "coherence": 0
+    },
+    "remaining_factual_source_errors": {
+      "points": 9,
+      "items": [
+        "val2024-hist-z1",
+        "val2024-hist-z2",
+        "val2024-hist-z3.2",
+        "val2024-hist-z5.1",
+        "val2024-hist-z7",
+        "val2024-hist-z14.1",
+        "val2024-hist-z18",
+        "val2024-hist-z19.2",
+        "val2024-hist-z23.2"
+      ]
+    },
+    "recovery_tests": "Separate post-hoc tests; no recovered or reasoning-derived answer is substituted or added to the 38/60 frozen result."
+  },
+  "items": [
+    {
+      "id": "val2024-hist-z1",
+      "answer_sha256": "46bb7687a5636aaf98527f2be526be604f024de1688af7a08bf8075bd3e02461",
+      "max_points": 1,
+      "source_review": "2026-09-26-full-thinking-first20-review.json",
+      "source_review_central": 0,
+      "first_central": 0,
+      "second_central": 0,
+      "central_difference_second_minus_first": 0,
+      "first_range": [
+        0,
+        0
+      ],
+      "second_range": [
+        0,
+        0
+      ],
+      "hash_and_max_verified": true
+    },
+    {
+      "id": "val2024-hist-z2",
+      "answer_sha256": "c02ccdeb18b40a9a0604ae8d4faaa17c375a30068ce43fb503c0158878d7819e",
+      "max_points": 1,
+      "source_review": "2026-09-26-full-thinking-first20-review.json",
+      "source_review_central": 0,
+      "first_central": 0,
+      "second_central": 0,
+      "central_difference_second_minus_first": 0,
+      "first_range": [
+        0,
+        1
+      ],
+      "second_range": [
+        0,
+        1
+      ],
+      "hash_and_max_verified": true
+    },
+    {
+      "id": "val2024-hist-z3.1",
+      "answer_sha256": "60fe88300544e30bf286cae0ae338a7432a35aae6149baa1f711ed13d6e61919",
+      "max_points": 1,
+      "source_review": "2026-09-26-full-thinking-first20-review.json",
+      "source_review_central": 1,
+      "first_central": 1,
+      "second_central": 1,
+      "central_difference_second_minus_first": 0,
+      "first_range": [
+        1,
+        1
+      ],
+      "second_range": [
+        1,
+        1
+      ],
+      "hash_and_max_verified": true
+    },
+    {
+      "id": "val2024-hist-z3.2",
+      "answer_sha256": "d216911f584adee2ca5838273f8eb99bdfc60a2946f935a00dbe26ce1a497bfc",
+      "max_points": 1,
+      "source_review": "2026-09-26-full-thinking-first20-review.json",
+      "source_review_central": 0,
+      "first_central": 0,
+      "second_central": 0,
+      "central_difference_second_minus_first": 0,
+      "first_range": [
+        0,
+        0
+      ],
+      "second_range": [
+        0,
+        0
+      ],
+      "hash_and_max_verified": true
+    },
+    {
+      "id": "val2024-hist-z4",
+      "answer_sha256": "3b3870ef6f2d152eae50059a00e91d8d60a18d0041f118780fc19d31917783ff",
+      "max_points": 1,
+      "source_review": "2026-09-26-full-thinking-first20-review.json",
+      "source_review_central": 1,
+      "first_central": 1,
+      "second_central": 1,
+      "central_difference_second_minus_first": 0,
+      "first_range": [
+        1,
+        1
+      ],
+      "second_range": [
+        1,
+        1
+      ],
+      "hash_and_max_verified": true
+    },
+    {
+      "id": "val2024-hist-z5.1",
+      "answer_sha256": "956ce998e1c0aa363e4b72e7364f86c089f7a11f0b24e4c0a51618320424ee38",
+      "max_points": 1,
+      "source_review": "2026-09-26-full-thinking-first20-review.json",
+      "source_review_central": 0,
+      "first_central": 0,
+      "second_central": 0,
+      "central_difference_second_minus_first": 0,
+      "first_range": [
+        0,
+        0
+      ],
+      "second_range": [
+        0,
+        0
+      ],
+      "hash_and_max_verified": true
+    },
+    {
+      "id": "val2024-hist-z5.2",
+      "answer_sha256": "a24f2bf38116a78c8f37803544f300f09249a79eb21590f66f9b97a2486743dc",
+      "max_points": 1,
+      "source_review": "2026-09-26-full-thinking-first20-review.json",
+      "source_review_central": 1,
+      "first_central": 1,
+      "second_central": 1,
+      "central_difference_second_minus_first": 0,
+      "first_range": [
+        1,
+        1
+      ],
+      "second_range": [
+        1,
+        1
+      ],
+      "hash_and_max_verified": true
+    },
+    {
+      "id": "val2024-hist-z6",
+      "answer_sha256": "2885f6260ea505036ca04850174c1f982905b8af9c176468ac9018def8924a75",
+      "max_points": 2,
+      "source_review": "2026-09-26-full-thinking-first20-review.json",
+      "source_review_central": 2,
+      "first_central": 2,
+      "second_central": 2,
+      "central_difference_second_minus_first": 0,
+      "first_range": [
+        2,
+        2
+      ],
+      "second_range": [
+        2,
+        2
+      ],
+      "hash_and_max_verified": true
+    },
+    {
+      "id": "val2024-hist-z7",
+      "answer_sha256": "c92bfd9f7be83ca35c80f89489bd5b2e24da67d151254dcb389bcdd6938f3c9d",
+      "max_points": 1,
+      "source_review": "2026-09-26-full-thinking-first20-review.json",
+      "source_review_central": 0,
+      "first_central": 0,
+      "second_central": 0,
+      "central_difference_second_minus_first": 0,
+      "first_range": [
+        0,
+        0
+      ],
+      "second_range": [
+        0,
+        0
+      ],
+      "hash_and_max_verified": true
+    },
+    {
+      "id": "val2024-hist-z8.1",
+      "answer_sha256": "5c475e016139d980af64e5d0d069d9722fd38e8e6b377dc6dfab2872b796c7eb",
+      "max_points": 1,
+      "source_review": "2026-09-26-full-thinking-first20-review.json",
+      "source_review_central": 1,
+      "first_central": 1,
+      "second_central": 1,
+      "central_difference_second_minus_first": 0,
+      "first_range": [
+        1,
+        1
+      ],
+      "second_range": [
+        1,
+        1
+      ],
+      "hash_and_max_verified": true
+    },
+    {
+      "id": "val2024-hist-z8.2",
+      "answer_sha256": "f7161674f4baed0333872a254c662e9c997fd0fb0600ba1c2b9354305c6957dd",
+      "max_points": 1,
+      "source_review": "2026-09-26-full-thinking-first20-review.json",
+      "source_review_central": 1,
+      "first_central": 1,
+      "second_central": 1,
+      "central_difference_second_minus_first": 0,
+      "first_range": [
+        1,
+        1
+      ],
+      "second_range": [
+        1,
+        1
+      ],
+      "hash_and_max_verified": true
+    },
+    {
+      "id": "val2024-hist-z9",
+      "answer_sha256": "b4cbfae01189558fc6d95f713c435fdd480f47e180116d101104b7df274c996a",
+      "max_points": 1,
+      "source_review": "2026-09-26-full-thinking-first20-review.json",
+      "source_review_central": 1,
+      "first_central": 1,
+      "second_central": 1,
+      "central_difference_second_minus_first": 0,
+      "first_range": [
+        1,
+        1
+      ],
+      "second_range": [
+        1,
+        1
+      ],
+      "hash_and_max_verified": true
+    },
+    {
+      "id": "val2024-hist-z10",
+      "answer_sha256": "477890b75a0eb132cae066fc5952a9570d2da434bbf5abc0a3a3738f304949ce",
+      "max_points": 1,
+      "source_review": "2026-09-26-full-thinking-first20-review.json",
+      "source_review_central": 1,
+      "first_central": 1,
+      "second_central": 1,
+      "central_difference_second_minus_first": 0,
+      "first_range": [
+        1,
+        1
+      ],
+      "second_range": [
+        1,
+        1
+      ],
+      "hash_and_max_verified": true
+    },
+    {
+      "id": "val2024-hist-z11.1",
+      "answer_sha256": "079ea38d523032ce57ac5fa1795a573febbc47e08143bd76a1fa2b2e0ad553a4",
+      "max_points": 1,
+      "source_review": "2026-09-26-full-thinking-first20-review.json",
+      "source_review_central": 1,
+      "first_central": 1,
+      "second_central": 1,
+      "central_difference_second_minus_first": 0,
+      "first_range": [
+        1,
+        1
+      ],
+      "second_range": [
+        1,
+        1
+      ],
+      "hash_and_max_verified": true
+    },
+    {
+      "id": "val2024-hist-z11.2",
+      "answer_sha256": "530dc4731a651065965231252eb5215840046cc97c063c0e058ad9890109134e",
+      "max_points": 1,
+      "source_review": "2026-09-26-full-thinking-first20-review.json",
+      "source_review_central": 1,
+      "first_central": 1,
+      "second_central": 1,
+      "central_difference_second_minus_first": 0,
+      "first_range": [
+        1,
+        1
+      ],
+      "second_range": [
+        1,
+        1
+      ],
+      "hash_and_max_verified": true
+    },
+    {
+      "id": "val2024-hist-z12.1",
+      "answer_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "max_points": 1,
+      "source_review": "2026-09-26-full-thinking-first20-review.json",
+      "source_review_central": 0,
+      "first_central": 0,
+      "second_central": 0,
+      "central_difference_second_minus_first": 0,
+      "first_range": [
+        0,
+        0
+      ],
+      "second_range": [
+        0,
+        0
+      ],
+      "hash_and_max_verified": true
+    },
+    {
+      "id": "val2024-hist-z12.2",
+      "answer_sha256": "9ac6463cbc6e7e45cea508accb3280e7e5134f6f700a23b8d0e4d3d0f36bfd87",
+      "max_points": 1,
+      "source_review": "2026-09-26-full-thinking-first20-review.json",
+      "source_review_central": 1,
+      "first_central": 1,
+      "second_central": 1,
+      "central_difference_second_minus_first": 0,
+      "first_range": [
+        1,
+        1
+      ],
+      "second_range": [
+        1,
+        1
+      ],
+      "hash_and_max_verified": true
+    },
+    {
+      "id": "val2024-hist-z12.3",
+      "answer_sha256": "517188543537b07ac132423b76220de8c6e187f0636db3ad967e58e86c83d321",
+      "max_points": 1,
+      "source_review": "2026-09-26-full-thinking-first20-review.json",
+      "source_review_central": 1,
+      "first_central": 1,
+      "second_central": 1,
+      "central_difference_second_minus_first": 0,
+      "first_range": [
+        1,
+        1
+      ],
+      "second_range": [
+        1,
+        1
+      ],
+      "hash_and_max_verified": true
+    },
+    {
+      "id": "val2024-hist-z13",
+      "answer_sha256": "8a902554bed72ebcd5a3b5f9dfa431bb10ac44a068f6aba76f5b90ad6c29ce0d",
+      "max_points": 1,
+      "source_review": "2026-09-26-full-thinking-first20-review.json",
+      "source_review_central": 1,
+      "first_central": 1,
+      "second_central": 1,
+      "central_difference_second_minus_first": 0,
+      "first_range": [
+        1,
+        1
+      ],
+      "second_range": [
+        1,
+        1
+      ],
+      "hash_and_max_verified": true
+    },
+    {
+      "id": "val2024-hist-z14.1",
+      "answer_sha256": "e28a71b4c4585bc6d24924e9ef91790d408ae0821adcac9744f6f22203a07bd0",
+      "max_points": 1,
+      "source_review": "2026-09-26-full-thinking-first20-review.json",
+      "source_review_central": 0,
+      "first_central": 0,
+      "second_central": 0,
+      "central_difference_second_minus_first": 0,
+      "first_range": [
+        0,
+        0
+      ],
+      "second_range": [
+        0,
+        0
+      ],
+      "hash_and_max_verified": true
+    },
+    {
+      "id": "val2024-hist-z14.2",
+      "answer_sha256": "0200946aa0d009b6b1e1fb830338cbd4d0a18607cda052562e66dfa8c3af52e6",
+      "max_points": 1,
+      "source_review": "2026-09-26-full-thinking-last20-review.json",
+      "source_review_central": 1,
+      "first_central": 1,
+      "second_central": 1,
+      "central_difference_second_minus_first": 0,
+      "first_range": [
+        1,
+        1
+      ],
+      "second_range": [
+        1,
+        1
+      ],
+      "hash_and_max_verified": true
+    },
+    {
+      "id": "val2024-hist-z15.1",
+      "answer_sha256": "a45033385ae077d92aef81254a2ea0587dbd814366886db262f4423e937c1245",
+      "max_points": 1,
+      "source_review": "2026-09-26-full-thinking-last20-review.json",
+      "source_review_central": 1,
+      "first_central": 1,
+      "second_central": 1,
+      "central_difference_second_minus_first": 0,
+      "first_range": [
+        1,
+        1
+      ],
+      "second_range": [
+        1,
+        1
+      ],
+      "hash_and_max_verified": true
+    },
+    {
+      "id": "val2024-hist-z15.2",
+      "answer_sha256": "287b0d1121a937748356d576e975a79b5fd4e788b2a3650307b6689ceba04a9d",
+      "max_points": 1,
+      "source_review": "2026-09-26-full-thinking-last20-review.json",
+      "source_review_central": 1,
+      "first_central": 1,
+      "second_central": 1,
+      "central_difference_second_minus_first": 0,
+      "first_range": [
+        1,
+        1
+      ],
+      "second_range": [
+        1,
+        1
+      ],
+      "hash_and_max_verified": true
+    },
+    {
+      "id": "val2024-hist-z16.1",
+      "answer_sha256": "799faa398574649ff8c62d1169ce7af07ea497b1b2edd026c21a20bec14f00f7",
+      "max_points": 1,
+      "source_review": "2026-09-26-full-thinking-last20-review.json",
+      "source_review_central": 1,
+      "first_central": 1,
+      "second_central": 1,
+      "central_difference_second_minus_first": 0,
+      "first_range": [
+        1,
+        1
+      ],
+      "second_range": [
+        1,
+        1
+      ],
+      "hash_and_max_verified": true
+    },
+    {
+      "id": "val2024-hist-z16.2",
+      "answer_sha256": "ec433a5e9e7be1b45e2226820cf04fe93860b449a6bdc918dd4cea9c735fe094",
+      "max_points": 1,
+      "source_review": "2026-09-26-full-thinking-last20-review.json",
+      "source_review_central": 1,
+      "first_central": 1,
+      "second_central": 1,
+      "central_difference_second_minus_first": 0,
+      "first_range": [
+        1,
+        1
+      ],
+      "second_range": [
+        1,
+        1
+      ],
+      "hash_and_max_verified": true
+    },
+    {
+      "id": "val2024-hist-z17.1",
+      "answer_sha256": "5c80674240b2102af27c15a3580c2c1983e5f32c08d74619f10000b2bb785418",
+      "max_points": 1,
+      "source_review": "2026-09-26-full-thinking-last20-review.json",
+      "source_review_central": 1,
+      "first_central": 1,
+      "second_central": 1,
+      "central_difference_second_minus_first": 0,
+      "first_range": [
+        1,
+        1
+      ],
+      "second_range": [
+        1,
+        1
+      ],
+      "hash_and_max_verified": true
+    },
+    {
+      "id": "val2024-hist-z17.2",
+      "answer_sha256": "20889d813d31928350fe6a157d6483da3e9b0a88fe498c40ad6f63cc3729171b",
+      "max_points": 1,
+      "source_review": "2026-09-26-full-thinking-last20-review.json",
+      "source_review_central": 1,
+      "first_central": 1,
+      "second_central": 1,
+      "central_difference_second_minus_first": 0,
+      "first_range": [
+        1,
+        1
+      ],
+      "second_range": [
+        1,
+        1
+      ],
+      "hash_and_max_verified": true
+    },
+    {
+      "id": "val2024-hist-z18",
+      "answer_sha256": "eba0966b0d8ad455f19c44b150b230e960e18f093de00963ab42ef6187d89709",
+      "max_points": 1,
+      "source_review": "2026-09-26-full-thinking-last20-review.json",
+      "source_review_central": 0,
+      "first_central": 0,
+      "second_central": 0,
+      "central_difference_second_minus_first": 0,
+      "first_range": [
+        0,
+        1
+      ],
+      "second_range": [
+        0,
+        1
+      ],
+      "hash_and_max_verified": true
+    },
+    {
+      "id": "val2024-hist-z19.1",
+      "answer_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "max_points": 2,
+      "source_review": "2026-09-26-full-thinking-last20-review.json",
+      "source_review_central": 0,
+      "first_central": 0,
+      "second_central": 0,
+      "central_difference_second_minus_first": 0,
+      "first_range": [
+        0,
+        0
+      ],
+      "second_range": [
+        0,
+        0
+      ],
+      "hash_and_max_verified": true
+    },
+    {
+      "id": "val2024-hist-z19.2",
+      "answer_sha256": "0ed4cc6b39e85b8ddd6207312f8708c311ac17c36c2fccb5ae2bce7af0ac9dc2",
+      "max_points": 1,
+      "source_review": "2026-09-26-full-thinking-last20-review.json",
+      "source_review_central": 0,
+      "first_central": 0,
+      "second_central": 0,
+      "central_difference_second_minus_first": 0,
+      "first_range": [
+        0,
+        0
+      ],
+      "second_range": [
+        0,
+        0
+      ],
+      "hash_and_max_verified": true
+    },
+    {
+      "id": "val2024-hist-z20.1",
+      "answer_sha256": "b04955a508ef2bbd9b14f54d5fb3141e32dda851a6c04bed39c5c2f3d8de31fc",
+      "max_points": 1,
+      "source_review": "2026-09-26-full-thinking-last20-review.json",
+      "source_review_central": 1,
+      "first_central": 1,
+      "second_central": 1,
+      "central_difference_second_minus_first": 0,
+      "first_range": [
+        1,
+        1
+      ],
+      "second_range": [
+        1,
+        1
+      ],
+      "hash_and_max_verified": true
+    },
+    {
+      "id": "val2024-hist-z20.2",
+      "answer_sha256": "965900c5f74bb87fae65cc88f8d30d90bd1e90b14f4cd1bd9ef666adb006a063",
+      "max_points": 2,
+      "source_review": "2026-09-26-full-thinking-last20-review.json",
+      "source_review_central": 2,
+      "first_central": 2,
+      "second_central": 2,
+      "central_difference_second_minus_first": 0,
+      "first_range": [
+        2,
+        2
+      ],
+      "second_range": [
+        2,
+        2
+      ],
+      "hash_and_max_verified": true
+    },
+    {
+      "id": "val2024-hist-z21",
+      "answer_sha256": "fff1d56d8b019909f4df21b95879874106e0a26a74d5a632580e27ef9bb8e642",
+      "max_points": 1,
+      "source_review": "2026-09-26-full-thinking-last20-review.json",
+      "source_review_central": 1,
+      "first_central": 1,
+      "second_central": 1,
+      "central_difference_second_minus_first": 0,
+      "first_range": [
+        1,
+        1
+      ],
+      "second_range": [
+        1,
+        1
+      ],
+      "hash_and_max_verified": true
+    },
+    {
+      "id": "val2024-hist-z22.1",
+      "answer_sha256": "cdee0b8d35b3bac1932af148b387a59753a6e2fdbf7a5f452921c4e292e0f42a",
+      "max_points": 1,
+      "source_review": "2026-09-26-full-thinking-last20-review.json",
+      "source_review_central": 1,
+      "first_central": 1,
+      "second_central": 1,
+      "central_difference_second_minus_first": 0,
+      "first_range": [
+        1,
+        1
+      ],
+      "second_range": [
+        1,
+        1
+      ],
+      "hash_and_max_verified": true
+    },
+    {
+      "id": "val2024-hist-z22.2",
+      "answer_sha256": "2256597a8b1ad1fc888cea23a400cfed5fd02212f263275686ead71132ddee21",
+      "max_points": 2,
+      "source_review": "2026-09-26-full-thinking-last20-review.json",
+      "source_review_central": 2,
+      "first_central": 2,
+      "second_central": 2,
+      "central_difference_second_minus_first": 0,
+      "first_range": [
+        2,
+        2
+      ],
+      "second_range": [
+        2,
+        2
+      ],
+      "hash_and_max_verified": true
+    },
+    {
+      "id": "val2024-hist-z23.1",
+      "answer_sha256": "658c3a23b04f887b9dbca904932b97e6a60a61c95de1de82809db27c9d46ce5c",
+      "max_points": 1,
+      "source_review": "2026-09-26-full-thinking-last20-review.json",
+      "source_review_central": 1,
+      "first_central": 1,
+      "second_central": 1,
+      "central_difference_second_minus_first": 0,
+      "first_range": [
+        1,
+        1
+      ],
+      "second_range": [
+        1,
+        1
+      ],
+      "hash_and_max_verified": true
+    },
+    {
+      "id": "val2024-hist-z23.2",
+      "answer_sha256": "87959580e133f8587469ceb78af8489971be981fb23aee0aa0a54c70769e433a",
+      "max_points": 1,
+      "source_review": "2026-09-26-full-thinking-last20-review.json",
+      "source_review_central": 0,
+      "first_central": 0,
+      "second_central": 0,
+      "central_difference_second_minus_first": 0,
+      "first_range": [
+        0,
+        0
+      ],
+      "second_range": [
+        0,
+        1
+      ],
+      "hash_and_max_verified": true
+    },
+    {
+      "id": "val2024-hist-z24",
+      "answer_sha256": "75bd696adad4f5e0c1ea525e235b5f3e8018e2c7a149e7f8afccb6c49c98818f",
+      "max_points": 1,
+      "source_review": "2026-09-26-full-thinking-last20-review.json",
+      "source_review_central": 1,
+      "first_central": 1,
+      "second_central": 1,
+      "central_difference_second_minus_first": 0,
+      "first_range": [
+        1,
+        1
+      ],
+      "second_range": [
+        1,
+        1
+      ],
+      "hash_and_max_verified": true
+    },
+    {
+      "id": "val2024-hist-z25",
+      "answer_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "max_points": 3,
+      "source_review": "2026-09-26-full-thinking-last20-review.json",
+      "source_review_central": 0,
+      "first_central": 0,
+      "second_central": 0,
+      "central_difference_second_minus_first": 0,
+      "first_range": [
+        0,
+        0
+      ],
+      "second_range": [
+        0,
+        0
+      ],
+      "hash_and_max_verified": true
+    },
+    {
+      "id": "val2024-hist-z26",
+      "answer_sha256": "3f7561add3016ff2dbe830f24bdbb92d5bcfb74148d9bbdf5eb6e8261a678688",
+      "max_points": 15,
+      "source_review": "2026-09-26-full-thinking-last20-review.json",
+      "source_review_central": 8,
+      "first_central": 8,
+      "second_central": 8,
+      "central_difference_second_minus_first": 0,
+      "first_range": [
+        7,
+        8
+      ],
+      "second_range": [
+        7,
+        8
+      ],
+      "hash_and_max_verified": true
+    }
+  ],
+  "mutations": "Only reconciliation MD/JSON authored. Initial review files unchanged. No generation, new-source research, Git, or remote mutation."
+}

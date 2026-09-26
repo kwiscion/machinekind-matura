@@ -1,4 +1,6 @@
-# Sunday operator runbook — bare Gemma working candidate
+# Sunday operator runbook — preserved laptop fallback
+
+**Current status, 26 September 23:52:** this document preserves the 35-point laptop fallback and its historical qualification. The leading 38-point native-thinking H100 experiment uses different runtime/context/output controls and is independently graded, but its generic organizer-package integration is still being prepared. The staged Gemma-only cache passes the aggregate weight check. A separate two-item native offline attempt produced correct text/image answers but failed in redundant outer cleanup; do not treat that attempt as clean operator qualification. Consult [WINNING_PLAN.md](../../WINNING_PLAN.md), the latest issue #3 declaration and the new [native qualification preparation](final-package-prep/OFFLINE_QUALIFICATION.md). The older H100-readiness statements and ownership below are historical. Do not silently transfer this fallback's commands/settings to the native-thinking candidate.
 
 Prepared 26 September, 17:10 Europe/Warsaw. **Operator draft, not a launch authorization or final candidate freeze.** Recheck `WINNING_PLAN.md` and the lead's final decision before Sunday 11:00 freeze. Bare Gemma remains the working candidate (provisional 35/60); policy/crops/RAG are not promoted. Full RAG adjudication is now 27/60 [22,33] (PR #79); see [review](../Pewciu6/2026-09-26T1747-score-gemma-rag-full.md).
 
