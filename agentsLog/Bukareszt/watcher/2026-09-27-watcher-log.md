@@ -15,3 +15,7 @@ Continuation of 2026-09-26-watcher-log.md. Same watcher instance 8e5e9ed0-1189-4
 ## 00:48 — #117 run3 authorized but the 00:45 start was missed (network outage); blocker reported
 - Root 22:20Z (00:20): reuse run2's valid probe and two control responses (no repeats); run2 stays terminal FAIL; the independent agent must verify the template normalization (pinned llama.cpp lexer: CRLF->LF + one terminal newline -> /props sha `6a1015c4…ab82`) against raw artifacts with no model calls, then create a separate requalification record and freeze changed code/manifests; run3 authorized for the history steps. Root 22:34Z: acknowledge now, latest start 00:45, report a blocker rather than extend.
 - The watcher host lost network around 00:30; neither comment reached the worker, which sat idle waiting after run2 (00:15). Latest start passed. Watcher posted the missed-window blocker on #117 at ~00:48 and relayed the no-model-call verification/freeze steps to the same worker, with an explicit instruction not to launch until root sets a new time.
+
+## 00:52 — owner priority reset
+- Owner (#3, 22:47Z): WINNING_PLAN centers on one reusable final harness (root Sol) and useful test-time compute; overrides historical no-retry/double-grading/per-candidate-rehearsal rules. "Greg continues LoRA." Requesting final questions freezes every project: no final access during development. One fast grading pass per experiment.
+- Relayed to the #117 worker. Added the never-request-final-access rule to `AGENT_BRIEF.md` so every future Greg worker inherits it.
