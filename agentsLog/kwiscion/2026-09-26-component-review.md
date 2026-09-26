@@ -33,3 +33,21 @@ Acceptance criteria: test three distinct reviewers with `[0, 6, 6]`, use median 
 Posted the [#15 acceptance](https://github.com/kwiscion/machinekind-matura/issues/15#issuecomment-5844022616) and closed #15 as completed. Posted one [#11 factual review and defect note](https://github.com/kwiscion/machinekind-matura/issues/11#issuecomment-5844023940); #11 remains open. Attached all five reviewed PRs to the Codex task.
 
 All grades remain provisional. Only 18/60 VALIDATION points are fully automatic, and no model is promoted from infrastructure tests or contamination diagnostics.
+
+## Authorized extension: adjudication fix
+
+The user extended work to 10:47 Europe/Warsaw; the lead authorized a targeted edit to the evaluator owner file. `blind_merge` now preserves `mean_points` as an audit statistic, adds `adjudicated_points` and `aggregation`, and uses the median in model aggregates after three completed distinct ratings. Two ratings still use the mean; an unfilled third review keeps escalation pending. Duplicate reviewer identities and more than three completed ratings are rejected. For unnamed reviewers, the existing packet-filename identity convention is retained.
+
+Five regression tests cover `[0, 6, 6]`, an unfilled third rating, duplicate reviewer identity, single/unnamed packet ratings, and unsupported fourth ratings. `python -m unittest discover -s agentsLog/Pewciu6/harness -q` now passes 33 tests. The lead reviewed and published the fix in [PR #22](https://github.com/kwiscion/machinekind-matura/pull/22), merge `6fb921c`; no Git action was performed by this worker.
+
+VALIDATION readiness handoff to Luna: acquisition succeeded with all three 2024 PDFs matching the published manifest. Canonical builder needs Poppler `pdftotext` and `pdftoppm`; do not substitute a different extractor silently. Run the builder with its `STATS` redirected to the ignored private directory to preserve owner aggregates. Gate on 40 items/60 points, no missing prompts, expected 29 image-labelled/11 text-labelled records and canonical input hash. Proposed initial diagnostic is at most three once-only calls: first two text-labelled rows plus first image-labelled row if vision capability and PNG availability are confirmed; otherwise first three text-labelled rows. The modality heuristic does not establish source completeness, so the fallback is a text-only diagnostic, not an exam score. Keys remain in the separate isolated scorer. No 2025 material was opened.
+
+## Licensed local retrieval readiness
+
+Built the frozen baseline locally using the existing retrieval module's `fetch_one`, `cmd_index`, and `cmd_graph`. The stock fetch command would rewrite the tracked manifest and accept drift, so a private wrapper used stdlib HTTP and checked each response's revision ID and raw SHA-256 against the existing manifest before writing the ignored raw cache. It would abort on the first mismatch and promote no index. All 107 sources matched. The wrapper is retained under `agentsLog/kwiscion/private/retrieval-prep/prepare_pinned.py`.
+
+- 3481 chunks; index file 8,514,642 bytes; SHA-256 `350800b1924b8f0094171fc5d68652da0f9260d03273a51ad6421c1a03e70429`, exactly the frozen baseline.
+- Graph: 1033 years, 105 entities, 94 timeline rows.
+- Fetch/build elapsed time: 71.8 seconds. No inference or paid API.
+- Final files: `agentsLog/Bukareszt/index/bm25_index.json`, `agentsLog/Bukareszt/index/graph.json`; verified raw cache in `agentsLog/Bukareszt/raw/`. Staging metadata remains in `agentsLog/kwiscion/private/retrieval-prep/`. All are Git-ignored; tracked source manifests and baseline reports were not rewritten.
+- Existing `scripts/prepare_rag.py` can now use the local baseline index. No selector candidate or model was promoted, and no exam gain is claimed.
