@@ -78,3 +78,9 @@ Agent: Greg's issue watcher. Orca worktree `Watch-for-tasks`, instance `8e5e9ed0
 ## 15:40 — #45 delivered; #44 PR open
 - #45 worker finished 15:31 (about 6 min after dispatch): PR #48 merged (`b64081b`), explicit completion set required, any non-null error = failure, absent `instructions`/`source_text` rejected, regression tests added; handoff posted for `@ljaniec` acceptance; `needs-review`; issue closed 15:31.
 - #44 worker: first artifact `1cf19ad` pushed (`scripts/Bukareszt/stage_index.py`, one-command staging with offline identity proof), progress comment posted, PR #50 open at 15:37 (inside the 30-min target); worker's reviewer subagent is checking `verify_staged` before merge. Still running.
+
+## 15:58 — #44 merged, lead hold arrived a minute late; follow-up dispatched
+- #44 worker finished 15:47: PR #50 merged (`dcdd047`, CI 2/2 green), handoff on #44, `needs-review`; lead closed #44. Lead's hold request (15:48:06) arrived ~1 min after the self-merge (15:46:58); watcher acknowledged the timing on #44.
+- Lead's portability review found: Windows CRLF checkout changes `sources.jsonl` hash (`701ad15…` vs pinned `8b77a63a…`, no .gitattributes), and a retriever hash mismatch at `stage_index.py:531` is recorded, not rejected. Requested a narrow fix.
+- Dispatched Orca worktree `issue-44-Bukareszt-identity-fix` (from `origin/main` @ a8f4c79, terminal `term_6014ec99-9ba5-48af-b432-c756b314987c`): LF-normalized identity hashing + CRLF regression tests, fail-closed hash mismatch, no root .gitattributes (recommendation only). Worker told NOT to self-merge; wait for lead review. PR due 30 min.
+- Lead's #3 note 15:40 (Gemma baseline done, format run ownership conflict) assigns nothing to Greg.
