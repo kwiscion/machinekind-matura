@@ -1,0 +1,4 @@
+2026-09-26T21:53:25Z [preflight] wave start=2026-09-26T21:53:25Z deadline=2026-09-26T22:53:15Z left=3590s
+/ephemeral/mm-lora/pilot-run1/probe-manifest.json 62802c5b284b5fc53b743d527f6cb5084e519a1ea2b676e14feee650b7617fc1
+{"mode": "synthetic_probe", "execute": false}
+2026-09-26T21:54:09Z [probe] TERMINAL rc=1 left=3546s

@@ -1,0 +1,10 @@
+{
+ "max_tokens": 512,
+ "temperature": 0.0,
+ "top_k": 1,
+ "seed": 42,
+ "enable_thinking": false,
+ "kind": "image",
+ "image": "synthetic_image.png",
+ "prompt": "Jakie kształty i kolory widać na tym obrazku? Odpowiedz jednym zdaniem."
+}

@@ -1,0 +1,10 @@
+{"mode": "synthetic_probe", "execute": true}
+[ERROR] `image_like_kwargs` is part of BaseImageProcessor.preprocess's signature, but not documented. Make sure to add it to the docstring of the function in /ephemeral/mm-lora/venv-gpu/lib/python3.12/site-packages/transformers/image_processing_utils.py.
+Traceback (most recent call last):
+  File "/ephemeral/mm-lora/pilot-src/agentsLog/kwiscion/essay-lora-prep/run_real_pilot.py", line 143, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/ephemeral/mm-lora/pilot-src/agentsLog/kwiscion/essay-lora-prep/run_real_pilot.py", line 90, in main
+    rows=[{'input_ids':prefix+answer,'labels':[-100]*len(prefix)+answer}]
+                       ~~~~~~^~~~~~~
+TypeError: unsupported operand type(s) for +: 'BatchEncoding' and 'list'
