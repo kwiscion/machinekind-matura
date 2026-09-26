@@ -1,17 +1,32 @@
 #!/usr/bin/env python3
-"""Owned wrapper for the frozen RTX runtime-transfer control run (claim #33, Piotr).
+"""Corrected reproduction wrapper for the frozen RTX runtime-transfer control.
 
-Enforces the lead's frozen envelope (issue #33 comment 2026-09-26T15:44:13Z):
-- max 40 sequential calls, 40,960 max REQUESTED output tokens, $0, no retry/warmup
-- dispatch deadline = min(start_utc + 2400 s, 18:40 Europe/Warsaw), checked
-  before each dispatch; the in-flight request may finish (run_case timeout 420 s)
-- each result flushed immediately; every attempt preserved; unsent IDs recorded
-- stop after 2 consecutive infrastructure/transport errors
-- stop on context-overflow risk (usage prompt_tokens > 32768 - 1024)
-- context 32768 preserved throughout (no per-call context overrides)
+Reproduction artifact for claim #33 / merged PR #85; corrections per the #88
+acceptance findings (ljaniec audit). The historical private wrapper and its
+raw results stay immutable; this file is the corrected, runnable public path.
+
+Corrections over the historical wrapper:
+- repo root resolved by walking up from __file__ to a .git/infer.py marker
+  (was parents[3], which resolved above the repository)
+- stops on the FIRST declared failure: any result error (infrastructure,
+  provider HTTP 4xx/5xx, incomplete/other) — was 2-consecutive-infra only,
+  with ordinary HTTP 4xx permitted
+- after the first success, /api/ps is ASSERTED: served digest must equal the
+  expected model digest and served context_length must equal the expected
+  context (32768) — was sampled once without assertions; context_preserved
+  was hardcoded
+- records the real pre-request timestamp (request_started_utc) plus the
+  post-response completion observation (response_completed_utc) — the old
+  dispatch_utc was written after the response
+- the generated manifest distinguishes enforced runtime checks from manually
+  retained operator evidence (provenance kinds)
 
 Shared runner functions from infer.py are imported untouched. No exam material
 is embedded here; inputs/outputs stay under the gitignored owner-private dir.
+
+Usage:
+    python3 rtx_transfer_run.py            # full frozen run (same envelope)
+    python3 rtx_transfer_run.py --check    # CPU-only preflight, no dispatch
 """
 
 import json
@@ -22,7 +37,71 @@ from datetime import datetime, time as dtime, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
-REPO = Path(__file__).resolve().parents[3]
+MAX_CALLS = 40
+MAX_TOTAL_REQUESTED_OUTPUT_TOKENS = 40960
+OUTPUT_BUDGET_PER_CALL = 1024
+DISPATCH_SECONDS = 2400
+WARSAW_STOP = dtime(18, 40)
+CONTEXT_LIMIT = 32768
+EXPECTED_MODEL_DIGEST = "4eb23ef187e2c5462566d6a1d3bbbc2f1346d0b4327cbb66d58fffbcc9b2b05c"
+INPUT_EXPECTED_SHA = "6615fea2e6fd1d6f9db5b781fa84a883899d1c2fb83a28b914638089e6b015a4"
+
+
+def find_repo_root(start: Path | None = None) -> Path:
+    """Walk up from *start* (default: this file) to the repository root.
+
+    A directory containing a .git entry or infer.py is the repo root; raises
+    RuntimeError at the filesystem root. Fixes the historical parents[3] bug.
+    """
+    p = (start or Path(__file__)).resolve()
+    for cand in (p, *p.parents):
+        if (cand / ".git").exists() or (cand / "infer.py").exists():
+            return cand
+    raise RuntimeError("repository root not found above " + str(p))
+
+
+def classify_result_error(err: dict) -> str:
+    """Classify a runner error dict: infrastructure / provider / other."""
+    etype = err.get("type")
+    status = err.get("status") if etype == "http" else None
+    if etype in {"URLError", "TimeoutError", "OSError", "JSONDecodeError",
+                 "ConnectionError", "ValueError"}:
+        return "infrastructure"
+    if etype == "http" and isinstance(status, int):
+        return "provider_5xx" if status >= 500 else "provider_4xx"
+    return "other"
+
+
+def assert_served_identity(ps: dict, expected_digest: str = EXPECTED_MODEL_DIGEST,
+                           expected_context: int = CONTEXT_LIMIT) -> dict:
+    """Assert the served model digest and context length; return actual values.
+
+    Raises GuardFailure on mismatch. A missing context_length field is recorded
+    as unvalidated (context None) rather than silently passing.
+    """
+    models = ps.get("models") or []
+    if not models:
+        raise GuardFailure("served_identity_mismatch: /api/ps returned no loaded model")
+    actual_digest = models[0].get("digest")
+    if actual_digest != expected_digest:
+        raise GuardFailure(
+            f"served_identity_mismatch: digest {actual_digest} != expected {expected_digest}")
+    actual_context = models[0].get("context_length")
+    if actual_context is None:
+        return {"digest": actual_digest, "context_length": None,
+                "context_validated": False}
+    if actual_context != expected_context:
+        raise GuardFailure(
+            f"served_identity_mismatch: context_length {actual_context} != expected {expected_context}")
+    return {"digest": actual_digest, "context_length": actual_context,
+            "context_validated": True}
+
+
+class GuardFailure(RuntimeError):
+    """A declared runtime/identity guard failed; the run must stop."""
+
+
+REPO = find_repo_root()
 sys.path.insert(0, str(REPO))
 import infer  # noqa: E402  (shared runner; untouched)
 
@@ -30,20 +109,11 @@ INPUT = REPO / "agentsLog/semberecki/private/validation_2024_keyfree/runner_inpu
 CONFIG = REPO / "agentsLog/kwiscion/gemma4-12b-val40-1024.config.json"
 OUTPUT = REPO / "agentsLog/semberecki/private/validation_2024_keyfree/rtx-transfer-results.jsonl"
 MANIFEST = REPO / "agentsLog/semberecki/private/validation_2024_keyfree/rtx-transfer-manifest.json"
-INPUT_EXPECTED_SHA = "6615fea2e6fd1d6f9db5b781fa84a883899d1c2fb83a28b914638089e6b015a4"
-
-MAX_CALLS = 40
-MAX_TOTAL_REQUESTED_OUTPUT_TOKENS = 40960
-OUTPUT_BUDGET_PER_CALL = 1024
-DISPATCH_SECONDS = 2400
-WARSAW_STOP = dtime(18, 40)
-CONTEXT_LIMIT = 32768
-INFRA_TYPES = {"URLError", "TimeoutError", "OSError", "JSONDecodeError", "ConnectionError", "ValueError"}
-MAX_CONSECUTIVE_INFRA = 2
 
 
 def sha256_file(path: Path) -> str:
-    return __import__("hashlib").sha256(path.read_bytes()).hexdigest()
+    import hashlib
+    return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
 def api_ps() -> dict:
@@ -54,8 +124,29 @@ def api_ps() -> dict:
         return {"error": str(exc)}
 
 
+def preflight() -> int:
+    """CPU-only preflight: repo root, input SHA, config load. No dispatch."""
+    actual = sha256_file(INPUT)
+    if actual != INPUT_EXPECTED_SHA:
+        print(f"CHECK FAIL: input SHA mismatch: {actual}", file=sys.stderr)
+        return 2
+    config = infer.load_config(CONFIG, allow_remote=False)
+    print(json.dumps({
+        "repo_root": str(REPO),
+        "input_sha256_ok": True,
+        "model_tag": config["model"],
+        "expected_digest": EXPECTED_MODEL_DIGEST,
+        "expected_context": CONTEXT_LIMIT,
+        "max_calls": MAX_CALLS,
+        "guards": "first-declared-failure stop; served digest+context assertion; "
+                  "pre-request timestamp",
+    }, ensure_ascii=False), flush=True)
+    return 0
+
+
 def main() -> int:
-    import hashlib
+    if "--check" in sys.argv[1:]:
+        return preflight()
 
     actual_input_sha = sha256_file(INPUT)
     if actual_input_sha != INPUT_EXPECTED_SHA:
@@ -85,9 +176,9 @@ def main() -> int:
     results_meta = []
     unsent: list[str] = []
     stop_reason = None
-    consecutive_infra = 0
     total_requested = 0
     served = None
+    served_assertion = None
     dispatched = 0
 
     with OUTPUT.open("x", encoding="utf-8") as out:
@@ -100,54 +191,61 @@ def main() -> int:
                 stop_reason = "output_token_budget"
                 unsent = [c["id"] for c in cases[idx:]]
                 break
+
+            request_started_utc = datetime.now(timezone.utc)  # real pre-request stamp
             result = infer.run_case(case, config)
+            response_completed_utc = datetime.now(timezone.utc)
             dispatched += 1
             total_requested += OUTPUT_BUDGET_PER_CALL
 
             usage = result.get("usage") or {}
             pt = usage.get("prompt_tokens")
-            if result.get("error") is None and served is None:
-                served = api_ps()
-                served["queried_at"] = datetime.now(timezone.utc).isoformat()
+            err = result.get("error")
 
             out.write(json.dumps(result, ensure_ascii=False) + "\n")
             out.flush()
 
-            err = result.get("error")
             results_meta.append({
                 "id": result["id"],
                 "error_type": err["type"] if err else None,
                 "finish": "ok" if not err else err["type"],
                 "latency_seconds": result.get("latency_seconds"),
                 "prompt_tokens": pt,
-                "completion_tokens": (usage or {}).get("completion_tokens"),
-                "dispatch_utc": datetime.now(timezone.utc).isoformat(),
+                "completion_tokens": usage.get("completion_tokens"),
+                "request_started_utc": request_started_utc.isoformat(),
+                "response_completed_utc": response_completed_utc.isoformat(),
             })
             print(f"[{dispatched}/{len(cases)}] {result['id']} "
                   f"{'OK' if not err else 'ERR:' + err['type']} "
                   f"{result.get('latency_seconds')}s", flush=True)
+
+            # FIRST declared failure stops the run (infrastructure, provider
+            # HTTP 4xx/5xx, incomplete, or any other runner error).
+            if err is not None:
+                stop_reason = f"declared_failure:{classify_result_error(err)}"
+                unsent = [c["id"] for c in cases[idx + 1:]]
+                break
+
+            # After the first success, assert actual served identity/context.
+            if served is None:
+                try:
+                    served = api_ps()
+                    served["queried_at"] = datetime.now(timezone.utc).isoformat()
+                    served_assertion = assert_served_identity(served)
+                except GuardFailure as exc:
+                    stop_reason = str(exc).split(":")[0]
+                    unsent = [c["id"] for c in cases[idx + 1:]]
+                    print(f"GUARD STOP: {exc}", file=sys.stderr, flush=True)
+                    break
 
             if pt is not None and pt > CONTEXT_LIMIT - OUTPUT_BUDGET_PER_CALL:
                 stop_reason = "context_overflow_risk"
                 unsent = [c["id"] for c in cases[idx + 1:]]
                 break
 
-            infra = bool(err) and (
-                err["type"] in INFRA_TYPES
-                or (err["type"] == "http" and isinstance(err.get("status"), int) and err["status"] >= 500)
-            )
-            if infra:
-                consecutive_infra += 1
-                if consecutive_infra >= MAX_CONSECUTIVE_INFRA:
-                    stop_reason = "consecutive_infrastructure_errors"
-                    unsent = [c["id"] for c in cases[idx + 1:]]
-                    break
-            else:
-                consecutive_infra = 0
-
     end_utc = datetime.now(timezone.utc)
     manifest = {
-        "run": "rtx-runtime-transfer-control (claim #33)",
+        "run": "rtx-runtime-transfer-control (claim #33; corrected wrapper per #88)",
         "owner": "semberecki",
         "session_id": "01a0de3f-e03d-75ba-8a97-eb400acb36a2",
         "lead_declaration": "issue #33 comment 2026-09-26T15:44:13Z",
@@ -157,7 +255,9 @@ def main() -> int:
         "stop_reason": stop_reason or "all_cases_dispatched",
         "dispatched": dispatched,
         "unsent_ids": unsent,
-        "input_path": str(INPUT.relative_to(REPO)),
+        "results_meta": results_meta,
+        "input_path": (str(INPUT.relative_to(REPO))
+                       if INPUT.is_relative_to(REPO) else str(INPUT)),
         "input_sha256": actual_input_sha,
         "config_path": "agentsLog/kwiscion/gemma4-12b-val40-1024.config.json",
         "config_sha256": sha256_file(CONFIG),
@@ -167,8 +267,23 @@ def main() -> int:
         "model_blob_sha256": "1278394b693672ac2799eadc9a83fd98259a6a88a40acfb1dcaa6c6fc895a606",
         "projector_blob_sha256": "675ad6e68101ca9413ec806855c452362f0213f2dfc5800996b086fdb8119842",
         "ollama_version": "0.34.4",
-        "context_preserved": CONTEXT_LIMIT,
+        "expected_context": CONTEXT_LIMIT,
         "served_api_ps": served,
+        "served_assertion": served_assertion,
+        "provenance": {
+            "enforced_runtime_checks": [
+                "input_sha256", "served_digest", "served_context_length",
+                "stop_on_first_declared_failure", "pre_request_timestamp",
+                "dispatch_deadline", "output_token_budget", "context_overflow",
+            ],
+            "manual_retained_evidence": [
+                "model_blob_sha256 (operator sha256sum before start)",
+                "projector_blob_sha256 (operator sha256sum before start)",
+                "question_pdf_sha256 (operator, key-free bootstrap)",
+                "renderer (operator, pdftoppm/Poppler 24.02.0, 110 DPI)",
+                "ollama_version (operator, serve.log)",
+            ],
+        },
         "limits": {
             "max_calls": MAX_CALLS,
             "max_total_requested_output_tokens": MAX_TOTAL_REQUESTED_OUTPUT_TOKENS,
@@ -179,7 +294,6 @@ def main() -> int:
             "no_warmup": True,
             "paid_spend": "$0",
         },
-        "results_meta": results_meta,
         "boundaries": "wrapper is read/write on owner-private paths only; no purchases; no exam material embedded",
     }
     MANIFEST.write_text(json.dumps(manifest, indent=2, ensure_ascii=False), encoding="utf-8")
