@@ -1,0 +1,8 @@
+{
+  "name": "ollama-gemma4-12b-val40",
+  "base_url": "http://127.0.0.1:11434/v1",
+  "model": "gemma4:12b-it-q4_K_M",
+  "reasoning_effort": "none",
+  "max_output_tokens": 1024,
+  "timeout_seconds": 420
+}

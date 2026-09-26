@@ -1,0 +1,13 @@
+{
+  "timestamp_utc": "2026-09-26T13:36:26.543113+00:00",
+  "pid": 794,
+  "action": "SIGTERM to exact reviewed format-arm inference process only",
+  "reason": "Unreviewed blanket prompt conflicts with requested justification and comparison formats; preserve as partial exploratory run.",
+  "completed_rows_before_signal": 11,
+  "expected_items": 40,
+  "errors_before_signal": 0,
+  "raw_prefix_sha256": "a18d1e36a7e527b30c632e462b470c985612358c93222be8292f46de4c781dc0",
+  "format_input_sha256": "e87c8083dd493e1464f51dc88de22f23b815654f3d0a71b36d7f1e5c2681a25f",
+  "full_score_claimed": false,
+  "other_processes_signaled": []
+}
