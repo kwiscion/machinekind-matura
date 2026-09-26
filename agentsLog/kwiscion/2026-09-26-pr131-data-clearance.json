@@ -1,0 +1,96 @@
+{
+  "reviewer": "independent Sol /root/essay_corpus_sol",
+  "reviewed_at_utc": "2026-09-26T20:06:49.123299+00:00",
+  "pr": 131,
+  "head": "fc9a7f4a07ae649228dfd12acf545361e5111d23",
+  "merge": "38e5beb",
+  "decision": "CLEARED_DATA_FOR_BOUNDED_ESSAY_PILOT",
+  "training_rows": 90,
+  "essays": 34,
+  "repair_pairs": 56,
+  "unique_essay_targets": 34,
+  "scope": "Four historical corrections and export integration; supplements prior independent audit, not wholesale essay regrade or runtime authorization.",
+  "git_blob_sha256": {
+    "agentsLog/Bukareszt/.gitattributes": "211b3136d259dd236a240c8fe280731b90b455f6818525f58b7b849b85f7994c",
+    "scripts/Bukareszt/test_essay_corpus.py": "eb857170a89a3f4078e569934a854f656c95586a2b0d763f99384991f3dea496",
+    "agentsLog/Bukareszt/essay_corpus/source_error_audit.json": "9affe8e7bc7a08d6760e2844e34d1eefb17cd333ace77f43e3c1864d4ca5b352",
+    "agentsLog/Bukareszt/essay_corpus/reviews/followup_verification.json": "3d3c80e99cf3438a8af059adf1af2750bf792ecf9922fec4724deb8d55a3e236",
+    "agentsLog/Bukareszt/essay_corpus/eval16_factcards_changelog.json": "e10e242bc0aac7a0884eeddadb7d023f5174188a67c61f40cd2b30da0a8872d9",
+    "agentsLog/Bukareszt/essay_corpus/eval16_factcards.jsonl": "260e07097dc3a144e57a9fa90388adf6662f3e51db101edece82e97ee02e2124",
+    "agentsLog/Bukareszt/essay_corpus/export_v1/train_sft.jsonl": "83153814da8251210f2b9d225dc713ad245c273bdc5d46dd1216b0e4b97178f5",
+    "agentsLog/Bukareszt/essay_corpus/export_v1/attribution.jsonl": "13e2aa555b5d590fe445e565a276879db124382107a4331652258af45d2a0b65",
+    "agentsLog/Bukareszt/essay_corpus/export_v1/eval16_input.jsonl": "5979ee0b8e0e4f084cf6070f42d31892ee53c1f5485409b4fc5dac1266055a28"
+  },
+  "train_blob_unchanged_from": "401e1bc",
+  "stale_windows_train_raw_sha256": "c5bd1b58678eeec3745437d9ea866130e9276471af34aff8ff3e559fee20fb57",
+  "required_handoff": "Extract canonical Git blob as binary and assert train SHA83153814da8251210f2b9d225dc713ad245c273bdc5d46dd1216b0e4b97178f5. Existing CRLF checkout bytes are not that artifact.",
+  "tests": {
+    "passed": 11,
+    "execution": "9 tests with group report writes redirected to temporary corpus;2 checkout tests on exact head blobs in isolated temporary repository. No shared Git mutations.",
+    "initial_attempt": "Redirecting entire corpus broke relative-path test and stale CRLF input failed hash test; corrected isolated canonical execution passed."
+  },
+  "historical_checks": [
+    {
+      "claim": "Verden execution belongs to 782, not799/800",
+      "verdict": "supported",
+      "urls": [
+        "https://www.thelatinlibrary.com/annalesregnifrancorum.html"
+      ],
+      "export_binding": "b1-charlemagne-f06 excluded; b1r-charlemagne-f04 supports exported4500 execution without date."
+    },
+    {
+      "claim": "Yalta compensation in principle; Potsdam provisional Polish administration",
+      "verdict": "supported",
+      "urls": [
+        "https://avalon.law.yale.edu/wwii/yalta.asp",
+        "https://avalon.law.yale.edu/20th_century/decade17.asp"
+      ],
+      "export_binding": "b2-conferences-f05 excluded; f04/f14 used; exported target explicitly says extent not fixed at Yalta."
+    },
+    {
+      "claim": "Lithuania independence act11March1990",
+      "verdict": "supported",
+      "urls": [
+        "https://e-seimas.lrs.lt/portal/legalAct/lt/TAD/TAIS.24",
+        "https://www.lrs.lt/sip/portal.show?p_k=2&p_r=35660"
+      ],
+      "access_note": "Legal portal blocked direct browser open; official parliamentary history independently confirms date; search index also exposes actI-12/date.",
+      "export_binding": "b2-ussr-f10 used; f14 and its off-topic defect excluded."
+    },
+    {
+      "claim": "2010 payment concerns remaining bond interest, not original reparations bill paid in full",
+      "verdict": "supported",
+      "urls": [
+        "https://peacepalacelibrary.nl/blog/2011/german-war-reparations-ww-i-financially-ended",
+        "https://badv.bund.de/offene-vermoegensfragen/wertpapiere/auslandsschulden"
+      ],
+      "export_binding": "b1-versailles-f08 remains date-only support with corrected reparations-related wording; federal BADV identifies1945–1952 interest arrears converted after reunification and final maturity3October2010."
+    }
+  ],
+  "reference_only": {
+    "source_ids": [
+      "mit-aristotle",
+      "uj-archive",
+      "agad-lublin"
+    ],
+    "allowed_use": "reference_fact_check_only",
+    "source_text_exported": false,
+    "attribution_allowed_use_omission": "Canonical attribution retains restrictive license description; this addendum supplies reference-only interpretation without granting rights.",
+    "independent_full90_scan": "NFKC/casefold word tokens, HTML script/style excluded, UTF8/CP1250/ISO8859-2 decoding variants; zero shared8-word and20-word windows against all three stored snapshots. Not proof against shorter copying.",
+    "snapshot_sha256": {
+      "mit-aristotle": "c3c627e4f6191544c9c2f6cb5558b0a8178624b6b9487c9be0368f05fd61087d",
+      "uj-archive": "b993a44e3bef48c224a178f2cd003843462dbce29465a765fb552db46eb3c988",
+      "agad-lublin": "bec8772f63047b0edbd1a97276d3b70e5d18b604112bd28daba463d2bf8164f8"
+    }
+  },
+  "eval_limits": [
+    "16 original inputs, no gold full-essay targets; use independent historical-quality grading, not eval_loss.",
+    "Current factcards hash is260e07097dc3a144e57a9fa90388adf6662f3e51db101edece82e97ee02e2124; ev-05-f09 now says encounter; economic effect cards added for eval04.",
+    "Factcards are fallible evidence aids, not exhaustive answer keys; preserve source caveats and adjudicate disputed claims.",
+    "Casimir/Lublin/January older#80DEV overlap training; exclude them from clean posttraining claims.",
+    "Do not mix legacy#4 training/DRAFT records into this cleared90 export; several overlap eval groups.",
+    "Group separation and title checks do not prove absence of every exam paraphrase or pretraining exposure.",
+    "Compare candidate against matched nonthinking base AND strongest native-thinking base."
+  ],
+  "no_inference_or_gpu": true
+}

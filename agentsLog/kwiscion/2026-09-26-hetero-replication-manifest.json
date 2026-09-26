@@ -1,0 +1,83 @@
+{
+  "declared_utc": "2026-09-26T21:32:34.37423+02:00",
+  "deadline_utc": "2026-09-26T22:02:34.37423+02:00",
+  "max_elapsed_seconds": 1800,
+  "hourly_rate_usd": 3.28,
+  "estimated_cost_usd": 1.64,
+  "max_generation_calls": 18,
+  "max_requested_output_tokens": 18432,
+  "cap_per_call": 1024,
+  "retries": 0,
+  "scope": "Mechanically selected six image-bearing nonessay cases, excluding prior six; no key/score selection",
+  "mode": "wave",
+  "status": "DECLARED_WAVE",
+  "max_calls": 18,
+  "runtime_executable_sha256": "ad9c53441752620a2314a65a798a888d98df3636c8815ca044de591f82892ff4",
+  "model_digests": {
+    "qwen3.5:9b": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+    "gemma4:12b-it-q4_K_M": "4eb23ef187e2c5462566d6a1d3bbbc2f1346d0b4327cbb66d58fffbcc9b2b05c"
+  },
+  "ids": [
+    "val2024-hist-z8.1",
+    "val2024-hist-z9",
+    "val2024-hist-z13",
+    "val2024-hist-z18",
+    "val2024-hist-z21",
+    "val2024-hist-z23.1"
+  ],
+  "files": {
+    "config.json": "48df866821c4a6948aac11065cb080eb6e91a6694dc4093d22a53ca6bebbc32b",
+    "hetero-source-controller.py": "b911087c9ef5167e23c65ab055f89e359ac9e73b5a06b26872f0d8944c77e266",
+    "hetero-source-run.py": "1d487bea502975567c685e302d250b06c7c970d4b56c051fcc763aa8699b770f",
+    "input.jsonl": "fcfa9ab07d85f193f8589c429cbc8134f3bb28d38fa8002bc16e91a97b905ca3",
+    "run_source_observation.py": "8cf911887e79a9addac48864a992b2cce77e5ed7e691f011437e7253591d5c96",
+    "code/classifier.py": "915d40389a39b932deaa51aa8b860c35fa512ce8d60b07c5f1df13d91c9e243c",
+    "code/infer.py": "d307356518aa8b35534525ceff39b9f3478366204ef5c3c81dd1299b3aacd782",
+    "pages/page-10.png": "fd35f322ab827a5a05d8348e86084124eada33dc1a71a3e92f89aff62c01468d",
+    "pages/page-11.png": "e1286880491d7909f45b9a25ee044599591a621ea78f717088e9bc4e0083a254",
+    "pages/page-12.png": "c380f684f4f4170b2788cc305123b4560b2cc0c8de8e745957ad0c9d7c71f7b7",
+    "pages/page-16.png": "9bda8c79c19a1433b11fda0cb32d615258954c3b1632255ac58178f240a4d23e",
+    "pages/page-21.png": "54b631cd65db862e9a4456407f7e9ca4808f7bb1b527dea576a0b5bbce09de70",
+    "pages/page-24.png": "98ced4dafd22f4e73eafb515c38673c85cd3f03782d653033144a04fa492ad4b",
+    "pages/page-26.png": "c8dd13c2e1ea0976ab50639a073664bd3557635c889dca052540ca0d5d8ee5ce",
+    "code/scripts/Bukareszt/matura_package.py": "bec8b33731e24ff1ea845e7c7b0908d3227121986125cef8967fc384a1d8af74"
+  },
+  "parent_input_sha256": "6615fea2e6fd1d6f9db5b781fa84a883899d1c2fb83a28b914638089e6b015a4",
+  "selection_rule": "lowest SHA256(UTF8(hetero-replication-v1|id)); execute in original source-v2 order",
+  "eligible_count": 25,
+  "selected_rank_order": [
+    [
+      "005b0cc9b8b58ec61d83f002866f8eeb18c15b7fad9268903d9e51db9d5e359e",
+      "val2024-hist-z18"
+    ],
+    [
+      "02f87970b4e7f4edea40a7f0b2076992e92c3fd75304ed8c8eddedeb3877be4e",
+      "val2024-hist-z23.1"
+    ],
+    [
+      "08ac0d0524512431337fce35816adc3f25ecf1b1ec58d33ec063f9384b82cffc",
+      "val2024-hist-z9"
+    ],
+    [
+      "0f245ac4133635580a845f5b48afd054044985b7349ea792bf57ed9234cdbb24",
+      "val2024-hist-z21"
+    ],
+    [
+      "1218eff523334c055dc57f8de80f7c0761a00c5fd2a4de9cc4eaaf5b0c456c40",
+      "val2024-hist-z13"
+    ],
+    [
+      "17c80ad5896b9b251aec768456115d64f1d31e557005a3b31e2f91bb98557b61",
+      "val2024-hist-z8.1"
+    ]
+  ],
+  "excluded_ids": [
+    "val2024-hist-z1",
+    "val2024-hist-z14.1",
+    "val2024-hist-z15.2",
+    "val2024-hist-z2",
+    "val2024-hist-z4",
+    "val2024-hist-z5.1"
+  ],
+  "private_manifest_sha256": "02828463f129d0341ef2a5308e6d9f379e2416dbeb7cf654a0b251b57025134d"
+}

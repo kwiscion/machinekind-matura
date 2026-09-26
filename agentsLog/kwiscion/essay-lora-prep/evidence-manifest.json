@@ -1,0 +1,146 @@
+{
+  "model_revision": "707f0a3b8a3c7ad586ed01e27eafbad8a27dd0f7",
+  "git_pins": {
+    "huggingface/transformers": "96331a9f93b72697f160a958d2883d4b49a56739",
+    "huggingface/peft": "b8674c86183a5dee38d0c3ede392e189593025e5",
+    "ggml-org/llama.cpp": "fcb3074f2bc06943a564d7f293f9e66d4bece02a"
+  },
+  "files": [
+    {
+      "file": "hf-config.json",
+      "url": "https://huggingface.co/google/gemma-4-12B-it/resolve/707f0a3b8a3c7ad586ed01e27eafbad8a27dd0f7/config.json",
+      "sha256": "478c46e8d2c52d5c2d85bf67e3b3e8c90e7c9d91086cee27e3c267907e936bd9",
+      "bytes": 4423,
+      "retrieved_at": "2026-09-26T19:25:38.090551+00:00",
+      "status": "acquired"
+    },
+    {
+      "file": "hf-tokenizer_config.json",
+      "url": "https://huggingface.co/google/gemma-4-12B-it/resolve/707f0a3b8a3c7ad586ed01e27eafbad8a27dd0f7/tokenizer_config.json",
+      "sha256": "a62f4e85a47c0c136edaaa3a4f591fd6783717299a9def47e5ad03a49f6a5eb9",
+      "bytes": 3089,
+      "retrieved_at": "2026-09-26T19:25:38.290141+00:00",
+      "status": "acquired"
+    },
+    {
+      "file": "hf-chat_template.jinja",
+      "url": "https://huggingface.co/google/gemma-4-12B-it/resolve/707f0a3b8a3c7ad586ed01e27eafbad8a27dd0f7/chat_template.jinja",
+      "sha256": "ae53464bf3be25802b3a5b37def7fd89667067d7577049b3b2d74c4d8de4c6d4",
+      "bytes": 18683,
+      "retrieved_at": "2026-09-26T19:25:38.591527+00:00",
+      "status": "acquired"
+    },
+    {
+      "file": "hf-processor_config.json",
+      "url": "https://huggingface.co/google/gemma-4-12B-it/resolve/707f0a3b8a3c7ad586ed01e27eafbad8a27dd0f7/processor_config.json",
+      "sha256": "6b938e76555b3e9946890770e1abcd442a4718f34041a58e8139dc8ad34545c9",
+      "bytes": 1382,
+      "retrieved_at": "2026-09-26T19:25:38.795058+00:00",
+      "status": "acquired"
+    },
+    {
+      "file": "hf-README.md",
+      "url": "https://huggingface.co/google/gemma-4-12B-it/resolve/707f0a3b8a3c7ad586ed01e27eafbad8a27dd0f7/README.md",
+      "sha256": "04a06469e3d83b941eaa776a3647b8690b5a7cc5c833af2381e5345bb1bb45c0",
+      "bytes": 28484,
+      "retrieved_at": "2026-09-26T19:25:39.055475+00:00",
+      "status": "acquired"
+    },
+    {
+      "file": "transformers-src_transformers_models_gemma4_unified_modeling_gemma4_unified.py",
+      "url": "https://raw.githubusercontent.com/huggingface/transformers/96331a9f93b72697f160a958d2883d4b49a56739/src/transformers/models/gemma4_unified/modeling_gemma4_unified.py",
+      "sha256": "4046fbea37e83b3c145cb6821763d3b5a7852a7e6bea1519bb0393d900dd064f",
+      "bytes": 65330,
+      "retrieved_at": "2026-09-26T19:25:39.509893+00:00",
+      "status": "acquired"
+    },
+    {
+      "file": "transformers-src_transformers_models_gemma4_unified_configuration_gemma4_unified.py",
+      "url": "https://raw.githubusercontent.com/huggingface/transformers/96331a9f93b72697f160a958d2883d4b49a56739/src/transformers/models/gemma4_unified/configuration_gemma4_unified.py",
+      "sha256": "f484527a992041a950b86d433430739fdc0f6000c03af9d87ed8b122b4715119",
+      "bytes": 14186,
+      "retrieved_at": "2026-09-26T19:25:40.073971+00:00",
+      "status": "acquired"
+    },
+    {
+      "file": "transformers-src_transformers___init__.py",
+      "url": "https://raw.githubusercontent.com/huggingface/transformers/96331a9f93b72697f160a958d2883d4b49a56739/src/transformers/__init__.py",
+      "sha256": "3cf42b5874497465a3b0a2f6838a45943c9b06916e0643c80fa8777e53bf646b",
+      "bytes": 42011,
+      "retrieved_at": "2026-09-26T19:25:41.725765+00:00",
+      "status": "acquired"
+    },
+    {
+      "file": "transformers-pyproject.toml",
+      "url": "https://raw.githubusercontent.com/huggingface/transformers/96331a9f93b72697f160a958d2883d4b49a56739/pyproject.toml",
+      "sha256": "bee3ee88754ae9c8f1d57336119572f000baa8f4dcfd748695a78c8823cd72da",
+      "bytes": 6600,
+      "retrieved_at": "2026-09-26T19:25:42.061963+00:00",
+      "status": "acquired"
+    },
+    {
+      "file": "peft-src_peft_tuners_lora_layer.py",
+      "url": "https://raw.githubusercontent.com/huggingface/peft/b8674c86183a5dee38d0c3ede392e189593025e5/src/peft/tuners/lora/layer.py",
+      "sha256": "5f19b8c29ab2fb7d6d24e7d6da80af204ae14fafa9af91d63092d8aceb367f94",
+      "bytes": 127792,
+      "retrieved_at": "2026-09-26T19:25:42.616538+00:00",
+      "status": "acquired"
+    },
+    {
+      "file": "peft-src_peft_utils_constants.py",
+      "url": "https://raw.githubusercontent.com/huggingface/peft/b8674c86183a5dee38d0c3ede392e189593025e5/src/peft/utils/constants.py",
+      "sha256": "b840578c9626740ad01e84c31f713f85aecc0c696bdde29e4e3891f23db1e9f5",
+      "bytes": 18571,
+      "retrieved_at": "2026-09-26T19:25:42.943815+00:00",
+      "status": "acquired"
+    },
+    {
+      "file": "peft-src_peft_tuners_lora_model.py",
+      "url": "https://raw.githubusercontent.com/huggingface/peft/b8674c86183a5dee38d0c3ede392e189593025e5/src/peft/tuners/lora/model.py",
+      "sha256": "be26f4f9e22096aa3bf9e2b1dec198bbc84ca9fa421a05c3d2bbded122f2622c",
+      "bytes": 66531,
+      "retrieved_at": "2026-09-26T19:25:43.405690+00:00",
+      "status": "acquired"
+    },
+    {
+      "file": "peft-pyproject.toml",
+      "url": "https://raw.githubusercontent.com/huggingface/peft/b8674c86183a5dee38d0c3ede392e189593025e5/pyproject.toml",
+      "sha256": "81c3417eb4257e67d8e232798c238ca5166bcc9758e948ae0bc58fa1b59aed78",
+      "bytes": 2326,
+      "retrieved_at": "2026-09-26T19:25:43.826450+00:00",
+      "status": "acquired"
+    },
+    {
+      "file": "llama.cpp-conversion_gemma.py",
+      "url": "https://raw.githubusercontent.com/ggml-org/llama.cpp/fcb3074f2bc06943a564d7f293f9e66d4bece02a/conversion/gemma.py",
+      "sha256": "b127a524d92660c86c67a371996ef29076c94cb8bcb9a8c4facf060a901d1671",
+      "bytes": 56704,
+      "retrieved_at": "2026-09-26T19:25:44.331452+00:00",
+      "status": "acquired"
+    },
+    {
+      "file": "llama.cpp-convert_hf_to_gguf.py",
+      "url": "https://raw.githubusercontent.com/ggml-org/llama.cpp/fcb3074f2bc06943a564d7f293f9e66d4bece02a/convert_hf_to_gguf.py",
+      "sha256": "e9a1da876330bbce9687541ab31736542a01b4ac43c6686126514a50f122fb7f",
+      "bytes": 13012,
+      "retrieved_at": "2026-09-26T19:25:44.668499+00:00",
+      "status": "acquired"
+    },
+    {
+      "file": "llama.cpp-requirements.txt",
+      "url": "https://raw.githubusercontent.com/ggml-org/llama.cpp/fcb3074f2bc06943a564d7f293f9e66d4bece02a/requirements.txt",
+      "sha256": "08e67179ad6863e26c8c763822b53f1080f4d4251cc2ad48c10418be9ee38f7f",
+      "bytes": 551,
+      "retrieved_at": "2026-09-26T19:25:45.059461+00:00",
+      "status": "acquired"
+    },
+    {
+      "file": "llama.cpp-conversion_base.py",
+      "url": "https://raw.githubusercontent.com/ggml-org/llama.cpp/fcb3074f2bc06943a564d7f293f9e66d4bece02a/conversion/base.py",
+      "sha256": "dee6c8ab37e130e10a8aaa13ab8231615c25a1988c3f7524927b41088d555b4d",
+      "bytes": 148529,
+      "retrieved_at": "2026-09-26T19:25:45.613538+00:00",
+      "status": "acquired"
+    }
+  ]
+}
