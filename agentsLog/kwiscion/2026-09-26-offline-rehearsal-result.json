@@ -1,0 +1,96 @@
+{
+  "status": "successful_two_item_synthetic_offline_rehearsal",
+  "synthetic_only": true,
+  "exam_id": "kwiscion-offline-synthetic-v1",
+  "scope": "Organizer-package adapter and isolated offline Gemma execution smoke only; no exam scoring or submission.",
+  "model_calls": 2,
+  "max_model_calls": 2,
+  "requested_output_token_cap_total": 2048,
+  "actual_completion_tokens": 7,
+  "estimated_cost_usd": 0,
+  "actual_cost_usd": 0,
+  "elapsed_seconds": 68.891,
+  "actual_usage": {
+    "prompt_tokens": 374,
+    "completion_tokens": 7,
+    "total_tokens": 381,
+    "latency_seconds_sum": 58.154
+  },
+  "items": [
+    {
+      "id": "offline-text",
+      "answer_nonempty": true,
+      "answer_characters": 6,
+      "error": null,
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 140,
+        "completion_tokens": 3,
+        "total_tokens": 143
+      },
+      "latency_seconds": 55.79
+    },
+    {
+      "id": "offline-image",
+      "answer_nonempty": true,
+      "answer_characters": 8,
+      "error": null,
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 234,
+        "completion_tokens": 4,
+        "total_tokens": 238
+      },
+      "latency_seconds": 2.364
+    }
+  ],
+  "packaging": {
+    "answers_json_validated": true,
+    "template_ids_match": true,
+    "nonempty_answers": 2,
+    "empty_answers": 0,
+    "failures": 0,
+    "submission_performed": false
+  },
+  "network_isolation": {
+    "runner_and_server_namespace_match": true,
+    "only_loopback_interface": true,
+    "external_ipv4_failed_errno": 101,
+    "external_ipv6_failed_errno": 101,
+    "owned_process_group_absent_after_cleanup": true,
+    "isolated_namespace_absent_after_cleanup": true,
+    "host_namespace_intact": true,
+    "host_daemon_api_available": true,
+    "host_daemon_version": "0.30.7",
+    "post_cleanup_check": "Read-only WSL inspection found no owned rehearsal process group or isolated namespace; host namespace matched the pre-run namespace and local API version remained available."
+  },
+  "runtime": {
+    "ollama_version": "0.30.7",
+    "model_digest": "4eb23ef187e2c5462566d6a1d3bbbc2f1346d0b4327cbb66d58fffbcc9b2b05c",
+    "model_bytes_including_projector": 7556497632,
+    "model_size_limit_bytes": 8000000000,
+    "context_tokens": 4096,
+    "context_digest_checks": "Runner code checks expected model digest before calls and resident digest/context after each call; successful exit confirms assertions passed.",
+    "readiness_model_loaded_before_call": false,
+    "cuda_layers_offloaded": "35/49",
+    "cuda_model_buffer_mib": 5191.72,
+    "gpu_discovery_watchdog_warning_seen": true,
+    "runtime_evidence_note": "Selected server-log lines showed GPU layer offload, CUDA0 model allocation, and 4096 context. The log also contained an initial GPU-discovery watchdog warning; both subsequent calls completed successfully."
+  },
+  "limitations": [
+    "This validates only two synthetic organizer-package items, not the final 40-item exam.",
+    "The generic final launcher remains CPU-only; this rehearsal does not prove its CUDA path.",
+    "Format validity and nonempty outputs are not correctness evidence."
+  ],
+  "sha256": {
+    "answers_json": "4e62aaee0315e6d411bc37c75c9e910e2add10ab2020959b7ab1e752fd25e037",
+    "raw_two_record_output": "a91be356c3df0b1112d58244f9a1f62e3cc55e1ba77ddcedba59ae9c392a04b3",
+    "prepared_synthetic_input": "0539070a1025942ded3477a1b36695ec7432c7810b1800d76102f0ddc1979561",
+    "input_package_manifest": "f3e6b79386551065f5e252ca392888f98262ef9afc71c960751ffb6ecfb03e81",
+    "launch_record": "897bc5082b0a256d587dc5b1e50a9f532c4c72c0e7c3e9cb854b31c4a02a8ffa",
+    "config": "4298fd235b8ae9311d70cdd24c9c971beebfa9840a0779dd6fa5ddee02b8fd1e",
+    "offline_rehearsal_script": "45b888db42a1b64398bb0f824a3397b9d10e19e58059430c74a3afe63d1c98e3",
+    "inference_runner": "b702857347fd0fa99b9aba9a844afca1a4a8634b22eaa826199d27986dca1f0a",
+    "server_log_private_sha256": "2e90b855d840353e1fea5e1e628c346aaba7083ca4714a0777c84a3fe07c577f"
+  }
+}

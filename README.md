@@ -2,7 +2,7 @@
 
 **Current control document: [WINNING_PLAN.md](WINNING_PLAN.md). Target: 48/60 reviewed May 2024 validation points by 18:00 today, then the highest Sunday history-matura score.** Consult the plan for owners, time gates, experiment decisions and fallback rules. The [12:45 course note](agentsLog/kwiscion/2026-09-26-best-score-course.md) and [morning status](agentsLog/kwiscion/2026-09-26-morning-status.md) are historical checkpoints.
 
-**17:02 checkpoint:** bare Gemma remains35/60; policy independently adjudicated32/60 and not promoted. The three-crop diagnostic is3/6 [2,3] versus bare2/6, with no resolved gain. The lead has [declared one bounded retrieval comparison](agentsLog/kwiscion/2026-09-26-bounded-rag-launch.md); Greg owns its optional final-package integration on[#62](https://github.com/kwiscion/machinekind-matura/issues/62), and Paweł owns adjudication on[#11](https://github.com/kwiscion/machinekind-matura/issues/11). The17:00 improvement gate slipped;48/60 is still unmet. An isolated offline rehearsal is prepared and waits for the laptop queue. Older updates below are historical.
+**17:54 checkpoint:** bare Gemma remains **35/60**; complete retrieval independently reviewed **27/60** and not promoted. The48/60 target is unmet. Both fixed and generic two-item offline qualifications passed actual text/image inference and valid output JSON on the laptop. Piotrek claimed the [full RTX runtime-transfer control](agentsLog/kwiscion/2026-09-26-rtx-runtime-transfer-launch.md), targeting18:15–18:20. The owner supplied an H100: root Sol now verifies it as the central worker on[#81](https://github.com/kwiscion/machinekind-matura/issues/81), with local backups and a bounded readiness budget. Greg's temperature implementation is accepted; Łukasz reviews runtime evidence; Paweł scores on[#11](https://github.com/kwiscion/machinekind-matura/issues/11); another lead Sol prepares the CPU-only essay pilot[#80](https://github.com/kwiscion/machinekind-matura/issues/80). **Older updates below are historical; use WINNING_PLAN.md for current assignments.**
 
 For the installed HF CLI and project-specific account login, see [Hugging Face setup](docs/huggingface.md). Run `.\scripts\hf.ps1 auth login` from PowerShell, then confirm `kwiscion` with `auth whoami`.
 
@@ -19,7 +19,7 @@ The handoff package is in [docs/overnight/PLAN.md](docs/overnight/PLAN.md). Star
 | Lead, integration and freeze | @kwiscion | [Lead](docs/overnight/issues/lead.md) | [Issue](https://github.com/kwiscion/machinekind-matura/issues/3) |
 | Grounded training data | @przemeknowak781 | [Data](docs/overnight/issues/data.md) | [Issue](https://github.com/kwiscion/machinekind-matura/issues/4) |
 | Offline runtime and throughput | @ljaniec | [Control plan](WINNING_PLAN.md) | [Issue #38](https://github.com/kwiscion/machinekind-matura/issues/38) |
-| Pinned retrieval deployment | @Bukareszt | [Retrieval](agentsLog/Bukareszt/README.md) | [Issue #44](https://github.com/kwiscion/machinekind-matura/issues/44) |
+| Explicit sampling candidate | @Bukareszt | [Control plan](WINNING_PLAN.md) | [Issue #72](https://github.com/kwiscion/machinekind-matura/issues/72) |
 | Independent score adjudication | @Pewciu6 | [Answer handoff](agentsLog/kwiscion/model-answers/qwen35-9b-val40-1024.manifest.json) | [Issue #11](https://github.com/kwiscion/machinekind-matura/issues/11) |
 | RTX readiness and next measured improvement | @semberecki | [Control plan](WINNING_PLAN.md) | [Issue #33](https://github.com/kwiscion/machinekind-matura/issues/33) |
 

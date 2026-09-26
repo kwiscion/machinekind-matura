@@ -1,0 +1,11 @@
+# Image-token budget: version-pinned research only
+
+26 September2026. No environment/configuration changes, server launch or model calls. This is a candidate for a later declared visual pilot, not authorization or evidence of a score gain.
+
+The earlier vision audit established that full-page images exceed the current default280 visual-token cap. Doubling their source DPI alone does not increase spatial tokens. A separate control exists in the exact laptop backend: [llama.cpp commit6f3a9f3de common/arg.cpp](https://github.com/ggml-org/llama.cpp/blob/6f3a9f3dee3c27545371044a3a38005721ac8a8e/common/arg.cpp#L2146) defines `--image-max-tokens` and environment variable `LLAMA_ARG_IMAGE_MAX_TOKENS` for dynamic-resolution vision models.
+
+In [Ollama0.30.7 llama_server.go](https://github.com/ollama/ollama/blob/v0.30.7/llm/llama_server.go#L382), the child backend environment starts from the parent process environment and applies library/GPU overrides. The inspected launch code does not supply an explicit image-max-token argument. **Inference from this source:** a separately started task-owned Ollama process with the variable set should pass it to this backend. This has not been verified by a generation or captured tensor/token count; do not claim working runtime support yet. Do not alter the active host service or frozen RAG arm.
+
+A prospective560-token cap is one possible single-variable visual test on unchanged full source pages; it would still need actual preprocessing/usage proof, full-source preservation, context accounting, a frozen case-selection rule and independent scoring. Extra image tokens consume context and runtime. One or two pages can need different headroom; do not stack RAG or longer output into this pilot without separate evidence. Saved model/projector bytes stay unchanged, but runtime memory and speed are unmeasured.
+
+Piotrek is acquiring a different runtime version; these version-pinned conclusions do not establish support on that host. Łukasz should independently check the selected version and backend before any proposed handoff. Keep readiness smoke on the existing declared settings. A test of the new control requires its own lead declaration after readiness and current score review.

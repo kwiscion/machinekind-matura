@@ -1,0 +1,18 @@
+# RTX runtime-transfer control — 26 September 2026, 17:44 Europe/Warsaw
+
+Owner: @semberecki, issue #33. The lead authorizes one complete May 2024 source-v2 run on the now-working RTX 5090 Laptop. This supersedes the former readiness-only allowance for this declared arm. Purpose: establish actual full-exam runtime and a local comparison point before testing temperature or more expensive pipelines. This is a new runtime/context configuration, not an independent replication of the laptop configuration or a claimed improvement.
+
+## Frozen scope
+
+- Native Ollama 0.34.4 already installed; `gemma4:12b-it-q4_K_M`, manifest `4eb23ef187e2c5462566d6a1d3bbbc2f1346d0b4327cbb66d58fffbcc9b2b05c`. Verify local model and projector against the pinned full hashes and sizes; total 7,556,497,632 bytes. Do not acquire another variant.
+- Preserve the observed effective context **32768**; record it before and after generation. The laptop reference used 4096. No RAG, policy, crops, changed DPI, sampling override, seed, extra planning, retry, or best-of selection.
+- Original bare source-v2 input SHA-256 `6615fea2e6fd1d6f9db5b781fa84a883899d1c2fb83a28b914638089e6b015a4`, all 40 IDs and required original images. Reconstruct via the accepted [key-free bootstrap and explicit v2 repair](validation-2024-keyfree/README.md), under `agentsLog/semberecki/private/`. Bootstrap uses only the official question PDF; never open evaluator keys. Preserve local PNG hashes/renderer version; compare against the published reference manifest and label any renderer differences.
+- Use accepted `infer.py` with `agentsLog/kwiscion/gemma4-12b-val40-1024.config.json`: loopback `/v1`, thinking off, 1024 output tokens, 420-second request timeout. Record the selected code revision and actual config hash. Existing sampling defaults remain unchanged. No credentials are required.
+- Maximum **40 sequential calls / 40,960 requested output tokens / $0**. No warmup, retries or repeated successful calls. Reuse the already-loaded model. Stop dispatch after 2400 elapsed seconds or **18:40 Europe/Warsaw**, whichever is earlier; allow the in-flight request its original timeout. Record all attempted and unsent IDs. Do not stop based on correctness. Stop on missing required assets, changed model/context, transport/runtime error or evidence of truncating input; preserve failures in the denominator.
+- A small owned wrapper may call `infer.load_config`, `infer.load_cases`, and `infer.run_case` to enforce this envelope; do not modify the shared runner. Flush each result. Check exclusive project worker ownership, full served digest and context before starting; unrelated host services remain untouched.
+
+## Handoff
+
+Claim with actual UTC timestamp and ETA, then proceed when these preconditions pass without another lead approval. Target completed answers by 18:15 if acquisition permits; record a concrete blocker immediately if not. Publish exact final answer strings/IDs/errors/stops and aggregate usage, timing, config/runtime/image hashes under owned paths after quotation review; keep source packs, official keys and provider/reasoning envelopes private. Tag @Pewciu6 on #11 for a full independent score. Preserve original timestamps; the smoke report's future-looking prose times must not be reused as measured event times.
+
+Report cold/warm status and full wall time; a 233-token synthetic response does not establish complete-exam speed or the stage deadline. The log's `driver=13.2` is not yet a verified NVIDIA driver version. These reporting corrections do not require another generation call. @ljaniec reviews the actual runtime evidence. No other worker should duplicate this arm. May 2025 remains sealed. This run does not freeze a Sunday candidate.
