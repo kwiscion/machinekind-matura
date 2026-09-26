@@ -18,9 +18,15 @@
     "ollama_version": "0.34.4",
     "install": "user-local ~/.local/ollama (official ollama-linux-amd64.tar.zst v0.34.4)",
     "installer_sha256": "c238986e61d40c0cc5f4a9b9e40b9eea104350b77efa34741fc134e105cb9533",
+    "archive_filename": "ollama-linux-amd64.tar.zst",
+    "archive_version": "v0.34.4",
+    "executable_path": "~/.local/ollama/bin/ollama",
+    "executable_sha256": "ad9c53441752620a2314a65a798a888d98df3636c8815ca044de591f82892ff4",
     "models_dir": "~/.ollama/models",
     "server": "http://127.0.0.1:11434",
-    "gpu_discovery": "CUDA0 RTX 5090 Laptop GPU, total 23.4 GiB, available 21.0 GiB; integrated GPU dropped (Vulkan)"
+    "gpu_discovery": "CUDA0 RTX 5090 Laptop GPU, total 23.4 GiB, available 21.0 GiB; integrated GPU dropped (Vulkan)",
+    "driver": "NVIDIA driver 13.2 (serve.log driver=13.2)",
+    "backend": "library=CUDA, libdirs=ollama,cuda_v13"
   },
   "model": {
     "tag": "gemma4:12b-it-q4_K_M",
@@ -46,7 +52,8 @@
   },
   "smoke_calls": {
     "budget": "max 4, thinking off, 1024 output tokens, $0 (local)",
-    "used": 2,
+    "used": 3,
+    "reserved": 1,
     "calls": [
       {
         "n": 1,
@@ -71,6 +78,18 @@
         "eval_count": 17,
         "total_duration_s": 3.3,
         "note": "vision path works; correct description (red circle on white); actual image input verified via prompt token count"
+      },
+      {
+        "n": 3,
+        "kind": "longer synthetic text generation (~120 words, generic content, no exam material)",
+        "response_nonempty": true,
+        "done_reason": "stop",
+        "thinking": null,
+        "prompt_eval_count": 51,
+        "eval_count": 233,
+        "eval_tokens_per_s": 54.0,
+        "total_duration_s": 4.5,
+        "note": "sustained warm throughput 54.0 tok/s over 233 tok / 4.32 s; model kept warm (keep_alive); vs laptop reference mean 37.4 s per completed answer (partial CPU offload)"
       }
     ]
   },
