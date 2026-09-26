@@ -15,6 +15,7 @@ A dedicated long-form essay prompt removes the conflict between the global instr
 | `scripts/Pewciu6/test_essay_route.py` | 24 unit tests on synthetic fixtures only. |
 | `agentsLog/Pewciu6/essay/dev_fixtures.jsonl` | 5 ORIGINAL development essay prompts, 2 topics each, 10 topics across eras from medieval to 1989. They use two prompt layouts ("Temat N." and numbered "N." with "WYPRACOWANIE na temat nr"). |
 | `agentsLog/Pewciu6/essay/premise_check.md` | Independent premise check (a separate Sonnet subagent, not the author) against the pinned `oldid` revisions: **10/10 supported**. The author re-verified all 14 cited oldids against `data/przemeknowak781/sources.jsonl`. |
+| `agentsLog/Pewciu6/essay/lora_feasibility.md` | Stretch: an essay-only LoRA feasibility and export desk study. No training. |
 | `agentsLog/Pewciu6/essay/pilot-v1/` | A frozen, portable pilot: inputs, per-stage configs and `manifest.json`. |
 
 ## Routing and prompt contract
