@@ -1,5 +1,7 @@
 # Two-item real offline qualification (prepared, not executed)
 
+The original package-v4 attempt has now executed: both answers passed, but redundant outer cleanup failed. See the [immutable result](../2026-09-26-final-offline-result.md). Current code includes a [separately reviewed receipt-aware cleanup correction](../2026-09-27-offline-cleanup-independent-review.md); it has CPU approval only. Any subsequent run needs a freshly prepared package with the corrected code pins and a new declaration. Do not relabel the original attempt or silently reuse its declaration.
+
 This executable vertical slice qualifies the actual staged single-Gemma cache through native thinking and the organizer adapter. It is **not** a generic Sunday runner: adapting the same native path to arbitrary organizer packages and explicit essay cap mappings remains a separate integration step. No validation IDs, essay policies or fallback behavior are introduced here.
 
 ## Frozen scope

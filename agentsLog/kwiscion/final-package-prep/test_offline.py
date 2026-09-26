@@ -61,4 +61,45 @@ class Tests(unittest.TestCase):
     actual=json.loads((out/'answers.json').read_text())['answers'];self.assertEqual([x['id'] for x in actual],['offline-text','offline-image'])
     if broken:self.assertEqual([x['answer'] for x in actual],['',''])
     else:self.assertEqual(actual[0]['answer'],'gotowe');self.assertFalse(m.correct(actual[1]['id'],actual[1]['answer']))
+ def receipt_fixture(self,out):
+  identity={'pid':987654,'ticks':'123','namespace':'net:isolated'}
+  m.write(out/'network-proof.json',{'isolated_namespace':'net:isolated'})
+  m.write(out/'server-identity.json',identity)
+  m.write(out/'cleanup.json',{'owned':identity,'matched_pids':[987654,987655],'returncode':-9})
+ def test_completed_receipt_skips_unrelated_unreadable_proc(self):
+  with tempfile.TemporaryDirectory() as td:
+   out=Path(td);self.receipt_fixture(out)
+   exists=m.Path.exists
+   def absent(path):return False if path.parent.name=='proc' else exists(path)
+   with patch.object(m,'process_absent',return_value=True),patch.object(m.Path,'iterdir',side_effect=PermissionError('unrelated unreadable proc')),patch.object(m,'namespace_cleanup') as fallback:
+    self.assertEqual(m.cleanup_from_receipts(out,'/runtime/ollama')['mode'],'verified_completed_receipt');fallback.assert_not_called()
+ def test_missing_or_partial_receipt_requires_fallback(self):
+  for partial in (False,True):
+   with tempfile.TemporaryDirectory() as td:
+    out=Path(td);m.write(out/'network-proof.json',{'isolated_namespace':'net:isolated'})
+    if partial:m.write(out/'server-identity.json',{});m.write(out/'cleanup.json',{})
+    with patch.object(m,'namespace_cleanup',return_value=[42]) as fallback:
+     self.assertEqual(m.cleanup_from_receipts(out,'/runtime/ollama')['mode'],'namespace_fallback');fallback.assert_called_once()
+ def test_tampered_or_nondict_receipt_requires_fallback(self):
+  for invalid in ('mismatch','nondict','returncode'):
+   with tempfile.TemporaryDirectory() as td:
+    out=Path(td);self.receipt_fixture(out)
+    p=out/'cleanup.json';r=json.loads(p.read_text())
+    if invalid=='mismatch':r['owned']['ticks']='999'
+    if invalid=='returncode':r['returncode']=1
+    p.write_text(json.dumps(r))
+    if invalid=='nondict':(out/'server-identity.json').write_text('[]')
+    with patch.object(m,'namespace_cleanup',return_value=[]) as fallback:
+     self.assertEqual(m.cleanup_from_receipts(out,'/runtime/ollama')['mode'],'namespace_fallback');fallback.assert_called_once()
+ def test_live_recorded_pid_fastpath_rejects_without_signaling(self):
+  with tempfile.TemporaryDirectory() as td:
+   out=Path(td);self.receipt_fixture(out)
+   with patch.object(m,'process_absent',return_value=False),patch.object(m,'namespace_cleanup') as fallback,self.assertRaises(RuntimeError):m.cleanup_from_receipts(out,'/runtime/ollama')
+   fallback.assert_not_called()
+ def test_recorded_proc_permission_error_not_absence(self):
+  with patch.object(m.Path,'lstat',side_effect=PermissionError('owned proc')),self.assertRaises(PermissionError):m.process_absent(123)
+ def test_uncertain_fallback_permission_error_not_suppressed(self):
+  with tempfile.TemporaryDirectory() as td:
+   out=Path(td);m.write(out/'network-proof.json',{'isolated_namespace':'net:isolated'})
+   with patch.object(m,'namespace_cleanup',side_effect=PermissionError('potential owned process')),self.assertRaises(PermissionError):m.cleanup_from_receipts(out,'/runtime/ollama')
 if __name__=='__main__':unittest.main()

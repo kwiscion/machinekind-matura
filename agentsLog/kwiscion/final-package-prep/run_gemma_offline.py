@@ -84,6 +84,34 @@ def namespace_cleanup(proof,binary):
         except (FileNotFoundError,ProcessLookupError):pass
     return killed
 
+def process_absent(pid):
+    try:Path(f'/proc/{pid}').lstat()
+    except FileNotFoundError:return True
+    return False
+
+def cleanup_from_receipts(out,binary):
+    """Avoid broad fallback only after a bound receipt proves owned cleanup complete."""
+    proof_path=out/'network-proof.json'
+    if not proof_path.exists():return {'mode':'no_namespace_started'}
+    proof=json.loads(proof_path.read_text())
+    try:
+        identity=json.loads((out/'server-identity.json').read_text())
+        receipt=json.loads((out/'cleanup.json').read_text())
+    except (FileNotFoundError,json.JSONDecodeError):
+        return {'mode':'namespace_fallback','matched_pids':namespace_cleanup(proof,binary)}
+    complete=(isinstance(receipt,dict) and isinstance(identity,dict) and isinstance(receipt.get('owned'),dict)
+              and type(receipt.get('returncode')) is int and receipt['returncode'] in (0,-9,-15)
+              and isinstance(receipt.get('matched_pids'),list)
+              and receipt['owned']==identity and identity.get('namespace')==proof['isolated_namespace']
+              and type(identity.get('pid')) is int and identity['pid']>0 and str(identity.get('ticks','')).isdigit()
+              and all(type(pid) is int and pid>0 for pid in receipt['matched_pids']))
+    if complete:
+        # Do not touch a reused PID: any recorded live PID makes this proof insufficient.
+        recorded=set(receipt['matched_pids'])|{identity['pid']}
+        need(all(process_absent(pid) for pid in recorded),'Recorded cleanup process still exists; diagnose identity before action')
+        return {'mode':'verified_completed_receipt','recorded_pids':sorted(recorded)}
+    return {'mode':'namespace_fallback','matched_pids':namespace_cleanup(proof,binary)}
+
 def workers(allowed,server_group=None):
     blockers=[]
     for p in Path('/proc').iterdir():
@@ -179,20 +207,14 @@ def execute(root,m):
     try:return p.wait(timeout=max(1,remaining(m)-10))
     finally:
         if p.poll() is None:os.killpg(p.pid,signal.SIGKILL);p.wait(timeout=5)
-        record=out/'server-identity.json'
-        if record.exists():
-            try:cleanup(json.loads(record.read_text()))
-            except (ValueError,KeyError):pass
-        proof=out/'network-proof.json'
-        if proof.exists():namespace_cleanup(json.loads(proof.read_text()),m['binary'])
+        write(out/'parent-cleanup.json',cleanup_from_receipts(out,m['binary']))
         write(out/'post-process.json',workers({os.getpid()}))
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('package',type=Path);ap.add_argument('--execute',action='store_true');ap.add_argument('--cleanup',action='store_true');ap.add_argument('--inside',action='store_true');ap.add_argument('--host-net');ap.add_argument('--parent',type=int);a=ap.parse_args();root=a.package.resolve()
     if a.cleanup:
         m=json.loads((root/'results/launch.json').read_text());need(m==json.loads((root/'launch.json').read_text()),'Cleanup declaration changed')
         for n,h in m['files'].items():need(sha(root/n)==h,'Cleanup code pin')
-        proof=root/'results/network-proof.json'
-        if proof.exists():namespace_cleanup(json.loads(proof.read_text()),m['binary'])
+        print(json.dumps(cleanup_from_receipts(root/'results',m['binary'])))
         return 0
     if a.inside:
         need(a.execute and a.parent and a.host_net,'Internal execution arguments');m=json.loads((root/'results/launch.json').read_text());need(m==json.loads((root/'launch.json').read_text()) and m['status']=='DECLARED','Frozen declaration');remaining(m)
