@@ -2,7 +2,7 @@
 
 Start with **[WINNING_PLAN.md](WINNING_PLAN.md)** for current priorities and owners. GitHub issues are the scheduling authority; claim one task before starting.
 
-Immediate priority: verify the supplied37-item organizer mock ([#170](https://github.com/kwiscion/machinekind-matura/issues/170)) and correct May2024 source-image links/crops ([#171](https://github.com/kwiscion/machinekind-matura/issues/171)). Existing scores below use legacy full-page images, not the organizer's new cropped-image format. The downloaded mock stays local under `data/history-2023-mock-v1/`.
+The supplied **37-item organizer mock is verified** through the actual adapter and autonomous export path with synthetic responses: [commands and evidence](agentsLog/kwiscion/2026-09-27-mock2023-package-compatibility.md). May2024 validation now has **21 reviewed source crops with corrected image links**: [new input package and reproduction](agentsLog/kwiscion/source-crops-prep/README.md). Use these corrected inputs for new visual experiments. Existing scores below use legacy full-page images and remain separate; no corrected-input score is available yet. The downloaded mock stays local under `data/history-2023-mock-v1/`.
 
 Best complete known-validation result remains **Gemma native thinking, 38/60**. The improved recovery harness also scored38/60 in one pass (31 nonessay +7 essay), producing40/40 nonblank answers with no placeholders. The earlier38 had three empty finals and an8-point essay. This is agent evaluation, not an organizer score; no net quality gain is established. Preserved fallback35/60; target48/60. [Current score](agentsLog/kwiscion/2026-09-27-champion-rehearsal-score.md) · [Earlier reconciliation](agentsLog/kwiscion/2026-09-26-full-thinking-review-reconciliation.md).
 

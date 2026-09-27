@@ -171,9 +171,9 @@ class Tests(unittest.TestCase):
             bad = dict(m, **change)
             with self.subTest(change=change), self.assertRaises(r.GlobalStop): r.declared(bad, now)
 
-    def test_policy_matches_frozen_full_thinking_contract(self):
+    def test_policy_preserves_prior_contract_and_required_topic_number(self):
         old = r.load('policy_only_no_execution', REPO / 'agentsLog/kwiscion/full-thinking-prep/prepare.py')
-        self.assertEqual(r.ESSAY_POLICY, old.ESSAY_POLICY)
+        self.assertTrue(r.ESSAY_POLICY.startswith(old.ESSAY_POLICY));self.assertIn('numeru wybranego tematu',r.ESSAY_POLICY)
 
     def test_cleanup_receipt_integration_and_fallback_error_visibility(self):
         helper = r.load('cleanup_integration_helper', HERE / 'run_gemma_offline.py')
