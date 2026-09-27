@@ -111,3 +111,6 @@ Continuation of 2026-09-26-watcher-log.md. Same watcher instance 8e5e9ed0-1189-4
 - CPU-only audit of `origin/main` @ `461a779` (root's recovery runtime and native package path) against Greg's `matura_package.py` contract, using public fixtures only (no final package, no inference, no GPU).
 - One actionable finding: `run_native_package.py:29-35` PINS hold CRLF working-tree hashes for `infer.py`, `scripts/Bukareszt/matura_package.py` and `agentsLog/kwiscion/offline_rehearsal.py`. On any LF checkout `prepare_native_package.py:52` raises "Reviewed dependency changed", so the final package can only be prepared on the Windows checkout that made the pins. Fix: prepare on that Windows checkout, or add scoped `eol=lf` attributes and switch to the LF hashes. The other checked items (template IDs/schema, linked PNGs, complete inputs, no blank finals, size limits, offline) had no blocker.
 - No shared files edited; the H100 is idle. Greg's work is complete before the 08:00 freeze.
+
+## 08:05 — development freeze passed
+- 08:00 development freeze reached. No Greg workers running, no GPU work, the H100 idle. From now until 11:00 only final checks/run/submission (root-owned); Greg's side dispatches nothing new and only answers small requests addressed to him. Never request final exam access.
