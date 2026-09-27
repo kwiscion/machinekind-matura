@@ -1,0 +1,22 @@
+{
+  "status": "CPU_PREPARED_NOT_ENABLED",
+  "schema": "instruction_route_detection_preparation_v1",
+  "files": {
+    "classify_item.py": "2f91f6c657da087ef16d611e804ee30ad2c699b098ebd7a3107c361a65fd101c",
+    "test_classify_item.py": "7d28f403ad3e2bd4edd3948de4c7b49a63437f0c63649bd8a29bedae2aa4aa40",
+    "README.md": "d73c13d402c6509a951b18cab878710c3d0734d23238582cca4e2552f92ed80b"
+  },
+  "cpu_tests": 14,
+  "model_calls": 0,
+  "network_calls": 0,
+  "git_mutations": 0,
+  "routing_fields_read": [
+    "question",
+    "answer_format",
+    "images"
+  ],
+  "forbidden_fields_read": [],
+  "runtime_integration": false,
+  "existing_prompt_policies_enabled": false,
+  "source_provenance": "Original generic code; structural detection idea reused from existing scripts/Pewciu6/essay_route.py, without importing prompt templates or runtime helpers. Tests are invented synthetic instructions; no question pack or keys."
+}
