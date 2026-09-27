@@ -1,0 +1,983 @@
+{
+ "arms": {
+  "A": {
+   "model": "/ephemeral/mm-lora/control/base-q4_k_m.gguf",
+   "model_sha256": "a192fac4a5989aa7db9452d91405cd401a7fb03e0af3b36343abeeb146d3282a",
+   "mmproj_sha256": "9ff3ded7bf4360353a3c184aeef9fb1a15e54f08abcb1a45a46b3467333fb12e",
+   "server_cmd": [
+    "/ephemeral/mm-lora/src/llama.cpp/build-cuda/bin/llama-server",
+    "-m",
+    "/ephemeral/mm-lora/control/base-q4_k_m.gguf",
+    "--mmproj",
+    "/ephemeral/mm-lora/control/projector.gguf",
+    "--host",
+    "127.0.0.1",
+    "--port",
+    "18117",
+    "-ngl",
+    "999",
+    "-c",
+    "65536",
+    "-np",
+    "1",
+    "--jinja",
+    "--no-webui",
+    "--reasoning",
+    "off",
+    "--no-warmup"
+   ],
+   "served_chat_template_sha256": "6a1015c47ccfcfa67c3b772385bccee357a4d37c3cda37bd202e9047f391ab82",
+   "load_seconds": 3.1,
+   "counts": {
+    "complete": 16,
+    "partial": 0,
+    "placeholder": 0
+   },
+   "calls": 16,
+   "requested_tokens": 524288,
+   "completion_tokens": 13649,
+   "length_finishes": 0,
+   "generation_seconds": 128.1,
+   "items": [
+    {
+     "id": "bk117-eval-01",
+     "final_status": "complete",
+     "chosen_call_number": 1,
+     "final_finish_reason": "stop",
+     "final_body_words": 387,
+     "attempts": [
+      {
+       "attempt": 1,
+       "call_number": 1,
+       "max_tokens": 32768,
+       "synthesis_with_draft": false,
+       "request_sha256": "30a29bed6e92076a3187a1533a49f76bddc79d078e122b17ac4d2301c464a6ac",
+       "response_sha256": "75191488eb2e76a4be8aca471c2099e735c784c0cb9dea36854ffe0a32e03eaa",
+       "http_status": 200,
+       "finish_reason": "stop",
+       "seconds": 7.78,
+       "error": null,
+       "skipped": null,
+       "prompt_tokens": 141,
+       "completion_tokens": 854
+      }
+     ]
+    },
+    {
+     "id": "bk117-eval-02",
+     "final_status": "complete",
+     "chosen_call_number": 2,
+     "final_finish_reason": "stop",
+     "final_body_words": 351,
+     "attempts": [
+      {
+       "attempt": 1,
+       "call_number": 2,
+       "max_tokens": 32768,
+       "synthesis_with_draft": false,
+       "request_sha256": "49ecd75c2c6df84f7fbfdd2d28be00802ef46ac33ca28a7f36e7a363689d2e52",
+       "response_sha256": "8f54b7098b84270b2d51d2439d5b110b71678f55764dcb9cee9039f5523ca296",
+       "http_status": 200,
+       "finish_reason": "stop",
+       "seconds": 7.59,
+       "error": null,
+       "skipped": null,
+       "prompt_tokens": 141,
+       "completion_tokens": 810
+      }
+     ]
+    },
+    {
+     "id": "bk117-eval-03",
+     "final_status": "complete",
+     "chosen_call_number": 3,
+     "final_finish_reason": "stop",
+     "final_body_words": 346,
+     "attempts": [
+      {
+       "attempt": 1,
+       "call_number": 3,
+       "max_tokens": 32768,
+       "synthesis_with_draft": false,
+       "request_sha256": "948c5470146ad205cf38ec5c46477a8295b2934b2049b7159b219505a5a5dc89",
+       "response_sha256": "761ba17fa8f3d6d4f84f437f1ab60b7a5bd5dae4fc7b057d664069ab4bbc63d8",
+       "http_status": 200,
+       "finish_reason": "stop",
+       "seconds": 7.39,
+       "error": null,
+       "skipped": null,
+       "prompt_tokens": 136,
+       "completion_tokens": 792
+      }
+     ]
+    },
+    {
+     "id": "bk117-eval-04",
+     "final_status": "complete",
+     "chosen_call_number": 4,
+     "final_finish_reason": "stop",
+     "final_body_words": 392,
+     "attempts": [
+      {
+       "attempt": 1,
+       "call_number": 4,
+       "max_tokens": 32768,
+       "synthesis_with_draft": false,
+       "request_sha256": "05087ecfd66b4247b69fef3ee6188edfe6c971a12505c060cb03a5e8dd3a20dd",
+       "response_sha256": "6060b77b8cbd275c77e77d8029261fd022561c844a20e3889b86ee6a3ecff170",
+       "http_status": 200,
+       "finish_reason": "stop",
+       "seconds": 8.4,
+       "error": null,
+       "skipped": null,
+       "prompt_tokens": 156,
+       "completion_tokens": 907
+      }
+     ]
+    },
+    {
+     "id": "bk117-eval-05",
+     "final_status": "complete",
+     "chosen_call_number": 5,
+     "final_finish_reason": "stop",
+     "final_body_words": 380,
+     "attempts": [
+      {
+       "attempt": 1,
+       "call_number": 5,
+       "max_tokens": 32768,
+       "synthesis_with_draft": false,
+       "request_sha256": "d2b164ddfbc25f37baa49529684ecb56a298552fb66de546cbf02ebe0f79e1a0",
+       "response_sha256": "255e04d0bfb1bba587bb50990fc1c025391e7811a5dad3332279c7566ed6ef10",
+       "http_status": 200,
+       "finish_reason": "stop",
+       "seconds": 8.1,
+       "error": null,
+       "skipped": null,
+       "prompt_tokens": 139,
+       "completion_tokens": 873
+      }
+     ]
+    },
+    {
+     "id": "bk117-eval-06",
+     "final_status": "complete",
+     "chosen_call_number": 6,
+     "final_finish_reason": "stop",
+     "final_body_words": 362,
+     "attempts": [
+      {
+       "attempt": 1,
+       "call_number": 6,
+       "max_tokens": 32768,
+       "synthesis_with_draft": false,
+       "request_sha256": "4ca2df91a83238d9d647b6c963e43efa7dd16c071f29a4d53fbefeaabc073439",
+       "response_sha256": "86fad8b7216953f030f68d78e8acd3b351ce24d51c51ad3c0eefd269028c61ac",
+       "http_status": 200,
+       "finish_reason": "stop",
+       "seconds": 7.39,
+       "error": null,
+       "skipped": null,
+       "prompt_tokens": 144,
+       "completion_tokens": 792
+      }
+     ]
+    },
+    {
+     "id": "bk117-eval-07",
+     "final_status": "complete",
+     "chosen_call_number": 7,
+     "final_finish_reason": "stop",
+     "final_body_words": 350,
+     "attempts": [
+      {
+       "attempt": 1,
+       "call_number": 7,
+       "max_tokens": 32768,
+       "synthesis_with_draft": false,
+       "request_sha256": "850b409e8607d5c14bf9af1b4e6db44a64c1c8cd376aeb8d7cc66d6b0ad929a1",
+       "response_sha256": "d66fdff4bb3ef1c54b8ef2fd60f4861e2b20d4e3535f4f3a6e542a07bb0b5c45",
+       "http_status": 200,
+       "finish_reason": "stop",
+       "seconds": 7.46,
+       "error": null,
+       "skipped": null,
+       "prompt_tokens": 138,
+       "completion_tokens": 800
+      }
+     ]
+    },
+    {
+     "id": "bk117-eval-08",
+     "final_status": "complete",
+     "chosen_call_number": 8,
+     "final_finish_reason": "stop",
+     "final_body_words": 383,
+     "attempts": [
+      {
+       "attempt": 1,
+       "call_number": 8,
+       "max_tokens": 32768,
+       "synthesis_with_draft": false,
+       "request_sha256": "de85573fb6b3856f294132a05c1e8f60c49e2e740e0ae093eca011f1ffbabe4e",
+       "response_sha256": "332d3d4bc4d389e53e05344270402f4132619fac43ae1cd547f6b5fd1387e5d6",
+       "http_status": 200,
+       "finish_reason": "stop",
+       "seconds": 8.35,
+       "error": null,
+       "skipped": null,
+       "prompt_tokens": 147,
+       "completion_tokens": 893
+      }
+     ]
+    },
+    {
+     "id": "bk117-eval-09",
+     "final_status": "complete",
+     "chosen_call_number": 9,
+     "final_finish_reason": "stop",
+     "final_body_words": 358,
+     "attempts": [
+      {
+       "attempt": 1,
+       "call_number": 9,
+       "max_tokens": 32768,
+       "synthesis_with_draft": false,
+       "request_sha256": "3788a7fd2456d8113ca29392ac22fdb4ed7dfb2aa37271d0ae9e4bc4c22373ec",
+       "response_sha256": "a8eb2eb7bebfdbe578d45ad5dd9c00b6b49f801cbc30327f39b8f453bfd9b6eb",
+       "http_status": 200,
+       "finish_reason": "stop",
+       "seconds": 7.89,
+       "error": null,
+       "skipped": null,
+       "prompt_tokens": 149,
+       "completion_tokens": 839
+      }
+     ]
+    },
+    {
+     "id": "bk117-eval-10",
+     "final_status": "complete",
+     "chosen_call_number": 10,
+     "final_finish_reason": "stop",
+     "final_body_words": 383,
+     "attempts": [
+      {
+       "attempt": 1,
+       "call_number": 10,
+       "max_tokens": 32768,
+       "synthesis_with_draft": false,
+       "request_sha256": "c14de8f19bb15a8b53e696876c5176ec93070ac30d94261f921482357e78cc78",
+       "response_sha256": "36fde17e27abd849011846704ab87e5830956c089465265e49105adf3496105f",
+       "http_status": 200,
+       "finish_reason": "stop",
+       "seconds": 8.09,
+       "error": null,
+       "skipped": null,
+       "prompt_tokens": 136,
+       "completion_tokens": 859
+      }
+     ]
+    },
+    {
+     "id": "bk117-eval-11",
+     "final_status": "complete",
+     "chosen_call_number": 11,
+     "final_finish_reason": "stop",
+     "final_body_words": 390,
+     "attempts": [
+      {
+       "attempt": 1,
+       "call_number": 11,
+       "max_tokens": 32768,
+       "synthesis_with_draft": false,
+       "request_sha256": "35af2c880ecfd60023c85cf698390121503783909aabe788c4484884500af9c3",
+       "response_sha256": "7bfb12d834313579a324982f791d138ce9f0a44cbd0854ef304e62ee0712784e",
+       "http_status": 200,
+       "finish_reason": "stop",
+       "seconds": 8.03,
+       "error": null,
+       "skipped": null,
+       "prompt_tokens": 138,
+       "completion_tokens": 850
+      }
+     ]
+    },
+    {
+     "id": "bk117-eval-12",
+     "final_status": "complete",
+     "chosen_call_number": 12,
+     "final_finish_reason": "stop",
+     "final_body_words": 412,
+     "attempts": [
+      {
+       "attempt": 1,
+       "call_number": 12,
+       "max_tokens": 32768,
+       "synthesis_with_draft": false,
+       "request_sha256": "ffe2650aa99f79a04ab5b8da7fac3b9c22ca9b7f5964780f51164acef07d641d",
+       "response_sha256": "5a27c9397c12a1b94031ee4fdc2f321b5f5eed1e260772cfc486be711e351221",
+       "http_status": 200,
+       "finish_reason": "stop",
+       "seconds": 9.09,
+       "error": null,
+       "skipped": null,
+       "prompt_tokens": 150,
+       "completion_tokens": 962
+      }
+     ]
+    },
+    {
+     "id": "bk117-eval-13",
+     "final_status": "complete",
+     "chosen_call_number": 13,
+     "final_finish_reason": "stop",
+     "final_body_words": 402,
+     "attempts": [
+      {
+       "attempt": 1,
+       "call_number": 13,
+       "max_tokens": 32768,
+       "synthesis_with_draft": false,
+       "request_sha256": "df25c3572c426a16c9769fe6d8624d560fe09de52a4fb83995ef4e3fd54a7132",
+       "response_sha256": "3bdc26245443643fd86faaf70f04a735cdcd34e644e31dc9c3e260b5fe8cb3cb",
+       "http_status": 200,
+       "finish_reason": "stop",
+       "seconds": 8.39,
+       "error": null,
+       "skipped": null,
+       "prompt_tokens": 159,
+       "completion_tokens": 882
+      }
+     ]
+    },
+    {
+     "id": "bk117-eval-14",
+     "final_status": "complete",
+     "chosen_call_number": 14,
+     "final_finish_reason": "stop",
+     "final_body_words": 363,
+     "attempts": [
+      {
+       "attempt": 1,
+       "call_number": 14,
+       "max_tokens": 32768,
+       "synthesis_with_draft": false,
+       "request_sha256": "6d7ec6010d2d1062b7894ef664e6b55101a7ef931c68abe6d97ac57eb6ff421e",
+       "response_sha256": "26ea0befde6ace6f253f6f6b754bb2b7efd90e45ff6df6a4d3448cb4d0e21da8",
+       "http_status": 200,
+       "finish_reason": "stop",
+       "seconds": 7.73,
+       "error": null,
+       "skipped": null,
+       "prompt_tokens": 151,
+       "completion_tokens": 812
+      }
+     ]
+    },
+    {
+     "id": "bk117-eval-15",
+     "final_status": "complete",
+     "chosen_call_number": 15,
+     "final_finish_reason": "stop",
+     "final_body_words": 381,
+     "attempts": [
+      {
+       "attempt": 1,
+       "call_number": 15,
+       "max_tokens": 32768,
+       "synthesis_with_draft": false,
+       "request_sha256": "ba603c17b7762b23360d693fc244d10c71f75cb779dd92a6e36a137f96a9da47",
+       "response_sha256": "d695ba96301583f5c787e4e4ade096e671fe7aa1dd9b0b0252d0a68b44ef344f",
+       "http_status": 200,
+       "finish_reason": "stop",
+       "seconds": 8.02,
+       "error": null,
+       "skipped": null,
+       "prompt_tokens": 138,
+       "completion_tokens": 844
+      }
+     ]
+    },
+    {
+     "id": "bk117-eval-16",
+     "final_status": "complete",
+     "chosen_call_number": 16,
+     "final_finish_reason": "stop",
+     "final_body_words": 400,
+     "attempts": [
+      {
+       "attempt": 1,
+       "call_number": 16,
+       "max_tokens": 32768,
+       "synthesis_with_draft": false,
+       "request_sha256": "ebc32a3db98ad6773158dcc42892d54b5588ad1d2ffc40896f19ec2172abacad",
+       "response_sha256": "e7aa6aee2eac42f50b0d9e471d9b7f782c7c5588f2bbff4b76e12766b2d4b01f",
+       "http_status": 200,
+       "finish_reason": "stop",
+       "seconds": 8.36,
+       "error": null,
+       "skipped": null,
+       "prompt_tokens": 142,
+       "completion_tokens": 880
+      }
+     ]
+    }
+   ]
+  },
+  "B": {
+   "model": "/ephemeral/mm-lora/pilot-run3/export/candidate-q4_k_m.gguf",
+   "model_sha256": "d2c7b67ad58e4cfa1ade48adb5a1ab1777cda582f1ff193e8dc9824daf0abaaa",
+   "mmproj_sha256": "24322307ec695ddc5d3678872367519eece8efd47aecef1b66608cf70b0a7937",
+   "server_cmd": [
+    "/ephemeral/mm-lora/src/llama.cpp/build-cuda/bin/llama-server",
+    "-m",
+    "/ephemeral/mm-lora/pilot-run3/export/candidate-q4_k_m.gguf",
+    "--mmproj",
+    "/ephemeral/mm-lora/pilot-run3/export/candidate-projector.gguf",
+    "--host",
+    "127.0.0.1",
+    "--port",
+    "18117",
+    "-ngl",
+    "999",
+    "-c",
+    "65536",
+    "-np",
+    "1",
+    "--jinja",
+    "--no-webui",
+    "--reasoning",
+    "off",
+    "--no-warmup"
+   ],
+   "served_chat_template_sha256": "6a1015c47ccfcfa67c3b772385bccee357a4d37c3cda37bd202e9047f391ab82",
+   "load_seconds": 3.1,
+   "counts": {
+    "complete": 2,
+    "partial": 2,
+    "placeholder": 12
+   },
+   "calls": 9,
+   "requested_tokens": 344064,
+   "completion_tokens": 165354,
+   "length_finishes": 5,
+   "generation_seconds": 2562.9,
+   "items": [
+    {
+     "id": "bk117-eval-01",
+     "final_status": "complete",
+     "chosen_call_number": 18,
+     "final_finish_reason": "stop",
+     "final_body_words": 331,
+     "attempts": [
+      {
+       "attempt": 1,
+       "call_number": 17,
+       "max_tokens": 32768,
+       "synthesis_with_draft": false,
+       "request_sha256": "30a29bed6e92076a3187a1533a49f76bddc79d078e122b17ac4d2301c464a6ac",
+       "response_sha256": "013d7b91490ac7520667c8cb669c4642aa951e7f0d09c8d3b4e96d719a7c7caa",
+       "http_status": 200,
+       "finish_reason": "length",
+       "seconds": 315.71,
+       "error": null,
+       "skipped": null,
+       "prompt_tokens": 141,
+       "completion_tokens": 32768
+      },
+      {
+       "attempt": 2,
+       "call_number": 18,
+       "max_tokens": 49152,
+       "synthesis_with_draft": false,
+       "request_sha256": "516553b72c82fe545c6c7ad102ba5b649c858b10a046e344412f1836dea16055",
+       "response_sha256": "097b7538c770cf1d5caf98c59b4d7c87d3dbc9f05a8460cd030b5969c5f3a633",
+       "http_status": 200,
+       "finish_reason": "stop",
+       "seconds": 7.12,
+       "error": null,
+       "skipped": null,
+       "prompt_tokens": 141,
+       "completion_tokens": 710
+      }
+     ]
+    },
+    {
+     "id": "bk117-eval-02",
+     "final_status": "partial",
+     "chosen_call_number": 19,
+     "final_finish_reason": "length",
+     "final_body_words": 18030,
+     "attempts": [
+      {
+       "attempt": 1,
+       "call_number": 19,
+       "max_tokens": 32768,
+       "synthesis_with_draft": false,
+       "request_sha256": "49ecd75c2c6df84f7fbfdd2d28be00802ef46ac33ca28a7f36e7a363689d2e52",
+       "response_sha256": "6b97015e6822e6fe900a7449768f7cf2996f705bb5a2070153319beec6376d8e",
+       "http_status": 200,
+       "finish_reason": "length",
+       "seconds": 316.9,
+       "error": null,
+       "skipped": null,
+       "prompt_tokens": 141,
+       "completion_tokens": 32768
+      },
+      {
+       "attempt": 2,
+       "call_number": 20,
+       "max_tokens": 49152,
+       "synthesis_with_draft": false,
+       "request_sha256": "406e19e0d4cd7af2dfc1a873cf9b948b47015ad8f3994a41b429f5edabd80e55",
+       "response_sha256": null,
+       "http_status": null,
+       "finish_reason": null,
+       "seconds": 480.06,
+       "error": "TimeoutError: timed out",
+       "skipped": null,
+       "prompt_tokens": null,
+       "completion_tokens": null
+      },
+      {
+       "attempt": 3,
+       "call_number": 21,
+       "max_tokens": 32768,
+       "synthesis_with_draft": false,
+       "request_sha256": "49ecd75c2c6df84f7fbfdd2d28be00802ef46ac33ca28a7f36e7a363689d2e52",
+       "response_sha256": "abb068d2b86ae04809b86bcbccf34def023d234111d6fd63a2e415d7b08f104e",
+       "http_status": 200,
+       "finish_reason": "length",
+       "seconds": 317.93,
+       "error": null,
+       "skipped": null,
+       "prompt_tokens": 141,
+       "completion_tokens": 32768
+      },
+      {
+       "attempt": 4,
+       "call_number": 22,
+       "max_tokens": 32768,
+       "synthesis_with_draft": true,
+       "request_sha256": "711e155e3c6df8ba2cabb4f16e8bddb8612a7adc9589089eb03e1b578ffa4835",
+       "response_sha256": "21c2dbb1b717b3b3f1e9c7c266c0f6e9884a7de5a592fef0fe9ed403630ae451",
+       "http_status": 200,
+       "finish_reason": "length",
+       "seconds": 319.75,
+       "error": null,
+       "skipped": null,
+       "prompt_tokens": 3833,
+       "completion_tokens": 32768
+      }
+     ]
+    },
+    {
+     "id": "bk117-eval-03",
+     "final_status": "complete",
+     "chosen_call_number": 23,
+     "final_finish_reason": "stop",
+     "final_body_words": 352,
+     "attempts": [
+      {
+       "attempt": 1,
+       "call_number": 23,
+       "max_tokens": 32768,
+       "synthesis_with_draft": false,
+       "request_sha256": "948c5470146ad205cf38ec5c46477a8295b2934b2049b7159b219505a5a5dc89",
+       "response_sha256": "b504ff8066b1cfac305c27009ead72342192b3ecc9255b63359a90f8e159a983",
+       "http_status": 200,
+       "finish_reason": "stop",
+       "seconds": 8.51,
+       "error": null,
+       "skipped": null,
+       "prompt_tokens": 136,
+       "completion_tokens": 804
+      }
+     ]
+    },
+    {
+     "id": "bk117-eval-04",
+     "final_status": "partial",
+     "chosen_call_number": 24,
+     "final_finish_reason": "length",
+     "final_body_words": 14818,
+     "attempts": [
+      {
+       "attempt": 1,
+       "call_number": 24,
+       "max_tokens": 32768,
+       "synthesis_with_draft": false,
+       "request_sha256": "05087ecfd66b4247b69fef3ee6188edfe6c971a12505c060cb03a5e8dd3a20dd",
+       "response_sha256": "78a4d28030ef3c6c683cb64908e3a092424398599874ed6970776049545f37ff",
+       "http_status": 200,
+       "finish_reason": "length",
+       "seconds": 316.85,
+       "error": null,
+       "skipped": null,
+       "prompt_tokens": 156,
+       "completion_tokens": 32768
+      },
+      {
+       "attempt": 2,
+       "call_number": 25,
+       "max_tokens": 49152,
+       "synthesis_with_draft": false,
+       "request_sha256": "74ce1ade75a04ef275dcc9c3b7eed5df0b3362edd31e0e91ac747bc78faf3872",
+       "response_sha256": null,
+       "http_status": null,
+       "finish_reason": null,
+       "seconds": 480.07,
+       "error": "TimeoutError: timed out",
+       "skipped": null,
+       "prompt_tokens": null,
+       "completion_tokens": null
+      },
+      {
+       "attempt": 3,
+       "call_number": null,
+       "max_tokens": null,
+       "synthesis_with_draft": null,
+       "request_sha256": null,
+       "response_sha256": null,
+       "http_status": null,
+       "finish_reason": null,
+       "seconds": null,
+       "error": null,
+       "skipped": "arm wall budget",
+       "prompt_tokens": null,
+       "completion_tokens": null
+      }
+     ]
+    },
+    {
+     "id": "bk117-eval-05",
+     "final_status": "placeholder",
+     "chosen_call_number": null,
+     "final_finish_reason": null,
+     "final_body_words": 0,
+     "attempts": [
+      {
+       "attempt": 1,
+       "call_number": null,
+       "max_tokens": null,
+       "synthesis_with_draft": null,
+       "request_sha256": null,
+       "response_sha256": null,
+       "http_status": null,
+       "finish_reason": null,
+       "seconds": null,
+       "error": null,
+       "skipped": "arm wall budget",
+       "prompt_tokens": null,
+       "completion_tokens": null
+      }
+     ]
+    },
+    {
+     "id": "bk117-eval-06",
+     "final_status": "placeholder",
+     "chosen_call_number": null,
+     "final_finish_reason": null,
+     "final_body_words": 0,
+     "attempts": [
+      {
+       "attempt": 1,
+       "call_number": null,
+       "max_tokens": null,
+       "synthesis_with_draft": null,
+       "request_sha256": null,
+       "response_sha256": null,
+       "http_status": null,
+       "finish_reason": null,
+       "seconds": null,
+       "error": null,
+       "skipped": "arm wall budget",
+       "prompt_tokens": null,
+       "completion_tokens": null
+      }
+     ]
+    },
+    {
+     "id": "bk117-eval-07",
+     "final_status": "placeholder",
+     "chosen_call_number": null,
+     "final_finish_reason": null,
+     "final_body_words": 0,
+     "attempts": [
+      {
+       "attempt": 1,
+       "call_number": null,
+       "max_tokens": null,
+       "synthesis_with_draft": null,
+       "request_sha256": null,
+       "response_sha256": null,
+       "http_status": null,
+       "finish_reason": null,
+       "seconds": null,
+       "error": null,
+       "skipped": "arm wall budget",
+       "prompt_tokens": null,
+       "completion_tokens": null
+      }
+     ]
+    },
+    {
+     "id": "bk117-eval-08",
+     "final_status": "placeholder",
+     "chosen_call_number": null,
+     "final_finish_reason": null,
+     "final_body_words": 0,
+     "attempts": [
+      {
+       "attempt": 1,
+       "call_number": null,
+       "max_tokens": null,
+       "synthesis_with_draft": null,
+       "request_sha256": null,
+       "response_sha256": null,
+       "http_status": null,
+       "finish_reason": null,
+       "seconds": null,
+       "error": null,
+       "skipped": "arm wall budget",
+       "prompt_tokens": null,
+       "completion_tokens": null
+      }
+     ]
+    },
+    {
+     "id": "bk117-eval-09",
+     "final_status": "placeholder",
+     "chosen_call_number": null,
+     "final_finish_reason": null,
+     "final_body_words": 0,
+     "attempts": [
+      {
+       "attempt": 1,
+       "call_number": null,
+       "max_tokens": null,
+       "synthesis_with_draft": null,
+       "request_sha256": null,
+       "response_sha256": null,
+       "http_status": null,
+       "finish_reason": null,
+       "seconds": null,
+       "error": null,
+       "skipped": "arm wall budget",
+       "prompt_tokens": null,
+       "completion_tokens": null
+      }
+     ]
+    },
+    {
+     "id": "bk117-eval-10",
+     "final_status": "placeholder",
+     "chosen_call_number": null,
+     "final_finish_reason": null,
+     "final_body_words": 0,
+     "attempts": [
+      {
+       "attempt": 1,
+       "call_number": null,
+       "max_tokens": null,
+       "synthesis_with_draft": null,
+       "request_sha256": null,
+       "response_sha256": null,
+       "http_status": null,
+       "finish_reason": null,
+       "seconds": null,
+       "error": null,
+       "skipped": "arm wall budget",
+       "prompt_tokens": null,
+       "completion_tokens": null
+      }
+     ]
+    },
+    {
+     "id": "bk117-eval-11",
+     "final_status": "placeholder",
+     "chosen_call_number": null,
+     "final_finish_reason": null,
+     "final_body_words": 0,
+     "attempts": [
+      {
+       "attempt": 1,
+       "call_number": null,
+       "max_tokens": null,
+       "synthesis_with_draft": null,
+       "request_sha256": null,
+       "response_sha256": null,
+       "http_status": null,
+       "finish_reason": null,
+       "seconds": null,
+       "error": null,
+       "skipped": "arm wall budget",
+       "prompt_tokens": null,
+       "completion_tokens": null
+      }
+     ]
+    },
+    {
+     "id": "bk117-eval-12",
+     "final_status": "placeholder",
+     "chosen_call_number": null,
+     "final_finish_reason": null,
+     "final_body_words": 0,
+     "attempts": [
+      {
+       "attempt": 1,
+       "call_number": null,
+       "max_tokens": null,
+       "synthesis_with_draft": null,
+       "request_sha256": null,
+       "response_sha256": null,
+       "http_status": null,
+       "finish_reason": null,
+       "seconds": null,
+       "error": null,
+       "skipped": "arm wall budget",
+       "prompt_tokens": null,
+       "completion_tokens": null
+      }
+     ]
+    },
+    {
+     "id": "bk117-eval-13",
+     "final_status": "placeholder",
+     "chosen_call_number": null,
+     "final_finish_reason": null,
+     "final_body_words": 0,
+     "attempts": [
+      {
+       "attempt": 1,
+       "call_number": null,
+       "max_tokens": null,
+       "synthesis_with_draft": null,
+       "request_sha256": null,
+       "response_sha256": null,
+       "http_status": null,
+       "finish_reason": null,
+       "seconds": null,
+       "error": null,
+       "skipped": "arm wall budget",
+       "prompt_tokens": null,
+       "completion_tokens": null
+      }
+     ]
+    },
+    {
+     "id": "bk117-eval-14",
+     "final_status": "placeholder",
+     "chosen_call_number": null,
+     "final_finish_reason": null,
+     "final_body_words": 0,
+     "attempts": [
+      {
+       "attempt": 1,
+       "call_number": null,
+       "max_tokens": null,
+       "synthesis_with_draft": null,
+       "request_sha256": null,
+       "response_sha256": null,
+       "http_status": null,
+       "finish_reason": null,
+       "seconds": null,
+       "error": null,
+       "skipped": "arm wall budget",
+       "prompt_tokens": null,
+       "completion_tokens": null
+      }
+     ]
+    },
+    {
+     "id": "bk117-eval-15",
+     "final_status": "placeholder",
+     "chosen_call_number": null,
+     "final_finish_reason": null,
+     "final_body_words": 0,
+     "attempts": [
+      {
+       "attempt": 1,
+       "call_number": null,
+       "max_tokens": null,
+       "synthesis_with_draft": null,
+       "request_sha256": null,
+       "response_sha256": null,
+       "http_status": null,
+       "finish_reason": null,
+       "seconds": null,
+       "error": null,
+       "skipped": "arm wall budget",
+       "prompt_tokens": null,
+       "completion_tokens": null
+      }
+     ]
+    },
+    {
+     "id": "bk117-eval-16",
+     "final_status": "placeholder",
+     "chosen_call_number": null,
+     "final_finish_reason": null,
+     "final_body_words": 0,
+     "attempts": [
+      {
+       "attempt": 1,
+       "call_number": null,
+       "max_tokens": null,
+       "synthesis_with_draft": null,
+       "request_sha256": null,
+       "response_sha256": null,
+       "http_status": null,
+       "finish_reason": null,
+       "seconds": null,
+       "error": null,
+       "skipped": "arm wall budget",
+       "prompt_tokens": null,
+       "completion_tokens": null
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "eog_config": {
+  "A": [
+   "0.01.502.144 W load: special_eog_ids contains '<|tool_response>', removing '</s>' token from EOG list",
+   "0.10.840.566 I slot      release: id  0 | task 0 | stop processing: n_tokens = 994, truncated = 0",
+   "0.18.430.410 I slot      release: id  0 | task 857 | stop processing: n_tokens = 950, truncated = 0",
+   "0.25.826.379 I slot      release: id  0 | task 1669 | stop processing: n_tokens = 927, truncated = 0",
+   "0.34.233.400 I slot      release: id  0 | task 2463 | stop processing: n_tokens = 1062, truncated = 0",
+   "0.42.340.170 I slot      release: id  0 | task 3372 | stop processing: n_tokens = 1011, truncated = 0",
+   "0.49.728.436 I slot      release: id  0 | task 4247 | stop processing: n_tokens = 935, truncated = 0",
+   "0.57.190.890 I slot      release: id  0 | task 5041 | stop processing: n_tokens = 937, truncated = 0",
+   "1.05.538.832 I slot      release: id  0 | task 5843 | stop processing: n_tokens = 1039, truncated = 0",
+   "1.13.435.606 I slot      release: id  0 | task 6738 | stop processing: n_tokens = 987, truncated = 0",
+   "1.21.531.612 I slot      release: id  0 | task 7579 | stop processing: n_tokens = 994, truncated = 0",
+   "1.29.560.854 I slot      release: id  0 | task 8440 | stop processing: n_tokens = 987, truncated = 0",
+   "1.38.649.979 I slot      release: id  0 | task 9292 | stop processing: n_tokens = 1111, truncated = 0",
+   "1.47.047.086 I slot      release: id  0 | task 10256 | stop processing: n_tokens = 1040, truncated = 0",
+   "1.54.780.673 I slot      release: id  0 | task 11140 | stop processing: n_tokens = 962, truncated = 0",
+   "2.02.801.147 I slot      release: id  0 | task 11954 | stop processing: n_tokens = 981, truncated = 0",
+   "2.11.167.443 I slot      release: id  0 | task 12800 | stop processing: n_tokens = 1021, truncated = 0"
+  ],
+  "B": [
+   "0.01.478.921 W load: special_eog_ids contains '<|tool_response>', removing '</s>' token from EOG list",
+   "5.18.744.225 I slot      release: id  0 | task 0 | stop processing: n_tokens = 32908, truncated = 0",
+   "5.25.862.999 I slot      release: id  0 | task 32771 | stop processing: n_tokens = 850, truncated = 0",
+   "10.42.764.230 I slot      release: id  0 | task 33483 | stop processing: n_tokens = 32908, truncated = 0",
+   "18.43.307.048 I slot      release: id  0 | task 66253 | stop processing: n_tokens = 49292, truncated = 0",
+   "24.00.763.935 I slot      release: id  0 | task 115361 | stop processing: n_tokens = 32908, truncated = 0",
+   "29.20.512.916 I slot      release: id  0 | task 148177 | stop processing: n_tokens = 36600, truncated = 0",
+   "29.29.030.991 I slot      release: id  0 | task 180949 | stop processing: n_tokens = 939, truncated = 0",
+   "34.45.880.813 I slot      release: id  0 | task 181755 | stop processing: n_tokens = 32923, truncated = 0",
+   "42.45.956.593 I slot      release: id  0 | task 214525 | stop processing: n_tokens = 49232, truncated = 0"
+  ]
+ },
+ "wave": {
+  "reserved_calls": 25,
+  "requested_tokens": 868352,
+  "call_cap": 128,
+  "token_cap": 4718592
+ }
+}
