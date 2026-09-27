@@ -1,0 +1,9 @@
+2026-09-27T00:09:56Z [preflight] wave start=2026-09-27T00:09:56Z deadline=2026-09-27T01:09:46Z left=3590s
+2026-09-27T00:10:37Z [preflight] arms=A B call_cap=128 token_cap=4718592
+2026-09-27T00:10:37Z [arm_A] arm A attempts must start and finish before 2026-09-27T00:35:11Z
+2026-09-27T00:12:54Z [arm_A] arm A done
+2026-09-27T00:12:54Z [arm_B] arm B attempts must start and finish before 2026-09-27T00:59:46Z
+2026-09-27T00:55:46Z [arm_B] arm B done
+2026-09-27T00:55:46Z [blind_pack] ALL STAGES PASS
+2026-09-27T00:55:46Z [blind_pack] TERMINAL rc=0 left=840s
+2026-09-27T00:55:46Z backup verified: /home/shadeform/mm-lora-pilot-backup/eval16-run2 (15 files)

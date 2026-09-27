@@ -2,7 +2,11 @@
 
 Start with **[WINNING_PLAN.md](WINNING_PLAN.md)** for current priorities and owners. GitHub issues are the scheduling authority; claim one task before starting.
 
+The supplied **37-item organizer mock is verified** through the actual adapter and autonomous export path with synthetic responses: [commands and evidence](agentsLog/kwiscion/2026-09-27-mock2023-package-compatibility.md). May2024 validation now has **21 reviewed source crops with corrected image links**: [new input package and reproduction](agentsLog/kwiscion/source-crops-prep/README.md). Use these corrected inputs for new visual experiments. Existing scores below use legacy full-page images and remain separate; no corrected-input score is available yet. The downloaded mock stays local under `data/history-2023-mock-v1/`.
+
 Best complete known-validation result remains **Gemma native thinking, 38/60**. The improved recovery harness also scored38/60 in one pass (31 nonessay +7 essay), producing40/40 nonblank answers with no placeholders. The earlier38 had three empty finals and an8-point essay. This is agent evaluation, not an organizer score; no net quality gain is established. Preserved fallback35/60; target48/60. [Current score](agentsLog/kwiscion/2026-09-27-champion-rehearsal-score.md) · [Earlier reconciliation](agentsLog/kwiscion/2026-09-26-full-thinking-review-reconciliation.md).
+
+The [native-thinking six-item comparison](agentsLog/kwiscion/2026-09-27-native-pair-comparison.md) scored Qwen6/8 [6,7] versus Gemma4/8 [3,4], with all12 answers complete. This qualifies Qwen for a full corrected-input challenge; it is not a replacement full-exam champion. Root prepares the corrected Gemma control in [#173](https://github.com/kwiscion/machinekind-matura/issues/173).
 
 The organizer allows **8 GB + 10% across all submitted model weights together**. Our conservative limit is 8,800,000,000 bytes. The actual Gemma-only cache is verified at **7,556,509,301 bytes**, including vision projector and metadata. Repeated calls share those weights. Development challengers remain separate. [Rule](docs/SUBMISSION_WEIGHT_BUDGET.md) · [Package evidence](agentsLog/kwiscion/2026-09-26-final-package-stage.md).
 
@@ -10,6 +14,7 @@ The organizer allows **8 GB + 10% across all submitted model weights together**.
 |---|---|---|
 | Qualified recovery harness; final integration | @kwiscion + Sol | [#3](https://github.com/kwiscion/machinekind-matura/issues/3) |
 | Structured prompts; one fast grading pass | Root Sol | [#80](https://github.com/kwiscion/machinekind-matura/issues/80) |
+| Per-topic essay drafts and same-model selection preparation | Root Sol | [#168](https://github.com/kwiscion/machinekind-matura/issues/168) |
 | Claim-triggered offline fact-check preparation | @Pewciu6; claim pending | [#163](https://github.com/kwiscion/machinekind-matura/issues/163) |
 | Single-model essay LoRA pilot | @Bukareszt | [#117](https://github.com/kwiscion/machinekind-matura/issues/117) |
 | Structured-reasoning comparison | @ljaniec | [#151](https://github.com/kwiscion/machinekind-matura/issues/151) |

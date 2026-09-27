@@ -1,0 +1,26 @@
+{
+ "schema": "bukareszt_adapter_metadata_v1",
+ "purpose": "Project-scoped metadata for #165 (CPU essay-only adapter-serving feasibility). No weights in git.",
+ "source_run": "pilot-run3 (#117; PR #154): 36 optimizer steps on the 90 cleared rows, fresh pristine base",
+ "base": {"repository": "google/gemma-4-12B-it", "revision": "707f0a3b8a3c7ad586ed01e27eafbad8a27dd0f7",
+          "model_safetensors_sha256": "5a84cb313260ac447237b890387116dfa8682e49a6b44bc585ae8353abbff18d",
+          "architecture": "Gemma4UnifiedForConditionalGeneration"},
+ "software": {"transformers": "96331a9f93b72697f160a958d2883d4b49a56739 (5.18.0.dev0)", "peft": "b8674c86183a5dee38d0c3ede392e189593025e5 (0.21.1.dev0)",
+              "llama_cpp": "fcb3074f2bc06943a564d7f293f9e66d4bece02a", "driver": "run_real_pilot.py 586acd0b48f0c7aa51b5cba6da5be9ccb5913c03a9d908a8500f800b9d1e0229"},
+ "lora": {"peft_type": "LORA", "r": 8, "lora_alpha": 16, "lora_dropout": 0.05, "bias": "none", "use_rslora": false, "use_dora": false,
+          "target_modules_regex": "^model\\.language_model\\.layers\\.\\d+\\.self_attn\\.(q_proj|v_proj)$",
+          "targeted_modules": 88, "breakdown": "48 q_proj (40 sliding: 3840->4096, 8 full-attention: 3840->8192) + 40 v_proj (sliding: 3840->2048; full-attention layers share K/V, no v_proj)",
+          "trainable_parameters": 5193728},
+ "files_on_matura_greg": {
+   "dir": "/ephemeral/mm-lora/pilot-run3/history/adapter",
+   "adapter_model.safetensors": {"bytes": 20800952, "sha256": "6f6a5c3a2ea8738c6b625f67a42b4a762a09b037af26b8dc5a945416e91b6bac", "dtype": "F32 (176 tensors: 88 lora_A + 88 lora_B)"},
+   "adapter_config.json": {"bytes": 1178, "sha256": "f2e58c7ab4f05552476df05913290e2adb3fc537b7162f376319163860009bb5", "copy": "adapter_config.json (this dir)"},
+   "README.md": {"bytes": 5253, "sha256": "23d9a34e1c9dd354ba885ce0c3f06a72209d52b5f5e8accc51509be9a0b18f0a", "note": "PEFT auto-generated card"},
+   "backup": "/home/shadeform/mm-lora-pilot-backup/pilot-run3/history/adapter (verified)"},
+ "tensor_index": {"file": "adapter-tensor-index.json (this dir)", "sha256": "798b61ead81d7043203573ca11eb88386908e42ee9c04d5e21ff4d7483228808",
+                  "shape_counts": {"lora_A (8,3840) F32": 88, "lora_B (4096,8) F32": 40, "lora_B (2048,8) F32": 40, "lora_B (8192,8) F32": 8},
+                  "name_pattern": "base_model.model.model.language_model.layers.{i}.self_attn.{q_proj|v_proj}.lora_{A|B}.weight"},
+ "gguf_conversion_evidence": "Pinned llama.cpp convert_lora_to_gguf.py converted a SYNTHETIC adapter with identical names/shapes: bf16/f16 10,399,488 B, q8_0 7,865,088 B (agentsLog/Bukareszt/lora_readiness/host_logs/adapter-convert-probe.json). The real F32 adapter has NOT been converted or served; dynamic adapter serving is unproven.",
+ "aggregate_budget_note": "Unchanged control Q4+projector 7,556,499,104 B + bf16 adapter ~10.4 MB = ~7.567 GB < 8,800,000,000 B cap (shared-base layout).",
+ "quality_status": "eval16 paired wave in progress/terminal on #117; candidate showed repetition to the 32768 cap on greedy decoding. No quality claim."
+}

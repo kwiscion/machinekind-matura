@@ -1,0 +1,89 @@
+{"arm": "A", "status": "PASS", "items": 16, "complete": 14, "partial": 1, "placeholder": 1}
+{"arm": "A", "status": "PASS", "items": 16, "complete": 2, "partial": 0, "placeholder": 14}
+{"arm": "A", "status": "PASS", "items": 16, "complete": 1, "partial": 1, "placeholder": 14}
+{"arm": "A", "status": "PASS", "items": 16, "complete": 0, "partial": 0, "placeholder": 16}
+{
+ "status": "PASS",
+ "checks": {
+  "all_16_items": true,
+  "ok_first_attempt": true,
+  "length_then_ok_retries_once": true,
+  "four_errors_placeholder": true,
+  "synthesis_4th_uses_preserved_draft": true,
+  "timeout_then_ok": true,
+  "all_length_keeps_first_partial": true,
+  "ladder_32768_49152_32768_32768": true,
+  "reserve_before_result": true,
+  "server_cleaned_up_exit_recorded": true,
+  "call_cap_enforced": true,
+  "token_cap_enforced": true,
+  "wall_budget_skip": true
+ },
+ "session_sha256": "80ed2c1e8d11eb272b7519fd3151b0d7de551cacab8d77fce9446566ef2cc316",
+ "item_status_t1": {
+  "t-01": [
+   "complete",
+   1
+  ],
+  "t-02": [
+   "complete",
+   2
+  ],
+  "t-03": [
+   "placeholder",
+   4
+  ],
+  "t-04": [
+   "complete",
+   4
+  ],
+  "t-05": [
+   "complete",
+   2
+  ],
+  "t-06": [
+   "partial",
+   4
+  ],
+  "t-07": [
+   "complete",
+   1
+  ],
+  "t-08": [
+   "complete",
+   1
+  ],
+  "t-09": [
+   "complete",
+   1
+  ],
+  "t-10": [
+   "complete",
+   1
+  ],
+  "t-11": [
+   "complete",
+   1
+  ],
+  "t-12": [
+   "complete",
+   1
+  ],
+  "t-13": [
+   "complete",
+   1
+  ],
+  "t-14": [
+   "complete",
+   1
+  ],
+  "t-15": [
+   "complete",
+   1
+  ],
+  "t-16": [
+   "complete",
+   1
+  ]
+ }
+}

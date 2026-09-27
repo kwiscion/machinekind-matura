@@ -24,7 +24,8 @@ CONTEXT = 32768
 ESSAY_POLICY = ('Wybierz dokładnie jeden z podanych tematów. Napisz wyłącznie gotowe '
                 'wypracowanie na ten temat, 400–500 słów ciągłego tekstu. Uwzględnij wszystkie '
                 'wymagane aspekty i materiały wybranego tematu. Bez planu, komentarzy o pisaniu, '
-                'liczniku słów ani drugiego wypracowania. Pozostałych tematów nie opracowuj.')
+                'liczniku słów ani drugiego wypracowania. Pozostałych tematów nie opracowuj. '
+                'Jeżeli oryginalny format odpowiedzi wymaga numeru wybranego tematu, podaj ten numer przed wypracowaniem; nie usuwaj go jako metadanych.')
 PINS = {
     'run_gemma_offline.py': 'd4f26d319b88d479ad3eaa0a7afe2d4ce68706e4dd75324e5d4d4d83fa1c036b',
     'guard.py': '8ec6a7cf2f75615c2713c9db9e1cae408087be251b9b0e11437fe31e4c230473',
