@@ -1,0 +1,428 @@
+{
+  "status": "CPU_VALIDATED_WITH_MATERIAL_DETECTION_GAPS_NOT_INTEGRATION_READY",
+  "classifier_sha256": "2f91f6c657da087ef16d611e804ee30ad2c699b098ebd7a3107c361a65fd101c",
+  "tests_sha256": "7d28f403ad3e2bd4edd3948de4c7b49a63437f0c63649bd8a29bedae2aa4aa40",
+  "source_exam_sha256": "907976be94f848fc3415ca0e4b1ba473e9dd08caa66984245a63e73d0fa27471",
+  "source_scope": "Existing known May2024 key-free raw organizer exam metadata; no source text or keys passed to detector. IDs attached only after classification for reporting.",
+  "synthetic_tests": {
+    "passed": 14,
+    "seconds": 0.002
+  },
+  "items": 40,
+  "counts": {
+    "open": 33,
+    "unknown": 4,
+    "closed": 3
+  },
+  "visual_items": 30,
+  "unknown_ids": [
+    "4",
+    "11.1",
+    "21",
+    "26"
+  ],
+  "conflict_ids": [],
+  "essay_26_detected": false,
+  "manual_routing_notes": [
+    {
+      "ids": [
+        "26"
+      ],
+      "finding": "Explicit essay task missed: choose-one-of-them phrasing with numbered topics, length requirement and essay marker does not satisfy narrow choose-topic regex. Must retain explicit essay override."
+    },
+    {
+      "ids": [
+        "19.1",
+        "20.2"
+      ],
+      "finding": "Multiline true/false instructions labelled open; current finite-choice regex does not span instruction line breaks."
+    },
+    {
+      "ids": [
+        "4",
+        "21"
+      ],
+      "finding": "Constructed argument requests fall back unknown because supported open imperative vocabulary is intentionally incomplete."
+    },
+    {
+      "ids": [
+        "11.1"
+      ],
+      "finding": "Matching instruction falls back unknown; no matching route pattern implemented."
+    },
+    {
+      "ids": [
+        "10",
+        "14.2",
+        "16.2"
+      ],
+      "finding": "Detected closed items are explicit lettered-option selection tasks; no answer selection was performed."
+    }
+  ],
+  "limitations": "Routing-only inspection of unknown/conflicting and finite-choice ambiguity cases, not an exhaustive gold classification or model-quality evaluation. Read-only detector validation; no code/manifest/runtime edits, prompts enabled, source-pack modifications, or Lukasz integration changes.",
+  "model_calls": 0,
+  "network_calls": 0,
+  "git_mutations": 0,
+  "decisions": [
+    {
+      "item_id": "1",
+      "route": "open",
+      "visual": true,
+      "reason": "explicit_constructed_response_instruction",
+      "baseline_fallback": false,
+      "explicit_override": false,
+      "revision": "instruction-route-v1"
+    },
+    {
+      "item_id": "2",
+      "route": "open",
+      "visual": true,
+      "reason": "explicit_constructed_response_instruction",
+      "baseline_fallback": false,
+      "explicit_override": false,
+      "revision": "instruction-route-v1"
+    },
+    {
+      "item_id": "3.1",
+      "route": "open",
+      "visual": false,
+      "reason": "explicit_constructed_response_instruction",
+      "baseline_fallback": false,
+      "explicit_override": false,
+      "revision": "instruction-route-v1"
+    },
+    {
+      "item_id": "3.2",
+      "route": "open",
+      "visual": false,
+      "reason": "explicit_constructed_response_instruction",
+      "baseline_fallback": false,
+      "explicit_override": false,
+      "revision": "instruction-route-v1"
+    },
+    {
+      "item_id": "4",
+      "route": "unknown",
+      "visual": true,
+      "reason": "no_unambiguous_supported_instruction",
+      "baseline_fallback": true,
+      "explicit_override": false,
+      "revision": "instruction-route-v1"
+    },
+    {
+      "item_id": "5.1",
+      "route": "open",
+      "visual": true,
+      "reason": "explicit_constructed_response_instruction",
+      "baseline_fallback": false,
+      "explicit_override": false,
+      "revision": "instruction-route-v1"
+    },
+    {
+      "item_id": "5.2",
+      "route": "open",
+      "visual": true,
+      "reason": "explicit_constructed_response_instruction",
+      "baseline_fallback": false,
+      "explicit_override": false,
+      "revision": "instruction-route-v1"
+    },
+    {
+      "item_id": "6",
+      "route": "open",
+      "visual": true,
+      "reason": "explicit_constructed_response_instruction",
+      "baseline_fallback": false,
+      "explicit_override": false,
+      "revision": "instruction-route-v1"
+    },
+    {
+      "item_id": "7",
+      "route": "open",
+      "visual": false,
+      "reason": "explicit_constructed_response_instruction",
+      "baseline_fallback": false,
+      "explicit_override": false,
+      "revision": "instruction-route-v1"
+    },
+    {
+      "item_id": "8.1",
+      "route": "open",
+      "visual": true,
+      "reason": "explicit_constructed_response_instruction",
+      "baseline_fallback": false,
+      "explicit_override": false,
+      "revision": "instruction-route-v1"
+    },
+    {
+      "item_id": "8.2",
+      "route": "open",
+      "visual": true,
+      "reason": "explicit_constructed_response_instruction",
+      "baseline_fallback": false,
+      "explicit_override": false,
+      "revision": "instruction-route-v1"
+    },
+    {
+      "item_id": "9",
+      "route": "open",
+      "visual": true,
+      "reason": "explicit_constructed_response_instruction",
+      "baseline_fallback": false,
+      "explicit_override": false,
+      "revision": "instruction-route-v1"
+    },
+    {
+      "item_id": "10",
+      "route": "closed",
+      "visual": true,
+      "reason": "explicit_finite_choice_or_true_false",
+      "baseline_fallback": false,
+      "explicit_override": false,
+      "revision": "instruction-route-v1"
+    },
+    {
+      "item_id": "11.1",
+      "route": "unknown",
+      "visual": true,
+      "reason": "no_unambiguous_supported_instruction",
+      "baseline_fallback": true,
+      "explicit_override": false,
+      "revision": "instruction-route-v1"
+    },
+    {
+      "item_id": "11.2",
+      "route": "open",
+      "visual": true,
+      "reason": "explicit_constructed_response_instruction",
+      "baseline_fallback": false,
+      "explicit_override": false,
+      "revision": "instruction-route-v1"
+    },
+    {
+      "item_id": "12.1",
+      "route": "open",
+      "visual": true,
+      "reason": "explicit_constructed_response_instruction",
+      "baseline_fallback": false,
+      "explicit_override": false,
+      "revision": "instruction-route-v1"
+    },
+    {
+      "item_id": "12.2",
+      "route": "open",
+      "visual": true,
+      "reason": "explicit_constructed_response_instruction",
+      "baseline_fallback": false,
+      "explicit_override": false,
+      "revision": "instruction-route-v1"
+    },
+    {
+      "item_id": "12.3",
+      "route": "open",
+      "visual": true,
+      "reason": "explicit_constructed_response_instruction",
+      "baseline_fallback": false,
+      "explicit_override": false,
+      "revision": "instruction-route-v1"
+    },
+    {
+      "item_id": "13",
+      "route": "open",
+      "visual": true,
+      "reason": "explicit_constructed_response_instruction",
+      "baseline_fallback": false,
+      "explicit_override": false,
+      "revision": "instruction-route-v1"
+    },
+    {
+      "item_id": "14.1",
+      "route": "open",
+      "visual": true,
+      "reason": "explicit_constructed_response_instruction",
+      "baseline_fallback": false,
+      "explicit_override": false,
+      "revision": "instruction-route-v1"
+    },
+    {
+      "item_id": "14.2",
+      "route": "closed",
+      "visual": true,
+      "reason": "explicit_finite_choice_or_true_false",
+      "baseline_fallback": false,
+      "explicit_override": false,
+      "revision": "instruction-route-v1"
+    },
+    {
+      "item_id": "15.1",
+      "route": "open",
+      "visual": false,
+      "reason": "explicit_constructed_response_instruction",
+      "baseline_fallback": false,
+      "explicit_override": false,
+      "revision": "instruction-route-v1"
+    },
+    {
+      "item_id": "15.2",
+      "route": "open",
+      "visual": false,
+      "reason": "explicit_constructed_response_instruction",
+      "baseline_fallback": false,
+      "explicit_override": false,
+      "revision": "instruction-route-v1"
+    },
+    {
+      "item_id": "16.1",
+      "route": "open",
+      "visual": true,
+      "reason": "explicit_constructed_response_instruction",
+      "baseline_fallback": false,
+      "explicit_override": false,
+      "revision": "instruction-route-v1"
+    },
+    {
+      "item_id": "16.2",
+      "route": "closed",
+      "visual": true,
+      "reason": "explicit_finite_choice_or_true_false",
+      "baseline_fallback": false,
+      "explicit_override": false,
+      "revision": "instruction-route-v1"
+    },
+    {
+      "item_id": "17.1",
+      "route": "open",
+      "visual": true,
+      "reason": "explicit_constructed_response_instruction",
+      "baseline_fallback": false,
+      "explicit_override": false,
+      "revision": "instruction-route-v1"
+    },
+    {
+      "item_id": "17.2",
+      "route": "open",
+      "visual": true,
+      "reason": "explicit_constructed_response_instruction",
+      "baseline_fallback": false,
+      "explicit_override": false,
+      "revision": "instruction-route-v1"
+    },
+    {
+      "item_id": "18",
+      "route": "open",
+      "visual": true,
+      "reason": "explicit_constructed_response_instruction",
+      "baseline_fallback": false,
+      "explicit_override": false,
+      "revision": "instruction-route-v1"
+    },
+    {
+      "item_id": "19.1",
+      "route": "open",
+      "visual": true,
+      "reason": "explicit_constructed_response_instruction",
+      "baseline_fallback": false,
+      "explicit_override": false,
+      "revision": "instruction-route-v1"
+    },
+    {
+      "item_id": "19.2",
+      "route": "open",
+      "visual": true,
+      "reason": "explicit_constructed_response_instruction",
+      "baseline_fallback": false,
+      "explicit_override": false,
+      "revision": "instruction-route-v1"
+    },
+    {
+      "item_id": "20.1",
+      "route": "open",
+      "visual": false,
+      "reason": "explicit_constructed_response_instruction",
+      "baseline_fallback": false,
+      "explicit_override": false,
+      "revision": "instruction-route-v1"
+    },
+    {
+      "item_id": "20.2",
+      "route": "open",
+      "visual": false,
+      "reason": "explicit_constructed_response_instruction",
+      "baseline_fallback": false,
+      "explicit_override": false,
+      "revision": "instruction-route-v1"
+    },
+    {
+      "item_id": "21",
+      "route": "unknown",
+      "visual": true,
+      "reason": "no_unambiguous_supported_instruction",
+      "baseline_fallback": true,
+      "explicit_override": false,
+      "revision": "instruction-route-v1"
+    },
+    {
+      "item_id": "22.1",
+      "route": "open",
+      "visual": false,
+      "reason": "explicit_constructed_response_instruction",
+      "baseline_fallback": false,
+      "explicit_override": false,
+      "revision": "instruction-route-v1"
+    },
+    {
+      "item_id": "22.2",
+      "route": "open",
+      "visual": false,
+      "reason": "explicit_constructed_response_instruction",
+      "baseline_fallback": false,
+      "explicit_override": false,
+      "revision": "instruction-route-v1"
+    },
+    {
+      "item_id": "23.1",
+      "route": "open",
+      "visual": true,
+      "reason": "explicit_constructed_response_instruction",
+      "baseline_fallback": false,
+      "explicit_override": false,
+      "revision": "instruction-route-v1"
+    },
+    {
+      "item_id": "23.2",
+      "route": "open",
+      "visual": true,
+      "reason": "explicit_constructed_response_instruction",
+      "baseline_fallback": false,
+      "explicit_override": false,
+      "revision": "instruction-route-v1"
+    },
+    {
+      "item_id": "24",
+      "route": "open",
+      "visual": true,
+      "reason": "explicit_constructed_response_instruction",
+      "baseline_fallback": false,
+      "explicit_override": false,
+      "revision": "instruction-route-v1"
+    },
+    {
+      "item_id": "25",
+      "route": "open",
+      "visual": true,
+      "reason": "explicit_constructed_response_instruction",
+      "baseline_fallback": false,
+      "explicit_override": false,
+      "revision": "instruction-route-v1"
+    },
+    {
+      "item_id": "26",
+      "route": "unknown",
+      "visual": false,
+      "reason": "no_unambiguous_supported_instruction",
+      "baseline_fallback": true,
+      "explicit_override": false,
+      "revision": "instruction-route-v1"
+    }
+  ]
+}

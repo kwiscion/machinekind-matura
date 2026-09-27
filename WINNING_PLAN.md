@@ -19,7 +19,8 @@
 | Paweł | Claim-triggered offline fact-check preparation [#163](https://github.com/kwiscion/machinekind-matura/issues/163); claim pending |
 | Greg | LoRA pilot [#117](https://github.com/kwiscion/machinekind-matura/issues/117) |
 | Łukasz | Structured-reasoning comparison [#151](https://github.com/kwiscion/machinekind-matura/issues/151); evaluation notes complete |
-| Piotrek / Przemek | Standby; root owns the central Qwen preparation, no duplicate worker |
+| Piotrek | Essay-only adapter serving feasibility [#165](https://github.com/kwiscion/machinekind-matura/issues/165); CPU claim pending |
+| Przemek | Standby; root owns the central Qwen worker |
 
 ## Final constraints
 

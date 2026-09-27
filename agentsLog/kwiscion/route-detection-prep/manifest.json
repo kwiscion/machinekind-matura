@@ -1,0 +1,30 @@
+{
+  "status": "CPU_PREPARED_NOT_ENABLED",
+  "schema": "instruction_route_detection_preparation_v2",
+  "files": {
+    "classify_item.py": "cfbc2827e59a9ccffcb0cb6d61bdc2f5805dbaf90ded28085f731fe657ad682d",
+    "test_classify_item.py": "cea5f7d5357f54980ef793798f54db7bf566dd5785026c1acc7b3bc2bff6ee35",
+    "README.md": "16016b2b94e8c3a90006c2a72e9ddb1a07cf9db9eccd0a0d81e5b9a167a5b3de",
+    "known-validation-cpu-result.json": "41d55f262edabbb708210d5beab04ee098b236ab093d9c1964a6779359e2261c",
+    "known-validation-cpu-result.md": "6a883d5f211a6612c201c19324d5cae2dd671244360ec61a9811f8a274f70267",
+    "known-validation-cpu-result-v2.json": "f524f2644e34eb740de065555c901dffa4ea1da102382a10692f2d2acc21d194",
+    "known-validation-cpu-result-v2.md": "524bc14e0ba66f32933c5f7ba03af1b3ddb3b3ad615e6aafa285c80b5b0f013b",
+    "frozen-v1/classify_item.py": "2f91f6c657da087ef16d611e804ee30ad2c699b098ebd7a3107c361a65fd101c",
+    "frozen-v1/test_classify_item.py": "7d28f403ad3e2bd4edd3948de4c7b49a63437f0c63649bd8a29bedae2aa4aa40",
+    "frozen-v1/README.md": "d73c13d402c6509a951b18cab878710c3d0734d23238582cca4e2552f92ed80b",
+    "frozen-v1/manifest.json": "49561432289245e48cd86d7ac7cbba5887ddabb9823fb18d7b352f6b5dc8cc73"
+  },
+  "cpu_tests": 20,
+  "model_calls": 0,
+  "network_calls": 0,
+  "git_mutations": 0,
+  "routing_fields_read": [
+    "question",
+    "answer_format",
+    "images"
+  ],
+  "runtime_integration": false,
+  "existing_prompt_policies_enabled": false,
+  "old_failure_preserved": true,
+  "new_actual40_only_changed_route": "26 unknown to essay; generic instruction rule, never ID-based routing"
+}
