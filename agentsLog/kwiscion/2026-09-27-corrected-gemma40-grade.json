@@ -1,0 +1,828 @@
+{
+  "status": "FROZEN_SINGLE_PASS_KNOWN_VALIDATION_GRADE",
+  "frozen_utc": "2026-09-27T02:06:01.333781+00:00",
+  "grader": "full40_second_sol",
+  "score": 39,
+  "maximum": 60,
+  "nonessay": {
+    "score": 31,
+    "maximum": 45
+  },
+  "essay": {
+    "topic": 3,
+    "body_words": 427,
+    "minimum300_met": true,
+    "mixed_topics": false,
+    "aspects": {
+      "military": {
+        "points": 3,
+        "level": "satisfactory",
+        "evidence": "Legions1914 as cadres for the later army and Warsaw1920 as defence allowing consolidation provide concrete facts and causal support; not sufficiently detailed for rich4."
+      },
+      "diplomatic": {
+        "points": 1,
+        "level": "superficial",
+        "evidence": "Pragmatism, military leverage and Promethean ideas are invoked, but no specified negotiation, partner, agreement or demonstrable diplomatic outcome supports the decisive-leader claim."
+      },
+      "political_constitutional": {
+        "points": 1,
+        "level": "superficial",
+        "evidence": "Integration of partitions, authority and administrative stability remain general assertions; no institutional act or constitutional transition is developed."
+      }
+    },
+    "narrative_before_deduction": 5,
+    "verified_factual_errors": [],
+    "factual_deduction": 0,
+    "narrative_after_deduction": 5,
+    "coherence": 3,
+    "coherence_reason": "One thesis, orderly aspect paragraphs and aligned conclusion; no separate logical discontinuity justifies a coherence deduction. Generic argument is already reflected in aspect levels.",
+    "total": 8,
+    "max_points": 15,
+    "specific_loss_budget": {
+      "military_depth": 1,
+      "diplomatic_depth": 3,
+      "political_constitutional_depth": 3,
+      "factual_errors": 0,
+      "coherence_or_length": 0
+    },
+    "factual_caution": "The claimed negotiating benefit of Promethean ideas is unsupported, but the idea had pre1918 roots; do not invent an automatic1926-anachronism deduction. Broad attribution of Legion creation to Piłsudski is accepted here, not treated as exclusive institutional authorship.",
+    "verification_sources": [
+      {
+        "url": "https://archiwum.ipn.gov.pl/pl/historia-z-ipn/144080%2CMiroslaw-Szumilo-Polityka-wschodnia-Jozefa-Pilsudskiego-w-latach-1918-1920.html",
+        "use": "Promethean ideas and their1918–1920 application make a categorical post1926-only deduction unjustified."
+      },
+      {
+        "url": "https://www.pilsudski.org/en/about-us/history/jozef-pilsudski",
+        "use": "Institutional historical account of military organization/federation/1920 alliance."
+      }
+    ]
+  },
+  "judgment_sensitivity": {
+    "low": 37,
+    "high": 42,
+    "not_confidence_interval": true,
+    "basis": "Enumerated local rubric-interpretation sensitivities only; no second judge or probability claim."
+  },
+  "point_loss_budget": {
+    "incomplete_requested_identification": 1,
+    "factual_or_chronological": 7,
+    "visual_source_argument": 6,
+    "essay_argument_depth": 7
+  },
+  "runtime_loss_points": 0,
+  "complete_answers": 40,
+  "blank_answers": 0,
+  "placeholders": 0,
+  "comparison": {
+    "legacy_known_validation": 38,
+    "delta": 1,
+    "changed_inputs": true,
+    "statement": "39 versus legacy38 is a result on corrected source crops with the current recovery path. It is not a controlled estimate of a crop-only effect or organizer final grade."
+  },
+  "provenance": {
+    "answer_only_sha256": "6726d113780699782e6d68f0a4808b995ed2b6e76ebc7cc48cb53601f462691e",
+    "organizer_answers_sha256": "eee81195aa323cf72cb762d46b650a9084fb801839b78619e243d745ce31f4e1",
+    "exam_sha256": "e93b7488da7dfcf4044c906af9b28c1275a1b295838455ec3d88dcc2344aaac6",
+    "template_sha256": "aa4451a853063e3f67d1b9d281ac063ee48c112e01c3cb8712ded433253b865f",
+    "crop_manifest_sha256": "6af937748b4e9bc169f4df9f257e42f9e95a00639c11029b07caba96bfc454f3",
+    "key_file_private_sha256": "279abe703dc1af4119a35624d6db893e310fc7afaffbef2a00e678f423706486",
+    "official_rubric_pdf_expected_sha256": "95c275b9546611c1f8cd45b7973c436625fd0ee5643b778dcc8bb566db56cd4c",
+    "archive_sha256": "e7888c12f412746765f37ba48193d4a70b875782504eb103982054359cff50b5",
+    "declared_manifest_sha256": "1ff96672ec8045613a596af888b147263ee07115e8e5672b5f4478afef5ee463"
+  },
+  "verification": {
+    "exact40_ids_order_and_answers_match_organizer_export": true,
+    "maximum_points60": true,
+    "run_exam_equals_approved_corrected_exam": true,
+    "all21_crop_hashes_and32_references_verified": true,
+    "visual_evidence": "All21 source units visually reinspected in four QA contact sheets, in addition to this reviewer’s previous crop-builder inspection; exact per-item image hashes included.",
+    "contact_sheets": {
+      "qa-contact-01.png": "38d4447c055daaf2d19ae09c3c152a3f5b6d0c6f1cd615ac39207ffd0d9d42a5",
+      "qa-contact-02.png": "b83ce7d14cf1d07ff4b3147ada9f766148b271bba0a7a3606c63b9b0006a9c93",
+      "qa-contact-03.png": "10e98ab969e5ceb9f5aa5eb77c771075d4045e686d25dee6b70eb8b87c380e03",
+      "qa-contact-04.png": "cf9ca02b034871602008e5fc910f6dc575aea22ec33ace31e412922d7e61a61e"
+    }
+  },
+  "exposure": "Not model-blind. Reviewer knows legacy38 and authored/visually checked approved crops. No current raw model reasoning or alternate candidates read; actual selected final only. No legacy per-item score consulted during this pass.",
+  "items": [
+    {
+      "id": "val2024-hist-z1",
+      "printed_id": "1",
+      "max_points": 1,
+      "points": 1,
+      "low": 1,
+      "high": 1,
+      "sensitivity_label": "judgment sensitivity, not confidence interval",
+      "answer_sha256": "4f7887882c0cc7ae260c7c4392db3d64dee404ff51f6d624fc12b221220719e3",
+      "image_evidence": [
+        {
+          "path": "images/Z01-S2.png",
+          "sha256": "c92594bfb108f37e33c81ec34444789eecde725bf6e8491f60fa2f1008104024"
+        }
+      ],
+      "error_class": "none",
+      "points_lost": 0,
+      "rationale": "Correct relief and double-crown explanation linking both sources."
+    },
+    {
+      "id": "val2024-hist-z2",
+      "printed_id": "2",
+      "max_points": 1,
+      "points": 1,
+      "low": 1,
+      "high": 1,
+      "sensitivity_label": "judgment sensitivity, not confidence interval",
+      "answer_sha256": "5ab1d655b163182e3cd39d57cda70abaed7dc4e6e388e77bfa47cea4ed73a960",
+      "image_evidence": [
+        {
+          "path": "images/Z02-S2.png",
+          "sha256": "81fa8080dff6687f459d2ea22c781b709eaf7fb6f0edf50ac38b5535a8c71962"
+        }
+      ],
+      "error_class": "none",
+      "points_lost": 0,
+      "rationale": "Correct contrast between a united conquest state and its later successor kingdoms."
+    },
+    {
+      "id": "val2024-hist-z3.1",
+      "printed_id": "3.1",
+      "max_points": 1,
+      "points": 0,
+      "low": 0,
+      "high": 1,
+      "sensitivity_label": "judgment sensitivity, not confidence interval",
+      "answer_sha256": "ba1a05ec6ce10464e677fae4bf4b9d8e0fe0d5a2af767cddc04f6903f8fa2bc6",
+      "image_evidence": [],
+      "error_class": "incomplete_requested_identification",
+      "points_lost": 1,
+      "rationale": "Only Augustus is supplied; the task explicitly requests both name and epithet. Central0 for missing Oktawian; upper1 allows a grader to accept the unambiguous conventional Latin name."
+    },
+    {
+      "id": "val2024-hist-z3.2",
+      "printed_id": "3.2",
+      "max_points": 1,
+      "points": 0,
+      "low": 0,
+      "high": 0,
+      "sensitivity_label": "judgment sensitivity, not confidence interval",
+      "answer_sha256": "929e85dcfb9dcb6561243badc82bca4da0d0a1218b6b4791210bd388d0a7adc2",
+      "image_evidence": [],
+      "error_class": "factual_or_chronological",
+      "points_lost": 1,
+      "rationale": "One of the two required offices is replaced by dictator; both correct offices are required."
+    },
+    {
+      "id": "val2024-hist-z4",
+      "printed_id": "4",
+      "max_points": 1,
+      "points": 1,
+      "low": 1,
+      "high": 1,
+      "sensitivity_label": "judgment sensitivity, not confidence interval",
+      "answer_sha256": "4842691b79a89324f5c9694569be13289ce04dd7808569bab6ea3718f03c44cc",
+      "image_evidence": [
+        {
+          "path": "images/Z04.png",
+          "sha256": "a5dfdc2b68e60164df2eba18e42b8714186e194dfd8a70059dbe438f8f8651ac"
+        }
+      ],
+      "error_class": "none",
+      "points_lost": 0,
+      "rationale": "Visible dome/rotunda and columned portico correctly distinguish Roman and Greek inspiration."
+    },
+    {
+      "id": "val2024-hist-z5.1",
+      "printed_id": "5.1",
+      "max_points": 1,
+      "points": 1,
+      "low": 1,
+      "high": 1,
+      "sensitivity_label": "judgment sensitivity, not confidence interval",
+      "answer_sha256": "16f77bcda187dc5cfe7515e25618d118b3342fb60f7777c15e2e8d6e93ce4e47",
+      "image_evidence": [
+        {
+          "path": "images/Z05-S2.png",
+          "sha256": "a892bbf03dcb9940c20985c454d2a5fdb87e08567e8ed76c0ea0731421922911"
+        }
+      ],
+      "error_class": "none",
+      "points_lost": 0,
+      "rationale": "Correct rejection of a crusade linkage, using the Varangian trade/expansion route and earlier chronology; both sources addressed."
+    },
+    {
+      "id": "val2024-hist-z5.2",
+      "printed_id": "5.2",
+      "max_points": 1,
+      "points": 1,
+      "low": 1,
+      "high": 1,
+      "sensitivity_label": "judgment sensitivity, not confidence interval",
+      "answer_sha256": "67bbf8782357f55704ff38865058f22cfd20bf38d0eaf8ad1f55ee8cf30bf1d7",
+      "image_evidence": [
+        {
+          "path": "images/Z05-S2.png",
+          "sha256": "a892bbf03dcb9940c20985c454d2a5fdb87e08567e8ed76c0ea0731421922911"
+        }
+      ],
+      "error_class": "none",
+      "points_lost": 0,
+      "rationale": "Accepted equivalent name of the Byzantine Empire."
+    },
+    {
+      "id": "val2024-hist-z6",
+      "printed_id": "6",
+      "max_points": 2,
+      "points": 0,
+      "low": 0,
+      "high": 1,
+      "sensitivity_label": "judgment sensitivity, not confidence interval",
+      "answer_sha256": "899e7d521e938ac82ae7d0f4bed6b09d136aa354db1a76dfb910f626c29055a0",
+      "image_evidence": [
+        {
+          "path": "images/Z06.png",
+          "sha256": "2fe3e9586d2524b350f1b6fd6ff182f059ed32ba692cafbb1b699cc4854740d1"
+        }
+      ],
+      "error_class": "visual_source_argument",
+      "points_lost": 2,
+      "rationale": "Three estates and functions are named, but Christ is incorrectly identified as the clerical representative; no valid three-element explanation or hierarchy. Upper1 reflects possible lenient use of the correctly associated prayer/protection/work labels."
+    },
+    {
+      "id": "val2024-hist-z7",
+      "printed_id": "7",
+      "max_points": 1,
+      "points": 0,
+      "low": 0,
+      "high": 0,
+      "sensitivity_label": "judgment sensitivity, not confidence interval",
+      "answer_sha256": "97e677ad1360a61866a73fd83873ca1978b196afc21cdd1e2d939b297b3fffe5",
+      "image_evidence": [],
+      "error_class": "factual_or_chronological",
+      "points_lost": 1,
+      "rationale": "Wrong fragment; treats separate rulers/events as one continuous sequence rather than ordering them historically."
+    },
+    {
+      "id": "val2024-hist-z8.1",
+      "printed_id": "8.1",
+      "max_points": 1,
+      "points": 1,
+      "low": 1,
+      "high": 1,
+      "sensitivity_label": "judgment sensitivity, not confidence interval",
+      "answer_sha256": "55b2e9e7f76642a54c9de565d8eb3855046f8a2189aa4394a9f978f0314cdaf6",
+      "image_evidence": [
+        {
+          "path": "images/Z08-S2.png",
+          "sha256": "9dcb7800f3e96d9481e29dc66af5813aefc6bd85a114889bbd6741cbd1bfc00d"
+        }
+      ],
+      "error_class": "none",
+      "points_lost": 0,
+      "rationale": "Correct historical document name."
+    },
+    {
+      "id": "val2024-hist-z8.2",
+      "printed_id": "8.2",
+      "max_points": 1,
+      "points": 1,
+      "low": 1,
+      "high": 1,
+      "sensitivity_label": "judgment sensitivity, not confidence interval",
+      "answer_sha256": "057d91f8adfa6c3757a2ebf0e3d3651c3375e527fd1894abe0f8e4a666c45807",
+      "image_evidence": [
+        {
+          "path": "images/Z08-S2.png",
+          "sha256": "9dcb7800f3e96d9481e29dc66af5813aefc6bd85a114889bbd6741cbd1bfc00d"
+        }
+      ],
+      "error_class": "none",
+      "points_lost": 0,
+      "rationale": "Correct decision supported by king, senators and deputies in both sources."
+    },
+    {
+      "id": "val2024-hist-z9",
+      "printed_id": "9",
+      "max_points": 1,
+      "points": 1,
+      "low": 1,
+      "high": 1,
+      "sensitivity_label": "judgment sensitivity, not confidence interval",
+      "answer_sha256": "25b9b0d5f103f02af324002dd490065c9caf1cfd7329954547cc628cfdcea524",
+      "image_evidence": [
+        {
+          "path": "images/Z09.png",
+          "sha256": "7439a2729a08713884ff363a065757512115647e9ddaf5b5852d31b68e329c9f"
+        }
+      ],
+      "error_class": "none",
+      "points_lost": 0,
+      "rationale": "Correctly links the papal support in words/image to incompatibility with Arian rejection of papal authority."
+    },
+    {
+      "id": "val2024-hist-z10",
+      "printed_id": "10",
+      "max_points": 1,
+      "points": 1,
+      "low": 1,
+      "high": 1,
+      "sensitivity_label": "judgment sensitivity, not confidence interval",
+      "answer_sha256": "477890b75a0eb132cae066fc5952a9570d2da434bbf5abc0a3a3738f304949ce",
+      "image_evidence": [
+        {
+          "path": "images/Z10.png",
+          "sha256": "444cf7b672cee5feeb16e03caaa1097cc9ea8534b64b9cc2842622ac4ccd8626"
+        }
+      ],
+      "error_class": "none",
+      "points_lost": 0,
+      "rationale": "Correct option."
+    },
+    {
+      "id": "val2024-hist-z11.1",
+      "printed_id": "11.1",
+      "max_points": 1,
+      "points": 1,
+      "low": 1,
+      "high": 1,
+      "sensitivity_label": "judgment sensitivity, not confidence interval",
+      "answer_sha256": "079ea38d523032ce57ac5fa1795a573febbc47e08143bd76a1fa2b2e0ad553a4",
+      "image_evidence": [
+        {
+          "path": "images/Z11-S2.png",
+          "sha256": "ad0f299a71a210dec7a280437dd8852da2305c8f2d94205a1dcedb79e967d7bd"
+        }
+      ],
+      "error_class": "none",
+      "points_lost": 0,
+      "rationale": "Both rulers correctly matched."
+    },
+    {
+      "id": "val2024-hist-z11.2",
+      "printed_id": "11.2",
+      "max_points": 1,
+      "points": 0,
+      "low": 0,
+      "high": 0,
+      "sensitivity_label": "judgment sensitivity, not confidence interval",
+      "answer_sha256": "06fc96a46b6ecdefcb73ea82639624bd11a012cad9f720b559afb8841c1ba9b9",
+      "image_evidence": [
+        {
+          "path": "images/Z11-S2.png",
+          "sha256": "ad0f299a71a210dec7a280437dd8852da2305c8f2d94205a1dcedb79e967d7bd"
+        }
+      ],
+      "error_class": "factual_or_chronological",
+      "points_lost": 1,
+      "rationale": "Generic strategic-cost explanation omits the essential religious conversion enabling the throne."
+    },
+    {
+      "id": "val2024-hist-z12.1",
+      "printed_id": "12.1",
+      "max_points": 1,
+      "points": 0,
+      "low": 0,
+      "high": 0,
+      "sensitivity_label": "judgment sensitivity, not confidence interval",
+      "answer_sha256": "11627d48a9598e1cbdc7a685ce64b4ae7a4037495a28415e04fde95b1cfa8912",
+      "image_evidence": [
+        {
+          "path": "images/Z12-S2.png",
+          "sha256": "ac57977e4107289bca0068b5a9d6f97539aa32a67d157f3c67a65d0756509b01"
+        }
+      ],
+      "error_class": "factual_or_chronological",
+      "points_lost": 1,
+      "rationale": "Wrong ruler."
+    },
+    {
+      "id": "val2024-hist-z12.2",
+      "printed_id": "12.2",
+      "max_points": 1,
+      "points": 1,
+      "low": 1,
+      "high": 1,
+      "sensitivity_label": "judgment sensitivity, not confidence interval",
+      "answer_sha256": "9ac6463cbc6e7e45cea508accb3280e7e5134f6f700a23b8d0e4d3d0f36bfd87",
+      "image_evidence": [
+        {
+          "path": "images/Z12-S2.png",
+          "sha256": "ac57977e4107289bca0068b5a9d6f97539aa32a67d157f3c67a65d0756509b01"
+        }
+      ],
+      "error_class": "none",
+      "points_lost": 0,
+      "rationale": "Correct concept."
+    },
+    {
+      "id": "val2024-hist-z12.3",
+      "printed_id": "12.3",
+      "max_points": 1,
+      "points": 1,
+      "low": 1,
+      "high": 1,
+      "sensitivity_label": "judgment sensitivity, not confidence interval",
+      "answer_sha256": "855d77a7d862805917530e5e088dcdaadcd3954c4e707aa972fdaba58677cf90",
+      "image_evidence": [
+        {
+          "path": "images/Z12-S2.png",
+          "sha256": "ac57977e4107289bca0068b5a9d6f97539aa32a67d157f3c67a65d0756509b01"
+        }
+      ],
+      "error_class": "none",
+      "points_lost": 0,
+      "rationale": "Correct baroque identification with visible theatrical drapery/dynamic decoration."
+    },
+    {
+      "id": "val2024-hist-z13",
+      "printed_id": "13",
+      "max_points": 1,
+      "points": 1,
+      "low": 1,
+      "high": 1,
+      "sensitivity_label": "judgment sensitivity, not confidence interval",
+      "answer_sha256": "e7a81b5baddc93bdc15383e1b52a3aae58f36a8167761de8e559bc850a8bd456",
+      "image_evidence": [
+        {
+          "path": "images/Z13.png",
+          "sha256": "6b4780a8cd91d5fc85c727ff0f29383849e69c3af3da2ec8038d30e4e02faa5c"
+        }
+      ],
+      "error_class": "none",
+      "points_lost": 0,
+      "rationale": "Correct execution/overthrow identification supported by the dated severed trunk."
+    },
+    {
+      "id": "val2024-hist-z14.1",
+      "printed_id": "14.1",
+      "max_points": 1,
+      "points": 0,
+      "low": 0,
+      "high": 0,
+      "sensitivity_label": "judgment sensitivity, not confidence interval",
+      "answer_sha256": "53c0fc32d12fefdca93b4828222a5278857c782ad8c5f283bbe91b986488ba22",
+      "image_evidence": [
+        {
+          "path": "images/Z14-S2.png",
+          "sha256": "1c6de6a1452133253b436a1e5dc3e4279d1ac7adeb97f451b3a87e786af76998"
+        }
+      ],
+      "error_class": "visual_source_argument",
+      "points_lost": 1,
+      "rationale": "Decision is correct but the map is falsely assigned to WWI from its publication title; no valid map-based comparison."
+    },
+    {
+      "id": "val2024-hist-z14.2",
+      "printed_id": "14.2",
+      "max_points": 1,
+      "points": 1,
+      "low": 1,
+      "high": 1,
+      "sensitivity_label": "judgment sensitivity, not confidence interval",
+      "answer_sha256": "0200946aa0d009b6b1e1fb830338cbd4d0a18607cda052562e66dfa8c3af52e6",
+      "image_evidence": [
+        {
+          "path": "images/Z14-S2.png",
+          "sha256": "1c6de6a1452133253b436a1e5dc3e4279d1ac7adeb97f451b3a87e786af76998"
+        }
+      ],
+      "error_class": "none",
+      "points_lost": 0,
+      "rationale": "Correct option."
+    },
+    {
+      "id": "val2024-hist-z15.1",
+      "printed_id": "15.1",
+      "max_points": 1,
+      "points": 1,
+      "low": 1,
+      "high": 1,
+      "sensitivity_label": "judgment sensitivity, not confidence interval",
+      "answer_sha256": "8c1900cae7977c9025ba881c1d25db386d292a33e0dac5f3a8981e78cbf1c786",
+      "image_evidence": [],
+      "error_class": "none",
+      "points_lost": 0,
+      "rationale": "Correct uprising."
+    },
+    {
+      "id": "val2024-hist-z15.2",
+      "printed_id": "15.2",
+      "max_points": 1,
+      "points": 1,
+      "low": 1,
+      "high": 1,
+      "sensitivity_label": "judgment sensitivity, not confidence interval",
+      "answer_sha256": "881ce78ee2c8b639736e0e213bc5cc71c0e9dede0f35ed0b313e2a8396d342b5",
+      "image_evidence": [],
+      "error_class": "none",
+      "points_lost": 0,
+      "rationale": "Correct version with a concrete shared critical assessment."
+    },
+    {
+      "id": "val2024-hist-z16.1",
+      "printed_id": "16.1",
+      "max_points": 1,
+      "points": 1,
+      "low": 1,
+      "high": 1,
+      "sensitivity_label": "judgment sensitivity, not confidence interval",
+      "answer_sha256": "9157b4ea03a09ce42246a81015f6c104ee0c6832490017f6d845ac1cddb5ded9",
+      "image_evidence": [
+        {
+          "path": "images/Z16-S1.png",
+          "sha256": "39637082ca704c2bcaaeac1cf7393062c1e9e9ce670d81c51b0679b71c4e55ee"
+        }
+      ],
+      "error_class": "none",
+      "points_lost": 0,
+      "rationale": "Correct link between nonintervention doctrine and the visual barrier to European powers."
+    },
+    {
+      "id": "val2024-hist-z16.2",
+      "printed_id": "16.2",
+      "max_points": 1,
+      "points": 1,
+      "low": 1,
+      "high": 1,
+      "sensitivity_label": "judgment sensitivity, not confidence interval",
+      "answer_sha256": "ec433a5e9e7be1b45e2226820cf04fe93860b449a6bdc918dd4cea9c735fe094",
+      "image_evidence": [
+        {
+          "path": "images/Z16-S1.png",
+          "sha256": "39637082ca704c2bcaaeac1cf7393062c1e9e9ce670d81c51b0679b71c4e55ee"
+        }
+      ],
+      "error_class": "none",
+      "points_lost": 0,
+      "rationale": "Correct option."
+    },
+    {
+      "id": "val2024-hist-z17.1",
+      "printed_id": "17.1",
+      "max_points": 1,
+      "points": 1,
+      "low": 1,
+      "high": 1,
+      "sensitivity_label": "judgment sensitivity, not confidence interval",
+      "answer_sha256": "334cc66c55ddf3b26ed9e41f352602fefad95b63f210e45a0135baf3b1f662d9",
+      "image_evidence": [
+        {
+          "path": "images/Z17-S2.png",
+          "sha256": "e8596f380e6e684339b41d6ae4f5770085ce30f3cbdbf892037eb6a4df4dcfac"
+        }
+      ],
+      "error_class": "none",
+      "points_lost": 0,
+      "rationale": "Correct causal link from French defeat at Sedan to German unification and imperial proclamation."
+    },
+    {
+      "id": "val2024-hist-z17.2",
+      "printed_id": "17.2",
+      "max_points": 1,
+      "points": 0,
+      "low": 0,
+      "high": 0,
+      "sensitivity_label": "judgment sensitivity, not confidence interval",
+      "answer_sha256": "652559e7da63bbd471dea1decdcd5266494177bc1d6d46d6bc850dc3b00ea72e",
+      "image_evidence": [
+        {
+          "path": "images/Z17-S2.png",
+          "sha256": "e8596f380e6e684339b41d6ae4f5770085ce30f3cbdbf892037eb6a4df4dcfac"
+        }
+      ],
+      "error_class": "factual_or_chronological",
+      "points_lost": 1,
+      "rationale": "Huzolscy is not a recognizable correct dynasty name; too substantial to treat as minor spelling."
+    },
+    {
+      "id": "val2024-hist-z18",
+      "printed_id": "18",
+      "max_points": 1,
+      "points": 0,
+      "low": 0,
+      "high": 1,
+      "sensitivity_label": "judgment sensitivity, not confidence interval",
+      "answer_sha256": "59deba6d80a50ac2ef71ecf1e60cc2cb7de3be4246ddcbfa9e53464f918377c3",
+      "image_evidence": [
+        {
+          "path": "images/Z18.png",
+          "sha256": "fb3752d9931ffec6c5c56ab3de9544bbc1843d438e8d3f4998c0f3fa44b7d62e"
+        }
+      ],
+      "error_class": "visual_source_argument",
+      "points_lost": 1,
+      "rationale": "Correct side, but the distinctive enemy helmet is called a crown and fighting soldiers are not identified by their Entente uniforms; central0 for incomplete two-element grounding. Upper1 permits a looser reading of monster plus soldiers as two sufficient elements."
+    },
+    {
+      "id": "val2024-hist-z19.1",
+      "printed_id": "19.1",
+      "max_points": 2,
+      "points": 1,
+      "low": 1,
+      "high": 1,
+      "sensitivity_label": "judgment sensitivity, not confidence interval",
+      "answer_sha256": "db9fc7fcd2dd98e5090f480ffdc23eaed8fc5145870a85b076423e9b4be98986",
+      "image_evidence": [
+        {
+          "path": "images/Z19.png",
+          "sha256": "2a5ca761b3a00e7f9ee3311843adeba8d59085ee5b834cbf205a84e75c061582"
+        }
+      ],
+      "error_class": "factual_or_chronological",
+      "points_lost": 1,
+      "rationale": "Two of three truth values correct; the unrealized plebiscite is misclassified."
+    },
+    {
+      "id": "val2024-hist-z19.2",
+      "printed_id": "19.2",
+      "max_points": 1,
+      "points": 1,
+      "low": 1,
+      "high": 1,
+      "sensitivity_label": "judgment sensitivity, not confidence interval",
+      "answer_sha256": "625cd0d3621d909e6f0b2e6b8f8977d31be363c1371dd352aa7804d770c8c583",
+      "image_evidence": [
+        {
+          "path": "images/Z19.png",
+          "sha256": "2a5ca761b3a00e7f9ee3311843adeba8d59085ee5b834cbf205a84e75c061582"
+        }
+      ],
+      "error_class": "none",
+      "points_lost": 0,
+      "rationale": "Correct general."
+    },
+    {
+      "id": "val2024-hist-z20.1",
+      "printed_id": "20.1",
+      "max_points": 1,
+      "points": 1,
+      "low": 1,
+      "high": 1,
+      "sensitivity_label": "judgment sensitivity, not confidence interval",
+      "answer_sha256": "1304446a2d5454e3a410aee12124a1f384d970de12756d314fc2dcaffc3f4d0a",
+      "image_evidence": [],
+      "error_class": "none",
+      "points_lost": 0,
+      "rationale": "Correct source and partial restoration of private trade/services."
+    },
+    {
+      "id": "val2024-hist-z20.2",
+      "printed_id": "20.2",
+      "max_points": 2,
+      "points": 1,
+      "low": 1,
+      "high": 1,
+      "sensitivity_label": "judgment sensitivity, not confidence interval",
+      "answer_sha256": "cf31a1d19da9e504fa52dda1f892d7964dc4a5b1f58e1d911d00a0c877114179",
+      "image_evidence": [],
+      "error_class": "factual_or_chronological",
+      "points_lost": 1,
+      "rationale": "Two of three values correct; wrongly attributes the policy to Stalin."
+    },
+    {
+      "id": "val2024-hist-z21",
+      "printed_id": "21",
+      "max_points": 1,
+      "points": 1,
+      "low": 1,
+      "high": 1,
+      "sensitivity_label": "judgment sensitivity, not confidence interval",
+      "answer_sha256": "0c113e3d6fd76553b03524d6efd806afa5ffacf7a22b6dd7158d04aaa7304997",
+      "image_evidence": [
+        {
+          "path": "images/Z21.png",
+          "sha256": "093778ef26aa76b2357fa50ad93d1bcee4c7aaf1e2250bde7d1954f8cce71597"
+        }
+      ],
+      "error_class": "none",
+      "points_lost": 0,
+      "rationale": "Visible ordered crowds and party symbols are convincingly tied to propaganda."
+    },
+    {
+      "id": "val2024-hist-z22.1",
+      "printed_id": "22.1",
+      "max_points": 1,
+      "points": 1,
+      "low": 1,
+      "high": 1,
+      "sensitivity_label": "judgment sensitivity, not confidence interval",
+      "answer_sha256": "cdee0b8d35b3bac1932af148b387a59753a6e2fdbf7a5f452921c4e292e0f42a",
+      "image_evidence": [],
+      "error_class": "none",
+      "points_lost": 0,
+      "rationale": "Correct daily date."
+    },
+    {
+      "id": "val2024-hist-z22.2",
+      "printed_id": "22.2",
+      "max_points": 2,
+      "points": 2,
+      "low": 1,
+      "high": 2,
+      "sensitivity_label": "judgment sensitivity, not confidence interval",
+      "answer_sha256": "c512de52390032bc7ccafcea2ed73d91a3189b9e97a58d5d03a818f74d857d93",
+      "image_evidence": [],
+      "error_class": "none",
+      "points_lost": 0,
+      "rationale": "Both Cold War consequences and formative memory leading to Solidarity are identified. Lower1 reflects the general wording of domestic consequences without explicit restraint/nonviolence."
+    },
+    {
+      "id": "val2024-hist-z23.1",
+      "printed_id": "23.1",
+      "max_points": 1,
+      "points": 1,
+      "low": 1,
+      "high": 1,
+      "sensitivity_label": "judgment sensitivity, not confidence interval",
+      "answer_sha256": "be00a8a448e800d70462dec5a25f73f1ec6dac8f2630e2ce90fc05d8832986ec",
+      "image_evidence": [
+        {
+          "path": "images/Z23-S1.png",
+          "sha256": "cedf635f8cfcb54b39e3afbf9765bdfe4b0e90d474c42ef55f4686973cafdc1e"
+        },
+        {
+          "path": "images/Z23-S2.png",
+          "sha256": "c04b68f9cc4697950d4833eabc6dd64111675e5503a07f39828f6a5d48c0f74a"
+        }
+      ],
+      "error_class": "none",
+      "points_lost": 0,
+      "rationale": "Both methods correctly identified."
+    },
+    {
+      "id": "val2024-hist-z23.2",
+      "printed_id": "23.2",
+      "max_points": 1,
+      "points": 1,
+      "low": 1,
+      "high": 1,
+      "sensitivity_label": "judgment sensitivity, not confidence interval",
+      "answer_sha256": "b31f6ee01039db0ff5481ce77a14a0e85ba98eff1b62644ed1186abee5f6e4a3",
+      "image_evidence": [
+        {
+          "path": "images/Z23-S1.png",
+          "sha256": "cedf635f8cfcb54b39e3afbf9765bdfe4b0e90d474c42ef55f4686973cafdc1e"
+        },
+        {
+          "path": "images/Z23-S2.png",
+          "sha256": "c04b68f9cc4697950d4833eabc6dd64111675e5503a07f39828f6a5d48c0f74a"
+        }
+      ],
+      "error_class": "none",
+      "points_lost": 0,
+      "rationale": "Correct poster question and actual-result comparison with both percentages."
+    },
+    {
+      "id": "val2024-hist-z24",
+      "printed_id": "24",
+      "max_points": 1,
+      "points": 1,
+      "low": 1,
+      "high": 1,
+      "sensitivity_label": "judgment sensitivity, not confidence interval",
+      "answer_sha256": "f371c90b91569ddff3d71a9d3695d09e21c8b6c05f3a4559e2d649f922fecc8a",
+      "image_evidence": [
+        {
+          "path": "images/Z24-S1.png",
+          "sha256": "cdcde20b828cf82be7b2ae336a6c4ba7893162e0903e76bc2765248ebb49720b"
+        }
+      ],
+      "error_class": "none",
+      "points_lost": 0,
+      "rationale": "Correctly distinguishes Czechoslovak intervention from the Hungarian crisis using map and text evidence."
+    },
+    {
+      "id": "val2024-hist-z25",
+      "printed_id": "25",
+      "max_points": 3,
+      "points": 1,
+      "low": 0,
+      "high": 1,
+      "sensitivity_label": "judgment sensitivity, not confidence interval",
+      "answer_sha256": "e052566432a9b07b56044ed34acf66bfd4982eabdcf8d9c155f85a7581284d4f",
+      "image_evidence": [
+        {
+          "path": "images/Z25.png",
+          "sha256": "d6d6f7198dc3be2045df16030555f7a412ed9610a5117527b82beffdf3a6c4a4"
+        }
+      ],
+      "error_class": "visual_source_argument",
+      "points_lost": 2,
+      "rationale": "One valid limited interpretation: prison bars signify repression and the drawing criticizes communist restrictions. The main Solidarność lettering is misread as SONDA and invented as a publication; martial-law/Jaruzelski context is absent. Lower0 reflects rejecting the message because the central object is misconstrued."
+    },
+    {
+      "id": "val2024-hist-z26",
+      "printed_id": "26",
+      "max_points": 15,
+      "points": 8,
+      "low": 8,
+      "high": 8,
+      "sensitivity_label": "judgment sensitivity, not confidence interval",
+      "answer_sha256": "4b6a70519ddbcaad2d6107e70495c2270664261d19d3077d6fb8ec9db6a86952",
+      "image_evidence": [],
+      "error_class": "essay_argument_depth",
+      "points_lost": 7,
+      "rationale": "Topic3: military3, diplomatic1, political-constitutional1; no established factual deduction; coherence3 at427 body words."
+    }
+  ],
+  "publication": "Original concise assessment and hashes only; no official source passages, copied keys or raw reasoning."
+}

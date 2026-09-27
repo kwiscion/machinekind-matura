@@ -1,6 +1,6 @@
 # Winning plan
 
-**Goal:** highest final history score; target **48/60**. Best verified full exam remains **Gemma 38/60**, using legacy full-page inputs. Corrected-image results are pending. Updated 27 September, 03:52 Warsaw. Issues own detailed tasks; this file stays short.
+**Goal:** highest final history score; target **48/60**. Current corrected-input Gemma scores **39/60** in one agent grading pass (31 nonessay +8 essay; 40 complete answers). Legacy38 remains preserved. Updated 27 September, 04:10 Warsaw. Issues own detailed tasks; this file stays short.
 
 ## Hard schedule
 
@@ -11,10 +11,10 @@
 
 ## Priority order
 
-1. **Score corrected Gemma40 immediately** after confirming terminal state and backing up exact outputs ([#173](https://github.com/kwiscion/machinekind-matura/issues/173)). The organizer-style source crops replace whole-page images; do not carry forward the old38/60 as their score.
-2. **Run and score full corrected Qwen40** ([#95](https://github.com/kwiscion/machinekind-matura/issues/95)). It beat Gemma6/8 versus4/8 on the known six-item panel; that earns a full test, not promotion. The full package is already prepared. Central H100 belongs to this sequence.
-3. **Run essay branching** on reserved `matura-lukasz` ([#168](https://github.com/kwiscion/machinekind-matura/issues/168)): direct control plus one draft per offered topic, then same-model selection/revision. Code independently reviewed. Grade candidates and selected final once; distinguish best available candidate from selector performance. Resolve the pending minimal essay-only transfer through normal approval review.
-4. **If capacity permits, test three image descriptions:** independent same-model calls focusing on text/transcription, small visual details, and overall composition/context; answer from the complete original question/image plus all three explicitly fallible descriptions. Compare against a matched direct answer on a fixed visual subset. No extra model weights; do not replace the image with descriptions.
+1. **Corrected Gemma40 is complete and scored39/60** ([#173](https://github.com/kwiscion/machinekind-matura/issues/173)); exact outputs and runtime are backed up. Lost points: history7, source interpretation6, incomplete identification1, essay depth7. No blank losses. This is a known-validation agent grade, not an organizer score.
+2. **Score the running corrected Qwen40** ([#95](https://github.com/kwiscion/machinekind-matura/issues/95)), deadline05:01 Warsaw on central H100. It beat Gemma6/8 versus4/8 on the small known panel; full results determine promotion. Prepare arbitrary organizer-package support in parallel.
+3. **Essay branching is running** on reserved `matura-lukasz` ([#168](https://github.com/kwiscion/machinekind-matura/issues/168)), deadline05:05: direct control plus one draft per offered topic, then same-model selection/revision. Grade candidates and selected final once; distinguish best candidate from selector performance. If argument gains are weak, test an explicit evidence-and-causality policy next.
+4. **Three-view image reasoning** ([#178](https://github.com/kwiscion/machinekind-matura/issues/178), Greg; local fallback if unclaimed): independent same-model text/transcription, small-detail and overall-composition descriptions, then answer with the complete original question/image and all three fallible views. Matched direct control, fixed visual subset, no extra model weights.
 
 ## Operating rules
 

@@ -4,13 +4,13 @@ Read [WINNING_PLAN.md](WINNING_PLAN.md) before dispatch, scope changes, acceptin
 
 ## Objective and submission
 
-- Maximize the Sunday Polish history matura score; target48/60 on known May2024 validation. Final freeze:27September2026,11:00Europe/Warsaw. The former Saturday morning/18:00 cutoffs are historical.
+- Maximize the Sunday Polish history matura score; target48/60 on known May2024 validation. The owner sets a hard development freeze at08:00Europe/Warsaw on27September2026, reserving08:00–11:00 for final checks/execution/submission. Earlier cutoffs are historical. Unavailable teammates are not dependencies: delegate critical work to local Sol agents immediately.
 - ALL submitted model weights together must fit8GB+10%. Use the conservative aggregate cap8,800,000,000bytes, counting projectors, adapters and any OCR/router/retrieval-model weights. [Budget and consequences](docs/SUBMISSION_WEIGHT_BUDGET.md). Development models may be separate; keep their caches out of the final package.
 - The leading architecture is one shared multimodal Gemma. Same-model repeated calls and question-specific prompts are allowed. A LoRA route needs proven shared-base adapter serving or one merged model with all-route regression; two full essay/base copies are ineligible together.
 - Final inference is offline. Qualify the improved harness once end-to-end on the champion; later candidates need only affected compatibility checks and approximate runtime checks, not repeated full rehearsals. Follow the received package's real item count;40items/60points describes our current validation exam, not a universal schema.
 - The owner's latest policy requires nonblank answers, preserving usable candidates and attempting up to three recovery retries after failure before the explicit emergency string `Tadeusz Kościuszko`. Reserve recovery time in advance; report any hard-deadline exception and distinguish placeholders from successful recovery. Historical no-retry/blank-on-failure experiments remain evidence, not the final policy.
 - Plan a60minute final run with a configurable120minute mode and10minutes reserved for recovery, validation and submission. Verify larger context/output settings and throughput, then allocate compute by wall time rather than final-answer length. Requesting final questions freezes ALL team projects: commit code, prompts and settings before access; afterwards only run the frozen solution and submit. Do not access the final package during preparation.
-- The current leading full40 result is independently reviewed38/60; fallback35/60 is preserved. Neither the target nor final submission readiness is achieved. Current evidence and owner status belong in WINNING_PLAN/issues, not growing this file into a log.
+- Corrected-input Gemma40 scores39/60 in one agent grading pass, with40complete answers. Legacy38/60 and fallback35/60 remain preserved. Neither the target nor final submission readiness is achieved. Current evidence and owner status belong in WINNING_PLAN/issues, not growing this file into a log.
 
 ## Work ownership and delivery
 
