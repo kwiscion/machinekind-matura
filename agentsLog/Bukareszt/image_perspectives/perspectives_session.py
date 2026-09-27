@@ -7,7 +7,9 @@ Per item (records from the prepared adapter input: {id, prompt, images[]}):
      instruction, never the other descriptions and never the question.
   3. FINAL perspective answer: the complete original prompt plus ALL original images plus the three descriptions,
      explicitly marked fallible. The images are never replaced by text.
-Descriptions are never exported and never enter any essay cleanup. Only DIRECT and FINAL answers are exported
+Descriptions are never exported and never enter any essay cleanup. Optional settings key `view_attempts` gives the
+three view calls their own (shorter) ladder; a truncated (`length`) view is preserved as a labelled partial and still
+passed, marked fallible, to the final call. Without the key every role uses `attempts` (wave-1 behaviour). Only DIRECT and FINAL answers are exported
 (answer-only, per arm). An item without images is recorded as `no_images`, with its final equal to the direct answer
 and no extra calls.
 
@@ -100,7 +102,8 @@ class Caller:
     def __call__(self, item_id, role, parts):
         attempts, final = [], None
         known_prompt = None
-        for k, step in enumerate(self.s['attempts'], 1):
+        ladder = self.s['view_attempts'] if role.startswith('view_') and 'view_attempts' in self.s else self.s['attempts']
+        for k, step in enumerate(ladder, 1):
             if time.time() + step['request_timeout_s'] > self.a.deadline_epoch:
                 attempts.append({'attempt': k, 'skipped': 'wall deadline'}); break
             if step.get('only_if_fits') and known_prompt is not None and known_prompt + step['max_tokens'] > self.s['ctx_size']:

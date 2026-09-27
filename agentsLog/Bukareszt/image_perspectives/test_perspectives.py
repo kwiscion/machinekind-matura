@@ -32,7 +32,8 @@ class H(BaseHTTPRequestHandler):
         elif text.startswith('Opisz ogólną'): out = 'VIEWTEXT-C'
         elif 'POMOCNICZE OPISY' in text: out = 'FINAL-ANSWER'
         else: out = 'DIRECT-ANSWER'
-        self._send(200, {'choices': [{'finish_reason': 'stop', 'message': {'content': out}}], 'usage': {'prompt_tokens': 50, 'completion_tokens': 3}})
+        fr = 'length' if (text.startswith('Przepisz') and body['max_tokens'] == 2048) else 'stop'
+        self._send(200, {'choices': [{'finish_reason': fr, 'message': {'content': out}}], 'usage': {'prompt_tokens': 50, 'completion_tokens': 3}})
 HTTPServer(('127.0.0.1', port), H).serve_forever()
 '''
 
@@ -93,6 +94,21 @@ def main():
         'server_cleaned_up': raw[-1].get('end', {}).get('server_exit_code') is not None,
     }
     checks['total_requests'] = len(reqs) == 8 + 1 + 8  # X1/X3: direct + text + details(4 failing attempts) + context + final; X2: direct only
+    # v2: views get their own single 2048-token attempt; a truncated view is a labelled partial still passed to the final
+    st2 = work / 'settings2.json'; d2 = json.loads(st.read_text()); d2['view_attempts'] = [{'max_tokens': 2048, 'request_timeout_s': 5}]; st2.write_text(json.dumps(d2))
+    run2 = work / 'run2'; run2.mkdir(); n0 = len(reqs)
+    sys.argv = [a if a != str(st) else str(st2) for a in sys.argv]
+    sys.argv[sys.argv.index('--run') + 1] = str(run2); sys.argv[sys.argv.index('--ids') + 1:sys.argv.index('--ids') + 4] = ['X3', 'X3', 'X3'][:1] + ['X2', 'X1']
+    try:
+        m.main()
+    except SystemExit as e:
+        rc2 = e.code
+    reqs2 = [json.loads(l) for l in reqlog.read_text().splitlines()][n0:]
+    items2 = {r['item']['id']: r['item'] for r in (json.loads(l) for l in (run2 / 'perspectives-raw.jsonl').read_text().splitlines()) if 'item' in r}
+    t2 = [[p['text'] for p in r['messages'][0]['content'] if p['type'] == 'text'][0] for r in reqs2]
+    checks['v2_views_single_2048_attempt'] = rc2 == 0 and all(r['max_tokens'] == 2048 for r, t in zip(reqs2, t2) if t.startswith(('Przepisz', 'Opisz'))) and all(len(v['attempts']) == 1 for it in items2.values() for v in it['views'].values())
+    checks['v2_truncated_view_partial_passed_to_final'] = items2['X3']['views']['text']['status'] == 'partial' and any('VIEWTEXT-A' in t and 'POMOCNICZE OPISY' in t for t in t2)
+    checks['v2_direct_final_keep_full_ladder'] = all(r['max_tokens'] == 32768 for r, t in zip(reqs2, t2) if not t.startswith(('Przepisz', 'Opisz')))
     print(json.dumps({'status': 'PASS' if all(checks.values()) else 'FAIL', 'checks': checks, 'requests': len(reqs), 'session_sha256': m.sha_file(sess)}, indent=1))
     sys.exit(0 if all(checks.values()) else 1)
 
