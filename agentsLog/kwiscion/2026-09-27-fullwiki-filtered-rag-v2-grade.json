@@ -1,0 +1,111 @@
+{
+  "status": "SINGLE_PASS_GRADE_FROZEN",
+  "utc": "2026-09-27T05:05:22.012513+00:00",
+  "masked_packet_sha256": "ba4ff8bbb281f575f249ac1ee395babdddaafedf38980b1bb33793427422f67d",
+  "masked_grade_sha256": "50b924e3826f2c21f0ab95025bdf72d4062519ec832cf23221f7a8c8ead4fe95",
+  "masking": "Arm-masked answers; grader knows study design and implementation, not fully blind. Arm key not inspected before this file.",
+  "direct_points": 3,
+  "direct_interval": [
+    2,
+    3
+  ],
+  "rag_points": 4,
+  "max_points_per_arm": 6,
+  "net_delta": 1,
+  "items": [
+    {
+      "item_id": "3.2",
+      "max_points": 1,
+      "direct_points": 1,
+      "rag_points": 1,
+      "delta": 0,
+      "direct_low": 0,
+      "direct_high": 1,
+      "admitted_passages": 3,
+      "flags": [
+        "office_name_precision"
+      ],
+      "attribution": "Both centrally accepted; RAG uses more explicit office names. Direct terminology has a precision flag."
+    },
+    {
+      "item_id": "11.2",
+      "max_points": 1,
+      "direct_points": 0,
+      "rag_points": 1,
+      "delta": 1,
+      "direct_low": 0,
+      "direct_high": 0,
+      "admitted_passages": 3,
+      "flags": [],
+      "attribution": "Gain: admitted passages supply the specific causal explanation missing from the direct answer."
+    },
+    {
+      "item_id": "12.1",
+      "max_points": 1,
+      "direct_points": 0,
+      "rag_points": 0,
+      "delta": 0,
+      "direct_low": 0,
+      "direct_high": 0,
+      "admitted_passages": 2,
+      "flags": [],
+      "attribution": "No gain: query retrieval returned namesakes and generic monument material; two irrelevant entity fragments were admitted. Final timeout recovered, but the completed identification remained wrong."
+    },
+    {
+      "item_id": "17.2",
+      "max_points": 1,
+      "direct_points": 1,
+      "rag_points": 0,
+      "delta": -1,
+      "direct_low": 1,
+      "direct_high": 1,
+      "admitted_passages": 1,
+      "flags": [],
+      "attribution": "Regression: planner inserted an incorrect dynasty hypothesis into its query. Retrieved article/title matched that hypothesis; final followed it despite a contrary relevant clue in the accepted literal span."
+    },
+    {
+      "item_id": "5.2",
+      "max_points": 1,
+      "direct_points": 1,
+      "rag_points": 1,
+      "delta": 0,
+      "direct_low": 1,
+      "direct_high": 1,
+      "admitted_passages": 3,
+      "flags": [],
+      "attribution": "Both correct; complementary passages connect the route endpoint and state."
+    },
+    {
+      "item_id": "19.2",
+      "max_points": 1,
+      "direct_points": 0,
+      "rag_points": 1,
+      "delta": 1,
+      "direct_low": 0,
+      "direct_high": 0,
+      "admitted_passages": 1,
+      "flags": [],
+      "attribution": "Gain: an admitted passage explicitly identifies the requested general; direct response named a different associated figure."
+    }
+  ],
+  "method": "Official CKE item rules, one evaluator-only human-style agent pass; semantic equivalents accepted. Grades frozen before arm key opened. No answer-key text included here.",
+  "promotion": false,
+  "limitations": [
+    "Known selected six-item validation panel, not full exam or unseen evaluation.",
+    "Same-model sampling defaults were omitted, not fixed; no causal effect-size claim.",
+    "One direct terminology precision flag gives direct2–3/6; RAG4/6 remains above it but harms one previously correct item.",
+    "Literal span validation establishes faithful quoting, not relevance or correct interpretation."
+  ],
+  "answer_exports": {
+    "direct": {
+      "path": "agentsLog/kwiscion/model-answers/fullwiki-filtered-rag-v2-direct.answers.json",
+      "sha256": "da88c99e438a540c5e6b98e97738feaac4fac80ad9f898a8a4fe5b1ebff9bc86",
+      "items": 6
+    },
+    "filtered": {
+      "path": "agentsLog/kwiscion/model-answers/fullwiki-filtered-rag-v2-filtered.answers.json",
+      "sha256": "32d942459727a46580f82c52f1af45742029ca737715605f92202029fd8e365b",
+      "items": 6
+    }
+  }
+}

@@ -6,7 +6,7 @@ The supplied **37-item organizer mock is verified** through the actual adapter a
 
 Current complete corrected-input result: **Gemma native thinking39/60** (31/45 nonessay +8/15 essay), all40 answers complete with zero placeholders. Runtime:41 calls in15m48s. The one-pass grade has item-based judgment sensitivity37–42, not a confidence interval or organizer grade. Legacy38/60 remains separate; changed inputs prevent a crop-only causal claim. Target48/60. [Score and point losses](agentsLog/kwiscion/2026-09-27-corrected-gemma40-grade.md) · [Runtime evidence](agentsLog/kwiscion/2026-09-27-corrected-gemma40-result.md).
 
-The corrected full Qwen run scored **36/60 = 33/45 nonessay +3/15 essay**: stronger nonessay results, but no overall promotion. [Score comparison](agentsLog/kwiscion/2026-09-27-corrected-qwen40-grade.md). Essay branching produced an11/15 draft but selected6/15; that rewriting selector is rejected. A generic coverage prompt improved a separate matched essay pair from8/15 to10/15; [evidence](agentsLog/kwiscion/2026-09-27-essay-coverage-comparison.md). [Frozen comparison](agentsLog/kwiscion/2026-09-27-essay-branching-comparison.md). Full Polish Wikipedia now has **1,587,721 articles / 2,729,746 passages** indexed in [#184](https://github.com/kwiscion/machinekind-matura/issues/184); filtered retrieval, evidence-led essays and three-view image reasoning are the next tests. **Development freezes08:00 Warsaw;08:00–11:00 is final checks/execution/submission.**
+The new full Qwen coverage-prompt run ([#95](https://github.com/kwiscion/machinekind-matura/issues/95)) scored **40/60** (32+8):40/40 answers,44calls in28minutes, all4timeouts recovered. It is the provisional final choice, narrowly ahead of Gemma39; the48/60 target is not reached. Its separate11/15 essay did not repeat. Full Polish Wikipedia retrieval covers1,587,721articles; filtered RAG scored4/6 versus direct3/6, with two gains and one regression. Three-view images fell4/9→3/9. These additions are not promoted. Consult the compact plan for current decisions. **Development freezes08:00 Warsaw;08:00–11:00 is final checks/execution/submission.**
 
 The3-epoch essay LoRA is parked:2/16 complete versus16/16 control, with control winning both complete content comparisons. [Frozen unmask](agentsLog/kwiscion/2026-09-27-eval16-unmasked-comparison.md). No further training is authorized without new evidence.
 
@@ -18,7 +18,7 @@ The organizer allows **8 GB + 10% across all submitted model weights together**.
 | Structured prompts; one fast grading pass | Root Sol | [#80](https://github.com/kwiscion/machinekind-matura/issues/80) |
 | Per-topic essay drafts and same-model selection preparation | Root Sol | [#168](https://github.com/kwiscion/machinekind-matura/issues/168) |
 | CPU failure-pattern/prompt hypotheses | @Pewciu6; claim pending | [#163](https://github.com/kwiscion/machinekind-matura/issues/163) |
-| Three-view image descriptions and matched control | @Bukareszt; active | [#178](https://github.com/kwiscion/machinekind-matura/issues/178) |
+| Three-view image descriptions and matched control | @Bukareszt delivered; root Sol grading | [#178](https://github.com/kwiscion/machinekind-matura/issues/178) |
 | CPU final runtime integration review | @ljaniec; claim pending | [#151](https://github.com/kwiscion/machinekind-matura/issues/151) |
 | Native-thinking Qwen versus Gemma comparison | @kwiscion + Sol | [#95](https://github.com/kwiscion/machinekind-matura/issues/95) |
 | CPU final answer-package audit | @semberecki; claim pending | [#165](https://github.com/kwiscion/machinekind-matura/issues/165) |
@@ -26,7 +26,7 @@ The organizer allows **8 GB + 10% across all submitted model weights together**.
 
 The [recovery runtime guide](agentsLog/kwiscion/final-package-prep/RECOVERY_RUNTIME.md) documents larger context/output budgets, up to three recovery retries, preserved candidates, no blank answers, and a60/120-minute deadline. The [full rehearsal](agentsLog/kwiscion/2026-09-27-champion-rehearsal-result.md) completed46calls in about20minutes, recovered all3 failed attempts, and verified65,536 context, offline isolation, packaging and cleanup. Inference/recovery required no external agent intervention. The [older Sunday runbook](agentsLog/kwiscion/SUNDAY_OPERATOR_RUNBOOK.md) preserves the fallback.
 
-For execution, read [AGENTS.md](AGENTS.md), [source/split rules](SOURCE.md) and the current issue. **Requesting final questions freezes all team projects:** commit code, prompts and settings first. Final inference is offline; May 2025 remains sealed. No fine-tuned candidate is qualified yet. Assignment alone does not start a worker; the old overnight heartbeat remains paused.
+For execution, read [AGENTS.md](AGENTS.md), [source/split rules](SOURCE.md) and the current issue. **Requesting final questions freezes all team projects:** commit code, prompts and settings first. Final inference is offline; May2025 remains sealed. No fine-tuned candidate is qualified yet. The existing coordination heartbeat is active every15minutes through08:00; assignment alone does not start a worker.
 
 The portable [inference runner](docs/inference.md) accepts JSONL records with `id`, `prompt` and optional `images`. A CPU dry run:
 

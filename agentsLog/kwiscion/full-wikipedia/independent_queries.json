@@ -1,0 +1,12 @@
+[
+  {"query":"restauracja Meiji 1868 cesarz", "expected_topic":"Restauracja Meiji / cesarz Meiji", "fact_to_locate":"restoration in1868"},
+  {"query":"edykt nantejski 1598 Henryk", "expected_topic":"Edykt nantejski", "fact_to_locate":"HenryIV and1598"},
+  {"query":"unia kalmarska 1397 Małgorzata", "expected_topic":"Unia kalmarska", "fact_to_locate":"1397 and Scandinavian union"},
+  {"query":"pokój westfalski 1648 Münster Osnabrück", "expected_topic":"Pokój westfalski", "fact_to_locate":"1648 treaties and their cities"},
+  {"query":"rewolucja goździków 1974 Portugalia", "expected_topic":"Rewolucja goździków", "fact_to_locate":"Portuguese revolution in1974"},
+  {"query":"bitwa pod Hastings 1066 Wilhelm", "expected_topic":"Bitwa pod Hastings", "fact_to_locate":"1066 andWilliam"},
+  {"query":"konferencja Bandung 1955", "expected_topic":"Konferencja wBandungu", "fact_to_locate":"1955 conference"},
+  {"query":"James Watt maszyna parowa patent 1769", "expected_topic":"James Watt / maszyna parowa", "fact_to_locate":"Watt patent in1769"},
+  {"query":"restauracji Meiji w Japonii", "expected_topic":"Restauracja Meiji", "fact_to_locate":"inflected query still reaches restoration"},
+  {"query":"edyktem nantejskim tolerancja", "expected_topic":"Edykt nantejski", "fact_to_locate":"inflected query still reaches edict"}
+]

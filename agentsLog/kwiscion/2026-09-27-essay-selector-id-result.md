@@ -1,0 +1,9 @@
+# Strict-ID selector and parser-repair replay
+
+The model chose candidate-B, the already saved topic1 draft scoring11/15 [11,12], but surrounded its JSON with a code fence. The original strict parser rejected that presentation and exported the exact direct control8/15. That original8-point export and its receipt remain unchanged.
+
+Root approved a generic serialization repair: accept one optionalJSON fence around exactly one object, still rejecting prose, multiple objects/fences, unknown IDs, extra keys and duplicate keys. Four focused CPU tests pass. Replaying the SAME immutable final response with parser SHA256 `0eb9381ca5b00a5f3dc7a2fd58f3f6a6ce8a92a4a57156dc3416b791c13ba281` exports the exact saved draft SHA256 `b864be779647ab37004294810bc33724069909471654779d0a45d43bdf9513a7`. No rewriting, new inference or new grading occurred. Its11/15 is an exact-hash mapping to the earlier frozen masked grade, explicitly a parser-repair replay, not an independent rerun score.
+
+The actual selector used1call/32,768reserved output tokens and ended02:53:30UTC, exit0. Model-worker cleanup verified; GPUempty. Owned idle sentinel78353/start3607846 was removed02:55:31UTC, restoring absent service. Private194,080-byte archive SHA256 `3e8c4ca7a823fac83657aba0e9422709aa11c206f1008a742ed1973af017ea83` is verified locally; no weights/credentials backed up. All79 member sizes/hashes now match locally. The normal sequential receipt retry succeeded after a transient Brev-managed SSH configuration/network error; no credential/config edits were made.
+
+This single known-task diagnostic supports separating choice from rewriting. Future integration must propagate candidate statuses and reject partial/placeholder drafts; all four candidates in this experiment were explicitly verified complete. It does not establish full-exam improvement.

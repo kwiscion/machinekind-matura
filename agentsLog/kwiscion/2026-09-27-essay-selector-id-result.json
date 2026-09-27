@@ -1,0 +1,62 @@
+{
+  "status": "TERMINAL_WITH_CPU_PARSER_REPAIR_REPLAY",
+  "actual_runtime": {
+    "calls": 1,
+    "requested_tokens": 32768,
+    "operator_exit_code": 0,
+    "terminal_utc": "2026-09-27T02:53:30.469232+00:00"
+  },
+  "original_frozen_export": {
+    "receipt": {
+      "mode": "invalid_selection_direct_fallback",
+      "selected_candidate_id": "candidate-A",
+      "answer_sha256": "91004e8a725c5c6c5274709870471ebcbcd369a8cb22288871736c36fdbec553",
+      "selector_answers_sha256": "16badc023f940f11a846377fb1762cafd9f2eee71863c0f9942fdf680a85fe0f",
+      "output_sha256": "13cf7a95d3dfd9eaad469a891cf01c8e751685ffc70c409c5a49c82a0a8e102f",
+      "rewritten": false
+    },
+    "mapped_points": 8,
+    "artifact_unchanged": true
+  },
+  "parser_repair_replay": {
+    "receipt": {
+      "mode": "strict_id_exact_saved_export",
+      "selected_candidate_id": "candidate-B",
+      "answer_sha256": "b864be779647ab37004294810bc33724069909471654779d0a45d43bdf9513a7",
+      "selector_answers_sha256": "16badc023f940f11a846377fb1762cafd9f2eee71863c0f9942fdf680a85fe0f",
+      "output_sha256": "ae7f12951efe9ed24c011bc4a3fd73393bc6d66474ee8fc67d3c1b144f77486f",
+      "rewritten": false,
+      "parser_sha256": "0eb9381ca5b00a5f3dc7a2fd58f3f6a6ce8a92a4a57156dc3416b791c13ba281"
+    },
+    "mapped_points": 11,
+    "low": 11,
+    "high": 12,
+    "topic": 1,
+    "body_words": 401,
+    "new_model_calls": 0,
+    "new_grading_passes": 0,
+    "not_an_independent_rerun": true
+  },
+  "frozen_grade_sha256": "2069ff25522e6d87a0b76ad20aae8308f947d60ec106c8ec68acde69709d3f81",
+  "model_final_only": "```json\n{\"candidate_id\": \"candidate-B\"}\n```",
+  "cleanup": {
+    "status": "OWNED_IDLE_BASELINE_REMOVED_ABSENT_STATE_RESTORED",
+    "utc": "2026-09-27T02:55:31.043196+00:00",
+    "owned_pid": 78353,
+    "start_ticks": "3607846",
+    "port11436": "unused",
+    "unowned_service_changes": 0
+  },
+  "backup": {
+    "archive_sha256": "3e8c4ca7a823fac83657aba0e9422709aa11c206f1008a742ed1973af017ea83",
+    "bytes": 194080,
+    "weights_backed_up": false,
+    "per_file_inventory_validation": "PASS",
+    "verified_files": 79
+  },
+  "limitations": [
+    "One known validation essay and four already-scored saved candidates.",
+    "The serialization repair is generic and CPU-tested, but replay is not an independent new generation.",
+    "Future generic integration must propagate and reject partial/placeholder candidate status, not assume all saved strings complete."
+  ]
+}
