@@ -10,6 +10,7 @@ The organizer allows **8 GB + 10% across all submitted model weights together**.
 |---|---|---|
 | Qualified recovery harness; final integration | @kwiscion + Sol | [#3](https://github.com/kwiscion/machinekind-matura/issues/3) |
 | Structured prompts; one fast grading pass | Root Sol | [#80](https://github.com/kwiscion/machinekind-matura/issues/80) |
+| Per-topic essay drafts and same-model selection preparation | Root Sol | [#168](https://github.com/kwiscion/machinekind-matura/issues/168) |
 | Claim-triggered offline fact-check preparation | @Pewciu6; claim pending | [#163](https://github.com/kwiscion/machinekind-matura/issues/163) |
 | Single-model essay LoRA pilot | @Bukareszt | [#117](https://github.com/kwiscion/machinekind-matura/issues/117) |
 | Structured-reasoning comparison | @ljaniec | [#151](https://github.com/kwiscion/machinekind-matura/issues/151) |
