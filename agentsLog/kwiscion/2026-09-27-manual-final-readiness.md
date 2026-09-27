@@ -10,7 +10,7 @@ The exact PowerShell entry point processed two original May2023 DEV items: one q
 - Validated answers reached the laptop at 10:02:39.987 Warsaw: **333.578 seconds (5m34s)** from local launch, including preparation and transfer.
 - Two nonblank answers, zero placeholders. Automatic direct essay-format recovery ran before RAG.
 - Essay RAG completed and its writer output was selected. Ordinary RAG completed its relevance checks; no evidence was admitted, so the exact direct answer was retained.
-- Ledger: 49 reservations and 49 completed events. The finite declaration allowed 164 attempts and 611,712 requested output tokens, with a 20-minute hard remote bound for this smoke. Actual usage is preserved in the private ledger.
+- Ledger: 49 reservations and 49 completed events, with 153,984 requested output tokens. The finite declaration allowed 164 attempts and 611,712 requested output tokens, with a 20-minute hard remote bound for this smoke. The remote compute rate proxy is approximately $0.262 at $3.28/hour, not a billing receipt.
 - Operator exit code 0; sentinel stopped successfully; post-run GPU process list empty. No external agent wrote or cleaned the answers.
 - Answer SHA256: `8d4b630757873e18236b61b83d4350afb993344a46dd6da4eca1a3618eb22bd7` (4,206 bytes).
 - Backup SHA256: `c2400571845803598f28186d30185798ee6449123fa56133735e32ea20da4d64` (13,725,928 bytes).
@@ -29,3 +29,5 @@ All 14 deadline-RAG regression tests passed. Independent tests covered both succ
 The final 40-file source inventory is `60d9eb9450fca56d57b5ce83eeb894ef62645b83958ec04f21bfe8ed2b58c493`. The only execution-source delta after the live smoke permits an explicitly requested resume to retrieve its completed backup after the original local time target; inference and dispatch are unchanged. The actual PowerShell resume returned identical answers without increasing the 49-call ledger. The original first-ready timing is retained in `first-validation.json`. Three inherited Python files have explicit CRLF checkout attributes to reproduce their qualified working-tree hashes.
 
 The direct full-exam baseline remains 40/60 in 27m58s. This two-item live smoke verifies integration, not a new full-exam score or a measured 65-minute full RAG run. Final-question access freezes all team development. The final source inventory, resume check and exact reviewed release revision are recorded with the final freeze declaration on issue3.
+
+The [operations receipt](manual-final-prep/READINESS.md) and [independent review](2026-09-27-manual-both-rag-independent-review.md) retain the detailed verification and provenance.

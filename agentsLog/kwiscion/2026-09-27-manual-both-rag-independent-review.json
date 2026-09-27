@@ -129,7 +129,7 @@
   },
   "limitations": [
     "CPU qualification is not a full-exam runtime or quality guarantee.",
-    "No new full rehearsal or grading. Actual PowerShell mixed DEV terminal fetch passed; Resume qualification pending.",
+    "No new full rehearsal or grading. Actual PowerShell mixed DEV terminal fetch and Resume integration passed.",
     "Not every item is guaranteed optional RAG.",
     "Startup/preflight failure before engine initialization can yield no answers.",
     "65-minute workflow target includes network and manual submission; not a measured guarantee."
@@ -184,7 +184,7 @@
     "verdict": "PASS",
     "launcher_sha256": "3ccecc66d690d9524339d5710cad96f2d941ce0b3c5e162a65d1217a12f9d08c",
     "cpu_tests": 8,
-    "real_resume": "Ops reports actual PowerShell Resume, unchanged answer hash and 49 calls",
+    "real_resume": "Actual PowerShell Resume exit0 reported by ops; independently verified downloaded archive SHA256 c2400571845803598f28186d30185798ee6449123fa56133735e32ea20da4d64 and terminal status unchanged49/49, unchanged answer SHA. Original readiness preserved in first-validation.json.",
     "exact_final_head": "pending"
   }
 }
