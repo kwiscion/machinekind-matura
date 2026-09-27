@@ -2,6 +2,8 @@
 
 The owner selected **Qwen3.5:9b with full-Wikipedia RAG for both ordinary questions and essays**. The final worker is `matura-pawel`. All development must stop before obtaining final questions. No agent is needed to operate the frozen runner.
 
+[Readiness evidence](../agentsLog/kwiscion/2026-09-27-manual-final-readiness.md) records the live smoke, resource verification and release limits. The final freeze declaration is on [issue3](https://github.com/kwiscion/machinekind-matura/issues/3).
+
 ## Run
 
 From PowerShell in this repository, after the readiness record confirms the freeze and you download the organizer package:
@@ -17,6 +19,8 @@ A directory containing `exam.json`, `answers-template.json` and linked images wo
 ```
 
 Outputs are under `agentsLog/kwiscion/private/final-runs/<runId>/`: `answers.json`, `status.json`, `terminal.tar.gz` and `run-state.json`. Resume reconnects without starting another model worker. Keep the computer awake and connected for automatic download.
+
+Keep `matura-pawel` running and leave its staged files intact. The source and index checks deliberately stop if the frozen files, host boot or index identity change. Existing WSL/Brev SSH authentication is already configured; no new credentials are needed for the verified path.
 
 Submit only the resulting `answers.json` through the organizer page. Keep the receipt. Do not edit model answers or change code, prompts or settings after final access.
 

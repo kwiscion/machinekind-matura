@@ -90,7 +90,7 @@ def resume(run):
  out=ROOT/run;state=json.loads((out/'run-state.json').read_text(encoding='utf8'))
  if state['phase']=='PREPARING':raise ValueError('Preparation was interrupted before a frozen package existed; no remote inference started. Inspect local run evidence.')
  return out,state
-def workflow(out,state):
+def workflow(out,state,explicit_resume=False):
  run=state['run_id'];statefile=out/'run-state.json'
  if state['phase'] in ('PREPARED','STAGING'):
   state['phase']='STAGING';atomic(statefile,state)
@@ -128,7 +128,7 @@ def workflow(out,state):
  print('Validated answers: '+str(out/'answers.json'),flush=True);print('Review status and submit this exact file manually; no submission was made.',flush=True)
  try:
   status=ssh('status',run);atomic(out/'status.json',status)
-  if status.get('backup') and time.time()<datetime.datetime.fromisoformat(state['local_target_utc']).timestamp()-120:
+  if status.get('backup') and (explicit_resume or time.time()<datetime.datetime.fromisoformat(state['local_target_utc']).timestamp()-120):
    transfer(HOST+':'+REMOTE+'/runs/'+run+'/terminal.tar.gz',wslpath(out/'terminal.tar.gz'))
    if sha(out/'terminal.tar.gz')!=status['backup']['sha256']:raise ValueError('Downloaded backup hash differs')
    extract_backup(out/'terminal.tar.gz',out/'backup')
@@ -137,6 +137,6 @@ def workflow(out,state):
  return 0
 def main():
  p=argparse.ArgumentParser();g=p.add_mutually_exclusive_group(required=True);g.add_argument('--exam');g.add_argument('--resume');p.add_argument('--started-utc');p.add_argument('--smoke',action='store_true');p.add_argument('--remote-minutes',type=int,default=55);a=p.parse_args()
- try:return workflow(*(resume(a.resume) if a.resume else prepare(a)))
+ try:return workflow(*(resume(a.resume) if a.resume else prepare(a)),explicit_resume=bool(a.resume))
  except Exception as exc:print('STOP: '+str(exc),file=sys.stderr);return 2
 if __name__=='__main__':raise SystemExit(main())

@@ -113,3 +113,8 @@ agentsLog/kwiscion/essay-rag-prep/source_builder.py -text
 agentsLog/kwiscion/essay-rag-prep/auxiliary_hook.py -text
 scripts/run-final.ps1 -text
 agentsLog/kwiscion/manual-both-rag-review/* -text
+
+# Inherited runtime pins were qualified against CRLF working-tree bytes.
+infer.py text eol=crlf
+scripts/Bukareszt/matura_package.py text eol=crlf
+agentsLog/kwiscion/offline_rehearsal.py text eol=crlf

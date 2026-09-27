@@ -1,6 +1,6 @@
 {
   "schema": "manual_final_frozen_sources_v1",
-  "utc": "2026-09-27T07:57:06.193052+00:00",
+  "utc": "2026-09-27T08:07:02.763259+00:00",
   "files": {
     "agentsLog/kwiscion/coverage-prep/prepare_coverage_exam.py": "3b002abad0cd228b0187f4806de86d685514b102c33466179e2bd5600ec7a82d",
     "agentsLog/kwiscion/deadline-rag-prep/deadline_hook.py": "e27cac3cb64a63f707bbabf885f5f8bbd732575cdaeb472f2ebaa7320130a37b",
@@ -29,7 +29,7 @@
     "agentsLog/kwiscion/full-wikipedia/wiki_index.py": "b9e5c2898f66cf565c29cb87bdd1fb32aa45c7e6647dd44e1c6e7f7cc62c1738",
     "agentsLog/kwiscion/manual-final-prep/freeze.py": "16dd12f25011bc200dc8aac0e70d0017311a1b79b5d9083579d49a3daf2d0b66",
     "agentsLog/kwiscion/manual-final-prep/index-proof.json": "c8bdb7944efdc9216753283dffb75901bcc6b3f7944bdb3351667b8c13ba2afe",
-    "agentsLog/kwiscion/manual-final-prep/launcher.py": "e65b2454439abb5df5fbf68c1a1a1accae660572c852ab273b6a3011b29a6ed0",
+    "agentsLog/kwiscion/manual-final-prep/launcher.py": "3ccecc66d690d9524339d5710cad96f2d941ce0b3c5e162a65d1217a12f9d08c",
     "agentsLog/kwiscion/manual-final-prep/remote_ops.py": "350993890e4bcb9aeedeb5c72fffeb72f9773e5e28e4862e4d20a8b22c85346d",
     "agentsLog/kwiscion/manual-final-prep/stage_remote.py": "c16c275b3be192f1144acbb80f91a28a01b6949d4a36643219dc526c64619d35",
     "agentsLog/kwiscion/manual-final-prep/weights-proof.json": "27f999955eb135ba1d66697ccfaac2721f42c3aef791889fa03c465d09b00d93",
