@@ -1,7 +1,7 @@
 #!/bin/bash
 # Outside-the-wave launcher: waits for the frozen, hash-posted start, then execs the wave detached from SSH.
 set -euo pipefail
-RUN=/ephemeral/mm-lora/eval16-run1
+RUN=/ephemeral/mm-lora/eval16-run2
 source "$RUN/wave.env"
 while [ "$(date +%s)" -lt "$WAVE_START_EPOCH" ]; do sleep 1; done
 T=$(( WAVE_DEADLINE_EPOCH - $(date +%s) ))

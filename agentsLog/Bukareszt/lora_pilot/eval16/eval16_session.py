@@ -4,7 +4,10 @@ Same server lifecycle as the pilot: a Popen child in the operator's process grou
 SystemExit so `finally` kills only the identity-checked owned server, and cleanup waits 3 s then KILL, inside the
 --kill-after grace. Every call is reserved in the durable wave ledger (fsync) BEFORE dispatch. The wave cap is
 --max-wave-calls; there are no retries and no warmups (--no-warmup). Per-request timeout comes from --request-timeout.
-A truncated or failed call is recorded as-is and never repeated.
+Recovery (root declaration #117 23:22Z/23:23Z): per item up to 4 attempts = initial + 3 retries (32768 -> 49152 only if the complete input fits -> 32768 -> 32768 bounded
+final-answer synthesis with the original input plus the longest preserved draft, explicitly marked fallible),
+retrying only on error/timeout/empty/length; earlier usable answers are preserved; all-failed items get an explicit placeholder label.
+Calls and requested tokens are capped per wave in the durable ledger; no attempt starts unless its timeout fits the arm deadline.
 
 Arms: A = unchanged export control, B = run3 merged candidate. Both use the identical nonthinking request/settings.
 Optional arm C = unchanged export with native thinking (--reasoning on, enable_thinking=true, larger cap).
@@ -17,6 +20,10 @@ R = Path('/ephemeral/mm-lora')
 SERVER = R / 'src/llama.cpp/build-cuda/bin/llama-server'
 PORT = 18117
 INPUT_SHA = '5979ee0b8e0e4f084cf6070f42d31892ee53c1f5485409b4fc5dac1266055a28'
+SYNTH_SUFFIX = ('\n\n---\nPoniżej znajduje się wcześniejszy, niekompletny szkic odpowiedzi. Może zawierać błędy: traktuj go ostrożnie '
+                'i weryfikuj fakty.\n\n[SZKIC]\n{draft}\n[/SZKIC]\n\nNapisz teraz jedno kompletne, finalne wypracowanie (400–500 słów) '
+                'na jeden wybrany temat, bez komentarzy wstępnych.')
+SYNTH_DRAFT_MAX_CHARS = 12000
 NORMALIZED_TEMPLATE_SHA = '6a1015c47ccfcfa67c3b772385bccee357a4d37c3cda37bd202e9047f391ab82'  # pinned HF template as served (lexer-normalized)
 
 
@@ -31,12 +38,13 @@ def sha_file(p):
     return h.hexdigest()
 
 
-def ledger_reserve(ledger, cap, entry):
+def ledger_reserve(ledger, cap, token_cap, entry):
     rows = [json.loads(l) for l in ledger.read_text().splitlines()] if ledger.exists() else []
-    reserved = sum(1 for r in rows if r['event'] == 'reserved')
-    if reserved >= cap:
-        raise SystemExit(f'ledger: {reserved} calls already reserved (cap {cap}); refusing')
-    rec = {'event': 'reserved', 'call_number': reserved + 1, 'utc': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()), **entry}
+    reserved = [r for r in rows if r['event'] == 'reserved']
+    tokens = sum(r.get('max_tokens', 0) for r in reserved)
+    if len(reserved) >= cap or tokens + entry['max_tokens'] > token_cap:
+        return None  # budget exhausted: caller records it, never dispatches
+    rec = {'event': 'reserved', 'call_number': len(reserved) + 1, 'utc': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()), **entry}
     with ledger.open('a') as f:
         f.write(json.dumps(rec) + '\n'); f.flush(); os.fsync(f.fileno())
     return rec['call_number']
@@ -69,6 +77,8 @@ def main():
     ap.add_argument('--run', type=Path, required=True)
     ap.add_argument('--out', type=Path, required=True)
     ap.add_argument('--max-wave-calls', type=int, required=True)
+    ap.add_argument('--max-wave-tokens', type=int, required=True)
+    ap.add_argument('--arm-deadline-epoch', type=int, required=True, help='no attempt starts unless its timeout fits before this')
     a = ap.parse_args()
     if a.out.exists():
         raise SystemExit('refusing overwrite')
@@ -122,23 +132,50 @@ def main():
             raise SystemExit('served template is not the pinned template')
         append_fsync(a.out, {'meta': meta})
         for row in rows:
-            body = {'messages': [{'role': 'user', 'content': row['prompt']}], 'max_tokens': arm_cfg['max_tokens'],
-                    'temperature': settings['temperature'], 'top_k': settings['top_k'], 'seed': settings['seed'],
-                    'chat_template_kwargs': {'enable_thinking': arm_cfg['enable_thinking']}}
-            n = ledger_reserve(ledger, a.max_wave_calls, {'arm': a.arm, 'id': row['id'], 'max_tokens': arm_cfg['max_tokens']})
-            rec = {'call_number': n, 'arm': a.arm, 'id': row['id'], 'request_sha256': sha_bytes(json.dumps(body, sort_keys=True).encode())}
-            t = time.monotonic()
-            try:
-                status, raw = http('POST', '/v1/chat/completions', body, timeout=arm_cfg['request_timeout_s'])
-                resp = json.loads(raw)
-                ch = resp['choices'][0]
-                rec.update(http_status=status, response_sha256=sha_bytes(raw), seconds=round(time.monotonic() - t, 2),
-                           finish_reason=ch.get('finish_reason'), text=ch['message'].get('content'),
-                           reasoning_chars=len(ch['message'].get('reasoning_content') or ''), usage=resp.get('usage'))
-            except Exception as exc:
-                rec.update(error=f'{type(exc).__name__}: {exc}'[:500], seconds=round(time.monotonic() - t, 2))
-            append_fsync(ledger, {'event': 'result', **{k: v for k, v in rec.items() if k != 'text'}})
-            append_fsync(a.out, rec)
+            attempts, final = [], None
+            for k, step in enumerate(arm_cfg['attempts'], 1):
+                if time.time() + step['request_timeout_s'] > a.arm_deadline_epoch:
+                    attempts.append({'attempt': k, 'skipped': 'arm wall budget'}); break
+                known_prompt = max([x['usage']['prompt_tokens'] for x in attempts if (x.get('usage') or {}).get('prompt_tokens')] or [len(row['prompt']) // 2])
+                if step.get('only_if_fits') and known_prompt + step['max_tokens'] > settings['ctx_size']:
+                    attempts.append({'attempt': k, 'skipped': 'complete input does not fit context'}); continue
+                content = row['prompt']
+                if step.get('synthesis'):  # bounded final-answer synthesis: original input + longest preserved draft, marked fallible
+                    drafts = sorted((x.get('text') or '' for x in attempts), key=len, reverse=True)
+                    if drafts and drafts[0].strip():
+                        content = row['prompt'] + SYNTH_SUFFIX.format(draft=drafts[0][:SYNTH_DRAFT_MAX_CHARS])
+                body = {'messages': [{'role': 'user', 'content': content}], 'max_tokens': step['max_tokens'],
+                        'temperature': settings['temperature'], 'top_k': settings['top_k'], 'seed': settings['seed'],
+                        'chat_template_kwargs': {'enable_thinking': step['enable_thinking']}}
+                n = ledger_reserve(ledger, a.max_wave_calls, a.max_wave_tokens, {'arm': a.arm, 'id': row['id'], 'attempt': k, 'max_tokens': step['max_tokens']})
+                if n is None:
+                    attempts.append({'attempt': k, 'skipped': 'wave call/token budget'}); break
+                rec = {'call_number': n, 'attempt': k, 'max_tokens': step['max_tokens'], 'synthesis_with_draft': content != row['prompt'], 'request_sha256': sha_bytes(json.dumps(body, sort_keys=True).encode())}
+                t = time.monotonic()
+                try:
+                    status, raw = http('POST', '/v1/chat/completions', body, timeout=step['request_timeout_s'])
+                    resp = json.loads(raw)
+                    ch = resp['choices'][0]
+                    rec.update(http_status=status, response_sha256=sha_bytes(raw), seconds=round(time.monotonic() - t, 2),
+                               finish_reason=ch.get('finish_reason'), text=ch['message'].get('content'),
+                               reasoning_chars=len(ch['message'].get('reasoning_content') or ''), usage=resp.get('usage'))
+                except Exception as exc:
+                    rec.update(error=f'{type(exc).__name__}: {exc}'[:500], seconds=round(time.monotonic() - t, 2))
+                append_fsync(ledger, {'event': 'result', 'arm': a.arm, 'id': row['id'], **{k2: v for k2, v in rec.items() if k2 != 'text'}})
+                attempts.append(rec)
+                if rec.get('http_status') == 200 and (rec.get('text') or '').strip() and rec.get('finish_reason') == 'stop':
+                    final = rec; break
+            usable = [x for x in attempts if (x.get('text') or '').strip()]
+            if final is not None:
+                fstatus, chosen = 'complete', final
+            elif usable:  # preserve the earliest usable (e.g. length-truncated) answer; counted separately
+                fstatus, chosen = 'partial', usable[0]
+            else:
+                fstatus, chosen = 'placeholder', None
+            append_fsync(a.out, {'item': True, 'arm': a.arm, 'id': row['id'], 'final_status': fstatus,
+                                 'text': chosen['text'] if chosen else '[PLACEHOLDER: no usable answer after recovery attempts]',
+                                 'finish_reason': chosen.get('finish_reason') if chosen else None,
+                                 'chosen_call_number': chosen['call_number'] if chosen else None, 'attempts': attempts})
     finally:
         try:
             if proc.poll() is None and (ident is None or (start_ticks(proc.pid) == ident['start_ticks'] and os.readlink(f'/proc/{proc.pid}/exe') == ident['exe'])):
@@ -151,11 +188,11 @@ def main():
             log.close()
             append_fsync(a.out, {'end': {'server_exit_code': proc.poll()}})
     done = [json.loads(l) for l in a.out.read_text().splitlines()]
-    calls = [r for r in done if 'call_number' in r]
-    ok = sum(1 for r in calls if r.get('http_status') == 200 and r.get('text'))
-    status = 'PASS' if len(calls) == 16 and ok == 16 else 'FAIL'
-    print(json.dumps({'arm': a.arm, 'status': status, 'calls': len(calls), 'ok': ok, 'length_truncated': sum(1 for r in calls if r.get('finish_reason') == 'length')}))
-    sys.exit(0 if status == 'PASS' else 1)  # any errored/empty call stops the wave (no retries)
+    items = [r for r in done if r.get('item')]
+    counts = {k: sum(1 for r in items if r['final_status'] == k) for k in ('complete', 'partial', 'placeholder')}
+    status = 'PASS' if len(items) == 16 else 'FAIL'  # partial/placeholder items are recorded and counted, not hidden
+    print(json.dumps({'arm': a.arm, 'status': status, 'items': len(items), **counts}))
+    sys.exit(0 if status == 'PASS' else 1)
 
 
 if __name__ == '__main__':

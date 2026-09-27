@@ -1,0 +1,11 @@
+2026-09-27T00:09:56Z [preflight] wave start=2026-09-27T00:09:56Z deadline=2026-09-27T01:09:46Z left=3590s
+2026-09-27T00:10:37Z [preflight] arms=A B call_cap=128 token_cap=4718592
+2026-09-27T00:10:37Z [arm_A] arm A attempts must start and finish before 2026-09-27T00:35:11Z
+{"arm": "A", "status": "PASS", "items": 16, "complete": 16, "partial": 0, "placeholder": 0}
+2026-09-27T00:12:54Z [arm_A] arm A done
+2026-09-27T00:12:54Z [arm_B] arm B attempts must start and finish before 2026-09-27T00:59:46Z
+{"arm": "B", "status": "PASS", "items": 16, "complete": 2, "partial": 2, "placeholder": 12}
+2026-09-27T00:55:46Z [arm_B] arm B done
+{"pack_sha256": "90211d5487fbb499bd64373a8f40f919d907eba6a9fa01a50ba5661ccb7dc7ff", "sealed_key_sha256": "b568c54c72d823b1af03981687029131e5631a5744803b7ae137c3016de53d00", "summary": {"A": {"n": 16, "in_400_500": 3, "preamble": 16, "both_topics": 0, "markdown": 0, "truncated": 0, "failed": 0, "ge_300": 16, "partial": 0, "placeholder": 0, "word_count_min_median_max": [346, 383, 411]}, "B": {"n": 16, "in_400_500": 0, "preamble": 4, "both_topics": 0, "markdown": 0, "truncated": 2, "failed": 12, "ge_300": 4, "partial": 2, "placeholder": 12, "word_count_min_median_max": [0, 0, 18029]}}}
+2026-09-27T00:55:46Z [blind_pack] ALL STAGES PASS
+2026-09-27T00:55:46Z [blind_pack] TERMINAL rc=0 left=840s
