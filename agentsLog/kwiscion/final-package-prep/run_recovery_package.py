@@ -24,8 +24,13 @@ def verify(root,m):
  n.need(n.sha(Path(__file__))==m['files']['run_recovery_package.py'],'Executing binding changed')
  for name,digest in n.PINS.items():n.need(m['files'].get(name)==digest,'Reviewed helper changed')
 
+def study_module(root):
+ return load('owned_study_binding',root/'study/study_binding.py')
+
 def preflight(root,fresh=True):
- m=n.read(root/'launch.json');n.need(m['schema']=='champion_recovery_v1','Schema')
+ m=n.read(root/'launch.json')
+ if m.get('schema')=='typed_stage_study_v1':return study_module(root).preflight(root,verify,fresh)
+ n.need(m['schema']=='champion_recovery_v1','Schema')
  r.validate_config(m['recovery']);n.need(m['max_seconds']==m['recovery']['minutes']*60,'Wall budget')
  n.need(m['context']==65536 and m['model']==n.MODEL and m['temperature']=='omitted','Controls')
  verify(root,m);helper,guard,rehearsal,adapter,inf=n.modules(root)
@@ -157,6 +162,7 @@ def recover_owned(root,m,helper):
  return {'mode':'recorded_identity_group','matched_pids':killed}
 
 def final_export(root,m,cases,package):
+ if m.get('schema')=='typed_stage_study_v1':return study_module(root).final_export(root,m,cases,validate_final)
  out=root/'results';binding=n.read(out/'engine/binding.json') if (out/'engine/binding.json').exists() else None
  if binding:
   states=r.load_state(out/'engine',cases,binding)
@@ -185,9 +191,11 @@ def inside(root,m,package,cases,parent,fd,host_net):
  proof=rehearsal.network_proof(host_net);n.write(out/'network-proof.json',proof)
  runtime=OwnedRuntime(root,m,parent,proof)
  try:
-  r.run(cases,package['template'],out/'engine',m['recovery'],runtime,dt.datetime.fromisoformat(m['deadline_utc']).timestamp(),faults=m['faults'])
+  if m.get('schema')=='typed_stage_study_v1':study_module(root).run(root,m,cases,runtime)
+  else:r.run(cases,package['template'],out/'engine',m['recovery'],runtime,dt.datetime.fromisoformat(m['deadline_utc']).timestamp(),faults=m['faults'])
  finally:
   runtime.response_terminal=False;runtime.quiesce(dt.datetime.fromisoformat(m['deadline_utc']).timestamp());final_export(root,m,cases,package)
+ if m.get('schema')=='typed_stage_study_v1':return 2 if n.read(out/'terminal.json').get('stop') else 0
  return 2 if n.read(out/'engine/answer-status.json').get('stop') else 0
 
 def execute(root,m,package,cases):
@@ -197,7 +205,9 @@ def execute(root,m,package,cases):
  try:
   n.need(guard.fingerprint(Path(m['binary']))['sha256']==guard.CANONICAL['runtime_binary_sha256'],'Runtime pin')
   weights=guard.verify_inventory(m['cache'],guard.native_inventory(m['cache'],guard.CANONICAL))
-  helper.workers({os.getpid()});rehearsal.isolation_probe();n.need(not rehearsal.api('ps',11436)['models'],'Original service must remain idle')
+  helper.workers({os.getpid()});rehearsal.isolation_probe()
+  if m.get('schema')=='typed_stage_study_v1':study_module(root).verify_original_idle(out,rehearsal,n)
+  else:n.need(not rehearsal.api('ps',11436)['models'],'Original service must remain idle')
   n.write(out/'launch.json',m);n.write(out/'weights.json',weights);verify(root,m);n.remaining(m)
   receiver,sender=os.pipe();token=os.urandom(32);os.write(sender,token);os.close(sender)
   n.write(out/'supervisor.json',{'identity':n.process_identity(os.getpid(),helper),'guardian':n.process_identity(os.getppid(),helper),'launch_sha256':n.sha(out/'launch.json'),'weights_sha256':n.sha(out/'weights.json'),'challenge_sha256':hashlib.sha256(token).hexdigest()})
