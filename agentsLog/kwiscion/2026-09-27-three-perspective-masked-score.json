@@ -1,0 +1,153 @@
+{
+  "schema": "one_pass_masked_visual_score_v1",
+  "head": "14f69be6762f45f0efbbca3620c382addb52ea48",
+  "masked_packet_sha256": "1d6327f6ca1b52c309444e12bf17721648857b99ae773f198123cebcf5f0edda",
+  "frozen_before_key": true,
+  "review": "One fresh masked scoring pass; official private rules and all linked source-page images inspected. Ranges are scoring uncertainty, not confidence intervals. No prior arm scores used.",
+  "rows": [
+    {
+      "masked_id": "044d59b22170e2d2",
+      "source_item_id": "6",
+      "answer": "Drzeworyt ilustruje trójpodział społeczeństwa średniowiecznego (stanowy), w którym każda grupa miała przypisane inne role i przywileje. Struktura ta jest wyrażona poprzez trzy elementy graficzne:\n\n1. **Postacie w strojach liturgicznych i koronach** (odpowiadające hasłu „Ty módl się”) reprezentują duchowieństwo oraz możnowładców, czyli stan wyższy, który cieszył się przywilejami i nie musiał pracować fizycznie.\n2. **Postacie w zbrojach i z mieczami** (odpowiadające hasłu „Ty ochraniaj”) symbolizują rycerstwo, czyli stan wojskowy odpowiedzialny za obronę kraju i porządek.\n3. **Postacie wykonujące prace fizyczne** (odpowiadające hasłu „A ty pracuj”) przedstawiają chłopstwo, czyli stan trzeci, który stanowił podstawę ekonomiczną społeczeństwa i wykonywał ciężką pracę na roli.",
+      "error": null,
+      "answer_sha256": "5ae1867af5e68b09ca77a0dd1e2a19edff52708eed024ce423f0aa541d8345d1",
+      "points": 2,
+      "low": 1,
+      "high": 2,
+      "max_points": 2,
+      "reason": "Identifies clergy, armed protectors and working peasants using three visual groups and higher-status privileges. Clergy/nobility conflation makes the lower bound one."
+    },
+    {
+      "masked_id": "143d0c085526109d",
+      "source_item_id": "25",
+      "answer": "Rysunek satyryczny przedstawia krytykę ówczesnego systemu politycznego i społecznego, w którym jednostka (reprezentowana przez mężczyznę w stroju oficjalnym) jest całkowicie podporządkowana strukturze państwa lub ideologii. Element graficzny „S.O.N.D.A.” (prawdopodobnie nawiązujący do konkretnej organizacji lub hasła politycznego) oraz fakt, że postać znajduje się wewnątrz lub pod „siatką” (prawdopodobnie symbolizującą kontrolę lub ograniczenie wolności), sugeruje uwięzienie w systemie. Mężczyzna trzymający miotłę może symbolizować trybik w maszynie lub osobę wykonującą narzucone zadania, podczas gdy jego postać jest „uwięziona” w ramach graficznych. Kontekst historyczny (prawdopodobnie okres międzywojenny lub wczesne lata PRL, zależnie od dokładnego źródła) wskazuje na krytykę biurokracji, konformizmu lub opresyjności aparatu władzy, który ogranicza wolność osobistą i zamyka jednostkę w ramach narzuconych przez system struktur.",
+      "error": null,
+      "answer_sha256": "822128c631f16119524d6f5e0a8e335f4de189fc571867141aa779dc339c5582",
+      "points": 0,
+      "low": 0,
+      "high": 0,
+      "max_points": 3,
+      "reason": "Generic oppression account with invented SONDA reading and wrong/uncertain period; does not explain the depicted political action."
+    },
+    {
+      "masked_id": "160dc5e5746d2598",
+      "source_item_id": "18",
+      "answer": "Rozstrzygnięcie: Ententa.\nUzasadnienie: Na plakacie przedstawiono cztery postacie w mundurach reprezentujących różne kraje sojusznicze (m.in. żołnierza w hełmie charakterystycznym dla wojsk brytyjskich/francuskich oraz żołnierza w polskim stroju z peleryną), co symbolizuje jedność państw ententy. Walczą one z potworem z koroną na głowie, który jest personifikacją państw centralnych (szczególnie Cesarstwa Niemieckiego), mającym na celu ukazanie ich jako niszczycielskiej siły najeżdyngi.",
+      "error": null,
+      "answer_sha256": "926ebe4ca5f8090dc7cc34b233d382f946dff57f09a81d8e017113805e590413",
+      "points": 0,
+      "low": 0,
+      "high": 1,
+      "max_points": 1,
+      "reason": "Correct side, but invented crown and Polish figure; two securely interpreted graphical elements are not established. Broad allied-uniform reading is the only generous-credit uncertainty."
+    },
+    {
+      "masked_id": "28b4eb276068496e",
+      "source_item_id": "23.2",
+      "answer": "Rozstrzygnięcie: Nie.\nUzasadnienie: Plakat ze źródła 1 nawiązuje do pytania o zniesienie Senatu. Zgodnie z tabelą w źródle 2, rzeczywiste wyniki dla tego pytania (Pytanie 1) wynosiły 27%. Najwięcej głosów pozytywnych w rzeczywistych wynikach uzyskało Pytanie 3, które otrzymało 67% głosów „tak”.",
+      "error": null,
+      "answer_sha256": "ec1f49acc83107e246c1f28bb854914831eb5c05d0aa144ea0596d896ec0c47f",
+      "points": 1,
+      "low": 1,
+      "high": 1,
+      "max_points": 1,
+      "reason": "Correct negative decision connects the poster subject with the smaller actual percentage and higher third-question percentage."
+    },
+    {
+      "masked_id": "41fc5cf7a96cbe32",
+      "source_item_id": "14.1",
+      "answer": "Rozstrzygnięcie: Rozkaz cytowany w źródle 1. **nie dotyczy** działań wojennych ukazanych na mapie ze źródła 2.\n\nUzasadnienie: Źródło 1 opisuje „drugą wojnę polską”, która miała miejsce w XIX wieku (o czym świadczy bibliografia: „Wiek XIX w źródłach”). Tekst wspomina o bitwie pod Frydlandem oraz o przymierzu Rosji z Francją, co odnosi się do konfliktów napoleońskich (początek XIX wieku). Źródło 2 przedstawia mapę działań wojennych na ziemiach polskich w XX wieku (po 1914 roku), co potwierdzają daty naniesione na mapie (np. 1.01.1914, 1.07.1914) oraz nazwy miejscowości i przebieg frontów charakterystyczny dla I wojny światowej. Oba źródła dotyczą więc zupełnie innych epok historycznych.",
+      "error": null,
+      "answer_sha256": "fb552876547b538a61136c596a1436ae86eda5c9811c63e49ad8f7c8b558f35b",
+      "points": 0,
+      "low": 0,
+      "high": 0,
+      "max_points": 1,
+      "reason": "Negative decision rests on a false twentieth-century dating of the map."
+    },
+    {
+      "masked_id": "6db8d6add303387b",
+      "source_item_id": "25",
+      "answer": "Przesłanie rysunku opiera się na satyrze dotyczącej działań wywiadowczych lub „badawczych” (sondowania) prowadzonych przez służby lub organizacje w okresie przedwojennym (prawdopodobnie w kontekście działań dyplomatycznych lub szpiegowskich).\n\nElementy graficzne wspierają tę interpretację:\n1. **Napis „SONDA”**: Jest centralnym punktem grafiki, bezpośrednio nawiązując do aktu „sondowania” (badania, sprawdzania) informacji lub sytuacji.\n2. **Postać mężczyzny**: Przedstawiony w stroju formalnym (garnitur, krawat, okulary) sugeruje osobę o statusie oficjalnym, urzędnika lub agenta.\n3. **Miotła i płacha**: Mężczyzna trzymający miotłę oraz „odkurzający” lub odsłaniający fragmenty materiału (płach) symbolizuje proces „wyciągania” informacji, oczyszczania danych lub odkrywania ukrytych faktów.\n4. **Kontekst historyczny**: Rysunek nawiązuje do epoki, w której terminy takie jak „sonda” były używane w kontekście politycznym i wywiadowczym. Satyra punktuje wówczas popularne metody zdobywania informacji lub „przesiewania” opinii publicznej, przedstawiając proces ten w sposób humorystyczny – jako dosłowne „sprzątanie” lub „odkurzanie” konkretnych zagadnień.",
+      "error": null,
+      "answer_sha256": "896b32c8129659a1a5303db13b94683dac4719bb145c6d252e3a587b009c6bde",
+      "points": 0,
+      "low": 0,
+      "high": 0,
+      "max_points": 3,
+      "reason": "Invented prewar intelligence/SONDA account; visual nouns do not repair the incorrect political message."
+    },
+    {
+      "masked_id": "9a369740d7826a5c",
+      "source_item_id": "14.1",
+      "answer": "Rozstrzygnięcie: Nie, rozkaz cytowany w źródle 1. nie dotyczy działań wojennych ukazanych na mapie ze źródła 2.\n\nUzasadnienie: Rozkaz w źródle 1. odnosi się do konfliktów z początku XIX wieku (wojny napoleońskiej), o czym świadczą wzmianki o bitwie pod Frydlandem, Tylży oraz o \"żołnierzach spod Austerlitz\" i \"orężu francuskim\". Mapa w źródle 2. przedstawia natomiast działania wojenne z okresu przełomu wieków (po I wojnie światowej), co potwierdzają nazwy miejscowości (np. Łódź, Lublin), granice państwowe oraz oznaczenia jednostek i bitew z tego okresu (np. bitwa pod Radzyminem czy walki w okolicach Warszawy).",
+      "error": null,
+      "answer_sha256": "41189fe1bffbd841cadf9eb0d6da0a14f8aeaac3bce53a2dfaedc57eac56b563",
+      "points": 0,
+      "low": 0,
+      "high": 0,
+      "max_points": 1,
+      "reason": "Correct negative decision but wrong post-First-World-War map interpretation."
+    },
+    {
+      "masked_id": "ad9320a00103334b",
+      "source_item_id": "1",
+      "answer": "Rozstrzygnięcie: B\n\nUzasadnienie: Źródło 1 opisuje proces historyczny zjednoczenia Dolnego i Górnego Egiptu, którego symbolem było przyjęcie przez króla (Narmera) korony obu tych regionów. Relief B nawiązuje do tego procesu, ponieważ przedstawia postać centralną (króla) wspieraną przez dwie postacie boczne, które trzymają nad jego głową symbole korony Górnego i Dolnego Egiptu (płaskorzeźba przedstawiaca scenę \"dwóch królów\" lub symboliczne zjednoczenie władzy). Relief A przedstawia scenę o charakterze religijnym lub mitologicznym (obecność słońca i specyficznych bóstw), która nie odnosi się bezpośrednio do politycznego aktu zjednoczenia państwa opisanego w źródle 1.",
+      "error": null,
+      "answer_sha256": "b6e9f2daad7f87d5a6e0404309dd42dcd41e77d420c7de2701991d2f1900fb67",
+      "points": 1,
+      "low": 1,
+      "high": 1,
+      "max_points": 1,
+      "reason": "Correct relief and explicit connection between unification and the joint crown/coronation scene."
+    },
+    {
+      "masked_id": "c1da549bbeb080f3",
+      "source_item_id": "18",
+      "answer": "Rozstrzygnięcie: Ententa.\nUzasadnienie: Na plakacie przedstawiono potwora o głowie i korpusie przypominającym smoka, na którego głowie widnieje korona z krzyżem (symbol Cesarstwa Niemieckiego). Potwór ten jest przedstawiany jako zagrożenie dla żołnierzy, co ma na celu ukazanie państw centralnych (głównie Niemiec) jako agresora i niszczyciela.",
+      "error": null,
+      "answer_sha256": "b6e4c0fb0f8811e3c16a05c15009760272c00b7da230011c0ce451e3e3a4ff47",
+      "points": 0,
+      "low": 0,
+      "high": 0,
+      "max_points": 1,
+      "reason": "Correct side but invented crown identification and no second adequately interpreted visual element."
+    },
+    {
+      "masked_id": "d0eba28f783a5f46",
+      "source_item_id": "1",
+      "answer": "Rozstrzygnięcie: Relief B.\n\nUzasadnienie: Źródło 1 opisuje proces historyczny zjednoczenia Dolnego i Górnego Egiptu, którego symbolem było przyjęcie korony łączącej oba te regiony. Relief B przedstawia bóstwo (lub postać królewską) trzymające na głowie podwójną koronę (pschent), która jest symbolem zjednoczonego państwa egipskiego, co bezpośrednio nawiązuje do treści źródła 1. Relief A przedstawia scenę kultową z bóstwem o charakterze bardziej ogólnym.",
+      "error": null,
+      "answer_sha256": "8385ca1b9f7989e0498b94b405b2ee42bc83c095a00e22fce7618e584e27a32e",
+      "points": 1,
+      "low": 1,
+      "high": 1,
+      "max_points": 1,
+      "reason": "Correct relief and double-crown symbol explicitly connected to unification."
+    },
+    {
+      "masked_id": "f90a4a286d59e194",
+      "source_item_id": "6",
+      "answer": "Drzeworyt ilustruje trójpodział społeczeństwa średniowiecznego (tzw. *tripartite*), wyrażający wyraźny podział na sfery duchową i świecką. Strukturę tę obrazują trzy elementy graficzne: postacie w szatach liturgicznych (duchowieństwo), postacie w strojach roboczych (mieszczaństwo i chłopstwo) oraz centralna postać Chrystusa, która nadaje hierarchiczną strukturę całemu społeczeństwu. Podział ten jest podkreślony przez kontrast między górną częścią grafiki (sfera sacrum – modlitwa i ochrona) a dolną (sfera profanum – praca fizyczna).",
+      "error": null,
+      "answer_sha256": "0d45f02c385b79ab018118c861cd9718df6958c1ae6096e36d8ae719d2e994ec",
+      "points": 1,
+      "low": 1,
+      "high": 1,
+      "max_points": 2,
+      "reason": "Three graphical references and religious hierarchy are present, but the three-estate explanation omits the knightly estate and introduces townspeople; partial explanation only."
+    },
+    {
+      "masked_id": "fdaf3eed3af2e0aa",
+      "source_item_id": "23.2",
+      "answer": "Rozstrzygnięcie: Nie.\nUzasadnienie: Plakat ze źródła 1 odnosi się do pytania o zniesienie Senatu. W tabeli ze źródła 2, w wierszu „Wyniki rzeczywiste”, najwyższy procent głosów pozytywnych (67%) uzyskało pytanie nr 3, podczas gdy pytanie nr 1 (do którego nawiązuje plakat) uzyskało jedynie 27% głosów „tak”.",
+      "error": null,
+      "answer_sha256": "f4a22500e7209f2c87f8601f6c7562a2eb3c80ad33dcb2c6c73d06b2f1f8924d",
+      "points": 1,
+      "low": 1,
+      "high": 1,
+      "max_points": 1,
+      "reason": "Correct poster subject and comparison of actual referendum percentages."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "status": "CPU_AND_RUNBOOK_PASS",
+  "reviewed_file_sha256": {
+    "agentsLog/kwiscion/qwen-thinking-prep/stage_qwen_cache.py": "a97b76fbca1d43bff7c7907902c094ae2b4a79ff68407fc9a0f9b8db466ac27c",
+    "agentsLog/kwiscion/qwen-thinking-prep/test_stage_qwen_cache.py": "fcfce0c437bc85fd9aadfcc14840b9a584e8c22cb9e11491d81f32f57b50a37a",
+    "agentsLog/kwiscion/qwen-thinking-prep/GENERIC_PREPARATION.md": "2bfdf7351b1373bc8946d5351b11e874f51fadff034325f57b8510e32b1e37e6",
+    "docs/FINAL_RUN.md": "fa3f45a3912a67fa84071f4b8dabebd58c4459d989f447a778853b468eee8ba3"
+  },
+  "tests_passed": 4,
+  "model_calls": 0,
+  "remote_operations": 0,
+  "checks": [
+    "Exact reviewed profile, guard and shared staging hashes; no CLI override.",
+    "Only pinned five Qwen cache members,6594475420bytes; every destination byte/hash verified; development extras excluded.",
+    "Existing destination/report refused; destination/report resolved inside source refused before write.",
+    "Source contents unchanged; hardlinked immutable files counted fully and must not be edited afterward.",
+    "CLI works from repository tree with explicitly documented sibling dependencies; no injected globals or server/model invocation.",
+    "Final runbook uses generic coverage wrapper with arbitrary package IDs/count;120minute config supported,4Nrequests/147456Nrequestedtokens,600secondreserve.",
+    "One Qwen weight set, offline namespace/guardian/ownership/cleanup, freeze before final access, exact template export.",
+    "Fallback wording correctly includes explicit deadline/global-stop shortfalls; no claim all failures necessarily exhaust retries."
+  ],
+  "limitations": [
+    "CPU fixtures do not duplicate author-owned actual central staging; final inventory receipt remains its own evidence.",
+    "Reviewed documentation hashes are local raw bytes, not runtime execution pins; ordinary Git line-ending normalization is harmless.",
+    "120minute support checked against unchanged runtime configuration and existing preparation tests; no new GPU rehearsal."
+  ]
+}

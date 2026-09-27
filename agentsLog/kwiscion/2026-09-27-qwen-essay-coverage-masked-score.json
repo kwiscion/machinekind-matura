@@ -1,0 +1,160 @@
+{
+  "status": "FROZEN_MASKED_SINGLE_PASS",
+  "frozen_at_utc": "2026-09-27T03:07:20.823819+00:00",
+  "packet_sha256": "e76311596961ae9103ed5b435a311ad4ee872aeb78e062da7ecb0bf9369deebd",
+  "archive_sha256": "515ea606bbcd09546dcec2e8aeb17c9903272d6846a687c7623339851476e945",
+  "verified_archive_members": 53,
+  "original_exam_sha256": "e93b7488da7dfcf4044c906af9b28c1275a1b295838455ec3d88dcc2344aaac6",
+  "rubric_sha256": "95c275b9546611c1f8cd45b7973c436625fd0ee5643b778dcc8bb566db56cd4c",
+  "complete": 4,
+  "blank": 0,
+  "limitations": "Model and prompt author known; arm mapping and runtime answer records not opened before this freeze. Earlier experiment grades known, not used as score targets. Four repeated known-validation essays, not a full exam or organizer score. Ranges are judgment sensitivity, not confidence intervals. Whitespace body count removes the initial chosen-topic heading.",
+  "sources": {
+    "currency": "https://ikmk.smb.museum/object?id=18245129&lang=en",
+    "partition": "https://zpe.gov.pl/a/przeczytaj/DuH5YozJ1",
+    "law_primary": "https://www.ancienttexts.org/library/latinlibrary/ein.html",
+    "constitution": "https://www.sejm.gov.pl/KonstytucjaMarcowa.nsf/",
+    "pilsudski_constitution": "https://muzeumpilsudski.pl/wp-content/uploads/2018/07/Odrodzenie-Rzeczypospolitej-w-mysli-politycznej-Jozefa-Pilsudskiego-1918-1922.pdf",
+    "recognition": "https://czasopisma.ltn.lodz.pl/Studia-Prawno-Ekonomiczne/article/download/312/274/533",
+    "ottoman": "https://zpe.gov.pl/a/przeczytaj/DHTBK1R4p"
+  },
+  "items": [
+    {
+      "id": "5e71b24e2f8045d2",
+      "answer_sha256": "eb5cc0d125036cc92e8549379c52af8e02f925c37e5a5870232eb8b437cfeccf",
+      "answer": "Temat 1: Janowca stanowisko w kwestii państwa Karola Wielkiego jako najlepszego przykładu odnowienia tradycji imperium rzymskiego wydaje się historycznie uzasadnione, choć wymaga rozważenia specyfiki średniowiecznego kontekstu. Próbę taką można uważać za najbardziej udaną, ponieważ jego panowanie pozwoliło na syntezę dziedzictwa antycznego z nadchodzącą strukturą feudalną, tworząc stabilne państwo zachodnioeuropejskie do schyłka X wieku. Zdecydowana pozycja Karola Wielkiego w odnowieniu imperium rzymskiego widoczna jest przede wszystkim w sferze politycznej. Kluczowym wydarzeniem była koronacja 25 grudnia 800 roku przez papieża Leona III, która nadała władcę tytuł Imperatorum Romanorum. Odnawiając tym samym prawną kontynuację cesarstwów zachodnich, Karol przywrócił legitymizację władzy opartą na autorytecie Rzymu i Bożym przeznaczeniu w nowym wydaniu. Poprzez system missi dominici, czyli posłów cesarskich wysyłanych na terytorium kraju, monarcha mógł skutecznie nadzorować działania urzędników sądowniczych oraz zwołać zgromadzenia kapitułarne, co było analogią do instytucji administracyjnych Rzymu. System ten pozwalał na ograniczenie autonomii feudalnych panów lokalnych i zapobieganie anarchii, utrzymując jednolity porządek prawny w wielkim państwie składającym się z różnorodnych plemion germańskich oraz dawnych prowincji zachodnich Rzymu.\n\nWymiar społeczno-gospodarczy również dowodził na kontynuację rzymskich standardów gospodarczych i administracyjnych. Karol wprowadził jednolitą monetę, opartą na złotym solidzie, co stabilizowało handel międzynarodowy i wewnątrzpowszchny na swoich ziemiach. Rozbudowano szlaki handlowe, jak przez Alpy, oraz zregulowano ceny w miastach dzięki ustawodawstwu kapitułarnemu, regulującemu rolnictwo i rzemiosło. Decyzja o wspieraniu rzemiosła miejskiego przyczyniła się do ponownego wzrostu handlu, a nie tylko gospodarki wiejskiej, która dominowała wcześniej po upadku Cesarstwa Zachodniego. Poprzez rozporządzenia takie jak Capitulare de villis dbał o efektywność zarządzania dóbr ziemskich i podatkowych, co świadczyło o profesjonalnym podejściu do ekonomii państwowej oraz próbie przywrócenia porządku publicznego znającego z epoki Imperium.\n\nAspekt kulturowy był równie istotny dla trwałości tej idei cesarstwa w nowych warunkach. Ochrona klasycznych tekstów w języku łacińskim oraz rozwój szkół przykościelnych i dworskich, np. pod kierunkiem Einharda, pozwolił na zachowanie wiedzy antycznej, która mogłaby zginąć w ciemnym średniowieczu. Innowacja polegała na wprowadzeniu czystej i czytelnej karolińskiej minuscule, co ułatwiło kopiowanie rękopisów i przyspieszyło dyfuzję idei chrześcijańskich oraz filozoficznych w Europie. Zachowanie tradycji intelektualnych Rzymu pozwoliło na integrację duchową plemion zachodnich Europy wokół wspólnej tożsamości chrześcijańskiej, co było bezpośrednim odpowiednikiem idei Pax Christiana zaczerpniętą z okresu rzymskiego.\n\nWnioski płynące z analizy wskazują, że państwo Karola Wielkiego nie tylko odtworzyło strukturę Cesarstwa Rzymskiego politycznie i gospodarczo, ale także kulturowo zachowało dziedzictwo antyczne w nowej epoce. To pozwala uznać tezę o jego udanej próbie odnowienia imperium za prawdziwą, potwierdzając znaczenie Karola Wielkiego jako fundamentu cywilizacji zachodniej do XIII wieku.",
+      "complete": true,
+      "topic": 1,
+      "body_words": 403,
+      "aspects": [
+        3,
+        3,
+        3
+      ],
+      "aspect_order": "political,socioeconomic,cultural",
+      "narrative": 9,
+      "factual_error_count": 2,
+      "factual_deduction": 1,
+      "coherence": 3,
+      "coherence_reason": "Ordered thesis, aspect development and conclusion; over 300 body words. Language defects and factual errors are not separately penalized as incoherence.",
+      "central": 11,
+      "low": 10,
+      "high": 11,
+      "aspect_reasons": [
+        "Political: coronation by Leo III in 800 and missi dominici are connected to restored imperial legitimacy and administrative control; satisfactory, not a rich comparison with other revival attempts.",
+        "Socioeconomic: monetary coordination and Capitulare de villis are connected to exchange and estate management; developed despite the erroneous metal/coin claim.",
+        "Cultural: manuscript preservation, schools and Carolingian minuscule explain continuity and integration; satisfactory."
+      ],
+      "factual_errors": [
+        "Stable united western empire until the end of the tenth century is chronologically false: the Carolingian empire divided in 843.",
+        "The monetary reform is incorrectly based on a gold solidus; the reformed currency was silver deniers."
+      ],
+      "uncertainties": [
+        "Ambiguous Einhard school leadership and capitulary assemblies are not independently counted as definite additional errors. Janowca and inflected Latin are malformed wording, not invented extra events."
+      ]
+    },
+    {
+      "id": "33516b405f0c4269",
+      "answer_sha256": "a1917b3fc0252fbb4a43d014ac02eb84aed781b915b665961ef56cf133f00a18",
+      "answer": "Temat nr 3\n\nTeza, że niepodległość Polski zawdzięczała przede wszystkim przywództwu Józefa Piłsudskiego, jest w dużej mierze słuszna i wymaga uzasadnienia przez ujęcie aspektów militarnych, politycznych oraz dyplomatycznych. Zgadzam się z powyższym sformułowaniem, ponieważ to właśnie on odegrał decydującą rolę w momencie przełomowym po I wojnie światowej, zapewniając stabilność nowo powstałej Republice.\n\nAspekt militarny odnosi się bezpośrednio do sytuacji w październiku i listopadzie 1918 roku, kiedy Polska przestała być tylko deklaracją bez siły broniącej jej przed Rosją bolszewicką i niemiecką restauracją zaborczą. Piłsudski, powracając do Warszawy, przejął dowództwo nad rozbitymi wojskami polskimi i skutecznie zjednoczył je w strukturę Armii Polskiej pod koniec 1918 roku. Bez jego centralizacji dowodzenia oddziały Legionów oraz siły obozowe działałyby rozproszone, co z dużym prawdopodobieństwem doprowadziłoby do krachu obrony stolicy i utraty niepodległości militarnych. Jego umiejętności dowódcze nie tylko uratowały Warszawę przed bolszewikami w połowie 1920 roku, ale wcześniej zapewniły bezpieczeństwo granicy wschodniej dzięki walkom na polach Podkarpacia oraz rozmowom z Rosjami, co dało Polsce terytorialną podstawę do uznania. To militarna potęgą pozwoliła realizować ambicje dyplomatyczne, a nie odwrotnie, ponieważ bez twardych dowództw państw nie byłyby silne na arenie międzynarodowej.\n\nW wymiarze dyplomatycznym Piłsudski balansował między dwoma ośrodkami wpływu, łącząc działania w Paryżu z bezpośrednim kontaktem do Moskwie. Choć Roman Dmowski aktywnie pracował z Clemenceau, to Józef Piłsudski negocjował bezpośrednio z bolszewikami i prowadził rozmowy z innymi siłami międzynarodowymi w kwestii granic wschodnich. To on ugruntował pozycję państwa polskiego jako podmiotu godnego na arenie światowej, gdy inne działania zewnętrzne wymagały twardego fundamentu militarnego, który założył Piłsudski. Nawet Traktat Ryskiego z 1921 roku był wynikiem jego wcześniejszych sił wojskowych, które wymusiły przyznanie Polsce terenu wschodniego. Bez uznania armii polskiej przez zachód i wschód nie nastąpiłoby oficjalne potwierdzenie jej suwerenności w grudniu 1918 roku.\n\nAspekt polityczno-ustrojowy został zaadresowany przez reakcję Piłsudskiego na chaos po zaborach, kiedy Polska znalazła się pod wpływem rad i anarchii. Jako Naczelnik Państwa, on stworzył rządy tymczasowe i przywrócił porządek w administracji państwowej, co było konieczne dla funkcjonowania demokracji w warunkach przejściowych. Konstytucja marzowa 1921 roku, choć była kompromisem między silną władzą a parlamentem, wynikała z jego prób zmniejszenia wpływów monarchii na rzecz nowych struktur państwowych. Piłsudski ukształtował również system władzy wykonawczej, unikając chaosu politycznego po odzyskaniu niepodległości i wprowadzając mechanizmy stabilizujące w rządzie. Dzięki tym działaniom Polska nie rozpadła się na mniejsze jednostki terytorialne, które mogłyby stać się łatwym celem dla agresorów zachodnich i wschodnich.\n\nPodsumowując, mimo wkładu innych polityków w odrodzenie państwa, rola Józefa Piłsudskiego była kluczowa na każdym polu. Jego przywództwo militarne zabezpieczyło terytorium, działania dyplomatyczne ugruntowały międzynarodowe pozycje Polski, a umiejętności polityczne ocaliły strukturę państwową. Bez jego interwencji i determinacji Republika Polski mogłaby nie przetrwać lat 1918-1920, co w rezultacie uniemożliłoby skuteczne prowadzenie przez innych dyplomację.",
+      "complete": true,
+      "topic": 3,
+      "body_words": 443,
+      "aspects": [
+        3,
+        3,
+        1
+      ],
+      "aspect_order": "diplomatic,military,political_constitutional",
+      "narrative": 7,
+      "factual_error_count": 3,
+      "factual_deduction": 2,
+      "coherence": 3,
+      "coherence_reason": "Ordered thesis, aspect development and conclusion; over 300 body words. Language defects and factual errors are not separately penalized as incoherence.",
+      "central": 8,
+      "low": 7,
+      "high": 9,
+      "aspect_reasons": [
+        "Diplomatic: the military leverage to Riga settlement causal link is concrete enough for satisfactory credit; the surrounding personal-negotiation and recognition assertions are unreliable.",
+        "Military: centralization of forces in 1918 and Warsaw defence in 1920 are explained as conditions of survival; satisfactory rather than rich.",
+        "Political-constitutional: temporary government/administrative unity is mostly generic and the March Constitution explanation is wrong; superficial."
+      ],
+      "factual_errors": [
+        "Attributes direct personal negotiations with Bolsheviks to Pilsudski; the relevant negotiations were conducted through representatives, not his direct participation.",
+        "Places official confirmation of sovereignty by west and east in December 1918; international recognition was a sequence, with key Allied recognitions in 1919.",
+        "Treats the March Constitution as arising from Pilsudskis anti-monarchical reform drive; its parliamentary design limited the executive and was not his constitutional programme."
+      ],
+      "uncertainties": [
+        "Riga deriving partly from military leverage is not an error merely because its settlement differed from Pilsudskis federal aims. Podkarpacie wording is vague and not an additional proved error."
+      ]
+    },
+    {
+      "id": "8bf6024a56df435f",
+      "answer_sha256": "fe8cf0be6260ae09d32032e06920004621eb7e824e322cce9d277487f6e070bb",
+      "answer": "WYPRACOWANIE na temat nr 1.\n\nPaństwo Karola Wielkiego uznawane jest za najbardziej udaną próbę odnowienia tradycji imperium rzymskiego w średniowieczu, ponieważ jedynie ono pozwoliło na zjednoczenie rozfragmentowanej Europy pod sztandarem Rzymu i stworzenie modelu państwa chrześcijańskiego. Jego sukces był wielowymiarowy i objął aspekty polityczne, społeczno-gospodarcze oraz kulturowe, które trwają aż do dziś.\n\nW wymiarze politycznym Karol Wielki nie tylko połączył na swojej cześć ludy germańskie i Gallów, lecz przede wszystkim zyskał tytuł cesarza w 800 roku dzięki koronacji od papieża Leona III. Zdarzenie to symbolicznie nawiązywało do aksamitnego Cesarstwa Zachodniego, co umocniło autorytet władcy nie tylko na ziemiach frankijskich, ale także wśród chrześcijańskich państw Europy. Karolowi udało się wprowadzić jednolitą administrację i ograniczyć moc lokalnych hrabstw w imieniu cesarza dzięki misjom dominaci. Przykładowo zjednoczenie obszarów obecnej Francji oraz Niemiec przyczyniło się do powstania trwałego układu państwowego, który kształtował geopolitykę przez wieki. Władca kontynuował też linię Cesarstwa Rzymskiego poprzez wprowadzanie przepisów administracyjnych i prawniczych, takich jak Kapitularia, które regulowały życie społeczne niezależnie od lokalnych zwyczajów feudalnych, co było bezpośrednim nawiązaniem do rzymskiego prawa kodyfikowanego i centralizacji władzy.\n\nAspekt społeczno-gospodarczy wiązał się z reformami monetarnymi oraz infrastrukturą. Karol Wielki wprowadził nowy denarius, który zapoczątkował trwałe procesy walutowe na terenie Europy Zachodniej i po raz pierwszy zapewnił stabilność finansową dla handlu transgranicznego. Dzięki temu handlu i stabilizacji kursów wymiany przyczyniły się do ożywienia gospodarki, co zwiększyło dochody skarbu państwa. Uważne zarządzanie ziemią i uprawnieniami opodalnych hrabstw ułatwiło funkcjonowanie poddanych, a praca nad poprawą prawodawstwa zapewniała jednolite prawo na obszarze cesarstwa. To pozwoliło na ograniczenie chaosu feudalnego, który zaczął się nasilać po rozpadzie administracji centralnej. Stabilność finansowa i rozwój drogownictwa (restauracja dróg handlowych) wspierały handel między krajami, a dbałość o prawa chłopów budowała lojalność wobec władcy poprzez zapewnienie bezpieczeństwa życia codziennego.\n\nKultura była obszarem najgłębszego odrodzenia. Karol Wielki popularyzował nauki o zachodniej liturgii i klasycznej nauce, dzięki czemu powstał tzw. Renesans Księstwa. Wymiana wiedzy między uczonymi jak Alkuin z Yorku a francuskimi teologami przyczyniła się do standaryzacji pisarstwa łacińskiego i ochrony dzieł antycznych w opactwach Fulda czy St-Gall. Powstały skrytoria w klasztornych scriptoriach, gdzie kopowano księgi biblijne oraz dzieki filozofów Arystotelesa. Były to podstawy edukacji średniowiecznej, które umożliwiały naukę w szkołach katedralnych. Prace te zdołały zachować dziedzictwo kultury rzymskiej, które bez inicjatywy władcy mogło by się zagubić w erze barbarzyństwa. Nowe techniki pisma i czytelników łacińskiego zapewnili ciągłość europejskiej cywilizacji dla przyszłych pokoleń.\n\nPodsumowując, cesarstwo Karola Wielkiego było kluczowym momentem dla kształtowania się Europy średniowiecznej i jej tożsamości narodowej. Mimo końcowego rozpadu państwa po jego śmierci, dziedzictwo polityczne, gospodarcze i kulturowe tych reform przetrwało przez wieki, dowodząc, że jego próba odnowienia Rzymu była najbardziej skuteczna w historii schyłku antyku.",
+      "complete": true,
+      "topic": 1,
+      "body_words": 430,
+      "aspects": [
+        3,
+        3,
+        3
+      ],
+      "aspect_order": "political,socioeconomic,cultural",
+      "narrative": 9,
+      "factual_error_count": 1,
+      "factual_deduction": 1,
+      "coherence": 3,
+      "coherence_reason": "Ordered thesis, aspect development and conclusion; over 300 body words. Language defects and factual errors are not separately penalized as incoherence.",
+      "central": 11,
+      "low": 10,
+      "high": 12,
+      "aspect_reasons": [
+        "Political: 800 coronation, imperial authority, missi and capitularies form a developed legitimacy/administration argument.",
+        "Socioeconomic: denarius reform and exchange stability are linked to commerce and state revenue, with less well supported infrastructure/social claims; satisfactory.",
+        "Cultural: Alcuin, Latin standardization and preservation in named monasteries explain continuity of learning; sufficient development despite awkward terminology."
+      ],
+      "factual_errors": [
+        "Claims a uniform law throughout the empire overriding local customs; Carolingian legal plurality persisted and capitularies supplemented distinct laws (Einhard, chapter 29)."
+      ],
+      "uncertainties": [
+        "Renesans Ksiestwa is treated as a malformed label for the recognizable Carolingian renaissance, not a separately invented event. Claims about Aristotle copying and peasant protection are imprecise/unsupported, not automatically additional factual deductions."
+      ]
+    },
+    {
+      "id": "0ec0b5abf7d246be",
+      "answer_sha256": "0b1a9b0c8cc2e39c6dd581da3c1c497c5a2ce436647f603abc89f568a935a9fd",
+      "answer": "Wypracowanie na temat nr 2\n\nWojny z Imperium Osmańskim rzeczywiście stanowiły przyczynę dominującą w osłabieniu Rzeczypospolitej Obojga Narodów na przełomie XVII i XVIII wieku, co potwierdza tezę o ich kluczowym wpływie na upadek znaczenia państwa. Choć konflikty ze Szwecją oraz wewnętrzne spory polityczne były istotne, koszty podtrzymywania frontu południowego miały najpoważniejsze skutki ekonomiczne i militarne dla rozwoju państwowego. W aspekcie militarnym ciągłe styczne z armią turecką wymuszały utrzymywanie licznej armii lądowej, której utrzymanie było ogromnym kosztem dla skarbu państwa, w przeciwieństwie do innych wojen, gdzie opierało się na mniejszych siłach. Przykładem jest oblężenie Kamienia Podolskiego w 1673 roku czy walki pod Chocimem, które choć zakończyły się zwycięstwami militarnymi, pochłonęły ogromne zasoby ludzkie i materiałowe, tracąc na tym wielu doświadczonych oficerów i żołnierzy. Straty kadrowe w szeregach wojska osłabiły siłę zbrojną na innych kierunkach frontu, co utrudniało konfrontację ze Szwecją czy Rosją, w której też doszło do utraty terytoriów. W aspekcie politycznym wojna z Turcją generowała kryzys finansowy, który paraliżował działania rządowe. Skarb państwa był porysowany przez podatki podwójne i ekstraordinaryjne wymierzone w chłopstwo, co ograniczało władzę monarchy do rąk króla i sejmu, często prowadząc do konfliktów o finanse wojenne. Magnaci wykorzystywali sytuację polityczną do zwiększania swoich wpływów kosztem rozwoju państwowego, nie dopuszczając do centralizacji siły zbrojnej niezbędnej do walki o równowagę potęg, co widoczne było w konfederacjach sejmowych. W aspekcie społeczno-gospodarczym konflikt ten był najbardziej destrukcyjny dla obszarów nadwiślańskich i nadprypeckich. Gospodarka tych regionów uległa stopniowemu upadki z powodu braku inwestycji zagranicznych, wymogu wysokiego podatkowego oraz utrudnień w handlu z zachodem i wschodem. Rekwizycje zapasów żywnościowych przez wojska tureckie, ale też polskie, doprowadziły do zubożenia chłopstwa, co ograniczało jego zdolność do produkcji rolnej. Wpływ na znaczenie państwa był widoczny w utracie wpływów handlowych i pozycji wielkiej silnie w Europie Środkowej. Koszty utrzymania armii na wschodzie przewyższały zyski osiągane z rozwoju gospodarczego, co sprawiło, że państwo nie mogło finansować reform, jak modernizacja floty czy armii lądowej. W rezultacie konflikty te monopolizowały budżet państwa i odebrało mu możliwość koncentracji na innych zagrożeniach. Nawet gdy Jan III Sobieski odniósł triumf pod Wiedniem w 1683 roku, jego kampania wymagała tak dużych środków, że po wojnie państwo pozostało w kryzysie zadłużenia i deficycie. Całkowity koszt utrzymania tych militarnych wysiłków sprawił, że Rzeczpospolita stała się coraz bardziej zależna od obcych pożyczek i sojuszy, tracąc suwerenność finansową i polityczną, co ostatecznie wpłynęło na jej marginalizację w ówczesnym systemie europejskim.",
+      "complete": true,
+      "topic": 2,
+      "body_words": 387,
+      "aspects": [
+        3,
+        1,
+        1
+      ],
+      "aspect_order": "military,political,socioeconomic",
+      "narrative": 5,
+      "factual_error_count": 3,
+      "factual_deduction": 2,
+      "coherence": 3,
+      "coherence_reason": "Ordered thesis, aspect development and conclusion; over 300 body words. Language defects and factual errors are not separately penalized as incoherence.",
+      "central": 6,
+      "low": 4,
+      "high": 7,
+      "aspect_reasons": [
+        "Military: Chocim and Vienna plus the drain on troops/resources support a causal military argument, although the Kamieniec example is wrong and the comparative claim remains underproved.",
+        "Political: generic tax disputes and magnate obstruction, without a concrete demonstrated constitutional or diplomatic episode, remain superficial.",
+        "Socioeconomic: requisitions, production decline and trade loss are mostly generic; the asserted principal geography is wrong and no specific economic example establishes primacy over Swedish wars."
+      ],
+      "factual_errors": [
+        "Dates the fall/major siege of Kamieniec Podolski to 1673 rather than 1672.",
+        "Groups that Kamieniec episode among Commonwealth military victories; the fortress fell to the Ottomans.",
+        "Locates the principal Ottoman-war devastation in Vistula and Pripyat regions instead of the southeastern theatre; this confuses the geographic basis of the argument."
+      ],
+      "uncertainties": [
+        "Speculative foreign loans and comparison with smaller armies in other wars weaken support; they are not separately counted without adequate verification. Military aspect 1 versus 3 and the third error account for the sensitivity range."
+      ]
+    }
+  ]
+}

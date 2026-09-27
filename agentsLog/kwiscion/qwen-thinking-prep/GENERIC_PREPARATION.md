@@ -14,3 +14,14 @@ The closed profile fixes Qwen3.5:9b, context65,536, temperature1/top_p0.95/top_k
 The prepared manifest remains `PREPARED`. A separately declared, independently reviewed execution envelope must freeze aware UTC timestamps, authorization and actual cache/runtime pins before the existing `operator_recovery.sh` is used. Do not access final questions before the team-wide freeze.
 
 CPU regression: `python -X utf8 agentsLog/kwiscion/qwen-thinking-prep/test_prepare_qwen_exam.py`.
+
+Executable Qwen-only CPU cache staging (run from the repository tree, retaining the sibling `final-package-prep` helpers):
+
+```bash
+python agentsLog/kwiscion/qwen-thinking-prep/stage_qwen_cache.py /existing/native/cache /owned/FRESH-qwen-models --report /owned/FRESH-qwen-stage.json
+python agentsLog/kwiscion/qwen-thinking-prep/test_stage_qwen_cache.py
+```
+
+The wrapper pins the exact closed profile, shared staging implementation and inventory guard. It selects only the five native Qwen members, rejects an existing destination, verifies every copied byte/hash, and requires exactly6,594,475,420 bytes including metadata. Source development extras are excluded; source contents are not changed. Shared staging may hardlink immutable files on the same volume and counts each destination entry fully. Never edit either linked copy. No Ollama service or model call is made. Keep the report outside the model directory. Production pins have no CLI override; tiny synthetic fixtures mock inventory only in tests.
+
+For the final120-minute policy, use the promoted `../coverage-prep/prepare_coverage_exam.py --model qwen --minutes 120` entry point (the bare `prepare_qwen_exam.py` deliberately omits the coverage suffix); budgets remain4N attempts and147,456N requested tokens forN actual items, with the ten-minute reserve and complete original sources. Preparation is CPU-only. The declared operator supplies the absolute deadline, exclusive ownership, no-egress namespace and exact owned cleanup; final access and inference remain separately authorized.

@@ -1,0 +1,13 @@
+# Final evidence checkpoint — 27 September 2026
+
+The measured corrected Qwen coverage run scored40/60, narrowly above Gemma39/60. These are known-validation single-agent grades, not an organizer score or a robust generalization estimate. The generic coverage wrapper was independently checked against all40 initial measured payloads and the37-item organizer DEV mock. No new inference was performed for this publication.
+
+Full-Wikipedia filtered RAG scored4/6 against3/6 direct, with two gains and one regression; it is exploratory and not promoted. Three-view images scored3/9 against4/9. Factual candidate/referee export remained7/12. Original grades and model answer strings are preserved.
+
+Files named `*-launch.json`, `*-stage.json` and `*-prepared.json` are historical declaration/preparation snapshots. A `DECLARED_RUNNING` value in such a snapshot does not mean a worker is still running. Consult the corresponding terminal result/grade reports for completed status; the Qwen full40 grade records44 calls, all40 complete and verified cleanup. Failed and superseded attempts remain evidence rather than being silently rewritten.
+
+Publication contains original code/prompts, attribution/revision metadata, aggregate runtime evidence, model answers and our grading judgments. It excludes question packs, PNG/PDF sources, official keys, raw provider reasoning, databases and model weights. The full-Wikipedia source license and attribution requirements are documented in its README. Source/answer overlap screening found no15-word source-text match in the exported Qwen40 answers; this is a mechanical screen, not a general rights guarantee.
+
+Reviewed source/answer bytes are preserved with narrow Git attributes. Two documentation command examples replace infrastructure paths with generic placeholders. Two test-only portability fixes create a missing ignored temporary directory and skip the optional local37-item mock when it is not installed; mandatory synthetic coverage checks remain enabled. The original37-item check and independent full40 payload-equivalence evidence remain recorded. Runtime code and frozen experiment packages are unchanged.
+
+Clean integration-worktree checks passed: core/adapter13, evaluator33, full-Wikipedia7, filtered RAG13, brainstorm7, coverage study8, selector4, Qwen cache staging4, and generic wrapper3 mandatory tests (one optional mock check skipped here). The root workspace previously passed all4 wrapper tests with the local mock. Existing evaluator ResourceWarning is nonfatal. CI runs the repository core/adapter/evaluator suites separately on Linux.

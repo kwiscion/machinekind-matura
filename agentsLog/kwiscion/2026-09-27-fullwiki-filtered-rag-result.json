@@ -1,0 +1,131 @@
+{
+  "declared_manifest_sha256": "ef0a3249edf4025f2105a3682deda8c2cb1766be1f146fcaf7b91107e0db64f9",
+  "index_sha256": "5bf93ceca9715170f7a3b6497746cd00dac4dd80f7fe0b53fd0a3f981d88bb36",
+  "reservations": 53,
+  "completed_attempts": 53,
+  "failed_attempts": 5,
+  "requested_output_tokens": 1736704,
+  "known_prompt_tokens": 69009,
+  "known_generated_tokens": 129131,
+  "unknown_usage_calls": 5,
+  "max_calls": 192,
+  "max_requested_tokens": 7077888,
+  "query": [
+    {
+      "id": "3.2",
+      "query_fallback": true,
+      "passages": 5
+    },
+    {
+      "id": "11.2",
+      "query_fallback": false,
+      "passages": 5
+    },
+    {
+      "id": "12.1",
+      "query_fallback": false,
+      "passages": 5
+    },
+    {
+      "id": "17.2",
+      "query_fallback": false,
+      "passages": 5
+    },
+    {
+      "id": "5.2",
+      "query_fallback": false,
+      "passages": 5
+    },
+    {
+      "id": "19.2",
+      "query_fallback": true,
+      "passages": 5
+    }
+  ],
+  "admission": [
+    {
+      "id": "3.2",
+      "admitted": 0,
+      "removed_for_size": 0
+    },
+    {
+      "id": "11.2",
+      "admitted": 0,
+      "removed_for_size": 0
+    },
+    {
+      "id": "12.1",
+      "admitted": 0,
+      "removed_for_size": 0
+    },
+    {
+      "id": "17.2",
+      "admitted": 0,
+      "removed_for_size": 0
+    },
+    {
+      "id": "5.2",
+      "admitted": 0,
+      "removed_for_size": 0
+    },
+    {
+      "id": "19.2",
+      "admitted": 0,
+      "removed_for_size": 0
+    }
+  ],
+  "complete_direct_fallbacks": 0,
+  "overlap_flags": 0,
+  "stop": null,
+  "placeholder_slots": 0,
+  "stage_complete": {
+    "direct": 6,
+    "query": 6,
+    "judge": 30,
+    "final": 6
+  },
+  "status": "COMPLETED_NO_EVIDENCE_ADMITTED",
+  "operator_returncode": 0,
+  "terminal_utc": "2026-09-27T03:45:55.481310+00:00",
+  "declared_utc": "2026-09-27T03:11:45.600722+00:00",
+  "deadline_utc": "2026-09-27T04:11:45.600722+00:00",
+  "wall_seconds": 1727.5704498291016,
+  "execution_time_cost_estimate_usd": 1.5740086320665148,
+  "planning_rate_usd_per_hour": 3.28,
+  "actual_billing_unverified": true,
+  "deadline_margin_seconds": 1550.119412,
+  "source_and_image_payloads_verified": 53,
+  "index_articles": 1587721,
+  "index_passages": 2729746,
+  "judge_first_pass": {
+    "invalid_contract": 26,
+    "generation_failure": 3,
+    "valid_false": 1
+  },
+  "query_generation_used": 4,
+  "query_lexical_fallback_used": 2,
+  "all_final_prompts_bare_fallback": true,
+  "own_services_cleaned": true,
+  "gpu_empty_after": true,
+  "network_namespace_proof_preserved": true,
+  "model": "gemma4:12b-it-q4_K_M",
+  "model_digest": "4eb23ef187e2c5462566d6a1d3bbbc2f1346d0b4327cbb66d58fffbcc9b2b05c",
+  "context": 65536,
+  "saved_cache_bytes": 7556509301,
+  "backup_sha256": "906c2dc01d7b094e54c85ba19e9e2a3fb8fd26641fde4270360a43e61fbf9302",
+  "exports": {
+    "direct": {
+      "path": "agentsLog/kwiscion/model-answers/fullwiki-filtered-rag-direct.answers.json",
+      "sha256": "7b5e56edc4b59871f10c95d9b927d4d9bbad812f1f0f12c22c4489cda2adcb7a",
+      "items": 6
+    },
+    "filtered": {
+      "path": "agentsLog/kwiscion/model-answers/fullwiki-filtered-rag-filtered.answers.json",
+      "sha256": "7cbc82d27d25b40311a8bab3ad0bf69c6ac43b07c09aec2515b170a78e9d3884",
+      "items": 6
+    }
+  },
+  "grade": null,
+  "promotion": false,
+  "limitation": "Auxiliary judge contract failed; zero admitted evidence. Paired score differences cannot be attributed to RAG. Known selected validation panel; omitted sampling defaults not fixed."
+}

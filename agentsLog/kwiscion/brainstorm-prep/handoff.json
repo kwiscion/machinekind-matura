@@ -1,0 +1,42 @@
+{
+  "status": "PREPARED_NOT_AUTHORIZED",
+  "issue": 186,
+  "model": "qwen3.5:9b",
+  "files": {
+    "policy.py": "9eef04151dcd75fd6a407163fc90ba91c9d6ad110df1b92c16a91f44f2142068",
+    "test_policy.py": "c99b951f1daeffe1d7c78f8c33e0fe1e078bec401e0e3f9a4d5630df385deb78",
+    "test_wave.py": "4bd0d941d91ccf91c6cf2c51da3506730334859cad1eda455f7d4550481ae6ac",
+    "wave.py": "78f9b7a4ccafdff293adb3128bacfe16694a005f72d8e1909e724454184bb8db"
+  },
+  "prepared_wave_sha256": "f982167967570fe49b1b39bae02fac35e99d71f0c7e94c1c8059a1c33e7ae638",
+  "draft_manifest_sha256": "00a1425f90d5ace2f3f1fbff9164d753a99493281b73db3de40508f41c52bd11",
+  "source_exam_sha256": "e93b7488da7dfcf4044c906af9b28c1275a1b295838455ec3d88dcc2344aaac6",
+  "ids": [
+    "3.1",
+    "3.2",
+    "7",
+    "11.1",
+    "11.2",
+    "12.1",
+    "17.1",
+    "17.2",
+    "19.1",
+    "20.2"
+  ],
+  "primary_slots": 30,
+  "max_attempts": 120,
+  "max_requested_tokens": 4423680,
+  "max_seconds": 3600,
+  "cost_proxy_ceiling_usd": 3.28,
+  "cpu_tests": "7/7 PASS; actual20-item source-preserving Qwen dry preparation PASS",
+  "model_calls": 0,
+  "notes": [
+    "A is unchanged baseline; B privately compares three alternatives then emits only final.",
+    "Referee sees original complete source/images and two exact finals, with hash-derived opaque IDs and deterministic order.",
+    "No rewriting; invalid/fenced parsing handled by exact-ID parser, invalid falls back complete A then complete B.",
+    "Runtime mechanical retry validates ordinary answers, not selection semantic validity; invalid selector causes recorded CPU fallback without extra calls.",
+    "Inherited reviewed outer guardian/lock/cleanup; one global deadline; draft timeout reserves1200s for selector including600s shared recovery.",
+    "Original20 A/B answers retained for one-pass grading and oracle analysis.",
+    "CPU failure v1 relative path is preserved; v2 is superseded by v3 containing durable-draft recovery on interruption."
+  ]
+}
