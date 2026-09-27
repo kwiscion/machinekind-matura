@@ -68,3 +68,6 @@ Continuation of 2026-09-26-watcher-log.md. Same watcher instance 8e5e9ed0-1189-4
 - Root (01:06Z): PR #175 accepted; the 3-epoch candidate is rejected for deployment (2/16 complete, 2 runaways, 12 placeholders vs 16/16 control). Root Sol does the single PR #166 grading pass; the sealed arm key is to be handed over via the project host handoff only after that grade is frozen.
 - Next bounded task (CPU only): check whether a one-epoch / 12-step checkpoint exists; otherwise prepare the smallest exact one-epoch rerun/export plan (only epoch count changed from the audited 36-step run), with time/cost and files. No training or inference yet; the decision depends on whether the two completed trained essays show an argument benefit. If not, the adapter is parked and base-model test-time composition takes priority.
 - Relayed verbatim with an action list.
+
+## 03:35 — #117 one-epoch proposal posted (CPU only, not run)
+- No 12-step checkpoint exists (the driver saves only the final adapter), so a rerun is required. Worker posted a frozen, independently checked (PASS) proposal on #117 at 03:25: a 2-line driver diff (history step bound 36→12, `epochs=1`, driver sha `a64f5d70…044a`); everything else identical to run3; epoch 1 equals run3's first 12 groups. Awaiting root's declaration, which depends on the PR #166 grade of the two complete 3-epoch essays.
