@@ -1,0 +1,13 @@
+# Corrected-source Gemma40 quality evaluation — prepared
+
+**PREPARED only; no model calls authorized by this note.** Root must declare the exact fresh UTC start/deadline before execution. This is a quality evaluation on corrected source crops, not another fault-injection rehearsal.
+
+- All40May2024validation items/60points, exact source exam `e93b7488da7dfcf4044c906af9b28c1275a1b295838455ec3d88dcc2344aaac6`.21PNGassets/32references; unchanged non-image fields and exact answer-template bytes. QA contact sheets and unrelated source files are excluded from the generation package.
+- Pinned Gemma4/Ollama0.34.4, actual verified65,536context target, omitted sampling, normal existing essay route26 and current reviewed topic diagnostics. No RAG, zoom, new prompt policy, alternate route or injected fault.
+- Exact builder envelope:40×4=160attempts;40×(32,768×3+49,152)=5,898,240requested output tokens. One60minute wallclock,600second recovery reserve,420second maximum request walltime, planning ceiling$3.28at$3.28/h; billing unverified. Larger cap is used only when complete inputs fit. Preserve usable answers and all40IDs; report deadline exceptions/placeholders honestly.
+- Prepared manifest `58a0b3a9d37b97f60793eba03d548db748dcae0ac0b2a60353db1a5aa79e161d`; scheduler `628aa6b92b76e10540d8f43bf7f186bc5c6178eae526d296c149483051f292b0`; binding `54983970c8bc9bd8b84bc878383b254af8cb192be313320b793317e86b4aa392`; native adapter wrapper `60393fc61705efb8bdeaf8348ac6fd754bc8a4c0ad1efe142b7c6c39846cda6f`. [Machine-readable pins](2026-09-27-corrected-gemma40-launch.json).
+- Preparation uses the existing shared `prepare_recovery_package.py --essay-id26 --minutes60` without `--inject-faults`. Actual adapter/preflight validates all40rows and complete images. Fresh CPU staging verifies the original idle service, no GPU/worker conflict, available project lock, exact Gemma-only cache and full file hashes. Original service, previous runs and separate Qwen cache remain untouched.
+
+After independent review, stagingPASS and a separate root declaration, use the frozen package's existing `operator_recovery.sh PACKAGE --execute` once. No warmup or manual retry. First scored response rechecks full model digest/context. Back up raw/runtime/request evidence privately and export exact answer-only outputs.
+
+Report the complete new score and item deltas versus legacy38/60. Image inputs and topic diagnostics changed; do not attribute any score change solely to cropping. Neither an old score nor this preparation establishes the corrected-input score. Exam text, images, official keys and raw thinking remain private; May2025/final data remain sealed.

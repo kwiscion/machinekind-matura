@@ -1,0 +1,42 @@
+{
+  "status": "RUNNING",
+  "attempt": "v2 precision-only pre-call retry",
+  "prepared_manifest_sha256": "58a0b3a9d37b97f60793eba03d548db748dcae0ac0b2a60353db1a5aa79e161d",
+  "declared_manifest_sha256": "1ff96672ec8045613a596af888b147263ee07115e8e5672b5f4478afef5ee463",
+  "authorization": "https://github.com/kwiscion/machinekind-matura/issues/173#issuecomment-5851455119",
+  "declaration_post": "https://github.com/kwiscion/machinekind-matura/issues/173#issuecomment-5851461466",
+  "declared_utc": "2026-09-27T00:57:13.067213+00:00",
+  "deadline_utc": "2026-09-27T01:57:13.067213+00:00",
+  "deadline_extended": false,
+  "supersedes_zero_call_startup_manifest": "06f11ede409aa8bb53f053a637e7aaecaf4c9ca207c3c236667c12859cb9b3a2",
+  "historical_failure_report": "2026-09-27-corrected-gemma40-startup-failure.json",
+  "historical_failure_unchanged": true,
+  "failed_attempt_backup_sha256": "e2dc3baa7b1990a1cfc4645d56fb8c7d2b7f07fb951d47fb70edfb4b68581b86",
+  "actual_remote_declared_preflight_utc": "2026-09-27T01:00:16.820671+00:00",
+  "first_reservation_utc": "2026-09-27T01:01:01.692222+00:00",
+  "first_image_final": {
+    "id": "1",
+    "utc": "2026-09-27T01:04:24.828320+00:00",
+    "done_reason": "stop",
+    "prompt_tokens": 856,
+    "generated_tokens": 8607
+  },
+  "first_text_final": {
+    "id": "3.1",
+    "utc": "2026-09-27T01:05:08.705389+00:00",
+    "done_reason": "stop",
+    "prompt_tokens": 655,
+    "generated_tokens": 2883
+  },
+  "model_digest": "4eb23ef187e2c5462566d6a1d3bbbc2f1346d0b4327cbb66d58fffbcc9b2b05c",
+  "actual_loaded_context": 65536,
+  "latest_observed_utc": "2026-09-27T01:06:42.160194+00:00",
+  "completed_calls": 5,
+  "failed_calls": 0,
+  "reserved_calls": 6,
+  "max_calls": 160,
+  "max_requested_output_tokens": 5898240,
+  "max_seconds": 3600,
+  "injected_faults": false,
+  "scope": "Corrected40-item quality run; source crops, no RAG/zoom/new prompt policy"
+}

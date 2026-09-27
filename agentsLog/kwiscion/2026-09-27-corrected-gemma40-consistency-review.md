@@ -1,0 +1,7 @@
+# Corrected Gemma40: independent staged-manifest consistency review
+
+**PASS; no blocker in the prepared package.** Reviewed local manifest SHA `58a0b3a9d37b97f60793eba03d548db748dcae0ac0b2a60353db1a5aa79e161d` against the public stage receipt timestamped `2026-09-27T00:54:59.790619+00:00` and the independently reviewed crop package. Every pinned local package file matched its manifest hash. No repeated framework tests or remote/model calls were performed.
+
+The exact approved cropped exam/template are included: 40 unique IDs, 60 points, 21 PNGs and 32 references. Scheduler `628aa6b9...1f292b0`, native runner `60393fc6...46cda6f` and binding `54983970...4aa392` match the reviewed implementation. Bounds are 160 calls, 5,898,240 requested output tokens, 3,600 seconds, 420-second request limit, 600-second recovery reserve and 30-second finalization reserve, with no injected faults. The stage receipt records six eligible-cache files totaling 7,556,509,301 bytes, preserved original service, no competing worker, acquired project lock and verified backup; these remote facts were checked for consistency with the receipt, not independently re-probed here.
+
+Status is correctly PREPARED with declaration, deadline and authorization unset. Execution requires the root's fresh aware-UTC declaration and absolute deadline within the reviewed bounds; this review does not authorize a run or claim that it has started. Source-input changes remain distinct from earlier full-page score comparisons.
