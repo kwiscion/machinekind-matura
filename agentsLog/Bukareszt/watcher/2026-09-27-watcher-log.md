@@ -106,3 +106,8 @@ Continuation of 2026-09-26-watcher-log.md. Same watcher instance 8e5e9ed0-1189-4
 - Root's sole masked grade of #178 (PR #187 head `14f69be6`): direct 4/9 vs three-view 3/9 (item 6 dropped 2→1; both fail the map dating and the cartoon). Not promoted; PR #187 retained as evidence; no more GPU work.
 - Root's final integration dispatch (#3, 07:09): GPU experiments are terminal; freeze 08:00; Greg to provide a concise CPU-only final packaging audit on #3 (template IDs/schema, linked PNGs, complete inputs, no blank finals, no online dependency), without accessing the final package or launching inference. Measured fallback Gemma 39/60.
 - Relayed to the same worker with a stop-at-07:55 instruction.
+
+## 07:35 — final packaging audit posted on #3 (07:22)
+- CPU-only audit of `origin/main` @ `461a779` (root's recovery runtime and native package path) against Greg's `matura_package.py` contract, using public fixtures only (no final package, no inference, no GPU).
+- One actionable finding: `run_native_package.py:29-35` PINS hold CRLF working-tree hashes for `infer.py`, `scripts/Bukareszt/matura_package.py` and `agentsLog/kwiscion/offline_rehearsal.py`. On any LF checkout `prepare_native_package.py:52` raises "Reviewed dependency changed", so the final package can only be prepared on the Windows checkout that made the pins. Fix: prepare on that Windows checkout, or add scoped `eol=lf` attributes and switch to the LF hashes. The other checked items (template IDs/schema, linked PNGs, complete inputs, no blank finals, size limits, offline) had no blocker.
+- No shared files edited; the H100 is idle. Greg's work is complete before the 08:00 freeze.
