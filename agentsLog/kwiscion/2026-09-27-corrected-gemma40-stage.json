@@ -1,0 +1,15 @@
+{
+  "status": "STAGED_PREPARED",
+  "utc": "2026-09-27T00:54:59.790619+00:00",
+  "model_calls": 0,
+  "server_starts": 0,
+  "manifest_sha256": "58a0b3a9d37b97f60793eba03d548db748dcae0ac0b2a60353db1a5aa79e161d",
+  "stage_report_sha256": "fbc1d84dfcc0d761e8dc67f26c32c5e49c2f07ade59be3744f35f7425973d088",
+  "counted_bytes": 7556509301,
+  "files": 6,
+  "original_service_preserved": true,
+  "no_competing_worker": true,
+  "project_lock_acquired": true,
+  "backup_sha256": "6e4aa8c0c838a6aba4f90699aa9d120454d42ecb5b01dd0a1e8559c66e3f40aa",
+  "backup_verified": true
+}

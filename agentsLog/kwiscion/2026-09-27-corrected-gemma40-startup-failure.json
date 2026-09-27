@@ -1,0 +1,20 @@
+{
+  "status": "PRECALL_STARTUP_FAILURE_PRESERVED",
+  "declared_manifest_sha256": "06f11ede409aa8bb53f053a637e7aaecaf4c9ca207c3c236667c12859cb9b3a2",
+  "operator_started_utc": "2026-09-27T00:58:05.814341+00:00",
+  "operator_terminal_utc": "2026-09-27T00:58:05.892046+00:00",
+  "operator_returncode": 1,
+  "cause": "Remote Python guardian rejects seven fractional digits in ISO timestamp",
+  "error": "ValueError: Invalid isoformat string: '2026-09-27T01:57:13.0672135+00:00'",
+  "model_calls": 0,
+  "reservations": 0,
+  "results_directory_created": false,
+  "server_starts": 0,
+  "gpu_empty": true,
+  "original_service_preserved_idle": true,
+  "proposed_declared_utc": "2026-09-27T00:57:13.067213+00:00",
+  "proposed_deadline_utc": "2026-09-27T01:57:13.067213+00:00",
+  "deadline_extension": false,
+  "retry_authorized": false,
+  "remote_failed_archive_sha256": "e2dc3baa7b1990a1cfc4645d56fb8c7d2b7f07fb951d47fb70edfb4b68581b86"
+}
