@@ -1,0 +1,18 @@
+{
+  "status": "COMPLETED_BACKUP_VERIFIED",
+  "utc": "2026-09-26T23:53:11.432870+00:00",
+  "prepared_manifest_sha256": "d14ef2394d2511e87708e0e4b7f1c3680f225b11131939afd93bf973f9a3a96d",
+  "source_pages": 4,
+  "tiles": 16,
+  "slots": 8,
+  "image_references": 24,
+  "cache_files": 6,
+  "cache_bytes": 7556509301,
+  "model_calls": 8,
+  "server_starts": 1,
+  "stage_report_sha256": "fbc1d84dfcc0d761e8dc67f26c32c5e49c2f07ade59be3744f35f7425973d088",
+  "remote_stage_evidence_archive_sha256": "68f8dc11d450786affc54d25a0bea4f8ed44668230821defa1f33e008bb1e230",
+  "original_service_preserved": true,
+  "terminal_utc": "2026-09-27T00:02:18.671262+00:00",
+  "result_report": "../2026-09-27-visual-zoom-result.md"
+}

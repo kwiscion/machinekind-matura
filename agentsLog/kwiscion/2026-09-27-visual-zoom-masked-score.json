@@ -1,0 +1,111 @@
+{
+  "status": "MASKED_SINGLE_PASS_FROZEN",
+  "input_artifact_sha256": "55acc3096b5ca06d49fd74080608e8010db5dddd61b8d3065090917ea888ad11",
+  "blinding": "Only opaque ID, source-item ID, final answer and null error were read. No arm key, unmasked run metadata, raw reasoning or old answer/grade files were consulted. Reviewer has prior familiarity with these validation questions from earlier work; current answers were graded fresh.",
+  "method": "One manual pass against official task-specific rules and freshly inspected original source images. No inference or second grading pass.",
+  "official_keys_sha256": "279abe703dc1af4119a35624d6db893e310fc7afaffbef2a00e678f423706486",
+  "image_sha256": {
+    "page-08.png": "ef1749770b71483f45caf36183e782389741456a7f5bbcce92d361c0dd02cc77",
+    "page-21.png": "54b631cd65db862e9a4456407f7e9ca4808f7bb1b527dea576a0b5bbce09de70",
+    "page-26.png": "c8dd13c2e1ea0976ab50639a073664bd3557635c889dca052540ca0d5d8ee5ce",
+    "page-28.png": "3ddacc9941ab9dda555b473004e9a59d6ceaf3c8542c025f0c72ff91579b3da2"
+  },
+  "totals": {
+    "max_points": 12,
+    "central": 2,
+    "low": 2,
+    "high": 4
+  },
+  "uncertainty": "Only the two item18 answers have a possible generous one-point interpretation. Ranges are scoring judgments, not confidence intervals. No uncertainty warrants another pass here.",
+  "diagnostic_limit": "Errors combine visual identification, source linkage and historical interpretation. These answer texts do not isolate OCR or prove a single failure mechanism. No arm comparison or promotion is made.",
+  "records": [
+    {
+      "id": "0819fe3ef654",
+      "source_item_id": "val2024-hist-z18",
+      "answer_sha256": "553d65532c82b821819a48c69cb2933d48f821328e83dd5a100527a40660d735",
+      "max_points": 1,
+      "central": 0,
+      "low": 0,
+      "high": 1,
+      "justification": "Correct side, but its identifying visual rationale invents a crown and sceptre. Attacking soldiers are only generically assigned to that side. Centrally the two-element justification is not sufficiently grounded; a generous reading of monster plus attackers could accept it.",
+      "generation_error": null
+    },
+    {
+      "id": "dd11d7b801b4",
+      "source_item_id": "val2024-hist-z23.2",
+      "answer_sha256": "e0c8a93b1d6d1b28732e8622da35f28740a3b2ef134939549ff0500cd96d7e75",
+      "max_points": 1,
+      "central": 1,
+      "low": 1,
+      "high": 1,
+      "justification": "Correct decision, poster-to-question mapping and comparison of the actual percentages; both sources used.",
+      "generation_error": null
+    },
+    {
+      "id": "f3ba76fe3098",
+      "source_item_id": "val2024-hist-z5.1",
+      "answer_sha256": "64d5115eef4ac4aa5cb37f31d01069fbcfee327feeb41bcbc41039fef86456ec",
+      "max_points": 1,
+      "central": 0,
+      "low": 0,
+      "high": 0,
+      "justification": "Wrong decision. The mapped routes are misidentified as the expeditions prompted by the speech, and a destination is asserted without support. This combines source interpretation and historical classification errors.",
+      "generation_error": null
+    },
+    {
+      "id": "4f34886c7fcd",
+      "source_item_id": "val2024-hist-z25",
+      "answer_sha256": "4e5b6aaa7a6de8f755b61cb484cf0e814996909cec82360b9b67ec50ad92ffa5",
+      "max_points": 3,
+      "central": 0,
+      "low": 0,
+      "high": 0,
+      "justification": "Wrong historical message and period. The claimed officer, starred cap, inscribed rock and ruined building do not provide a correct interpretation. Noticing sweeping alone cannot earn the rubric partial point.",
+      "generation_error": null
+    },
+    {
+      "id": "762adc646817",
+      "source_item_id": "val2024-hist-z18",
+      "answer_sha256": "25b81c54542be0d3d2adbf7c03aba998e8cb31dcdb6760e44b2cb6893bad4331",
+      "max_points": 1,
+      "central": 0,
+      "low": 0,
+      "high": 1,
+      "justification": "Correct side, but the crown, pith helmets and Red Cross armbands are unsupported visual particulars. The general monster-versus-allied-soldiers reading is relevant, yet its diagnostic evidence is unreliable. A generous reading could accept the two broad elements.",
+      "generation_error": null
+    },
+    {
+      "id": "90220c0d8daa",
+      "source_item_id": "val2024-hist-z25",
+      "answer_sha256": "0a589b90ac53999cb34bbdc0429d69e078dab63e083bb1eca61d39457da1df1c",
+      "max_points": 3,
+      "central": 0,
+      "low": 0,
+      "high": 0,
+      "justification": "Wrong message and historical context built around a fabricated reading of the lettering. The visible broom, uniform and bars do not rescue the incorrect central interpretation; no partial credit.",
+      "generation_error": null
+    },
+    {
+      "id": "99076a98c924",
+      "source_item_id": "val2024-hist-z23.2",
+      "answer_sha256": "8abf9cf51bccd6faa3c4ee191eaad12bba05749499ac20bc80d7bce84698b640",
+      "max_points": 1,
+      "central": 1,
+      "low": 1,
+      "high": 1,
+      "justification": "Correct decision and question mapping, with the two actual percentages correctly compared. The concise reference to the poster is sufficient.",
+      "generation_error": null
+    },
+    {
+      "id": "b41c144b289e",
+      "source_item_id": "val2024-hist-z5.1",
+      "answer_sha256": "6cde6ec8dd097cfa2cfd45a295b53ffc7bedb38f6d2e7a1153315cf9a573235a",
+      "max_points": 1,
+      "central": 0,
+      "low": 0,
+      "high": 0,
+      "justification": "Wrong decision: the argument treats the mapped movements as consequences of the appeal without correctly identifying them. Source interpretation and historical linkage both fail.",
+      "generation_error": null
+    }
+  ]
+}
