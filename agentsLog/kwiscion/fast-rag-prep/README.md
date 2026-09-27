@@ -14,4 +14,10 @@ Declared manifest SHA256: `a5bd4d57fa07c1d14a01c2d8ad3d4724712651c00931890c38d16
 
 Declaration: https://github.com/kwiscion/machinekind-matura/issues/189#issuecomment-5853392962
 
-Single dispatch08:29:49Warsaw. Four probes passed first attempt; terminal quality evidence is pending. A selected six-item diagnostic cannot establish full-exam improvement.
+Single dispatch08:29:49Warsaw, terminal08:44:56:15m07s,55attempts,3failed attempts recovered, zero placeholders or export fallbacks. All four probes passed first attempt. Requested460,800 output tokens; known prompt93,082/generated114,606. Observed wall-time cost proxy USD0.8266 at USD3.28/hour, actual billing unverified.
+
+**Not promoted:** sole blinded grade4/6 direct versus4/6 filtered. Only5.2 admitted evidence (three passages) and remained1/1 in both arms. Gain12.1 and regression19.2 admitted no passages; these are repeated-sampling changes, not retrieval-backed gains. Keep the frozen40/60 Qwen coverage candidate. The conditional generic compatibility run was canceled with zero calls.
+
+Terminal receipts confirm owned sentinel stopped and GPU empty. Exact private backup SHA256 `0989a66a8c433d012f7b05becbbaf657b3b1874a82c53bf4f4a0031320afc3c8`; immutable direct/filtered exports remain inside it. Postterminal strict cache verification found one generated10,458-byte Ollama metadata sidecar. The proposed index proof refused a zero-byte WAL plus32,768-byte SHM before hashing; no open handles were observed. Neither cache/index sidecars nor original sources were removed or changed. No new cache, index proof or further experiments were launched after the decision. Full timing/accounting is in `result.json`; grade report is separate.
+
+A selected six-item diagnostic cannot establish full-exam improvement.
