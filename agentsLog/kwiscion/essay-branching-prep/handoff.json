@@ -1,0 +1,38 @@
+{
+  "status": "CPU_IMPLEMENTED_NOT_AUTHORIZED_OR_RUNTIME_QUALIFIED",
+  "utc": "2026-09-27T01:01:24.176251+00:00",
+  "issue": 168,
+  "files_sha256": {
+    "branching.py": "1915c10ded51f430a38b38a432d7ce75da2f92b2cf1faf9c37ba3640168909ce",
+    "test_branching.py": "00383947c0a6e843e73ea486b79326d7e2121533861dad1ad917afa2a506091d",
+    "staged_wave.py": "a81523fea5798cbf5663e1cadb30cca300d889927728e43a99289271074ae063",
+    "test_staged_wave.py": "54145276491a2729141d4b141713212d2875d6e43b6af46fc896ed2cd8952d7a",
+    "operator_wave.sh": "7c201ee10418c2a2dfda22ba462add3dcc0f0155ea5da56721dd6dd4d10c8513",
+    "README.md": "7ea2e734869709314f9ffadf3fee2062ff0ec53629aa047729dc8a4a37767600",
+    "WAVE.md": "ed1a41052e1ecc31425b7b6fa8229c40fb5ae889a3c7021fc0115cdfc5a8894e"
+  },
+  "validation": {
+    "Windows": "Final17 tests:15 pass,2 POSIX-only skips",
+    "Linux": "Earlier6 staged tests PASS; refined actual-shell duplicate-lock test PASS; final actual owned-child null-PID cleanup +Python3.10 deadline tests2 PASS",
+    "shell_syntax": "bash -n PASS",
+    "actual_model_calls": 0,
+    "fake_provider": "actual adapter/preparation/scheduler/final-export with synthetic400-word replies"
+  },
+  "mechanism": "4 independent draft/control outputs, then1 same-model final; complete original sources/images at both stages; no keys or grading in selector",
+  "bounds_3_topics": {
+    "primary_slots": 5,
+    "max_attempts": 20,
+    "max_requested_tokens": 737280,
+    "max_seconds": 3600,
+    "planning_cost_usd": 3.28
+  },
+  "ownership": "one common shared host flock and UTC deadline; unchanged per-stage runtime lock/guardian; no-replay marker; sequential recorded cleanup",
+  "fallback": "exact direct control with original partial/placeholder status; no grader-selected draft",
+  "remaining": [
+    "Independent code review before execution",
+    "Actual declared model run must verify wrapper/controller cleanup and throughput; CPU tests do not prove H100 behavior",
+    "Selector context admission and historical quality remain runtime/evaluation questions",
+    "Final packaging must contain only one pinned Gemma artifact set, never both diagnostic cache views"
+  ],
+  "final_delta": "Pre-spawn durable stage intent closes missing-PID gap; cleanup always runs after capture failure; +00:00 timestamps limited to six fractional digits; guardian receipt idempotence preserves existing exports honestly."
+}

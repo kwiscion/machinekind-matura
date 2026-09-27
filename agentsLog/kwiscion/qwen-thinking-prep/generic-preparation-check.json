@@ -1,0 +1,20 @@
+{
+  "status": "CPU_PREPARATION_PASS",
+  "files": {
+    "prepare_qwen_exam.py": "a3134927353b28d71d75187c5c3820a8b65e77d45b5874568f7ef71fb84c0873",
+    "test_prepare_qwen_exam.py": "1cc7ecbd899ec1035a98f244a1873c5da7e1e11d5362a6938f69ceb08f55572d",
+    "GENERIC_PREPARATION.md": "7835a9512d3f008462f1d255ba6cd65ba52b1b56091f94f1f3dcdf7532101400"
+  },
+  "local_tests": 2,
+  "remote_python": "3.10.12",
+  "remote_synthetic_preflight": {
+    "status": "PASS",
+    "items": 4,
+    "calls": 16,
+    "tokens": 589824,
+    "model_calls": 0,
+    "server_starts": 0
+  },
+  "live_runtime_changed": false,
+  "final_access": false
+}

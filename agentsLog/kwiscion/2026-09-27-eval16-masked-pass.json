@@ -1,0 +1,1328 @@
+{
+  "schema": "eval16_masked_fast_pass_v1",
+  "frozen_utc": "2026-09-27T01:11:06.705788+00:00",
+  "grader": "full40_second_sol",
+  "status": "FROZEN_BEFORE_UNMASKING",
+  "pack_sha256": "90211d5487fbb499bd64373a8f40f919d907eba6a9fa01a50ba5661ccb7dc7ff",
+  "input_canonical_lf_sha256": "5979ee0b8e0e4f084cf6070f42d31892ee53c1f5485409b4fc5dac1266055a28",
+  "input_local_raw_sha256": "69b2b7caa15fa6b54d30aa71c9a3271f831caadb1e871140c0ebc9829f0ecf5f",
+  "checklist_canonical_lf_sha256": "27eb5cbe2b324039cfe61dded4563e84d0ec6f17c10325dc7d4bb015b14e8447",
+  "checklist_manifest_local_raw_sha256": "96376bb40e1c44050869a00e4306bc459e0aaf4a798af0a847208c5882494ba5",
+  "grading_addendum_local_raw_sha256": "19f72e9a092277e3ecf9d08d9cab9bc905d6b984ddb4dd3622d65d735369562f",
+  "binding_checks": {
+    "all16_decoded_prompts_and_groups_exact": true,
+    "all16_checklist_prompt_hashes_exact": true,
+    "eight_checklist_file_pins_match_after_CRLF_to_LF_only": true,
+    "all32_answer_hashes_computed_from_exact_decoded_UTF8_text": true
+  },
+  "exposure": {
+    "arm_key_read": false,
+    "owner_result_report_read": false,
+    "unblinded_answer_files_read": false,
+    "prior_exposure": "Before this pack, root disclosed that the trained candidate had length/repetition trouble and a short recovered first answer. This reviewer also audited training code. Structural status and style differences further compromise identity blinding; labels remain X/Y and no arm mapping is assigned here.",
+    "claim": "masked-label pass, not reliably model-blind"
+  },
+  "completion": {
+    "pairs": 16,
+    "outputs": 32,
+    "status_counts": {
+      "complete": 18,
+      "partial": 2,
+      "placeholder": 12
+    },
+    "both_complete_pairs": 2,
+    "complete_vs_partial_pairs": 2,
+    "complete_vs_placeholder_pairs": 12,
+    "content_fully_graded_answers": 4,
+    "complete_body_ge_300": 17,
+    "complete_body_in_400_500": 0
+  },
+  "word_count_method": "Whitespace-delimited tokens containing a Unicode letter/number; hyphenated compounds kept together; leading choice/meta paragraph, title/copied question and standalone separator removed; no narrative paragraphs removed. Placeholder has no essay body. This corrects supplied flags, not an added aspect penalty.",
+  "word_count_discrepancies": [
+    {
+      "id": "bk117-eval-01",
+      "label": "X",
+      "supplied": 324,
+      "body": 296
+    },
+    {
+      "id": "bk117-eval-01",
+      "label": "Y",
+      "supplied": 383,
+      "body": 357
+    },
+    {
+      "id": "bk117-eval-02",
+      "label": "X",
+      "supplied": 18029,
+      "body": 18019
+    },
+    {
+      "id": "bk117-eval-02",
+      "label": "Y",
+      "supplied": 350,
+      "body": 333
+    },
+    {
+      "id": "bk117-eval-03",
+      "label": "X",
+      "supplied": 352,
+      "body": 336
+    },
+    {
+      "id": "bk117-eval-03",
+      "label": "Y",
+      "supplied": 346,
+      "body": 323
+    },
+    {
+      "id": "bk117-eval-04",
+      "label": "X",
+      "supplied": 392,
+      "body": 368
+    },
+    {
+      "id": "bk117-eval-04",
+      "label": "Y",
+      "supplied": 14818,
+      "body": 14803
+    },
+    {
+      "id": "bk117-eval-05",
+      "label": "Y",
+      "supplied": 380,
+      "body": 359
+    },
+    {
+      "id": "bk117-eval-06",
+      "label": "Y",
+      "supplied": 360,
+      "body": 337
+    },
+    {
+      "id": "bk117-eval-07",
+      "label": "Y",
+      "supplied": 350,
+      "body": 329
+    },
+    {
+      "id": "bk117-eval-08",
+      "label": "X",
+      "supplied": 383,
+      "body": 361
+    },
+    {
+      "id": "bk117-eval-09",
+      "label": "X",
+      "supplied": 358,
+      "body": 337
+    },
+    {
+      "id": "bk117-eval-10",
+      "label": "X",
+      "supplied": 383,
+      "body": 361
+    },
+    {
+      "id": "bk117-eval-11",
+      "label": "X",
+      "supplied": 390,
+      "body": 358
+    },
+    {
+      "id": "bk117-eval-12",
+      "label": "Y",
+      "supplied": 411,
+      "body": 387
+    },
+    {
+      "id": "bk117-eval-13",
+      "label": "Y",
+      "supplied": 401,
+      "body": 378
+    },
+    {
+      "id": "bk117-eval-14",
+      "label": "Y",
+      "supplied": 362,
+      "body": 339
+    },
+    {
+      "id": "bk117-eval-15",
+      "label": "X",
+      "supplied": 381,
+      "body": 359
+    },
+    {
+      "id": "bk117-eval-16",
+      "label": "X",
+      "supplied": 400,
+      "body": 368
+    }
+  ],
+  "preference_summary": {
+    "content_only": {
+      "Y": 2,
+      "X": 0,
+      "tie": 0
+    },
+    "operational_only": {
+      "Y": 7,
+      "X": 7
+    }
+  },
+  "pairs": [
+    {
+      "id": "bk117-eval-01",
+      "source_group_id": "C-persian-wars",
+      "prompt_sha256": "0be6b8f2353507f208ee63048626486a06f9ae327d7f66c4d6d503972fb55a01",
+      "essays": {
+        "X": {
+          "answer_sha256": "523b446e03585d0306d54a7f480ad1131909a1d4ac51044abed532a09cc327c3",
+          "answer_characters": 2372,
+          "status": "complete",
+          "supplied_checks": {
+            "word_count": 324,
+            "in_400_500": false,
+            "ge_300": true,
+            "final_status": "complete",
+            "preamble_or_meta_opening": true,
+            "mentions_both_topics": false,
+            "markdown_or_list": false,
+            "truncated": false,
+            "failed": false
+          },
+          "body_word_count": 296,
+          "body_sha256": "20cfe7e87f7c32bce88941d4cf7437c1be5198e0d372bedd7b10ba6f587f42a8",
+          "excluded_leading_paragraph_count": 2,
+          "body_ge_300": false,
+          "body_in_400_500": false,
+          "inspection_scope": "entire_answer",
+          "content_grade": {
+            "topic": 1,
+            "content_evaluation": "complete_fast_pass",
+            "aspects": {
+              "political": {
+                "score": 1,
+                "evidence": "Expansion, autonomy and stronger Athens are asserted, but the trigger is garbled and the consequences repeat without a supported development of power relations."
+              },
+              "military": {
+                "score": 1,
+                "evidence": "Survival, cooperation and new tactics are named generically; no explanation shows how a military development produced the claimed outcome."
+              }
+            },
+            "verified_errors": [
+              {
+                "claim": "Persians supported an Ionian revolt against Ionians in499BCE.",
+                "correction": "The Ionian revolt opposed Persian rule; Athens and Eretria aided the Ionians, who attacked Sardis.",
+                "source": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Herodotus/5D%2A.html",
+                "locator": "Herodotus5.97–103",
+                "severity": "major causal reversal"
+              },
+              {
+                "claim": "The sanctuary burned at Sardis in this episode was Artemis’s temple.",
+                "correction": "Herodotus identifies the burned local sanctuary as Cybebe/Cybele.",
+                "source": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Herodotus/5D%2A.html",
+                "locator": "Herodotus5.102",
+                "severity": "specific factual error"
+              }
+            ],
+            "verified_error_count": 2,
+            "factual_deduction": 1,
+            "narrative_before_deduction": 2,
+            "narrative_after_deduction": 1,
+            "coherence": 0,
+            "coherence_rationale": "296 narrative body words after removing choice line and copied task title; below the frozen300 threshold. Repetition is not itself the coherence deduction.",
+            "total": 1,
+            "maximum": 11,
+            "limitations": [
+              "No penalty for spelling variants alone; missing canonical examples are not individually counted as factual errors."
+            ]
+          },
+          "numeric_total": 1
+        },
+        "Y": {
+          "answer_sha256": "8466c9e8f34a3cde1afd5909196c8753e38e9ad7cdbc49894c447859269d9f0c",
+          "answer_characters": 2993,
+          "status": "complete",
+          "supplied_checks": {
+            "word_count": 383,
+            "in_400_500": false,
+            "ge_300": true,
+            "final_status": "complete",
+            "preamble_or_meta_opening": true,
+            "mentions_both_topics": false,
+            "markdown_or_list": false,
+            "truncated": false,
+            "failed": false
+          },
+          "body_word_count": 357,
+          "body_sha256": "03cd0b60da32762ef9efb2130ca99e11641560b4550bdd2f5a38bd7628cc24db",
+          "excluded_leading_paragraph_count": 3,
+          "body_ge_300": true,
+          "body_in_400_500": false,
+          "inspection_scope": "entire_answer",
+          "content_grade": {
+            "topic": 1,
+            "content_evaluation": "complete_fast_pass",
+            "aspects": {
+              "political": {
+                "score": 3,
+                "evidence": "Persian expansion and polis autonomy lead into Athenian ascendancy, the Delian League and rivalry with Sparta; a developed but imprecise causal account."
+              },
+              "military": {
+                "score": 3,
+                "evidence": "Marathon, Salamis and Plataea support the account of land/naval tactics and successful defence; concrete but not rich operational explanation."
+              }
+            },
+            "verified_errors": [
+              {
+                "claim": "Persian provocations included support for rebellions of their Greek satellites.",
+                "correction": "The relevant Ionian uprising was against Persian rule and received Athenian/Eretrian support; the essay reverses this trigger.",
+                "source": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Herodotus/5D%2A.html",
+                "locator": "Herodotus5.97–103",
+                "severity": "major causal reversal"
+              }
+            ],
+            "verified_error_count": 1,
+            "factual_deduction": 1,
+            "narrative_before_deduction": 6,
+            "narrative_after_deduction": 5,
+            "coherence": 3,
+            "coherence_rationale": "357 body words; orderly causes, consequences and conclusion, with no independent logical breakdown.",
+            "total": 8,
+            "maximum": 11,
+            "limitations": [
+              "Athenian maritime-control and Cambyses phrasing are imprecise; not counted as extra verified false propositions. Delian League causality is compressed, limiting richness."
+            ]
+          },
+          "numeric_total": 8
+        }
+      },
+      "comparison_kind": "content",
+      "preference": "Y",
+      "margin": "clear",
+      "basis": [
+        "argument",
+        "task_fulfillment",
+        "facts"
+      ],
+      "rationale": "Y offers developed causal links and task-relevant evidence; X relies more on repeated generic conclusions."
+    },
+    {
+      "id": "bk117-eval-02",
+      "source_group_id": "C-rome-republic",
+      "prompt_sha256": "f46361915ddbdf89c980776c9df47f3664e8705cde63525ea9bf678979808878",
+      "essays": {
+        "X": {
+          "answer_sha256": "dcefdaf7faa9a44a6f21b7fc3c41631b82155d00fbaebc72f2714fc9690c12d5",
+          "answer_characters": 109050,
+          "status": "partial",
+          "supplied_checks": {
+            "word_count": 18029,
+            "in_400_500": false,
+            "ge_300": true,
+            "final_status": "partial",
+            "preamble_or_meta_opening": true,
+            "mentions_both_topics": false,
+            "markdown_or_list": false,
+            "truncated": true,
+            "failed": false
+          },
+          "body_word_count": 18019,
+          "body_sha256": "fcc2c21d5f73be630bdf2acbb5386a1d4f0ab07ef648b85b146bcd2417df8762",
+          "excluded_leading_paragraph_count": 2,
+          "body_ge_300": true,
+          "body_in_400_500": false,
+          "inspection_scope": "first900_and_last500_characters_only",
+          "content_grade": null,
+          "numeric_total": null,
+          "partial_observation": "Inspected bounded beginning/tail; massive repeated propositions and cut-off ending. Content evaluation incomplete; no exhaustive fact count or numeric CKE grade."
+        },
+        "Y": {
+          "answer_sha256": "5840ee1704fc5ef5189ac8e6cb3e5d92c759d91d98507b220446ee81f33d9526",
+          "answer_characters": 2804,
+          "status": "complete",
+          "supplied_checks": {
+            "word_count": 350,
+            "in_400_500": false,
+            "ge_300": true,
+            "final_status": "complete",
+            "preamble_or_meta_opening": true,
+            "mentions_both_topics": false,
+            "markdown_or_list": false,
+            "truncated": false,
+            "failed": false
+          },
+          "body_word_count": 333,
+          "body_sha256": "41be878dc709c9b2ef702421ea495f1b5a020de26bad14733dcb4b9d56994dd3",
+          "excluded_leading_paragraph_count": 3,
+          "body_ge_300": true,
+          "body_in_400_500": false,
+          "inspection_scope": "preamble_title_and_mechanical_count_only_no_content_grade",
+          "content_grade": null,
+          "numeric_total": null
+        }
+      },
+      "comparison_kind": "operational_only",
+      "preference": "Y",
+      "margin": "clear",
+      "basis": [
+        "completion"
+      ],
+      "rationale": "A completed answer is operationally preferred to the supplied partial/placeholder; counterpart usability only, not a comparative historical-quality grade."
+    },
+    {
+      "id": "bk117-eval-03",
+      "source_group_id": "C-crusades",
+      "prompt_sha256": "f455bcd83b73c602dbc9f32ed61c23e2390197258b3d3afa8f44516d27e0165b",
+      "essays": {
+        "X": {
+          "answer_sha256": "9bf9f16da9d81f67a7c14e0ed93abca735803ed117dd67caf66dd6ac44a29016",
+          "answer_characters": 2610,
+          "status": "complete",
+          "supplied_checks": {
+            "word_count": 352,
+            "in_400_500": false,
+            "ge_300": true,
+            "final_status": "complete",
+            "preamble_or_meta_opening": true,
+            "mentions_both_topics": false,
+            "markdown_or_list": false,
+            "truncated": false,
+            "failed": false
+          },
+          "body_word_count": 336,
+          "body_sha256": "8590f28c44bfd49438672418bf28c1d6646a915b658a47ef4e608fcc4c1fcc29",
+          "excluded_leading_paragraph_count": 2,
+          "body_ge_300": true,
+          "body_in_400_500": false,
+          "inspection_scope": "entire_answer",
+          "content_grade": {
+            "topic": 1,
+            "content_evaluation": "complete_fast_pass",
+            "aspects": {
+              "religious": {
+                "score": 3,
+                "evidence": "Recovering Jerusalem and spiritual remission are linked to participation; concise but identifiable historical motive. Religious consequences are generic, so not rich."
+              },
+              "political": {
+                "score": 1,
+                "evidence": "Land and power motives are asserted; papal strengthening then weakening and monarchs gaining strength while losing lands are left without chronological or causal reconciliation."
+              },
+              "economic": {
+                "score": 1,
+                "evidence": "New markets, profit and urban growth repeat as conclusions without a specific beneficiary or developed commercial mechanism."
+              }
+            },
+            "verified_errors": [],
+            "verified_error_count": 0,
+            "factual_deduction": 0,
+            "narrative_before_deduction": 5,
+            "narrative_after_deduction": 5,
+            "coherence": 2,
+            "coherence_rationale": "336 body words. The unexplained opposing claims about papal strength and rulers’ fortunes create an identifiable logical disturbance; not a deduction merely for repeated prose.",
+            "total": 7,
+            "maximum": 15,
+            "limitations": [
+              "No verified distinct false proposition is deducted: papal changes could differ by phase, and generalization is not automatic falsehood. Religious3 versus1 is a judgment-sensitive boundary; paired preference does not depend on that boundary."
+            ]
+          },
+          "numeric_total": 7
+        },
+        "Y": {
+          "answer_sha256": "317183d7cc6084193e3232d36fd61a912a53f88f512fc7499a391f414e95bcf0",
+          "answer_characters": 2740,
+          "status": "complete",
+          "supplied_checks": {
+            "word_count": 346,
+            "in_400_500": false,
+            "ge_300": true,
+            "final_status": "complete",
+            "preamble_or_meta_opening": true,
+            "mentions_both_topics": false,
+            "markdown_or_list": false,
+            "truncated": false,
+            "failed": false
+          },
+          "body_word_count": 323,
+          "body_sha256": "9fed14371629a5c6c950e20cfc0bf195a9d5b0e0aa09744ee7be89f7a1fe03c9",
+          "excluded_leading_paragraph_count": 3,
+          "body_ge_300": true,
+          "body_in_400_500": false,
+          "inspection_scope": "entire_answer",
+          "content_grade": {
+            "topic": 1,
+            "content_evaluation": "complete_fast_pass",
+            "aspects": {
+              "religious": {
+                "score": 3,
+                "evidence": "Piety, remission and pilgrimage protection explain mobilization and are connected to redirected intra-Christian violence; religious outcomes remain thin."
+              },
+              "political": {
+                "score": 3,
+                "evidence": "Redirecting noble warfare and expedition costs weakening lesser lords are connected to consolidation; this is a developed general mechanism rather than a detailed case."
+              },
+              "economic": {
+                "score": 3,
+                "evidence": "Venice, Genoa, Marseille and luxury goods illustrate a chain from eastern contacts to commerce and stronger towns; claims about capitalism overreach the evidence."
+              }
+            },
+            "verified_errors": [],
+            "verified_error_count": 0,
+            "factual_deduction": 0,
+            "narrative_before_deduction": 9,
+            "narrative_after_deduction": 9,
+            "coherence": 3,
+            "coherence_rationale": "323 body words; consistent causal organization and conclusion. Broad modernizing interpretation limits evidence strength rather than automatically lowering coherence.",
+            "total": 12,
+            "maximum": 15,
+            "limitations": [
+              "No claim that zero errors proves factual perfection. Isolation, forgotten science and inevitable modernity are overgeneralized interpretations, not added as verified fact deductions. No demand for a fixed event checklist."
+            ]
+          },
+          "numeric_total": 12
+        }
+      },
+      "comparison_kind": "content",
+      "preference": "Y",
+      "margin": "clear",
+      "basis": [
+        "argument",
+        "task_fulfillment"
+      ],
+      "rationale": "Y develops political/economic mechanisms and concrete commercial beneficiaries; X leaves conflicting political conclusions unexplained."
+    },
+    {
+      "id": "bk117-eval-04",
+      "source_group_id": "C-black-death",
+      "prompt_sha256": "e30da0804346c59b834e807a72b0b97b2f29d05354cceea81f1e1bb0a7fc80f5",
+      "essays": {
+        "X": {
+          "answer_sha256": "000f217040ec34d7fe82226678665cb486f5fb182a27a278ba59af816d0fce9f",
+          "answer_characters": 3105,
+          "status": "complete",
+          "supplied_checks": {
+            "word_count": 392,
+            "in_400_500": false,
+            "ge_300": true,
+            "final_status": "complete",
+            "preamble_or_meta_opening": true,
+            "mentions_both_topics": false,
+            "markdown_or_list": false,
+            "truncated": false,
+            "failed": false
+          },
+          "body_word_count": 368,
+          "body_sha256": "c27d4c987d2e69c8f1555ad4528bfa498a9f3e4433ec3f5100faff9c2dcbc196",
+          "excluded_leading_paragraph_count": 3,
+          "body_ge_300": true,
+          "body_in_400_500": false,
+          "inspection_scope": "preamble_title_and_mechanical_count_only_no_content_grade",
+          "content_grade": null,
+          "numeric_total": null
+        },
+        "Y": {
+          "answer_sha256": "405e44d25b6225eb1062f04374ffbbff0383ebba2f7403766c481c5ffea49358",
+          "answer_characters": 83412,
+          "status": "partial",
+          "supplied_checks": {
+            "word_count": 14818,
+            "in_400_500": false,
+            "ge_300": true,
+            "final_status": "partial",
+            "preamble_or_meta_opening": true,
+            "mentions_both_topics": false,
+            "markdown_or_list": false,
+            "truncated": true,
+            "failed": false
+          },
+          "body_word_count": 14803,
+          "body_sha256": "5b01f521ae1b0a3e15fddc76a0adb68c7a6e47faa3dbb6666365cf71b676c4a1",
+          "excluded_leading_paragraph_count": 2,
+          "body_ge_300": true,
+          "body_in_400_500": false,
+          "inspection_scope": "first900_and_last500_characters_only",
+          "content_grade": null,
+          "numeric_total": null,
+          "partial_observation": "Inspected bounded beginning/tail; massive repeated propositions and cut-off ending. Content evaluation incomplete; no exhaustive fact count or numeric CKE grade."
+        }
+      },
+      "comparison_kind": "operational_only",
+      "preference": "X",
+      "margin": "clear",
+      "basis": [
+        "completion"
+      ],
+      "rationale": "A completed answer is operationally preferred to the supplied partial/placeholder; counterpart usability only, not a comparative historical-quality grade."
+    },
+    {
+      "id": "bk117-eval-05",
+      "source_group_id": "C-lokietek",
+      "prompt_sha256": "1b5d789c226dc825d0f08aac9fd2d5e776f57bb8788f0b678eb8486f44bf5a87",
+      "essays": {
+        "X": {
+          "answer_sha256": "e0290fdedab38dc5dc348e2f4fd3d584f53f748e579f0909c57635950a6d6259",
+          "answer_characters": 55,
+          "status": "placeholder",
+          "supplied_checks": {
+            "word_count": 0,
+            "in_400_500": false,
+            "ge_300": false,
+            "final_status": "placeholder",
+            "preamble_or_meta_opening": false,
+            "mentions_both_topics": false,
+            "markdown_or_list": false,
+            "truncated": false,
+            "failed": true
+          },
+          "body_word_count": 0,
+          "body_sha256": null,
+          "excluded_leading_paragraph_count": 0,
+          "body_ge_300": false,
+          "body_in_400_500": false,
+          "inspection_scope": "literal_placeholder_and_metadata",
+          "content_grade": null,
+          "numeric_total": null
+        },
+        "Y": {
+          "answer_sha256": "7944f0f8ee4a4e1c1914fd358b19ad49ac3edf8ee00abd6b8405561888b658ed",
+          "answer_characters": 2919,
+          "status": "complete",
+          "supplied_checks": {
+            "word_count": 380,
+            "in_400_500": false,
+            "ge_300": true,
+            "final_status": "complete",
+            "preamble_or_meta_opening": true,
+            "mentions_both_topics": false,
+            "markdown_or_list": false,
+            "truncated": false,
+            "failed": false
+          },
+          "body_word_count": 359,
+          "body_sha256": "11a77438930ac5bab95846e6109a9d4795b223e9f13876d1e906be9842f110c7",
+          "excluded_leading_paragraph_count": 3,
+          "body_ge_300": true,
+          "body_in_400_500": false,
+          "inspection_scope": "preamble_title_and_mechanical_count_only_no_content_grade",
+          "content_grade": null,
+          "numeric_total": null
+        }
+      },
+      "comparison_kind": "operational_only",
+      "preference": "Y",
+      "margin": "clear",
+      "basis": [
+        "completion"
+      ],
+      "rationale": "A completed answer is operationally preferred to the supplied partial/placeholder; counterpart usability only, not a comparative historical-quality grade."
+    },
+    {
+      "id": "bk117-eval-06",
+      "source_group_id": "C-absolutism",
+      "prompt_sha256": "a395c1471eef3109c035eac727b4625e40e73ca4abed6013e417e13e00e019c3",
+      "essays": {
+        "X": {
+          "answer_sha256": "e0290fdedab38dc5dc348e2f4fd3d584f53f748e579f0909c57635950a6d6259",
+          "answer_characters": 55,
+          "status": "placeholder",
+          "supplied_checks": {
+            "word_count": 0,
+            "in_400_500": false,
+            "ge_300": false,
+            "final_status": "placeholder",
+            "preamble_or_meta_opening": false,
+            "mentions_both_topics": false,
+            "markdown_or_list": false,
+            "truncated": false,
+            "failed": true
+          },
+          "body_word_count": 0,
+          "body_sha256": null,
+          "excluded_leading_paragraph_count": 0,
+          "body_ge_300": false,
+          "body_in_400_500": false,
+          "inspection_scope": "literal_placeholder_and_metadata",
+          "content_grade": null,
+          "numeric_total": null
+        },
+        "Y": {
+          "answer_sha256": "89d5707e0ee72b54824b383e5680f03c5530de6d3d36580a8fd605dcae126c9f",
+          "answer_characters": 2943,
+          "status": "complete",
+          "supplied_checks": {
+            "word_count": 360,
+            "in_400_500": false,
+            "ge_300": true,
+            "final_status": "complete",
+            "preamble_or_meta_opening": true,
+            "mentions_both_topics": false,
+            "markdown_or_list": false,
+            "truncated": false,
+            "failed": false
+          },
+          "body_word_count": 337,
+          "body_sha256": "f1a9c1fed3b3dd18c297b7364ea0aca5ed1e40f289b71ab51303a07450c9480b",
+          "excluded_leading_paragraph_count": 3,
+          "body_ge_300": true,
+          "body_in_400_500": false,
+          "inspection_scope": "preamble_title_and_mechanical_count_only_no_content_grade",
+          "content_grade": null,
+          "numeric_total": null
+        }
+      },
+      "comparison_kind": "operational_only",
+      "preference": "Y",
+      "margin": "clear",
+      "basis": [
+        "completion"
+      ],
+      "rationale": "A completed answer is operationally preferred to the supplied partial/placeholder; counterpart usability only, not a comparative historical-quality grade."
+    },
+    {
+      "id": "bk117-eval-07",
+      "source_group_id": "C-batory",
+      "prompt_sha256": "361a45af44797278c57fc54ea38adc6dedced4849ea0c7375eede980a8622247",
+      "essays": {
+        "X": {
+          "answer_sha256": "e0290fdedab38dc5dc348e2f4fd3d584f53f748e579f0909c57635950a6d6259",
+          "answer_characters": 55,
+          "status": "placeholder",
+          "supplied_checks": {
+            "word_count": 0,
+            "in_400_500": false,
+            "ge_300": false,
+            "final_status": "placeholder",
+            "preamble_or_meta_opening": false,
+            "mentions_both_topics": false,
+            "markdown_or_list": false,
+            "truncated": false,
+            "failed": true
+          },
+          "body_word_count": 0,
+          "body_sha256": null,
+          "excluded_leading_paragraph_count": 0,
+          "body_ge_300": false,
+          "body_in_400_500": false,
+          "inspection_scope": "literal_placeholder_and_metadata",
+          "content_grade": null,
+          "numeric_total": null
+        },
+        "Y": {
+          "answer_sha256": "75c1f08e1cc5e2e4204ce66db4e172d76f563a0dcc845d4d7a9a0ef3c1d7569c",
+          "answer_characters": 2784,
+          "status": "complete",
+          "supplied_checks": {
+            "word_count": 350,
+            "in_400_500": false,
+            "ge_300": true,
+            "final_status": "complete",
+            "preamble_or_meta_opening": true,
+            "mentions_both_topics": false,
+            "markdown_or_list": false,
+            "truncated": false,
+            "failed": false
+          },
+          "body_word_count": 329,
+          "body_sha256": "8784f0222085f8f6d2833ffe3cd2deec97b61bd64c554a0307792ed8501a6bb2",
+          "excluded_leading_paragraph_count": 3,
+          "body_ge_300": true,
+          "body_in_400_500": false,
+          "inspection_scope": "preamble_title_and_mechanical_count_only_no_content_grade",
+          "content_grade": null,
+          "numeric_total": null
+        }
+      },
+      "comparison_kind": "operational_only",
+      "preference": "Y",
+      "margin": "clear",
+      "basis": [
+        "completion"
+      ],
+      "rationale": "A completed answer is operationally preferred to the supplied partial/placeholder; counterpart usability only, not a comparative historical-quality grade."
+    },
+    {
+      "id": "bk117-eval-08",
+      "source_group_id": "C-us-independence",
+      "prompt_sha256": "c8762fafcc90553100cbf10b8dd9704c6db391cd7c83a5989b9a27f64b40ddf6",
+      "essays": {
+        "X": {
+          "answer_sha256": "69a300da0a2d4710a2e95166a41c685b5cc6188963be2c06136efcf2adb79cca",
+          "answer_characters": 3140,
+          "status": "complete",
+          "supplied_checks": {
+            "word_count": 383,
+            "in_400_500": false,
+            "ge_300": true,
+            "final_status": "complete",
+            "preamble_or_meta_opening": true,
+            "mentions_both_topics": false,
+            "markdown_or_list": false,
+            "truncated": false,
+            "failed": false
+          },
+          "body_word_count": 361,
+          "body_sha256": "bd17356a7df45a61b3ce803eecfd987ddc34704713b0d52ec1ff11f7d6d0782c",
+          "excluded_leading_paragraph_count": 3,
+          "body_ge_300": true,
+          "body_in_400_500": false,
+          "inspection_scope": "preamble_title_and_mechanical_count_only_no_content_grade",
+          "content_grade": null,
+          "numeric_total": null
+        },
+        "Y": {
+          "answer_sha256": "e0290fdedab38dc5dc348e2f4fd3d584f53f748e579f0909c57635950a6d6259",
+          "answer_characters": 55,
+          "status": "placeholder",
+          "supplied_checks": {
+            "word_count": 0,
+            "in_400_500": false,
+            "ge_300": false,
+            "final_status": "placeholder",
+            "preamble_or_meta_opening": false,
+            "mentions_both_topics": false,
+            "markdown_or_list": false,
+            "truncated": false,
+            "failed": true
+          },
+          "body_word_count": 0,
+          "body_sha256": null,
+          "excluded_leading_paragraph_count": 0,
+          "body_ge_300": false,
+          "body_in_400_500": false,
+          "inspection_scope": "literal_placeholder_and_metadata",
+          "content_grade": null,
+          "numeric_total": null
+        }
+      },
+      "comparison_kind": "operational_only",
+      "preference": "X",
+      "margin": "clear",
+      "basis": [
+        "completion"
+      ],
+      "rationale": "A completed answer is operationally preferred to the supplied partial/placeholder; counterpart usability only, not a comparative historical-quality grade."
+    },
+    {
+      "id": "bk117-eval-09",
+      "source_group_id": "C-french-rev",
+      "prompt_sha256": "870093bb62e33896a96f116c130857671eec937214a7f11d4580dd3fe1e6738a",
+      "essays": {
+        "X": {
+          "answer_sha256": "496fff559d7743ae111ea7c4ce8c47e5504300b21e8f7977714be55088d3b744",
+          "answer_characters": 2916,
+          "status": "complete",
+          "supplied_checks": {
+            "word_count": 358,
+            "in_400_500": false,
+            "ge_300": true,
+            "final_status": "complete",
+            "preamble_or_meta_opening": true,
+            "mentions_both_topics": false,
+            "markdown_or_list": false,
+            "truncated": false,
+            "failed": false
+          },
+          "body_word_count": 337,
+          "body_sha256": "0ed550a3e09fc5fdeeaa00f89b58138fa9b090255425ea568379417e2c9be45e",
+          "excluded_leading_paragraph_count": 3,
+          "body_ge_300": true,
+          "body_in_400_500": false,
+          "inspection_scope": "preamble_title_and_mechanical_count_only_no_content_grade",
+          "content_grade": null,
+          "numeric_total": null
+        },
+        "Y": {
+          "answer_sha256": "e0290fdedab38dc5dc348e2f4fd3d584f53f748e579f0909c57635950a6d6259",
+          "answer_characters": 55,
+          "status": "placeholder",
+          "supplied_checks": {
+            "word_count": 0,
+            "in_400_500": false,
+            "ge_300": false,
+            "final_status": "placeholder",
+            "preamble_or_meta_opening": false,
+            "mentions_both_topics": false,
+            "markdown_or_list": false,
+            "truncated": false,
+            "failed": true
+          },
+          "body_word_count": 0,
+          "body_sha256": null,
+          "excluded_leading_paragraph_count": 0,
+          "body_ge_300": false,
+          "body_in_400_500": false,
+          "inspection_scope": "literal_placeholder_and_metadata",
+          "content_grade": null,
+          "numeric_total": null
+        }
+      },
+      "comparison_kind": "operational_only",
+      "preference": "X",
+      "margin": "clear",
+      "basis": [
+        "completion"
+      ],
+      "rationale": "A completed answer is operationally preferred to the supplied partial/placeholder; counterpart usability only, not a comparative historical-quality grade."
+    },
+    {
+      "id": "bk117-eval-10",
+      "source_group_id": "C-napoleonic",
+      "prompt_sha256": "07dd61d7e40fd66d9e4df426299f1d9dd714fe2349718d17be611d2f16822c0b",
+      "essays": {
+        "X": {
+          "answer_sha256": "2acacd3d4b5e7df069fd74d0c64224f0c6e88732d26a260636fc6e33e3516c80",
+          "answer_characters": 3059,
+          "status": "complete",
+          "supplied_checks": {
+            "word_count": 383,
+            "in_400_500": false,
+            "ge_300": true,
+            "final_status": "complete",
+            "preamble_or_meta_opening": true,
+            "mentions_both_topics": false,
+            "markdown_or_list": false,
+            "truncated": false,
+            "failed": false
+          },
+          "body_word_count": 361,
+          "body_sha256": "24d930b00e2ebe59e5b0a2f1f24fd4ebe99d0130ba4c8ab5ac59d4afcffed3d5",
+          "excluded_leading_paragraph_count": 3,
+          "body_ge_300": true,
+          "body_in_400_500": false,
+          "inspection_scope": "preamble_title_and_mechanical_count_only_no_content_grade",
+          "content_grade": null,
+          "numeric_total": null
+        },
+        "Y": {
+          "answer_sha256": "e0290fdedab38dc5dc348e2f4fd3d584f53f748e579f0909c57635950a6d6259",
+          "answer_characters": 55,
+          "status": "placeholder",
+          "supplied_checks": {
+            "word_count": 0,
+            "in_400_500": false,
+            "ge_300": false,
+            "final_status": "placeholder",
+            "preamble_or_meta_opening": false,
+            "mentions_both_topics": false,
+            "markdown_or_list": false,
+            "truncated": false,
+            "failed": true
+          },
+          "body_word_count": 0,
+          "body_sha256": null,
+          "excluded_leading_paragraph_count": 0,
+          "body_ge_300": false,
+          "body_in_400_500": false,
+          "inspection_scope": "literal_placeholder_and_metadata",
+          "content_grade": null,
+          "numeric_total": null
+        }
+      },
+      "comparison_kind": "operational_only",
+      "preference": "X",
+      "margin": "clear",
+      "basis": [
+        "completion"
+      ],
+      "rationale": "A completed answer is operationally preferred to the supplied partial/placeholder; counterpart usability only, not a comparative historical-quality grade."
+    },
+    {
+      "id": "bk117-eval-11",
+      "source_group_id": "C-unifications",
+      "prompt_sha256": "8fec2987a33ef3d4440d0810887cb49a949a5ce865dd077571988e9c9092a712",
+      "essays": {
+        "X": {
+          "answer_sha256": "ffd34d3b9058620611ab8b9eb6dda03884eea47409e86f366607a366ea640d52",
+          "answer_characters": 2943,
+          "status": "complete",
+          "supplied_checks": {
+            "word_count": 390,
+            "in_400_500": false,
+            "ge_300": true,
+            "final_status": "complete",
+            "preamble_or_meta_opening": true,
+            "mentions_both_topics": false,
+            "markdown_or_list": false,
+            "truncated": false,
+            "failed": false
+          },
+          "body_word_count": 358,
+          "body_sha256": "058355457856918fb33d7e350f4add2843c56675d21ea409362bf2ad5b10bc40",
+          "excluded_leading_paragraph_count": 3,
+          "body_ge_300": true,
+          "body_in_400_500": false,
+          "inspection_scope": "preamble_title_and_mechanical_count_only_no_content_grade",
+          "content_grade": null,
+          "numeric_total": null
+        },
+        "Y": {
+          "answer_sha256": "e0290fdedab38dc5dc348e2f4fd3d584f53f748e579f0909c57635950a6d6259",
+          "answer_characters": 55,
+          "status": "placeholder",
+          "supplied_checks": {
+            "word_count": 0,
+            "in_400_500": false,
+            "ge_300": false,
+            "final_status": "placeholder",
+            "preamble_or_meta_opening": false,
+            "mentions_both_topics": false,
+            "markdown_or_list": false,
+            "truncated": false,
+            "failed": true
+          },
+          "body_word_count": 0,
+          "body_sha256": null,
+          "excluded_leading_paragraph_count": 0,
+          "body_ge_300": false,
+          "body_in_400_500": false,
+          "inspection_scope": "literal_placeholder_and_metadata",
+          "content_grade": null,
+          "numeric_total": null
+        }
+      },
+      "comparison_kind": "operational_only",
+      "preference": "X",
+      "margin": "clear",
+      "basis": [
+        "completion"
+      ],
+      "rationale": "A completed answer is operationally preferred to the supplied partial/placeholder; counterpart usability only, not a comparative historical-quality grade."
+    },
+    {
+      "id": "bk117-eval-12",
+      "source_group_id": "C-great-depression",
+      "prompt_sha256": "d532cd450b3aeb016168faae22d6fa912724b2c5b4ce15f5c282835c6495ecfe",
+      "essays": {
+        "X": {
+          "answer_sha256": "e0290fdedab38dc5dc348e2f4fd3d584f53f748e579f0909c57635950a6d6259",
+          "answer_characters": 55,
+          "status": "placeholder",
+          "supplied_checks": {
+            "word_count": 0,
+            "in_400_500": false,
+            "ge_300": false,
+            "final_status": "placeholder",
+            "preamble_or_meta_opening": false,
+            "mentions_both_topics": false,
+            "markdown_or_list": false,
+            "truncated": false,
+            "failed": true
+          },
+          "body_word_count": 0,
+          "body_sha256": null,
+          "excluded_leading_paragraph_count": 0,
+          "body_ge_300": false,
+          "body_in_400_500": false,
+          "inspection_scope": "literal_placeholder_and_metadata",
+          "content_grade": null,
+          "numeric_total": null
+        },
+        "Y": {
+          "answer_sha256": "2aee64285ca44cb894e33563f6ab73382edb02c511a39d97bb581530a4682cfd",
+          "answer_characters": 3327,
+          "status": "complete",
+          "supplied_checks": {
+            "word_count": 411,
+            "in_400_500": true,
+            "ge_300": true,
+            "final_status": "complete",
+            "preamble_or_meta_opening": true,
+            "mentions_both_topics": false,
+            "markdown_or_list": false,
+            "truncated": false,
+            "failed": false
+          },
+          "body_word_count": 387,
+          "body_sha256": "6ccbfefc55768455421da8594a83f3b26847f3dd1c26a9c32edb141466674e47",
+          "excluded_leading_paragraph_count": 3,
+          "body_ge_300": true,
+          "body_in_400_500": false,
+          "inspection_scope": "preamble_title_and_mechanical_count_only_no_content_grade",
+          "content_grade": null,
+          "numeric_total": null
+        }
+      },
+      "comparison_kind": "operational_only",
+      "preference": "Y",
+      "margin": "clear",
+      "basis": [
+        "completion"
+      ],
+      "rationale": "A completed answer is operationally preferred to the supplied partial/placeholder; counterpart usability only, not a comparative historical-quality grade."
+    },
+    {
+      "id": "bk117-eval-13",
+      "source_group_id": "C-ww1-independence",
+      "prompt_sha256": "488f717d95e0f8e453c6ce1c0b51e9ed3f50ff2783dc1de78a45b2e4d46ebdcf",
+      "essays": {
+        "X": {
+          "answer_sha256": "e0290fdedab38dc5dc348e2f4fd3d584f53f748e579f0909c57635950a6d6259",
+          "answer_characters": 55,
+          "status": "placeholder",
+          "supplied_checks": {
+            "word_count": 0,
+            "in_400_500": false,
+            "ge_300": false,
+            "final_status": "placeholder",
+            "preamble_or_meta_opening": false,
+            "mentions_both_topics": false,
+            "markdown_or_list": false,
+            "truncated": false,
+            "failed": true
+          },
+          "body_word_count": 0,
+          "body_sha256": null,
+          "excluded_leading_paragraph_count": 0,
+          "body_ge_300": false,
+          "body_in_400_500": false,
+          "inspection_scope": "literal_placeholder_and_metadata",
+          "content_grade": null,
+          "numeric_total": null
+        },
+        "Y": {
+          "answer_sha256": "14c4a63979b27c3dcbf05c86ca3c17e423425c6587baa23a2cd899342f9e1dfe",
+          "answer_characters": 3158,
+          "status": "complete",
+          "supplied_checks": {
+            "word_count": 401,
+            "in_400_500": true,
+            "ge_300": true,
+            "final_status": "complete",
+            "preamble_or_meta_opening": true,
+            "mentions_both_topics": false,
+            "markdown_or_list": false,
+            "truncated": false,
+            "failed": false
+          },
+          "body_word_count": 378,
+          "body_sha256": "b23d19f7bdb19b98759d70c471c680360bc1687f028f8406fc5b16719f21d1f5",
+          "excluded_leading_paragraph_count": 3,
+          "body_ge_300": true,
+          "body_in_400_500": false,
+          "inspection_scope": "preamble_title_and_mechanical_count_only_no_content_grade",
+          "content_grade": null,
+          "numeric_total": null
+        }
+      },
+      "comparison_kind": "operational_only",
+      "preference": "Y",
+      "margin": "clear",
+      "basis": [
+        "completion"
+      ],
+      "rationale": "A completed answer is operationally preferred to the supplied partial/placeholder; counterpart usability only, not a comparative historical-quality grade."
+    },
+    {
+      "id": "bk117-eval-14",
+      "source_group_id": "C-1939",
+      "prompt_sha256": "32829e51750b652fc1d955038aaf4e8e3524f1e685135443083838b4fe98ce25",
+      "essays": {
+        "X": {
+          "answer_sha256": "e0290fdedab38dc5dc348e2f4fd3d584f53f748e579f0909c57635950a6d6259",
+          "answer_characters": 55,
+          "status": "placeholder",
+          "supplied_checks": {
+            "word_count": 0,
+            "in_400_500": false,
+            "ge_300": false,
+            "final_status": "placeholder",
+            "preamble_or_meta_opening": false,
+            "mentions_both_topics": false,
+            "markdown_or_list": false,
+            "truncated": false,
+            "failed": true
+          },
+          "body_word_count": 0,
+          "body_sha256": null,
+          "excluded_leading_paragraph_count": 0,
+          "body_ge_300": false,
+          "body_in_400_500": false,
+          "inspection_scope": "literal_placeholder_and_metadata",
+          "content_grade": null,
+          "numeric_total": null
+        },
+        "Y": {
+          "answer_sha256": "bac681994214f7a3c8be5d8da7894d630ca0604b6dd5c81721d7cec67b284543",
+          "answer_characters": 2844,
+          "status": "complete",
+          "supplied_checks": {
+            "word_count": 362,
+            "in_400_500": false,
+            "ge_300": true,
+            "final_status": "complete",
+            "preamble_or_meta_opening": true,
+            "mentions_both_topics": false,
+            "markdown_or_list": false,
+            "truncated": false,
+            "failed": false
+          },
+          "body_word_count": 339,
+          "body_sha256": "80366aab1f72991e21a98deff6438f0d16a1625bb5cdfdc4ebbf1385a99a9f14",
+          "excluded_leading_paragraph_count": 3,
+          "body_ge_300": true,
+          "body_in_400_500": false,
+          "inspection_scope": "preamble_title_and_mechanical_count_only_no_content_grade",
+          "content_grade": null,
+          "numeric_total": null
+        }
+      },
+      "comparison_kind": "operational_only",
+      "preference": "Y",
+      "margin": "clear",
+      "basis": [
+        "completion"
+      ],
+      "rationale": "A completed answer is operationally preferred to the supplied partial/placeholder; counterpart usability only, not a comparative historical-quality grade."
+    },
+    {
+      "id": "bk117-eval-15",
+      "source_group_id": "C-alexander",
+      "prompt_sha256": "1922661e398212afceef531acce8f23b1c5984978eed174591b267d828a75d17",
+      "essays": {
+        "X": {
+          "answer_sha256": "de4cd4b46076b925acf986f7785165ff9067652096b0f9910782cb884844e6f9",
+          "answer_characters": 3076,
+          "status": "complete",
+          "supplied_checks": {
+            "word_count": 381,
+            "in_400_500": false,
+            "ge_300": true,
+            "final_status": "complete",
+            "preamble_or_meta_opening": true,
+            "mentions_both_topics": false,
+            "markdown_or_list": false,
+            "truncated": false,
+            "failed": false
+          },
+          "body_word_count": 359,
+          "body_sha256": "6e5ba464e84697292541dd3db49808518f352abc15563c31fb357e4ec29a6b91",
+          "excluded_leading_paragraph_count": 3,
+          "body_ge_300": true,
+          "body_in_400_500": false,
+          "inspection_scope": "preamble_title_and_mechanical_count_only_no_content_grade",
+          "content_grade": null,
+          "numeric_total": null
+        },
+        "Y": {
+          "answer_sha256": "e0290fdedab38dc5dc348e2f4fd3d584f53f748e579f0909c57635950a6d6259",
+          "answer_characters": 55,
+          "status": "placeholder",
+          "supplied_checks": {
+            "word_count": 0,
+            "in_400_500": false,
+            "ge_300": false,
+            "final_status": "placeholder",
+            "preamble_or_meta_opening": false,
+            "mentions_both_topics": false,
+            "markdown_or_list": false,
+            "truncated": false,
+            "failed": true
+          },
+          "body_word_count": 0,
+          "body_sha256": null,
+          "excluded_leading_paragraph_count": 0,
+          "body_ge_300": false,
+          "body_in_400_500": false,
+          "inspection_scope": "literal_placeholder_and_metadata",
+          "content_grade": null,
+          "numeric_total": null
+        }
+      },
+      "comparison_kind": "operational_only",
+      "preference": "X",
+      "margin": "clear",
+      "basis": [
+        "completion"
+      ],
+      "rationale": "A completed answer is operationally preferred to the supplied partial/placeholder; counterpart usability only, not a comparative historical-quality grade."
+    },
+    {
+      "id": "bk117-eval-16",
+      "source_group_id": "C-1956",
+      "prompt_sha256": "cc1d8d2af1f7e7671f67cd14b879de147735168f267bb6105f6194f1e526cbee",
+      "essays": {
+        "X": {
+          "answer_sha256": "1efd2765df8bc34d2657c320642bc4a07be70afcef4c7cbd41882aa1357bb470",
+          "answer_characters": 3174,
+          "status": "complete",
+          "supplied_checks": {
+            "word_count": 400,
+            "in_400_500": true,
+            "ge_300": true,
+            "final_status": "complete",
+            "preamble_or_meta_opening": true,
+            "mentions_both_topics": false,
+            "markdown_or_list": false,
+            "truncated": false,
+            "failed": false
+          },
+          "body_word_count": 368,
+          "body_sha256": "a4de43bac8fdc1c5a5178583390e5b28050199da929d057c3c48f6a976f7e207",
+          "excluded_leading_paragraph_count": 3,
+          "body_ge_300": true,
+          "body_in_400_500": false,
+          "inspection_scope": "preamble_title_and_mechanical_count_only_no_content_grade",
+          "content_grade": null,
+          "numeric_total": null
+        },
+        "Y": {
+          "answer_sha256": "e0290fdedab38dc5dc348e2f4fd3d584f53f748e579f0909c57635950a6d6259",
+          "answer_characters": 55,
+          "status": "placeholder",
+          "supplied_checks": {
+            "word_count": 0,
+            "in_400_500": false,
+            "ge_300": false,
+            "final_status": "placeholder",
+            "preamble_or_meta_opening": false,
+            "mentions_both_topics": false,
+            "markdown_or_list": false,
+            "truncated": false,
+            "failed": true
+          },
+          "body_word_count": 0,
+          "body_sha256": null,
+          "excluded_leading_paragraph_count": 0,
+          "body_ge_300": false,
+          "body_in_400_500": false,
+          "inspection_scope": "literal_placeholder_and_metadata",
+          "content_grade": null,
+          "numeric_total": null
+        }
+      },
+      "comparison_kind": "operational_only",
+      "preference": "X",
+      "margin": "clear",
+      "basis": [
+        "completion"
+      ],
+      "rationale": "A completed answer is operationally preferred to the supplied partial/placeholder; counterpart usability only, not a comparative historical-quality grade."
+    }
+  ],
+  "limitations": [
+    "One fast pass; four complete answers fully evaluated. Other completed counterparts are not assigned historical-quality grades.",
+    "Two huge partial outputs inspected only in bounded1400-character beginning/tail windows, not read exhaustively.",
+    "No aggregate CKE/15 score and no comparison of incompatible aspect maxima. Component totals apply only to each explicit same-topic pair.",
+    "Body count and completion are independent; complete does not mean adequate or correct.",
+    "No model promotion, full-exam regression result or inference authorization follows."
+  ],
+  "sources": [
+    {
+      "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Herodotus/5D%2A.html",
+      "locator": "Herodotus5.97–103",
+      "use": "Verified the Ionian revolt and burned Sardis sanctuary corrections."
+    },
+    {
+      "url": "https://sourcebooks.web.fordham.edu/source/urban2-5vers.asp",
+      "locator": "Urban II letter December1095; Fulcher account",
+      "use": "Primary support for spiritual mobilization and redirected warfare."
+    },
+    {
+      "url": "https://www.metmuseum.org/essays/the-crusades-1095-1291",
+      "locator": "Ibn Jubayr trade observation; Fourth Crusade",
+      "use": "Frozen checklist context and qualified commercial/political consequences."
+    }
+  ]
+}

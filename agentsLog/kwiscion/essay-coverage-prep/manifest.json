@@ -1,0 +1,24 @@
+{
+  "status": "CPU_PREPARED_NOT_AUTHORIZED_OR_QUALIFIED",
+  "utc": "2026-09-27T02:12:35.028089+00:00",
+  "mechanism": "single final-answer essay coverage suffix; no separate planning call",
+  "range_words": [
+    400,
+    500
+  ],
+  "policy_suffix_sha256": "236e9ee6d23168b817b144a706d86a8f204fe133af568ba27c08c88c4727d763",
+  "files_sha256": {
+    "coverage_suffix.py": "298d383edcd03cf1cc0a4b6ffaa1d97941b60c0e48090667b7861418ae836bae",
+    "test_coverage_suffix.py": "46a44459b769a1c83cb06b214af50e6482138eaebb3877299c4e617cc608ddd5",
+    "README.md": "99eef02e4bf4f7d54714e8117d011c0ddddd53782ca7c38314dc5e4356bc5e43"
+  },
+  "actual_adapter_sha256": "bec8b33731e24ff1ea845e7c7b0908d3227121986125cef8967fc384a1d8af74",
+  "checks": {
+    "synthetic_cpu_tests": 2,
+    "passed": 2,
+    "actual_model_calls": 0,
+    "original_task_source_images_instructions_format_preserved": true,
+    "live_package_or_shared_runtime_edits": false
+  },
+  "activation": "Requires fresh derived package, runtime/source pins, bounded owner declaration; no authorization is encoded here."
+}
