@@ -1,8 +1,10 @@
 # Winning plan
 
-**Goal:** highest final history score; target48/60. Current champion: **Gemma4 12B Q4, 38/60** on known validation; preserved fallback35/60. Recovery rehearsal also38/60, with no blanks. Updated27September02:32. This is strategy, not a log; issues own tasks.
+**Goal:** highest final history score; target48/60. Current champion: **Gemma4 12B Q4, 38/60** on known validation with legacy full-page images; preserved fallback35/60. Recovery rehearsal also38/60, with no blanks. Updated27September02:38. This is strategy, not a log; issues own tasks.
 
 ## Finish the harness, then improve answers
+
+**Immediate priority: match the organizer inputs.** Verify the supplied37-item May2023 mock end-to-end on CPU, preserve the required essay topic number, and rebuild40-item May2024 validation with correctly linked source-specific crops. Old full-page runs remain immutable. Review the new input version before the next visual experiment; no claim that old scores measure the cropped format.
 
 1. **Reuse the qualified autonomous harness.** Default60minutes; configurable120minutes, with10minutes reserved for recovery, validation and submission. Context65,536 and32,768 initial output ceiling are verified; short answers retain substantial reasoning. Adapt compute to time remaining, preserving complete text/images. No external agent participates in inference/recovery.
 2. **No blank submission entries.** Preserve usable answers. After an empty, truncated, timed-out or malformed result, attempt at least3 retries: larger budget, thinking off, then bounded final-answer synthesis. Allocate recovery time before it is exhausted. If every attempt fails, use the owner's literal emergency fallback `Tadeusz Kościuszko`; mark it as a placeholder, never a successful recovery. Record any hard-deadline exception.
@@ -14,8 +16,8 @@
 
 | Owner | Work |
 |---|---|
-| Root + Sol | Integration [#3](https://github.com/kwiscion/machinekind-matura/issues/3); Qwen comparison [#95](https://github.com/kwiscion/machinekind-matura/issues/95); essay branching preparation [#168](https://github.com/kwiscion/machinekind-matura/issues/168) |
-| Root Sol | Structured prompt/essay experiments [#80](https://github.com/kwiscion/machinekind-matura/issues/80) |
+| Root + Sol | Organizer compatibility [#170](https://github.com/kwiscion/machinekind-matura/issues/170), source crops [#171](https://github.com/kwiscion/machinekind-matura/issues/171); finish legacy Qwen comparison [#95](https://github.com/kwiscion/machinekind-matura/issues/95) |
+| Root Sol | Essay branching prep [#168](https://github.com/kwiscion/machinekind-matura/issues/168) waits behind input correction |
 | Paweł | Claim-triggered offline fact-check preparation [#163](https://github.com/kwiscion/machinekind-matura/issues/163); claim pending |
 | Greg | LoRA pilot [#117](https://github.com/kwiscion/machinekind-matura/issues/117) |
 | Łukasz | Structured-reasoning comparison [#151](https://github.com/kwiscion/machinekind-matura/issues/151); evaluation notes complete |
