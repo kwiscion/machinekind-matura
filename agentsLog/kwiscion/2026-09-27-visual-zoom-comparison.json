@@ -1,0 +1,213 @@
+{
+  "status": "FROZEN_GRADE_ARITHMETIC_JOIN_NO_REGRADING",
+  "provenance_sha256": {
+    "grades": "c437b1c006a87a6919c15748601793d8247a9ec4f8c749be861c4ceb19d32b3f",
+    "masked": "55acc3096b5ca06d49fd74080608e8010db5dddd61b8d3065090917ea888ad11",
+    "arm_key": "f31e620909f722e4fcc048351eced6a21edd5912d8541d6c28b09b57db9341b8",
+    "answer_only": "04d24f7ee234dc5394a27b1b782c029f322d82ed605a93866b3feb9a99ca18a6",
+    "answers": "61a778855fb462ff15336b847a6141cca53d6f3c57ea3adb405f2016b3ba50e4",
+    "metrics": "02044e093e3d3efed665b74e143c2148dc53b334cefa94c58d9e6089c358000b"
+  },
+  "all_eight_answer_strings_equal_across_masked_and_two_public_exports": true,
+  "all_answer_sha256_match_frozen_grades": true,
+  "arms": {
+    "control": {
+      "max_points": 6,
+      "central": 1,
+      "low": 1,
+      "high": 2,
+      "prompt_tokens": 4595,
+      "generated_tokens": 9349,
+      "load_seconds": 54.317807005999995,
+      "eval_seconds": 98.701096,
+      "calls": 4
+    },
+    "zoom": {
+      "max_points": 6,
+      "central": 1,
+      "low": 1,
+      "high": 2,
+      "prompt_tokens": 7871,
+      "generated_tokens": 14754,
+      "load_seconds": 0.094518184,
+      "eval_seconds": 142.22158,
+      "calls": 4
+    }
+  },
+  "central_delta_zoom_minus_control": 0,
+  "operator_wall_seconds": 371.451661,
+  "runtime_caveat": "Arm eval_seconds are summed generation-evaluation durations, not complete arm wall times. First control call bears54.292s cold load; arm order/load are unbalanced. The371.452s whole-operator wall also includes prompt processing/startup/cleanup and cannot be split from these metrics.",
+  "conclusion": "Both arms1/6 [1,2], identical central item outcomes0,0,1,0. No evidence the generic added tiles helped this selected panel. Item23.2 is correct in both arms, so its correction relative to an earlier run is not a crop benefit.",
+  "scope_limit": "Four selected known-validation items, one paired pass, not a full-exam estimate or general no-benefit proof. Scoring ranges are rubric-interpretation alternatives, not confidence intervals. No regrading, promotion or new inference.",
+  "mechanism_limit": "Failures combine visual identification, source linkage and historical interpretation; these outputs do not isolate pure OCR or another single cause.",
+  "records": [
+    {
+      "id": "0819fe3ef654",
+      "source_item_id": "val2024-hist-z18",
+      "answer_sha256": "553d65532c82b821819a48c69cb2933d48f821328e83dd5a100527a40660d735",
+      "max_points": 1,
+      "central": 0,
+      "low": 0,
+      "high": 1,
+      "justification": "Correct side, but its identifying visual rationale invents a crown and sceptre. Attacking soldiers are only generically assigned to that side. Centrally the two-element justification is not sufficiently grounded; a generous reading of monster plus attackers could accept it.",
+      "generation_error": null,
+      "original_id": "18-control",
+      "arm": "control",
+      "runtime": {
+        "id": "18-control",
+        "prompt_tokens": 1055,
+        "generated_tokens": 1274,
+        "done_reason": "stop",
+        "load_seconds": 0.0123184,
+        "eval_seconds": 12.013133
+      }
+    },
+    {
+      "id": "dd11d7b801b4",
+      "source_item_id": "val2024-hist-z23.2",
+      "answer_sha256": "e0c8a93b1d6d1b28732e8622da35f28740a3b2ef134939549ff0500cd96d7e75",
+      "max_points": 1,
+      "central": 1,
+      "low": 1,
+      "high": 1,
+      "justification": "Correct decision, poster-to-question mapping and comparison of the actual percentages; both sources used.",
+      "generation_error": null,
+      "original_id": "23.2-control",
+      "arm": "control",
+      "runtime": {
+        "id": "23.2-control",
+        "prompt_tokens": 1181,
+        "generated_tokens": 2918,
+        "done_reason": "stop",
+        "load_seconds": 0.007733623,
+        "eval_seconds": 27.602565
+      }
+    },
+    {
+      "id": "f3ba76fe3098",
+      "source_item_id": "val2024-hist-z5.1",
+      "answer_sha256": "64d5115eef4ac4aa5cb37f31d01069fbcfee327feeb41bcbc41039fef86456ec",
+      "max_points": 1,
+      "central": 0,
+      "low": 0,
+      "high": 0,
+      "justification": "Wrong decision. The mapped routes are misidentified as the expeditions prompted by the speech, and a destination is asserted without support. This combines source interpretation and historical classification errors.",
+      "generation_error": null,
+      "original_id": "5.1-zoom",
+      "arm": "zoom",
+      "runtime": {
+        "id": "5.1-zoom",
+        "prompt_tokens": 2158,
+        "generated_tokens": 1757,
+        "done_reason": "stop",
+        "load_seconds": 0.034703927,
+        "eval_seconds": 16.838929
+      }
+    },
+    {
+      "id": "4f34886c7fcd",
+      "source_item_id": "val2024-hist-z25",
+      "answer_sha256": "4e5b6aaa7a6de8f755b61cb484cf0e814996909cec82360b9b67ec50ad92ffa5",
+      "max_points": 3,
+      "central": 0,
+      "low": 0,
+      "high": 0,
+      "justification": "Wrong historical message and period. The claimed officer, starred cap, inscribed rock and ruined building do not provide a correct interpretation. Noticing sweeping alone cannot earn the rubric partial point.",
+      "generation_error": null,
+      "original_id": "25-zoom",
+      "arm": "zoom",
+      "runtime": {
+        "id": "25-zoom",
+        "prompt_tokens": 1833,
+        "generated_tokens": 6665,
+        "done_reason": "stop",
+        "load_seconds": 0.012605228,
+        "eval_seconds": 64.151146
+      }
+    },
+    {
+      "id": "762adc646817",
+      "source_item_id": "val2024-hist-z18",
+      "answer_sha256": "25b81c54542be0d3d2adbf7c03aba998e8cb31dcdb6760e44b2cb6893bad4331",
+      "max_points": 1,
+      "central": 0,
+      "low": 0,
+      "high": 1,
+      "justification": "Correct side, but the crown, pith helmets and Red Cross armbands are unsupported visual particulars. The general monster-versus-allied-soldiers reading is relevant, yet its diagnostic evidence is unreliable. A generous reading could accept the two broad elements.",
+      "generation_error": null,
+      "original_id": "18-zoom",
+      "arm": "zoom",
+      "runtime": {
+        "id": "18-zoom",
+        "prompt_tokens": 1877,
+        "generated_tokens": 817,
+        "done_reason": "stop",
+        "load_seconds": 0.029238442,
+        "eval_seconds": 7.737307
+      }
+    },
+    {
+      "id": "90220c0d8daa",
+      "source_item_id": "val2024-hist-z25",
+      "answer_sha256": "0a589b90ac53999cb34bbdc0429d69e078dab63e083bb1eca61d39457da1df1c",
+      "max_points": 3,
+      "central": 0,
+      "low": 0,
+      "high": 0,
+      "justification": "Wrong message and historical context built around a fabricated reading of the lettering. The visible broom, uniform and bars do not rescue the incorrect central interpretation; no partial credit.",
+      "generation_error": null,
+      "original_id": "25-control",
+      "arm": "control",
+      "runtime": {
+        "id": "25-control",
+        "prompt_tokens": 1027,
+        "generated_tokens": 3898,
+        "done_reason": "stop",
+        "load_seconds": 0.005713502,
+        "eval_seconds": 37.061596
+      }
+    },
+    {
+      "id": "99076a98c924",
+      "source_item_id": "val2024-hist-z23.2",
+      "answer_sha256": "8abf9cf51bccd6faa3c4ee191eaad12bba05749499ac20bc80d7bce84698b640",
+      "max_points": 1,
+      "central": 1,
+      "low": 1,
+      "high": 1,
+      "justification": "Correct decision and question mapping, with the two actual percentages correctly compared. The concise reference to the poster is sufficient.",
+      "generation_error": null,
+      "original_id": "23.2-zoom",
+      "arm": "zoom",
+      "runtime": {
+        "id": "23.2-zoom",
+        "prompt_tokens": 2003,
+        "generated_tokens": 5515,
+        "done_reason": "stop",
+        "load_seconds": 0.017970587,
+        "eval_seconds": 53.494198
+      }
+    },
+    {
+      "id": "b41c144b289e",
+      "source_item_id": "val2024-hist-z5.1",
+      "answer_sha256": "6cde6ec8dd097cfa2cfd45a295b53ffc7bedb38f6d2e7a1153315cf9a573235a",
+      "max_points": 1,
+      "central": 0,
+      "low": 0,
+      "high": 0,
+      "justification": "Wrong decision: the argument treats the mapped movements as consequences of the appeal without correctly identifying them. Source interpretation and historical linkage both fail.",
+      "generation_error": null,
+      "original_id": "5.1-control",
+      "arm": "control",
+      "runtime": {
+        "id": "5.1-control",
+        "prompt_tokens": 1332,
+        "generated_tokens": 1259,
+        "done_reason": "stop",
+        "load_seconds": 54.292041481,
+        "eval_seconds": 22.023802
+      }
+    }
+  ]
+}

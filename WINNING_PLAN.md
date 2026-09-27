@@ -1,24 +1,25 @@
 # Winning plan
 
-**Goal:** highest final history score; target48/60. Current champion: **Gemma4 12B Q4, 38/60** on known validation; preserved fallback35/60. Recovery rehearsal also38/60, with no blanks. Updated27September01:42. This is strategy, not a log; issues own tasks.
+**Goal:** highest final history score; target48/60. Current champion: **Gemma4 12B Q4, 38/60** on known validation; preserved fallback35/60. Recovery rehearsal also38/60, with no blanks. Updated27September02:10. This is strategy, not a log; issues own tasks.
 
 ## Finish the harness, then improve answers
 
 1. **Reuse the qualified autonomous harness.** Default60minutes; configurable120minutes, with10minutes reserved for recovery, validation and submission. Context65,536 and32,768 initial output ceiling are verified; short answers retain substantial reasoning. Adapt compute to time remaining, preserving complete text/images. No external agent participates in inference/recovery.
 2. **No blank submission entries.** Preserve usable answers. After an empty, truncated, timed-out or malformed result, attempt at least3 retries: larger budget, thinking off, then bounded final-answer synthesis. Allocate recovery time before it is exhausted. If every attempt fails, use the owner's literal emergency fallback `Tadeusz Kościuszko`; mark it as a placeholder, never a successful recovery. Record any hard-deadline exception.
-3. **Rehearsal complete; improve quality.**46calls, about20minutes,40/40 nonblank,0placeholders; all3 failures recovered and offline packaging/cleanup passed. Score38/60: nonessay31, essay7. Larger budgets alone gave no net gain. Fix the narrow essay-repair selection weakness with focused tests; do not repeat full rehearsals per candidate.
-4. **Better prompts and purposeful extra calls.** Test evidence/causal planning, closed-answer disagreement resolution, open-answer coverage checks and essay planning→prose. Compare candidate quality with selector quality. Prefer large mechanism changes over wording sweeps. Use one fast grading pass; second review only for consequential uncertainty.
+3. **Rehearsal complete; improve quality.**46calls, about20minutes,40/40 nonblank,0placeholders; all3 failures recovered and offline packaging/cleanup passed. Score38/60: nonessay31, essay7. Larger budgets alone gave no net gain. Automatic essay feedback/candidate preservation is corrected; quality gain remains unproven. Do not repeat full rehearsals per candidate.
+4. **Change mechanisms when experiments fail.** Generic zoom tied1/6 versus1/6 on the paired failure panel, with more tokens; keep it out of the default. Prioritize structured reasoning/selection and essay planning→prose. Prepare a native-thinking Qwen challenger against a fresh Gemma control on the fixed six-item panel; launch only after the small runtime-profile review and bounded declaration. Compare candidate quality with selector quality. Use one fast grading pass; second only for consequential uncertainty.
 5. **Measure the trained essay LoRA.**36 training steps completed; merged export fits and serves text/images. Compare16 separate evaluation inputs against its matched untrained export in one grading pass. Training loss is not quality. Promote only with argument gain and acceptable factual/nonessay regressions; essay-only adapter switching remains unproven.
 
 ## Owners
 
 | Owner | Work |
 |---|---|
-| Root + Sol | Integrate results and preserve autonomous recovery [#3](https://github.com/kwiscion/machinekind-matura/issues/3) |
-| Root Sol; Paweł grading standby | Structured prompt/essay experiments [#80](https://github.com/kwiscion/machinekind-matura/issues/80) |
+| Root + Sol | Integration [#3](https://github.com/kwiscion/machinekind-matura/issues/3); Qwen challenger preparation [#95](https://github.com/kwiscion/machinekind-matura/issues/95); zoom result [#160](https://github.com/kwiscion/machinekind-matura/issues/160) |
+| Root Sol | Structured prompt/essay experiments [#80](https://github.com/kwiscion/machinekind-matura/issues/80) |
+| Paweł | Claim-triggered offline fact-check preparation [#163](https://github.com/kwiscion/machinekind-matura/issues/163); claim pending |
 | Greg | LoRA pilot [#117](https://github.com/kwiscion/machinekind-matura/issues/117) |
 | Łukasz | Structured-reasoning comparison [#151](https://github.com/kwiscion/machinekind-matura/issues/151); evaluation notes complete |
-| Piotrek / Przemek | Standby; Qwen preparation parked while harness takes priority |
+| Piotrek / Przemek | Standby; root owns the central Qwen preparation, no duplicate worker |
 
 ## Final constraints
 
