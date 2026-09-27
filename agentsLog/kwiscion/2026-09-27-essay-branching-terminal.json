@@ -1,0 +1,75 @@
+{
+  "status": "RUNTIME_TERMINAL_PASS_QUALITY_PENDING",
+  "issue": 168,
+  "terminal": {
+    "status": "TERMINAL",
+    "operator_exit_code": 0,
+    "utc": "2026-09-27T02:21:02.227723+00:00"
+  },
+  "wave": {
+    "outcome": {
+      "mode": "same_model_selected",
+      "submitted_status": {
+        "placeholder": false,
+        "incomplete_partial": false,
+        "selection": "complete_final",
+        "successful_recovery": false,
+        "attempts": 1,
+        "warnings": [],
+        "partial_candidates_preserved": 0,
+        "errors": [],
+        "mandatory_attempts_unfulfilled": 0,
+        "selected_answer_attempt": 0,
+        "mechanical_rank": [
+          0,
+          0
+        ],
+        "word_count": 407,
+        "selection_policy": "essay_mechanical_v2_topic_number",
+        "mechanical_format_improved": false,
+        "format_contract_satisfied": true
+      }
+    },
+    "calls": 7,
+    "requested_tokens": 262144,
+    "deadline_utc": "2026-09-27T03:05:29.613830+00:00",
+    "answers_sha256": "d98ed709c9ed8c5c6360e34b9ca48873def61c45bc422e4e6da1088f82cb4269"
+  },
+  "backup": {
+    "sha256": "722160c6f262c112658c0b4d997c96e4f6f48749d55a8b807450383b5983eb3b",
+    "bytes": 339721,
+    "verified_files": 128,
+    "weight_files_backed_up": false
+  },
+  "idle_cleanup": {
+    "status": "OWNED_IDLE_BASELINE_REMOVED_ABSENT_STATE_RESTORED",
+    "utc": "2026-09-27T02:23:14.037984+00:00",
+    "owned_pid": 71667,
+    "start_ticks": "3296382",
+    "port11436": "unused",
+    "unowned_service_changes": 0
+  },
+  "grading": {
+    "status": "ANSWER_ONLY_FROZEN",
+    "rows": 5,
+    "evidence": {
+      "drafts-runtime": {
+        "answers_sha256": "045bed6ca123bba7cf9f239483116d06fac355518041b18acfce8d4ca93ecd6e",
+        "terminal_sha256": "1b64a2de95904757375eb82e273b987219ed3368a109922f5febf2e91d807179"
+      },
+      "selector-runtime": {
+        "answers_sha256": "0cbc39571702832fd13d4229edc2e24a37a37746803d0008bc773ce550c7f0e8",
+        "terminal_sha256": "1ed2f1fae9a3c0e94fa52864e0da389307ee21738fae454496d541ef04f39b76"
+      }
+    },
+    "masked_sha256": "6df96cc26c165234383f90edf6a5bc4c31f772893d251d9a2769bde04a3ee932",
+    "key_sha256": "1ef4b829fa77ca5abc2fd2def1a4b3d3f2272a310ec28249a8a681ae87a60cfb",
+    "submitted_wave_answer_sha256": "d98ed709c9ed8c5c6360e34b9ca48873def61c45bc422e4e6da1088f82cb4269",
+    "note": "Grade these exact stage finals once. Oracle comparison is retrospective only; do not replace selector output. Operational wave fallback remains separate."
+  },
+  "limitations": [
+    "Known May2024 validation essay; quality grading pending.",
+    "One original task with three offered topics, no cross-task generalization claim.",
+    "Reserved output caps are not actual generated token usage."
+  ]
+}

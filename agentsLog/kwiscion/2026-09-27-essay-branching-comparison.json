@@ -1,0 +1,82 @@
+{
+  "status": "FROZEN_GRADE_JOIN_ONLY_NO_REGRADING",
+  "masked_grade_sha256": "2069ff25522e6d87a0b76ad20aae8308f947d60ec106c8ec68acde69709d3f81",
+  "arm_key_sha256": "1ef4b829fa77ca5abc2fd2def1a4b3d3f2272a310ec28249a8a681ae87a60cfb",
+  "masked_packet_sha256": "6df96cc26c165234383f90edf6a5bc4c31f772893d251d9a2769bde04a3ee932",
+  "rows": [
+    {
+      "id": "effa3a4c72ad0fde",
+      "role": "direct_control",
+      "forced_topic": null,
+      "answer_sha256": "91004e8a725c5c6c5274709870471ebcbcd369a8cb22288871736c36fdbec553",
+      "topic": 3,
+      "body_words": 425,
+      "central": 8,
+      "low": 7,
+      "high": 8,
+      "factual_error_count": 0
+    },
+    {
+      "id": "df5d5caea0ed0133",
+      "role": "topic_draft",
+      "forced_topic": 1,
+      "answer_sha256": "b864be779647ab37004294810bc33724069909471654779d0a45d43bdf9513a7",
+      "topic": 1,
+      "body_words": 401,
+      "central": 11,
+      "low": 11,
+      "high": 12,
+      "factual_error_count": 1
+    },
+    {
+      "id": "2d1e3766e569c3fa",
+      "role": "topic_draft",
+      "forced_topic": 2,
+      "answer_sha256": "500db162b26abc78e8fde1f0a1656ddf85c43e77e48c8d7b98dd6bab50197922",
+      "topic": 2,
+      "body_words": 379,
+      "central": 6,
+      "low": 6,
+      "high": 8,
+      "factual_error_count": 0
+    },
+    {
+      "id": "201c7a7f5c8ee629",
+      "role": "topic_draft",
+      "forced_topic": 3,
+      "answer_sha256": "e4d5164f61f78f74ce3810e35678a708b7133855ea7cf63fbc04a9ae2d8168a3",
+      "topic": 3,
+      "body_words": 399,
+      "central": 6,
+      "low": 6,
+      "high": 7,
+      "factual_error_count": 3
+    },
+    {
+      "id": "dbeb044292704053",
+      "role": "selector_final",
+      "forced_topic": null,
+      "answer_sha256": "107c686209d34945c57da3853815ac26b7a86dd2e4fbfb04f98d9ecb51d8de11",
+      "topic": 3,
+      "body_words": 407,
+      "central": 6,
+      "low": 6,
+      "high": 7,
+      "factual_error_count": 3
+    }
+  ],
+  "control_points": 8,
+  "selected_points": 6,
+  "oracle_points": 11,
+  "selected_minus_control": -2,
+  "selected_minus_oracle": -5,
+  "calls": 7,
+  "reserved_output_tokens": 262144,
+  "promotion": false,
+  "limitations": [
+    "One known validation essay, not independent topic generalization.",
+    "Oracle is retrospective and was not submitted.",
+    "Ranges are scoring sensitivity, not confidence intervals.",
+    "Runtime and reviewer body-word conventions differ when a copied topic-title paragraph appears; no answer was changed."
+  ]
+}
