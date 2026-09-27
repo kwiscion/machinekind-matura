@@ -6,7 +6,7 @@ Decision prepared27September2026, before final-question access. The exact Git co
 
 Use **one Qwen3.5:9b native multimodal model**, the exact closed profile tested in the corrected full40 coverage run. It scored40/60 (32/45 nonessay,8/15 essay), completed40/40 answers in27m58s, and recovered all four initial timeouts autonomously. Gemma39/60 is retained as development evidence, outside the submitted weight set. The48/60 target was not reached; a one-point validation advantage is uncertain.
 
-The final policy is the qualified recovery runner plus the exact generic essay coverage suffix. No RAG, image-description ensemble, factual referee, LoRA or external-model selection is enabled. The generic preparer's40 initial payloads were independently shown identical to the measured run, and its arbitrary-ID/image tests and37-item organizer mock preparation passed.
+The preserved policy is the qualified recovery runner plus the exact generic essay coverage suffix. A bounded optional full-Wikipedia RAG extension is undergoing one diagnostic and independent review before the09:15 decision; it is not yet promoted. No image-description ensemble, factual referee, LoRA or external-model selection is enabled. The generic preparer's40 initial payloads were independently shown identical to the measured run, and its arbitrary-ID/image tests and37-item organizer mock preparation passed. The final freeze record must explicitly select direct-only or the reviewed RAG route.
 
 | Pin | Value |
 |---|---|
@@ -19,7 +19,7 @@ The final policy is the qualified recovery runner plus the exact generic essay c
 | Essay policy SHA256 | `236e9ee6d23168b817b144a706d86a8f204fe133af568ba27c08c88c4727d763` |
 | Recovery code SHA256 | `628aa6b92b76e10540d8f43bf7f186bc5c6178eae526d296c149483051f292b0` |
 
-Retain the installed runtime/backend libraries, not merely the main executable. The central project H100 is the intended worker. Verify its idle state and the fresh Qwen-only cache; never copy the mixed development cache into the submission.
+Retain the installed runtime/backend libraries, not merely the main executable. The central project H100 is ready for direct-only execution. If RAG earns promotion, use Paweł's H100, where the full index and a verified Qwen-only cache are already present. Verify large artifacts and idle ownership before final access, outside the exam clock; never copy the mixed development cache into the submission.
 
 ## Freeze and obtain input
 
@@ -29,9 +29,15 @@ Use the actual organizer package with its `exam.json`, linked PNGs and `answers-
 
 ## Prepare and run
 
-The planned final window is **120minutes**, with the existing600-second recovery/export reserve. Start early enough to finish by10:40Warsaw, leaving time to submit before11:00. If the organizer supplies a shorter window, use the already qualified60-minute mode and record that choice before dispatch. Budget: at most4N requests and147,456N requested output tokens for N actual items; maximum120minutes is approximatelyUSD6.56 at the suppliedUSD3.28/hour rate. This is a cost ceiling estimate, not an invoice or compute purchase.
+The owner's strict limit is **under70minutes from final access through confirmed submission**. Target65minutes and keep5minutes of headroom: at most10minutes combined for acquisition, preparation, transfer and submission, plus an actual model-work declaration of at most55minutes inside the already qualified60-minute profile. Keep600seconds within the declared window for recovery/export. The120-minute mode is excluded.
 
-Use the [generic coverage CLI](../agentsLog/kwiscion/coverage-prep/README.md) with `--model qwen`, explicit received essay IDs and `--minutes 120`. The output path must be a fresh project-private directory. Preparation preserves the source, creates a derived package with only the tested essay suffix appended, and records both sets of hashes. Keep `PREPARED` evidence before the runtime declaration.
+Let `T0` be final-access time. Set the model deadline to the earlier of `model_start + 55minutes` and `T0 + 60minutes`; target a confirmed receipt by `T0 + 65minutes`. If setup runs late, shorten inference rather than extending the total clock. A hard model deadline bounds optional work but cannot guarantee third-party download or submission availability, hence the headroom and early complete answer export.
+
+Direct-only budget: at most4N requests and147,456N requested output tokens for N actual items. A promoted RAG route declares its separate exact N/E envelope before dispatch, with the same55-minute ceiling. Model runtime at55minutes is approximatelyUSD3.01 at the suppliedUSD3.28/hour proxy rate; the whole70-minute window is approximatelyUSD3.83. These are planning estimates on existing resources, not invoices or purchases.
+
+For direct-only execution use the [generic coverage CLI](../agentsLog/kwiscion/coverage-prep/README.md) with `--model qwen`, explicit received essay IDs and `--minutes 60`, then declare the shorter actual deadline above. Prepare on the qualified Windows checkout to preserve frozen dependency bytes; transfer the self-contained package to Linux. The output path must be a fresh project-private directory. Preparation preserves the source, creates a derived package with only the tested essay suffix appended, and records both sets of hashes. Keep `PREPARED` evidence before the runtime declaration.
+
+For RAG, promotion additionally requires independent generic integration, source-preservation, fallback and deadline checks. Complete the full direct answer sheet first. Optional nonessay RAG then receives at most20minutes, ending no later than600seconds before the actual model deadline. Each item runs query, five independent relevance checks, and a final answer with accepted evidence; no accepted evidence means the saved direct answer remains. Complete one item chain before moving to the next. Failed, partial, oversized or unprocessed optional answers cannot replace usable direct answers. Essays retain the exact coverage route. This intentionally permits partial RAG coverage; an all-question pipeline has not been shown to fit70minutes.
 
 Declare only the actual aware-UTC start/deadline and the finite authorization envelope already stated above. Timestamp precision must be at most six fractional digits. Rerun preflight on the actual execution Python, then execute the existing `run_recovery_package.py ... --execute` exactly once through its guardian. Complete runtime commands are in the [coverage guide](../agentsLog/kwiscion/coverage-prep/README.md) and [recovery guide](../agentsLog/kwiscion/final-package-prep/RECOVERY_RUNTIME.md).
 
