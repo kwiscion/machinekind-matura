@@ -1,0 +1,15 @@
+{
+  "status": "CPU_PASS",
+  "tests": 4,
+  "actual_organizer_mock_items": 37,
+  "actual_measured_full40_initial_payload_equivalence": 40,
+  "runtime_closure_byte_identical": true,
+  "template_byte_identical": true,
+  "model_calls": 0,
+  "remote_operations": 0,
+  "wrapper_sha256": "3b002abad0cd228b0187f4806de86d685514b102c33466179e2bd5600ec7a82d",
+  "tests_sha256": "fc27d81e4eb8c482578be88bba2ac70df1cf6189186df7dd3c4b78f29b63b1b7",
+  "readme_sha256": "78ced5252f59a4491ce7fabbcf1a81bc9c20658c51011cedbb8175bea442a51d",
+  "comparison_declared_manifest_sha256": "b1954bf98b7e51f002a93334f567125e802ca46bf25d5276558befee4254d75b",
+  "generic_prepared_manifest_sha256": "0cf4b7643b801929e86f0e3c2ce5eebaeaab24800b0ce7972217546a7750ebf7"
+}

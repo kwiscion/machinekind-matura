@@ -1,0 +1,411 @@
+{
+  "status": "TERMINAL_UNMASKED_NO_REGRADE",
+  "issue": 186,
+  "verdict": "DO_NOT_PROMOTE_B_OR_REFEREE",
+  "masked_grade_sha256": "b7980ac53f2248afc7bf6c0ba8eb0855a81b85be7143dce10e8fa8e05ee75de6",
+  "key_sha256": "7dee3c9d106a9090c6297f51eeb82df7ec96b700491bec25c2a551df366e73ae",
+  "packet_sha256": "f26f9cb5fc9dff5f1b7d90ca2a612feb1a5a5d980939794b750f058f67566c85",
+  "archive_sha256": "e4e6d7796aebfc2363ad58254504561d7eaff3c375cd56d0554e5054987f1256",
+  "declared_wave_sha256": "df07155af352262ac595e3efc62f4149c5b63cc5361f56d5ef478e3ac6b89838",
+  "selected_answers_sha256": "95f00fe00d7d8b0ec31753eac3f1e8011960269fe962442f7db5fe39b99255c2",
+  "panel_max": 12,
+  "totals": {
+    "A": 7,
+    "B": 5,
+    "selected": 7,
+    "oracle": 8
+  },
+  "judgment_sensitivity": {
+    "A": [
+      6,
+      9
+    ],
+    "B": [
+      4,
+      5
+    ],
+    "selected": [
+      6,
+      9
+    ]
+  },
+  "B_vs_A": {
+    "better": 1,
+    "worse": 3,
+    "tied": 6
+  },
+  "valid_referee_selections": 0,
+  "referee_fallbacks": 10,
+  "referee_contract_failures": {
+    "non_json_answer": 9,
+    "json_unknown_id_and_extra_field": 1
+  },
+  "selected_vs_A_delta": 0,
+  "oracle_vs_selected_delta": 1,
+  "rows": [
+    {
+      "id": "3.1",
+      "max_points": 1,
+      "A": 1,
+      "B": 0,
+      "selected": 1,
+      "oracle": 1,
+      "A_range": [
+        1,
+        1
+      ],
+      "B_range": [
+        0,
+        0
+      ],
+      "selected_range": [
+        1,
+        1
+      ],
+      "selected_arm": "A",
+      "mode": "operational_fallback",
+      "A_answer_sha256": "60fe88300544e30bf286cae0ae338a7432a35aae6149baa1f711ed13d6e61919",
+      "B_answer_sha256": "6ae4e17db4f7582c32a88394d11698c53beae96543093ac8a9eadf6f73df7678",
+      "selected_answer_sha256": "60fe88300544e30bf286cae0ae338a7432a35aae6149baa1f711ed13d6e61919"
+    },
+    {
+      "id": "3.2",
+      "max_points": 1,
+      "A": 0,
+      "B": 1,
+      "selected": 0,
+      "oracle": 1,
+      "A_range": [
+        0,
+        1
+      ],
+      "B_range": [
+        1,
+        1
+      ],
+      "selected_range": [
+        0,
+        1
+      ],
+      "selected_arm": "A",
+      "mode": "operational_fallback",
+      "A_answer_sha256": "e3c46cedda811d2361e6ead19a6e53d3e51b150a50b712281888f58d2c98f27b",
+      "B_answer_sha256": "f198eb3a9d0e4bac8d58c03cb46333720d2c497c26eba18d846acced796d7c1b",
+      "selected_answer_sha256": "e3c46cedda811d2361e6ead19a6e53d3e51b150a50b712281888f58d2c98f27b"
+    },
+    {
+      "id": "7",
+      "max_points": 1,
+      "A": 0,
+      "B": 0,
+      "selected": 0,
+      "oracle": 0,
+      "A_range": [
+        0,
+        1
+      ],
+      "B_range": [
+        0,
+        0
+      ],
+      "selected_range": [
+        0,
+        1
+      ],
+      "selected_arm": "A",
+      "mode": "operational_fallback",
+      "A_answer_sha256": "3e2ace552e32babb577cc3a0ad042642ac8294385d8cd35e6bd922a087f94920",
+      "B_answer_sha256": "f2bd0065b1c3fb5312a16083ed040b539747e6f3144383d71210431b504b0c75",
+      "selected_answer_sha256": "3e2ace552e32babb577cc3a0ad042642ac8294385d8cd35e6bd922a087f94920"
+    },
+    {
+      "id": "11.1",
+      "max_points": 1,
+      "A": 0,
+      "B": 0,
+      "selected": 0,
+      "oracle": 0,
+      "A_range": [
+        0,
+        0
+      ],
+      "B_range": [
+        0,
+        0
+      ],
+      "selected_range": [
+        0,
+        0
+      ],
+      "selected_arm": "A",
+      "mode": "operational_fallback",
+      "A_answer_sha256": "2434c5bd323fb48adbfbed9766e77837f913c68c1abfc24186bcc76ed0e9c33c",
+      "B_answer_sha256": "2434c5bd323fb48adbfbed9766e77837f913c68c1abfc24186bcc76ed0e9c33c",
+      "selected_answer_sha256": "2434c5bd323fb48adbfbed9766e77837f913c68c1abfc24186bcc76ed0e9c33c"
+    },
+    {
+      "id": "11.2",
+      "max_points": 1,
+      "A": 0,
+      "B": 0,
+      "selected": 0,
+      "oracle": 0,
+      "A_range": [
+        0,
+        0
+      ],
+      "B_range": [
+        0,
+        0
+      ],
+      "selected_range": [
+        0,
+        0
+      ],
+      "selected_arm": "A",
+      "mode": "operational_fallback",
+      "A_answer_sha256": "57114f18f1e6833b7bfe39f3d1e4c5f63cf71fa9a93ba0fcc1ee36bea8ad1132",
+      "B_answer_sha256": "03c54771ddc3ef192e22e7bfa2107f29c84c86ef2f12df822f3ece6091ff87ac",
+      "selected_answer_sha256": "57114f18f1e6833b7bfe39f3d1e4c5f63cf71fa9a93ba0fcc1ee36bea8ad1132"
+    },
+    {
+      "id": "12.1",
+      "max_points": 1,
+      "A": 1,
+      "B": 0,
+      "selected": 1,
+      "oracle": 1,
+      "A_range": [
+        1,
+        1
+      ],
+      "B_range": [
+        0,
+        0
+      ],
+      "selected_range": [
+        1,
+        1
+      ],
+      "selected_arm": "A",
+      "mode": "operational_fallback",
+      "A_answer_sha256": "78a360b1e581a40b229178b78ffa426f34d61877668bbc2f1aa1308ef39ec22c",
+      "B_answer_sha256": "607e6dabedcfc14aed061f8b6cc2ab1838ba33df26988cd67bb060b9e6e8535d",
+      "selected_answer_sha256": "78a360b1e581a40b229178b78ffa426f34d61877668bbc2f1aa1308ef39ec22c"
+    },
+    {
+      "id": "17.1",
+      "max_points": 1,
+      "A": 1,
+      "B": 1,
+      "selected": 1,
+      "oracle": 1,
+      "A_range": [
+        0,
+        1
+      ],
+      "B_range": [
+        0,
+        1
+      ],
+      "selected_range": [
+        0,
+        1
+      ],
+      "selected_arm": "A",
+      "mode": "operational_fallback",
+      "A_answer_sha256": "64392ddbf99daac1eaa1a887f2f6f7a6a7d865c6725868dc883d3dbca8c19403",
+      "B_answer_sha256": "d76e4b0966f902b4ded7944075680c60b26be9b5e4026eff93498f75e7dcfc68",
+      "selected_answer_sha256": "64392ddbf99daac1eaa1a887f2f6f7a6a7d865c6725868dc883d3dbca8c19403"
+    },
+    {
+      "id": "17.2",
+      "max_points": 1,
+      "A": 1,
+      "B": 1,
+      "selected": 1,
+      "oracle": 1,
+      "A_range": [
+        1,
+        1
+      ],
+      "B_range": [
+        1,
+        1
+      ],
+      "selected_range": [
+        1,
+        1
+      ],
+      "selected_arm": "A",
+      "mode": "operational_fallback",
+      "A_answer_sha256": "44d6f03f76d541ef4fd3c18591d6c54cb948855e6a064dbcae6767d2340d916d",
+      "B_answer_sha256": "95d247de191bbe9735ac29a2c7f5655b4ab9c1a224705731d51f7a3ceefacde6",
+      "selected_answer_sha256": "44d6f03f76d541ef4fd3c18591d6c54cb948855e6a064dbcae6767d2340d916d"
+    },
+    {
+      "id": "19.1",
+      "max_points": 2,
+      "A": 1,
+      "B": 0,
+      "selected": 1,
+      "oracle": 1,
+      "A_range": [
+        1,
+        1
+      ],
+      "B_range": [
+        0,
+        0
+      ],
+      "selected_range": [
+        1,
+        1
+      ],
+      "selected_arm": "A",
+      "mode": "operational_fallback",
+      "A_answer_sha256": "eff9118ba7afc30985d2a6f7995459b8a85fd17f7f7c7ecc24fcec327bafc37e",
+      "B_answer_sha256": "68bad1b9d0c4a8e483be794e4d730d81d94e59aa3a314955df03dfe5b649eeca",
+      "selected_answer_sha256": "eff9118ba7afc30985d2a6f7995459b8a85fd17f7f7c7ecc24fcec327bafc37e"
+    },
+    {
+      "id": "20.2",
+      "max_points": 2,
+      "A": 2,
+      "B": 2,
+      "selected": 2,
+      "oracle": 2,
+      "A_range": [
+        2,
+        2
+      ],
+      "B_range": [
+        2,
+        2
+      ],
+      "selected_range": [
+        2,
+        2
+      ],
+      "selected_arm": "A",
+      "mode": "operational_fallback",
+      "A_answer_sha256": "2c78edf69acaf7db62cd471320ac729c7737cef0e266c30faf776ef2b185e535",
+      "B_answer_sha256": "27d3de382b64e9cb133e95e90ddec20d67296a4f295df04ed60de6191f68d287",
+      "selected_answer_sha256": "2c78edf69acaf7db62cd471320ac729c7737cef0e266c30faf776ef2b185e535"
+    }
+  ],
+  "payload_audit": [
+    {
+      "id": "3.1",
+      "recorded_request_hash_matches": true,
+      "selector_instruction_present": true,
+      "all_candidate_ids_present": true,
+      "all_candidate_finals_present": true,
+      "initial_model": "qwen3.5:9b"
+    },
+    {
+      "id": "3.2",
+      "recorded_request_hash_matches": true,
+      "selector_instruction_present": true,
+      "all_candidate_ids_present": true,
+      "all_candidate_finals_present": true,
+      "initial_model": "qwen3.5:9b"
+    },
+    {
+      "id": "7",
+      "recorded_request_hash_matches": true,
+      "selector_instruction_present": true,
+      "all_candidate_ids_present": true,
+      "all_candidate_finals_present": true,
+      "initial_model": "qwen3.5:9b"
+    },
+    {
+      "id": "11.1",
+      "recorded_request_hash_matches": true,
+      "selector_instruction_present": true,
+      "all_candidate_ids_present": true,
+      "all_candidate_finals_present": true,
+      "initial_model": "qwen3.5:9b"
+    },
+    {
+      "id": "11.2",
+      "recorded_request_hash_matches": true,
+      "selector_instruction_present": true,
+      "all_candidate_ids_present": true,
+      "all_candidate_finals_present": true,
+      "initial_model": "qwen3.5:9b"
+    },
+    {
+      "id": "12.1",
+      "recorded_request_hash_matches": true,
+      "selector_instruction_present": true,
+      "all_candidate_ids_present": true,
+      "all_candidate_finals_present": true,
+      "initial_model": "qwen3.5:9b"
+    },
+    {
+      "id": "17.1",
+      "recorded_request_hash_matches": true,
+      "selector_instruction_present": true,
+      "all_candidate_ids_present": true,
+      "all_candidate_finals_present": true,
+      "initial_model": "qwen3.5:9b"
+    },
+    {
+      "id": "17.2",
+      "recorded_request_hash_matches": true,
+      "selector_instruction_present": true,
+      "all_candidate_ids_present": true,
+      "all_candidate_finals_present": true,
+      "initial_model": "qwen3.5:9b"
+    },
+    {
+      "id": "19.1",
+      "recorded_request_hash_matches": true,
+      "selector_instruction_present": true,
+      "all_candidate_ids_present": true,
+      "all_candidate_finals_present": true,
+      "initial_model": "qwen3.5:9b"
+    },
+    {
+      "id": "20.2",
+      "recorded_request_hash_matches": true,
+      "selector_instruction_present": true,
+      "all_candidate_ids_present": true,
+      "all_candidate_finals_present": true,
+      "initial_model": "qwen3.5:9b"
+    }
+  ],
+  "run": {
+    "primary_slots": 30,
+    "actual_calls": 31,
+    "max_calls": 120,
+    "requested_output_tokens": 1032192,
+    "max_requested_output_tokens": 4423680,
+    "actual_eval_count": 237128,
+    "actual_prompt_eval_count": 37951,
+    "usage_unknown_calls": 0,
+    "first_pass_runtime_failures": 1,
+    "runtime_failure": "11.2--B attempt0: empty or malformed final",
+    "recovered_failures": 1,
+    "drafts_complete": 20,
+    "selector_responses_complete": 10,
+    "operator_exit": 0,
+    "outcome": "selected_with_recorded_fallbacks",
+    "start_utc": "2026-09-27T03:22:52.213796+00:00",
+    "terminal_utc": "2026-09-27T03:56:38.147059+00:00",
+    "wall_seconds": 2025.933263,
+    "cost_proxy_usd": 1.8459,
+    "cost_proxy_ceiling_usd": 3.28,
+    "cleanup": "GPU empty, no workers, recorded server PIDs absent, original service identity and empty loaded-model list preserved at03:57:55UTC."
+  },
+  "findings": [
+    "B gained one central point on3.2 but lost one each on3.1,12.1,19.1; six items tied.",
+    "The referee did receive complete original inputs, candidate IDs and exact candidate finals: all ten reconstructed payload hashes match durable request hashes.",
+    "Nine outputs answered the exam question instead of returning an ID; one emitted an unknown ID plus an extra answer field. All were rejected by the frozen parser; no posthoc rewrite or permissive matching was used.",
+    "Runtime ordinary-answer validation accepted these nonblank responses, so semantic selector failures were detected only by CPU export and caused fallback, not recovery retries.",
+    "Smallest future technical change would be a separately qualified stage-specific structured output contract plus candidate-ID validation inside the existing recovery slot. This report does not authorize a rerun.",
+    "B is worse than A on this fixed panel; even perfect selection among these two drafts gains only one central point. Do not promote from the oracle."
+  ],
+  "limitations": "Known-validation fixed10-item subset, one stochastic pair per item, single agent grading. Ranges are judgment sensitivity, not confidence intervals. No new numeric grading of unsubmitted referee rewrites. Model/prompt authorship and prior validation exposure disclosed. After masked freeze, an accounting inspection accidentally printed a truncated embedded provider object in private tool output; raw reasoning is not published and no grade was changed. The first-pass failure was initially called timeout in a progress message; durable evidence establishes empty/malformed final, corrected here."
+}

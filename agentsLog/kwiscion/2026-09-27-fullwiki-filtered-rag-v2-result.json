@@ -1,0 +1,144 @@
+{
+  "declared_manifest_sha256": "7836d71c4a15b61c7a2be0af2e63fce72454fa5685ac8dc62384e49923487495",
+  "index_sha256": "5bf93ceca9715170f7a3b6497746cd00dac4dd80f7fe0b53fd0a3f981d88bb36",
+  "reservations": 55,
+  "completed_attempts": 55,
+  "failed_attempts": 3,
+  "requested_output_tokens": 1835008,
+  "known_prompt_tokens": 86287,
+  "known_generated_tokens": 148508,
+  "unknown_usage_calls": 1,
+  "max_calls": 208,
+  "max_requested_tokens": 7667712,
+  "query": [
+    {
+      "id": "3.2",
+      "query_fallback": false,
+      "passages": 5
+    },
+    {
+      "id": "11.2",
+      "query_fallback": false,
+      "passages": 5
+    },
+    {
+      "id": "12.1",
+      "query_fallback": false,
+      "passages": 5
+    },
+    {
+      "id": "17.2",
+      "query_fallback": false,
+      "passages": 5
+    },
+    {
+      "id": "5.2",
+      "query_fallback": false,
+      "passages": 5
+    },
+    {
+      "id": "19.2",
+      "query_fallback": false,
+      "passages": 5
+    }
+  ],
+  "admission": [
+    {
+      "id": "3.2",
+      "admitted": 3,
+      "removed_for_size": 0
+    },
+    {
+      "id": "11.2",
+      "admitted": 3,
+      "removed_for_size": 0
+    },
+    {
+      "id": "12.1",
+      "admitted": 2,
+      "removed_for_size": 0
+    },
+    {
+      "id": "17.2",
+      "admitted": 1,
+      "removed_for_size": 0
+    },
+    {
+      "id": "5.2",
+      "admitted": 3,
+      "removed_for_size": 0
+    },
+    {
+      "id": "19.2",
+      "admitted": 1,
+      "removed_for_size": 0
+    }
+  ],
+  "complete_direct_fallbacks": 0,
+  "overlap_flags": 0,
+  "stop": null,
+  "placeholder_slots": 0,
+  "probe_gate": {
+    "passed": true,
+    "ids": [
+      "probe:query:3.2",
+      "probe:query:11.2",
+      "probe:judge:0:3.2",
+      "probe:judge:0:11.2"
+    ],
+    "attempts": {
+      "probe:query:3.2": 1,
+      "probe:query:11.2": 1,
+      "probe:judge:0:3.2": 1,
+      "probe:judge:0:11.2": 1
+    },
+    "criterion": "all four typed auxiliary finals valid; negative DIRECT is valid"
+  },
+  "status": "COMPLETED",
+  "operator_returncode": 0,
+  "terminal_utc": "2026-09-27T04:56:06.821245+00:00",
+  "declared_utc": "2026-09-27T04:20:24.076268+00:00",
+  "deadline_utc": "2026-09-27T05:20:00.000000+00:00",
+  "wall_seconds": 1911.0994191169739,
+  "execution_time_cost_estimate_usd": 1.7412239151954652,
+  "planning_rate_usd_per_hour": 3.28,
+  "actual_billing_unverified": true,
+  "deadline_margin_seconds": 1433.178755,
+  "source_and_image_payloads_verified": 55,
+  "index_articles": 1587721,
+  "index_passages": 2729746,
+  "main_judgment_final": {
+    "valid_true": 13,
+    "valid_false": 17
+  },
+  "main_stage_complete": {
+    "direct": 6,
+    "query": 6,
+    "judge": 30,
+    "final": 6
+  },
+  "admitted_total": 13,
+  "own_services_cleaned": true,
+  "gpu_empty_after": true,
+  "network_namespace_proof_preserved": true,
+  "model": "gemma4:12b-it-q4_K_M",
+  "model_digest": "4eb23ef187e2c5462566d6a1d3bbbc2f1346d0b4327cbb66d58fffbcc9b2b05c",
+  "context": 65536,
+  "saved_cache_bytes": 7556509301,
+  "backup_sha256": "d59750782952887d1b66cf9c403b85210c476df1b6f3a3ce093c199e84c4e926",
+  "exports": {
+    "direct": {
+      "path": "agentsLog/kwiscion/model-answers/fullwiki-filtered-rag-v2-direct.answers.json",
+      "sha256": "da88c99e438a540c5e6b98e97738feaac4fac80ad9f898a8a4fe5b1ebff9bc86",
+      "items": 6
+    },
+    "filtered": {
+      "path": "agentsLog/kwiscion/model-answers/fullwiki-filtered-rag-v2-filtered.answers.json",
+      "sha256": "32d942459727a46580f82c52f1af45742029ca737715605f92202029fd8e365b",
+      "items": 6
+    }
+  },
+  "grade": null,
+  "promotion": false,
+  "limitation": "Selected known-validation six-item panel; no full-exam or causal generalization. Sampling defaults omitted and not fixed. Valid DIRECT decisions and literal spans do not independently establish factual usefulness."
+}

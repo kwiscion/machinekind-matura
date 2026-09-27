@@ -1,0 +1,53 @@
+{
+  "status": "COMPLETED",
+  "snapshot_utc": "2026-09-27T04:33:19.333420+00:00",
+  "declaration": "https://github.com/kwiscion/machinekind-matura/issues/182#issuecomment-5852582975",
+  "prepared_manifest_sha256": "be90e608eb10965f657c1e350bce6c1570265d03da71a8b23b6d772e02a6e53d",
+  "declared_manifest_sha256": "7836d71c4a15b61c7a2be0af2e63fce72454fa5685ac8dc62384e49923487495",
+  "declared_utc": "2026-09-27T04:20:24.076268+00:00",
+  "deadline_utc": "2026-09-27T05:20:00.000000+00:00",
+  "actual_dispatch_utc": "2026-09-27T04:24:15.720228+00:00",
+  "first_reservation_unix": 1790483070.1131117,
+  "max_primary_slots": 52,
+  "max_attempts": 208,
+  "max_requested_output_tokens": 7667712,
+  "planning_cost_ceiling_usd": 3.28,
+  "actual_billing_unverified": true,
+  "probe_gate": {
+    "passed": true,
+    "valid_queries": 2,
+    "valid_negative_judgments": 2,
+    "positive_quotes": 0,
+    "attempts": 4,
+    "errors": 0
+  },
+  "completed_stages": {
+    "probe": 4,
+    "direct": 6,
+    "query": 6
+  },
+  "reservations_at_snapshot": 17,
+  "errors_at_snapshot": 0,
+  "model": "gemma4:12b-it-q4_K_M",
+  "verified_model_digest": "4eb23ef187e2c5462566d6a1d3bbbc2f1346d0b4327cbb66d58fffbcc9b2b05c",
+  "verified_loaded_context": 65536,
+  "saved_cache_bytes": 7556509301,
+  "index_sha256": "5bf93ceca9715170f7a3b6497746cd00dac4dd80f7fe0b53fd0a3f981d88bb36",
+  "precall_metadata_failure": "Windows CRLF declaration embedded as LF failed SHA before marker/service/calls; failed file preserved, exact original bytes restored without changing declaration or deadline",
+  "quality_result": null,
+  "promotion": false,
+  "terminal_utc": "2026-09-27T04:56:06.821245+00:00",
+  "actual_attempts": 55,
+  "grade": {
+    "direct": 3,
+    "direct_interval": [
+      2,
+      3
+    ],
+    "filtered": 4,
+    "max_points": 6
+  },
+  "result_report": "agentsLog/kwiscion/2026-09-27-fullwiki-filtered-rag-v2-result.json",
+  "grade_report": "agentsLog/kwiscion/2026-09-27-fullwiki-filtered-rag-v2-grade.json",
+  "backup_sha256": "d59750782952887d1b66cf9c403b85210c476df1b6f3a3ce093c199e84c4e926"
+}
