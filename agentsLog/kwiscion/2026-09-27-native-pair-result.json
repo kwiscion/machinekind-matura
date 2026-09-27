@@ -1,0 +1,129 @@
+{
+  "status": "COMPLETED_BACKUP_VERIFIED",
+  "input_version": "legacy full-page source-v2; not corrected organizer source crops",
+  "scope": "Six selected known-validation items,8points per arm; no full-exam promotion",
+  "ids": [
+    "2",
+    "4",
+    "5.1",
+    "13",
+    "14.1",
+    "25"
+  ],
+  "planned_slots": 12,
+  "complete_final_answers": 12,
+  "calls": 14,
+  "requested_output_tokens": 475136,
+  "known_prompt_tokens": 20562,
+  "known_generated_tokens": 71263,
+  "unknown_usage_calls": 1,
+  "declared_utc": "2026-09-27T00:17:59.751934+00:00",
+  "deadline_utc": "2026-09-27T01:17:59.751934+00:00",
+  "operator_started_utc": "2026-09-27T00:18:14.063815+00:00",
+  "terminal_utc": "2026-09-27T00:41:29.163386+00:00",
+  "operator_wall_seconds": 1395.099571,
+  "declaration_to_terminal_seconds": 1409.411452,
+  "deadline_margin_seconds": 2190.588548,
+  "planning_rate_usd_hour": 3.28,
+  "time_estimate_usd": 1.28413,
+  "billing": "unverified; estimate excludes staging/idle instance time",
+  "max_calls": 48,
+  "max_requested_output_tokens": 1769472,
+  "max_seconds": 3600,
+  "postterminal_gpu_empty": true,
+  "original_service_preserved_idle": true,
+  "masked_handoff_terminal_equality": true,
+  "masked_packet_sha256": "2a80cfbfcd84ff07473a0cd28d7eeca964118dc14e4ba8863fea25ae0a6b3dd3",
+  "private_backup_sha256": "3e924723a081810135372472a1cb455f1999e3f73b1a79e692838e49fb728f6c",
+  "answer_only_sha256": "285746aac3680846d9a21b28989e70ef7e3e1ac63b452fa20530dd63c2fef67d",
+  "source_overlap_screen": "Maximum contiguous source/question word overlap14; no answer edits; source packs/raw thinking private",
+  "combined_models_fit_submission_limit": false,
+  "arms": {
+    "gemma": {
+      "calls": 8,
+      "requested_output_tokens": 278528,
+      "known_prompt_tokens": 8680,
+      "known_generated_tokens": 44080,
+      "unknown_usage_calls": 1,
+      "failed_attempts": [
+        {
+          "id": "25",
+          "attempt": 0,
+          "error": "Failed: length or incomplete final"
+        },
+        {
+          "id": "25",
+          "attempt": 1,
+          "error": "TimeoutError: Request wall timeout"
+        }
+      ],
+      "complete_final_answers": 6,
+      "placeholders": 0,
+      "recovered_items": 1,
+      "operator_started_utc": "2026-09-27T00:18:14.113810+00:00",
+      "operator_terminal_utc": "2026-09-27T00:36:27.193539+00:00",
+      "operator_wall_seconds": 1093.079729,
+      "operator_returncode": 0,
+      "model": "gemma4:12b-it-q4_K_M",
+      "digest": "4eb23ef187e2c5462566d6a1d3bbbc2f1346d0b4327cbb66d58fffbcc9b2b05c",
+      "loaded_context": 65536,
+      "sampling": {
+        "temperature": "omitted"
+      },
+      "cache_files": 6,
+      "cache_bytes": 7556509301,
+      "no_egress_proof": true,
+      "external_connect_errno": [
+        101,
+        101
+      ],
+      "cleanup_verified": "verified_completed_receipt",
+      "answers_sha256": "bac0115cc368e5156c921d5111154b224221954466e888d9aa63e26e18a7f29e",
+      "declared_manifest_sha256": "1f316aded62de73a657bccbeaee796b337b03cd55baf163cadbb848df8ac93f7",
+      "scheduler_sha256": "d99d9271d6cc589f0e9caccfee3d1387c4695d0fd9cd33db97bcd3efba54a521",
+      "binding_sha256": "54983970c8bc9bd8b84bc878383b254af8cb192be313320b793317e86b4aa392"
+    },
+    "qwen": {
+      "calls": 6,
+      "requested_output_tokens": 196608,
+      "known_prompt_tokens": 11882,
+      "known_generated_tokens": 27183,
+      "unknown_usage_calls": 0,
+      "failed_attempts": [],
+      "complete_final_answers": 6,
+      "placeholders": 0,
+      "recovered_items": 0,
+      "operator_started_utc": "2026-09-27T00:36:27.262182+00:00",
+      "operator_terminal_utc": "2026-09-27T00:41:29.124763+00:00",
+      "operator_wall_seconds": 301.862581,
+      "operator_returncode": 0,
+      "model": "qwen3.5:9b",
+      "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+      "loaded_context": 65536,
+      "sampling": {
+        "temperature": 1,
+        "top_p": 0.95,
+        "top_k": 64
+      },
+      "cache_files": 5,
+      "cache_bytes": 6594475420,
+      "no_egress_proof": true,
+      "external_connect_errno": [
+        101,
+        101
+      ],
+      "cleanup_verified": "verified_completed_receipt",
+      "answers_sha256": "a9d129578fbea352545426c4adfa2225a9522658a009179b97b72612b0f482c2",
+      "declared_manifest_sha256": "f55e6e2931da6dc1889073437e5e021ee5ebbb74eb2b840da9933adaac8751f5",
+      "scheduler_sha256": "d99d9271d6cc589f0e9caccfee3d1387c4695d0fd9cd33db97bcd3efba54a521",
+      "binding_sha256": "54983970c8bc9bd8b84bc878383b254af8cb192be313320b793317e86b4aa392"
+    }
+  },
+  "limitations": [
+    "Gemma omitted sampling vs Qwen fixedT1/p.95/k64 compares systems rather than only model identity",
+    "Sequential shared deadline yields different adaptive per-call allocations",
+    "Legacy full-page source-v2, not newly corrected source-specific crops",
+    "One selected six-item panel, no whole-exam promotion",
+    "One timed-out call has unknown token usage"
+  ]
+}
