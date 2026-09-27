@@ -2,3 +2,5 @@
 agentsLog/kwiscion/source-crops-prep/* text eol=lf
 # The staged wrapper freezes exact portable source/shell bytes in its manifest.
 agentsLog/kwiscion/essay-branching-prep/* -text
+# Preserve the inactive policy's published source and suffix provenance.
+agentsLog/kwiscion/essay-coverage-prep/* -text
