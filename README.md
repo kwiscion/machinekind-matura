@@ -13,7 +13,8 @@ The organizer allows **8 GB + 10% across all submitted model weights together**.
 | Claim-triggered offline fact-check preparation | @Pewciu6; claim pending | [#163](https://github.com/kwiscion/machinekind-matura/issues/163) |
 | Single-model essay LoRA pilot | @Bukareszt | [#117](https://github.com/kwiscion/machinekind-matura/issues/117) |
 | Structured-reasoning comparison | @ljaniec | [#151](https://github.com/kwiscion/machinekind-matura/issues/151) |
-| Native-thinking Qwen versus Gemma preparation | @kwiscion + Sol; @semberecki standby | [#95](https://github.com/kwiscion/machinekind-matura/issues/95) |
+| Native-thinking Qwen versus Gemma comparison | @kwiscion + Sol | [#95](https://github.com/kwiscion/machinekind-matura/issues/95) |
+| Essay-only adapter serving feasibility | @semberecki; CPU claim pending | [#165](https://github.com/kwiscion/machinekind-matura/issues/165) |
 | Standby; Bielik proxy completed | @przemeknowak781 | [#97](https://github.com/kwiscion/machinekind-matura/issues/97) |
 
 The [recovery runtime guide](agentsLog/kwiscion/final-package-prep/RECOVERY_RUNTIME.md) documents larger context/output budgets, up to three recovery retries, preserved candidates, no blank answers, and a60/120-minute deadline. The [full rehearsal](agentsLog/kwiscion/2026-09-27-champion-rehearsal-result.md) completed46calls in about20minutes, recovered all3 failed attempts, and verified65,536 context, offline isolation, packaging and cleanup. Inference/recovery required no external agent intervention. The [older Sunday runbook](agentsLog/kwiscion/SUNDAY_OPERATOR_RUNBOOK.md) preserves the fallback.
