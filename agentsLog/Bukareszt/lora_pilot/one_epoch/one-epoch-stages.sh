@@ -3,10 +3,10 @@
 # Only change vs run3: epoch count 3 -> 1 (12 optimizer steps). Stages: preflight, 1 synthetic probe step (new driver provenance),
 # 12 fresh-pristine-base history steps, same-pipeline export + size gate, eval16 arms A (control) and B1 (1-epoch candidate), blind pack.
 # Launch exactly once, detached from the SSH session and outside the wave:
-#   launch.sh: flock -n "$RUN.parent-lock" timeout --signal=TERM --kill-after=10s "${T}s" (T = WAVE_DEADLINE_EPOCH - now, >= 3580) bash eval-stages.sh
+#   launch.sh: flock -n "$RUN.parent-lock" timeout --signal=TERM --kill-after=10s "${T}s" (T = WAVE_DEADLINE_EPOCH - now, >= 3580) bash one-epoch-stages.sh
 # Everything inside is foreground in this one process group (inner timeouts use --foreground, clamped to deadline-90 s). It fails closed: set -euo pipefail,
 # every stage has its own timeout, and a common absolute deadline comes from the frozen wave.env.
-# No warmups. 32 primary calls, at most settings.max_wave_calls (128) incl. recovery retries; 0 training steps.
+# No warmups. 1 synthetic + 12 history optimizer steps; 32 primary eval calls, at most settings.max_wave_calls (128) incl. recovery.
 set -euo pipefail
 RUN=$(cd "$(dirname "$0")" && pwd)
 source "$RUN/wave.env"          # WAVE_START_UTC WAVE_START_EPOCH WAVE_DEADLINE_UTC WAVE_DEADLINE_EPOCH (frozen, hash-posted)

@@ -35,12 +35,12 @@ Because order and seed are fixed, epoch 1 is exactly run3's first 12 groups (`gr
 |---|---|---|
 | preflight (pins, GPU idle, disk, stale checks) | none | < 1 min |
 | probe: 1 synthetic step, new driver | ≤ 600 s | ~1 min (run2: 44 s) |
-| history: **12 steps**, fresh pristine base, adapter + BF16 merge | ≤ 1500 s | ~3 min (run3's 36 steps took 346 s, about 6.7 s per step, plus load and merge) |
+| history: **12 steps**, fresh pristine base, adapter + BF16 merge | ≤ 1500 s | ~3 min (run3 driver: 325 s for 36 steps including load and merge) |
 | export: text BF16 → Q4_K_M, projector, aggregate size gate | 600 + 300 + 600 s | ~3–4 min (run3: 2.2 min + size) |
-| eval16 A (control) + B1 (one-epoch candidate): identical greedy nonthinking prompts, 4-attempt ladder 32768 → 49152 → 32768 → 32768 synthesis, per-arm wall budgets | ≤ 128 calls, ≤ 4,718,592 requested tokens, 600 s reserve | A ~2.3 min (eval16-run2: 16/16 first attempt). B1 ~2.3 min if it stops like the control; the worst case is bounded by the wall budget, with placeholders |
+| eval16 A (control) + **B1** (one-epoch candidate; runs under arm label `B`, identified by its model SHA): identical greedy nonthinking prompts, 4-attempt ladder 32768 → 49152 → 32768 → 32768 synthesis, per-arm wall budgets | ≤ 128 calls, ≤ 4,718,592 requested tokens, 600 s reserve | A ~2.3 min (eval16-run2: 16/16 first attempt). B1 ~2.3 min **if** it stops like the control. **Measured worst case: the 36-step candidate's arm took ~43 min** (00:12:54 → 00:55:46Z). In this wave B1's arm budget is only ~38 min after ~10 min of pre-eval stages plus A, so a looping B1 is cut off with labelled placeholders. That is asymmetric against A, but visible, not hidden |
 | blind pack (masked, sealed key) + verified backup | ≤ 120 s | < 1 min |
 
-**Expected about 12–15 min, ≈ $0.7–0.8 at the unverified $3.28/h proxy. Hard cap 60 min, ≤ $3.28.**
+**Expected about 12–15 min, ≈ $0.7–0.8 at the unverified $3.28/h proxy, if B1 stops normally. If B1 loops like run3, it uses the full window: 60 min, ≤ $3.28, with some B1 items unattempted.**
 - Disk: +23 GB merged BF16 and +30 GB export; 587 GB is free.
 - Training: 1 synthetic step and 12 history steps. Calls: 32 primary, at most 128. No new downloads or builds.
 
