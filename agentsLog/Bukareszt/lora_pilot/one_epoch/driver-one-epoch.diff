@@ -1,0 +1,8 @@
+27c27
+<     require(m['max_optimizer_steps']==(1 if m['mode']=='synthetic_probe' else 36),'Exact stage step bound')
+---
+>     require(m['max_optimizer_steps']==(1 if m['mode']=='synthetic_probe' else 12),'Exact stage step bound (one-epoch variant)')
+108c108
+<         batches=[[0]] if m['mode']=='synthetic_probe' else groups(len(rows))
+---
+>         batches=[[0]] if m['mode']=='synthetic_probe' else groups(len(rows),epochs=1)
