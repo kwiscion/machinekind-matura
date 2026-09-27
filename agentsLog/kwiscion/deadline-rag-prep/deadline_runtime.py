@@ -9,16 +9,17 @@ from pathlib import Path
 
 _BASELINE_EXPORTS = {}
 
-SCHEMA = 'generic_deadline_rag_v1'
+SCHEMA = 'generic_deadline_rag_v2_essay_first'
 OPTIONAL_SECONDS = 1200
 RESERVE_SECONDS = 600
 ANSWER_TOKENS = 32768 * 3 + 49152
+ESSAY_ANSWER_TOKENS = 16384 + 3 * 8192
 QUERY_TOKENS = 512 + 1024 * 3
 JUDGE_TOKENS = 384 + 1024 * 3
 
 
 def read(path):
-    return json.loads(Path(path).read_text(encoding='utf8'))
+    return json.loads(Path(path).read_text(encoding='utf-8-sig'))
 
 
 def atomic(path, value):
@@ -59,10 +60,11 @@ def make_plan(template, essay_ids):
         sources[key] = original_id
         stages[original_id] = dict(source_id=key, original_id=original_id,
                                    kind='direct', rank=None, phase=0)
-    for key, original_id in sources.items():
-        if original_id in essay_ids:
-            continue
-        for kind, ranks in [('query', [None]), ('judge', range(5)), ('final', [None])]:
+    ordered = sorted(sources.items(), key=lambda pair: pair[1] not in essay_ids)
+    for key, original_id in ordered:
+        essay = original_id in essay_ids
+        kinds = [('essay_query',[None]),('essay_judge',range(30)),('essay_final',[None])] if essay else [('query',[None]),('judge',range(5)),('final',[None])]
+        for kind, ranks in kinds:
             for rank in ranks:
                 slot = prefix + kind + (':' + str(rank) if rank is not None else '') + ':' + key
                 stages[slot] = dict(source_id=key, original_id=original_id,
@@ -71,13 +73,15 @@ def make_plan(template, essay_ids):
     eligible = len(ids) - len(essay_ids)
     return dict(schema=SCHEMA, stages=stages, sources=sources, slot_prefix=prefix,
                 original_ids=ids, essay_ids=list(essay_ids), eligible_count=eligible,
-                eligibility='Every explicitly nonessay item, in original template order',
+                eligibility='All direct first; essay RAG first in template order, then ordinary RAG in template order',
                 optional_seconds=OPTIONAL_SECONDS, reserve_seconds=RESERVE_SECONDS,
+                essay_max_seconds=900,ordinary_reserved_seconds=300,
                 maximum_declared_seconds=3300,
-                primary_calls=len(ids) + 7 * eligible,
-                max_calls=4 * (len(ids) + 7 * eligible),
-                max_requested_tokens=(len(ids) + eligible) * ANSWER_TOKENS
-                    + eligible * (QUERY_TOKENS + 5 * JUDGE_TOKENS))
+                primary_calls=len(ids) + 7 * eligible + 32 * len(essay_ids),
+                max_calls=4 * (len(ids) + 7 * eligible + 32 * len(essay_ids)),
+                max_requested_tokens=(len(ids)+eligible) * ANSWER_TOKENS + len(essay_ids)*ESSAY_ANSWER_TOKENS
+                    + eligible * (QUERY_TOKENS + 5 * JUDGE_TOKENS)
+                    + len(essay_ids) * (768 + 3*1024 + 30 * JUDGE_TOKENS))
 
 
 def validate_envelope(root, manifest):
@@ -117,7 +121,7 @@ def expand(root, package, cases, manifest):
             continue
         case = copy.deepcopy(by_id[stage['original_id']])
         case['id'] = slot
-        case['kind'] = 'ordinary'
+        case['kind'] = 'essay' if stage['kind']=='essay_final' else 'ordinary'
         expanded.append(case)
     result = copy.deepcopy(package)
     result['template'] = dict(exam_id=package['template']['exam_id'],
@@ -139,6 +143,7 @@ def export_original(root, states, stop=None):
         spec = importlib.util.spec_from_loader(loader.name, loader)
         module = importlib.util.module_from_spec(spec)
         loader.exec_module(module)
+        module.atomic=atomic
         _BASELINE_EXPORTS[baseline_path] = module.export
     baseline_out = root / 'results/direct-baseline'
     baseline_out.mkdir(parents=True, exist_ok=True)
@@ -148,7 +153,7 @@ def export_original(root, states, stop=None):
     result = copy.deepcopy(direct_result)
     metadata = {}
     final_slots = {stage['original_id']: slot for slot, stage in plan['stages'].items()
-                   if stage['kind'] == 'final'}
+                   if stage['kind'] in ('final','essay_final')}
     for row, direct_row in zip(result['answers'], direct_result['answers']):
         item = row['id']
         direct = states[item]
