@@ -1,0 +1,167 @@
+{
+  "status": "TERMINAL_NOT_PROMOTED",
+  "issue": 189,
+  "utc": "2026-09-27T06:47:53.449533+00:00",
+  "model": "qwen3.5:9b",
+  "model_digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+  "context": 65536,
+  "sampling": {
+    "temperature": 1,
+    "top_p": 0.95,
+    "top_k": 64
+  },
+  "prepared_manifest_sha256": "6f8f146da995c9bc82190c17e2a7939e42fc1482e6e405095ac4575aebf87889",
+  "declared_manifest_sha256": "a5bd4d57fa07c1d14a01c2d8ad3d4724712651c00931890c38d16a2b3d8551e2",
+  "backup_sha256": "0989a66a8c433d012f7b05becbbaf657b3b1874a82c53bf4f4a0031320afc3c8",
+  "masked_packet_sha256": "46625bd85ddfe34e985b9b3c31c9f2b2799553b5831db02ac4463662c2f89802",
+  "index_sha256": "5bf93ceca9715170f7a3b6497746cd00dac4dd80f7fe0b53fd0a3f981d88bb36",
+  "declaration": "https://github.com/kwiscion/machinekind-matura/issues/189#issuecomment-5853392962",
+  "terminal": {
+    "utc": "2026-09-27T06:44:56.581675+00:00",
+    "operator_returncode": 0,
+    "error": null,
+    "wall_seconds": 907.2212510108948,
+    "sentinel_cleanup": {
+      "sentinel_started": true,
+      "stopped": true,
+      "returncode": 0
+    },
+    "gpu_after": "",
+    "declared_manifest_sha256": "a5bd4d57fa07c1d14a01c2d8ad3d4724712651c00931890c38d16a2b3d8551e2"
+  },
+  "phase_seconds": {
+    "probe": 10.759676933288574,
+    "direct": 264.37131237983704,
+    "query": 6.917570352554321,
+    "judge": 24.925108909606934,
+    "final": 572.9318850040436
+  },
+  "phase_attempts": {
+    "probe": 4,
+    "direct": 6,
+    "query": 6,
+    "judge": 32,
+    "final": 7
+  },
+  "admission": [
+    {
+      "id": "3.2",
+      "admitted": 0,
+      "removed_for_size": 0
+    },
+    {
+      "id": "11.2",
+      "admitted": 0,
+      "removed_for_size": 0
+    },
+    {
+      "id": "12.1",
+      "admitted": 0,
+      "removed_for_size": 0
+    },
+    {
+      "id": "17.2",
+      "admitted": 0,
+      "removed_for_size": 0
+    },
+    {
+      "id": "5.2",
+      "admitted": 3,
+      "removed_for_size": 0
+    },
+    {
+      "id": "19.2",
+      "admitted": 0,
+      "removed_for_size": 0
+    }
+  ],
+  "query": [
+    {
+      "id": "3.2",
+      "query_fallback": false,
+      "passages": 5
+    },
+    {
+      "id": "11.2",
+      "query_fallback": false,
+      "passages": 5
+    },
+    {
+      "id": "12.1",
+      "query_fallback": false,
+      "passages": 5
+    },
+    {
+      "id": "17.2",
+      "query_fallback": false,
+      "passages": 5
+    },
+    {
+      "id": "5.2",
+      "query_fallback": false,
+      "passages": 5
+    },
+    {
+      "id": "19.2",
+      "query_fallback": false,
+      "passages": 5
+    }
+  ],
+  "requested_output_tokens": 460800,
+  "known_prompt_tokens": 93082,
+  "known_generated_tokens": 114606,
+  "unknown_usage_calls": 0,
+  "reservations": 55,
+  "completed_attempts": 55,
+  "failed_attempts": 3,
+  "placeholder_slots": 0,
+  "complete_direct_fallbacks": 0,
+  "stage_complete": {
+    "query": 8,
+    "judge": 32,
+    "direct": 6,
+    "final": 6
+  },
+  "stop": null,
+  "probe_gate": {
+    "passed": true,
+    "ids": [
+      "probe:query:3.2",
+      "probe:query:11.2",
+      "probe:judge:0:3.2",
+      "probe:judge:0:11.2"
+    ],
+    "attempts": {
+      "probe:query:3.2": 1,
+      "probe:query:11.2": 1,
+      "probe:judge:0:3.2": 1,
+      "probe:judge:0:11.2": 1
+    },
+    "criterion": "all four typed auxiliary finals valid; negative DIRECT is valid"
+  },
+  "planning_cost_ceiling_usd": 3.28,
+  "actual_billing_verified": false,
+  "observed_walltime_cost_proxy_usd": 0.8265793620321485,
+  "auxiliary_policy": {
+    "query_initial_cap": 512,
+    "judge_initial_cap": 384,
+    "retry_cap": 1024,
+    "think": false
+  },
+  "limitations": [
+    "Selected known six-item validation panel; no full-exam or generalization claim.",
+    "Only item5.2 received evidence; changes on five other items are repeated sampling, not retrieval-backed gains.",
+    "Served cache has generated metadata sidecar; preserve it and stage fresh five-member cache before strict final packaging.",
+    "Index has zero-byte WAL and32768-byte SHM with no observed open handles; strict pre-acquisition verifier refused sidecars before hashing. No cleanup performed."
+  ],
+  "promotion": false,
+  "decision": {
+    "direct_points": 4,
+    "filtered_points": 4,
+    "max_points": 6,
+    "retrieval_backed_gains": 0,
+    "reason": "Only5.2 received evidence and remained correct; gain12.1 and regression19.2 both had zero admitted passages. Preserve frozen40/60 Qwen candidate.",
+    "conditional_compatibility": "CANCELED_ZERO_CALLS",
+    "further_staging_or_index_cleanup": false
+  }
+}

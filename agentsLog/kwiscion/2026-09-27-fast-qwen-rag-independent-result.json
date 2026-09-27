@@ -1,0 +1,124 @@
+{
+  "schema": "fast_qwen_rag_independent_result_v1",
+  "reviewer": "fast_rag_review_grade_sol",
+  "reported_utc": "2026-09-27T06:48:48.078233+00:00",
+  "packet_sha256": "46625bd85ddfe34e985b9b3c31c9f2b2799553b5831db02ac4463662c2f89802",
+  "blind_grade_sha256": "1355e38af172d9bd9c6e206164c1a83c48079dee04abf4091fd0b39ac65168c0",
+  "blind_grade_frozen_utc": "2026-09-27T06:46:54.422879+00:00",
+  "arm_key_read_only_after_freeze": true,
+  "declared_manifest_sha256": "a5bd4d57fa07c1d14a01c2d8ad3d4724712651c00931890c38d16a2b3d8551e2",
+  "scores": {
+    "direct": 4,
+    "filtered": 4,
+    "max_points_per_arm": 6
+  },
+  "items": [
+    {
+      "item_id": "3.2",
+      "direct": 1,
+      "filtered": 1,
+      "admitted_passages": 0,
+      "delta": 0
+    },
+    {
+      "item_id": "11.2",
+      "filtered": 0,
+      "direct": 0,
+      "admitted_passages": 0,
+      "delta": 0
+    },
+    {
+      "item_id": "12.1",
+      "filtered": 1,
+      "direct": 0,
+      "admitted_passages": 0,
+      "delta": 1
+    },
+    {
+      "item_id": "17.2",
+      "filtered": 1,
+      "direct": 1,
+      "admitted_passages": 0,
+      "delta": 0
+    },
+    {
+      "item_id": "5.2",
+      "filtered": 1,
+      "direct": 1,
+      "admitted_passages": 3,
+      "delta": 0
+    },
+    {
+      "item_id": "19.2",
+      "direct": 1,
+      "filtered": 0,
+      "admitted_passages": 0,
+      "delta": -1
+    }
+  ],
+  "phase_attempt_metrics": {
+    "probes": {
+      "calls": 4,
+      "failed": 0,
+      "elapsed_seconds": 10.759676933288574,
+      "prompt_tokens": 6977,
+      "generated_tokens": 229,
+      "requested_tokens": 1792,
+      "generated_tokens_per_elapsed_second": 21.283166903600396
+    },
+    "direct": {
+      "calls": 6,
+      "failed": 0,
+      "elapsed_seconds": 264.37131237983704,
+      "prompt_tokens": 6373,
+      "generated_tokens": 35934,
+      "requested_tokens": 196608,
+      "generated_tokens_per_elapsed_second": 135.92246328289815
+    },
+    "query": {
+      "calls": 6,
+      "failed": 0,
+      "elapsed_seconds": 6.917570352554321,
+      "prompt_tokens": 8059,
+      "generated_tokens": 447,
+      "requested_tokens": 3072,
+      "generated_tokens_per_elapsed_second": 64.61806345560977
+    },
+    "judge": {
+      "calls": 32,
+      "failed": 2,
+      "elapsed_seconds": 24.925108909606934,
+      "prompt_tokens": 63708,
+      "generated_tokens": 415,
+      "requested_tokens": 13568,
+      "generated_tokens_per_elapsed_second": 16.649877098031283
+    },
+    "final": {
+      "calls": 7,
+      "failed": 1,
+      "elapsed_seconds": 572.9318850040436,
+      "prompt_tokens": 7965,
+      "generated_tokens": 77581,
+      "requested_tokens": 245760,
+      "generated_tokens_per_elapsed_second": 135.41051219282804
+    }
+  },
+  "wall_seconds": 907.2212510108948,
+  "calls": 55,
+  "failed_attempts": 3,
+  "requested_tokens": 460800,
+  "known_prompt_tokens": 93082,
+  "known_generated_tokens": 114606,
+  "unknown_usage_calls": 0,
+  "placeholders": 0,
+  "retrieval_backed_gain_demonstrated": false,
+  "recommendation": "Do not promote RAG; preserve the measured full-exam Qwen40/60 candidate.",
+  "interpretation": "The one gain and one regression both occurred with zero admitted passages. Only one item had admitted evidence and its score was unchanged. No full-exam improvement or all-question runtime claim follows.",
+  "limitations": [
+    "Six-item matched diagnostic, one provisional independent grading pass.",
+    "Both recognizable abbreviated/nonstandard office-name variants on item3.2 accepted consistently before unmask; organizers remain authoritative.",
+    "Generic no-evidence-skip policy was frozen before grades and differs from this diagnostic; any replayed selection is not a new full run.",
+    "Phase throughput includes request latency and all failed attempts; generated-token rate is not GPU decode-only speed.",
+    "Raw reasoning/provider envelopes, official keys and copied source text remain private."
+  ]
+}

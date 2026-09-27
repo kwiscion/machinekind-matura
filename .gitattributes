@@ -99,3 +99,10 @@ agentsLog/kwiscion/qwen-thinking-prep/test_stage_qwen_cache.py -text
 agentsLog/kwiscion/qwen-thinking-prep/GENERIC_PREPARATION.md -text
 agentsLog/kwiscion/2026-09-27-qwen-cache-final-runbook-review.md -text
 agentsLog/kwiscion/2026-09-27-qwen-cache-final-runbook-review.json -text
+
+# Preserve reviewed deadline-RAG runtime and diagnostic evidence bytes.
+agentsLog/kwiscion/fast-rag-prep/* -text
+agentsLog/kwiscion/deadline-rag-prep/* -text
+agentsLog/kwiscion/2026-09-27-deadline-rag-* -text
+agentsLog/kwiscion/final-qwen-stage-receipt-20260927.md -text
+agentsLog/kwiscion/2026-09-27-fast-qwen-rag-independent-result.* -text
