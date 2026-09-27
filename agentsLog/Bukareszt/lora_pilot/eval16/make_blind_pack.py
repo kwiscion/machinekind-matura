@@ -14,13 +14,15 @@ from pathlib import Path
 PREAMBLE = re.compile(r'^\s*(oto\b|poniżej\b|jasne\b|oczywiście\b|oto moje\b|wypracowanie\s*:|temat\s*\d|#|\*\*temat|wybieram\b|wybrałem\b|wybrałam\b)', re.I)
 
 
-def checks(text, finish_reason, error):
+def checks(text, finish_reason, error, final_status=None):
     t = text or ''
     words = re.findall(r'\w+(?:[-’\']\w+)*', t, re.U)
     lines = [l for l in t.splitlines() if l.strip()]
     return {
         'word_count': len(words),
         'in_400_500': 400 <= len(words) <= 500,
+        'ge_300': len(words) >= 300,
+        'final_status': final_status,
         'preamble_or_meta_opening': bool(lines and PREAMBLE.match(lines[0])),
         'mentions_both_topics': bool(re.search(r'temat\s*1', t, re.I) and re.search(r'temat\s*2', t, re.I)),
         'markdown_or_list': bool(re.search(r'^\s*(#|[-*•]\s|\d+[.)]\s)', t, re.M)),
@@ -41,22 +43,25 @@ def main():
     ans = {}
     for arm in a.arms:
         recs = [json.loads(l) for l in (a.run / f'answers-{arm}.jsonl').read_text(encoding='utf-8').splitlines()]
-        ans[arm] = {r['id']: r for r in recs if 'call_number' in r}
+        ans[arm] = {r['id']: r for r in recs if r.get('item')}
     rng = secrets.SystemRandom()
     labels = ['X', 'Y', 'Z'][:len(a.arms)]
-    key, pack, summary = {}, [], {arm: {'n': 0, 'in_400_500': 0, 'preamble': 0, 'both_topics': 0, 'markdown': 0, 'truncated': 0, 'failed': 0, 'words': []} for arm in a.arms}
+    key, pack, summary = {}, [], {arm: {'n': 0, 'in_400_500': 0, 'preamble': 0, 'both_topics': 0, 'markdown': 0, 'truncated': 0, 'failed': 0, 'ge_300': 0, 'partial': 0, 'placeholder': 0, 'words': []} for arm in a.arms}
     for iid, row in inputs.items():
         order = list(a.arms); rng.shuffle(order)
         key[iid] = dict(zip(labels, order))
         essays = {}
         for lab, arm in zip(labels, order):
             r = ans[arm].get(iid, {})
-            c = checks(r.get('text'), r.get('finish_reason'), r.get('error') if r else 'missing')
+            c = checks(r.get('text') if r.get('final_status') != 'placeholder' else '', r.get('finish_reason'), None if r else 'missing', r.get('final_status'))
+            if r.get('final_status') == 'placeholder':
+                c['failed'] = True
             essays[lab] = {'text': r.get('text') or '', 'checks': c}
             s = summary[arm]; s['n'] += 1; s['words'].append(c['word_count'])
             for k, kk in (('in_400_500', 'in_400_500'), ('preamble', 'preamble_or_meta_opening'), ('both_topics', 'mentions_both_topics'),
-                          ('markdown', 'markdown_or_list'), ('truncated', 'truncated'), ('failed', 'failed')):
+                          ('markdown', 'markdown_or_list'), ('truncated', 'truncated'), ('failed', 'failed'), ('ge_300', 'ge_300')):
                 s[k] += int(c[kk])
+            s['partial'] += int(c['final_status'] == 'partial'); s['placeholder'] += int(c['final_status'] == 'placeholder')
         pack.append({'id': iid, 'source_group_id': row['source_group_id'], 'prompt': row['prompt'], 'essays': essays})
     pb = ''.join(json.dumps(p, ensure_ascii=False) + '\n' for p in pack).encode('utf-8')
     (out / 'pack.jsonl').write_bytes(pb)

@@ -1,15 +1,73 @@
 {
- "schema": "bukareszt_eval16_settings_v1",
+ "schema": "bukareszt_eval16_settings_v3",
+ "declaration": "root #117 23:22:29Z, 23:23:35Z, 23:24:54Z, 23:38:21Z, 23:45Z (4 attempts; latest start 02:20, finish 03:20 Warsaw)",
  "temperature": 0.0,
  "top_k": 1,
  "seed": 42,
- "ctx_size": 24576,
- "run_arms": ["A", "B"],
- "max_wave_calls": 32,
+ "ctx_size": 65536,
+ "run_arms": [
+  "A",
+  "B"
+ ],
+ "max_wave_calls": 128,
+ "max_wave_requested_tokens": 4718592,
  "arms": {
-  "A": {"artifact": "unchanged export control", "server_reasoning": "off", "enable_thinking": false, "max_tokens": 1536, "request_timeout_s": 90},
-  "B": {"artifact": "run3 merged candidate", "server_reasoning": "off", "enable_thinking": false, "max_tokens": 1536, "request_timeout_s": 90},
-  "C": {"artifact": "unchanged export, native thinking (OPTIONAL, separate declaration)", "server_reasoning": "on", "enable_thinking": true, "max_tokens": 20480, "request_timeout_s": 300}
+  "A": {
+   "artifact": "unchanged export control",
+   "server_reasoning": "off",
+   "attempts": [
+    {
+     "max_tokens": 32768,
+     "enable_thinking": false,
+     "request_timeout_s": 360
+    },
+    {
+     "max_tokens": 49152,
+     "enable_thinking": false,
+     "request_timeout_s": 480,
+     "only_if_fits": true
+    },
+    {
+     "max_tokens": 32768,
+     "enable_thinking": false,
+     "request_timeout_s": 360
+    },
+    {
+     "max_tokens": 32768,
+     "enable_thinking": false,
+     "request_timeout_s": 360,
+     "synthesis": true
+    }
+   ]
+  },
+  "B": {
+   "artifact": "run3 merged candidate",
+   "server_reasoning": "off",
+   "attempts": [
+    {
+     "max_tokens": 32768,
+     "enable_thinking": false,
+     "request_timeout_s": 360
+    },
+    {
+     "max_tokens": 49152,
+     "enable_thinking": false,
+     "request_timeout_s": 480,
+     "only_if_fits": true
+    },
+    {
+     "max_tokens": 32768,
+     "enable_thinking": false,
+     "request_timeout_s": 360
+    },
+    {
+     "max_tokens": 32768,
+     "enable_thinking": false,
+     "request_timeout_s": 360,
+     "synthesis": true
+    }
+   ]
+  }
  },
- "notes": "Same sampling as the pilot (greedy temp 0/top_k 1/seed 42). max_tokens 1536 not 1024: cleared training targets (400-500 words) tokenize to 889-1065 completion tokens, so 1024 would truncate some essays. Arm C is not run by eval-stages.sh unless run_arms includes it under a separate declaration."
+ "notes": "Identical greedy nonthinking requests for A and B; retries only on error/timeout/empty/length. Prompts are the unmodified eval16 inputs (two alternatives, model chooses; matches 22/34 training essays). Arm C is off per root."
 }
