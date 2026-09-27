@@ -1,0 +1,156 @@
+{
+  "status": "FROZEN_MASKED_ONE_PASS",
+  "frozen_utc": "2026-09-27T00:48:55.255616+00:00",
+  "input_sha256": "2a80cfbfcd84ff07473a0cd28d7eeca964118dc14e4ba8863fea25ae0a6b3dd3",
+  "official_keys_sha256": "279abe703dc1af4119a35624d6db893e310fc7afaffbef2a00e678f423706486",
+  "inspected_full_page_sha256": {
+    "page-05.png": "738bfbfb73b4f90e4bb17a8cf6852899600d5e451b5d3dd0ea76ef499375169d",
+    "page-07.png": "ab3f7fb24dfe6f05654171eca2d0e6421ab5b8dd6290bd81d03ff59123040510",
+    "page-08.png": "ef1749770b71483f45caf36183e782389741456a7f5bbcce92d361c0dd02cc77",
+    "page-16.png": "9bda8c79c19a1433b11fda0cb32d615258954c3b1632255ac58178f240a4d23e",
+    "page-17.png": "2c4ead95a94bf197707d5c93d57ec9959dfe7f2e217a53eb169512a8bad71b0d",
+    "page-28.png": "3ddacc9941ab9dda555b473004e9a59d6ceaf3c8542c025f0c72ff91579b3da2"
+  },
+  "blinding": "Opaque answer IDs only; arm key and model/runtime metadata not read. Prior familiarity with these sources and rubric disclosed; no previous answer-grade report consulted for this pass. All12 answers graded fresh once. Legacy full-page inputs, not crops.",
+  "hash_convention": "SHA256 of exact answer UTF8 bytes, no normalization.",
+  "points": 10,
+  "max_points": 16,
+  "low": 9,
+  "high": 11,
+  "range_meaning": "Rubric interpretation range, not a confidence interval. Uncertainty confined to item25.",
+  "limitations": "This is a six-item repeated panel, not a full-exam score or model promotion. Visual reading and historical interpretation errors are not isolated by this design.",
+  "items": [
+    {
+      "id": "704c3176e4eb",
+      "source_item_id": "val2024-hist-z4",
+      "answer_sha256": "1ed0e80392876dbbb4f963e6a92451cae146e6c974e419584822047c80aa2243",
+      "error": null,
+      "max_points": 1,
+      "points": 1,
+      "low": 1,
+      "high": 1,
+      "reason": "Correctly assigns the columned pedimented portico to the Greek tradition and dome/rotunda to Roman construction."
+    },
+    {
+      "id": "f6285737a7bf",
+      "source_item_id": "val2024-hist-z25",
+      "answer_sha256": "eb6a5d290270819c584ff63999952e57fab1e5df98ca2c9521ce87ab4d4fd08c",
+      "error": null,
+      "max_points": 3,
+      "points": 1,
+      "low": 0,
+      "high": 1,
+      "reason": "The criticism of communist authorities masking problems and the sweeping metaphor support one point. The invented S.O.R.D.A. inscription and institutions, generic barrier reading and absent specific historical setting prevent higher credit. Lower bound: the invented central inscription could be judged to undermine the overall interpretation."
+    },
+    {
+      "id": "4702de9988b9",
+      "source_item_id": "val2024-hist-z4",
+      "answer_sha256": "16db8b2a5b1f8076fb60b7cc513ee04159577feb40c47c013b9e02cd1b10a24e",
+      "error": null,
+      "max_points": 1,
+      "points": 1,
+      "low": 1,
+      "high": 1,
+      "reason": "Correct Greek columned portico and Roman dome; awkward wording does not invalidate the paired identification."
+    },
+    {
+      "id": "cbdbc40e03a0",
+      "source_item_id": "val2024-hist-z5.1",
+      "answer_sha256": "c58c48317ae31089436b8041651205816738049fbdb36aff0d89ad02431a2466",
+      "error": null,
+      "max_points": 1,
+      "points": 1,
+      "low": 1,
+      "high": 1,
+      "reason": "Correct negative decision supported by the contrast between the papal crusading appeal and Scandinavian/Varangian expeditions shown on the map."
+    },
+    {
+      "id": "0878df241a7c",
+      "source_item_id": "val2024-hist-z13",
+      "answer_sha256": "1b1f957bfc273100798db2dba5d35efdf9bc5d0d081db00b5463f5bcdcac18f2",
+      "error": null,
+      "max_points": 1,
+      "points": 1,
+      "low": 1,
+      "high": 1,
+      "reason": "Correctly names the execution of Charles I and supports it with the date visible in the image."
+    },
+    {
+      "id": "03d9d25f419b",
+      "source_item_id": "val2024-hist-z2",
+      "answer_sha256": "a3cb2628d4a2526d63ea795be0ab3532202b2b1669cc2d860c6ece5dd6cdeffb",
+      "error": null,
+      "max_points": 1,
+      "points": 1,
+      "low": 1,
+      "high": 1,
+      "reason": "Correct negative decision: Alexander during his conquests versus successor kingdoms after his death. The loose wording about division does not reverse the required distinction."
+    },
+    {
+      "id": "2685b4b8e2a3",
+      "source_item_id": "val2024-hist-z5.1",
+      "answer_sha256": "8352904617aab23c2e5e203db6567454c7ca32de7bb0d3bc4616798429002b35",
+      "error": null,
+      "max_points": 1,
+      "points": 0,
+      "low": 0,
+      "high": 0,
+      "reason": "Incorrect affirmative decision conflates the Viking/Varangian routes with expeditions motivated by the papal appeal."
+    },
+    {
+      "id": "742dd2982b49",
+      "source_item_id": "val2024-hist-z2",
+      "answer_sha256": "51039a618c09ad2844f1548c4321d5adde39c1fed833333f31b672d65535c987",
+      "error": null,
+      "max_points": 1,
+      "points": 1,
+      "low": 1,
+      "high": 1,
+      "reason": "Correct negative decision and explicit comparison of conquest/unification with the later successor-state division."
+    },
+    {
+      "id": "cf13cc633b22",
+      "source_item_id": "val2024-hist-z14.1",
+      "answer_sha256": "80bf0b74edd9efd907793cac25cde076719e0f09980d33932bcc424f89e49f1c",
+      "error": null,
+      "max_points": 1,
+      "points": 0,
+      "low": 0,
+      "high": 0,
+      "reason": "Incorrect affirmative decision; the answer misidentifies the mapped campaign and conflates it with the proclamation and1807."
+    },
+    {
+      "id": "78464e2d93fc",
+      "source_item_id": "val2024-hist-z25",
+      "answer_sha256": "58c165fc7fc2a82f7c52d3828ba59ca0e1115b4083e180a080595abb64c45eb4",
+      "error": null,
+      "max_points": 3,
+      "points": 2,
+      "low": 2,
+      "high": 3,
+      "reason": "Correctly interprets repression of Solidarity, sweeping its symbol away and the barred window as loss of freedom. Central credit uses the two-element route without accepting the faulty historical-context component: it wrongly attributes martial law to Jaroslaw Kiszczak. Upper bound accepts the otherwise correct1981 martial-law/Solidarity setting despite that personal-name error. This is criterion-based partial credit, not an automatic one-point deduction."
+    },
+    {
+      "id": "74ea98723a62",
+      "source_item_id": "val2024-hist-z14.1",
+      "answer_sha256": "53bd7eb22e5697a6a63fe4d9718f8a71be04bab0e41d5e7cf1bb4220110ad4c4",
+      "error": null,
+      "max_points": 1,
+      "points": 0,
+      "low": 0,
+      "high": 0,
+      "reason": "Incorrect affirmative decision; both sources are wrongly assigned to the Polish-Soviet war and1920."
+    },
+    {
+      "id": "6f5449890627",
+      "source_item_id": "val2024-hist-z13",
+      "answer_sha256": "ca03ac3a4e805625e66241175c61b07ec24399bda790b0a602b16be166088b83",
+      "error": null,
+      "max_points": 1,
+      "points": 1,
+      "low": 1,
+      "high": 1,
+      "reason": "Correct execution of Charles I with the identifying date and fallen crown. Additional inaccurate object/tree descriptions do not remove the independently sufficient correct event-and-date basis."
+    }
+  ]
+}
