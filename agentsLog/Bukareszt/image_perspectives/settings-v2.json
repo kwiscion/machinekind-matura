@@ -1,0 +1,36 @@
+{
+ "schema": "bukareszt_image_perspectives_settings_v2",
+ "issue": 178,
+ "temperature": 0.0,
+ "top_k": 1,
+ "seed": 42,
+ "enable_thinking": false,
+ "server_reasoning": "off",
+ "ctx_size": 65536,
+ "attempts": [
+  {
+   "max_tokens": 32768,
+   "request_timeout_s": 360
+  },
+  {
+   "max_tokens": 49152,
+   "request_timeout_s": 480,
+   "only_if_fits": true
+  },
+  {
+   "max_tokens": 32768,
+   "request_timeout_s": 360
+  },
+  {
+   "max_tokens": 32768,
+   "request_timeout_s": 360
+  }
+ ],
+ "notes": "v2 follow-up: identical to v1 for direct and final calls (same ladder, sampling, context, weights). Only the three description calls get a single bounded attempt of 2048 output tokens (wave 1 showed a transcription view looping to the 32768 cap). Token cap: 6 x 2 x 147456 (direct+final) + 18 x 2048 (views) = 1,806,336; attempts: 6 x 2 x 4 + 18 = 66.",
+ "view_attempts": [
+  {
+   "max_tokens": 2048,
+   "request_timeout_s": 60
+  }
+ ]
+}

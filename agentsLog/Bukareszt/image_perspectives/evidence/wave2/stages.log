@@ -1,0 +1,5 @@
+2026-09-27T04:09:45Z [preflight] wave start=2026-09-27T04:09:45Z deadline=2026-09-27T05:09:35Z left=3590s
+2026-09-27T04:10:05Z [perspectives] attempts must start and finish before 2026-09-27T04:59:35Z
+2026-09-27T04:12:05Z [perspectives] ALL STAGES PASS
+2026-09-27T04:12:05Z [perspectives] TERMINAL rc=0 left=3450s
+2026-09-27T04:12:05Z backup verified: /home/shadeform/mm-lora-pilot-backup/image-perspectives-run2 (12 files)
