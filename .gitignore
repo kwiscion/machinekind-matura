@@ -26,3 +26,6 @@ outputs/
 # Keep small reviewed manifests/reports in agentsLog; raw dumps remain local
 agentsLog/**/raw/
 agentsLog/**/private/
+
+# User-supplied organizer DEV package; keep third-party exam/source content local.
+/data/history-2023-mock-v1/

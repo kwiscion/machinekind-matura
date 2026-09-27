@@ -1,0 +1,99 @@
+{
+  "status": "CPU_SYNTHETIC_PROVIDER_PASS_NOT_INFERENCE",
+  "real_model_calls": 0,
+  "synthetic_provider_replies": 37,
+  "package": {
+    "exam_id": "history-2023-mock-v1",
+    "items": 37,
+    "points": 60,
+    "declared_max_points": 60,
+    "unique_image_files": 19,
+    "image_references": 29,
+    "items_with_images": 23,
+    "image_bytes": 26959377,
+    "template_ids_match": true,
+    "unknown_fields_passed_to_model": {
+      "exam": [],
+      "item": [],
+      "image": []
+    },
+    "exam_json_sha256": "0d4559be6ffae26304b102d8cec14814849caec879fd53d8be0196f24116354c",
+    "template_sha256": "35675b9a7766d2b5314188796b5d26fc97c75d9cd65a0bd8612cb74bdf81d9c0",
+    "item_ids_sha256": "8e381d99754e18d58a803392e715775ad8f23924934686332b09c0c4b70a626e"
+  },
+  "input_files_sha256": {
+    "exam.json": "0d4559be6ffae26304b102d8cec14814849caec879fd53d8be0196f24116354c",
+    "answers-template.json": "35675b9a7766d2b5314188796b5d26fc97c75d9cd65a0bd8612cb74bdf81d9c0",
+    "images/Z01.png": "4d0ff9329b3c695f5337d320e408a063946f6ffb966c9b907523b224006f218c",
+    "images/Z03-S2.png": "dd6f7a86072ac62716ffe4051cfa3a302ea0b1695e5d32321b237deb2636a8d0",
+    "images/Z04-S2.png": "7cb3e99c206985c47839f10c81dce61faae7e68957277f8f0fdc490ad63fae9f",
+    "images/Z05-S1.png": "52d8c00805795371a096114fd111b54f23172184338aead15b38f25aef510dd8",
+    "images/Z05-S2.png": "0d7a4e8337d8755912219f37036d8f1a15b70c8d6e11e4d14b9bb73235cf748b",
+    "images/Z07.png": "112cabc9ab4d2fa1c7de55e50bc5633174073bd02e062ca99a384b493aa1730f",
+    "images/Z08.png": "2a32f5aaf1ce4c75c696d612c03d032fcaf73f53dc2a99521c7e544312002d46",
+    "images/Z09-S2.png": "e5012960357a2a268393c67b645d5c03f859da2d7a41c4014f0f12183e83735d",
+    "images/Z13-A.png": "4f1f8c064910476a573b8a27367176ebed5cbebd32032f0389c645bda7610d3e",
+    "images/Z13-B.png": "3b817ec3c0f4c4d3b2d6dca019f84dbd9140225dfe45a0296eef12f9a65a21a8",
+    "images/Z14.png": "a2ec564c34ec714bf5cb89a94edf542a53b6f1ce968697c05c8ed79f9412cb1a",
+    "images/Z15.png": "d5ecddfda41e177455237f939cdf3beb7c37c9ec391f51072f3176378fdd68de",
+    "images/Z17-S2.png": "2c49c2c46bd6e4eb6d21473be8210940ef8298eb269e3f0a4d7f35478dda2f3f",
+    "images/Z18.png": "a07b69b1bf7b1eed689cec2f64eff226f9d6cac5127798c03d9ff8d8de6b0639",
+    "images/Z19-S2.png": "8e7e540f37ace07b32b713dfca8ae22c7cbe1ceb43d2b7a0274d72fb5fcd55f2",
+    "images/Z20-S2.png": "fc913907b1cec8e7392fb6f7897bc58192c2a85571044eb43b27d0f81db1b3dc",
+    "images/Z21.png": "f4609ad5788fb2826fbb727495dc271d2a094149dee32b80e86250c3d5918b68",
+    "images/Z24-S1.png": "5a4cad1ad46b1b00631ac708a008797a2e66467fe30560d200e4fcd172adaef6",
+    "images/Z24-S2.png": "a3cf2d86fbd741a02c5bfbc057ded725022134902b79a8cad06188a87799db01"
+  },
+  "prepared_manifest_sha256": "1c7aa5f7e21474e06e9251bd9ee546aee5528269d86a69165d7808e90996791c",
+  "prepared_calls_ceiling": 148,
+  "prepared_tokens_ceiling": 5455872,
+  "fake_answers_sha256": "27db851068eca04de86eeffa21160ecd150bc4df8f6b249caf59961c5b483e91",
+  "fake_answer_file_bytes": 19525,
+  "essay_body_words": 400,
+  "chosen_topic_number_preserved": true,
+  "all_original_prompts_and_29_image_references_verified": true,
+  "runtime_files_sha256": {
+    "recovery_harness.py": "628aa6b92b76e10540d8f43bf7f186bc5c6178eae526d296c149483051f292b0",
+    "run_native_package.py": "60393fc61705efb8bdeaf8348ac6fd754bc8a4c0ad1efe142b7c6c39846cda6f",
+    "run_recovery_package.py": "54983970c8bc9bd8b84bc878383b254af8cb192be313320b793317e86b4aa392"
+  },
+  "no_namespace_gpu_or_runtime_claim": true,
+  "tests": {
+    "recovery_harness": 25,
+    "recovery_binding": 8,
+    "native_package": 14
+  },
+  "site_validator": {
+    "errors": 0,
+    "blanks": 0,
+    "actual_file_bytes": 19525,
+    "network_requests": 0
+  },
+  "README_sha256": "8cdcae95e2c177177bf81470819c76f5205af83f8c8998e301671bc01642d36a",
+  "site_validator_sha256": "00de39181deb8d5ab133a37b4d941c1e5da76a4774e81bab46510c1a42e4e10a",
+  "owned_source_hashes": {
+    "mock_package_cpu_check.py": "d9d3533dadf31d98d47280e062a9a5e8112ffa15f464ba8e988b567242468b75",
+    "final-package-prep/recovery_harness.py": "628aa6b92b76e10540d8f43bf7f186bc5c6178eae526d296c149483051f292b0",
+    "final-package-prep/test_recovery_harness.py": "5397960a146619b2a945606f0fcb3e9f134c9fcfb7e5078fb578cd5765357231",
+    "final-package-prep/run_native_package.py": "60393fc61705efb8bdeaf8348ac6fd754bc8a4c0ad1efe142b7c6c39846cda6f",
+    "final-package-prep/test_native_package.py": "90eacd5223c41f00aa8842cd4b91335e98e7b3304b19ce2ebd876d58525e38bb"
+  },
+  "limitations": [
+    "CPU synthetic replies prove plumbing and export compatibility, not historical correctness, actual runtime/image interpretation or37-item throughput.",
+    "Header-based diagnostics recognize a chosen-topic number mechanically, not whether essay content genuinely stays on that topic.",
+    "Existing hard-deadline fallback can remain short or placeholder; status records this honestly rather than inventing a300-word answer.",
+    "Legacy standalone adapter validator uses a stricter UTF16 character count; qualified runtime final validator uses actual Unicode codepoints and file bytes as the site does."
+  ],
+  "prior_prepared_manifest_sha256": "0740821095a577ff5cf7618944ab1c226da35b6d0954601f4ee7c57977d2b366",
+  "review_followup": {
+    "cases": [
+      "bare inline topic number",
+      "leading blank lines",
+      "Markdown bold and ATX headers",
+      "explicit optional/not-required number"
+    ],
+    "all_edited_file_newlines_match_HEAD": true,
+    "cpu_evidence": "private/mock2023-cpu-compatibility-20260927/review-final2/package",
+    "failed_cpu_attempt": "review-final preserved: Windows WinError5 atomic replacement; fresh separate review-final2 passed without code workaround"
+  }
+}

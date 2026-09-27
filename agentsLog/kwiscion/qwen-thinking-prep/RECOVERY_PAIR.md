@@ -1,6 +1,8 @@
 # Matched Qwen/Gemma recovery comparison — preparation
 
-Two executable six-item packages are prepared privately as `qwen-recovery-pair-20260927-v3/{gemma,qwen}`. No generation is authorized. Old v6 and its zero-call failed predecessor remain unchanged.
+The separately declared pair completed12/12final answers and its full backup is verified; see [terminal report](../2026-09-27-native-pair-result.md). This page preserves preparation instructions and does not authorize another run.
+
+Two executable six-item packages were prepared privately as `qwen-recovery-pair-20260927-v3/{gemma,qwen}`. No generation is authorized. Old v6 and its zero-call failed predecessor remain unchanged.
 
 Panel is the already-declared printed IDs2,4,5.1,13,14.1,25, in source order:8points per arm,7image references/6unique pages. Every original prompt and image byte matches v6 and the central champion inputs. No keys, scores or historical hints enter either package.
 
