@@ -1,0 +1,43 @@
+{
+  "masked_grade_sha256": "774c0d65eef2b485613f32475317e1e2de2ee73461d9db2c39e460511f6a6829",
+  "key_sha256": "206e330006e2eee7ec133143e451608e5075691c6b989ba830dd230c10792a04",
+  "packet_sha256": "51bdd7c0bc6f41943cffa831bdfa5fcf833c5a9256d8fad38d62ebb354d09149",
+  "exact_joins": 2,
+  "items": [
+    {
+      "id": "b0c077b6500e2cdb",
+      "arm": "control",
+      "answer_sha256": "9fdc9246df5f95b8ade3172dbceef10e81fc41e637d52e3720344383a4392385",
+      "central": 8,
+      "low": 7,
+      "high": 8,
+      "topic": 3,
+      "body_words": 448,
+      "attempts": 2,
+      "selected_answer_attempt": 1,
+      "complete": true
+    },
+    {
+      "id": "c93f00fbade8b30d",
+      "arm": "candidate",
+      "answer_sha256": "f8d41d2d590654b62b088ea638aaf4e113bbbc8289fd56bab66e6203d473b425",
+      "central": 10,
+      "low": 9,
+      "high": 10,
+      "topic": 3,
+      "body_words": 409,
+      "attempts": 1,
+      "selected_answer_attempt": 0,
+      "complete": true
+    }
+  ],
+  "control": 8,
+  "candidate": 10,
+  "delta": 2,
+  "conclusion": "Positive known-item signal for source-independent coverage policy; diplomatic argument improves from generic claims to a concrete Riga mechanism. Political-constitutional argument remains shallow.",
+  "limitations": [
+    "One stochastic matched pair, one already-known essay item; not a full-exam score or generalization estimate.",
+    "Control selected a mechanically improved second attempt; candidate completed on first attempt, so actual calls differ2 versus1 despite the same allowance.",
+    "No frozen grades changed. Any31+10=41/60 projection combines separate runs and must be labelled posthoc composition, not an observed full-exam result."
+  ]
+}
