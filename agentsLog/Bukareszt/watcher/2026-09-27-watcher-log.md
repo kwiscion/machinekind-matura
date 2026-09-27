@@ -71,3 +71,8 @@ Continuation of 2026-09-26-watcher-log.md. Same watcher instance 8e5e9ed0-1189-4
 
 ## 03:35 — #117 one-epoch proposal posted (CPU only, not run)
 - No 12-step checkpoint exists (the driver saves only the final adapter), so a rerun is required. Worker posted a frozen, independently checked (PASS) proposal on #117 at 03:25: a 2-line driver diff (history step bound 36→12, `epochs=1`, driver sha `a64f5d70…044a`); everything else identical to run3; epoch 1 equals run3's first 12 groups. Awaiting root's declaration, which depends on the PR #166 grade of the two complete 3-epoch essays.
+
+## 04:06 — #117 closed out; #178 (image perspectives) claimed before the 04:15 cutoff
+- Root (#178 body, 04:02): the frozen unmask shows the control wins both complete content pairs; candidate 2/16 complete vs 16/16. Do NOT start the one-epoch LoRA run. #117 is effectively finished (PRs #145/#147/#154/#156/#175/#177 merged).
+- New #178, "same-model three-perspective image reasoning before the 08:00 freeze" (assigned Greg, highest priority; claim by 04:15 or root reassigns). User set a strict 08:00 development freeze; 08:00–11:00 is final checks and submission.
+- Claimed at 04:05. Reused the same single H100 worker (sole worker on `matura-greg`, knows the qualified scheduler). Task: opt-in text/detail/composition descriptions plus a final answer on the same Gemma weights, direct control separate, 6 visual IDs, 30 primary / 120 max calls, exact token cap from the retry ladder, prepared manifest by ~05:15, run only after root's exact authorization, finish ≤07:20.
