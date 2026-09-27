@@ -1,0 +1,2 @@
+# Preserve published crop provenance hashes across Windows/Linux checkouts.
+agentsLog/kwiscion/source-crops-prep/* text eol=lf

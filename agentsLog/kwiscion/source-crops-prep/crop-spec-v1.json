@@ -1,0 +1,401 @@
+{
+  "schema": "source_region_crop_spec_v1",
+  "source_exam_sha256": "907976be94f848fc3415ca0e4b1ba473e9dd08caa66984245a63e73d0fa27471",
+  "source_template_sha256": "aa4451a853063e3f67d1b9d281ac063ee48c112e01c3cb8712ded433253b865f",
+  "item_count": 40,
+  "points": 60,
+  "pixel_bbox_convention": "Pillow left/top inclusive, right/bottom exclusive; original pixel coordinates",
+  "operation": "lossless rectangular crop only; no resize/redraw/recolor",
+  "selection_basis": "Original task/source associations and complete source boundaries only; no keys or model answers",
+  "crops": [
+    {
+      "id": "Z01-S2",
+      "parent_path": "images/page-04.png",
+      "parent_sha256": "b0838350ae52a84d8b3eef81d59cd1c691e8cb08f23ad4970d21e632ed3f72b9",
+      "source_page": 4,
+      "bbox": [
+        106,
+        314,
+        805,
+        776
+      ],
+      "item_ids": [
+        "1"
+      ],
+      "reason": "Replace full-page input with complete task-associated visual source, excluding neighboring questions and answer areas.",
+      "visual_qa": "Both labelled A/B panels and source caption retained.",
+      "qa_status": "original_page_visually_inspected"
+    },
+    {
+      "id": "Z02-S2",
+      "parent_path": "images/page-05.png",
+      "parent_sha256": "738bfbfb73b4f90e4bb17a8cf6852899600d5e451b5d3dd0ea76ef499375169d",
+      "source_page": 5,
+      "bbox": [
+        106,
+        326,
+        870,
+        867
+      ],
+      "item_ids": [
+        "2"
+      ],
+      "reason": "Replace full-page input with complete task-associated visual source, excluding neighboring questions and answer areas.",
+      "visual_qa": "Whole map, all border labels, four-part legend and caption retained.",
+      "qa_status": "original_page_visually_inspected"
+    },
+    {
+      "id": "Z04",
+      "parent_path": "images/page-07.png",
+      "parent_sha256": "ab3f7fb24dfe6f05654171eca2d0e6421ab5b8dd6290bd81d03ff59123040510",
+      "source_page": 7,
+      "bbox": [
+        106,
+        140,
+        805,
+        696
+      ],
+      "item_ids": [
+        "4"
+      ],
+      "reason": "Replace full-page input with complete task-associated visual source, excluding neighboring questions and answer areas.",
+      "visual_qa": "Whole photograph and caption retained.",
+      "qa_status": "original_page_visually_inspected"
+    },
+    {
+      "id": "Z05-S2",
+      "parent_path": "images/page-08.png",
+      "parent_sha256": "ef1749770b71483f45caf36183e782389741456a7f5bbcce92d361c0dd02cc77",
+      "source_page": 8,
+      "bbox": [
+        106,
+        344,
+        834,
+        880
+      ],
+      "item_ids": [
+        "5.1",
+        "5.2"
+      ],
+      "reason": "Replace full-page input with complete task-associated visual source, excluding neighboring questions and answer areas.",
+      "visual_qa": "Whole map including protruding upper-right legend, all routes and caption retained.",
+      "qa_status": "original_page_visually_inspected"
+    },
+    {
+      "id": "Z06",
+      "parent_path": "images/page-09.png",
+      "parent_sha256": "4d30f761f2678e3d4d616e5193c3abf94e80bce42c8c2522e63098530c5d4fd9",
+      "source_page": 9,
+      "bbox": [
+        106,
+        258,
+        805,
+        833
+      ],
+      "item_ids": [
+        "6"
+      ],
+      "reason": "Replace full-page input with complete task-associated visual source, excluding neighboring questions and answer areas.",
+      "visual_qa": "Whole woodcut, all three external callouts and arrows, caption retained.",
+      "qa_status": "original_page_visually_inspected"
+    },
+    {
+      "id": "Z08-S2",
+      "parent_path": "images/page-11.png",
+      "parent_sha256": "e1286880491d7909f45b9a25ee044599591a621ea78f717088e9bc4e0083a254",
+      "source_page": 11,
+      "bbox": [
+        106,
+        106,
+        805,
+        656
+      ],
+      "item_ids": [
+        "8.1",
+        "8.2"
+      ],
+      "reason": "Replace full-page input with complete task-associated visual source, excluding neighboring questions and answer areas.",
+      "visual_qa": "Whole illustration, all letter labels, complete explanatory legend and caption retained; text source remains unchanged across prior-page boundary.",
+      "qa_status": "original_page_visually_inspected"
+    },
+    {
+      "id": "Z09",
+      "parent_path": "images/page-12.png",
+      "parent_sha256": "c380f684f4f4170b2788cc305123b4560b2cc0c8de8e745957ad0c9d7c71f7b7",
+      "source_page": 12,
+      "bbox": [
+        106,
+        140,
+        805,
+        880
+      ],
+      "item_ids": [
+        "9"
+      ],
+      "reason": "Replace full-page input with complete task-associated visual source, excluding neighboring questions and answer areas.",
+      "visual_qa": "Whole woodcut plus full caption and Latin-text translation retained.",
+      "qa_status": "original_page_visually_inspected"
+    },
+    {
+      "id": "Z10",
+      "parent_path": "images/page-13.png",
+      "parent_sha256": "fdb1f949cc7f610ecfb0fd043aa416034aafb19aa0fd64e778d5398de008d781",
+      "source_page": 13,
+      "bbox": [
+        106,
+        140,
+        807,
+        464
+      ],
+      "item_ids": [
+        "10"
+      ],
+      "reason": "Replace full-page input with complete task-associated visual source, excluding neighboring questions and answer areas.",
+      "visual_qa": "Complete income diagram, ratios, braces, annotations and caption retained.",
+      "qa_status": "original_page_visually_inspected"
+    },
+    {
+      "id": "Z11-S2",
+      "parent_path": "images/page-14.png",
+      "parent_sha256": "38016a9c95eae9a433d93450298244ccfb00c6e9031280b61962a4952b7956a1",
+      "source_page": 14,
+      "bbox": [
+        72,
+        106,
+        827,
+        554
+      ],
+      "item_ids": [
+        "11.1",
+        "11.2"
+      ],
+      "reason": "Replace full-page input with complete task-associated visual source, excluding neighboring questions and answer areas.",
+      "visual_qa": "Complete family tree including leftmost box, all dates, connecting lines and symbol legend retained.",
+      "qa_status": "original_page_visually_inspected"
+    },
+    {
+      "id": "Z12-S2",
+      "parent_path": "images/page-15.png",
+      "parent_sha256": "77f50f108eb4752eed9625d1f4a0cc66a3055b063d6256f8e38da571aac4fe42",
+      "source_page": 15,
+      "bbox": [
+        106,
+        106,
+        805,
+        557
+      ],
+      "item_ids": [
+        "12.1",
+        "12.2",
+        "12.3"
+      ],
+      "reason": "Replace full-page input with complete task-associated visual source, excluding neighboring questions and answer areas.",
+      "visual_qa": "Whole photograph and caption retained; associated prior-page prose unchanged.",
+      "qa_status": "original_page_visually_inspected"
+    },
+    {
+      "id": "Z13",
+      "parent_path": "images/page-16.png",
+      "parent_sha256": "9bda8c79c19a1433b11fda0cb32d615258954c3b1632255ac58178f240a4d23e",
+      "source_page": 16,
+      "bbox": [
+        106,
+        140,
+        805,
+        651
+      ],
+      "item_ids": [
+        "13"
+      ],
+      "reason": "Replace full-page input with complete task-associated visual source, excluding neighboring questions and answer areas.",
+      "visual_qa": "Whole engraving and external date callout/arrow retained.",
+      "qa_status": "original_page_visually_inspected"
+    },
+    {
+      "id": "Z14-S2",
+      "parent_path": "images/page-17.png",
+      "parent_sha256": "2c4ead95a94bf197707d5c93d57ec9959dfe7f2e217a53eb169512a8bad71b0d",
+      "source_page": 17,
+      "bbox": [
+        106,
+        106,
+        805,
+        640
+      ],
+      "item_ids": [
+        "14.1",
+        "14.2"
+      ],
+      "reason": "Replace full-page input with complete task-associated visual source, excluding neighboring questions and answer areas.",
+      "visual_qa": "Whole map including protruding legend and caption retained; prior-page prose unchanged.",
+      "qa_status": "original_page_visually_inspected"
+    },
+    {
+      "id": "Z16-S1",
+      "parent_path": "images/page-19.png",
+      "parent_sha256": "1bd640bf6e230b21a5307b0022d0b4d3411881df08fedc869c5242522f5bc385",
+      "source_page": 19,
+      "bbox": [
+        40,
+        136,
+        873,
+        603
+      ],
+      "item_ids": [
+        "16.1",
+        "16.2"
+      ],
+      "reason": "Replace full-page input with complete task-associated visual source, excluding neighboring questions and answer areas.",
+      "visual_qa": "Whole cartoon and all four external annotation boxes/arrows retained.",
+      "qa_status": "original_page_visually_inspected"
+    },
+    {
+      "id": "Z17-S2",
+      "parent_path": "images/page-20.png",
+      "parent_sha256": "a577e889152dca7a2d4969a0b87508c1288da762b3d15390edadab0259b1433e",
+      "source_page": 20,
+      "bbox": [
+        106,
+        553,
+        805,
+        905
+      ],
+      "item_ids": [
+        "17.1",
+        "17.2"
+      ],
+      "reason": "Replace full-page input with complete task-associated visual source, excluding neighboring questions and answer areas.",
+      "visual_qa": "Whole drawing, external translated callout, arrow and caption retained.",
+      "qa_status": "original_page_visually_inspected"
+    },
+    {
+      "id": "Z18",
+      "parent_path": "images/page-21.png",
+      "parent_sha256": "54b631cd65db862e9a4456407f7e9ca4808f7bb1b527dea576a0b5bbce09de70",
+      "source_page": 21,
+      "bbox": [
+        106,
+        248,
+        805,
+        872
+      ],
+      "item_ids": [
+        "18"
+      ],
+      "reason": "Replace full-page input with complete task-associated visual source, excluding neighboring questions and answer areas.",
+      "visual_qa": "Whole poster without trimming any peripheral figures or symbols; caption retained.",
+      "qa_status": "original_page_visually_inspected"
+    },
+    {
+      "id": "Z19",
+      "parent_path": "images/page-22.png",
+      "parent_sha256": "ce28404c0507cae44688e5b5da22c1c2366b119ecf02eee8d08b66f9dc2b6fdb",
+      "source_page": 22,
+      "bbox": [
+        106,
+        140,
+        805,
+        770
+      ],
+      "item_ids": [
+        "19.1",
+        "19.2"
+      ],
+      "reason": "Replace full-page input with complete task-associated visual source, excluding neighboring questions and answer areas.",
+      "visual_qa": "All four labelled stamps A-D and full below-panel inscription translations retained.",
+      "qa_status": "original_page_visually_inspected"
+    },
+    {
+      "id": "Z21",
+      "parent_path": "images/page-24.png",
+      "parent_sha256": "98ced4dafd22f4e73eafb515c38673c85cd3f03782d653033144a04fa492ad4b",
+      "source_page": 24,
+      "bbox": [
+        106,
+        140,
+        805,
+        536
+      ],
+      "item_ids": [
+        "21"
+      ],
+      "reason": "Replace full-page input with complete task-associated visual source, excluding neighboring questions and answer areas.",
+      "visual_qa": "Whole photograph, identifying source heading and caption retained.",
+      "qa_status": "original_page_visually_inspected"
+    },
+    {
+      "id": "Z23-S1",
+      "parent_path": "images/page-26.png",
+      "parent_sha256": "c8dd13c2e1ea0976ab50639a073664bd3557635c889dca052540ca0d5d8ee5ce",
+      "source_page": 26,
+      "bbox": [
+        106,
+        140,
+        805,
+        506
+      ],
+      "item_ids": [
+        "23.1",
+        "23.2"
+      ],
+      "reason": "Replace full-page input with complete task-associated visual source, excluding neighboring questions and answer areas.",
+      "visual_qa": "Whole poster including all embedded text and source caption retained.",
+      "qa_status": "original_page_visually_inspected"
+    },
+    {
+      "id": "Z23-S2",
+      "parent_path": "images/page-26.png",
+      "parent_sha256": "c8dd13c2e1ea0976ab50639a073664bd3557635c889dca052540ca0d5d8ee5ce",
+      "source_page": 26,
+      "bbox": [
+        106,
+        519,
+        808,
+        684
+      ],
+      "item_ids": [
+        "23.1",
+        "23.2"
+      ],
+      "reason": "Replace full-page input with complete task-associated visual source, excluding neighboring questions and answer areas.",
+      "visual_qa": "Complete source table, heading, all row/column labels and values, caption retained.",
+      "qa_status": "original_page_visually_inspected"
+    },
+    {
+      "id": "Z24-S1",
+      "parent_path": "images/page-27.png",
+      "parent_sha256": "9900c6ca5c919283c8eb96fca43059c935ff071db790a9809a815fd20930c39a",
+      "source_page": 27,
+      "bbox": [
+        106,
+        140,
+        805,
+        585
+      ],
+      "item_ids": [
+        "24"
+      ],
+      "reason": "Replace full-page input with complete task-associated visual source, excluding neighboring questions and answer areas.",
+      "visual_qa": "Whole map, entire top legend, all border labels and caption retained.",
+      "qa_status": "original_page_visually_inspected"
+    },
+    {
+      "id": "Z25",
+      "parent_path": "images/page-28.png",
+      "parent_sha256": "3ddacc9941ab9dda555b473004e9a59d6ceaf3c8542c025f0c72ff91579b3da2",
+      "source_page": 28,
+      "bbox": [
+        106,
+        140,
+        805,
+        652
+      ],
+      "item_ids": [
+        "25"
+      ],
+      "reason": "Replace full-page input with complete task-associated visual source, excluding neighboring questions and answer areas.",
+      "visual_qa": "Whole cartoon including peripheral scene, all lettering and caption retained.",
+      "qa_status": "original_page_visually_inspected"
+    }
+  ]
+}

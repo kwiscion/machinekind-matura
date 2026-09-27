@@ -14,6 +14,38 @@ class Runtime:
   return x
  def quiesce(self,deadline):self.stops+=1;self.active=False;return not self.fail_stop
 class Tests(unittest.TestCase):
+ def test_single_chosen_topic_heading_is_required_content_not_multiple_topics(self):
+  for label in ('Temat 2.','Temat 3.','3','Wypracowanie na temat nr 2.'):
+   text=label+'\n\n'+'word '*400
+   self.assertEqual(r.diagnostics(text,'essay',True),[])
+   self.assertEqual(r.essay_body_words(text),400)
+  self.assertIn('essay_format_or_multiple_topic_warning',r.diagnostics('Temat 1.\nword\nTemat 2.\nword','essay'))
+ def test_required_number_retry_preserves_number_and_full_final(self):
+  prompt='Original question and sources\n\nWymagany format odpowiedzi:\nJeden tekst: numer wybranego tematu i całe wypracowanie.\n\nSyntax only.'
+  complete='Temat 2.\n\n'+'word '*400
+  p=self.setup_run([good('word '*400),good(complete)],[{'id':'essay','content':prompt,'kind':'essay'}])
+  final=self.run_it(p)
+  self.assertEqual(len(p[4].calls),2);self.assertEqual(final['answers'][0]['answer'],complete)
+  self.assertIn('brak numeru',p[4].calls[1][0]['messages'][0]['content'])
+  state=json.loads((p[0]/'answer-status.json').read_text())['items']['essay']
+  self.assertEqual(state['word_count'],400);self.assertTrue(state['format_contract_satisfied'])
+  self.assertEqual(self.run_it(p,resume=True),final)
+ def test_explicit_optional_topic_number_does_not_trigger_requirement(self):
+  for fmt in ('Numer tematu nie jest wymagany.', 'Numer wybranego tematu jest opcjonalny.'):
+   case={'id':'essay','kind':'essay','content':'Original task\n\nWymagany format odpowiedzi:\n'+fmt}
+   self.assertFalse(r.topic_number_required(case))
+ def test_topic_header_inline_blank_markdown_and_body_boundary(self):
+  for header in ('2. ', '\n\nTemat 2.\n', '**Temat 2.**\n', '# Temat 2\n'):
+   with self.subTest(header=header):
+    short=header+' '.join(['word']*299);complete=header+' '.join(['word']*400)
+    self.assertEqual(r.essay_topic_numbers(complete),['2'])
+    self.assertEqual(r.essay_body_words(short),299)
+    self.assertIn('essay_under_300_words',r.diagnostics(short,'essay',True))
+    self.assertEqual(r.diagnostics(complete,'essay',True),[])
+    self.assertEqual(r.essay_body_words(complete),400)
+  multiple='**Temat 2.**\nword\n# Temat 3\nword'
+  self.assertIn('essay_format_or_multiple_topic_warning',r.diagnostics(multiple,'essay',True))
+  self.assertEqual(r.essay_topic_numbers('2000. Historical prose'),[])
  def setup_run(self,responses,cases=None):
   tmp=tempfile.TemporaryDirectory();self.addCleanup(tmp.cleanup);out=Path(tmp.name)/'run';clock=[100.];cases=cases or [{'id':'x','content':'complete original source'}];template={'exam_id':'synthetic','answers':[{'id':x['id'],'answer':''} for x in cases]};runtime=Runtime(responses,clock);return out,clock,cases,template,runtime
  def run_it(self,pack,**kwargs):
