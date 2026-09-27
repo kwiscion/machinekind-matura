@@ -1,0 +1,1314 @@
+{
+  "schema": "may2024_source_crops_v1",
+  "status": "CPU_AND_VISUAL_QA_PASS_NO_INFERENCE",
+  "source_exam_sha256": "907976be94f848fc3415ca0e4b1ba473e9dd08caa66984245a63e73d0fa27471",
+  "source_template_sha256": "aa4451a853063e3f67d1b9d281ac063ee48c112e01c3cb8712ded433253b865f",
+  "crop_spec_sha256": "92025640327a7c91e55a7c98623a683c59e634580fb72f1b42af848ca640790e",
+  "builder_sha256": "ece0ba27b12e83b36825443f9e0debde724f2f362c77766dd94d194ad603d3a8",
+  "adapter_sha256": "bec8b33731e24ff1ea845e7c7b0908d3227121986125cef8967fc384a1d8af74",
+  "summary": {
+    "exam_id": "history-2024-source-v2-local-control-v1",
+    "items": 40,
+    "points": 60,
+    "declared_max_points": 60,
+    "unique_image_files": 21,
+    "image_references": 32,
+    "items_with_images": 30,
+    "image_bytes": 8124416,
+    "template_ids_match": true,
+    "unknown_fields_passed_to_model": {
+      "exam": [],
+      "item": [],
+      "image": []
+    },
+    "exam_json_sha256": "e93b7488da7dfcf4044c906af9b28c1275a1b295838455ec3d88dcc2344aaac6",
+    "template_sha256": "aa4451a853063e3f67d1b9d281ac063ee48c112e01c3cb8712ded433253b865f",
+    "item_ids_sha256": "517208a8952bdc53b209c55831dc2ab266699956072029eae551662628446086"
+  },
+  "non_image_fields_exact": true,
+  "template_bytes_exact": true,
+  "adapter_prompt_except_image_list_exact": true,
+  "original_files_unchanged": true,
+  "crops": [
+    {
+      "id": "Z01-S2",
+      "parent_path": "images/page-04.png",
+      "parent_sha256": "b0838350ae52a84d8b3eef81d59cd1c691e8cb08f23ad4970d21e632ed3f72b9",
+      "source_page": 4,
+      "bbox": [
+        106,
+        314,
+        805,
+        776
+      ],
+      "item_ids": [
+        "1"
+      ],
+      "reason": "Replace full-page input with complete task-associated visual source, excluding neighboring questions and answer areas.",
+      "visual_qa": "Both labelled A/B panels and source caption retained.",
+      "qa_status": "original_and_extracted_region_visually_inspected_PASS",
+      "crop_path": "images/Z01-S2.png",
+      "crop_sha256": "c92594bfb108f37e33c81ec34444789eecde725bf6e8491f60fa2f1008104024",
+      "crop_size": [
+        699,
+        462
+      ],
+      "parent_size": [
+        910,
+        1287
+      ],
+      "pixel_exact_check": "PASS"
+    },
+    {
+      "id": "Z02-S2",
+      "parent_path": "images/page-05.png",
+      "parent_sha256": "738bfbfb73b4f90e4bb17a8cf6852899600d5e451b5d3dd0ea76ef499375169d",
+      "source_page": 5,
+      "bbox": [
+        106,
+        326,
+        870,
+        867
+      ],
+      "item_ids": [
+        "2"
+      ],
+      "reason": "Replace full-page input with complete task-associated visual source, excluding neighboring questions and answer areas.",
+      "visual_qa": "Whole map, all border labels, four-part legend and caption retained.",
+      "qa_status": "original_and_extracted_region_visually_inspected_PASS",
+      "crop_path": "images/Z02-S2.png",
+      "crop_sha256": "81fa8080dff6687f459d2ea22c781b709eaf7fb6f0edf50ac38b5535a8c71962",
+      "crop_size": [
+        764,
+        541
+      ],
+      "parent_size": [
+        910,
+        1287
+      ],
+      "pixel_exact_check": "PASS"
+    },
+    {
+      "id": "Z04",
+      "parent_path": "images/page-07.png",
+      "parent_sha256": "ab3f7fb24dfe6f05654171eca2d0e6421ab5b8dd6290bd81d03ff59123040510",
+      "source_page": 7,
+      "bbox": [
+        106,
+        140,
+        805,
+        696
+      ],
+      "item_ids": [
+        "4"
+      ],
+      "reason": "Replace full-page input with complete task-associated visual source, excluding neighboring questions and answer areas.",
+      "visual_qa": "Whole photograph and caption retained.",
+      "qa_status": "original_and_extracted_region_visually_inspected_PASS",
+      "crop_path": "images/Z04.png",
+      "crop_sha256": "a5dfdc2b68e60164df2eba18e42b8714186e194dfd8a70059dbe438f8f8651ac",
+      "crop_size": [
+        699,
+        556
+      ],
+      "parent_size": [
+        910,
+        1287
+      ],
+      "pixel_exact_check": "PASS"
+    },
+    {
+      "id": "Z05-S2",
+      "parent_path": "images/page-08.png",
+      "parent_sha256": "ef1749770b71483f45caf36183e782389741456a7f5bbcce92d361c0dd02cc77",
+      "source_page": 8,
+      "bbox": [
+        106,
+        344,
+        834,
+        880
+      ],
+      "item_ids": [
+        "5.1",
+        "5.2"
+      ],
+      "reason": "Replace full-page input with complete task-associated visual source, excluding neighboring questions and answer areas.",
+      "visual_qa": "Whole map including protruding upper-right legend, all routes and caption retained.",
+      "qa_status": "original_and_extracted_region_visually_inspected_PASS",
+      "crop_path": "images/Z05-S2.png",
+      "crop_sha256": "a892bbf03dcb9940c20985c454d2a5fdb87e08567e8ed76c0ea0731421922911",
+      "crop_size": [
+        728,
+        536
+      ],
+      "parent_size": [
+        910,
+        1287
+      ],
+      "pixel_exact_check": "PASS"
+    },
+    {
+      "id": "Z06",
+      "parent_path": "images/page-09.png",
+      "parent_sha256": "4d30f761f2678e3d4d616e5193c3abf94e80bce42c8c2522e63098530c5d4fd9",
+      "source_page": 9,
+      "bbox": [
+        106,
+        258,
+        805,
+        833
+      ],
+      "item_ids": [
+        "6"
+      ],
+      "reason": "Replace full-page input with complete task-associated visual source, excluding neighboring questions and answer areas.",
+      "visual_qa": "Whole woodcut, all three external callouts and arrows, caption retained.",
+      "qa_status": "original_and_extracted_region_visually_inspected_PASS",
+      "crop_path": "images/Z06.png",
+      "crop_sha256": "2fe3e9586d2524b350f1b6fd6ff182f059ed32ba692cafbb1b699cc4854740d1",
+      "crop_size": [
+        699,
+        575
+      ],
+      "parent_size": [
+        910,
+        1287
+      ],
+      "pixel_exact_check": "PASS"
+    },
+    {
+      "id": "Z08-S2",
+      "parent_path": "images/page-11.png",
+      "parent_sha256": "e1286880491d7909f45b9a25ee044599591a621ea78f717088e9bc4e0083a254",
+      "source_page": 11,
+      "bbox": [
+        106,
+        106,
+        805,
+        656
+      ],
+      "item_ids": [
+        "8.1",
+        "8.2"
+      ],
+      "reason": "Replace full-page input with complete task-associated visual source, excluding neighboring questions and answer areas.",
+      "visual_qa": "Whole illustration, all letter labels, complete explanatory legend and caption retained; text source remains unchanged across prior-page boundary.",
+      "qa_status": "original_and_extracted_region_visually_inspected_PASS",
+      "crop_path": "images/Z08-S2.png",
+      "crop_sha256": "9dcb7800f3e96d9481e29dc66af5813aefc6bd85a114889bbd6741cbd1bfc00d",
+      "crop_size": [
+        699,
+        550
+      ],
+      "parent_size": [
+        910,
+        1287
+      ],
+      "pixel_exact_check": "PASS"
+    },
+    {
+      "id": "Z09",
+      "parent_path": "images/page-12.png",
+      "parent_sha256": "c380f684f4f4170b2788cc305123b4560b2cc0c8de8e745957ad0c9d7c71f7b7",
+      "source_page": 12,
+      "bbox": [
+        106,
+        140,
+        805,
+        880
+      ],
+      "item_ids": [
+        "9"
+      ],
+      "reason": "Replace full-page input with complete task-associated visual source, excluding neighboring questions and answer areas.",
+      "visual_qa": "Whole woodcut plus full caption and Latin-text translation retained.",
+      "qa_status": "original_and_extracted_region_visually_inspected_PASS",
+      "crop_path": "images/Z09.png",
+      "crop_sha256": "7439a2729a08713884ff363a065757512115647e9ddaf5b5852d31b68e329c9f",
+      "crop_size": [
+        699,
+        740
+      ],
+      "parent_size": [
+        910,
+        1287
+      ],
+      "pixel_exact_check": "PASS"
+    },
+    {
+      "id": "Z10",
+      "parent_path": "images/page-13.png",
+      "parent_sha256": "fdb1f949cc7f610ecfb0fd043aa416034aafb19aa0fd64e778d5398de008d781",
+      "source_page": 13,
+      "bbox": [
+        106,
+        140,
+        807,
+        464
+      ],
+      "item_ids": [
+        "10"
+      ],
+      "reason": "Replace full-page input with complete task-associated visual source, excluding neighboring questions and answer areas.",
+      "visual_qa": "Complete income diagram, ratios, braces, annotations and caption retained.",
+      "qa_status": "original_and_extracted_region_visually_inspected_PASS",
+      "crop_path": "images/Z10.png",
+      "crop_sha256": "444cf7b672cee5feeb16e03caaa1097cc9ea8534b64b9cc2842622ac4ccd8626",
+      "crop_size": [
+        701,
+        324
+      ],
+      "parent_size": [
+        910,
+        1287
+      ],
+      "pixel_exact_check": "PASS"
+    },
+    {
+      "id": "Z11-S2",
+      "parent_path": "images/page-14.png",
+      "parent_sha256": "38016a9c95eae9a433d93450298244ccfb00c6e9031280b61962a4952b7956a1",
+      "source_page": 14,
+      "bbox": [
+        72,
+        106,
+        827,
+        554
+      ],
+      "item_ids": [
+        "11.1",
+        "11.2"
+      ],
+      "reason": "Replace full-page input with complete task-associated visual source, excluding neighboring questions and answer areas.",
+      "visual_qa": "Complete family tree including leftmost box, all dates, connecting lines and symbol legend retained.",
+      "qa_status": "original_and_extracted_region_visually_inspected_PASS",
+      "crop_path": "images/Z11-S2.png",
+      "crop_sha256": "ad0f299a71a210dec7a280437dd8852da2305c8f2d94205a1dcedb79e967d7bd",
+      "crop_size": [
+        755,
+        448
+      ],
+      "parent_size": [
+        910,
+        1287
+      ],
+      "pixel_exact_check": "PASS"
+    },
+    {
+      "id": "Z12-S2",
+      "parent_path": "images/page-15.png",
+      "parent_sha256": "77f50f108eb4752eed9625d1f4a0cc66a3055b063d6256f8e38da571aac4fe42",
+      "source_page": 15,
+      "bbox": [
+        106,
+        106,
+        805,
+        557
+      ],
+      "item_ids": [
+        "12.1",
+        "12.2",
+        "12.3"
+      ],
+      "reason": "Replace full-page input with complete task-associated visual source, excluding neighboring questions and answer areas.",
+      "visual_qa": "Whole photograph and caption retained; associated prior-page prose unchanged.",
+      "qa_status": "original_and_extracted_region_visually_inspected_PASS",
+      "crop_path": "images/Z12-S2.png",
+      "crop_sha256": "ac57977e4107289bca0068b5a9d6f97539aa32a67d157f3c67a65d0756509b01",
+      "crop_size": [
+        699,
+        451
+      ],
+      "parent_size": [
+        910,
+        1287
+      ],
+      "pixel_exact_check": "PASS"
+    },
+    {
+      "id": "Z13",
+      "parent_path": "images/page-16.png",
+      "parent_sha256": "9bda8c79c19a1433b11fda0cb32d615258954c3b1632255ac58178f240a4d23e",
+      "source_page": 16,
+      "bbox": [
+        106,
+        140,
+        805,
+        651
+      ],
+      "item_ids": [
+        "13"
+      ],
+      "reason": "Replace full-page input with complete task-associated visual source, excluding neighboring questions and answer areas.",
+      "visual_qa": "Whole engraving and external date callout/arrow retained.",
+      "qa_status": "original_and_extracted_region_visually_inspected_PASS",
+      "crop_path": "images/Z13.png",
+      "crop_sha256": "6b4780a8cd91d5fc85c727ff0f29383849e69c3af3da2ec8038d30e4e02faa5c",
+      "crop_size": [
+        699,
+        511
+      ],
+      "parent_size": [
+        910,
+        1287
+      ],
+      "pixel_exact_check": "PASS"
+    },
+    {
+      "id": "Z14-S2",
+      "parent_path": "images/page-17.png",
+      "parent_sha256": "2c4ead95a94bf197707d5c93d57ec9959dfe7f2e217a53eb169512a8bad71b0d",
+      "source_page": 17,
+      "bbox": [
+        106,
+        106,
+        805,
+        640
+      ],
+      "item_ids": [
+        "14.1",
+        "14.2"
+      ],
+      "reason": "Replace full-page input with complete task-associated visual source, excluding neighboring questions and answer areas.",
+      "visual_qa": "Whole map including protruding legend and caption retained; prior-page prose unchanged.",
+      "qa_status": "original_and_extracted_region_visually_inspected_PASS",
+      "crop_path": "images/Z14-S2.png",
+      "crop_sha256": "1c6de6a1452133253b436a1e5dc3e4279d1ac7adeb97f451b3a87e786af76998",
+      "crop_size": [
+        699,
+        534
+      ],
+      "parent_size": [
+        910,
+        1287
+      ],
+      "pixel_exact_check": "PASS"
+    },
+    {
+      "id": "Z16-S1",
+      "parent_path": "images/page-19.png",
+      "parent_sha256": "1bd640bf6e230b21a5307b0022d0b4d3411881df08fedc869c5242522f5bc385",
+      "source_page": 19,
+      "bbox": [
+        40,
+        136,
+        873,
+        603
+      ],
+      "item_ids": [
+        "16.1",
+        "16.2"
+      ],
+      "reason": "Replace full-page input with complete task-associated visual source, excluding neighboring questions and answer areas.",
+      "visual_qa": "Whole cartoon and all four external annotation boxes/arrows retained.",
+      "qa_status": "original_and_extracted_region_visually_inspected_PASS",
+      "crop_path": "images/Z16-S1.png",
+      "crop_sha256": "39637082ca704c2bcaaeac1cf7393062c1e9e9ce670d81c51b0679b71c4e55ee",
+      "crop_size": [
+        833,
+        467
+      ],
+      "parent_size": [
+        910,
+        1287
+      ],
+      "pixel_exact_check": "PASS"
+    },
+    {
+      "id": "Z17-S2",
+      "parent_path": "images/page-20.png",
+      "parent_sha256": "a577e889152dca7a2d4969a0b87508c1288da762b3d15390edadab0259b1433e",
+      "source_page": 20,
+      "bbox": [
+        106,
+        553,
+        805,
+        905
+      ],
+      "item_ids": [
+        "17.1",
+        "17.2"
+      ],
+      "reason": "Replace full-page input with complete task-associated visual source, excluding neighboring questions and answer areas.",
+      "visual_qa": "Whole drawing, external translated callout, arrow and caption retained.",
+      "qa_status": "original_and_extracted_region_visually_inspected_PASS",
+      "crop_path": "images/Z17-S2.png",
+      "crop_sha256": "e8596f380e6e684339b41d6ae4f5770085ce30f3cbdbf892037eb6a4df4dcfac",
+      "crop_size": [
+        699,
+        352
+      ],
+      "parent_size": [
+        910,
+        1287
+      ],
+      "pixel_exact_check": "PASS"
+    },
+    {
+      "id": "Z18",
+      "parent_path": "images/page-21.png",
+      "parent_sha256": "54b631cd65db862e9a4456407f7e9ca4808f7bb1b527dea576a0b5bbce09de70",
+      "source_page": 21,
+      "bbox": [
+        106,
+        248,
+        805,
+        872
+      ],
+      "item_ids": [
+        "18"
+      ],
+      "reason": "Replace full-page input with complete task-associated visual source, excluding neighboring questions and answer areas.",
+      "visual_qa": "Whole poster without trimming any peripheral figures or symbols; caption retained.",
+      "qa_status": "original_and_extracted_region_visually_inspected_PASS",
+      "crop_path": "images/Z18.png",
+      "crop_sha256": "fb3752d9931ffec6c5c56ab3de9544bbc1843d438e8d3f4998c0f3fa44b7d62e",
+      "crop_size": [
+        699,
+        624
+      ],
+      "parent_size": [
+        910,
+        1287
+      ],
+      "pixel_exact_check": "PASS"
+    },
+    {
+      "id": "Z19",
+      "parent_path": "images/page-22.png",
+      "parent_sha256": "ce28404c0507cae44688e5b5da22c1c2366b119ecf02eee8d08b66f9dc2b6fdb",
+      "source_page": 22,
+      "bbox": [
+        106,
+        140,
+        805,
+        770
+      ],
+      "item_ids": [
+        "19.1",
+        "19.2"
+      ],
+      "reason": "Replace full-page input with complete task-associated visual source, excluding neighboring questions and answer areas.",
+      "visual_qa": "All four labelled stamps A-D and full below-panel inscription translations retained.",
+      "qa_status": "original_and_extracted_region_visually_inspected_PASS",
+      "crop_path": "images/Z19.png",
+      "crop_sha256": "2a5ca761b3a00e7f9ee3311843adeba8d59085ee5b834cbf205a84e75c061582",
+      "crop_size": [
+        699,
+        630
+      ],
+      "parent_size": [
+        910,
+        1287
+      ],
+      "pixel_exact_check": "PASS"
+    },
+    {
+      "id": "Z21",
+      "parent_path": "images/page-24.png",
+      "parent_sha256": "98ced4dafd22f4e73eafb515c38673c85cd3f03782d653033144a04fa492ad4b",
+      "source_page": 24,
+      "bbox": [
+        106,
+        140,
+        805,
+        536
+      ],
+      "item_ids": [
+        "21"
+      ],
+      "reason": "Replace full-page input with complete task-associated visual source, excluding neighboring questions and answer areas.",
+      "visual_qa": "Whole photograph, identifying source heading and caption retained.",
+      "qa_status": "original_and_extracted_region_visually_inspected_PASS",
+      "crop_path": "images/Z21.png",
+      "crop_sha256": "093778ef26aa76b2357fa50ad93d1bcee4c7aaf1e2250bde7d1954f8cce71597",
+      "crop_size": [
+        699,
+        396
+      ],
+      "parent_size": [
+        910,
+        1287
+      ],
+      "pixel_exact_check": "PASS"
+    },
+    {
+      "id": "Z23-S1",
+      "parent_path": "images/page-26.png",
+      "parent_sha256": "c8dd13c2e1ea0976ab50639a073664bd3557635c889dca052540ca0d5d8ee5ce",
+      "source_page": 26,
+      "bbox": [
+        106,
+        140,
+        805,
+        506
+      ],
+      "item_ids": [
+        "23.1",
+        "23.2"
+      ],
+      "reason": "Replace full-page input with complete task-associated visual source, excluding neighboring questions and answer areas.",
+      "visual_qa": "Whole poster including all embedded text and source caption retained.",
+      "qa_status": "original_and_extracted_region_visually_inspected_PASS",
+      "crop_path": "images/Z23-S1.png",
+      "crop_sha256": "cedf635f8cfcb54b39e3afbf9765bdfe4b0e90d474c42ef55f4686973cafdc1e",
+      "crop_size": [
+        699,
+        366
+      ],
+      "parent_size": [
+        910,
+        1287
+      ],
+      "pixel_exact_check": "PASS"
+    },
+    {
+      "id": "Z23-S2",
+      "parent_path": "images/page-26.png",
+      "parent_sha256": "c8dd13c2e1ea0976ab50639a073664bd3557635c889dca052540ca0d5d8ee5ce",
+      "source_page": 26,
+      "bbox": [
+        106,
+        519,
+        808,
+        684
+      ],
+      "item_ids": [
+        "23.1",
+        "23.2"
+      ],
+      "reason": "Replace full-page input with complete task-associated visual source, excluding neighboring questions and answer areas.",
+      "visual_qa": "Complete source table, heading, all row/column labels and values, caption retained.",
+      "qa_status": "original_and_extracted_region_visually_inspected_PASS",
+      "crop_path": "images/Z23-S2.png",
+      "crop_sha256": "c04b68f9cc4697950d4833eabc6dd64111675e5503a07f39828f6a5d48c0f74a",
+      "crop_size": [
+        702,
+        165
+      ],
+      "parent_size": [
+        910,
+        1287
+      ],
+      "pixel_exact_check": "PASS"
+    },
+    {
+      "id": "Z24-S1",
+      "parent_path": "images/page-27.png",
+      "parent_sha256": "9900c6ca5c919283c8eb96fca43059c935ff071db790a9809a815fd20930c39a",
+      "source_page": 27,
+      "bbox": [
+        106,
+        140,
+        805,
+        585
+      ],
+      "item_ids": [
+        "24"
+      ],
+      "reason": "Replace full-page input with complete task-associated visual source, excluding neighboring questions and answer areas.",
+      "visual_qa": "Whole map, entire top legend, all border labels and caption retained.",
+      "qa_status": "original_and_extracted_region_visually_inspected_PASS",
+      "crop_path": "images/Z24-S1.png",
+      "crop_sha256": "cdcde20b828cf82be7b2ae336a6c4ba7893162e0903e76bc2765248ebb49720b",
+      "crop_size": [
+        699,
+        445
+      ],
+      "parent_size": [
+        910,
+        1287
+      ],
+      "pixel_exact_check": "PASS"
+    },
+    {
+      "id": "Z25",
+      "parent_path": "images/page-28.png",
+      "parent_sha256": "3ddacc9941ab9dda555b473004e9a59d6ceaf3c8542c025f0c72ff91579b3da2",
+      "source_page": 28,
+      "bbox": [
+        106,
+        140,
+        805,
+        652
+      ],
+      "item_ids": [
+        "25"
+      ],
+      "reason": "Replace full-page input with complete task-associated visual source, excluding neighboring questions and answer areas.",
+      "visual_qa": "Whole cartoon including peripheral scene, all lettering and caption retained.",
+      "qa_status": "original_and_extracted_region_visually_inspected_PASS",
+      "crop_path": "images/Z25.png",
+      "crop_sha256": "d6d6f7198dc3be2045df16030555f7a412ed9610a5117527b82beffdf3a6c4a4",
+      "crop_size": [
+        699,
+        512
+      ],
+      "parent_size": [
+        910,
+        1287
+      ],
+      "pixel_exact_check": "PASS"
+    }
+  ],
+  "item_image_mapping": [
+    {
+      "id": "1",
+      "old_images": [
+        {
+          "path": "images/page-04.png",
+          "source_page": 4,
+          "sha256": "b0838350ae52a84d8b3eef81d59cd1c691e8cb08f23ad4970d21e632ed3f72b9"
+        }
+      ],
+      "new_images": [
+        {
+          "path": "images/Z01-S2.png",
+          "source_page": 4,
+          "sha256": "c92594bfb108f37e33c81ec34444789eecde725bf6e8491f60fa2f1008104024"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "old_images": [
+        {
+          "path": "images/page-05.png",
+          "source_page": 5,
+          "sha256": "738bfbfb73b4f90e4bb17a8cf6852899600d5e451b5d3dd0ea76ef499375169d"
+        }
+      ],
+      "new_images": [
+        {
+          "path": "images/Z02-S2.png",
+          "source_page": 5,
+          "sha256": "81fa8080dff6687f459d2ea22c781b709eaf7fb6f0edf50ac38b5535a8c71962"
+        }
+      ]
+    },
+    {
+      "id": "3.1",
+      "old_images": [],
+      "new_images": []
+    },
+    {
+      "id": "3.2",
+      "old_images": [],
+      "new_images": []
+    },
+    {
+      "id": "4",
+      "old_images": [
+        {
+          "path": "images/page-07.png",
+          "source_page": 7,
+          "sha256": "ab3f7fb24dfe6f05654171eca2d0e6421ab5b8dd6290bd81d03ff59123040510"
+        }
+      ],
+      "new_images": [
+        {
+          "path": "images/Z04.png",
+          "source_page": 7,
+          "sha256": "a5dfdc2b68e60164df2eba18e42b8714186e194dfd8a70059dbe438f8f8651ac"
+        }
+      ]
+    },
+    {
+      "id": "5.1",
+      "old_images": [
+        {
+          "path": "images/page-08.png",
+          "source_page": 8,
+          "sha256": "ef1749770b71483f45caf36183e782389741456a7f5bbcce92d361c0dd02cc77"
+        }
+      ],
+      "new_images": [
+        {
+          "path": "images/Z05-S2.png",
+          "source_page": 8,
+          "sha256": "a892bbf03dcb9940c20985c454d2a5fdb87e08567e8ed76c0ea0731421922911"
+        }
+      ]
+    },
+    {
+      "id": "5.2",
+      "old_images": [
+        {
+          "path": "images/page-08.png",
+          "source_page": 8,
+          "sha256": "ef1749770b71483f45caf36183e782389741456a7f5bbcce92d361c0dd02cc77"
+        },
+        {
+          "path": "images/page-09.png",
+          "source_page": 9,
+          "sha256": "4d30f761f2678e3d4d616e5193c3abf94e80bce42c8c2522e63098530c5d4fd9"
+        }
+      ],
+      "new_images": [
+        {
+          "path": "images/Z05-S2.png",
+          "source_page": 8,
+          "sha256": "a892bbf03dcb9940c20985c454d2a5fdb87e08567e8ed76c0ea0731421922911"
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "old_images": [
+        {
+          "path": "images/page-09.png",
+          "source_page": 9,
+          "sha256": "4d30f761f2678e3d4d616e5193c3abf94e80bce42c8c2522e63098530c5d4fd9"
+        }
+      ],
+      "new_images": [
+        {
+          "path": "images/Z06.png",
+          "source_page": 9,
+          "sha256": "2fe3e9586d2524b350f1b6fd6ff182f059ed32ba692cafbb1b699cc4854740d1"
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "old_images": [],
+      "new_images": []
+    },
+    {
+      "id": "8.1",
+      "old_images": [
+        {
+          "path": "images/page-10.png",
+          "source_page": 10,
+          "sha256": "fd35f322ab827a5a05d8348e86084124eada33dc1a71a3e92f89aff62c01468d"
+        },
+        {
+          "path": "images/page-11.png",
+          "source_page": 11,
+          "sha256": "e1286880491d7909f45b9a25ee044599591a621ea78f717088e9bc4e0083a254"
+        }
+      ],
+      "new_images": [
+        {
+          "path": "images/Z08-S2.png",
+          "source_page": 11,
+          "sha256": "9dcb7800f3e96d9481e29dc66af5813aefc6bd85a114889bbd6741cbd1bfc00d"
+        }
+      ]
+    },
+    {
+      "id": "8.2",
+      "old_images": [
+        {
+          "path": "images/page-10.png",
+          "source_page": 10,
+          "sha256": "fd35f322ab827a5a05d8348e86084124eada33dc1a71a3e92f89aff62c01468d"
+        },
+        {
+          "path": "images/page-11.png",
+          "source_page": 11,
+          "sha256": "e1286880491d7909f45b9a25ee044599591a621ea78f717088e9bc4e0083a254"
+        }
+      ],
+      "new_images": [
+        {
+          "path": "images/Z08-S2.png",
+          "source_page": 11,
+          "sha256": "9dcb7800f3e96d9481e29dc66af5813aefc6bd85a114889bbd6741cbd1bfc00d"
+        }
+      ]
+    },
+    {
+      "id": "9",
+      "old_images": [
+        {
+          "path": "images/page-12.png",
+          "source_page": 12,
+          "sha256": "c380f684f4f4170b2788cc305123b4560b2cc0c8de8e745957ad0c9d7c71f7b7"
+        }
+      ],
+      "new_images": [
+        {
+          "path": "images/Z09.png",
+          "source_page": 12,
+          "sha256": "7439a2729a08713884ff363a065757512115647e9ddaf5b5852d31b68e329c9f"
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "old_images": [
+        {
+          "path": "images/page-13.png",
+          "source_page": 13,
+          "sha256": "fdb1f949cc7f610ecfb0fd043aa416034aafb19aa0fd64e778d5398de008d781"
+        }
+      ],
+      "new_images": [
+        {
+          "path": "images/Z10.png",
+          "source_page": 13,
+          "sha256": "444cf7b672cee5feeb16e03caaa1097cc9ea8534b64b9cc2842622ac4ccd8626"
+        }
+      ]
+    },
+    {
+      "id": "11.1",
+      "old_images": [
+        {
+          "path": "images/page-13.png",
+          "source_page": 13,
+          "sha256": "fdb1f949cc7f610ecfb0fd043aa416034aafb19aa0fd64e778d5398de008d781"
+        },
+        {
+          "path": "images/page-14.png",
+          "source_page": 14,
+          "sha256": "38016a9c95eae9a433d93450298244ccfb00c6e9031280b61962a4952b7956a1"
+        }
+      ],
+      "new_images": [
+        {
+          "path": "images/Z11-S2.png",
+          "source_page": 14,
+          "sha256": "ad0f299a71a210dec7a280437dd8852da2305c8f2d94205a1dcedb79e967d7bd"
+        }
+      ]
+    },
+    {
+      "id": "11.2",
+      "old_images": [
+        {
+          "path": "images/page-13.png",
+          "source_page": 13,
+          "sha256": "fdb1f949cc7f610ecfb0fd043aa416034aafb19aa0fd64e778d5398de008d781"
+        },
+        {
+          "path": "images/page-14.png",
+          "source_page": 14,
+          "sha256": "38016a9c95eae9a433d93450298244ccfb00c6e9031280b61962a4952b7956a1"
+        }
+      ],
+      "new_images": [
+        {
+          "path": "images/Z11-S2.png",
+          "source_page": 14,
+          "sha256": "ad0f299a71a210dec7a280437dd8852da2305c8f2d94205a1dcedb79e967d7bd"
+        }
+      ]
+    },
+    {
+      "id": "12.1",
+      "old_images": [
+        {
+          "path": "images/page-14.png",
+          "source_page": 14,
+          "sha256": "38016a9c95eae9a433d93450298244ccfb00c6e9031280b61962a4952b7956a1"
+        },
+        {
+          "path": "images/page-15.png",
+          "source_page": 15,
+          "sha256": "77f50f108eb4752eed9625d1f4a0cc66a3055b063d6256f8e38da571aac4fe42"
+        }
+      ],
+      "new_images": [
+        {
+          "path": "images/Z12-S2.png",
+          "source_page": 15,
+          "sha256": "ac57977e4107289bca0068b5a9d6f97539aa32a67d157f3c67a65d0756509b01"
+        }
+      ]
+    },
+    {
+      "id": "12.2",
+      "old_images": [
+        {
+          "path": "images/page-14.png",
+          "source_page": 14,
+          "sha256": "38016a9c95eae9a433d93450298244ccfb00c6e9031280b61962a4952b7956a1"
+        },
+        {
+          "path": "images/page-15.png",
+          "source_page": 15,
+          "sha256": "77f50f108eb4752eed9625d1f4a0cc66a3055b063d6256f8e38da571aac4fe42"
+        }
+      ],
+      "new_images": [
+        {
+          "path": "images/Z12-S2.png",
+          "source_page": 15,
+          "sha256": "ac57977e4107289bca0068b5a9d6f97539aa32a67d157f3c67a65d0756509b01"
+        }
+      ]
+    },
+    {
+      "id": "12.3",
+      "old_images": [
+        {
+          "path": "images/page-14.png",
+          "source_page": 14,
+          "sha256": "38016a9c95eae9a433d93450298244ccfb00c6e9031280b61962a4952b7956a1"
+        },
+        {
+          "path": "images/page-15.png",
+          "source_page": 15,
+          "sha256": "77f50f108eb4752eed9625d1f4a0cc66a3055b063d6256f8e38da571aac4fe42"
+        }
+      ],
+      "new_images": [
+        {
+          "path": "images/Z12-S2.png",
+          "source_page": 15,
+          "sha256": "ac57977e4107289bca0068b5a9d6f97539aa32a67d157f3c67a65d0756509b01"
+        }
+      ]
+    },
+    {
+      "id": "13",
+      "old_images": [
+        {
+          "path": "images/page-16.png",
+          "source_page": 16,
+          "sha256": "9bda8c79c19a1433b11fda0cb32d615258954c3b1632255ac58178f240a4d23e"
+        }
+      ],
+      "new_images": [
+        {
+          "path": "images/Z13.png",
+          "source_page": 16,
+          "sha256": "6b4780a8cd91d5fc85c727ff0f29383849e69c3af3da2ec8038d30e4e02faa5c"
+        }
+      ]
+    },
+    {
+      "id": "14.1",
+      "old_images": [
+        {
+          "path": "images/page-16.png",
+          "source_page": 16,
+          "sha256": "9bda8c79c19a1433b11fda0cb32d615258954c3b1632255ac58178f240a4d23e"
+        },
+        {
+          "path": "images/page-17.png",
+          "source_page": 17,
+          "sha256": "2c4ead95a94bf197707d5c93d57ec9959dfe7f2e217a53eb169512a8bad71b0d"
+        }
+      ],
+      "new_images": [
+        {
+          "path": "images/Z14-S2.png",
+          "source_page": 17,
+          "sha256": "1c6de6a1452133253b436a1e5dc3e4279d1ac7adeb97f451b3a87e786af76998"
+        }
+      ]
+    },
+    {
+      "id": "14.2",
+      "old_images": [
+        {
+          "path": "images/page-16.png",
+          "source_page": 16,
+          "sha256": "9bda8c79c19a1433b11fda0cb32d615258954c3b1632255ac58178f240a4d23e"
+        },
+        {
+          "path": "images/page-17.png",
+          "source_page": 17,
+          "sha256": "2c4ead95a94bf197707d5c93d57ec9959dfe7f2e217a53eb169512a8bad71b0d"
+        }
+      ],
+      "new_images": [
+        {
+          "path": "images/Z14-S2.png",
+          "source_page": 17,
+          "sha256": "1c6de6a1452133253b436a1e5dc3e4279d1ac7adeb97f451b3a87e786af76998"
+        }
+      ]
+    },
+    {
+      "id": "15.1",
+      "old_images": [],
+      "new_images": []
+    },
+    {
+      "id": "15.2",
+      "old_images": [],
+      "new_images": []
+    },
+    {
+      "id": "16.1",
+      "old_images": [
+        {
+          "path": "images/page-19.png",
+          "source_page": 19,
+          "sha256": "1bd640bf6e230b21a5307b0022d0b4d3411881df08fedc869c5242522f5bc385"
+        },
+        {
+          "path": "images/page-20.png",
+          "source_page": 20,
+          "sha256": "a577e889152dca7a2d4969a0b87508c1288da762b3d15390edadab0259b1433e"
+        }
+      ],
+      "new_images": [
+        {
+          "path": "images/Z16-S1.png",
+          "source_page": 19,
+          "sha256": "39637082ca704c2bcaaeac1cf7393062c1e9e9ce670d81c51b0679b71c4e55ee"
+        }
+      ]
+    },
+    {
+      "id": "16.2",
+      "old_images": [
+        {
+          "path": "images/page-19.png",
+          "source_page": 19,
+          "sha256": "1bd640bf6e230b21a5307b0022d0b4d3411881df08fedc869c5242522f5bc385"
+        },
+        {
+          "path": "images/page-20.png",
+          "source_page": 20,
+          "sha256": "a577e889152dca7a2d4969a0b87508c1288da762b3d15390edadab0259b1433e"
+        }
+      ],
+      "new_images": [
+        {
+          "path": "images/Z16-S1.png",
+          "source_page": 19,
+          "sha256": "39637082ca704c2bcaaeac1cf7393062c1e9e9ce670d81c51b0679b71c4e55ee"
+        }
+      ]
+    },
+    {
+      "id": "17.1",
+      "old_images": [
+        {
+          "path": "images/page-20.png",
+          "source_page": 20,
+          "sha256": "a577e889152dca7a2d4969a0b87508c1288da762b3d15390edadab0259b1433e"
+        }
+      ],
+      "new_images": [
+        {
+          "path": "images/Z17-S2.png",
+          "source_page": 20,
+          "sha256": "e8596f380e6e684339b41d6ae4f5770085ce30f3cbdbf892037eb6a4df4dcfac"
+        }
+      ]
+    },
+    {
+      "id": "17.2",
+      "old_images": [
+        {
+          "path": "images/page-20.png",
+          "source_page": 20,
+          "sha256": "a577e889152dca7a2d4969a0b87508c1288da762b3d15390edadab0259b1433e"
+        },
+        {
+          "path": "images/page-21.png",
+          "source_page": 21,
+          "sha256": "54b631cd65db862e9a4456407f7e9ca4808f7bb1b527dea576a0b5bbce09de70"
+        }
+      ],
+      "new_images": [
+        {
+          "path": "images/Z17-S2.png",
+          "source_page": 20,
+          "sha256": "e8596f380e6e684339b41d6ae4f5770085ce30f3cbdbf892037eb6a4df4dcfac"
+        }
+      ]
+    },
+    {
+      "id": "18",
+      "old_images": [
+        {
+          "path": "images/page-21.png",
+          "source_page": 21,
+          "sha256": "54b631cd65db862e9a4456407f7e9ca4808f7bb1b527dea576a0b5bbce09de70"
+        }
+      ],
+      "new_images": [
+        {
+          "path": "images/Z18.png",
+          "source_page": 21,
+          "sha256": "fb3752d9931ffec6c5c56ab3de9544bbc1843d438e8d3f4998c0f3fa44b7d62e"
+        }
+      ]
+    },
+    {
+      "id": "19.1",
+      "old_images": [
+        {
+          "path": "images/page-22.png",
+          "source_page": 22,
+          "sha256": "ce28404c0507cae44688e5b5da22c1c2366b119ecf02eee8d08b66f9dc2b6fdb"
+        }
+      ],
+      "new_images": [
+        {
+          "path": "images/Z19.png",
+          "source_page": 22,
+          "sha256": "2a5ca761b3a00e7f9ee3311843adeba8d59085ee5b834cbf205a84e75c061582"
+        }
+      ]
+    },
+    {
+      "id": "19.2",
+      "old_images": [
+        {
+          "path": "images/page-22.png",
+          "source_page": 22,
+          "sha256": "ce28404c0507cae44688e5b5da22c1c2366b119ecf02eee8d08b66f9dc2b6fdb"
+        }
+      ],
+      "new_images": [
+        {
+          "path": "images/Z19.png",
+          "source_page": 22,
+          "sha256": "2a5ca761b3a00e7f9ee3311843adeba8d59085ee5b834cbf205a84e75c061582"
+        }
+      ]
+    },
+    {
+      "id": "20.1",
+      "old_images": [],
+      "new_images": []
+    },
+    {
+      "id": "20.2",
+      "old_images": [],
+      "new_images": []
+    },
+    {
+      "id": "21",
+      "old_images": [
+        {
+          "path": "images/page-24.png",
+          "source_page": 24,
+          "sha256": "98ced4dafd22f4e73eafb515c38673c85cd3f03782d653033144a04fa492ad4b"
+        }
+      ],
+      "new_images": [
+        {
+          "path": "images/Z21.png",
+          "source_page": 24,
+          "sha256": "093778ef26aa76b2357fa50ad93d1bcee4c7aaf1e2250bde7d1954f8cce71597"
+        }
+      ]
+    },
+    {
+      "id": "22.1",
+      "old_images": [],
+      "new_images": []
+    },
+    {
+      "id": "22.2",
+      "old_images": [],
+      "new_images": []
+    },
+    {
+      "id": "23.1",
+      "old_images": [
+        {
+          "path": "images/page-26.png",
+          "source_page": 26,
+          "sha256": "c8dd13c2e1ea0976ab50639a073664bd3557635c889dca052540ca0d5d8ee5ce"
+        }
+      ],
+      "new_images": [
+        {
+          "path": "images/Z23-S1.png",
+          "source_page": 26,
+          "sha256": "cedf635f8cfcb54b39e3afbf9765bdfe4b0e90d474c42ef55f4686973cafdc1e"
+        },
+        {
+          "path": "images/Z23-S2.png",
+          "source_page": 26,
+          "sha256": "c04b68f9cc4697950d4833eabc6dd64111675e5503a07f39828f6a5d48c0f74a"
+        }
+      ]
+    },
+    {
+      "id": "23.2",
+      "old_images": [
+        {
+          "path": "images/page-26.png",
+          "source_page": 26,
+          "sha256": "c8dd13c2e1ea0976ab50639a073664bd3557635c889dca052540ca0d5d8ee5ce"
+        }
+      ],
+      "new_images": [
+        {
+          "path": "images/Z23-S1.png",
+          "source_page": 26,
+          "sha256": "cedf635f8cfcb54b39e3afbf9765bdfe4b0e90d474c42ef55f4686973cafdc1e"
+        },
+        {
+          "path": "images/Z23-S2.png",
+          "source_page": 26,
+          "sha256": "c04b68f9cc4697950d4833eabc6dd64111675e5503a07f39828f6a5d48c0f74a"
+        }
+      ]
+    },
+    {
+      "id": "24",
+      "old_images": [
+        {
+          "path": "images/page-27.png",
+          "source_page": 27,
+          "sha256": "9900c6ca5c919283c8eb96fca43059c935ff071db790a9809a815fd20930c39a"
+        }
+      ],
+      "new_images": [
+        {
+          "path": "images/Z24-S1.png",
+          "source_page": 27,
+          "sha256": "cdcde20b828cf82be7b2ae336a6c4ba7893162e0903e76bc2765248ebb49720b"
+        }
+      ]
+    },
+    {
+      "id": "25",
+      "old_images": [
+        {
+          "path": "images/page-28.png",
+          "source_page": 28,
+          "sha256": "3ddacc9941ab9dda555b473004e9a59d6ceaf3c8542c025f0c72ff91579b3da2"
+        }
+      ],
+      "new_images": [
+        {
+          "path": "images/Z25.png",
+          "source_page": 28,
+          "sha256": "d6d6f7198dc3be2045df16030555f7a412ed9610a5117527b82beffdf3a6c4a4"
+        }
+      ]
+    },
+    {
+      "id": "26",
+      "old_images": [],
+      "new_images": []
+    }
+  ],
+  "model_calls": 0,
+  "rights": "Private evaluation only; crops inherit source rights. No redistribution grant.",
+  "qa": {
+    "reviewer": "root/full40_second_sol",
+    "original_pages_inspected": 21,
+    "crops_inspected": 21,
+    "contact_sheets_inspected": 4,
+    "unresolved_region_ambiguities": [],
+    "exact_reproduction_files": 23,
+    "reproduction_status": "PASS",
+    "note": "All original pages visually inspected, then all crop contact sheets; complete source units retained. Contact-sheet thumbnails are private QA only; actual model crops were not resized."
+  },
+  "qa_contact_sha256": {
+    "qa-contact-01.png": "38d4447c055daaf2d19ae09c3c152a3f5b6d0c6f1cd615ac39207ffd0d9d42a5",
+    "qa-contact-02.png": "b83ce7d14cf1d07ff4b3147ada9f766148b271bba0a7a3606c63b9b0006a9c93",
+    "qa-contact-03.png": "10e98ab969e5ceb9f5aa5eb77c771075d4045e686d25dee6b70eb8b87c380e03",
+    "qa-contact-04.png": "cf9ca02b034871602008e5fc910f6dc575aea22ec33ace31e412922d7e61a61e"
+  },
+  "before": {
+    "unique_images": 21,
+    "references": 43,
+    "image_bearing_items": 30
+  }
+}
