@@ -1,6 +1,6 @@
 # Winning plan
 
-**Goal:** highest final history score; target **48/60**. Current corrected-input Gemma scores **39/60** in one agent grading pass (31 nonessay +8 essay; 40 complete answers). Legacy38 remains preserved. Updated 27 September, 04:10 Warsaw. Issues own detailed tasks; this file stays short.
+**Goal:** highest final history score; target **48/60**. Corrected Gemma leads at **39/60**; Qwen scores **36/60**, with stronger nonessay answers but a weak essay. These are agent grades on known validation. Updated 27 September, 04:55 Warsaw. Issues own detailed tasks; this file stays short.
 
 ## Hard schedule
 
@@ -12,9 +12,10 @@
 ## Priority order
 
 1. **Corrected Gemma40 is complete and scored39/60** ([#173](https://github.com/kwiscion/machinekind-matura/issues/173)); exact outputs and runtime are backed up. Lost points: history7, source interpretation6, incomplete identification1, essay depth7. No blank losses. This is a known-validation agent grade, not an organizer score.
-2. **Score the running corrected Qwen40** ([#95](https://github.com/kwiscion/machinekind-matura/issues/95)), deadline05:01 Warsaw on central H100. It beat Gemma6/8 versus4/8 on the small known panel; full results determine promotion. Prepare arbitrary organizer-package support in parallel.
-3. **Essay branching is running** on reserved `matura-lukasz` ([#168](https://github.com/kwiscion/machinekind-matura/issues/168)), deadline05:05: direct control plus one draft per offered topic, then same-model selection/revision. Grade candidates and selected final once; distinguish best candidate from selector performance. If argument gains are weak, test an explicit evidence-and-causality policy next.
-4. **Three-view image reasoning** ([#178](https://github.com/kwiscion/machinekind-matura/issues/178), Greg; local fallback if unclaimed): independent same-model text/transcription, small-detail and overall-composition descriptions, then answer with the complete original question/image and all three fallible views. Matched direct control, fixed visual subset, no extra model weights.
+2. **Full Polish Wikipedia is indexed** ([#184](https://github.com/kwiscion/machinekind-matura/issues/184), root Sol on `matura-pawel`): all 1,587,721 articles and 2,729,746 passages from the complete cleaned November 2023 Polish snapshot. Qualify retrieval and run independent top-five relevance filtering on nonessays ([#182](https://github.com/kwiscion/machinekind-matura/issues/182)), then six-query essay research ([#183](https://github.com/kwiscion/machinekind-matura/issues/183)). Earlier retrieval had only 107 articles; its negative result does not measure full-corpus RAG.
+3. **Improve Qwen essays on central H100** ([#95](https://github.com/kwiscion/machinekind-matura/issues/95)): the full run scored 33/45 nonessay +3/15 essay, versus Gemma 31+8. A four-case coverage-prompt diagnostic is running. Keep models separate; no cross-model answer selection or combined submission.
+4. **Essay experiments on `matura-lukasz`:** branching ([#168](https://github.com/kwiscion/machinekind-matura/issues/168)) produced an 11/15 draft, but its selector returned 6/15 versus the direct control's 8/15. Reject that selector. The coverage prompt improved its matched control from 8/15 to 10/15. Strict candidate-ID selection chose the 11/15 draft but failed on fenced JSON; a generic parser repair is being qualified. Next: evidence-led writing using the full corpus.
+5. **Three-view image reasoning** ([#178](https://github.com/kwiscion/machinekind-matura/issues/178), Greg claimed): independent same-model text, detail and overview descriptions; answer with complete original inputs and all three fallible views. Matched direct control, fixed visual subset, no extra model weights.
 
 ## Operating rules
 
@@ -22,7 +23,7 @@ Use existing qualified recovery: 65,536 context, substantial output budgets, 60-
 
 Freeze finite call/token/time/cost bounds before each run. One fast grading pass; repeat only for consequential uncertainty. Prefer large, testable changes over marginal tuning. **Park the unstable3-epoch essay LoRA** (2/16 complete versus16/16 control); no further training without new evidence. Generic RAG and generic zoom have not earned promotion.
 
-Root dispatches three local Sol workers for runtime, grading/review and essay/image implementation. Check teammate issue claims once and assign useful bounded work immediately; unavailable teammates are not dependencies. Preserve Przemek's GPU, last observed occupied by other work. Never duplicate a live worker or restart one because observation timed out.
+Keep all available project H100s assigned; use local Sol workers when teammates are unavailable. Central: Qwen/verification; Greg: images; Lukasz: essays; Pawel: full-corpus retrieval. Przemek is verified occupied by other work and remains untouched. Never duplicate a live worker or restart one because observation timed out. Ranked next ideas live in the last-effort experiment report, not this plan.
 
 ## Final constraints
 

@@ -1,0 +1,95 @@
+{
+  "status": "RUNTIME_TERMINAL_PASS_QUALITY_PENDING",
+  "terminal": {
+    "stages": [
+      {
+        "arm": "control",
+        "returncode": 0,
+        "calls": 2,
+        "requested_tokens": 81920,
+        "answers_sha256": "8b8b41f7ba706d49d3fc904a128c1c053774d1c27d93cd93c9081ec0b239e64b",
+        "statuses": {
+          "26": {
+            "placeholder": false,
+            "incomplete_partial": false,
+            "selection": "complete_final",
+            "successful_recovery": false,
+            "attempts": 2,
+            "warnings": [],
+            "partial_candidates_preserved": 0,
+            "errors": [],
+            "mandatory_attempts_unfulfilled": 0,
+            "selected_answer_attempt": 1,
+            "mechanical_rank": [
+              0,
+              0
+            ],
+            "word_count": 445,
+            "selection_policy": "essay_mechanical_v2_topic_number",
+            "mechanical_format_improved": true,
+            "format_contract_satisfied": true
+          }
+        },
+        "stop": null
+      },
+      {
+        "arm": "candidate",
+        "returncode": 0,
+        "calls": 1,
+        "requested_tokens": 32768,
+        "answers_sha256": "587aaa671c1e568824baaa0fe1aa43615d1f8d5153f289c8479c057d67e300ee",
+        "statuses": {
+          "26": {
+            "placeholder": false,
+            "incomplete_partial": false,
+            "selection": "complete_final",
+            "successful_recovery": false,
+            "attempts": 1,
+            "warnings": [],
+            "partial_candidates_preserved": 0,
+            "errors": [],
+            "mandatory_attempts_unfulfilled": 0,
+            "selected_answer_attempt": 0,
+            "mechanical_rank": [
+              0,
+              0
+            ],
+            "word_count": 408,
+            "selection_policy": "essay_mechanical_v2_topic_number",
+            "mechanical_format_improved": false,
+            "format_contract_satisfied": true
+          }
+        },
+        "stop": null
+      }
+    ],
+    "calls": 3,
+    "requested_tokens": 114688,
+    "deadline_utc": "2026-09-27T03:34:50.895006+00:00"
+  },
+  "operator": {
+    "status": "TERMINAL",
+    "operator_exit_code": 0,
+    "utc": "2026-09-27T02:43:15.307217+00:00"
+  },
+  "cleanup": {
+    "status": "OWNED_IDLE_BASELINE_REMOVED_ABSENT_STATE_RESTORED",
+    "utc": "2026-09-27T02:44:28.441153+00:00",
+    "owned_pid": 76274,
+    "start_ticks": "3524663",
+    "port11436": "unused",
+    "unowned_service_changes": 0
+  },
+  "backup": {
+    "bytes": 263423,
+    "sha256": "ab9a9b6afd73e07389d7dec997ce7aebd2e031bdf13150a3fcf6a8db7162a799",
+    "verified_files": 119,
+    "weights_backed_up": false
+  },
+  "grading": {
+    "verified_backup_members": 119,
+    "packet_sha256": "51bdd7c0bc6f41943cffa831bdfa5fcf833c5a9256d8fad38d62ebb354d09149",
+    "key_sha256": "206e330006e2eee7ec133143e451608e5075691c6b989ba830dd230c10792a04",
+    "archive_sha256": "ab9a9b6afd73e07389d7dec997ce7aebd2e031bdf13150a3fcf6a8db7162a799"
+  }
+}

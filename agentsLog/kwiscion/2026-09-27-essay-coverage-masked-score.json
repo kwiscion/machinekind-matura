@@ -1,0 +1,102 @@
+{
+  "status": "FROZEN_MASKED_SINGLE_PASS",
+  "frozen_utc": "2026-09-27T02:53:09.937735+00:00",
+  "packet_sha256": "51bdd7c0bc6f41943cffa831bdfa5fcf833c5a9256d8fad38d62ebb354d09149",
+  "exam_sha256": "e93b7488da7dfcf4044c906af9b28c1275a1b295838455ec3d88dcc2344aaac6",
+  "rubric_pdf_sha256": "95c275b9546611c1f8cd45b7973c436625fd0ee5643b778dcc8bb566db56cd4c",
+  "counts": {
+    "complete": 2,
+    "partial": 0,
+    "placeholder": 0,
+    "answer_hashes_verified": 2
+  },
+  "image_count": 0,
+  "range_meaning": "Judgment sensitivity, not confidence interval.",
+  "exposure": "Arm key, adjacent runtime metadata and unmasked answers were not opened. Grader has prior task26/model-answer/rubric exposure and authored the generic coverage suffix, so this is arm-masked rather than benchmark-naive. No arm labels are inferred.",
+  "word_method": "Whitespace-delimited body tokens after removing only the leading topic label; exact answer bytes unchanged.",
+  "items": [
+    {
+      "id": "b0c077b6500e2cdb",
+      "answer_sha256": "9fdc9246df5f95b8ade3172dbceef10e81fc41e637d52e3720344383a4392385",
+      "source_item_id": "val2024-hist-z26",
+      "topic": 3,
+      "body_words": 448,
+      "submitted_whitespace_tokens": 449,
+      "status": "complete",
+      "aspects": [
+        {
+          "name": "diplomatic",
+          "points": 1,
+          "reason": "Western alliances and Intermarium are named, but an unrealized regional vision is not a demonstrated mechanism of international recognition. The claimed effect remains a sweeping inference, without a specific diplomatic settlement."
+        },
+        {
+          "name": "military",
+          "points": 3,
+          "reason": "Legion officer cadres and Warsaw1920 are linked to army capacity and survival of sovereignty. Relevant functional examples with causal reasoning; not sufficiently detailed for rich4."
+        },
+        {
+          "name": "political_constitutional",
+          "points": 1,
+          "reason": "Integration of partitioned legal/administrative systems and personal authority are described generally; no concrete governmental act, institution-building decision or constitutional mechanism is developed."
+        }
+      ],
+      "narrative_before_errors": 5,
+      "factual_errors": [],
+      "factual_deduction": 0,
+      "coherence": 3,
+      "coherence_reason": "Ordered stance, three functional thematic paragraphs and conclusion; >=300 body words. Generic reasoning is reflected in aspect grades, not a second coherence penalty.",
+      "central": 8,
+      "low": 7,
+      "high": 8,
+      "max_points": 15,
+      "sensitivity": "7 if the Intermarium-to-recognition assertion is treated as a definite false causal attribution; centrally classified as unsupported/overbroad rather than proven false because the sentence refers to an approach, not explicitly a realized bloc.",
+      "factual_cautions": [
+        "The regional federation project was not realized; no credit for implying its vision itself demonstrated recognition. Later Sanacja mention is explicitly distinguished from1918–1921, so not an anachronism."
+      ]
+    },
+    {
+      "id": "c93f00fbade8b30d",
+      "answer_sha256": "f8d41d2d590654b62b088ea638aaf4e113bbbc8289fd56bab66e6203d473b425",
+      "source_item_id": "val2024-hist-z26",
+      "topic": 3,
+      "body_words": 409,
+      "submitted_whitespace_tokens": 412,
+      "status": "complete",
+      "aspects": [
+        {
+          "name": "diplomatic",
+          "points": 3,
+          "reason": "Military victory is linked to bargaining strength, then to the1921 Riga settlement and eastern-border stabilization. This is a concrete, relevant causal mechanism, despite omitting the mismatch with Pilsudski federal preferences."
+        },
+        {
+          "name": "military",
+          "points": 3,
+          "reason": "Legion officer cadres and Warsaw1920 are linked to army capacity and survival of sovereignty. Relevant functional examples with causal reasoning; not sufficiently detailed for rich4."
+        },
+        {
+          "name": "political_constitutional",
+          "points": 1,
+          "reason": "Integration of partitioned legal/administrative systems and personal authority are described generally; no concrete governmental act, institution-building decision or constitutional mechanism is developed."
+        }
+      ],
+      "narrative_before_errors": 7,
+      "factual_errors": [],
+      "factual_deduction": 0,
+      "coherence": 3,
+      "coherence_reason": "Ordered stance, three functional thematic paragraphs and conclusion; >=300 body words. Generic reasoning is reflected in aspect grades, not a second coherence penalty.",
+      "central": 10,
+      "low": 9,
+      "high": 10,
+      "max_points": 15,
+      "sensitivity": "9 if the vague Legion description as fighting for Galician/Warsaw borders is adjudged a factual misstatement. Centrally treated as imprecise geography/purpose, not an invented date or campaign. Riga is not falsely attributed to Pilsudski as sole negotiator.",
+      "factual_cautions": [
+        "Riga followed military success but frustrated federal ambitions; the answer does not claim Pilsudski personally negotiated its terms or fulfilled that plan. Awkward Galician/Warsaw wording remains a precision concern."
+      ]
+    }
+  ],
+  "sources": {
+    "unrealized_federation": "https://edukacja.ipn.gov.pl/edu/wystawy/biografie-elementarne/138673,Jozef-Pilsudski.html",
+    "riga": "https://bialystok.ipn.gov.pl/pl1/aktualnosci/179598,Traktat-Ryski-kalendarium-18-marca-1921.html"
+  },
+  "limitation": "One provisional known-validation grading pass; no model call, second rater or answer composition. Mapping and policy comparison await authorized unmasking."
+}

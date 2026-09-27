@@ -6,7 +6,7 @@ The supplied **37-item organizer mock is verified** through the actual adapter a
 
 Current complete corrected-input result: **Gemma native thinking39/60** (31/45 nonessay +8/15 essay), all40 answers complete with zero placeholders. Runtime:41 calls in15m48s. The one-pass grade has item-based judgment sensitivity37–42, not a confidence interval or organizer grade. Legacy38/60 remains separate; changed inputs prevent a crop-only causal claim. Target48/60. [Score and point losses](agentsLog/kwiscion/2026-09-27-corrected-gemma40-grade.md) · [Runtime evidence](agentsLog/kwiscion/2026-09-27-corrected-gemma40-result.md).
 
-The [native-thinking six-item comparison](agentsLog/kwiscion/2026-09-27-native-pair-comparison.md) scored Qwen6/8 versus Gemma4/8. Full corrected Qwen40 now runs in [#95](https://github.com/kwiscion/machinekind-matura/issues/95), due05:01 Warsaw. [Essay branching](agentsLog/kwiscion/essay-branching-prep/WAVE.md) runs on `matura-lukasz`, due05:05. Greg owns [three-view image reasoning](https://github.com/kwiscion/machinekind-matura/issues/178), with local fallback if unavailable. **Development freezes08:00 Warsaw;08:00–11:00 is final checks/execution/submission.**
+The corrected full Qwen run scored **36/60 = 33/45 nonessay +3/15 essay**: stronger nonessay results, but no overall promotion. [Score comparison](agentsLog/kwiscion/2026-09-27-corrected-qwen40-grade.md). Essay branching produced an11/15 draft but selected6/15; that rewriting selector is rejected. A generic coverage prompt improved a separate matched essay pair from8/15 to10/15; [evidence](agentsLog/kwiscion/2026-09-27-essay-coverage-comparison.md). [Frozen comparison](agentsLog/kwiscion/2026-09-27-essay-branching-comparison.md). Full Polish Wikipedia now has **1,587,721 articles / 2,729,746 passages** indexed in [#184](https://github.com/kwiscion/machinekind-matura/issues/184); filtered retrieval, evidence-led essays and three-view image reasoning are the next tests. **Development freezes08:00 Warsaw;08:00–11:00 is final checks/execution/submission.**
 
 The3-epoch essay LoRA is parked:2/16 complete versus16/16 control, with control winning both complete content comparisons. [Frozen unmask](agentsLog/kwiscion/2026-09-27-eval16-unmasked-comparison.md). No further training is authorized without new evidence.
 
@@ -18,7 +18,7 @@ The organizer allows **8 GB + 10% across all submitted model weights together**.
 | Structured prompts; one fast grading pass | Root Sol | [#80](https://github.com/kwiscion/machinekind-matura/issues/80) |
 | Per-topic essay drafts and same-model selection preparation | Root Sol | [#168](https://github.com/kwiscion/machinekind-matura/issues/168) |
 | CPU failure-pattern/prompt hypotheses | @Pewciu6; claim pending | [#163](https://github.com/kwiscion/machinekind-matura/issues/163) |
-| Three-view image descriptions and matched control | @Bukareszt; claim pending | [#178](https://github.com/kwiscion/machinekind-matura/issues/178) |
+| Three-view image descriptions and matched control | @Bukareszt; active | [#178](https://github.com/kwiscion/machinekind-matura/issues/178) |
 | CPU final runtime integration review | @ljaniec; claim pending | [#151](https://github.com/kwiscion/machinekind-matura/issues/151) |
 | Native-thinking Qwen versus Gemma comparison | @kwiscion + Sol | [#95](https://github.com/kwiscion/machinekind-matura/issues/95) |
 | CPU final answer-package audit | @semberecki; claim pending | [#165](https://github.com/kwiscion/machinekind-matura/issues/165) |
