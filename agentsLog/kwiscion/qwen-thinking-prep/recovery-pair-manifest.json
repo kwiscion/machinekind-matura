@@ -1,0 +1,44 @@
+{
+  "status": "PREPARED_NOT_AUTHORIZED",
+  "shared_deadline_required": true,
+  "max_seconds": 3600,
+  "max_calls": 48,
+  "max_requested_tokens": 1769472,
+  "arms": [
+    {
+      "arm": "gemma",
+      "manifest_sha256": "f231722e6e3bed5649689ad17e310f9829911cd35de8cf86b7d9d360c85677a7",
+      "calls": 24,
+      "tokens": 884736
+    },
+    {
+      "arm": "qwen",
+      "manifest_sha256": "0c0211744265457475205094581249749f1b443725e53cab492f2173de6bdfa4",
+      "calls": 24,
+      "tokens": 884736
+    }
+  ],
+  "source_v6_manifest_sha256": "9bcca4c5d3b0955fa13e7240d4c0aa94b85e4001ea5d786e0d9c632d562f53c4",
+  "source_input_sha256": "7825d12510ea65efaa415ed25cb5b3f656b5aaa622110a8511d6cf7ffb211bd9",
+  "points_per_arm": 8,
+  "image_references_per_arm": 7,
+  "unique_pages": 6,
+  "source_equality": true,
+  "scheduler_sha256": "d99d9271d6cc589f0e9caccfee3d1387c4695d0fd9cd33db97bcd3efba54a521",
+  "binding_sha256": "54983970c8bc9bd8b84bc878383b254af8cb192be313320b793317e86b4aa392",
+  "profile_sha256": "953bc792cb6d553b84d58398b0261e333799737e5f94fc5fd77fadf527b8367d",
+  "qwen_architecture": "qwen35",
+  "qwen_metadata_context_length": 262144,
+  "requested_context": 65536,
+  "loaded_context_verified": false,
+  "metadata_evidence_sha256": "9011d72b4e3968b82a22d660d3923c98772651af420fc5561263b24ec9a6d4c4",
+  "tests": {
+    "closed_profile": 5,
+    "binding": 8,
+    "scheduler": 21
+  },
+  "cost_ceiling_estimate_usd": 3.28,
+  "rate_and_billing": "planning rate3.28/h; billing unverified",
+  "sampling_comparison": "Gemma omitted defaults vs Qwen fixed temperature1/top_p.95/top_k64; compares declared systems, not model-only causal effect",
+  "staged_caches": false
+}

@@ -9,6 +9,25 @@ def load(name,path):
 n=load('recovery_native',HERE/'run_native_package.py')
 r=load('recovery_engine',HERE/'recovery_harness.py')
 n.GlobalStop=r.Fatal
+ORIGINAL_STEP=r.step
+ACTIVE_PROFILE=None
+QWEN_PROFILE_SHA='953bc792cb6d553b84d58398b0261e333799737e5f94fc5fd77fadf527b8367d'
+
+def configure_profile(root,m):
+ global ACTIVE_PROFILE
+ ACTIVE_PROFILE=None;r.MODEL=n.MODEL;r.step=ORIGINAL_STEP
+ if 'model_profile' in m:
+  n.need(m['model_profile']=='qwen35_9b_thinking_v1','Closed model profile')
+  n.need(m['files'].get('closed_profile.py')==QWEN_PROFILE_SHA and n.sha(n.safe_file(root,'closed_profile.py'))==QWEN_PROFILE_SHA,'Reviewed Qwen profile pin')
+  ACTIVE_PROFILE=load('closed_qwen_profile',root/'closed_profile.py')
+  n.need(m['model']==ACTIVE_PROFILE.MODEL and m['temperature']==1 and m.get('top_p')==0.95 and m.get('top_k')==64,'Qwen controls')
+  ACTIVE_PROFILE.install(r,ORIGINAL_STEP)
+ else:n.need(m['model']==n.MODEL and m['temperature']=='omitted' and 'top_p' not in m and 'top_k' not in m,'Gemma controls')
+
+def modules(root):
+ values=list(n.modules(root))
+ if ACTIVE_PROFILE is not None:values[1]=ACTIVE_PROFILE.wrap_guard(values[1])
+ return tuple(values)
 ENDPOINT='http://127.0.0.1:11435'
 CLIENT='''import json,sys,urllib.request
 body=json.load(sys.stdin)
@@ -27,8 +46,8 @@ def verify(root,m):
 def preflight(root,fresh=True):
  m=n.read(root/'launch.json');n.need(m['schema']=='champion_recovery_v1','Schema')
  r.validate_config(m['recovery']);n.need(m['max_seconds']==m['recovery']['minutes']*60,'Wall budget')
- n.need(m['context']==65536 and m['model']==n.MODEL and m['temperature']=='omitted','Controls')
- verify(root,m);helper,guard,rehearsal,adapter,inf=n.modules(root)
+ n.need(m['context']==65536,'Controls');configure_profile(root,m)
+ verify(root,m);helper,guard,rehearsal,adapter,inf=modules(root)
  package=adapter.load_package(root/'exam')
  n.need(all(path.relative_to(root).as_posix() in m['files'] for path in adapter.package_inputs(package)),'Every source/image pinned')
  n.need(all(name in m['files'] for name in ('recovery_harness.py','run_native_package.py','operator_recovery.sh','input.original.jsonl','input.jsonl')),'Required dependency pins')
@@ -64,7 +83,7 @@ def supervisor(root,parent,fd,host_net):
 
 class OwnedRuntime:
  def __init__(self,root,m,parent,proof):
-  self.root=root;self.m=m;self.parent=parent;self.proof=proof;self.out=root/'results';self.helper,self.guard,self.rehearsal,self.adapter,_=n.modules(root)
+  self.root=root;self.m=m;self.parent=parent;self.proof=proof;self.out=root/'results';self.helper,self.guard,self.rehearsal,self.adapter,_=modules(root)
   self.server=None;self.record=None;self.loaded=False;self.fault=None;self.index=0;self.response_terminal=False
   self.pins=dict(self.guard.CANONICAL,context_length=65536)
   self.weights=n.read(self.out/'weights.json')['files']
@@ -181,7 +200,7 @@ def validate_final(path,template):
  return doc
 
 def inside(root,m,package,cases,parent,fd,host_net):
- supervisor(root,parent,fd,host_net);helper,guard,rehearsal,adapter,_=n.modules(root);out=root/'results'
+ supervisor(root,parent,fd,host_net);helper,guard,rehearsal,adapter,_=modules(root);out=root/'results'
  proof=rehearsal.network_proof(host_net);n.write(out/'network-proof.json',proof)
  runtime=OwnedRuntime(root,m,parent,proof)
  try:
@@ -192,7 +211,7 @@ def inside(root,m,package,cases,parent,fd,host_net):
 
 def execute(root,m,package,cases):
  import fcntl
- helper,guard,rehearsal,adapter,_=n.modules(root);out=root/'results';out.mkdir()
+ helper,guard,rehearsal,adapter,_=modules(root);out=root/'results';out.mkdir()
  lock=Path(m['lock']).open('a');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
  try:
   n.need(guard.fingerprint(Path(m['binary']))['sha256']==guard.CANONICAL['runtime_binary_sha256'],'Runtime pin')
