@@ -3,6 +3,7 @@ import copy
 import json
 from pathlib import Path
 import sys
+import tempfile
 import unittest
 from types import SimpleNamespace
 
@@ -10,12 +11,19 @@ import prepare_deadline_rag as prep
 import deadline_runtime as policy
 
 sys.path.insert(0, str(prep.HERE.parent / 'filtered-rag-prep'))
+sys.path.insert(0, str(prep.HERE.parent / 'essay-rag-prep'))
 import deadline_hook
 
 fixtures = prep.load('deadline_fixture', prep.HERE.parent / 'final-package-prep/test_native_package.py')
 
 
 class Tests(unittest.TestCase):
+    def test_utf8_bom_input_json(self):
+        with tempfile.TemporaryDirectory() as folder:
+            path=Path(folder)/'exam.json'
+            path.write_text('{"id":"arbitrary"}',encoding='utf-8-sig')
+            self.assertEqual(policy.read(path),{'id':'arbitrary'})
+
     def fixture(self, count=4, essays=('essay-custom',)):
         helper = fixtures.Tests()
         helper.setUp()
@@ -42,13 +50,13 @@ class Tests(unittest.TestCase):
         args, binding, manifest, package, cases = self.fixture()
         root = args.output
         plan = policy.read(root / 'study.json')
-        self.assertEqual(len(cases), 4+7*3)
-        self.assertEqual(manifest['max_calls'], 4*(4+7*3))
-        self.assertEqual(manifest['max_requested_tokens'], 7*147456 + 3*(3584+5*3456))
+        self.assertEqual(len(cases), 4+7*3+32)
+        self.assertEqual(manifest['max_calls'], 4*(4+7*3+32))
+        self.assertEqual(manifest['max_requested_tokens'], 7*147456 + 3*(3584+5*3456)+40960+3840+30*3456)
         self.assertEqual([c['id'] for c in cases[:4]], manifest['ids'])
         self.assertEqual([s['original_id'] for s in plan['stages'].values() if s['kind']=='query'],
                          [x['id'] for x in policy.read(root/'source-template.json')['answers'] if x['id']!='essay-custom'])
-        self.assertFalse(any(s['original_id']=='essay-custom' and s['kind']!='direct' for s in plan['stages'].values()))
+        self.assertEqual(sum(s['original_id']=='essay-custom' and s['kind'].startswith('essay_') for s in plan['stages'].values()),32)
         # The additive transform never rewrites input rows or organizer inputs.
         baseline = policy.read(root/'coverage-prepared.json')
         for rel in ['input.jsonl','input.original.jsonl','exam/exam.json','exam/answers-template.json','exam/images/red.png','closed_profile.py']:
@@ -65,6 +73,8 @@ class Tests(unittest.TestCase):
             self.assertEqual(hook.step(case,0,[],m['recovery']),expected)
         passage={'article_id':'synthetic','title':'Synthetic','url':'https://example.invalid','start':0,'text':'Exact synthetic span.'}
         hook.retrieval=lambda source:{'passages':[passage]*5}
+        hook.essay.retrieval=lambda source:{'passages':[dict(passage,end=len(passage['text']),text_sha256='synthetic',query_index=0,rank=1)]}
+        hook.essay.plan=lambda source:dict(topic_id=1,queries=['one','two','three','four','five','six'])
         hook.answer=lambda slot:None
         for case in cases[4:]:
             stage=hook.plan['stages'][case['id']]
@@ -74,14 +84,14 @@ class Tests(unittest.TestCase):
                 body,settings=hook.step(case,attempt,[],m['recovery'])
                 self.assertIn(text,body['messages'][0]['content'])
                 self.assertEqual(body['messages'][0].get('images',[]),images)
-                if stage['kind'] in ('query','judge'):
+                if stage['kind'] in ('query','judge','essay_query','essay_judge'):
                     self.assertFalse(body['think'])
-                    expected=(512 if stage['kind']=='query' else 384) if attempt==0 else 1024
+                    expected=(768 if stage['kind']=='essay_query' else 512 if stage['kind']=='query' else 384) if attempt==0 else 1024
                     self.assertEqual(settings['cap'],expected)
                     self.assertEqual(body['options']['num_predict'],expected)
                 else:
-                    self.assertEqual(settings['cap'],32768)
-                    self.assertEqual(body['think'],attempt<2)
+                    self.assertEqual(settings['cap'],(16384 if attempt==0 else 8192) if stage['kind']=='essay_final' else 32768)
+                    self.assertEqual(body['think'],attempt==0 if stage['kind']=='essay_final' else attempt<2)
 
     def exercise(self, fail_kind=None, fail_direct=False, duration=1, start=0, cutoff_kind=None, reject_judges=False, late_kind=None):
         args,binding,m,package,cases=self.fixture()
@@ -132,7 +142,7 @@ class Tests(unittest.TestCase):
         if not fail_direct:
             self.assertEqual(first_optional,4)
         for stage,body,timeout,sent_at in seen[first_optional:]:
-            self.assertNotEqual(stage['original_id'],'essay-custom')
+            if stage['original_id']=='essay-custom':self.assertTrue(stage['kind'].startswith('essay_'))
             self.assertLessEqual(sent_at+timeout,hook.optional_deadline-15)
         return args,hook,seen,answer,direct
 

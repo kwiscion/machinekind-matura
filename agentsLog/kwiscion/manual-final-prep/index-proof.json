@@ -1,0 +1,17 @@
+{
+  "schema": "pre_acquisition_full_index_v1",
+  "index_path": "/home/shadeform/machinekind-matura-pawel-20260927/manual-final-stage/wiki/passages.sqlite",
+  "sha256": "5bf93ceca9715170f7a3b6497746cd00dac4dd80f7fe0b53fd0a3f981d88bb36",
+  "bytes": 10464555008,
+  "stat": {
+    "st_dev": 64769,
+    "st_ino": 1324246,
+    "st_size": 10464555008,
+    "st_mtime_ns": 1790495135125633344,
+    "st_ctime_ns": 1790495141504580598
+  },
+  "hostname": "brev-u0knmsmcr",
+  "boot_id": "5a3dcc12-bff7-4d08-ac75-7c0bc39cef3c",
+  "verified_utc": "2026-09-27T07:45:47.867503+00:00",
+  "immutable_assumption": "Dedicated copied read-only DB; all final retrieval must use mode=ro&immutable=1; no writers or replacements"
+}
