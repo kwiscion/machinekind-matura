@@ -1,0 +1,17 @@
+{
+ "schema": "bukareszt_image_perspectives_settings_v1",
+ "issue": 178,
+ "temperature": 0.0,
+ "top_k": 1,
+ "seed": 42,
+ "enable_thinking": false,
+ "server_reasoning": "off",
+ "ctx_size": 65536,
+ "attempts": [
+  {"max_tokens": 32768, "request_timeout_s": 360},
+  {"max_tokens": 49152, "request_timeout_s": 480, "only_if_fits": true},
+  {"max_tokens": 32768, "request_timeout_s": 360},
+  {"max_tokens": 32768, "request_timeout_s": 360}
+ ],
+ "notes": "Identical settings for the direct, description and final calls. Retry ladder as in the shared policy: 32768 -> 49152 (only if the complete input fits 65536) -> 32768 -> 32768. Per logical call the requested maximum is 147456 tokens; 30 primary calls x 147456 = 4,423,680 tokens; at most 120 attempts."
+}

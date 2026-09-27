@@ -1,0 +1,26 @@
+{"status": "PASS", "items": 3, "counts": {"direct": {"complete": 3, "partial": 0, "placeholder": 0}, "final": {"complete": 3, "partial": 0, "placeholder": 0}}}
+{"status": "PASS", "items": 3, "counts": {"direct": {"complete": 3, "partial": 0, "placeholder": 0}, "final": {"complete": 3, "partial": 0, "placeholder": 0}}}
+{
+ "status": "PASS",
+ "checks": {
+  "rc0": true,
+  "call_order_X1": true,
+  "direct_is_original_prompt_all_images": true,
+  "views_see_no_question_no_other_view": true,
+  "views_get_all_item_images": true,
+  "final_has_complete_prompt_images_views": true,
+  "failed_view_is_placeholder_and_marked_missing": true,
+  "final_complete_despite_failed_view": true,
+  "no_image_item_one_call_final_copied": true,
+  "image_item_five_calls": true,
+  "exports_only_direct_final": true,
+  "ledger_reserve_before_result": true,
+  "server_cleaned_up": true,
+  "total_requests": true,
+  "v2_views_single_2048_attempt": true,
+  "v2_truncated_view_partial_passed_to_final": true,
+  "v2_direct_final_keep_full_ladder": true
+ },
+ "requests": 17,
+ "session_sha256": "55d2cbf3e9b2eaf676a6028f100091720d0da1fd7a3210f2b778555fa7888f6a"
+}
