@@ -1,0 +1,247 @@
+{
+  "status": "FROZEN_MASKED_SINGLE_PASS",
+  "created_utc": "2026-09-27T02:31:12.761757+00:00",
+  "packet_sha256": "6df96cc26c165234383f90edf6a5bc4c31f772893d251d9a2769bde04a3ee932",
+  "exam_sha256": "e93b7488da7dfcf4044c906af9b28c1275a1b295838455ec3d88dcc2344aaac6",
+  "source_item_canonical_sha256": "81a4935402957e3e22916d77e5d22a55e5bac2ba6c140abb6648420cbe3b69b3",
+  "rubric_pdf_sha256": "95c275b9546611c1f8cd45b7973c436625fd0ee5643b778dcc8bb566db56cd4c",
+  "rubric_item": "val2024-hist-z26",
+  "image_count": 0,
+  "counts": {
+    "submitted": 5,
+    "complete": 5,
+    "partial": 0,
+    "placeholder": 0,
+    "hashes_verified": 5
+  },
+  "range_meaning": "Judgment sensitivity, not confidence intervals.",
+  "blinding": "Arm key and adjacent runtime/answers were not read. Reviewer has prior project and May2024 rubric/answer exposure, including the separate corrected Gemma grade; therefore this is arm-masked, not benchmark-naive or model-blind. Similar prose is visible but no arm mapping is inferred.",
+  "word_method": "Whitespace-delimited body tokens after removing the first topic-label paragraph, including copied topic wording where present; hyphenated forms count as one. Submitted bytes remain untouched.",
+  "sources": {
+    "organizations": "https://rzeszow.ipn.gov.pl/pl8/aktualnosci/96003,110-rocznica-powstania-Zwiazku-Strzeleckiego-w-Lwowie-i-Rzeszowie.html",
+    "prometheism": "https://archiwum.ipn.gov.pl/pl/historia-z-ipn/144080,Miroslaw-Szumilo-Polityka-wschodnia-Jozefa-Pilsudskiego-w-latach-1918-1920.html",
+    "education": "https://assets.cambridge.org/97805211/74091/excerpt/9780521174091_excerpt.pdf",
+    "education_court": "https://assets.cambridge.org/97811070/60951/excerpt/9781107060951_excerpt.pdf"
+  },
+  "items": [
+    {
+      "id": "df5d5caea0ed0133",
+      "answer_sha256": "b864be779647ab37004294810bc33724069909471654779d0a45d43bdf9513a7",
+      "source_item_id": "val2024-hist-z26",
+      "topic": 1,
+      "body_words": 401,
+      "submitted_whitespace_tokens": 402,
+      "status": "complete",
+      "aspects": [
+        {
+          "aspect": "political",
+          "points": 3,
+          "reason": "Coronation in 800 and counties/frontier administration are linked to imperial unity and legitimacy. Roman administrative analogy is broad, not sufficiently qualified for rich analysis."
+        },
+        {
+          "aspect": "socioeconomic",
+          "points": 3,
+          "reason": "Currency and measures standardization provide concrete evidence for economic unity and an explicit causal link to exchange. Prosperity and Pax Romana analogies are overstated, but this exceeds generic war/economy commentary."
+        },
+        {
+          "aspect": "cultural",
+          "points": 3,
+          "reason": "Schools, Latin, manuscripts and Carolingian minuscule are linked to cultural continuity. This is satisfactory functional evidence; breadth alone does not make the analysis rich."
+        }
+      ],
+      "narrative_before_errors": 9,
+      "factual_errors": [
+        {
+          "claim": "powszechna edukacja w łacinie",
+          "correction": "As a statement of achieved universal Latin education this overstates a reform centred on clerical, court and elite learning. Count one error; a charitable reading as a reform aspiration removes it.",
+          "source": "education"
+        }
+      ],
+      "factual_deduction": 1,
+      "coherence": 3,
+      "coherence_reason": "Ordered stance, three aspect paragraphs and conclusion; body exceeds 300 words. Weak factual support is scored under narrative, not counted again as incoherence.",
+      "central": 11,
+      "low": 11,
+      "high": 12,
+      "max_points": 15,
+      "judgment_sensitivity_reason": "12 if the education phrase is read as an aspiration or a loose description of institutional expansion rather than achieved universal education. No extra error for the recognizable marches terminology, mass manuscript production or broad economic optimism."
+    },
+    {
+      "id": "dbeb044292704053",
+      "answer_sha256": "107c686209d34945c57da3853815ac26b7a86dd2e4fbfb04f98d9ecb51d8de11",
+      "source_item_id": "val2024-hist-z26",
+      "topic": 3,
+      "body_words": 407,
+      "submitted_whitespace_tokens": 408,
+      "status": "complete",
+      "aspects": [
+        {
+          "aspect": "diplomatic",
+          "points": 1,
+          "reason": "Paderewski, Entente recognition and the collapse of partitioning powers are relevant, but no diplomatic action is developed. Pilsudski authority is asserted as leverage rather than demonstrated."
+        },
+        {
+          "aspect": "military",
+          "points": 3,
+          "reason": "Legion cadres plus Warsaw 1920 and the Wieprz counterattack are linked to the state surviving. Enough accurate functional evidence remains despite the invented organization names."
+        },
+        {
+          "aspect": "political_constitutional",
+          "points": 1,
+          "reason": "Partition integration and personal authority are asserted generally. No constitutional or governmental measure explains their operation; Prometheism is misapplied to domestic integration."
+        }
+      ],
+      "narrative_before_errors": 5,
+      "factual_errors": [
+        {
+          "claim": "Związek Walki Człowieka",
+          "correction": "The relevant organization was Związek Walki Czynnej; this substitutes a different substantive name, not a spelling variant.",
+          "source": "organizations"
+        },
+        {
+          "claim": "Powstańców / Powstanień Obrony Powitalnej",
+          "correction": "Invented organization in this account. The relevant Piłsudski-associated clandestine organization was Polska Organizacja Wojskowa.",
+          "source": "organizations"
+        },
+        {
+          "claim": "Prometheism enabled rapid administrative integration of the partitioned Polish lands",
+          "correction": "Prometheism concerned emancipation of peoples dominated by Russia and an eastern counterweight to it. Its use here as the mechanism of domestic administrative unification is a distinct causal/conceptual error. No deduction is made merely for mentioning it before 1926.",
+          "source": "prometheism"
+        }
+      ],
+      "factual_deduction": 2,
+      "coherence": 3,
+      "coherence_reason": "Ordered stance, three aspect paragraphs and conclusion; body exceeds 300 words. Weak factual support is scored under narrative, not counted again as incoherence.",
+      "central": 6,
+      "low": 6,
+      "high": 7,
+      "max_points": 15,
+      "judgment_sensitivity_reason": "7 if the Prometheism sentence is treated only as an unsupported generalization rather than a separate conceptual error; the two invented organizations still require a one-point factual deduction."
+    },
+    {
+      "id": "2d1e3766e569c3fa",
+      "answer_sha256": "500db162b26abc78e8fde1f0a1656ddf85c43e77e48c8d7b98dd6bab50197922",
+      "source_item_id": "val2024-hist-z26",
+      "topic": 2,
+      "body_words": 379,
+      "submitted_whitespace_tokens": 403,
+      "status": "complete",
+      "aspects": [
+        {
+          "aspect": "military",
+          "points": 1,
+          "reason": "Attrition, garrisons and mobilization describe generic war costs; the comparison with Sweden is not grounded in a developed campaign, result or distinct military process."
+        },
+        {
+          "aspect": "political",
+          "points": 1,
+          "reason": "Monarch concessions to magnates and loss of prestige are asserted without showing a concrete Ottoman-war settlement or institutional consequence. The eighteenth-century reference does not establish the requested seventeenth-century predominance."
+        },
+        {
+          "aspect": "socioeconomic",
+          "points": 1,
+          "reason": "Depopulation, devastated southern/eastern lands and treasury exhaustion are relevant, but remain generalized war effects without evidence distinguishing Ottoman wars from competing causes."
+        }
+      ],
+      "narrative_before_errors": 3,
+      "factual_errors": [],
+      "factual_deduction": 0,
+      "coherence": 3,
+      "coherence_reason": "Ordered stance, three aspect paragraphs and conclusion; body exceeds 300 words. Weak factual support is scored under narrative, not counted again as incoherence.",
+      "central": 6,
+      "low": 6,
+      "high": 8,
+      "max_points": 15,
+      "judgment_sensitivity_reason": "8 if the regional devastation and fiscal mechanism are judged satisfactory socioeconomic evidence. The thesis itself and lack of canonical names are not factual errors; no additional false-fact penalty is invented."
+    },
+    {
+      "id": "201c7a7f5c8ee629",
+      "answer_sha256": "e4d5164f61f78f74ce3810e35678a708b7133855ea7cf63fbc04a9ae2d8168a3",
+      "source_item_id": "val2024-hist-z26",
+      "topic": 3,
+      "body_words": 399,
+      "submitted_whitespace_tokens": 425,
+      "status": "complete",
+      "aspects": [
+        {
+          "aspect": "diplomatic",
+          "points": 1,
+          "reason": "Paderewski, Entente recognition and the collapse of partitioning powers are relevant, but no diplomatic action is developed. Pilsudski authority is asserted as leverage rather than demonstrated."
+        },
+        {
+          "aspect": "military",
+          "points": 3,
+          "reason": "Legion cadres plus Warsaw 1920 and the Wieprz counterattack are linked to the state surviving. Enough accurate functional evidence remains despite the invented organization names."
+        },
+        {
+          "aspect": "political_constitutional",
+          "points": 1,
+          "reason": "Partition integration and personal authority are asserted generally. No constitutional or governmental measure explains their operation; Prometheism is misapplied to domestic integration."
+        }
+      ],
+      "narrative_before_errors": 5,
+      "factual_errors": [
+        {
+          "claim": "Związek Walki Człowieka",
+          "correction": "The relevant organization was Związek Walki Czynnej; this substitutes a different substantive name, not a spelling variant.",
+          "source": "organizations"
+        },
+        {
+          "claim": "Powstańców / Powstanień Obrony Powitalnej",
+          "correction": "Invented organization in this account. The relevant Piłsudski-associated clandestine organization was Polska Organizacja Wojskowa.",
+          "source": "organizations"
+        },
+        {
+          "claim": "Prometheism enabled rapid administrative integration of the partitioned Polish lands",
+          "correction": "Prometheism concerned emancipation of peoples dominated by Russia and an eastern counterweight to it. Its use here as the mechanism of domestic administrative unification is a distinct causal/conceptual error. No deduction is made merely for mentioning it before 1926.",
+          "source": "prometheism"
+        }
+      ],
+      "factual_deduction": 2,
+      "coherence": 3,
+      "coherence_reason": "Ordered stance, three aspect paragraphs and conclusion; body exceeds 300 words. Weak factual support is scored under narrative, not counted again as incoherence.",
+      "central": 6,
+      "low": 6,
+      "high": 7,
+      "max_points": 15,
+      "judgment_sensitivity_reason": "Same substantive reasoning and factual errors as dbeb044292704053; minor wording changes do not change the grade. Upper sensitivity treats Prometheism as weak inference rather than a separate error."
+    },
+    {
+      "id": "effa3a4c72ad0fde",
+      "answer_sha256": "91004e8a725c5c6c5274709870471ebcbcd369a8cb22288871736c36fdbec553",
+      "source_item_id": "val2024-hist-z26",
+      "topic": 3,
+      "body_words": 425,
+      "submitted_whitespace_tokens": 426,
+      "status": "complete",
+      "aspects": [
+        {
+          "aspect": "diplomatic",
+          "points": 1,
+          "reason": "Paris and territorial outcomes are mentioned, but the mechanism attributes them broadly to Pilsudski military authority without explaining diplomatic actors or distinct settlements. Corridor and Wilno are bundled together without adequate causal support."
+        },
+        {
+          "aspect": "military",
+          "points": 3,
+          "reason": "Legion training is explicitly connected to experienced cadres and post-1918 army formation. This is a relevant developed mechanism, though not rich comparative analysis."
+        },
+        {
+          "aspect": "political_constitutional",
+          "points": 1,
+          "reason": "Personal authority and integration of three administrative systems remain general; no political or constitutional measure is developed."
+        }
+      ],
+      "narrative_before_errors": 5,
+      "factual_errors": [],
+      "factual_deduction": 0,
+      "coherence": 3,
+      "coherence_reason": "Ordered stance, three aspect paragraphs and conclusion; body exceeds 300 words. Weak factual support is scored under narrative, not counted again as incoherence.",
+      "central": 8,
+      "low": 7,
+      "high": 8,
+      "max_points": 15,
+      "judgment_sensitivity_reason": "7 if the bundled Corridor/Wilno diplomatic-causality claim is adjudged a definite factual misattribution. Centrally treated as unsupported argument, not proven false from the wording alone; no invented date or treaty is claimed."
+    }
+  ],
+  "limitation": "One provisional agent pass, not an organizer grade. No second rater, generation, posthoc answer composition or promotion. Oracle/selector comparison awaits authorized unmasking."
+}

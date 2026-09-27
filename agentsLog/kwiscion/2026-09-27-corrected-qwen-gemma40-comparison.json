@@ -1,0 +1,420 @@
+{
+  "qwen_grade_sha256": "09923ca319a65f187391ce53267f98f249abb10b75a915df1cc7151c3b753e90",
+  "gemma_grade_sha256": "2ece131dc49a8f80cb6be3eec9146e1dae4a2444b4cc97411aabe006a0817ddc",
+  "same_exam_sha256": "e93b7488da7dfcf4044c906af9b28c1275a1b295838455ec3d88dcc2344aaac6",
+  "gemma_total": 39,
+  "qwen_total": 36,
+  "delta": -3,
+  "gemma_nonessay": 31,
+  "qwen_nonessay": 33,
+  "nonessay_delta": 2,
+  "gemma_essay": 8,
+  "qwen_essay": 3,
+  "essay_delta": -5,
+  "better_items": 7,
+  "worse_items": 7,
+  "ties": 26,
+  "items": [
+    {
+      "id": "val2024-hist-z1",
+      "printed_id": "1",
+      "max_points": 1,
+      "gemma": 1,
+      "qwen": 1,
+      "delta": 0,
+      "gemma_answer_sha256": "4f7887882c0cc7ae260c7c4392db3d64dee404ff51f6d624fc12b221220719e3",
+      "qwen_answer_sha256": "37d4b7611d274567021ec3cef3ceff9f363f1113ed621725f26334e68aa13813"
+    },
+    {
+      "id": "val2024-hist-z2",
+      "printed_id": "2",
+      "max_points": 1,
+      "gemma": 1,
+      "qwen": 1,
+      "delta": 0,
+      "gemma_answer_sha256": "5ab1d655b163182e3cd39d57cda70abaed7dc4e6e388e77bfa47cea4ed73a960",
+      "qwen_answer_sha256": "b5957f0ec44499c53295faa9f44e8a82725f4d2a2f3be98dde560774742a55ff"
+    },
+    {
+      "id": "val2024-hist-z3.1",
+      "printed_id": "3.1",
+      "max_points": 1,
+      "gemma": 0,
+      "qwen": 1,
+      "delta": 1,
+      "gemma_answer_sha256": "ba1a05ec6ce10464e677fae4bf4b9d8e0fe0d5a2af767cddc04f6903f8fa2bc6",
+      "qwen_answer_sha256": "59d0f0dce4829f1a3fc0124b466518c664a70d49964721ecc48d649567fd799e"
+    },
+    {
+      "id": "val2024-hist-z3.2",
+      "printed_id": "3.2",
+      "max_points": 1,
+      "gemma": 0,
+      "qwen": 1,
+      "delta": 1,
+      "gemma_answer_sha256": "929e85dcfb9dcb6561243badc82bca4da0d0a1218b6b4791210bd388d0a7adc2",
+      "qwen_answer_sha256": "67036f71234923e789b44c1a0dfc714b77e17e3a10debc6005794fd34f9904e7"
+    },
+    {
+      "id": "val2024-hist-z4",
+      "printed_id": "4",
+      "max_points": 1,
+      "gemma": 1,
+      "qwen": 1,
+      "delta": 0,
+      "gemma_answer_sha256": "4842691b79a89324f5c9694569be13289ce04dd7808569bab6ea3718f03c44cc",
+      "qwen_answer_sha256": "0e4f413de7c6258cca74a5608a06e8474076777e8179a6b31a9b8c7648e14d3a"
+    },
+    {
+      "id": "val2024-hist-z5.1",
+      "printed_id": "5.1",
+      "max_points": 1,
+      "gemma": 1,
+      "qwen": 1,
+      "delta": 0,
+      "gemma_answer_sha256": "16f77bcda187dc5cfe7515e25618d118b3342fb60f7777c15e2e8d6e93ce4e47",
+      "qwen_answer_sha256": "2085394de2923cdccff87127735974229a89e78a2dd76aa2d4bee540b29ad219"
+    },
+    {
+      "id": "val2024-hist-z5.2",
+      "printed_id": "5.2",
+      "max_points": 1,
+      "gemma": 1,
+      "qwen": 1,
+      "delta": 0,
+      "gemma_answer_sha256": "67bbf8782357f55704ff38865058f22cfd20bf38d0eaf8ad1f55ee8cf30bf1d7",
+      "qwen_answer_sha256": "34fe8e3db219bcc486f11528a0d465ade3c7c11efd03569136092965ac4abc82"
+    },
+    {
+      "id": "val2024-hist-z6",
+      "printed_id": "6",
+      "max_points": 2,
+      "gemma": 0,
+      "qwen": 1,
+      "delta": 1,
+      "gemma_answer_sha256": "899e7d521e938ac82ae7d0f4bed6b09d136aa354db1a76dfb910f626c29055a0",
+      "qwen_answer_sha256": "e29c20dc8bf3dd2a54213f11ec277f678a50f4cb4054d86c817a1460c3f388b0"
+    },
+    {
+      "id": "val2024-hist-z7",
+      "printed_id": "7",
+      "max_points": 1,
+      "gemma": 0,
+      "qwen": 0,
+      "delta": 0,
+      "gemma_answer_sha256": "97e677ad1360a61866a73fd83873ca1978b196afc21cdd1e2d939b297b3fffe5",
+      "qwen_answer_sha256": "0216d04c52fe59005eedc34ccbefbb97b224c3f9ae4b25797b225c0c6e12a755"
+    },
+    {
+      "id": "val2024-hist-z8.1",
+      "printed_id": "8.1",
+      "max_points": 1,
+      "gemma": 1,
+      "qwen": 0,
+      "delta": -1,
+      "gemma_answer_sha256": "55b2e9e7f76642a54c9de565d8eb3855046f8a2189aa4394a9f978f0314cdaf6",
+      "qwen_answer_sha256": "dda9af93d2070e46423387de5637b73036f11f10255c964a6970e2fb9913083d"
+    },
+    {
+      "id": "val2024-hist-z8.2",
+      "printed_id": "8.2",
+      "max_points": 1,
+      "gemma": 1,
+      "qwen": 1,
+      "delta": 0,
+      "gemma_answer_sha256": "057d91f8adfa6c3757a2ebf0e3d3651c3375e527fd1894abe0f8e4a666c45807",
+      "qwen_answer_sha256": "03ad4982da47865ea417eb1439f147335e222ca8b363c8b80ebd1eb5e40e9308"
+    },
+    {
+      "id": "val2024-hist-z9",
+      "printed_id": "9",
+      "max_points": 1,
+      "gemma": 1,
+      "qwen": 0,
+      "delta": -1,
+      "gemma_answer_sha256": "25b9b0d5f103f02af324002dd490065c9caf1cfd7329954547cc628cfdcea524",
+      "qwen_answer_sha256": "3e0362e747fb6490577b1d5e53c075af9795eb4b2f7365625d526b4d5877c19b"
+    },
+    {
+      "id": "val2024-hist-z10",
+      "printed_id": "10",
+      "max_points": 1,
+      "gemma": 1,
+      "qwen": 0,
+      "delta": -1,
+      "gemma_answer_sha256": "477890b75a0eb132cae066fc5952a9570d2da434bbf5abc0a3a3738f304949ce",
+      "qwen_answer_sha256": "df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c"
+    },
+    {
+      "id": "val2024-hist-z11.1",
+      "printed_id": "11.1",
+      "max_points": 1,
+      "gemma": 1,
+      "qwen": 0,
+      "delta": -1,
+      "gemma_answer_sha256": "079ea38d523032ce57ac5fa1795a573febbc47e08143bd76a1fa2b2e0ad553a4",
+      "qwen_answer_sha256": "2434c5bd323fb48adbfbed9766e77837f913c68c1abfc24186bcc76ed0e9c33c"
+    },
+    {
+      "id": "val2024-hist-z11.2",
+      "printed_id": "11.2",
+      "max_points": 1,
+      "gemma": 0,
+      "qwen": 0,
+      "delta": 0,
+      "gemma_answer_sha256": "06fc96a46b6ecdefcb73ea82639624bd11a012cad9f720b559afb8841c1ba9b9",
+      "qwen_answer_sha256": "c9c58dda0111613b6cf0a98299567f2521c3a64b55da1bfb9995832a2bb34610"
+    },
+    {
+      "id": "val2024-hist-z12.1",
+      "printed_id": "12.1",
+      "max_points": 1,
+      "gemma": 0,
+      "qwen": 0,
+      "delta": 0,
+      "gemma_answer_sha256": "11627d48a9598e1cbdc7a685ce64b4ae7a4037495a28415e04fde95b1cfa8912",
+      "qwen_answer_sha256": "a66fa83cf38555558b3d661535c57f405bca5eba9bfaabb42d809ffdfa04dd2f"
+    },
+    {
+      "id": "val2024-hist-z12.2",
+      "printed_id": "12.2",
+      "max_points": 1,
+      "gemma": 1,
+      "qwen": 1,
+      "delta": 0,
+      "gemma_answer_sha256": "9ac6463cbc6e7e45cea508accb3280e7e5134f6f700a23b8d0e4d3d0f36bfd87",
+      "qwen_answer_sha256": "7b12ca34cd1a3c0c013ea78b42884e737e0c04b42bde46e934f1ae8d300c55cf"
+    },
+    {
+      "id": "val2024-hist-z12.3",
+      "printed_id": "12.3",
+      "max_points": 1,
+      "gemma": 1,
+      "qwen": 1,
+      "delta": 0,
+      "gemma_answer_sha256": "855d77a7d862805917530e5e088dcdaadcd3954c4e707aa972fdaba58677cf90",
+      "qwen_answer_sha256": "59bff146757f37edb3e622aad9a6cf260a0cbe32dc7a930324ac84fd92a1c626"
+    },
+    {
+      "id": "val2024-hist-z13",
+      "printed_id": "13",
+      "max_points": 1,
+      "gemma": 1,
+      "qwen": 1,
+      "delta": 0,
+      "gemma_answer_sha256": "e7a81b5baddc93bdc15383e1b52a3aae58f36a8167761de8e559bc850a8bd456",
+      "qwen_answer_sha256": "afff65437a724158c8269361f9fc8328fee0ef207ac250d94f91436d7c25e001"
+    },
+    {
+      "id": "val2024-hist-z14.1",
+      "printed_id": "14.1",
+      "max_points": 1,
+      "gemma": 0,
+      "qwen": 0,
+      "delta": 0,
+      "gemma_answer_sha256": "53c0fc32d12fefdca93b4828222a5278857c782ad8c5f283bbe91b986488ba22",
+      "qwen_answer_sha256": "d5de55d9e93b0dc16e8cc444701cddad20be5bd8a78ef8c6b4fa78ff2b309440"
+    },
+    {
+      "id": "val2024-hist-z14.2",
+      "printed_id": "14.2",
+      "max_points": 1,
+      "gemma": 1,
+      "qwen": 1,
+      "delta": 0,
+      "gemma_answer_sha256": "0200946aa0d009b6b1e1fb830338cbd4d0a18607cda052562e66dfa8c3af52e6",
+      "qwen_answer_sha256": "acbbb708385721a6275edb28b2265071ab2c596d66c45e0f095ca22a55c6fb7d"
+    },
+    {
+      "id": "val2024-hist-z15.1",
+      "printed_id": "15.1",
+      "max_points": 1,
+      "gemma": 1,
+      "qwen": 1,
+      "delta": 0,
+      "gemma_answer_sha256": "8c1900cae7977c9025ba881c1d25db386d292a33e0dac5f3a8981e78cbf1c786",
+      "qwen_answer_sha256": "13c9dd4d1d9bccc2c8f3a211540e173449d94b4cd8cd900e7c5cf077f901b2d1"
+    },
+    {
+      "id": "val2024-hist-z15.2",
+      "printed_id": "15.2",
+      "max_points": 1,
+      "gemma": 1,
+      "qwen": 1,
+      "delta": 0,
+      "gemma_answer_sha256": "881ce78ee2c8b639736e0e213bc5cc71c0e9dede0f35ed0b313e2a8396d342b5",
+      "qwen_answer_sha256": "db211a30d16ba5c9bf9a244b192ab39b59163559827b93e667a1bdea6452694c"
+    },
+    {
+      "id": "val2024-hist-z16.1",
+      "printed_id": "16.1",
+      "max_points": 1,
+      "gemma": 1,
+      "qwen": 1,
+      "delta": 0,
+      "gemma_answer_sha256": "9157b4ea03a09ce42246a81015f6c104ee0c6832490017f6d845ac1cddb5ded9",
+      "qwen_answer_sha256": "261b8c11568256554079be3acdb06521c530e6804596143bafb458cb27c8cb54"
+    },
+    {
+      "id": "val2024-hist-z16.2",
+      "printed_id": "16.2",
+      "max_points": 1,
+      "gemma": 1,
+      "qwen": 1,
+      "delta": 0,
+      "gemma_answer_sha256": "ec433a5e9e7be1b45e2226820cf04fe93860b449a6bdc918dd4cea9c735fe094",
+      "qwen_answer_sha256": "be651d5a8e97690fbb1fafd9b89ea7bb5458b27b1d24a449c67ca762317ac1df"
+    },
+    {
+      "id": "val2024-hist-z17.1",
+      "printed_id": "17.1",
+      "max_points": 1,
+      "gemma": 1,
+      "qwen": 1,
+      "delta": 0,
+      "gemma_answer_sha256": "334cc66c55ddf3b26ed9e41f352602fefad95b63f210e45a0135baf3b1f662d9",
+      "qwen_answer_sha256": "b930df1e64b221c9ba23cca20160080ef2b0fa114bc372695f94665ef12a8942"
+    },
+    {
+      "id": "val2024-hist-z17.2",
+      "printed_id": "17.2",
+      "max_points": 1,
+      "gemma": 0,
+      "qwen": 1,
+      "delta": 1,
+      "gemma_answer_sha256": "652559e7da63bbd471dea1decdcd5266494177bc1d6d46d6bc850dc3b00ea72e",
+      "qwen_answer_sha256": "f680a440544e60f172406900ff948051e66c9faf7685a9a07ea68c287477e2d1"
+    },
+    {
+      "id": "val2024-hist-z18",
+      "printed_id": "18",
+      "max_points": 1,
+      "gemma": 0,
+      "qwen": 1,
+      "delta": 1,
+      "gemma_answer_sha256": "59deba6d80a50ac2ef71ecf1e60cc2cb7de3be4246ddcbfa9e53464f918377c3",
+      "qwen_answer_sha256": "1651cc80b8e0a228e3c861d5ca66844b08f86d8af9c9e2773681e4a6209cd080"
+    },
+    {
+      "id": "val2024-hist-z19.1",
+      "printed_id": "19.1",
+      "max_points": 2,
+      "gemma": 1,
+      "qwen": 1,
+      "delta": 0,
+      "gemma_answer_sha256": "db9fc7fcd2dd98e5090f480ffdc23eaed8fc5145870a85b076423e9b4be98986",
+      "qwen_answer_sha256": "eff9118ba7afc30985d2a6f7995459b8a85fd17f7f7c7ecc24fcec327bafc37e"
+    },
+    {
+      "id": "val2024-hist-z19.2",
+      "printed_id": "19.2",
+      "max_points": 1,
+      "gemma": 1,
+      "qwen": 0,
+      "delta": -1,
+      "gemma_answer_sha256": "625cd0d3621d909e6f0b2e6b8f8977d31be363c1371dd352aa7804d770c8c583",
+      "qwen_answer_sha256": "75c57fc8e7c8e8c57b714e9507b97b73354f9cb10e62297f48f1d886021008aa"
+    },
+    {
+      "id": "val2024-hist-z20.1",
+      "printed_id": "20.1",
+      "max_points": 1,
+      "gemma": 1,
+      "qwen": 1,
+      "delta": 0,
+      "gemma_answer_sha256": "1304446a2d5454e3a410aee12124a1f384d970de12756d314fc2dcaffc3f4d0a",
+      "qwen_answer_sha256": "f77dbe6ac55f84376400099d1f8d6dab6e00df91ece77c94d6340f49de3ba621"
+    },
+    {
+      "id": "val2024-hist-z20.2",
+      "printed_id": "20.2",
+      "max_points": 2,
+      "gemma": 1,
+      "qwen": 2,
+      "delta": 1,
+      "gemma_answer_sha256": "cf31a1d19da9e504fa52dda1f892d7964dc4a5b1f58e1d911d00a0c877114179",
+      "qwen_answer_sha256": "2c78edf69acaf7db62cd471320ac729c7737cef0e266c30faf776ef2b185e535"
+    },
+    {
+      "id": "val2024-hist-z21",
+      "printed_id": "21",
+      "max_points": 1,
+      "gemma": 1,
+      "qwen": 1,
+      "delta": 0,
+      "gemma_answer_sha256": "0c113e3d6fd76553b03524d6efd806afa5ffacf7a22b6dd7158d04aaa7304997",
+      "qwen_answer_sha256": "e29cc22097c554ea31cb9bac9eb050ea8ddab7442e8d03d041886508553e178e"
+    },
+    {
+      "id": "val2024-hist-z22.1",
+      "printed_id": "22.1",
+      "max_points": 1,
+      "gemma": 1,
+      "qwen": 1,
+      "delta": 0,
+      "gemma_answer_sha256": "cdee0b8d35b3bac1932af148b387a59753a6e2fdbf7a5f452921c4e292e0f42a",
+      "qwen_answer_sha256": "155838fac9d1774bfad085c01ace8868929ced6d58951b73979783e81984b971"
+    },
+    {
+      "id": "val2024-hist-z22.2",
+      "printed_id": "22.2",
+      "max_points": 2,
+      "gemma": 2,
+      "qwen": 2,
+      "delta": 0,
+      "gemma_answer_sha256": "c512de52390032bc7ccafcea2ed73d91a3189b9e97a58d5d03a818f74d857d93",
+      "qwen_answer_sha256": "caab54db124e6964a74f569884abe8741d54755585c74edc472282932258aaeb"
+    },
+    {
+      "id": "val2024-hist-z23.1",
+      "printed_id": "23.1",
+      "max_points": 1,
+      "gemma": 1,
+      "qwen": 1,
+      "delta": 0,
+      "gemma_answer_sha256": "be00a8a448e800d70462dec5a25f73f1ec6dac8f2630e2ce90fc05d8832986ec",
+      "qwen_answer_sha256": "31ce961f8c7271fff991cc0d8e3970e0c71806d8a7123d24bac85350ac8e15b3"
+    },
+    {
+      "id": "val2024-hist-z23.2",
+      "printed_id": "23.2",
+      "max_points": 1,
+      "gemma": 1,
+      "qwen": 1,
+      "delta": 0,
+      "gemma_answer_sha256": "b31f6ee01039db0ff5481ce77a14a0e85ba98eff1b62644ed1186abee5f6e4a3",
+      "qwen_answer_sha256": "5c023a74a1a7ad025a43845aa9577106782e0e98e53c4150a92ceb4ba1f5222c"
+    },
+    {
+      "id": "val2024-hist-z24",
+      "printed_id": "24",
+      "max_points": 1,
+      "gemma": 1,
+      "qwen": 0,
+      "delta": -1,
+      "gemma_answer_sha256": "f371c90b91569ddff3d71a9d3695d09e21c8b6c05f3a4559e2d649f922fecc8a",
+      "qwen_answer_sha256": "d9c88ab084f473a0860fd152a9961ce454f62880fa6e28fa69bbdb545bd1dd98"
+    },
+    {
+      "id": "val2024-hist-z25",
+      "printed_id": "25",
+      "max_points": 3,
+      "gemma": 1,
+      "qwen": 3,
+      "delta": 2,
+      "gemma_answer_sha256": "e052566432a9b07b56044ed34acf66bfd4982eabdcf8d9c155f85a7581284d4f",
+      "qwen_answer_sha256": "3aa21d52552802fba371958e4b0c2c5c8192314b0a3c0fa8e45538f231d85546"
+    },
+    {
+      "id": "val2024-hist-z26",
+      "printed_id": "26",
+      "max_points": 15,
+      "gemma": 8,
+      "qwen": 3,
+      "delta": -5,
+      "gemma_answer_sha256": "4b6a70519ddbcaad2d6107e70495c2270664261d19d3077d6fb8ec9db6a86952",
+      "qwen_answer_sha256": "e81eb6ac257d901e89d0f42fcc3e130476752924d9acbd13f1a3aeac39211304"
+    }
+  ],
+  "limitation": "Matched corrected inputs, single provisional agent pass each; model identity known and same grader. No regrade or posthoc answer combination. Legacy38 used different whole-page inputs and is not this matched comparator."
+}
