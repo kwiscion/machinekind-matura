@@ -114,3 +114,7 @@ Continuation of 2026-09-26-watcher-log.md. Same watcher instance 8e5e9ed0-1189-4
 
 ## 08:05 — development freeze passed
 - 08:00 development freeze reached. No Greg workers running, no GPU work, the H100 idle. From now until 11:00 only final checks/run/submission (root-owned); Greg's side dispatches nothing new and only answers small requests addressed to him. Never request final exam access.
+
+## 08:20 — root final freeze notice
+- Root (#3, 08:10): all model/prompt/harness experiments stopped; root owns final acquisition, execution and submission; nobody else requests final questions or changes submitted projects. Selected code `afd9ccd5` (PR #188): generic coverage wrapper with Qwen3.5:9b plus the autonomous recovery runtime. No RAG, LoRA, vision ensemble or factual referee enabled. Selected full run 40/60 (32+8), 40/40 complete, 44 calls in 28 min, all 4 timeouts recovered (48/60 target not reached). Qwen-only final cache staged and verified before 08:00 (6,594,475,420 B, Ollama 0.34.4).
+- Nothing for Greg to do. Watcher keeps polling for requests only.
