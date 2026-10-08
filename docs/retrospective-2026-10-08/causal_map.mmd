@@ -1,0 +1,12 @@
+flowchart TD
+ A["Task suitability not sufficiently enforced<br/>C17 C19 C24 C27"] --> B["Unsuitable inputs or invalid stages reach experiments"]
+ B --> C["Repair and further qualification<br/>C20 C25"]
+ C -.-> H["Less time for remaining qualification"]
+ D["Unfinished integration and late blockers<br/>C21 C22"] --> E["Planned comparisons remain unrun"]
+ E --> N["The planned research question remains unanswered"]
+ P["Preparation-only route reaches cutoff<br/>C23"] --> S["Explicit stop protects final integration"]
+ F["Initial grades or comparisons are uncertain<br/>C03 C31 C32"] --> G["Review and calibration"]
+ G --> J["Corrected claims or better-founded decisions"]
+ F -.-> Q["Risk of misdirected replication or next tests"]
+ I["Exact artifacts and relevant independent checks<br/>C09 C30 C33"] --> R["Defect corrected or promotion blocked"]
+ K["Complete runnable path and relevant real execution<br/>C34 C35 C37"] --> L["Measured result informs selection or reuse"]

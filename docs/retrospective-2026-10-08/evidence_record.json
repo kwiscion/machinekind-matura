@@ -1,0 +1,2614 @@
+{
+  "metadata": {
+    "title": "Matura hackathon retrospective evidence record",
+    "assembled_on": "2026-10-08",
+    "timezone": "Europe/Warsaw",
+    "scope": "All episodes investigated in this retrospective conversation, including positive, negative, mixed, unrun and contextual records. Not an exhaustive audit of every repository action.",
+    "source_revision": "b4f2d9abdc546788d09b64d352cda35ed8e5f2cf",
+    "case_count": 38,
+    "context_record_count": 2,
+    "outcome": {
+      "final_score": 46,
+      "winner_score": 54,
+      "denominator": 60,
+      "status": "User-reported; final exam differs from known validation",
+      "placement": "User-reported lower half"
+    },
+    "method": "Primary GitHub records, two referenced Codex chats and the current user's account; bounded subagent investigations with root synthesis and Astra consultation. Repository instructions treated as historical evidence only.",
+    "attribution": "Direct user-chat interventions and firsthand retrospective clarifications are identified. The user explicitly attributes Qwen reassessment and reasoning-budget changes to their intervention; original prompt locations remain unrecovered. GitHub account identity alone does not establish initiative.",
+    "time_policy": "Core nine run durations sum to 12093.43 seconds. Supplemental rows and elapsed intervals are separate; no active coordination percentage or wall-time loss is inferred.",
+    "privacy": "Contains original summaries and metadata only. No copied exam questions, official keys, source images, credentials or raw reasoning/provider envelopes.",
+    "limitations": "Local historical agentsLog files and private image assets were absent from this checkout. Most primary file evidence was read through GitHub. Existing repository modifications/deletions were preserved.",
+    "consultation": "Astra recommended a compact index plus detailed case cards, separate timing, mixed effects, case relationships, claim-level limits and corrections. It challenged a single-root-cause interpretation.",
+    "source_threads": [
+      {
+        "title": "Design Matura history model strategy",
+        "id": "01a0da6d-1f45-7ae0-a046-5c2f651c5fed"
+      },
+      {
+        "title": "Audit matura project workflow",
+        "id": "01a0ea46-3646-7080-a3ee-ea712bee6660"
+      }
+    ],
+    "corrections": [
+      [
+        "R01",
+        "C09,C10",
+        "The clean data audit was disproved by later leakage findings.",
+        "The clean audit concerned lexical May2024 exam-copy overlap. Later defects concerned strict eligibility and internal source-group separation. These were different controls."
+      ],
+      [
+        "R02",
+        "C17,C18,C19,C20",
+        "No agents visually inspected the evaluation images.",
+        "Contemporary records describe inspections. The important failure was judging neighboring content nonblocking; the quadrant review separately omitted visual interpretation."
+      ],
+      [
+        "R03",
+        "C12,C13",
+        "RAG was dropped after only one 107-document test.",
+        "Several mechanisms were tested, but retained the same limited corpus. Their failures did not resolve the broader coverage question."
+      ],
+      [
+        "R04",
+        "C04,C26,C35,C39",
+        "Full Wikipedia caused the remembered 35-to-40 improvement or final 46.",
+        "The documented 40-point full validation used direct Qwen with RAG off. Multiple configuration changes confound the earlier comparison; the final exam was different."
+      ],
+      [
+        "R05",
+        "C23",
+        "Essay RAG silently disappeared without a stop decision.",
+        "Its prep-only issue was explicitly stopped to preserve final integration. The user nevertheless had to ask to learn that the selected harness excluded it."
+      ],
+      [
+        "R06",
+        "C13,C15,C16,C30",
+        "The lead never pivoted or acted on negative findings.",
+        "Several documented stops and reassignments changed mechanisms. The quality and autonomy of all originating choices remain incompletely attributed."
+      ],
+      [
+        "R07",
+        "C21,C22,C28",
+        "The six-topic essay plan and four-case structured study were one experiment; branching was created after the latter expired.",
+        "They were separate. Issue168 was created before issue151's final expiry, but dispatched later. No-call evidence must remain tied to its own study."
+      ],
+      [
+        "R08",
+        "C22",
+        "Only 20 minutes were allowed for all adapter implementation and review.",
+        "The recorded ETA placed completion about 26m25 after PR157 creation, followed by a 20-minute launch margin. Actual work start and transfer completion remain unknown."
+      ],
+      [
+        "R09",
+        "C05,C06,C07",
+        "Spark was fixed because the report and runner were repaired.",
+        "No successful rerun of the original Spark/Qwen failure was found. Reporting, verifier repair, later Gemma OOM and successful RTX execution are distinct events."
+      ],
+      [
+        "R10",
+        "C31",
+        "The C3 14-to-27 and 35-to-39 totals were full-exam scores.",
+        "They sum four essays at 15 points each. Both totals use the same /60 denominator but are not the 40-item exam."
+      ],
+      [
+        "R11",
+        "C29",
+        "Parser repair produced a newly measured 11-point essay run.",
+        "It replayed the same selector response and exported an already graded saved draft. No new inference or regrading occurred."
+      ],
+      [
+        "R12",
+        "C40",
+        "Many comments or long-lived issues quantify bureaucracy.",
+        "They measure activity or elapsed spans. No complete active-time accounting exists, and concurrent intervals cannot be added as wall-clock loss."
+      ],
+      [
+        "R13",
+        "C20",
+        "The derived image-score slice was attributed to any prior 38-point run.",
+        "The comparator is specifically the original native-thinking 38-point reconciliation, using the same 30 image-bearing IDs from crop-spec; it is not necessarily the later recovery rehearsal."
+      ],
+      [
+        "R14",
+        "C26,C40",
+        "Fast Qwen duration remained unavailable because earlier summaries rounded differently.",
+        "The frozen primary report states 907.22 seconds; it is recorded as supplemental and excluded from the historical core-nine subtotal."
+      ],
+      [
+        "R15",
+        "C01,C04,C15,C35",
+        "Revisiting Qwen and increasing reasoning budgets were evidence of autonomous strategic initiative.",
+        "The user explicitly clarifies that both resulted from their intervention. Preserve the technical successes as owner-directed follow-through; exact contemporaneous prompt locations remain unrecovered."
+      ]
+    ],
+    "causal_edges": [
+      [
+        "M01",
+        "Task suitability insufficiently checked or enforced",
+        "Unsuitable inputs or invalid stage outputs reach experiments",
+        "documented sequence",
+        "C17,C19,C24,C27",
+        "Image audit waived extra content; stage runtime accepted the wrong response unit."
+      ],
+      [
+        "M02",
+        "Unsuitable inputs or invalid stage outputs reach experiments",
+        "Repair and further qualification",
+        "documented sequence",
+        "C20,C24,C25,C27",
+        "Repairs were needed; the referee route was not successfully requalified."
+      ],
+      [
+        "M03",
+        "Repair and further qualification",
+        "Less decision-ready evidence before deadlines",
+        "inferred aggregate consequence",
+        "C23,C24,C25",
+        "Specific elapsed windows are known; displaced alternative results are not."
+      ],
+      [
+        "M04",
+        "Unfinished dependencies and late blocker information",
+        "Launch windows expire without execution",
+        "documented sequence",
+        "C21,C22",
+        "Known missing integration and retrospectively reported usage limits; no experiment calls."
+      ],
+      [
+        "M05",
+        "Promised experiments miss launch windows",
+        "Planned evidence unavailable at its decision cutoff",
+        "documented local consequence",
+        "C21,C22",
+        "Does not imply continuous idle time or an available replacement worker."
+      ],
+      [
+        "M06",
+        "Uncertain or inconsistent initial grades",
+        "Review and recalibration",
+        "documented sequence",
+        "C03,C31,C32",
+        "Includes subjective interpretation and scoped arithmetic corrections."
+      ],
+      [
+        "M07",
+        "Initial uncertain estimates",
+        "Potentially misdirected replication or next tests",
+        "inferred risk with local trace",
+        "C31",
+        "Raw grades guided replication; net harm and opportunity cost remain unmeasured."
+      ],
+      [
+        "M08",
+        "Exact artifacts and an independent relevant check",
+        "Defect corrected or promotion blocked",
+        "documented sequence",
+        "C09,C10,C30,C33",
+        "Reviews had concrete consequences; each repair retained its limits."
+      ],
+      [
+        "M09",
+        "Complete inputs and compatible runnable path",
+        "Bounded real execution",
+        "documented sequence; causal contribution inferred",
+        "C34,C35,C37",
+        "Actual launches followed closed prerequisites; success cases were also less novel."
+      ],
+      [
+        "M10",
+        "Bounded real execution",
+        "Measured result informs selection or reuse",
+        "documented sequence",
+        "C34,C35,C37",
+        "Completion, quality and limited smoke qualification were kept distinct."
+      ],
+      [
+        "M11",
+        "Independent review or failed-result gate",
+        "Harmful promotion is interrupted",
+        "documented containment",
+        "C03,C09,C30,C31",
+        "Containment does not quantify all avoided damage and can still cost time."
+      ],
+      [
+        "M12",
+        "High-level mandate without continuously enforced synthesis",
+        "Insufficient strategic follow-through",
+        "hypothesis",
+        "C01,C14",
+        "Explicit instructions existed and meaningful pivots occurred; no single-cause proof."
+      ],
+      [
+        "M13",
+        "Review and recalibration",
+        "Corrected claims or more defensible decisions",
+        "documented corrective sequence",
+        "C03,C31,C32",
+        "Calibration improved reliability; it is not automatically a loss of usable evidence."
+      ],
+      [
+        "M14",
+        "Preparation-only route reaches its cutoff",
+        "Explicit stop protects final integration",
+        "documented decision",
+        "C23",
+        "No promised GPU launch was canceled; whether continuation would have paid off is unknown."
+      ],
+      [
+        "M15",
+        "Input or configuration changes are combined",
+        "Mechanism-specific conclusions remain uncertain",
+        "documented comparison limitation",
+        "C03,C04,C20,C26",
+        "A useful candidate screen may still be a weak causal experiment."
+      ]
+    ],
+    "literature": [
+      {
+        "date": "2026-07-21",
+        "title": "METR Expenditure Horizon",
+        "url": "https://metr.org/blog/2026-07-21-expenditure-horizon/",
+        "use": "Measurable feedback and substantial compute did not guarantee continuing optimization gains.",
+        "limit": "One optimization setting; not a controlled test of this team's architecture."
+      },
+      {
+        "date": "2026-10-03",
+        "title": "EvalResearchBench",
+        "url": "https://arxiv.org/abs/2610.04184",
+        "use": "Compact evaluations produced by agents require validation against the real target.",
+        "limit": "Recent preprint; evaluator construction differs from leading a hackathon."
+      },
+      {
+        "date": "2026-09-23",
+        "title": "Reward Hacking Challenges Oversight of Autonomous Research Agents",
+        "url": "https://arxiv.org/abs/2609.28614",
+        "use": "More verifier feedback can fail to secure genuine research progress.",
+        "limit": "Not evidence that this team deliberately reward-hacked."
+      },
+      {
+        "date": "2026-05-23",
+        "title": "Backpressure is all you need",
+        "url": "https://www.lucasfcosta.com/blog/backpressure-is-all-you-need",
+        "use": "Practitioner account of moving checks and benchmarks into each iteration.",
+        "limit": "Experience report, not proof that more tests improve strategic choice."
+      },
+      {
+        "date": "2026-01-09",
+        "title": "Demystifying evals for AI agents",
+        "url": "https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents",
+        "use": "Judge environment outcomes rather than self-reported completion; calibrate evaluators.",
+        "limit": "Vendor practice account; methods must match the task being tested."
+      }
+    ],
+    "relationships": [
+      {
+        "from": "C05",
+        "to": "C06",
+        "type": "verifier_followup",
+        "note": "Related assurance defect; same underlying Spark raw evidence, no new inference."
+      },
+      {
+        "from": "C07",
+        "to": "C08",
+        "type": "delivery_repair",
+        "note": "Repair to the published runner after a private runtime transfer."
+      },
+      {
+        "from": "C09",
+        "to": "C10",
+        "type": "residual_defect_followup",
+        "note": "A source-identity issue in the same data/split chain."
+      },
+      {
+        "from": "C09",
+        "to": "C11",
+        "type": "distinct_dataset_comparison",
+        "note": "Later essay corpus excluded the earlier records; not a merged sample."
+      },
+      {
+        "from": "C12",
+        "to": "C13",
+        "type": "same_corpus_followup",
+        "note": "Different mechanisms on the same limited corpus."
+      },
+      {
+        "from": "C14",
+        "to": "C13",
+        "type": "strategy_context",
+        "note": "Expert diagnosis informed the broader portfolio; no extra experiment count."
+      },
+      {
+        "from": "C17",
+        "to": "C18",
+        "type": "input_alternative",
+        "note": "Small layout-aware prototype, distinct from quadrants."
+      },
+      {
+        "from": "C17",
+        "to": "C19",
+        "type": "input_alternative",
+        "note": "Generic zoom retained the original full page."
+      },
+      {
+        "from": "C17",
+        "to": "C20",
+        "type": "input_correction",
+        "note": "Later source-specific image and package correction."
+      },
+      {
+        "from": "C21",
+        "to": "C22",
+        "type": "separate_prepared_study",
+        "note": "Related planning work but different cases/denominators and no-call evidence."
+      },
+      {
+        "from": "C23",
+        "to": "C36",
+        "type": "owner_reopened_route",
+        "note": "Later diagnostic after an explicit prep cutoff; not the original promised run."
+      },
+      {
+        "from": "C24",
+        "to": "C25",
+        "type": "repair_followup",
+        "note": "V2 is a repair of the failed filter, not independent replication of full RAG strategy."
+      },
+      {
+        "from": "C25",
+        "to": "C26",
+        "type": "different_model_followup",
+        "note": "Different model/profile and panel result; not a clean speed or quality attribution."
+      },
+      {
+        "from": "C27",
+        "to": "C29",
+        "type": "different_selector_comparison",
+        "note": "Factual referee versus essay saved-ID selector; do not merge outcomes."
+      },
+      {
+        "from": "C28",
+        "to": "C29",
+        "type": "same_response_replay_repair",
+        "note": "Replays one saved selection response; no new inference or regrading."
+      },
+      {
+        "from": "C31",
+        "to": "C32",
+        "type": "research_followup",
+        "note": "Conservative edit direction after critic uncertainty; different samples."
+      },
+      {
+        "from": "C32",
+        "to": "C21",
+        "type": "proposed_mechanism_followup",
+        "note": "No-gain span editing preceded a plan-to-prose proposal."
+      },
+      {
+        "from": "C11",
+        "to": "C30",
+        "type": "data_to_candidate_evaluation",
+        "note": "Data preparation and later evaluation have separate costs and outcomes."
+      },
+      {
+        "from": "C34",
+        "to": "C35",
+        "type": "qualified_runtime_reuse",
+        "note": "Recovery qualification reused in the full confirmation."
+      },
+      {
+        "from": "C20",
+        "to": "C37",
+        "type": "integration_dependency",
+        "note": "Input/package integration contributed to final delivery."
+      },
+      {
+        "from": "C35",
+        "to": "C37",
+        "type": "preserved_candidate_dependency",
+        "note": "Measured direct answers preserved before owner-selected RAG."
+      },
+      {
+        "from": "C36",
+        "to": "C37",
+        "type": "runtime_lesson_to_delivery",
+        "note": "Single-slot observation informed serial final calls."
+      },
+      {
+        "from": "C35",
+        "to": "C39",
+        "type": "different_exam_context",
+        "note": "Known-validation and user-reported final scores are not a causal paired comparison."
+      }
+    ],
+    "review_notes": "Astra reviewed the report structure and causal interpretation; Sol independently checked selected factual boundaries and source details. Neither independently reverified every source in all 38 cases. Root checked IDs, references, CSV round-tripping, timestamps, totals and pinned path existence.",
+    "agreed_operating_model": {
+      "status": "Agreed for future projects; effectiveness not yet demonstrated",
+      "test_design": "Skipped at the user's request; no same-project trial planned",
+      "roles": {
+        "expert": "Owns cross-project research direction and consequential strategic decisions",
+        "manager": "Owns feasibility, resource allocation, dependency resolution and actual execution; returns scientific scope changes to the expert",
+        "workers": "Execute bounded work and return local evidence and limitations"
+      },
+      "reassessment": {
+        "event_triggers": [
+          "Consequential result",
+          "Invalidated assumption",
+          "Material scope change",
+          "Stalled experiment"
+        ],
+        "scheduled_default": "Hourly cross-project review for a short project; not an evidence-derived optimum",
+        "follow_through": "Check what happened to previous decisions; already-justified work continues"
+      },
+      "qualification": [
+        "Establish task suitability",
+        "Demonstrate actual model/runtime behavior before scaling when model behavior is the uncertainty",
+        "Count the smallest meaningful qualification toward the experiment where feasible"
+      ],
+      "experiment_record": {
+        "before": [
+          "Uncertainty",
+          "Comparison",
+          "How outcomes change the next action"
+        ],
+        "after": [
+          "Validity",
+          "Finding and limits",
+          "Expert decision"
+        ]
+      },
+      "notebook": {
+        "count": 1,
+        "current_position_target_words": 300,
+        "completed_experiment_target_words": 75,
+        "decision_history": "Only consequential changes with reasons and experiment IDs",
+        "maintenance": "Update in place; manager integrates worker results and prevents bloat; expert owns interpretation; link raw artifacts instead of copying them",
+        "limits": "Working targets must not omit essential evidence or uncertainty"
+      },
+      "delivery": {
+        "budget_scope": [
+          "Preparation",
+          "Qualification",
+          "Execution",
+          "Grading",
+          "Integration"
+        ],
+        "rules": [
+          "Verify actual starts and capacity",
+          "No automatic deadline extensions without a credible recovery plan and explicit trade-off",
+          "No silent abandonment",
+          "No repeated approvals within agreed scope and resource bounds"
+        ]
+      },
+      "report": "TEAM_POSTMORTEM.md"
+    }
+  },
+  "cases": [
+    {
+      "id": "C01",
+      "title": "Lead mandate and autonomous research expectations",
+      "group": "Strategy",
+      "type": "governance",
+      "expectation": "The lead would choose, coordinate, review and redirect research toward at least 48/60, with human involvement mainly for resources and submission.",
+      "sequence": [
+        "Historical plan set 80% / 48 of 60 and required next useful tasks, pivots and resource changes.",
+        "The user repeatedly requested strategic audits, supplied ideas and restored scope.",
+        "Later review found meaningful pivots as well as missed follow-through."
+      ],
+      "outcome": "Ownership and pivot instructions existed; lack of instructions alone does not explain the outcome.",
+      "effects": [
+        "No isolated quality effect measured.",
+        "Substantial owner intervention reported; its active time is unknown.",
+        "Separates an execution/initiative problem from a missing mandate."
+      ],
+      "initiative": "Human established objective; exact origin of individual lead decisions remains mixed/unknown.",
+      "interpretation": "The delegated research lead did not reliably initiate consequential strategic reassessment; the owner supplied important direction, including Qwen reconsideration, budget increases, image correction and RAG scope. This does not imply that no useful agent decisions occurred.",
+      "limits": "Literal active-goal tool configuration was not exposed. Lead account authorship is not proof of human or agent origin.",
+      "related": [
+        "C14",
+        "C21",
+        "C22",
+        "C23",
+        "C35"
+      ],
+      "sources": [
+        "https://github.com/kwiscion/machinekind-matura/blob/3742a94f5f19e051bc3ad2d2081e8f350704195f/WINNING_PLAN.md",
+        "https://github.com/kwiscion/machinekind-matura/blob/5c0dd67b00cc06507e66ae5f84ce5f4f909b0849/WINNING_PLAN.md",
+        "thread://01a0da6d-1f45-7ae0-a046-5c2f651c5fed?hostId=local",
+        "Current retrospective user clarification: revisiting Qwen and changing reasoning budgets resulted from owner intervention."
+      ],
+      "record_type": "case",
+      "time_refs": [],
+      "evidence_status": "Primary records support the technical sequence; firsthand user clarification supplies initiative attribution where original prompts were not recovered.",
+      "historical_decision": null,
+      "retrospective_implication": "Treat owner-dependent research direction as a central autonomy failure. Its underlying cause and the efficacy of a role split remain untested.",
+      "relationships": []
+    },
+    {
+      "id": "C02",
+      "title": "Initial full-exam baseline and working-model choice",
+      "group": "Evaluation",
+      "type": "selection and measurement",
+      "expectation": "Use a complete, graded baseline to choose the strongest available working model.",
+      "sequence": [
+        "Two disjoint first-pass grading assignments were followed by independent rubric review/adjudication.",
+        "Provisional v1 scores were Gemma 35/60 and Qwen 25/60; Qwen had four length-stopped answers.",
+        "Gemma became the working base while expensive or unready alternatives were parked."
+      ],
+      "outcome": "A defensible provisional baseline choice was made; it did not establish permanent model superiority.",
+      "effects": [
+        "Gemma's working score was higher under the tested configuration.",
+        "A complete candidate was preserved.",
+        "Failures stayed in denominators and grade uncertainties were recorded."
+      ],
+      "initiative": "Lead-coordinated choice; precise human versus agent origin not established.",
+      "interpretation": "Evidence-led prioritization with a practical advantage for complete outputs.",
+      "limits": "Grades were agent-provisional and model labels visible. Ranges 28-40 and 16-29 are summed grading sensitivities, not confidence intervals.",
+      "related": [
+        "C03",
+        "C04",
+        "C35"
+      ],
+      "sources": [
+        "https://github.com/kwiscion/machinekind-matura/pull/53",
+        "https://github.com/kwiscion/machinekind-matura/issues/3#issuecomment-5846898528"
+      ],
+      "record_type": "case",
+      "time_refs": [],
+      "evidence_status": "Primary records inspected during this retrospective; causal interpretation separately qualified",
+      "historical_decision": "Proceed with Gemma and one bounded intervention; reconsider Qwen later under a different qualified configuration.",
+      "retrospective_implication": "Evidence-led prioritization with a practical advantage for complete outputs.",
+      "relationships": []
+    },
+    {
+      "id": "C03",
+      "title": "Question-policy candidate and adjudication",
+      "group": "Evaluation",
+      "type": "valid negative and confounded comparison",
+      "expectation": "A generic question policy plus corrected source inputs would improve the working Gemma candidate.",
+      "sequence": [
+        "The arm combined a prompt-policy change with source-v2 input changes.",
+        "First grading totaled 30/60; adjudication revised two judgments to 32/60.",
+        "The candidate was not promoted over the 35/60 baseline."
+      ],
+      "outcome": "The combined candidate failed to beat the baseline point estimate; policy-specific causality was not isolated.",
+      "effects": [
+        "No observed gain for the combined candidate.",
+        "Bounded run and review completed without candidate promotion.",
+        "Regrading changed the magnitude of the loss but not the decision."
+      ],
+      "initiative": "Lead choice recorded prospectively; exact human contribution unknown.",
+      "interpretation": "A useful candidate screen, weaker as a test of which mechanism caused the result.",
+      "limits": "Input and policy changes were combined; grading sensitivity ranges overlap. Active review time was not recorded.",
+      "related": [
+        "C02",
+        "C31"
+      ],
+      "sources": [
+        "https://github.com/kwiscion/machinekind-matura/pull/61",
+        "https://github.com/kwiscion/machinekind-matura/issues/11#issuecomment-5847141263",
+        "https://github.com/kwiscion/machinekind-matura/issues/3#issuecomment-5847309808"
+      ],
+      "record_type": "case",
+      "time_refs": [],
+      "evidence_status": "Primary records inspected during this retrospective; causal interpretation separately qualified",
+      "historical_decision": "Retain the baseline and move to another intervention.",
+      "retrospective_implication": "A useful candidate screen, weaker as a test of which mechanism caused the result.",
+      "relationships": []
+    },
+    {
+      "id": "C04",
+      "title": "Qwen budget limitations and later challenger",
+      "group": "Model and runtime",
+      "type": "configuration and model selection",
+      "expectation": "Determine whether Qwen was genuinely weaker or constrained by its initial runtime configuration.",
+      "sequence": [
+        "Early Qwen3.5:9B full40 used thinking off and 1024 output tokens; four answers ended at length limits.",
+        "The lead later tested Qwen as a different eligible multimodal candidate.",
+        "The eventual selected run used thinking on, larger output/context limits, recovery, corrected images and an essay-coverage suffix."
+      ],
+      "outcome": "The early completion limitation is documented. The later 40/60 package was not a budget-only experiment.",
+      "effects": [
+        "Initial 25/60 and later 40/60 are configuration-specific results.",
+        "Later run completed all 40 answers.",
+        "A weak early model ranking was revisited rather than treated as permanent."
+      ],
+      "initiative": "Human-initiated Qwen reassessment and budget changes, explicitly clarified by the user in this retrospective. Agents implemented and evaluated the follow-up. The exact original chat messages were not recovered.",
+      "interpretation": "Budgets and runtime compatibility mattered, alongside other changed inputs and prompts.",
+      "limits": "Early Qwen context was not pinned in the public manifest. The user attributes the reassessment and budget changes to their intervention; this firsthand attribution is distinct from a recovered contemporaneous prompt. Do not conflate this run with the separate Spark smoke.",
+      "related": [
+        "C02",
+        "C05",
+        "C20",
+        "C35"
+      ],
+      "sources": [
+        "https://github.com/kwiscion/machinekind-matura/blob/b4f2d9abdc546788d09b64d352cda35ed8e5f2cf/agentsLog/kwiscion/model-answers/qwen35-9b-val40-1024.manifest.json",
+        "https://github.com/kwiscion/machinekind-matura/issues/95#issuecomment-5849801820",
+        "https://github.com/kwiscion/machinekind-matura/blob/b4f2d9abdc546788d09b64d352cda35ed8e5f2cf/agentsLog/kwiscion/2026-09-27-qwen-coverage-full40-launch.json",
+        "Current retrospective user clarification: revisiting Qwen and changing reasoning budgets resulted from owner intervention."
+      ],
+      "record_type": "case",
+      "time_refs": [],
+      "evidence_status": "Primary records support the technical sequence; firsthand user clarification supplies initiative attribution where original prompts were not recovered.",
+      "historical_decision": "Advance the later challenger to full confirmation.",
+      "retrospective_implication": "Budgets and runtime compatibility mattered, alongside other changed inputs and prompts.",
+      "relationships": []
+    },
+    {
+      "id": "C05",
+      "title": "Spark smoke success and speedup claim corrected",
+      "group": "Runtime evidence",
+      "type": "false readiness and correction",
+      "expectation": "Twenty synthetic smoke requests and latency comparison would establish usable Spark inference.",
+      "sequence": [
+        "PR25 reported 20/20 prompts, zero errors and roughly 16.3x speedup.",
+        "Raw inspection found only 4 nonempty Spark responses; 16 were empty despite error:null.",
+        "PR28 corrected the report and later lead summaries used the corrected numbers."
+      ],
+      "outcome": "The successful-answer speedup claim was invalid. The original failing Spark/Qwen path was not shown repaired and rerun.",
+      "effects": [
+        "No exam-quality evidence was produced.",
+        "Reporting was corrected about 19 minutes after merge; further audit work was required.",
+        "Raw artifacts supported correction and prevented continued reliance on the headline."
+      ],
+      "initiative": "Contributor report and subsequent agent audit; identity alone does not establish human authorship.",
+      "interpretation": "Transport success was mistaken for task success, then contained.",
+      "limits": "All Spark outputs hit a 200-token budget, but finish reasons were absent; the cause of blanks was not isolated. No final-score harm was established.",
+      "related": [
+        "C06",
+        "C07"
+      ],
+      "sources": [
+        "https://github.com/kwiscion/machinekind-matura/pull/25",
+        "https://github.com/kwiscion/machinekind-matura/issues/27",
+        "https://github.com/kwiscion/machinekind-matura/pull/28",
+        "https://github.com/kwiscion/machinekind-matura/issues/3#issuecomment-5844875576"
+      ],
+      "record_type": "case",
+      "time_refs": [
+        "E01"
+      ],
+      "evidence_status": "Primary records inspected during this retrospective; causal interpretation separately qualified",
+      "historical_decision": "Do not use failed-request timings as usable throughput. No traced model promotion or hardware allocation relied on the false claim.",
+      "retrospective_implication": "Transport success was mistaken for task success, then contained.",
+      "relationships": [
+        {
+          "from": "C05",
+          "to": "C06",
+          "type": "verifier_followup",
+          "note": "Related assurance defect; same underlying Spark raw evidence, no new inference."
+        }
+      ]
+    },
+    {
+      "id": "C06",
+      "title": "Supplementary audit verifier false passes and provenance claims",
+      "group": "Runtime evidence",
+      "type": "verification defect and repair",
+      "expectation": "An independent audit verifier would reliably reproduce the Spark correction.",
+      "sequence": [
+        "A supplementary verifier double-counted an empty timed-out response in a union metric.",
+        "A non-finite committed metric could falsely compare as MATCH; byte-for-byte and second-machine claims exceeded the checks.",
+        "PR31 introduced strict schema/type/finite checks, union counting and adversarial tests without new inference."
+      ],
+      "outcome": "The verifier was repaired; the valid finding of 16 empty Spark responses remained unchanged.",
+      "effects": [
+        "No model-quality effect measured.",
+        "Additional repair/review was needed.",
+        "Verifier behavior itself was tested with failure cases."
+      ],
+      "initiative": "Agent/lead review in project records; exact human involvement unknown.",
+      "interpretation": "A checker can repeat the assurance problem it is intended to solve.",
+      "limits": "This was verify_issue27_audit.py, not proof that PR26's local inference runner tests were all invalid. Active repair time unknown.",
+      "related": [
+        "C05"
+      ],
+      "sources": [
+        "https://github.com/kwiscion/machinekind-matura/blob/b4f2d9abdc546788d09b64d352cda35ed8e5f2cf/agentsLog/ljaniec/2026-09-26-verifier-repair.md",
+        "https://github.com/kwiscion/machinekind-matura/issues/30#issuecomment-5844680712"
+      ],
+      "record_type": "case",
+      "time_refs": [],
+      "evidence_status": "Primary records inspected during this retrospective; causal interpretation separately qualified",
+      "historical_decision": "Preserve original artifacts and narrow provenance claims to what was demonstrated.",
+      "retrospective_implication": "A checker can repeat the assurance problem it is intended to solve.",
+      "relationships": [
+        {
+          "from": "C05",
+          "to": "C06",
+          "type": "verifier_followup",
+          "note": "Related assurance defect; same underlying Spark raw evidence, no new inference."
+        }
+      ]
+    },
+    {
+      "id": "C07",
+      "title": "Gemma Spark load failure and RTX transfer",
+      "group": "Model and runtime",
+      "type": "capacity failure and alternative execution",
+      "expectation": "Run the eligible Gemma model and projector on provisioned hardware.",
+      "sequence": [
+        "A separate Gemma-on-Spark probe returned CUDA OOM and no usable response.",
+        "Exact OOM cause was not isolated; service disruption and further retries were restricted.",
+        "The same native Gemma weights later produced 40/40 nonempty answers on RTX5090 with a different runner."
+      ],
+      "outcome": "The task became operational on another hardware path; Spark itself was not demonstrated repaired.",
+      "effects": [
+        "The transfer run alone did not establish an exam score.",
+        "A working alternative inference path was obtained.",
+        "Hardware/runtime success was distinguished from model quality."
+      ],
+      "initiative": "Resource access was human-provisioned; lead/worker execution recorded.",
+      "interpretation": "A pragmatic hardware shift had independent support beyond the earlier bad Spark speed claim.",
+      "limits": "No controlled diagnosis proves Spark intrinsically unsuitable. RTX publication defects were separate.",
+      "related": [
+        "C05",
+        "C08"
+      ],
+      "sources": [
+        "https://github.com/kwiscion/machinekind-matura/pull/36",
+        "https://github.com/kwiscion/machinekind-matura/blob/b4f2d9abdc546788d09b64d352cda35ed8e5f2cf/agentsLog/ljaniec/2026-09-26-gemma-spark-load.md",
+        "https://github.com/kwiscion/machinekind-matura/pull/85"
+      ],
+      "record_type": "case",
+      "time_refs": [
+        "T12"
+      ],
+      "evidence_status": "Primary records inspected during this retrospective; causal interpretation separately qualified",
+      "historical_decision": "Continue on available functioning hardware; preserve Qwen3-8B only as a text fallback.",
+      "retrospective_implication": "A pragmatic hardware shift had independent support beyond the earlier bad Spark speed claim.",
+      "relationships": [
+        {
+          "from": "C07",
+          "to": "C08",
+          "type": "delivery_repair",
+          "note": "Repair to the published runner after a private runtime transfer."
+        }
+      ]
+    },
+    {
+      "id": "C08",
+      "title": "Working RTX run but broken published reproduction",
+      "group": "Integration",
+      "type": "reproducibility defect and repair",
+      "expectation": "The committed runner would reproduce the successful RTX transfer and enforce declared runtime guards.",
+      "sequence": [
+        "A real transfer produced 40 complete answers.",
+        "Issue88 found the public wrapper resolved the repository path incorrectly, weak failure-stop and identity/context checks, and a post-response dispatch timestamp.",
+        "PR118 repaired the wrapper and checked failure paths with CPU tests; historical GPU evidence was preserved."
+      ],
+      "outcome": "Public reproducibility and guard claims were corrected without rerunning the historical transfer.",
+      "effects": [
+        "No new accuracy result.",
+        "Future runner reliability improved; original private success did not imply public repeatability.",
+        "Testing the delivered invocation path exposed defects absent from the private working path."
+      ],
+      "initiative": "Independent review and lead integration; human attribution unknown.",
+      "interpretation": "The tested environment differed from the promised reproducible artifact.",
+      "limits": "CPU repairs do not independently requalify the past GPU run. Issue lifetime is not labor time.",
+      "related": [
+        "C07",
+        "C37"
+      ],
+      "sources": [
+        "https://github.com/kwiscion/machinekind-matura/issues/88",
+        "https://github.com/kwiscion/machinekind-matura/pull/118",
+        "https://github.com/kwiscion/machinekind-matura/issues/88#issuecomment-5849693036"
+      ],
+      "record_type": "case",
+      "time_refs": [],
+      "evidence_status": "Primary records inspected during this retrospective; causal interpretation separately qualified",
+      "historical_decision": "Merge the corrected wrapper for future runs and preserve the original transfer receipt.",
+      "retrospective_implication": "The tested environment differed from the promised reproducible artifact.",
+      "relationships": [
+        {
+          "from": "C07",
+          "to": "C08",
+          "type": "delivery_repair",
+          "note": "Repair to the published runner after a private runtime transfer."
+        }
+      ]
+    },
+    {
+      "id": "C09",
+      "title": "Strict data eligibility and internal holdout export repair",
+      "group": "Data",
+      "type": "construction defect and successful review",
+      "expectation": "A training export would contain eligible verified records and preserve its internal source-group split.",
+      "sequence": [
+        "A lexical exam-copy audit reported clean within its stated scope; it was not a merge approval.",
+        "Exact-head review found default export selected 197 legacy verified rows although only 24 passed both strict checks, and global distractors crossed internal holdout partitions.",
+        "The bad head was blocked; repaired strict-only exports passed six checks and independent review before merge."
+      ],
+      "outcome": "Unsafe export behavior was corrected before the flawed version merged; the 200-record target remained unmet.",
+      "effects": [
+        "No contaminated training run or final-score damage was established.",
+        "Repair produced a smaller truthful handoff and fail-closed export.",
+        "Independent inspection of actual output overrode stale eligibility labels."
+      ],
+      "initiative": "Contributor construction and lead/separate Sol review; exact human role unverified.",
+      "interpretation": "Successful containment of data construction defects.",
+      "limits": "The clean exam-copy audit was not disproved: later blockers involved eligibility and an internal holdout, not demonstrated May2024 answer leakage. A later alias issue remained.",
+      "related": [
+        "C10",
+        "C11"
+      ],
+      "sources": [
+        "https://github.com/kwiscion/machinekind-matura/pull/18#issuecomment-5842340473",
+        "https://github.com/kwiscion/machinekind-matura/pull/18#pullrequestreview-5324972948",
+        "https://github.com/kwiscion/machinekind-matura/pull/18#pullrequestreview-5325017706"
+      ],
+      "record_type": "case",
+      "time_refs": [
+        "E02"
+      ],
+      "evidence_status": "Primary records inspected during this retrospective; causal interpretation separately qualified",
+      "historical_decision": "Merge only the repaired partial handoff and exclude legacy/draft rows from training eligibility.",
+      "retrospective_implication": "Successful containment of data construction defects.",
+      "relationships": [
+        {
+          "from": "C09",
+          "to": "C10",
+          "type": "residual_defect_followup",
+          "note": "A source-identity issue in the same data/split chain."
+        },
+        {
+          "from": "C09",
+          "to": "C11",
+          "type": "distinct_dataset_comparison",
+          "note": "Later essay corpus excluded the earlier records; not a merged sample."
+        }
+      ]
+    },
+    {
+      "id": "C10",
+      "title": "Canonical-source aliases defeated the first split repair",
+      "group": "Data",
+      "type": "residual leakage and correction",
+      "expectation": "Distinct source_group_id values would enforce disjoint training and holdout sources.",
+      "sequence": [
+        "A subsequent packaging check found the same underlying source on both sides under different identifiers.",
+        "Use of the holdout was stopped; grouping was expanded to source_group_id and source_ids.",
+        "A later repair yielded 23/1 rather than 22/2, and training remained gated."
+      ],
+      "outcome": "A second, different split defect was corrected; the tiny holdout was unsuitable for strong model-selection claims.",
+      "effects": [
+        "No affected training or quality gain demonstrated.",
+        "Additional correction after an earlier successful review.",
+        "Identifier uniqueness is weaker than canonical source separation."
+      ],
+      "initiative": "Lead-side check; human versus agent origin unknown.",
+      "interpretation": "The initial repair checked partition labels but incompletely modeled source identity.",
+      "limits": "Related repair of C09, not an independent dataset or separate training experiment.",
+      "related": [
+        "C09",
+        "C11"
+      ],
+      "sources": [
+        "https://github.com/kwiscion/machinekind-matura/issues/4#issuecomment-5844879574",
+        "https://github.com/kwiscion/machinekind-matura/issues/4#issuecomment-5846254260",
+        "https://github.com/kwiscion/machinekind-matura/issues/4#issuecomment-5845608681"
+      ],
+      "record_type": "case",
+      "time_refs": [],
+      "evidence_status": "Primary records inspected during this retrospective; causal interpretation separately qualified",
+      "historical_decision": "Defer publication/holdout use and keep this small dataset out of the later separate essay corpus.",
+      "retrospective_implication": "The initial repair checked partition labels but incompletely modeled source identity.",
+      "relationships": [
+        {
+          "from": "C09",
+          "to": "C10",
+          "type": "residual_defect_followup",
+          "note": "A source-identity issue in the same data/split chain."
+        }
+      ]
+    },
+    {
+      "id": "C11",
+      "title": "Essay corpus collision checks and independent factual repairs",
+      "group": "Data",
+      "type": "adaptive scoping and successful verification",
+      "expectation": "Prepare a bounded essay pilot with disjoint evaluation topics and auditable examples.",
+      "sequence": [
+        "After delayed claim and temporary lead coverage, the worker detected topic collisions and withdrew overlapping drafts.",
+        "PR130 delivered an 81-row pilot; follow-up PR131 corrected export counts/structure, yielding a 90-row, 28-component canonical export.",
+        "Independent checks covered grouping, CRLF behavior and four source errors; later model readiness was separately gated."
+      ],
+      "outcome": "A checked corpus handoff was produced without automatically authorizing training or claiming model gains.",
+      "effects": [
+        "Dataset corrections are not measured accuracy gains.",
+        "Scoped owned-path artifacts enabled subsequent preparation.",
+        "Workers detected substantive data problems and acted on them."
+      ],
+      "initiative": "Worker detection plus lead coordination; root account is not proof of human action.",
+      "interpretation": "A positive correction-to-action loop, with high-touch scoping visible.",
+      "limits": "Not the same corpus as C09/C10; do not combine row counts. Coverage in this retrospective is less deep than the runtime cases.",
+      "related": [
+        "C09",
+        "C10",
+        "C30"
+      ],
+      "sources": [
+        "https://github.com/kwiscion/machinekind-matura/issues/117",
+        "https://github.com/kwiscion/machinekind-matura/pull/130",
+        "https://github.com/kwiscion/machinekind-matura/pull/131",
+        "https://github.com/kwiscion/machinekind-matura/issues/117#issuecomment-5849500591"
+      ],
+      "record_type": "case",
+      "time_refs": [],
+      "evidence_status": "Primary records inspected during this retrospective; causal interpretation separately qualified",
+      "historical_decision": "Accept the bounded data handoff; assess training and deployed behavior separately.",
+      "retrospective_implication": "A positive correction-to-action loop, with high-touch scoping visible.",
+      "relationships": [
+        {
+          "from": "C09",
+          "to": "C11",
+          "type": "distinct_dataset_comparison",
+          "note": "Later essay corpus excluded the earlier records; not a merged sample."
+        },
+        {
+          "from": "C11",
+          "to": "C30",
+          "type": "data_to_candidate_evaluation",
+          "note": "Data preparation and later evaluation have separate costs and outcomes."
+        }
+      ]
+    },
+    {
+      "id": "C12",
+      "title": "107-source RAG result and overextended strategic inference",
+      "group": "Retrieval",
+      "type": "scope mismatch and confounded negative",
+      "expectation": "Determine whether retrieval could improve open-domain history answers.",
+      "sequence": [
+        "The reference corpus contained 100 Wikipedia and 7 Wikisource documents, 3481 chunks.",
+        "A bounded Gemma RAG configuration scored 27/60 against a preserved 35/60 direct baseline.",
+        "Coverage and query limitations were recorded, but broad-corpus investigation remained deferred until a later reset."
+      ],
+      "outcome": "The tested configuration failed; this did not establish that full-Wikipedia retrieval was unhelpful.",
+      "effects": [
+        "Observed configuration scored lower, with input/runtime/sampling/grading confounds.",
+        "A limited prototype influenced broader prioritization.",
+        "The key coverage-versus-retrieval uncertainty was not isolated."
+      ],
+      "initiative": "User recalls discovering the 107-source limit; late owner scope reset is documented. Exact first discovery message was not recovered.",
+      "interpretation": "Generalization from a narrow implementation to a broader strategy exceeded the test's scope.",
+      "limits": "No proven causal full-Wikipedia improvement; the final exam differed from validation.",
+      "related": [
+        "C13",
+        "C14",
+        "C23",
+        "C24",
+        "C25",
+        "C26"
+      ],
+      "sources": [
+        "https://github.com/kwiscion/machinekind-matura/blob/b4f2d9abdc546788d09b64d352cda35ed8e5f2cf/agentsLog/Bukareszt/README.md",
+        "https://github.com/kwiscion/machinekind-matura/blob/b4f2d9abdc546788d09b64d352cda35ed8e5f2cf/agentsLog/kwiscion/2026-09-26-failure-audit-astra.md",
+        "https://github.com/kwiscion/machinekind-matura/issues/182#issuecomment-5851984696"
+      ],
+      "record_type": "case",
+      "time_refs": [],
+      "evidence_status": "Primary records inspected during this retrospective; causal interpretation separately qualified",
+      "historical_decision": "Reject the particular result; later reopen the corpus scope.",
+      "retrospective_implication": "Generalization from a narrow implementation to a broader strategy exceeded the test's scope.",
+      "relationships": [
+        {
+          "from": "C12",
+          "to": "C13",
+          "type": "same_corpus_followup",
+          "note": "Different mechanisms on the same limited corpus."
+        }
+      ]
+    },
+    {
+      "id": "C13",
+      "title": "Retrieval variants stopped and resources reassigned",
+      "group": "Retrieval",
+      "type": "valid narrow negatives and strategic pivot",
+      "expectation": "Corrected query/evidence presentations might rescue the existing retrieval setup.",
+      "sequence": [
+        "A corrected selective wave tied 1/5; another panel scored bare 7/13 versus 5, 6 and 4 for tested variants.",
+        "The worker stopped with unused call/token allowance and declined further threshold tuning.",
+        "The lead reassigned work to essay training."
+      ],
+      "outcome": "A real mechanism change followed negative evidence, but all retrieval variants retained the narrow corpus.",
+      "effects": [
+        "No secure gain in the tested panels.",
+        "Remaining declared budget was not automatically spent.",
+        "Useful local negatives did not resolve whether missing coverage was the main bottleneck."
+      ],
+      "initiative": "Worker stop and lead reassignment recorded; precise human contribution unknown.",
+      "interpretation": "Counterevidence to a blanket claim of endless small tweaks.",
+      "limits": "Only five of forty validation prompts changed under one corrected gate. Source overlap and selected panels limit generalization.",
+      "related": [
+        "C12",
+        "C30"
+      ],
+      "sources": [
+        "https://github.com/kwiscion/machinekind-matura/issues/96#issuecomment-5848267686",
+        "https://github.com/kwiscion/machinekind-matura/issues/96#issuecomment-5848591673",
+        "https://github.com/kwiscion/machinekind-matura/issues/96#issuecomment-5848703080"
+      ],
+      "record_type": "case",
+      "time_refs": [
+        "T01"
+      ],
+      "evidence_status": "Primary records inspected during this retrospective; causal interpretation separately qualified",
+      "historical_decision": "Stop these families and reallocate; broad-corpus potential remained unresolved.",
+      "retrospective_implication": "Counterevidence to a blanket claim of endless small tweaks.",
+      "relationships": [
+        {
+          "from": "C12",
+          "to": "C13",
+          "type": "same_corpus_followup",
+          "note": "Different mechanisms on the same limited corpus."
+        },
+        {
+          "from": "C14",
+          "to": "C13",
+          "type": "strategy_context",
+          "note": "Expert diagnosis informed the broader portfolio; no extra experiment count."
+        }
+      ]
+    },
+    {
+      "id": "C14",
+      "title": "Global expert audit informed a revised portfolio",
+      "group": "Strategy",
+      "type": "expert synthesis and uncertain continuity",
+      "expectation": "Use a global diagnosis to select experiments from measured bottlenecks.",
+      "sequence": [
+        "Astra inspected all 40 cases, compared routes and examined visual cases.",
+        "It identified query contamination, coverage limitations and a ranked experiment menu.",
+        "The subsequent plan used it as common diagnosis and divided work across factual, essay and source-grounding labs."
+      ],
+      "outcome": "Expert synthesis existed and affected scheduling; persistent automatic re-synthesis after later results was not established.",
+      "effects": [
+        "No isolated score effect.",
+        "A shared diagnosis guided multiple tracks.",
+        "Adding an occasional expert is not a new mechanism; continuous ownership would be the new hypothesis."
+      ],
+      "initiative": "Expert agent and lead coordination; original trigger may have been human, not verified.",
+      "interpretation": "Advisory quality and continuous strategic responsibility are different.",
+      "limits": "The audit explicitly described proposals, not execution authorization. No evidence proves that a persistent expert role alone would have changed outcomes.",
+      "related": [
+        "C01",
+        "C12",
+        "C13",
+        "C15",
+        "C16"
+      ],
+      "sources": [
+        "https://github.com/kwiscion/machinekind-matura/blob/5c0dd67b00cc06507e66ae5f84ce5f4f909b0849/agentsLog/kwiscion/2026-09-26-failure-audit-astra.md",
+        "https://github.com/kwiscion/machinekind-matura/blob/5c0dd67b00cc06507e66ae5f84ce5f4f909b0849/WINNING_PLAN.md"
+      ],
+      "record_type": "case",
+      "time_refs": [],
+      "evidence_status": "Primary records inspected during this retrospective; causal interpretation separately qualified",
+      "historical_decision": "Use the audit for the next portfolio; retain uncertainty about later follow-through.",
+      "retrospective_implication": "Advisory quality and continuous strategic responsibility are different.",
+      "relationships": [
+        {
+          "from": "C14",
+          "to": "C13",
+          "type": "strategy_context",
+          "note": "Expert diagnosis informed the broader portfolio; no extra experiment count."
+        }
+      ]
+    },
+    {
+      "id": "C15",
+      "title": "Low reasoning cap recognized as an invalid capability test",
+      "group": "Model and runtime",
+      "type": "failure diagnosis and revised experiment",
+      "expectation": "Compare reasoning strategies under a bounded inference envelope.",
+      "sequence": [
+        "A 2048-token thinking arm hit a length failure and left later items unattempted, producing a misleadingly low aggregate.",
+        "The lead explicitly recognized that this had not tested organizer-sized reasoning.",
+        "A larger-budget full-exam route was pursued, eventually yielding the native-thinking/recovery configuration."
+      ],
+      "outcome": "A configuration failure was not accepted as proof that thinking was ineffective.",
+      "effects": [
+        "Later configurations scored better, without isolating one parameter's causal effect.",
+        "Failed calls and unattempted items remained visible.",
+        "The next experiment addressed the observed output-limit failure."
+      ],
+      "initiative": "The user explicitly attributes the push to change reasoning budgets to their intervention. Agents performed diagnosis, implementation and subsequent testing; exact prompts for each sub-arm were not reconstructed.",
+      "interpretation": "A useful correction of the tested scope, with high-level direction attributed to the owner rather than autonomous strategic initiative.",
+      "limits": "Larger full-run testing also increased integration/runtime exposure; not a clean single-variable causal estimate.",
+      "related": [
+        "C04",
+        "C34",
+        "C35"
+      ],
+      "sources": [
+        "https://github.com/kwiscion/machinekind-matura/issues/38#issuecomment-5849217669",
+        "https://github.com/kwiscion/machinekind-matura/blob/b4f2d9abdc546788d09b64d352cda35ed8e5f2cf/agentsLog/ljaniec/2026-09-26-reasoning-wave-terminal.md",
+        "Current retrospective user clarification: revisiting Qwen and changing reasoning budgets resulted from owner intervention."
+      ],
+      "record_type": "case",
+      "time_refs": [],
+      "evidence_status": "Primary records support the technical sequence; firsthand user clarification supplies initiative attribution where original prompts were not recovered.",
+      "historical_decision": "Increase and qualify the reasoning allowance instead of abandoning the mechanism.",
+      "retrospective_implication": "A positive example of interpreting a failed test at the correct scope.",
+      "relationships": []
+    },
+    {
+      "id": "C16",
+      "title": "Visual assistance failed replication and was parked",
+      "group": "Vision",
+      "type": "replication and valid stop",
+      "expectation": "An initial visual-observer gain might transfer to another panel.",
+      "sequence": [
+        "The first selected panel showed 3/6 to 5/6.",
+        "A mechanically selected second panel tied 4/6 to 4/6.",
+        "The lead parked the bundle and moved toward larger native reasoning."
+      ],
+      "outcome": "A promising small result did not earn promotion when replication failed.",
+      "effects": [
+        "No replicated gain.",
+        "A bounded replication avoided continued automatic expansion.",
+        "A genuine pivot followed evidence."
+      ],
+      "initiative": "Lead/agent process documented; original human involvement not fully attributable.",
+      "interpretation": "Useful counterexample to confirmation-only experimentation.",
+      "limits": "Small panels and input-quality limitations constrain broader vision conclusions.",
+      "related": [
+        "C15",
+        "C17",
+        "C19"
+      ],
+      "sources": [
+        "https://github.com/kwiscion/machinekind-matura/blob/b4f2d9abdc546788d09b64d352cda35ed8e5f2cf/agentsLog/kwiscion/2026-09-26-hetero-replication-decision.md"
+      ],
+      "record_type": "case",
+      "time_refs": [],
+      "evidence_status": "Primary records inspected during this retrospective; causal interpretation separately qualified",
+      "historical_decision": "Park the observer bundle and test a different mechanism.",
+      "retrospective_implication": "Useful counterexample to confirmation-only experimentation.",
+      "relationships": []
+    },
+    {
+      "id": "C17",
+      "title": "Whole-page visual inputs inspected with incomplete acceptance criteria",
+      "group": "Vision",
+      "type": "input validity and review judgment",
+      "expectation": "Evaluation images should supply the relevant visual evidence in a form representative of the organizer task.",
+      "sequence": [
+        "The bootstrap rendered 21 full PDF pages at 110 DPI and attached page references to image-bearing items.",
+        "A contemporary audit recorded inspection of all pages and lists, noticing neighboring content and resolution dilution.",
+        "It treated extra material as nonblocking because required content was present."
+      ],
+      "outcome": "Visual inspection occurred, but its acceptance criterion did not require removing irrelevant neighboring material.",
+      "effects": [
+        "Earlier scores reflected full-page inputs; the exact quality cost is not isolated.",
+        "Mis-scoped inputs persisted into experiments.",
+        "Observation alone did not cause correction when review judged the issue nonblocking."
+      ],
+      "initiative": "Early audit agent-recorded; corrective whole-page diagnosis explicitly user-originated in the lead chat.",
+      "interpretation": "Criterion mismatch is better supported than the claim that no agent looked at images.",
+      "limits": "Current local image assets were unavailable; code, manifests and contemporary inspection receipts were audited rather than pixels re-viewed now.",
+      "related": [
+        "C18",
+        "C19",
+        "C20"
+      ],
+      "sources": [
+        "https://github.com/kwiscion/machinekind-matura/blob/b4f2d9abdc546788d09b64d352cda35ed8e5f2cf/agentsLog/kwiscion/2026-09-26-visual-input-audit.md"
+      ],
+      "record_type": "case",
+      "time_refs": [],
+      "evidence_status": "Primary records inspected during this retrospective; causal interpretation separately qualified",
+      "historical_decision": "Later user intervention changed the required image unit to source-specific regions.",
+      "retrospective_implication": "Criterion mismatch is better supported than the claim that no agent looked at images.",
+      "relationships": [
+        {
+          "from": "C17",
+          "to": "C18",
+          "type": "input_alternative",
+          "note": "Small layout-aware prototype, distinct from quadrants."
+        },
+        {
+          "from": "C17",
+          "to": "C19",
+          "type": "input_alternative",
+          "note": "Generic zoom retained the original full page."
+        },
+        {
+          "from": "C17",
+          "to": "C20",
+          "type": "input_correction",
+          "note": "Later source-specific image and package correction."
+        }
+      ]
+    },
+    {
+      "id": "C18",
+      "title": "Early source-group crop prototype had disputed gain",
+      "group": "Vision",
+      "type": "limited prototype and uncertain measurement",
+      "expectation": "Higher-resolution coherent source-group crops could reduce full-page dilution.",
+      "sequence": [
+        "Three cases were cropped by layout from headings through complete source groups, directly rendered at 220 DPI.",
+        "A separate visual review recorded no clipping; multi-page generalization remained untested.",
+        "The diagnostic scored 3/6 versus a preserved 2/6, but the entire extra point was disputed."
+      ],
+      "outcome": "Genuine layout-aware cropping existed before the later correction, without a secure gain or general pipeline.",
+      "effects": [
+        "No secure one-point benefit.",
+        "A bounded prototype and fallback were produced.",
+        "This was distinct from generic quadrants."
+      ],
+      "initiative": "Agent prototype; precise originating prompt unknown.",
+      "interpretation": "Small evidence and disputed grading limited what the experiment established.",
+      "limits": "Three selected cases; no universal parser or full-exam result.",
+      "related": [
+        "C17",
+        "C19",
+        "C20"
+      ],
+      "sources": [
+        "https://github.com/kwiscion/machinekind-matura/blob/b4f2d9abdc546788d09b64d352cda35ed8e5f2cf/agentsLog/kwiscion/2026-09-26-source-group-crop-prototype.md",
+        "https://github.com/kwiscion/machinekind-matura/blob/b4f2d9abdc546788d09b64d352cda35ed8e5f2cf/agentsLog/kwiscion/2026-09-26-source-crops-review.md"
+      ],
+      "record_type": "case",
+      "time_refs": [],
+      "evidence_status": "Primary records inspected during this retrospective; causal interpretation separately qualified",
+      "historical_decision": "No general crop pipeline or secure quality gain was promoted from the disputed three-case prototype.",
+      "retrospective_implication": "Small evidence and disputed grading limited what the experiment established.",
+      "relationships": [
+        {
+          "from": "C17",
+          "to": "C18",
+          "type": "input_alternative",
+          "note": "Small layout-aware prototype, distinct from quadrants."
+        }
+      ]
+    },
+    {
+      "id": "C19",
+      "title": "Generic quadrant zoom was not source-image extraction",
+      "group": "Vision",
+      "type": "valid narrow negative and review scope gap",
+      "expectation": "Providing local views alongside a full page might help visual interpretation.",
+      "sequence": [
+        "Each request retained the full page followed by four tiles covering 55% width and height with central overlap.",
+        "Review checked exact pixel mapping and explicitly omitted visual interpretation.",
+        "Eight paired answers completed in 6m11s; both arms scored 1/6 and the route was parked."
+      ],
+      "outcome": "The tiling method did not help this panel; it did not test removal of irrelevant page content.",
+      "effects": [
+        "No gain in the tested zoom panel.",
+        "The intended algorithm ran successfully.",
+        "Pixel preservation did not prove the tiles formed useful visual units."
+      ],
+      "initiative": "Agent/lead diagnostic; user later challenged the image preparation.",
+      "interpretation": "Algorithm correctness and task suitability were different acceptance questions.",
+      "limits": "Tiles can divide figures, although the intact full page remained in the request. No fresh pixel inspection in this audit.",
+      "related": [
+        "C17",
+        "C18",
+        "C20"
+      ],
+      "sources": [
+        "https://github.com/kwiscion/machinekind-matura/issues/160",
+        "https://github.com/kwiscion/machinekind-matura/blob/b4f2d9abdc546788d09b64d352cda35ed8e5f2cf/agentsLog/kwiscion/2026-09-27-visual-zoom-prep-review.md",
+        "https://github.com/kwiscion/machinekind-matura/blob/b4f2d9abdc546788d09b64d352cda35ed8e5f2cf/agentsLog/kwiscion/2026-09-27-visual-zoom-result.md"
+      ],
+      "record_type": "case",
+      "time_refs": [
+        "T03"
+      ],
+      "evidence_status": "Primary records inspected during this retrospective; causal interpretation separately qualified",
+      "historical_decision": "Park the tested generic zoom route after its tied result.",
+      "retrospective_implication": "Do not generalize that result to source-specific image extraction.",
+      "relationships": [
+        {
+          "from": "C17",
+          "to": "C19",
+          "type": "input_alternative",
+          "note": "Generic zoom retained the original full page."
+        }
+      ]
+    },
+    {
+      "id": "C20",
+      "title": "User-requested source crops and organizer package integration",
+      "group": "Integration",
+      "type": "input correction and successful compatibility test",
+      "expectation": "Use relevant source images and accept the organizer's actual package structure.",
+      "sequence": [
+        "User explicitly flagged full-page inputs; issue171 required complete source regions and correct associations.",
+        "PR172 delivered 21 lossless crops and 32 references, removing neighboring artwork from an incorrect association.",
+        "The real adapter/preparation/export path processed all 37 organizer mock items with a synthetic provider; visual and byte-level checks passed."
+      ],
+      "outcome": "Corrected inputs and package compatibility were demonstrated. Later Gemma scores were 39/60 versus 38/60 previously.",
+      "effects": [
+        "Derived on the same 30 image-bearing IDs: original native-thinking 38-point reconciliation 21/34, corrected-input Gemma 39-point grade 24/34. This is not a comparison to every later run also scoring 38.",
+        "A concrete end-to-end package contract was delivered.",
+        "Checks matched deterministic input/export behavior; visual review assessed actual regions."
+      ],
+      "initiative": "Explicit human diagnosis and request; agent implementation and independent review.",
+      "interpretation": "A successful bounded task after the appropriate input contract was specified.",
+      "limits": "The synthetic run proves compatibility, not model quality. Later scores also differ in runtime/recovery and stochastic/grading conditions. Two related changes share one PR and are one case, not independent successes.",
+      "related": [
+        "C17",
+        "C18",
+        "C19",
+        "C35",
+        "C37"
+      ],
+      "sources": [
+        "https://github.com/kwiscion/machinekind-matura/issues/170",
+        "https://github.com/kwiscion/machinekind-matura/issues/171",
+        "https://github.com/kwiscion/machinekind-matura/pull/172",
+        "https://github.com/kwiscion/machinekind-matura/blob/b4f2d9abdc546788d09b64d352cda35ed8e5f2cf/agentsLog/kwiscion/2026-09-27-corrected-gemma40-grade.json",
+        "https://github.com/kwiscion/machinekind-matura/blob/b4f2d9abdc546788d09b64d352cda35ed8e5f2cf/agentsLog/kwiscion/2026-09-26-full-thinking-review-reconciliation.json",
+        "https://github.com/kwiscion/machinekind-matura/blob/b4f2d9abdc546788d09b64d352cda35ed8e5f2cf/agentsLog/kwiscion/source-crops-prep/crop-spec-v1.json"
+      ],
+      "record_type": "case",
+      "time_refs": [
+        "E08"
+      ],
+      "evidence_status": "Primary records inspected during this retrospective; causal interpretation separately qualified",
+      "historical_decision": "Use the corrected source package; preserve previous runs as full-page evidence.",
+      "retrospective_implication": "A successful bounded task after the appropriate input contract was specified.",
+      "relationships": [
+        {
+          "from": "C17",
+          "to": "C20",
+          "type": "input_correction",
+          "note": "Later source-specific image and package correction."
+        },
+        {
+          "from": "C20",
+          "to": "C37",
+          "type": "integration_dependency",
+          "note": "Input/package integration contributed to final delivery."
+        }
+      ]
+    },
+    {
+      "id": "C21",
+      "title": "Six-topic argument-planning study remained prepared but unused",
+      "group": "Execution",
+      "type": "handoff and unfinished integration",
+      "expectation": "After span edits showed no gain, compare a strong thinking control with plan-then-prose on six DEV topics.",
+      "sequence": [
+        "The proposed wave specified 18 calls and a 45-minute envelope.",
+        "A promised manifest did not arrive and the root took over after a checkpoint.",
+        "A CPU reference with 14 tests existed, but live transport/guardian were not implemented or qualified; prepared-v1 remained archived and unused."
+      ],
+      "outcome": "The intended selection question was not answered by a model run.",
+      "effects": [
+        "No quality comparison.",
+        "Preparation effort produced no executed study; active effort unknown.",
+        "Prepared code was not a qualified invocation path."
+      ],
+      "initiative": "Lead assignment after worker results; exact human origin unknown.",
+      "interpretation": "A missed handoff and incomplete integration, not a negative scientific result.",
+      "limits": "Distinct from C22 / issue151. The latter's zero-call receipt must not substitute for this study's evidence.",
+      "related": [
+        "C22",
+        "C32"
+      ],
+      "sources": [
+        "https://github.com/kwiscion/machinekind-matura/issues/80#issuecomment-5849836497",
+        "https://github.com/kwiscion/machinekind-matura/issues/80#issuecomment-5850512012",
+        "https://github.com/kwiscion/machinekind-matura/blob/b4f2d9abdc546788d09b64d352cda35ed8e5f2cf/agentsLog/kwiscion/essay-planning-prep/README.md"
+      ],
+      "record_type": "case",
+      "time_refs": [],
+      "evidence_status": "Primary records inspected during this retrospective; causal interpretation separately qualified",
+      "historical_decision": "Lead took over preparation; the six-topic prepared-v1 remained archived and unused.",
+      "retrospective_implication": "Keep its prepared/unrun evidence separate from the later four-case study.",
+      "relationships": [
+        {
+          "from": "C21",
+          "to": "C22",
+          "type": "separate_prepared_study",
+          "note": "Related planning work but different cases/denominators and no-call evidence."
+        },
+        {
+          "from": "C32",
+          "to": "C21",
+          "type": "proposed_mechanism_followup",
+          "note": "No-gain span editing preceded a plan-to-prose proposal."
+        }
+      ]
+    },
+    {
+      "id": "C22",
+      "title": "Structured-route diagnostic missed both launch windows",
+      "group": "Execution",
+      "type": "dependency and blocker visibility failure",
+      "expectation": "Complete a four-case structured-route comparison after the lead supplied shared inputs and runtime.",
+      "sequence": [
+        "Initial host/handoff preparation was delivered; routes and panel were initially absent.",
+        "After handoff, a typed-stage invoker still needed integration; the worker promised completion and launch.",
+        "The first start window was missed; the lead extended once, checked no experiment was running, then expired the second window.",
+        "A later report attributed interrupted supporting agents to usage limits before both deadlines."
+      ],
+      "outcome": "Zero scored calls and zero warmups; the lead ultimately stopped and reassigned resources.",
+      "effects": [
+        "The scientific question remained unanswered.",
+        "A 45m49s extension window ended without experiment calls; active coding and continuous GPU idle time unknown.",
+        "Assignment and prepared parts did not establish runnable work; blocker information arrived late."
+      ],
+      "initiative": "Lead supplied prerequisites and checked execution; supporting-agent interruption retrospectively reported.",
+      "interpretation": "Unfinished integration plus late availability signaling; a pure approval-loop explanation is unsupported.",
+      "limits": "Initial preparation ETA was not a launch promise. About 26m25 from PR157 creation to planned integration completion, then 20m launch margin, is not 20m total coding time. Alternative worker capacity is unknown.",
+      "related": [
+        "C21",
+        "C28",
+        "C35"
+      ],
+      "sources": [
+        "https://github.com/kwiscion/machinekind-matura/issues/151",
+        "https://github.com/kwiscion/machinekind-matura/issues/151#issuecomment-5850949292",
+        "https://github.com/kwiscion/machinekind-matura/issues/151#issuecomment-5851470230",
+        "https://github.com/kwiscion/machinekind-matura/issues/151#issuecomment-5853593104"
+      ],
+      "record_type": "case",
+      "time_refs": [
+        "E05"
+      ],
+      "evidence_status": "Primary records inspected during this retrospective; causal interpretation separately qualified",
+      "historical_decision": "Expire the authorization and redirect the resource.",
+      "retrospective_implication": "Unfinished integration plus late availability signaling; a pure approval-loop explanation is unsupported.",
+      "relationships": [
+        {
+          "from": "C21",
+          "to": "C22",
+          "type": "separate_prepared_study",
+          "note": "Related planning work but different cases/denominators and no-call evidence."
+        }
+      ]
+    },
+    {
+      "id": "C23",
+      "title": "Essay RAG preparation explicitly stopped at its deadline",
+      "group": "Retrieval",
+      "type": "dependency delay and deliberate stop",
+      "expectation": "Prepare a topic/query/filter/writer essay route using full Wikipedia, with a later bounded inference release.",
+      "sequence": [
+        "Issue183 assigned preparation with a 07:20 Warsaw gate; full corpus superseded the small reference set.",
+        "The index arrived early, but filtering and essay integration remained dependencies.",
+        "At 07:19 the lead stopped before GPU calls to preserve final integration; no essay-RAG quality claim was made.",
+        "The user later asked whether the route existed and reopened the work."
+      ],
+      "outcome": "This was a documented deadline stop, not a negative experiment or purely unexplained abandonment.",
+      "effects": [
+        "No quality trial at this stage.",
+        "No GPU calls; the elapsed preparation window does not measure labor.",
+        "The scope change was recorded but not shown proactively communicated to the user."
+      ],
+      "initiative": "Lead preparation assignment and explicit stop; human later discovered omission and reactivated.",
+      "interpretation": "The stop rationale was contemporaneous. Upstream readiness and user-facing visibility remain concerns.",
+      "limits": "The precise remaining essay blocker and whether continuation would have paid off are unknown. Preparation-only was not a promise of a GPU run.",
+      "related": [
+        "C12",
+        "C24",
+        "C25",
+        "C36",
+        "C37"
+      ],
+      "sources": [
+        "https://github.com/kwiscion/machinekind-matura/issues/183",
+        "https://github.com/kwiscion/machinekind-matura/issues/183#issuecomment-5852933186",
+        "https://github.com/kwiscion/machinekind-matura/issues/182#issuecomment-5852114323"
+      ],
+      "record_type": "case",
+      "time_refs": [
+        "E06"
+      ],
+      "evidence_status": "Primary records inspected during this retrospective; causal interpretation separately qualified",
+      "historical_decision": "Use qualified coverage prompting then; later owner direction reopened essay RAG.",
+      "retrospective_implication": "The stop rationale was contemporaneous. Upstream readiness and user-facing visibility remain concerns.",
+      "relationships": [
+        {
+          "from": "C23",
+          "to": "C36",
+          "type": "owner_reopened_route",
+          "note": "Later diagnostic after an explicit prep cutoff; not the original promised run."
+        }
+      ]
+    },
+    {
+      "id": "C24",
+      "title": "Full-Wikipedia filter first run failed its auxiliary contract",
+      "group": "Auxiliary mechanisms",
+      "type": "invalid mechanism and late detection",
+      "expectation": "Queries and relevance judgments would admit useful evidence before final answering.",
+      "sequence": [
+        "Nine CPU tests and host preflight passed; a fake provider emitted desired JSON when prompted.",
+        "The ordinary answer harness accepted nonempty outputs without checking relevance-judgment semantics.",
+        "Of 30 first-pass judgments, 26 violated the contract, three timed out and one validly rejected; no passages were admitted."
+      ],
+      "outcome": "53 attempts and 28m48s yielded bare-fallback answers rather than a functioning RAG quality comparison.",
+      "effects": [
+        "No inference about functioning retrieval benefit is justified.",
+        "The batch continued until downstream admission checks; repair was needed.",
+        "The acceptance unit did not match the stage's task."
+      ],
+      "initiative": "Lead/agent implementation and subsequent diagnosis.",
+      "interpretation": "Task-level qualification was absent even though infrastructure/provenance checks were extensive.",
+      "limits": "Some direct/fallback output still existed; not every second is provably wasted. First invalid-response timestamp and contemporaneous human awareness are not established.",
+      "related": [
+        "C25",
+        "C27"
+      ],
+      "sources": [
+        "https://github.com/kwiscion/machinekind-matura/blob/b4f2d9abdc546788d09b64d352cda35ed8e5f2cf/agentsLog/kwiscion/2026-09-27-fullwiki-filtered-rag-result.json",
+        "https://github.com/kwiscion/machinekind-matura/blob/b4f2d9abdc546788d09b64d352cda35ed8e5f2cf/agentsLog/kwiscion/final-package-prep/recovery_harness.py#L74",
+        "https://github.com/kwiscion/machinekind-matura/blob/b4f2d9abdc546788d09b64d352cda35ed8e5f2cf/agentsLog/kwiscion/filtered-rag-prep/test_study.py#L80"
+      ],
+      "record_type": "case",
+      "time_refs": [
+        "T05",
+        "E03"
+      ],
+      "evidence_status": "Primary records inspected during this retrospective; causal interpretation separately qualified",
+      "historical_decision": "Repair framing, schema enforcement, semantic retries and real probes before a second run.",
+      "retrospective_implication": "Task-level qualification was absent even though infrastructure/provenance checks were extensive.",
+      "relationships": [
+        {
+          "from": "C24",
+          "to": "C25",
+          "type": "repair_followup",
+          "note": "V2 is a repair of the failed filter, not independent replication of full RAG strategy."
+        }
+      ]
+    },
+    {
+      "id": "C25",
+      "title": "Repaired filter became measurable but remained expensive",
+      "group": "Auxiliary mechanisms",
+      "type": "successful repair and limited diagnostic",
+      "expectation": "Qualify the query/judge contract before repeating the six-item comparison.",
+      "sequence": [
+        "V2 put auxiliary instructions first, quoted the exam as data, added native schemas and semantic recovery.",
+        "Four actual-model probes passed before the main batch.",
+        "Thirty judgments became valid and 13 quotes were admitted; 55 attempts took 31m51s."
+      ],
+      "outcome": "The functioning diagnostic scored 3/6 to 4/6, with two gains and one regression; it was not a full-exam promotion.",
+      "effects": [
+        "Small exploratory gain with relevance errors remaining.",
+        "Repair-to-declaration and grading consumed additional elapsed time; the report arrived near the diagnostic cutoff.",
+        "A real probe directly addressed the original qualification gap."
+      ],
+      "initiative": "Lead/agent repair; tied to the owner-requested full-corpus path.",
+      "interpretation": "Successful semantic qualification did not imply economical task allocation or broad quality benefit.",
+      "limits": "Selected known panel, direct-grade sensitivity, and reviewer awareness limit causal strength. This is the repaired phase of C24, not independent replication of the whole strategy.",
+      "related": [
+        "C23",
+        "C24",
+        "C26"
+      ],
+      "sources": [
+        "https://github.com/kwiscion/machinekind-matura/blob/b4f2d9abdc546788d09b64d352cda35ed8e5f2cf/agentsLog/kwiscion/filtered-rag-prep/V2.md",
+        "https://github.com/kwiscion/machinekind-matura/blob/b4f2d9abdc546788d09b64d352cda35ed8e5f2cf/agentsLog/kwiscion/2026-09-27-fullwiki-filtered-rag-v2-result.json",
+        "https://github.com/kwiscion/machinekind-matura/issues/182#issuecomment-5852932813"
+      ],
+      "record_type": "case",
+      "time_refs": [
+        "T07",
+        "E03"
+      ],
+      "evidence_status": "Primary records inspected during this retrospective; causal interpretation separately qualified",
+      "historical_decision": "Retain diagnostic evidence; generic integration and essay qualification remained separate.",
+      "retrospective_implication": "Successful semantic qualification did not imply economical task allocation or broad quality benefit.",
+      "relationships": [
+        {
+          "from": "C24",
+          "to": "C25",
+          "type": "repair_followup",
+          "note": "V2 is a repair of the failed filter, not independent replication of full RAG strategy."
+        },
+        {
+          "from": "C25",
+          "to": "C26",
+          "type": "different_model_followup",
+          "note": "Different model/profile and panel result; not a clean speed or quality attribution."
+        }
+      ]
+    },
+    {
+      "id": "C26",
+      "title": "Fast Qwen full-Wikipedia diagnostic tied the direct route",
+      "group": "Retrieval",
+      "type": "limited neutral diagnostic",
+      "expectation": "A faster auxiliary profile might make full-corpus retrieval useful within final runtime limits.",
+      "sequence": [
+        "Short thinking-off auxiliary calls were combined with direct/final reasoning.",
+        "The six-item result was 4/6 direct and 4/6 filtered.",
+        "Changed outcomes had no admitted evidence; the sole evidence-bearing item stayed correct."
+      ],
+      "outcome": "No demonstrated retrieval-backed gain on this panel; speed improvement was not a controlled cross-model comparison.",
+      "effects": [
+        "Neutral aggregate with no identified evidence-caused improvement.",
+        "Approximately 15-minute diagnostic; direct/final reasoning dominated.",
+        "A tie did not test essay retrieval or prove full-exam futility."
+      ],
+      "initiative": "Agent diagnostic; final both-route choice explicitly human.",
+      "interpretation": "The local neutral finding was valid within scope, but broader strategy remained uncertain.",
+      "limits": "Small selected nonessay panel; stochastic reruns and model/profile differences. Not included in the original nine-run time subtotal.",
+      "related": [
+        "C12",
+        "C25",
+        "C36",
+        "C37"
+      ],
+      "sources": [
+        "https://github.com/kwiscion/machinekind-matura/blob/b4f2d9abdc546788d09b64d352cda35ed8e5f2cf/agentsLog/kwiscion/2026-09-27-fast-qwen-rag-independent-result.md",
+        "https://github.com/kwiscion/machinekind-matura/issues/3#issuecomment-5853913474",
+        "https://github.com/kwiscion/machinekind-matura/issues/3#issuecomment-5853542202"
+      ],
+      "record_type": "case",
+      "time_refs": [
+        "T13"
+      ],
+      "evidence_status": "Primary records inspected during this retrospective; causal interpretation separately qualified",
+      "historical_decision": "Lead recommended RAG off at that point; owner later selected both RAG routes despite limited evidence.",
+      "retrospective_implication": "The local neutral finding was valid within scope, but broader strategy remained uncertain.",
+      "relationships": [
+        {
+          "from": "C25",
+          "to": "C26",
+          "type": "different_model_followup",
+          "note": "Different model/profile and panel result; not a clean speed or quality attribution."
+        }
+      ]
+    },
+    {
+      "id": "C27",
+      "title": "Factual referee returned rewrites instead of valid selections",
+      "group": "Auxiliary mechanisms",
+      "type": "failed selection and mixed useful evidence",
+      "expectation": "Select the stronger of two saved candidate answers using a strict candidate ID.",
+      "sequence": [
+        "Seven CPU tests checked export and fallback; ordinary runtime acceptance did not validate selector semantics.",
+        "Twenty A/B finals were generated, then ten selectors ran before strict export parsing.",
+        "Nine selectors rewrote answers and one used an unknown ID; all failed, so baseline A was exported."
+      ],
+      "outcome": "The 33m46s batch yielded useful A/B evidence, 7/12 versus 5/12, but zero functioning referee selections.",
+      "effects": [
+        "Export preserved 7/12; retrospective oracle was 8/12.",
+        "31 calls include candidate generation, so selector-only cost is unavailable.",
+        "A working referee's value remained untested."
+      ],
+      "initiative": "Lead/agent experiment; final abandonment rationale should not be recast as a general anti-referee result.",
+      "interpretation": "Fallback contained answer damage but did not stop time consumption by an invalid stage.",
+      "limits": "Do not count the whole duration as useless. Distinct from the essay ID-selector replay.",
+      "related": [
+        "C24",
+        "C28",
+        "C29"
+      ],
+      "sources": [
+        "https://github.com/kwiscion/machinekind-matura/issues/186#issuecomment-5852521462",
+        "https://github.com/kwiscion/machinekind-matura/blob/b4f2d9abdc546788d09b64d352cda35ed8e5f2cf/agentsLog/kwiscion/brainstorm-prep/handoff.json",
+        "https://github.com/kwiscion/machinekind-matura/blob/b4f2d9abdc546788d09b64d352cda35ed8e5f2cf/agentsLog/kwiscion/brainstorm-prep/wave.py#L157"
+      ],
+      "record_type": "case",
+      "time_refs": [
+        "T06"
+      ],
+      "evidence_status": "Primary records inspected during this retrospective; causal interpretation separately qualified",
+      "historical_decision": "Discard the route without successful requalification.",
+      "retrospective_implication": "Fallback contained answer damage but did not stop time consumption by an invalid stage.",
+      "relationships": [
+        {
+          "from": "C27",
+          "to": "C29",
+          "type": "different_selector_comparison",
+          "note": "Factual referee versus essay saved-ID selector; do not merge outcomes."
+        }
+      ]
+    },
+    {
+      "id": "C28",
+      "title": "Essay branching found a better draft but rewriting lost it",
+      "group": "Essays",
+      "type": "generation success and selection degradation",
+      "expectation": "Generate alternative topic drafts and select or improve the strongest essay.",
+      "sequence": [
+        "Saved candidates included an essay graded 11/15 against a direct 8/15.",
+        "Selection combined with rewriting produced a complete essay graded 6/15.",
+        "Further work separated saved-candidate selection from rewriting."
+      ],
+      "outcome": "The branch generated useful material, but the combined selector/rewrite degraded the exported result.",
+      "effects": [
+        "6/15 selected rewrite versus 8 direct and 11 best saved draft on a known task.",
+        "Candidate generation completed; downstream processing lost value.",
+        "Generation, selection and rewriting are separate mechanisms."
+      ],
+      "initiative": "Lead/agent plan; no direct user origin established in exposed chat.",
+      "interpretation": "Later processing can destroy useful earlier work even with complete, well-formed outputs.",
+      "limits": "Single known essay and provisional grades; oracle is retrospective, not an achieved autonomous score. Issue168 was created before issue151's final expiry and dispatched later.",
+      "related": [
+        "C22",
+        "C29"
+      ],
+      "sources": [
+        "https://github.com/kwiscion/machinekind-matura/issues/168",
+        "https://github.com/kwiscion/machinekind-matura/blob/b4f2d9abdc546788d09b64d352cda35ed8e5f2cf/agentsLog/kwiscion/2026-09-27-essay-branching-comparison.md"
+      ],
+      "record_type": "case",
+      "time_refs": [],
+      "evidence_status": "Primary records inspected during this retrospective; causal interpretation separately qualified",
+      "historical_decision": "Preserve candidate bytes and test ID-only selection separately.",
+      "retrospective_implication": "Later processing can destroy useful earlier work even with complete, well-formed outputs.",
+      "relationships": [
+        {
+          "from": "C28",
+          "to": "C29",
+          "type": "same_response_replay_repair",
+          "note": "Replays one saved selection response; no new inference or regrading."
+        }
+      ]
+    },
+    {
+      "id": "C29",
+      "title": "Correct essay choice rejected by strict fence parsing",
+      "group": "Essays",
+      "type": "serialization defect and replay repair",
+      "expectation": "Return a valid ID and export the chosen saved essay without rewriting.",
+      "sequence": [
+        "One real selector response chose the saved 11-point draft.",
+        "A JSON code fence caused strict parsing to reject it and fall back to the 8-point answer.",
+        "A generic optional-fence repair passed four CPU tests; replay of the same response exported the exact saved draft."
+      ],
+      "outcome": "The repair recovered an existing good choice; it was not a new model run or regraded 11-point result.",
+      "effects": [
+        "Replay mapped to the frozen 11/15 draft instead of original 8/15 fallback.",
+        "No new inference; original export preserved.",
+        "A format error can hide successful model selection."
+      ],
+      "initiative": "Agent repair; exact human trigger unknown.",
+      "interpretation": "Schema enforcement should distinguish harmless serialization from an invalid choice.",
+      "limits": "Child of C28; not independent evidence for general selector quality or full-exam gains.",
+      "related": [
+        "C28",
+        "C27"
+      ],
+      "sources": [
+        "https://github.com/kwiscion/machinekind-matura/blob/b4f2d9abdc546788d09b64d352cda35ed8e5f2cf/agentsLog/kwiscion/2026-09-27-essay-selector-id-result.md"
+      ],
+      "record_type": "case",
+      "time_refs": [],
+      "evidence_status": "Primary records inspected during this retrospective; causal interpretation separately qualified",
+      "historical_decision": "Use a narrowly corrected parser while retaining original receipts.",
+      "retrospective_implication": "Schema enforcement should distinguish harmless serialization from an invalid choice.",
+      "relationships": [
+        {
+          "from": "C27",
+          "to": "C29",
+          "type": "different_selector_comparison",
+          "note": "Factual referee versus essay saved-ID selector; do not merge outcomes."
+        },
+        {
+          "from": "C28",
+          "to": "C29",
+          "type": "same_response_replay_repair",
+          "note": "Replays one saved selection response; no new inference or regrading."
+        }
+      ]
+    },
+    {
+      "id": "C30",
+      "title": "LoRA qualification rejected a failing deployed candidate",
+      "group": "Training",
+      "type": "useful negative and resource reallocation",
+      "expectation": "A paired deployed-artifact test would establish whether the essay adapter improved useful answers.",
+      "sequence": [
+        "Launch preparation involved changed recovery/context requirements, a real runner gap, and a redundant approval request.",
+        "The 45m50s evaluation completed 16/16 controls but only 2 complete candidate essays, 2 partial runaways and 12 unattempted placeholders.",
+        "Both complete content pairs favored control; further automatic training was parked and priority reassigned."
+      ],
+      "outcome": "The candidate failed operationally and on available content comparisons; it was not deployed.",
+      "effects": [
+        "No quality win; incomplete attempts remained in denominators.",
+        "Training/preparation cost exceeds this evaluation duration and is not fully measured.",
+        "Negative evidence changed the next action and protected remaining resources."
+      ],
+      "initiative": "Worker evidence and lead decision; account identity does not prove human authorship.",
+      "interpretation": "Successful rejection and pivot. Some coordination churn existed, but genuine runtime changes prevent treating all exchanges as bureaucracy.",
+      "limits": "Does not prove LoRA generally ineffective or isolate the training failure's cause. Related data preparation C11 is not additional evaluation runtime.",
+      "related": [
+        "C11",
+        "C13"
+      ],
+      "sources": [
+        "https://github.com/kwiscion/machinekind-matura/issues/117#issuecomment-5850879863",
+        "https://github.com/kwiscion/machinekind-matura/issues/117#issuecomment-5851471034",
+        "https://github.com/kwiscion/machinekind-matura/issues/117#issuecomment-5851842361"
+      ],
+      "record_type": "case",
+      "time_refs": [
+        "T04"
+      ],
+      "evidence_status": "Primary records inspected during this retrospective; causal interpretation separately qualified",
+      "historical_decision": "Reject candidate promotion; do not launch the proposed epoch retry automatically; redirect work.",
+      "retrospective_implication": "Successful rejection and pivot. Some coordination churn existed, but genuine runtime changes prevent treating all exchanges as bureaucracy.",
+      "relationships": [
+        {
+          "from": "C11",
+          "to": "C30",
+          "type": "data_to_candidate_evaluation",
+          "note": "Data preparation and later evaluation have separate costs and outcomes."
+        }
+      ]
+    },
+    {
+      "id": "C31",
+      "title": "Essay critic gain shrank after independent calibration",
+      "group": "Grading",
+      "type": "calibration disagreement and corrected claim",
+      "expectation": "Critic/rewrite replication would demonstrate reliable essay improvement.",
+      "sequence": [
+        "On the same four essays, the experimenter's grader scored direct 14/60 and rewrite 27/60, reporting four wins.",
+        "Independent review of the same eight finals scored 35/60 and 39/60, with one regression; a scoped third review fell between interpretations.",
+        "The lead downgraded the claim and introduced argument/error/coherence calibration requirements."
+      ],
+      "outcome": "Apparent benefit shrank from +13 to +4 across FOUR essays, not a full 40-item exam.",
+      "effects": [
+        "Magnitude and consistency were less secure; no deployment on the raw gain was traced.",
+        "About 51 minutes elapsed from announcement to lead correction, not measured active reviewer time.",
+        "Raw grades had guided replication; independent review changed subsequent claims/protocol."
+      ],
+      "initiative": "Worker grader, independent Sol and scoped Astra review; no verified human grading override.",
+      "interpretation": "Threshold interpretation and factual-error disputes made numerical feedback unstable.",
+      "limits": "Same broad framework, but exact full grader instructions/model versions not all preserved. Independent reviewer knew arm identities/direction, though exact owner grades were opened after score freeze.",
+      "related": [
+        "C32",
+        "C33"
+      ],
+      "sources": [
+        "https://github.com/kwiscion/machinekind-matura/blob/b4f2d9abdc546788d09b64d352cda35ed8e5f2cf/agentsLog/kwiscion/2026-09-26-essay-c3-replication-review.md",
+        "https://github.com/kwiscion/machinekind-matura/blob/b4f2d9abdc546788d09b64d352cda35ed8e5f2cf/agentsLog/kwiscion/2026-09-26-essay-c3-replication-review.json",
+        "https://github.com/kwiscion/machinekind-matura/issues/80#issuecomment-5848937914"
+      ],
+      "record_type": "case",
+      "time_refs": [
+        "E04"
+      ],
+      "evidence_status": "Primary records inspected during this retrospective; causal interpretation separately qualified",
+      "historical_decision": "Keep original grades and treat gain as development evidence; calibrate consequential rubric judgments.",
+      "retrospective_implication": "Threshold interpretation and factual-error disputes made numerical feedback unstable.",
+      "relationships": [
+        {
+          "from": "C31",
+          "to": "C32",
+          "type": "research_followup",
+          "note": "Conservative edit direction after critic uncertainty; different samples."
+        }
+      ]
+    },
+    {
+      "id": "C32",
+      "title": "Conservative essay span edits gave no added benefit",
+      "group": "Essays",
+      "type": "valid narrow negative and measurement checks",
+      "expectation": "Restricting edits to factual spans might avoid harmful whole-essay rewriting.",
+      "sequence": [
+        "Six DEV essays totaled 46/90 for nonthinking drafts and 57.5/90 for thinking drafts; patched thinking also totaled 57.5/90.",
+        "There was only one changed essay, four zero-edit identities and one unchanged fallback; the changed essay still contained an incorrect replacement.",
+        "Independent review reproduced aggregation, not every historical grade, and the patcher was not promoted.",
+        "A separate independent six-slot mixed review corrected deduction arithmetic from 53 to 57 while preserving its original freeze and historical judgments; it did not replace the owner's 46/57.5/57.5 totals or adjudicate the whole wave."
+      ],
+      "outcome": "No measured patch benefit; the count of patched outputs overstated how many texts actually changed.",
+      "effects": [
+        "No gain beyond the thinking drafts under the recorded grading.",
+        "18 calls took 18m09.809s; one verifier output hit a length limit.",
+        "Evidence relevance did not guarantee a replacement claim was entailed."
+      ],
+      "initiative": "Agent/lead progression from prior essay results.",
+      "interpretation": "A meaningful narrow negative followed by a different mechanism proposal.",
+      "limits": "Two-rater overwrite was fixed before this aggregation; a remaining narrative-floor bug affected zero actual ratings. Do not treat every arithmetic bug as corrupting these totals.",
+      "related": [
+        "C21",
+        "C31",
+        "C33"
+      ],
+      "sources": [
+        "https://github.com/kwiscion/machinekind-matura/blob/b4f2d9abdc546788d09b64d352cda35ed8e5f2cf/agentsLog/kwiscion/2026-09-26-essay-edit-independent-review.md",
+        "https://github.com/kwiscion/machinekind-matura/issues/80#issuecomment-5849836497"
+      ],
+      "record_type": "case",
+      "time_refs": [
+        "T10"
+      ],
+      "evidence_status": "Primary records inspected during this retrospective; causal interpretation separately qualified",
+      "historical_decision": "Move toward explicit argument planning rather than further patch tuning.",
+      "retrospective_implication": "A meaningful narrow negative followed by a different mechanism proposal.",
+      "relationships": [
+        {
+          "from": "C31",
+          "to": "C32",
+          "type": "research_followup",
+          "note": "Conservative edit direction after critic uncertainty; different samples."
+        },
+        {
+          "from": "C32",
+          "to": "C21",
+          "type": "proposed_mechanism_followup",
+          "note": "No-gain span editing preceded a plan-to-prose proposal."
+        }
+      ]
+    },
+    {
+      "id": "C33",
+      "title": "Three-rater aggregation bug caught before use",
+      "group": "Grading",
+      "type": "evaluator defect and successful prevention",
+      "expectation": "A third review would resolve disagreement using the declared median rule.",
+      "sequence": [
+        "A synthetic [0,6,6] check returned mean 4 instead of median 6 and kept asking for another review.",
+        "The review isolated the three-rater path from the existing two-rater dry run.",
+        "The aggregation path was fixed and tested in PR22."
+      ],
+      "outcome": "A consequential evaluator bug was corrected without invalidating unrelated existing grades.",
+      "effects": [
+        "No demonstrated affected exam score.",
+        "Preventive correction rather than a model rerun.",
+        "The evaluator itself was subjected to adversarial checks."
+      ],
+      "initiative": "Agent/lead-side audit; no direct human trigger established.",
+      "interpretation": "A strong example of testing a deterministic control against its actual contract.",
+      "limits": "Distinct from subjective C3 calibration and from other essay arithmetic bugs.",
+      "related": [
+        "C31",
+        "C32"
+      ],
+      "sources": [
+        "https://github.com/kwiscion/machinekind-matura/issues/11#issuecomment-5844023940",
+        "https://github.com/kwiscion/machinekind-matura/issues/11#issuecomment-5844879825",
+        "https://github.com/kwiscion/machinekind-matura/pull/22"
+      ],
+      "record_type": "case",
+      "time_refs": [],
+      "evidence_status": "Primary records inspected during this retrospective; causal interpretation separately qualified",
+      "historical_decision": "Use the repaired aggregation; avoid rewriting unaffected results.",
+      "retrospective_implication": "A strong example of testing a deterministic control against its actual contract.",
+      "relationships": []
+    },
+    {
+      "id": "C34",
+      "title": "Recovery rehearsal qualified complete-answer delivery",
+      "group": "Delivery",
+      "type": "operational success with limited quality benefit",
+      "expectation": "Preserve usable answers and autonomously recover failed calls within a bounded final workflow.",
+      "sequence": [
+        "The owner priority reset required recovery and no blanks; root prepared a complete pinned package.",
+        "The real full rehearsal included two frozen injected faults plus a natural failure.",
+        "46 calls in 19m17s produced 40 nonblank answers and zero placeholders; cleanup/context behavior were observed."
+      ],
+      "outcome": "Recovery worked operationally; the score remained 38/60 and recovered answers were not automatically correct.",
+      "effects": [
+        "Previously blank items recovered only 1/6 points; other changes offset quality gains.",
+        "The tested recovery harness was reused.",
+        "Failure behavior was exercised end-to-end rather than inferred from mocked success."
+      ],
+      "initiative": "Owner priority reset is documented; exact authorship of each implementation choice is not established.",
+      "interpretation": "The actual acceptance unit and tests matched the delivery requirement.",
+      "limits": "A single rehearsal does not guarantee every later candidate/runtime. It did not establish the 48-point target.",
+      "related": [
+        "C15",
+        "C35",
+        "C37"
+      ],
+      "sources": [
+        "https://github.com/kwiscion/machinekind-matura/issues/3#issuecomment-5850602964",
+        "https://github.com/kwiscion/machinekind-matura/blob/b4f2d9abdc546788d09b64d352cda35ed8e5f2cf/agentsLog/kwiscion/2026-09-27-champion-rehearsal-result.md",
+        "https://github.com/kwiscion/machinekind-matura/blob/b4f2d9abdc546788d09b64d352cda35ed8e5f2cf/agentsLog/kwiscion/2026-09-27-champion-rehearsal-score-delta.md"
+      ],
+      "record_type": "case",
+      "time_refs": [
+        "T02"
+      ],
+      "evidence_status": "Primary records inspected during this retrospective; causal interpretation separately qualified",
+      "historical_decision": "Reuse the qualified harness, address a narrow mechanical essay-selection issue, and allocate headroom to research.",
+      "retrospective_implication": "The actual acceptance unit and tests matched the delivery requirement.",
+      "relationships": [
+        {
+          "from": "C34",
+          "to": "C35",
+          "type": "qualified_runtime_reuse",
+          "note": "Recovery qualification reused in the full confirmation."
+        }
+      ]
+    },
+    {
+      "id": "C35",
+      "title": "Full Qwen confirmation replaced an optimistic composite",
+      "group": "Selection",
+      "type": "measured confirmation and successful handoff",
+      "expectation": "Check whether a promising standalone essay translated into a complete exam result.",
+      "sequence": [
+        "33 prior ordinary points plus an 11-point essay were explicitly labeled an unmeasured 44-point composite.",
+        "One execution owner closed concrete host/input prerequisites and launched about 98 seconds after declaration.",
+        "44 calls in 27m58s completed all 40 answers, recovering four timeouts; the measured score was 40/60, including an 8-point essay.",
+        "The lead selected the measured direct candidate and retained the prior fallback."
+      ],
+      "outcome": "A real full-system result replaced posthoc composition and informed selection.",
+      "effects": [
+        "40/60 measured on known validation; not proof of robust superiority over Gemma 39 or final-exam uplift.",
+        "A complete executable path yielded fast dispatch and terminal evidence.",
+        "The standalone essay gain did not repeat fully, and that was retained rather than hidden."
+      ],
+      "initiative": "Lead/agents executed the confirmation after owner-directed Qwen reassessment. The user clarified that revisiting Qwen was their intervention; the detailed confirmation design is not independently attributed.",
+      "interpretation": "A successful execution and evidence-to-selection loop, not evidence that the initial strategic reconsideration was autonomous.",
+      "limits": "Single provisional grading pass; configuration and stochastic changes prevent attributing the improvement to one component.",
+      "related": [
+        "C02",
+        "C04",
+        "C20",
+        "C34",
+        "C37",
+        "C39"
+      ],
+      "sources": [
+        "https://github.com/kwiscion/machinekind-matura/issues/95#issuecomment-5852386688",
+        "https://github.com/kwiscion/machinekind-matura/issues/95#issuecomment-5852637129",
+        "https://github.com/kwiscion/machinekind-matura/issues/95#issuecomment-5852886959",
+        "https://github.com/kwiscion/machinekind-matura/issues/3#issuecomment-5853248498",
+        "Current retrospective user clarification: revisiting Qwen and changing reasoning budgets resulted from owner intervention."
+      ],
+      "record_type": "case",
+      "time_refs": [
+        "T08",
+        "E07"
+      ],
+      "evidence_status": "Primary records support the technical sequence; firsthand user clarification supplies initiative attribution where original prompts were not recovered.",
+      "historical_decision": "Select the measured Qwen route while acknowledging the unmet 48/60 target.",
+      "retrospective_implication": "A bounded uncertainty, available interfaces and an actual selection consequence formed a closed loop.",
+      "relationships": [
+        {
+          "from": "C34",
+          "to": "C35",
+          "type": "qualified_runtime_reuse",
+          "note": "Recovery qualification reused in the full confirmation."
+        },
+        {
+          "from": "C35",
+          "to": "C37",
+          "type": "preserved_candidate_dependency",
+          "note": "Measured direct answers preserved before owner-selected RAG."
+        },
+        {
+          "from": "C35",
+          "to": "C39",
+          "type": "different_exam_context",
+          "note": "Known-validation and user-reported final scores are not a causal paired comparison."
+        }
+      ]
+    },
+    {
+      "id": "C36",
+      "title": "Reopened parallel essay RAG exceeded actual serving concurrency",
+      "group": "Retrieval",
+      "type": "capacity assumption and mixed result",
+      "expectation": "Run up to three quick essay retrieval trials after the owner reopened the route.",
+      "sequence": [
+        "The user asked whether essay RAG existed and requested a short multi-attempt diagnostic.",
+        "Three clients launched, but the model runtime admitted only one inference slot; a writer blocked auxiliary calls.",
+        "One essay completed at 9/15 against a saved direct 8/15; two trials timed out. Serial recovery missed its cutoff and made no calls."
+      ],
+      "outcome": "One limited positive essay signal and a useful concurrency finding, not a completed three-way comparison.",
+      "effects": [
+        "No full-exam gain or causal one-point retrieval estimate established.",
+        "Approximately 2m33s execution, 88 calls, 16 failed attempts; not a 20-minute executed run.",
+        "Requested parallelism was not demonstrated capacity."
+      ],
+      "initiative": "Explicit human reactivation and final route choice; agents implemented and measured.",
+      "interpretation": "A resource capability assumption survived into a deadline-sensitive experiment.",
+      "limits": "Failures include quote-filter and transport issues. Do not multiply the shared operator duration by three.",
+      "related": [
+        "C23",
+        "C26",
+        "C37"
+      ],
+      "sources": [
+        "https://github.com/kwiscion/machinekind-matura/issues/191",
+        "https://github.com/kwiscion/machinekind-matura/issues/191#issuecomment-5853732755",
+        "https://github.com/kwiscion/machinekind-matura/issues/191#issuecomment-5853950686"
+      ],
+      "record_type": "case",
+      "time_refs": [
+        "T09"
+      ],
+      "evidence_status": "Primary records inspected during this retrospective; causal interpretation separately qualified",
+      "historical_decision": "Use serial execution in the final workflow; owner still chose both RAG routes.",
+      "retrospective_implication": "A resource capability assumption survived into a deadline-sensitive experiment.",
+      "relationships": [
+        {
+          "from": "C23",
+          "to": "C36",
+          "type": "owner_reopened_route",
+          "note": "Later diagnostic after an explicit prep cutoff; not the original promised run."
+        },
+        {
+          "from": "C36",
+          "to": "C37",
+          "type": "runtime_lesson_to_delivery",
+          "note": "Single-slot observation informed serial final calls."
+        }
+      ]
+    },
+    {
+      "id": "C37",
+      "title": "Frozen manual workflow passed a real limited delivery smoke",
+      "group": "Delivery",
+      "type": "integration and resumability success",
+      "expectation": "Provide one usable offline command for the owner to run and export the final package.",
+      "sequence": [
+        "The owner selected ordinary and essay RAG and a 65-minute total target.",
+        "PR192 staged a pinned Qwen model, full index, direct-answer preservation, serial routes, bounded recovery and export.",
+        "A real two-item image/essay smoke passed in 5m34s with 49 completed calls and zero placeholders.",
+        "Resume returned byte-identical outputs with no additional model calls."
+      ],
+      "outcome": "The reviewed manual integration and resume path worked on a limited DEV package.",
+      "effects": [
+        "No full-exam quality gain was measured by the smoke.",
+        "A runnable delivery entry point and recovery behavior were demonstrated.",
+        "The actual PowerShell-to-remote-to-export path was exercised."
+      ],
+      "initiative": "Explicit human route/deadline decision and agent integration.",
+      "interpretation": "Concrete delivery criteria and a complete execution owner produced a usable artifact.",
+      "limits": "Two items do not qualify full-exam runtime or quality. Reviewed Windows dependency hashes were environment-specific. Submission itself remained manual.",
+      "related": [
+        "C20",
+        "C26",
+        "C34",
+        "C35",
+        "C36",
+        "C39"
+      ],
+      "sources": [
+        "https://github.com/kwiscion/machinekind-matura/pull/192",
+        "https://github.com/kwiscion/machinekind-matura/issues/3#issuecomment-5854111304"
+      ],
+      "record_type": "case",
+      "time_refs": [
+        "T11"
+      ],
+      "evidence_status": "Primary records inspected during this retrospective; causal interpretation separately qualified",
+      "historical_decision": "Freeze the manual solution for owner-run submission.",
+      "retrospective_implication": "Concrete delivery criteria and a complete execution owner produced a usable artifact.",
+      "relationships": [
+        {
+          "from": "C20",
+          "to": "C37",
+          "type": "integration_dependency",
+          "note": "Input/package integration contributed to final delivery."
+        },
+        {
+          "from": "C35",
+          "to": "C37",
+          "type": "preserved_candidate_dependency",
+          "note": "Measured direct answers preserved before owner-selected RAG."
+        },
+        {
+          "from": "C36",
+          "to": "C37",
+          "type": "runtime_lesson_to_delivery",
+          "note": "Single-slot observation informed serial final calls."
+        }
+      ]
+    },
+    {
+      "id": "C38",
+      "title": "Aggregate weight constraint changed architecture scope",
+      "group": "Governance",
+      "type": "external constraint and replanning",
+      "expectation": "All submitted weights together must satisfy the aggregate size limit.",
+      "sequence": [
+        "The user clarified the aggregate 8 GB plus tolerance rule in the lead chat.",
+        "The lead adjusted the plan toward one shared model, communicated the constraint and updated documentation.",
+        "Multi-model/adapter routes required compatibility with the aggregate budget."
+      ],
+      "outcome": "A material external constraint was incorporated into the strategy.",
+      "effects": [
+        "No isolated score effect.",
+        "Some previously plausible architecture options became ineligible or required new serving proof.",
+        "Rule clarification was distinct from an autonomous research failure."
+      ],
+      "initiative": "Explicit human clarification; agent replanning and integration.",
+      "interpretation": "Changing constraints can explain scope changes without implying a bad original estimate.",
+      "limits": "This episode was examined mainly through the lead chat, not a full independent audit of every affected experiment.",
+      "related": [
+        "C01",
+        "C30",
+        "C37"
+      ],
+      "sources": [
+        "thread://01a0da6d-1f45-7ae0-a046-5c2f651c5fed?hostId=local",
+        "https://github.com/kwiscion/machinekind-matura/pull/132"
+      ],
+      "record_type": "case",
+      "time_refs": [],
+      "evidence_status": "Mixed primary records and user/chat context; see limitations",
+      "historical_decision": "Use a conservative aggregate cap and avoid duplicate full-model serving in the final package.",
+      "retrospective_implication": "Changing constraints can explain scope changes without implying a bad original estimate.",
+      "relationships": []
+    },
+    {
+      "id": "C39",
+      "title": "Final competition result and limits of attribution",
+      "group": "Outcome context",
+      "type": "user-reported outcome",
+      "expectation": "Compete strongly and test autonomous research with little human strategic involvement.",
+      "sequence": [
+        "The user reported 46/60 on the final evaluation, versus the winner's 54/60 and a lower-half placement.",
+        "The preserved full validation candidate had scored 40/60 on a different exam.",
+        "The user reported substantial strategic intervention despite expecting mainly resource provisioning and submission duties."
+      ],
+      "outcome": "Useful delivery was achieved, but the reported competitive and autonomy expectations were not met.",
+      "effects": [
+        "Final score and placement are user-reported; not independently verified here.",
+        "Submission occurred according to the user; full final elapsed runtime is not established by the smoke.",
+        "A different final exam cannot provide a causal RAG or configuration delta."
+      ],
+      "initiative": "User supplies outcome and expectations.",
+      "interpretation": "The numerical outcome and human effort are separate dimensions of project success.",
+      "limits": "No counterfactual score for alternative choices or architecture. Target 48/60 referred to known validation, not an identical final test.",
+      "related": [
+        "C01",
+        "C35",
+        "C37",
+        "C40"
+      ],
+      "sources": [
+        "thread://01a0ea46-3646-7080-a3ee-ea712bee6660?hostId=local",
+        "Current retrospective user account (2026-10-08)"
+      ],
+      "record_type": "context",
+      "time_refs": [],
+      "evidence_status": "Mixed primary records and user/chat context; see limitations",
+      "historical_decision": "The final solution was submitted according to the user's outcome report.",
+      "retrospective_implication": "Use the project as evidence for autonomous-team workflow analysis, not a retrospective proof of one model component's value.",
+      "relationships": [
+        {
+          "from": "C35",
+          "to": "C39",
+          "type": "different_exam_context",
+          "note": "Known-validation and user-reported final scores are not a causal paired comparison."
+        }
+      ]
+    },
+    {
+      "id": "C40",
+      "title": "Activity counts and incomplete project time accounting",
+      "group": "Outcome context",
+      "type": "measurement limit",
+      "expectation": "Quantify coordination, repair, experimentation and waiting across the project.",
+      "sequence": [
+        "The earlier audit recorded 145 PRs, 47 issues, 583 discussion comments, 9 review records, 385 main commits and six accounts over roughly 33 hours of repository activity.",
+        "This retrospective reconstructed selected run receipts and correction/no-launch intervals.",
+        "No complete active-time ledger across agents, hosts and human work was available."
+      ],
+      "outcome": "Local elapsed costs and summed run durations are quantifiable; the share of the project spent on bureaucracy is not.",
+      "effects": [
+        "No direct quality effect.",
+        "Selected batch runtimes must not be added to overlapping repair windows or interpreted as staff-hours.",
+        "Message volume and issue lifetime are not productivity or active-time measures."
+      ],
+      "initiative": "User requested quantification; retrospective agents reconstructed the evidence.",
+      "interpretation": "Instrumentation limits constrain the strength of the bureaucracy hypothesis.",
+      "limits": "Counts are a prior snapshot, not current live totals. 583 discussion plus 9 review messages explains the earlier 592 combined figure; neither equals active coordination time.",
+      "related": [
+        "C01",
+        "C39"
+      ],
+      "sources": [
+        "thread://01a0ea46-3646-7080-a3ee-ea712bee6660?hostId=local",
+        "https://github.com/kwiscion/machinekind-matura/issues/151#issuecomment-5851470230"
+      ],
+      "record_type": "context",
+      "time_refs": [],
+      "evidence_status": "Mixed primary records and user/chat context; see limitations",
+      "historical_decision": null,
+      "retrospective_implication": "Keep time types, overlap and coverage explicit; do not invent a whole-project percentage.",
+      "relationships": []
+    }
+  ],
+  "time_ledger": [
+    {
+      "interval_id": "T01",
+      "case_id": "C13",
+      "label": "Retrieval variants wave",
+      "time_kind": "run_duration",
+      "start": "2026-09-26T19:36:46+02:00",
+      "end": "2026-09-26T19:42:05+02:00",
+      "duration_seconds": 319,
+      "aggregation_set": "core_9",
+      "measurement_basis": "Recorded launch-to-last-call window; request-latency sum is a different metric",
+      "overlap_group": "",
+      "source": "https://github.com/kwiscion/machinekind-matura/blob/2701ba00baabd3a8adeaaf9796c99ba4d3873774/agentsLog/Bukareszt/issue96/wave/README.md",
+      "attribution_limit": "Two readiness calls lie outside this timed wave."
+    },
+    {
+      "interval_id": "T02",
+      "case_id": "C34",
+      "label": "Recovery rehearsal",
+      "time_kind": "run_duration",
+      "start": "2026-09-27T01:14:19.537+02:00",
+      "end": "2026-09-27T01:33:36.796+02:00",
+      "duration_seconds": 1157.26,
+      "aggregation_set": "core_9",
+      "measurement_basis": "Run receipt",
+      "overlap_group": "",
+      "source": "https://github.com/kwiscion/machinekind-matura/blob/b4f2d9abdc546788d09b64d352cda35ed8e5f2cf/agentsLog/kwiscion/2026-09-27-champion-rehearsal-result.md",
+      "attribution_limit": "Includes recovery and injected faults."
+    },
+    {
+      "interval_id": "T03",
+      "case_id": "C19",
+      "label": "Generic visual zoom",
+      "time_kind": "run_duration",
+      "start": "2026-09-27T01:56:07.22+02:00",
+      "end": "2026-09-27T02:02:18.671+02:00",
+      "duration_seconds": 371.45,
+      "aggregation_set": "core_9",
+      "measurement_basis": "Run receipt",
+      "overlap_group": "",
+      "source": "https://github.com/kwiscion/machinekind-matura/blob/b4f2d9abdc546788d09b64d352cda35ed8e5f2cf/agentsLog/kwiscion/2026-09-27-visual-zoom-result.md",
+      "attribution_limit": "Eight slots; no gain does not make the duration automatically wasted."
+    },
+    {
+      "interval_id": "T04",
+      "case_id": "C30",
+      "label": "LoRA evaluation",
+      "time_kind": "run_duration",
+      "start": "2026-09-27T02:09:56+02:00",
+      "end": "2026-09-27T02:55:46+02:00",
+      "duration_seconds": 2750,
+      "aggregation_set": "core_9",
+      "measurement_basis": "Stage log timestamps",
+      "overlap_group": "",
+      "source": "https://github.com/kwiscion/machinekind-matura/blob/issue-117-Bukareszt-eval16-terminal/agentsLog/Bukareszt/lora_pilot/eval16/run2_evidence/stages.log",
+      "attribution_limit": "Evaluation only; training/export/setup excluded. Control/candidate subtimes are included, not additional."
+    },
+    {
+      "interval_id": "T05",
+      "case_id": "C24",
+      "label": "Fullwiki filter v1",
+      "time_kind": "run_duration",
+      "start": "2026-09-27T05:17:07.909+02:00",
+      "end": "2026-09-27T05:45:55.481+02:00",
+      "duration_seconds": 1727.57,
+      "aggregation_set": "core_9",
+      "measurement_basis": "Run receipt",
+      "overlap_group": "P1",
+      "source": "https://github.com/kwiscion/machinekind-matura/blob/b4f2d9abdc546788d09b64d352cda35ed8e5f2cf/agentsLog/kwiscion/2026-09-27-fullwiki-filtered-rag-result.json",
+      "attribution_limit": "Whole batch includes direct/fallback answers; intended filtering failed."
+    },
+    {
+      "interval_id": "T06",
+      "case_id": "C27",
+      "label": "A/B and referee",
+      "time_kind": "run_duration",
+      "start": null,
+      "end": "2026-09-27T05:56:38+02:00",
+      "duration_seconds": 2025.93,
+      "aggregation_set": "core_9",
+      "measurement_basis": "Reported duration; approximate inferred start 05:22:52 Warsaw",
+      "overlap_group": "P1",
+      "source": "https://github.com/kwiscion/machinekind-matura/issues/186#issuecomment-5852521462",
+      "attribution_limit": "Includes 20 A/B finals and ten failed selectors; selector-only time unknown."
+    },
+    {
+      "interval_id": "T07",
+      "case_id": "C25",
+      "label": "Fullwiki filter v2",
+      "time_kind": "run_duration",
+      "start": "2026-09-27T06:24:15.72+02:00",
+      "end": "2026-09-27T06:56:06.821+02:00",
+      "duration_seconds": 1911.1,
+      "aggregation_set": "core_9",
+      "measurement_basis": "Run receipt",
+      "overlap_group": "P2",
+      "source": "https://github.com/kwiscion/machinekind-matura/blob/b4f2d9abdc546788d09b64d352cda35ed8e5f2cf/agentsLog/kwiscion/2026-09-27-fullwiki-filtered-rag-v2-result.json",
+      "attribution_limit": "Includes four probes, retries and final answers."
+    },
+    {
+      "interval_id": "T08",
+      "case_id": "C35",
+      "label": "Qwen full40 confirmation",
+      "time_kind": "run_duration",
+      "start": "2026-09-27T06:31:47.766+02:00",
+      "end": "2026-09-27T06:59:45.891+02:00",
+      "duration_seconds": 1678.12,
+      "aggregation_set": "core_9",
+      "measurement_basis": "Run receipt rounded to hundredths",
+      "overlap_group": "P2",
+      "source": "https://github.com/kwiscion/machinekind-matura/issues/95#issuecomment-5852886959",
+      "attribution_limit": "44 calls include four recovered timeouts."
+    },
+    {
+      "interval_id": "T09",
+      "case_id": "C36",
+      "label": "Parallel essay RAG",
+      "time_kind": "run_duration",
+      "start": "2026-09-27T09:20:12+02:00",
+      "end": null,
+      "duration_seconds": 153,
+      "aggregation_set": "core_9",
+      "measurement_basis": "Approximately 2m33s operator duration",
+      "overlap_group": "",
+      "source": "https://github.com/kwiscion/machinekind-matura/blob/b4f2d9abdc546788d09b64d352cda35ed8e5f2cf/agentsLog/kwiscion/2026-09-27-quick-essay-rag-result.md",
+      "attribution_limit": "Three client trials share one operator interval; do not multiply by three."
+    },
+    {
+      "interval_id": "T10",
+      "case_id": "C32",
+      "label": "Exact-span essay edit",
+      "time_kind": "run_duration",
+      "start": "2026-09-26T22:09:57.697+02:00",
+      "end": "2026-09-26T22:28:07.506+02:00",
+      "duration_seconds": 1089.809,
+      "aggregation_set": "supplemental",
+      "measurement_basis": "Batch timestamps",
+      "overlap_group": "",
+      "source": "https://github.com/kwiscion/machinekind-matura/blob/b4f2d9abdc546788d09b64d352cda35ed8e5f2cf/agentsLog/kwiscion/2026-09-26-essay-edit-independent-review.md",
+      "attribution_limit": "Newly added to this record; excluded from the previously reported nine-batch subtotal."
+    },
+    {
+      "interval_id": "T11",
+      "case_id": "C37",
+      "label": "Final two-item delivery smoke",
+      "time_kind": "run_duration",
+      "start": null,
+      "end": null,
+      "duration_seconds": 334,
+      "aggregation_set": "supplemental",
+      "measurement_basis": "Reported 5m34s smoke",
+      "overlap_group": "",
+      "source": "https://github.com/kwiscion/machinekind-matura/pull/192",
+      "attribution_limit": "Limited DEV smoke, not full-exam runtime; resume issued zero new model calls."
+    },
+    {
+      "interval_id": "T12",
+      "case_id": "C07",
+      "label": "RTX runtime transfer",
+      "time_kind": "run_duration",
+      "start": null,
+      "end": null,
+      "duration_seconds": 146.6,
+      "aggregation_set": "supplemental",
+      "measurement_basis": "Reported 2m26.6s transfer",
+      "overlap_group": "",
+      "source": "https://github.com/kwiscion/machinekind-matura/pull/85",
+      "attribution_limit": "40 nonempty answers, not a fresh quality qualification of later wrapper repairs."
+    },
+    {
+      "interval_id": "T13",
+      "case_id": "C26",
+      "label": "Fast Qwen retrieval diagnostic",
+      "time_kind": "run_duration",
+      "start": null,
+      "end": null,
+      "duration_seconds": 907.22,
+      "aggregation_set": "supplemental",
+      "measurement_basis": "Frozen report states 907.22 seconds (15.12 minutes)",
+      "overlap_group": "",
+      "source": "https://github.com/kwiscion/machinekind-matura/blob/b4f2d9abdc546788d09b64d352cda35ed8e5f2cf/agentsLog/kwiscion/2026-09-27-fast-qwen-rag-independent-result.md",
+      "attribution_limit": "Excluded from the historical core-nine subtotal; shorter auxiliary calls do not constitute an isolated cross-model speed comparison."
+    },
+    {
+      "interval_id": "E01",
+      "case_id": "C05",
+      "label": "Spark report correction latency",
+      "time_kind": "correction_latency",
+      "start": "2026-09-26T09:42:37+02:00",
+      "end": "2026-09-26T10:01:44+02:00",
+      "duration_seconds": 1147,
+      "aggregation_set": "not_additive",
+      "measurement_basis": "PR25 merge to PR28 merge",
+      "overlap_group": "",
+      "source": "https://github.com/kwiscion/machinekind-matura/pull/28",
+      "attribution_limit": "Elapsed correction window, not active repair effort."
+    },
+    {
+      "interval_id": "E02",
+      "case_id": "C09",
+      "label": "Strict export repair and approval",
+      "time_kind": "repair_review_elapsed",
+      "start": "2026-09-26T08:46:22+02:00",
+      "end": "2026-09-26T09:06:59+02:00",
+      "duration_seconds": 1237,
+      "aggregation_set": "not_additive",
+      "measurement_basis": "Blocking review to approval",
+      "overlap_group": "",
+      "source": "https://github.com/kwiscion/machinekind-matura/pull/18#pullrequestreview-5325017706",
+      "attribution_limit": "Coding, review and waiting not separable."
+    },
+    {
+      "interval_id": "E03",
+      "case_id": "C24",
+      "label": "Filter failure to repaired declaration",
+      "time_kind": "repair_review_elapsed",
+      "start": "2026-09-27T05:45:55.481+02:00",
+      "end": "2026-09-27T06:20:24.076+02:00",
+      "duration_seconds": 2068.595,
+      "aggregation_set": "not_additive",
+      "measurement_basis": "V1 terminal to v2 declaration",
+      "overlap_group": "",
+      "source": "https://github.com/kwiscion/machinekind-matura/issues/182#issuecomment-5852582975",
+      "attribution_limit": "Not pure debugging time; overlaps other work. Also linked to C25."
+    },
+    {
+      "interval_id": "E04",
+      "case_id": "C31",
+      "label": "Essay gain announcement to calibrated lead response",
+      "time_kind": "claim_correction_elapsed",
+      "start": "2026-09-26T20:03:44+02:00",
+      "end": "2026-09-26T20:54:58+02:00",
+      "duration_seconds": 3074,
+      "aggregation_set": "not_additive",
+      "measurement_basis": "Reconstructed from C3 announcement and lead response timestamps",
+      "overlap_group": "",
+      "source": "https://github.com/kwiscion/machinekind-matura/issues/80#issuecomment-5848937914",
+      "attribution_limit": "Not active reviewer time; exact issue-comment stamps are not consistently exposed by the connector."
+    },
+    {
+      "interval_id": "E05",
+      "case_id": "C22",
+      "label": "Structured study missed start to expiry",
+      "time_kind": "no_launch_window",
+      "start": "2026-09-27T02:15:00+02:00",
+      "end": "2026-09-27T03:00:49+02:00",
+      "duration_seconds": 2749,
+      "aggregation_set": "not_additive",
+      "measurement_basis": "First latest-start deadline to final expiry check",
+      "overlap_group": "",
+      "source": "https://github.com/kwiscion/machinekind-matura/issues/151#issuecomment-5851470230",
+      "attribution_limit": "Zero experiment calls. Idle snapshots do not prove continuous idleness or available replacement workers."
+    },
+    {
+      "interval_id": "E06",
+      "case_id": "C23",
+      "label": "Index-ready report to essay-prep stop",
+      "time_kind": "preparation_elapsed",
+      "start": "2026-09-27T05:05:00+02:00",
+      "end": "2026-09-27T07:19:24+02:00",
+      "duration_seconds": 8064,
+      "aggregation_set": "not_additive",
+      "measurement_basis": "Rounded index-ready report to stop",
+      "overlap_group": "",
+      "source": "https://github.com/kwiscion/machinekind-matura/issues/183#issuecomment-5852933186",
+      "attribution_limit": "No GPU calls for this prep-only case; not active labor."
+    },
+    {
+      "interval_id": "E07",
+      "case_id": "C35",
+      "label": "Qwen declaration to launch",
+      "time_kind": "dispatch_latency",
+      "start": "2026-09-27T06:30:10+02:00",
+      "end": "2026-09-27T06:31:47.766+02:00",
+      "duration_seconds": 97.766,
+      "aggregation_set": "not_additive",
+      "measurement_basis": "Declaration and launch receipt",
+      "overlap_group": "",
+      "source": "https://github.com/kwiscion/machinekind-matura/issues/95#issuecomment-5852637129",
+      "attribution_limit": "Pre-declaration preparation excluded."
+    },
+    {
+      "interval_id": "E08",
+      "case_id": "C20",
+      "label": "Organizer mock task to integrated PR",
+      "time_kind": "issue_to_merge_elapsed",
+      "start": "2026-09-27T02:36:13+02:00",
+      "end": "2026-09-27T02:50:41+02:00",
+      "duration_seconds": 868,
+      "aggregation_set": "not_additive",
+      "measurement_basis": "Issue170 created to PR172 merged",
+      "overlap_group": "",
+      "source": "https://github.com/kwiscion/machinekind-matura/pull/172",
+      "attribution_limit": "Not total implementation effort; preparatory work may precede issue creation."
+    }
+  ]
+}
